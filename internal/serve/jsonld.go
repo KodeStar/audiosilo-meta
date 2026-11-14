@@ -99,7 +99,7 @@ type ldAudiobook struct {
 	ISBN          string          `json:"isbn,omitempty"`
 	Publisher     *ldOrganization `json:"publisher,omitempty"`
 	DatePublished string          `json:"datePublished,omitempty"`
-	Abridged      bool            `json:"abridged,omitempty"`
+	Abridged      *bool           `json:"abridged,omitempty"`
 	Image         string          `json:"image,omitempty"`
 	InLanguage    string          `json:"inLanguage,omitempty"`
 	ExampleOfWork *ldRef          `json:"exampleOfWork,omitempty"`
@@ -229,22 +229,16 @@ func workJSONLD(d *query.WorkDetail, siteURL, canonical string) []byte {
 
 	nodes := make([]any, 0, len(d.Recordings)+1)
 	for _, rec := range d.Recordings {
-		recID := canonical + "#" + rec.ID
+		recID := siteURL + recordingPath(d.ID, rec.ID)
 		book.WorkExample = append(book.WorkExample, ldRef{ID: recID})
 		ab := ldAudiobook{
 			Type: "Audiobook", ID: recID, Name: d.Title,
 			Duration:      isoDuration(rec.RuntimeMin),
 			DatePublished: rec.ReleaseDate,
 			Image:         rec.CoverURL,
-			// The artifact carries language on the WORK; a recording is a
-			// production of that work, so this is the work's stated language rather
-			// than a second fact about the recording.
-			InLanguage:    d.Language,
+			InLanguage:    rec.Language,
 			ExampleOfWork: &ldRef{ID: bookID},
-			// Abridged is a plain bool in the artifact, so "stated false" and
-			// "unstated" are one value to any reader of it: only true is emitted,
-			// because only true is something the data can be said to state.
-			Abridged: rec.Abridged,
+			Abridged:      statedAbridgement(rec.Abridgement),
 		}
 		for _, n := range rec.Narrators {
 			ab.ReadBy = append(ab.ReadBy, ldPerson{Type: "Person", Name: n.Name, URL: siteURL + model.PeoplePath + n.ID})
@@ -350,4 +344,28 @@ func mustMarshalLD(v any) []byte {
 		return []byte("{}")
 	}
 	return b
+}
+
+// An explicit false is a fact. An older artifact's legacy false proves nothing.
+func statedAbridgement(value string) *bool {
+	switch value {
+	case "abridged":
+		v := true
+		return &v
+	case "unabridged":
+		v := false
+		return &v
+	default:
+		return nil
+	}
+}
+
+// Factual directory and chapter pages carry no community prose licence.
+func catalogueJSONLD(title, siteURL, canonical, workCanonical string) []byte {
+	page := ldArticle{Context: ldContext, Type: "CollectionPage", Headline: title, URL: canonical, MainEntityOfPage: canonical, IsPartOf: &ldWebSite{Type: "WebSite", Name: siteName, URL: siteURL}}
+	if workCanonical != "" {
+		page.Type = "WebPage"
+		page.About = &ldRef{ID: workNodeID(workCanonical)}
+	}
+	return mustMarshalLD(page)
 }

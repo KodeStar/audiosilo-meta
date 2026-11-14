@@ -9,6 +9,7 @@ import (
 	"net/http/httptest"
 	"os"
 	"path/filepath"
+	"reflect"
 	"sort"
 	"strconv"
 	"strings"
@@ -16,6 +17,7 @@ import (
 	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
+	"github.com/kodestar/audiosilo-meta/internal/httpx"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/query"
 )
@@ -41,6 +43,8 @@ var markedShells = map[string]string{
 	"series":     "shell-marked.html",
 	"recap":      "shell-marked.html",
 	"characters": "shell-marked.html",
+	"chapters":   "shell-marked.html",
+	"browse":     "shell-marked.html",
 }
 
 // entitySite lays out a site directory whose entity shells are the named
@@ -145,8 +149,9 @@ func TestHTMLRoutesAreDisjointFromTheAPI(t *testing.T) {
 	}
 	sort.Strings(got)
 	want := []string{
+		"GET /browse", "GET /browse/characters", "GET /browse/people", "GET /browse/recaps", "GET /browse/series", "GET /browse/works",
 		"GET /people/{id}", "GET /person", "GET /series", "GET /series/{id}",
-		"GET /work", "GET /works/{id}", "GET /works/{id}/characters", "GET /works/{id}/recap",
+		"GET /work", "GET /works/{id}", "GET /works/{id}/characters", "GET /works/{id}/recap", "GET /works/{id}/recordings/{recording}/chapters",
 	}
 	if strings.Join(got, ",") != strings.Join(want, ",") {
 		t.Errorf("htmlRoutes = %v, want %v", got, want)
@@ -249,9 +254,9 @@ func between(t *testing.T, s, open, close string) string {
 	return got
 }
 
-// TestEntityPayloadIsTheAPIResponse is the hydration contract: the embedded
-// payload is byte-for-byte what the corresponding API route returns for the same
-// id, so the island can use it as initial data and skip the fetch entirely.
+// TestEntityPayloadIsTheAPIResponse pins hydration: entity fields match the
+// corresponding detail API and bounded embedded sections match their own API
+// responses. Hydration can use both without another fetch.
 //
 // The API URL each case names is the fetch the island would have MADE, not the
 // route's bare default: the person page asks for the maximum window (see
@@ -262,16 +267,40 @@ func TestEntityPayloadIsTheAPIResponse(t *testing.T) {
 	cases := []struct{ page, api string }{
 		{"/works/project-hail-mary", "/api/v1/works/project-hail-mary"},
 		{"/people/brandon-sanderson", "/api/v1/people/brandon-sanderson?limit=" + strconv.Itoa(query.PersonPageMax)},
-		{"/series/the-stormlight-archive", "/api/v1/series/the-stormlight-archive"},
+		{"/series/the-stormlight-archive", "/api/v1/series/the-stormlight-archive?limit=50"},
 	}
 	for _, tc := range cases {
 		t.Run(tc.page, func(t *testing.T) {
 			_, page := getPage(t, ts.URL, tc.page)
 			_, apiBody := getBody(t, ts.URL+tc.api)
-			// The API writer appends a newline (json.Encoder); the payload is the
-			// same document without it.
-			if got, want := entityPayload(t, page), strings.TrimSuffix(apiBody, "\n"); got != want {
-				t.Errorf("payload differs from the API response\npage: %s\napi:  %s", got, want)
+			var embedded, api map[string]any
+			if err := json.Unmarshal([]byte(entityPayload(t, page)), &embedded); err != nil {
+				t.Fatal(err)
+			}
+			if err := json.Unmarshal([]byte(apiBody), &api); err != nil {
+				t.Fatal(err)
+			}
+			for _, extra := range []string{"recording_credits", "listening_guide"} {
+				if value, ok := embedded[extra]; ok {
+					var endpoint string
+					if extra == "recording_credits" {
+						endpoint = "/api/v1/people/brandon-sanderson/recordings?limit=50"
+					} else {
+						endpoint = "/api/v1/series/the-stormlight-archive/listening-guide?limit=50"
+					}
+					_, body := getBody(t, ts.URL+endpoint)
+					var want any
+					if err := json.Unmarshal([]byte(body), &want); err != nil {
+						t.Fatal(err)
+					}
+					if !reflect.DeepEqual(value, want) {
+						t.Errorf("embedded %s differs from its API response", extra)
+					}
+					delete(embedded, extra)
+				}
+			}
+			if !reflect.DeepEqual(embedded, api) {
+				t.Errorf("embedded entity differs from API response\npage: %s\napi: %s", entityPayload(t, page), apiBody)
 			}
 			// And the id the island matches on is present.
 			var doc map[string]any
@@ -308,76 +337,35 @@ func TestPersonPageComposesTheMaximumWindow(t *testing.T) {
 	}
 }
 
-// TestShellWithoutMarkersIsServedUntouched: a dist that predates the markers (or
-// a Base.astro refactor that dropped one) turns the feature off rather than
-// breaking the page. Both halves of the contract are required, so a shell with
-// only one is as inert as one with neither.
-func TestShellWithoutMarkersIsServedUntouched(t *testing.T) {
-	cases := []struct {
-		name    string
-		fixture string
-	}{
-		{"no head markers", "shell-nohead.html"},
-		{"no body marker", "shell-nobody.html"},
-	}
-	for _, tc := range cases {
-		t.Run(tc.name, func(t *testing.T) {
-			ts := newPageServer(t, artifacttest.Fixture(), map[string]string{"work": tc.fixture})
-			code, page := getPage(t, ts.URL, "/works/project-hail-mary")
-			if code != http.StatusOK {
-				t.Fatalf("status = %d, want 200", code)
-			}
-			if !strings.Contains(page, "<title>AudioSilo Meta</title>") {
-				t.Error("the shell's own head was replaced despite the missing marker")
-			}
-			if strings.Contains(page, `id="ssr-entity"`) {
-				t.Error("content was injected into an unmarked shell")
-			}
-		})
+// Missing or invalid templates cannot masquerade as successfully rendered entities.
+func TestEntityPageRequiresAnInjectableShell(t *testing.T) {
+	for _, fixture := range []string{"shell-nohead.html", "shell-nobody.html", ""} {
+		shells := map[string]string{}
+		if fixture != "" {
+			shells["work"] = fixture
+		}
+		ts := newPageServer(t, artifacttest.Fixture(), shells)
+		resp := artifacttest.GetNoFollow(t, ts.URL, "/works/project-hail-mary")
+		_ = resp.Body.Close()
+		if resp.StatusCode != http.StatusInternalServerError || resp.Header.Get("Cache-Control") != "no-store" || resp.Header.Get("ETag") != "" {
+			t.Errorf("fixture %q returned %d with headers %v", fixture, resp.StatusCode, resp.Header)
+		}
 	}
 }
 
-// TestEntityPageWithoutAShellFallsThrough: no built shell for the family at all
-// means the request is the static site's, exactly as before these routes
-// existed - here, the site's own 404.
-func TestEntityPageWithoutAShellFallsThrough(t *testing.T) {
-	ts := newPageServer(t, artifacttest.Fixture(), nil)
-	code, page := getPage(t, ts.URL, "/works/project-hail-mary")
-	if code != http.StatusNotFound {
-		t.Fatalf("status = %d, want the static site's 404", code)
-	}
-	if !strings.Contains(page, "CUSTOM 404") {
-		t.Errorf("body = %q, want the site's 404 page", page)
-	}
-}
-
-// TestEntityPageWithoutASnapshot: a poll-only boot that has not loaded an
-// artifact yet serves the untouched shell rather than the API's 503. The page is
-// still a page, and a crawler that gets an error keeps the error.
 func TestEntityPageWithoutASnapshot(t *testing.T) {
-	srv := &Server{
-		cfg:     Config{Site: entitySite(t, markedShells), SiteURL: testSiteURL},
-		log:     artifacttest.QuietLogger(),
-		retired: map[string]int{},
-	}
+	srv := &Server{cfg: Config{Site: entitySite(t, markedShells), SiteURL: testSiteURL}, log: artifacttest.QuietLogger(), retired: map[string]int{}}
 	srv.site = newSiteHandler(srv.cfg.Site)
 	srv.shells = loadShells(srv.cfg.Site, srv.cfg.SiteURL, srv.log)
 	srv.mux = srv.buildMux()
 	ts := httptest.NewServer(srv.Handler())
 	t.Cleanup(ts.Close)
-
-	if srv.current() != nil {
-		t.Fatal("test server unexpectedly has a snapshot")
-	}
-	code, page := getPage(t, ts.URL, "/works/project-hail-mary")
-	if code != http.StatusOK {
-		t.Fatalf("status = %d, want 200 (degrade, never error)", code)
-	}
-	if !strings.Contains(page, "<title>AudioSilo Meta</title>") {
-		t.Error("expected the untouched shell")
-	}
-	if strings.Contains(page, `id="ssr-entity"`) {
-		t.Error("content was injected with no snapshot to read")
+	for _, path := range []string{"/works/project-hail-mary", "/people/andy-weir", "/series/the-stormlight-archive", "/browse", "/browse/works", "/works/project-hail-mary/recordings/ray-porter-2021/chapters"} {
+		resp := artifacttest.GetNoFollow(t, ts.URL, path)
+		_ = resp.Body.Close()
+		if resp.StatusCode != http.StatusServiceUnavailable || resp.Header.Get("Retry-After") == "" || resp.Header.Get("Cache-Control") != "no-store" || resp.Header.Get("ETag") != "" {
+			t.Errorf("%s: status %d headers %v", path, resp.StatusCode, resp.Header)
+		}
 	}
 }
 
@@ -407,6 +395,9 @@ func TestEntityPagesGolden(t *testing.T) {
 	ts := newPageServer(t, artifacttest.Fixture(), markedShells)
 	cases := []struct{ name, path string }{
 		{"work", "/works/project-hail-mary"},
+		{"browse", "/browse"},
+		{"browse-works", "/browse/works"},
+		{"chapters", "/works/project-hail-mary/recordings/ray-porter-2021/chapters"},
 		{"person", "/people/brandon-sanderson"},
 		{"series", "/series/the-stormlight-archive"},
 		// The community guide pages: what a crawler is served for "<title> recap"
@@ -672,7 +663,7 @@ func TestEntityETagCoversTheDist(t *testing.T) {
 	}
 }
 
-// TestPageIdentityCoversEveryComponent pins the four inputs one page's identity
+// TestPageIdentityCoversEveryComponent pins the variable inputs one page's identity
 // is mixed from, each for a different way the rendered bytes can change while
 // the artifact does not: WHICH page it is, the dist, the origin every canonical
 // URL is built from, and the composer's own code.
@@ -707,6 +698,36 @@ func TestPageIdentityCoversEveryComponent(t *testing.T) {
 	// An unstamped binary (go run, a test binary) is honest, not an error.
 	if pageIdentity(shellName, shellHTML, siteURL, "") == "" {
 		t.Error("an empty revision produced an empty identity")
+	}
+}
+
+func TestEntityPageRejectsUnversionedValidatorWithoutVCS(t *testing.T) {
+	cfg := quietConfig(t, artifacttest.Fixture(), markedShells)
+	srv, ts := newPageServerFrom(t, cfg)
+	raw, err := os.ReadFile(filepath.Join(cfg.Site, "work", "index.html"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	// Model a Docker build: identical shell, origin, and artifact, with no VCS
+	// stamp. The old identity had no explicit HTML renderer version.
+	sh := srv.shells.get("work/index.html")
+	sh.identity = pageIdentity("work/index.html", string(raw), cfg.SiteURL, "")
+	legacy := *sh
+	legacy.identity = httpx.Identity("work/index.html", string(raw), cfg.SiteURL, "")
+	oldETag := entityETag(srv.current(), &legacy, "project-hail-mary")
+	resp := artifacttest.GetNoFollowWith(t, ts.URL+"/works/project-hail-mary", map[string]string{"If-None-Match": oldETag})
+	if resp.StatusCode != http.StatusOK {
+		t.Fatalf("old unversioned validator got %d, want 200", resp.StatusCode)
+	}
+	if resp.Header.Get("ETag") == oldETag {
+		t.Error("old unversioned validator was reissued")
+	}
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !strings.Contains(string(body), "Project Hail Mary") {
+		t.Error("replacement response has no rendered entity")
 	}
 }
 

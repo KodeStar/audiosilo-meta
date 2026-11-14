@@ -161,7 +161,8 @@ curl 'localhost:8080/api/v1/lookup?asin=B08G9PRS1K'
 
 Key endpoints (all under `/api/v1`): `stats`, `search?q=&limit=`,
 `works/latest?limit=`, `works/{id}`, `works/{id}/recordings/{rid}/chapters`,
-`people/{id}`, `series/{id}`, `lookup?asin=|isbn=|librivox_id=`, `coverage`,
+`people/{id}`, `people/{id}/recordings`, `series/{id}`,
+`series/{id}/listening-guide`, `lookup?asin=|isbn=|librivox_id=`, `coverage`,
 `coverage/works`, `coverage/series-gaps`, `librivox/audiobooks`, plus `/healthz`.
 
 The LibriVox layer (artifact schema version 8). `search`, `works/search` and
@@ -197,6 +198,39 @@ max) because they are unbounded - a corporate credit such as "Full Cast"
 narrates thousands of works - while a series returns every member work unless a
 window is asked for, because the player's series rail is composed from the full
 list.
+
+The website also has a linked `/browse` directory for audiobooks, series, people
+and existing community guides, with 50 entries per page. Each directory has a
+GET search form, composable A-Z/0-9/Other filters, numbered page links and a
+page-number jump. Entries sort by their displayed title or name, with punctuation
+and non-ASCII initials reachable under Other. Search pages are noindex; letter
+pages retain their own canonical URLs. Work pages compare
+recording facts and link to a chapter navigation page for each recording with
+chapter marks (100 rows per page). Series listening guides show up to five
+recording alternatives per work, and the planner counts only explicitly chosen
+recordings with known runtimes. Person pages retain separate narration versions
+and group the visible recording page by series and language. The two additive
+summary endpoints default to 50 rows (max 100) and take `offset`; person
+recordings also take optional `series` and `lang` filters. Existing detail API
+pagination is unchanged.
+
+Series membership and listening guides share numeric position order, with raw
+position and work ID breaking ties consistently on older artifacts too. Ownership
+marking applies to the visible series page; clearing ownership applies to the
+whole series. Zero chapter summaries mean none are catalogued. HTML validators
+include an explicit renderer version so unstamped Docker builds can invalidate
+cached pages after renderer changes.
+
+Recordings may carry `abridgement: abridged | unabridged`; absence means unknown.
+Explicit false in source JSON remains distinct from absence in artifact schema
+12. Older artifacts prove abridgement only when the legacy `abridged` is true.
+The comparison and JSON-LD agree on those states. A missing artifact or temporary
+page composition failure returns 503, Retry-After and no-store, while missing
+records return 404 and a broken site template returns an uncached 500.
+
+Sitemaps omit per-page modification dates because creation/import dates do not
+establish revisions. True revision tracking across core/community data,
+source-verified enrichment and Search Console measurement remain follow-up work.
 
 The coverage endpoints back the site's contribute page. `coverage` returns the
 top-line band only - how many works carry characters/recaps/whole-book recap

@@ -26,7 +26,7 @@
       }
     },
     "abridged": {
-      "description": "Whether this narration is abridged. Optional: absence means unknown, so importers omit it rather than guessing.",
+      "description": "Whether this narration is abridged. Explicit false states unabridged; absence means unknown, so importers omit it rather than guessing.",
       "type": "boolean"
     },
     "language": {

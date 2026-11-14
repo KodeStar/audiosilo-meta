@@ -1,0 +1,83 @@
+---
+import Base from '../layouts/Base.astro'
+import { ENTITY_MARKER } from '../lib/ssr-markers'
+---
+
+<Base title="Recording chapters - AudioSilo Meta" description="Browse chapter titles, start times and durations for an audiobook recording." hasHero>
+  <div class="chapter-page">
+    <Fragment set:html={ENTITY_MARKER} />
+  </div>
+</Base>
+
+<style>
+  .chapter-page :global(.container) {
+    padding-block: 2.5rem;
+  }
+  .chapter-page :global(h1) {
+    margin-bottom: 1rem;
+    color: var(--color-hi);
+    font-size: clamp(1.875rem, 4vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+  }
+  .chapter-page :global(p) {
+    margin-block: 0.75rem;
+    color: var(--color-dim);
+    font-size: 0.875rem;
+  }
+  .chapter-page :global(a) {
+    color: var(--color-pink-400);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .chapter-page :global(a:hover) {
+    color: var(--color-pink-300);
+  }
+  .chapter-page :global(table) {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 1.5rem;
+    border: 1px solid var(--color-edge);
+    border-radius: 0.75rem;
+    background: var(--color-surface);
+    color: var(--color-body);
+    font-size: 0.875rem;
+  }
+  .chapter-page :global(caption) {
+    padding: 0.75rem 1rem;
+    color: var(--color-hi);
+    font-weight: 600;
+    text-align: left;
+  }
+  .chapter-page :global(th),
+  .chapter-page :global(td) {
+    padding: 0.75rem 1rem;
+    border-top: 1px solid var(--color-edge);
+    font-weight: 400;
+    text-align: left;
+    vertical-align: top;
+  }
+  .chapter-page :global(thead th) {
+    background: var(--color-raised);
+    color: var(--color-dim);
+    font-weight: 500;
+  }
+  .chapter-page :global(tbody th) {
+    min-width: 16rem;
+    overflow-wrap: anywhere;
+  }
+  .chapter-page :global(td) {
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .chapter-page :global(nav) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+  }
+</style>

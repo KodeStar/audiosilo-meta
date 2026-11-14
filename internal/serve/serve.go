@@ -144,8 +144,8 @@ type Server struct {
 
 	// shells is the marker split of the built entity shells, done once at
 	// construction (see loadShells). Empty when no site directory is configured,
-	// or when the dist carries no injectable shells - the pages then degrade to
-	// the untouched static file.
+	// or when the dist carries no injectable shells. Entity routes then return
+	// an uncached template error.
 	shells shells
 
 	// gh is the release client the poller fetches through (newGHClient).

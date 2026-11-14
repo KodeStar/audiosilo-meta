@@ -211,6 +211,8 @@ type RecordingDetail struct {
 	ID            string         `json:"id"`
 	Narrators     []PersonRef    `json:"narrators"`
 	Abridged      bool           `json:"abridged,omitempty"`
+	Abridgement   string         `json:"abridgement,omitempty"`
+	Language      string         `json:"language,omitempty"`
 	RuntimeMin    int            `json:"runtime_min,omitempty"`
 	ReleaseDate   string         `json:"release_date,omitempty"`
 	Publisher     string         `json:"publisher,omitempty"`
@@ -913,7 +915,7 @@ func (s *DB) workISBNs(ctx context.Context, workID string) ([]string, error) {
 // (omitempty would hide the gap).
 func (s *DB) recordingsBase(ctx context.Context, workID string) ([]RecordingDetail, error) {
 	librivox, store := s.hasLibrivoxLayer(), s.hasStoreLinks()
-	rows, err := s.db.QueryContext(ctx, recordingsOfSQL(librivox, store), workID)
+	rows, err := s.db.QueryContext(ctx, recordingsOfSQL(librivox, store, s.schemaVersion >= abridgementSchemaVersion), workID)
 	if err != nil {
 		return nil, err
 	}
@@ -924,7 +926,7 @@ func (s *DB) recordingsBase(ctx context.Context, workID string) ([]RecordingDeta
 		var abridged int
 		var runtime, lvID, copyright sql.NullInt64
 		var release, publisher, cover, archive, lvLink, zip, rss, text, guild, graphic sql.NullString
-		dst := []any{&rd.ID, &abridged, &runtime, &release, &publisher, &cover}
+		dst := []any{&rd.ID, &abridged, &rd.Language, &rd.Abridgement, &runtime, &release, &publisher, &cover}
 		if librivox {
 			dst = append(dst, &lvID, &archive, &lvLink, &zip, &rss, &text, &copyright)
 		}
@@ -987,8 +989,8 @@ func (s *DB) recordingsOf(ctx context.Context, workID string) ([]RecordingDetail
 // recordingsOfSQL reads a work's recordings, with the LibriVox columns from
 // librivoxSchemaVersion on and the store links from storeLinksSchemaVersion on
 // (an older artifact has none of them to name).
-func recordingsOfSQL(librivox, store bool) string {
-	cols := `id, abridged, runtime_min, release_date, publisher, cover_url`
+func recordingsOfSQL(librivox, store, abridgement bool) string {
+	cols := `id, abridged, language, ` + abridgementColumn("", abridgement) + `, runtime_min, release_date, publisher, cover_url`
 	if librivox {
 		cols += `, librivox_id, archive_id, link_librivox, link_zip, link_rss, link_text, copyright_year`
 	}
@@ -1457,8 +1459,16 @@ func (s *DB) Series(id string, limit, offset int) (*SeriesDetail, error) {
 		return nil, err
 	}
 	d.WorksTotal = len(members)
+	// Match seriesListeningMembersSQL even when an older artifact lacks its index.
 	sort.SliceStable(members, func(i, j int) bool {
-		return positionStart(members[i].position) < positionStart(members[j].position)
+		a, b := members[i], members[j]
+		if x, y := positionStart(a.position), positionStart(b.position); x != y {
+			return x < y
+		}
+		if a.position != b.position {
+			return a.position < b.position
+		}
+		return a.workID < b.workID
 	})
 	if offset > len(members) {
 		offset = len(members)
