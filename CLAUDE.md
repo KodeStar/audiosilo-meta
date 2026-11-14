@@ -44,9 +44,11 @@ trigger. The migration plan is the maintainer's, in the untracked
 ## Model routing (every session follows this)
 
 Work runs through the workspace `/ship` skill (`~/dev/audiosilo/.claude/skills/ship/`):
-the main session plans, decides and checks; fresh Opus agents (`ship-implementer`,
-`ship-reviewer`, `ship-verifier`) do the reading, writing, reviewing and live
-verification, so the large main context is never what reviews or edits code.
+the main session plans, decides and checks; fresh agents (`ship-implementer`,
+`ship-reviewer`, `ship-deep-reviewer`, `ship-verifier`) do the reading, writing,
+reviewing and live verification, so the large main context is never what reviews or
+edits code. Which model each agent runs on is pinned in its definition
+(`~/dev/audiosilo/.claude/agents/`), not here.
 
 ## Build / test / gate
 
