@@ -373,6 +373,10 @@
             {
               "asin": "B004FT9MLU",
               "region": "uk"
+            },
+            {
+              "asin": "B0725M6NZ8",
+              "region": "ca"
             }
           ],
           "chapters": [
@@ -531,6 +535,224 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B004FT9MLU",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-14",
+              "ref": "B0725M6NZ8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "ruling-passion"
+        },
+        "shaun-grindell-2024": {
+          "abridged": false,
+          "added_at": "2026-11-14",
+          "asin": [
+            {
+              "asin": "B0D886Z45V",
+              "region": "ca"
+            },
+            {
+              "asin": "B0D88V74NJ",
+              "region": "uk"
+            },
+            {
+              "asin": "B0D892Z9HJ",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 17924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 24000,
+              "start_ms": 17924,
+              "title": "Epigraph"
+            },
+            {
+              "length_ms": 3000,
+              "start_ms": 41924,
+              "title": "Part One"
+            },
+            {
+              "length_ms": 941575,
+              "start_ms": 44924,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1181338,
+              "start_ms": 986499,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 844370,
+              "start_ms": 2167837,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1641511,
+              "start_ms": 3012207,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1118249,
+              "start_ms": 4653718,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1242383,
+              "start_ms": 5771967,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1561913,
+              "start_ms": 7014350,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1233629,
+              "start_ms": 8576263,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 5000,
+              "start_ms": 9809892,
+              "title": "Part Two"
+            },
+            {
+              "length_ms": 1473693,
+              "start_ms": 9814892,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 877528,
+              "start_ms": 11288585,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 460753,
+              "start_ms": 12166113,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1192809,
+              "start_ms": 12626866,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1079518,
+              "start_ms": 13819675,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1447926,
+              "start_ms": 14899193,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1341045,
+              "start_ms": 16347119,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1832031,
+              "start_ms": 17688164,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 5000,
+              "start_ms": 19520195,
+              "title": "Part Three"
+            },
+            {
+              "length_ms": 1094697,
+              "start_ms": 19525195,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1046918,
+              "start_ms": 20619892,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 835221,
+              "start_ms": 21666810,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1379613,
+              "start_ms": 22502031,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 828859,
+              "start_ms": 23881644,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1556038,
+              "start_ms": 24710503,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 724787,
+              "start_ms": 26266541,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 912613,
+              "start_ms": 26991328,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1187352,
+              "start_ms": 27903941,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1381099,
+              "start_ms": 29091293,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 897000,
+              "start_ms": 30472392,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 23693,
+              "start_ms": 31369392,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81C-8rOBcoL.jpg",
+          "id": "shaun-grindell-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "shaun-grindell"
+          ],
+          "publisher": "Highbridge Audio",
+          "release_date": "2024-07-16",
+          "runtime_min": 523,
+          "sources": [
+            {
+              "imported_at": "2026-11-14",
+              "ref": "B0D886Z45V",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-14",
+              "ref": "B0D88V74NJ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-14",
+              "ref": "B0D892Z9HJ",
               "type": "libex-import"
             }
           ],

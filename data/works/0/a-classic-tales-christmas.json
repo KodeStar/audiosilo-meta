@@ -5338,6 +5338,10 @@
             {
               "asin": "B0099UHOT2",
               "region": "uk"
+            },
+            {
+              "asin": "B071DWG39R",
+              "region": "ca"
             }
           ],
           "chapters": [
@@ -5421,6 +5425,114 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B0099UHOT2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-14",
+              "ref": "B071DWG39R",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-clubbable-woman"
+        },
+        "shaun-grindell-2024": {
+          "abridged": false,
+          "added_at": "2026-11-14",
+          "asin": [
+            {
+              "asin": "B0CZB9XJYH",
+              "region": "ca"
+            },
+            {
+              "asin": "B0CZBN24ZW",
+              "region": "uk"
+            },
+            {
+              "asin": "B0CZBZ5Z76",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 18205,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 2570611,
+              "start_ms": 18205,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2216228,
+              "start_ms": 2588816,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3028973,
+              "start_ms": 4805044,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3960278,
+              "start_ms": 7834017,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4561884,
+              "start_ms": 11794295,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2996348,
+              "start_ms": 16356179,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3374231,
+              "start_ms": 19352527,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2750333,
+              "start_ms": 22726758,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 625093,
+              "start_ms": 25477091,
+              "title": "Envoi"
+            },
+            {
+              "length_ms": 24786,
+              "start_ms": 26102184,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71k+vLLIvBL.jpg",
+          "id": "shaun-grindell-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "shaun-grindell"
+          ],
+          "publisher": "Highbridge Audio",
+          "release_date": "2024-05-07",
+          "runtime_min": 435,
+          "sources": [
+            {
+              "imported_at": "2026-11-14",
+              "ref": "B0CZB9XJYH",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-14",
+              "ref": "B0CZBN24ZW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-14",
+              "ref": "B0CZBZ5Z76",
               "type": "libex-import"
             }
           ],
