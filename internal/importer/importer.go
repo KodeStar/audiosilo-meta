@@ -361,6 +361,10 @@ type planner struct {
 	// recordings-only run needs the p.asins membership test alone and pays
 	// nothing, so a nil map is still "this run never looks a record up".
 	asinLoc map[string]RecRef
+	// sharedASINs is every ASIN loadExisting found on two different recordings
+	// (locateASIN's collision): asinLoc names the first, which an identifier
+	// match may use, but a --copies-of anchor may not (attachCopy).
+	sharedASINs map[string]bool
 	// copiesOf is Options.CopiesOf: copy ASIN -> anchor ASIN, the rows a
 	// recordings-only run attaches directly to the anchor's recording
 	// (copies.go); nil otherwise.
@@ -396,6 +400,9 @@ type planner struct {
 	// (credential.go, Summary.CredentialMerges): the same kind of decision -
 	// two spellings are one human - made at the other end of the name.
 	credentialMerges map[string]string
+	// listDoubleMerges is the same record for the list-scoped doubled-name drop
+	// (dropListDoubles, Summary.DoubledCreditMerges).
+	listDoubleMerges map[string]string
 	// redirects is the catalogue's slug TOMBSTONE table, off the same load as the
 	// identity maps, and tombstoneRides every retired slug this run resolved onto
 	// its survivor rather than minting there (tombstone.go).
@@ -1509,6 +1516,10 @@ func (p *planner) locateASIN(asin, workSlug, recSlug string) {
 		p.summary.Warnings = append(p.summary.Warnings, fmt.Sprintf(
 			"catalogue: ASIN %s is recorded on both %s and %s; an export row naming it is matched to the first",
 			asin, recLabel(prev.Work, prev.Rec), recLabel(workSlug, recSlug)))
+		if p.sharedASINs == nil {
+			p.sharedASINs = map[string]bool{}
+		}
+		p.sharedASINs[asin] = true
 		return
 	}
 	p.asinLoc[asin] = RecRef{Work: workSlug, Rec: recSlug}
@@ -2091,9 +2102,19 @@ func (p *planner) creditCensusesOf(books []sourceBook) (author, narrator creditC
 			}
 		}
 	}
+	// The list rule applies here as in the import: a doubled spelling the import
+	// drops onto the same list's entry ("XKarnation XKarnation" beside
+	// "XKarnation") is no credit anybody made, so it is no evidence either.
+	listed := func(b sourceBook, typed []string, joined string) []string {
+		names := sourceNames(typed, joined)
+		if b.lv != nil {
+			return names
+		}
+		return withoutListDoubles(names)
+	}
 	for _, b := range books {
-		recordSide(authorSide, sourceNames(b.authors, b.str("author")))
-		recordSide(narratorSide, sourceNames(b.narrators, b.str("narrated_by")))
+		recordSide(authorSide, listed(b, b.authors, b.str("author")))
+		recordSide(narratorSide, listed(b, b.narrators, b.str("narrated_by")))
 	}
 	seenIn := func(set map[string]bool) creditSeenFunc {
 		return func(name string) bool { return set[Slugify(name)] }
@@ -2106,6 +2127,7 @@ func (p *planner) creditCensusesOf(books []sourceBook) (author, narrator creditC
 			foldSyntheticVoice: foldSynthetic,
 			onHonorific:        p.noteHonorific,
 			onCredential:       p.noteCredential,
+			onListDouble:       p.noteListDouble,
 		}
 	}
 	// The AI-narration fold is the NARRATOR side of a USER-LIBRARY run and
@@ -2168,6 +2190,13 @@ func (p *planner) noteCredential(from, to string) {
 	p.credentialMerges = noteMerge(p.credentialMerges, from, to)
 }
 
+// noteListDouble records one doubled spelling the list rule dropped onto the same
+// list's entry (dropListDoubles), on the same terms: it too decides that two
+// spellings are one human.
+func (p *planner) noteListDouble(from, to string) {
+	p.listDoubleMerges = noteMerge(p.listDoubleMerges, from, to)
+}
+
 // noteMerge adds one (from -> to) pair to a merge set, creating the set on first
 // use.
 func noteMerge(set map[string]string, from, to string) map[string]string {
@@ -2183,6 +2212,7 @@ func noteMerge(set map[string]string, from, to string) map[string]string {
 func (p *planner) reportCreditMerges() {
 	p.summary.HonorificMerges = mergeLines(p.honorificMerges)
 	p.summary.CredentialMerges = mergeLines(p.credentialMerges)
+	p.summary.DoubledCreditMerges = mergeLines(p.listDoubleMerges)
 }
 
 // mergeLines renders one merge set as sorted "<credited> -> <bare>" lines, nil
@@ -2216,14 +2246,14 @@ func (p *planner) decideInitialsOf(c *initialsCensus, books []sourceBook, author
 		// Each side is cleaned through ITS OWN census, exactly as the import
 		// itself will clean it: the honorific rule is side-scoped, so a pre-pass
 		// reading both sides through one census would decide an initials group
-		// against a spelling the import never produces.
-		for _, name := range sourceNames(b.authors, b.str("author")) {
-			cleaned, _ := creditWithRolesSided(name, authorCensus)
-			c.addBatch(cleaned)
+		// against a spelling the import never produces. The list rule runs too
+		// (rowCreditsIn), so a doubled spelling the import drops is no spelling
+		// of its group here either.
+		for _, cr := range rowCreditsIn(b, b.authors, b.str("author"), authorCensus) {
+			c.addBatch(cr.name)
 		}
-		for _, name := range sourceNames(b.narrators, b.str("narrated_by")) {
-			cleaned, _ := creditWithRolesSided(name, narratorCensus)
-			c.addBatch(cleaned)
+		for _, cr := range rowCreditsIn(b, b.narrators, b.str("narrated_by"), narratorCensus) {
+			c.addBatch(cr.name)
 		}
 	}
 	return c.decide()
@@ -2294,7 +2324,17 @@ func makeSeriesRef(name, rawSeq string) seriesRef {
 // "XKarnation") is dropped onto it (dropListDoubles), so every import path
 // reads one person there.
 func sourceCredits(typed []string, joined string, c creditCensus) []credit {
-	return dropListDoubles(cleanedCredits(typed, joined, c))
+	return dropListDoubles(cleanedCredits(typed, joined, c), c.onListDouble)
+}
+
+// rowCreditsIn is one side of a row's cleaned credits as the batch pre-passes read
+// them: through the list rule (sourceCredits) for every row but a LibriVox one,
+// whose entries are addressed one by one and never folded (cleanedCredits).
+func rowCreditsIn(b sourceBook, typed []string, joined string, c creditCensus) []credit {
+	if b.lv != nil {
+		return cleanedCredits(typed, joined, c)
+	}
+	return sourceCredits(typed, joined, c)
 }
 
 // cleanedCredits is sourceCredits without the list rule: one credit per source

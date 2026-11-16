@@ -1496,8 +1496,10 @@ the narrator field as a sentence - the dump attests neither it nor a German
 "Read Shepherd"/"Read Mercer Schuchardt" whole); exactly-doubled
 names collapsed to one half, two-plus words per half so "Duran Duran" stays
 (and, LIST-scoped, `dropListDoubles` in `sourceCredits`: within one credit list
-"X X" is dropped onto the same list's "X" at any word count, its roles moved
-onto the survivor, so libex's ["XKarnation","XKarnation XKarnation"] is one
+"X X" is dropped onto the same list's "X" at any word count, halves compared
+under `foldCredit` (`doubledFoldedHalf`), its roles moved onto the survivor and
+the drop listed in `Summary.DoubledCreditMerges`; the batch census and the
+initials pre-pass read the list the same way, so libex's ["XKarnation","XKarnation XKarnation"] is one
 person while "Lang Lang" credited alone stays a name; a LibriVox row's lists
 skip it, `cleanedCredits`, since its readers line up with their reader credits
 by index and its authors are addressed by author id; internal/issueform's
@@ -2030,14 +2032,18 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   resolution and merged onto the anchor's recording (`asinLoc`,
   `mergeRecordingASIN`), so it mints no person, work or series whatever it
   credits, while the physical guards still refuse it, each under its own
-  `--skipped` code: `copy-anchor-unknown` (anchor not catalogued, or on a
-  LibriVox project), `copy-language`, `copy-runtime-mismatch` (`sameRuntime`),
+  `--skipped` code: `copy-anchor-unknown` (anchor not catalogued, on two
+  recordings (`sharedASINs`), on a LibriVox project, or the copy itself; a copy
+  anchored on another copy the run attaches waits a round and attaches, and a
+  listed copy with no row is a run-level warning), `copy-language`, `copy-runtime-mismatch` (`sameRuntime`),
   `copy-abridged` (`abridgedConflict`) and `copy-region-held` (the recording
   already carries another ASIN in that region); an unmapped region or language
-  keeps its own code, and so does an AI credit (`ai-narrator`, refused at
-  parse, since an AI-narrated listing is another production); the parse
-  layer's other credit refusals (platform account, placeholder, list, a name
-  that slugs to nothing) are skipped for a listed row
+  keeps its own code, and so do the credits that say the listing is not the
+  anchor's production (refused at parse: an AI voice `ai-narrator`, a platform
+  account `credit-platform-account`, a placeholder NARRATOR
+  `credit-cast-placeholder`); the parse layer's other credit refusals (a
+  placeholder author, a list, a name that slugs to nothing) are skipped for a
+  listed row
   (`refuseLibexCopyCredits`), as the pass reads no credit; unlisted rows take
   the ordinary path and keep every refusal); `metaimport libex-select`
   (streams the full dump, keeps only series-completing rows with a free

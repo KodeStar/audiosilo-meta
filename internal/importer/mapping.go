@@ -762,6 +762,9 @@ type creditCensus struct {
 	// a maintainer auditing one is not auditing the other.
 	onHonorific  func(from, to string)
 	onCredential func(from, to string)
+	// onListDouble is the same for the list-scoped doubled-name drop
+	// (dropListDoubles, Summary.DoubledCreditMerges).
+	onListDouble func(from, to string)
 	// keptApart, when set, reports whether a reviewed merge-people rejection
 	// recorded the two credit names as two people - judged by every slug they can
 	// land on (planner.peopleKeptApart): the honorific and credential folds then
@@ -777,7 +780,7 @@ type creditCensus struct {
 // not the import crediting it (a LibriVox credit whose person its author id
 // decides, librivoxpeople.go).
 func (c creditCensus) quiet() creditCensus {
-	c.onHonorific, c.onCredential = nil, nil
+	c.onHonorific, c.onCredential, c.onListDouble = nil, nil, nil
 	return c
 }
 
@@ -1136,10 +1139,15 @@ func doubledCreditHalf(name string) (string, bool) {
 // same list's "XKarnation" the doubled spelling is the source restating one
 // person, not a second person (libex's BK_RECO_021995 credits both and minted
 // a phantom `xkarnation-xkarnation` per region). The doubled shape is
-// doubledCreditHalf's (the two halves equal word for word, case aside); the
-// half is then matched to its entry under foldCredit, on the cleaned names. A
-// survivor is always an entry the list states, and the chain ends because a
+// doubledFoldedHalf's: the two halves equal word for word with case AND
+// diacritics aside ("Zoë Zoe" beside "Zoe"); the half is then matched to its
+// entry under the same fold (foldCredit), on the cleaned names.
+// A survivor is always an entry the list states, and the chain ends because a
 // half is strictly shorter than its whole.
+//
+// Every drop is reported through onDrop (from, to: the doubled spelling and the
+// entry it folded onto) when it is set, so a run lists the folds it made
+// (Summary.DoubledCreditMerges) beside the honorific and credential ones.
 //
 // It reads nothing but the list, so it can neither invent nor merge a name the
 // list does not state twice. A LibriVox row's lists never come here
@@ -1147,12 +1155,12 @@ func doubledCreditHalf(name string) (string, bool) {
 // (librivoxReaderCreditsByIndex), and an author there is addressed by author
 // id (librivoxAuthorCredits), so two entries are two people whatever they are
 // called.
-func dropListDoubles(credits []credit) []credit {
+func dropListDoubles(credits []credit, onDrop func(from, to string)) []credit {
 	// Almost no list states a doubled name, and this runs for every list of
 	// every row: the shape test comes first, so the rest is paid for by the
 	// rare list that has one.
 	if len(credits) < 2 || !slices.ContainsFunc(credits, func(c credit) bool {
-		_, doubled := doubledCreditHalf(c.name)
+		_, doubled := doubledFoldedHalf(c.name)
 		return doubled
 	}) {
 		return credits
@@ -1167,11 +1175,11 @@ func dropListDoubles(credits []credit) []credit {
 	// survivor follows i's halves to the entry it restates, or returns i.
 	survivor := func(i int) int {
 		for {
-			half, ok := doubledCreditHalf(credits[i].name)
+			half, ok := doubledFoldedHalf(credits[i].name)
 			if !ok {
 				return i
 			}
-			j, held := first[foldCredit(half)]
+			j, held := first[half]
 			if !held || j == i {
 				return i
 			}
@@ -1190,8 +1198,14 @@ func dropListDoubles(credits []credit) []credit {
 	out := make([]credit, len(credits))
 	copy(out, credits)
 	for i, j := range into {
-		if j != i && len(credits[i].roles) > 0 {
+		if j == i {
+			continue
+		}
+		if len(credits[i].roles) > 0 {
 			out[j].roles = sortedUniqueRoles(append(slices.Clone(out[j].roles), credits[i].roles...))
+		}
+		if onDrop != nil {
+			onDrop(credits[i].name, credits[j].name)
 		}
 	}
 	kept := out[:0]
@@ -1201,6 +1215,40 @@ func dropListDoubles(credits []credit) []credit {
 		}
 	}
 	return kept
+}
+
+// doubledFoldedHalf is doubledCreditHalf under foldCredit, returning the FOLDED
+// half: "Zoë Zoe" is "zoe" doubled, which a case-only compare misses. The fold
+// (a Unicode decomposition) is paid only for a name that is not plain ASCII,
+// where case is all foldCredit changes and doubledCreditHalf has already
+// answered; this is asked of every credit of every multi-credit list.
+func doubledFoldedHalf(name string) (string, bool) {
+	if half, ok := doubledCreditHalf(name); ok {
+		return foldCredit(half), true
+	}
+	for i := 0; i < len(name); i++ {
+		if name[i] >= utf8.RuneSelf {
+			return doubledCreditHalf(foldCredit(name))
+		}
+	}
+	return "", false
+}
+
+// withoutListDoubles is dropListDoubles over bare names, reporting nothing: the
+// batch census's reading of a list (creditCensusesOf), which has to leave out the
+// spelling the import will drop.
+func withoutListDoubles(names []string) []string {
+	if len(names) < 2 || !slices.ContainsFunc(names, func(n string) bool {
+		_, doubled := doubledFoldedHalf(n)
+		return doubled
+	}) {
+		return names
+	}
+	credits := make([]credit, len(names))
+	for i, n := range names {
+		credits[i] = credit{name: n}
+	}
+	return creditNamesOf(dropListDoubles(credits, nil))
 }
 
 // credit is one source credit: the cleaned name, and the roles the trailing

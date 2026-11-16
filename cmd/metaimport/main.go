@@ -741,6 +741,12 @@ func printSummary(s importer.Summary, dryRun bool, mode importer.Mode) {
 			fmt.Println("    credential:", m)
 		}
 	}
+	if len(s.DoubledCreditMerges) > 0 {
+		fmt.Printf("  resolved %d doubled credit spelling(s) onto the name the same credit list states:\n", len(s.DoubledCreditMerges))
+		for _, m := range s.DoubledCreditMerges {
+			fmt.Println("    doubled:", m)
+		}
+	}
 	// Notes come first: they say what the run DID (today, the AI-narration fold),
 	// and a reader scanning past a warning list should not have to reach the end
 	// of it to find out that a synthetic narration was admitted rather than

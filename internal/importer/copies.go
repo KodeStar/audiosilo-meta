@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"slices"
 )
 
 // copies.go is the DIRECT-ATTACHMENT half of the recordings-only pass
@@ -22,7 +23,9 @@ import (
 // the claim at its word for IDENTITY and keep every PHYSICAL guard a merge
 // has:
 //
-//   - the anchor ASIN must be catalogued (copy-anchor-unknown),
+//   - the anchor ASIN must be catalogued on ONE recording (copy-anchor-unknown:
+//     an anchor two recordings carry names neither; a copy anchored on another
+//     copy this run attached is located, whatever order the rows arrive in),
 //   - the row's language must be the recording's (copy-language),
 //   - the runtimes must agree (copy-runtime-mismatch: sameRuntime, the
 //     same-production test every merge uses),
@@ -45,12 +48,15 @@ import (
 //
 // One door stands ahead of the pass: the libex parse layer (parseRow). A
 // listed copy with a malformed ASIN or an unmapped region is refused there
-// under that rule's own code, as is one crediting an AI voice (ai-narrator:
-// an AI-narrated listing is another production). Its other credit refusals -
-// a platform account, a cast placeholder, a semicolon-joined list, a name that
-// slugs to nothing (kana, kanji) - are skipped for a listed row
-// (refuseLibexCopyCredits), since this pass reads no credit and so cannot
-// mint the person those rules guard against. Unlisted rows keep them all.
+// under that rule's own code, as is one whose credits say the LISTING is not
+// the anchor's production: an AI voice (ai-narrator), a platform account
+// (credit-platform-account: a developer or test listing), or a placeholder
+// narrator (credit-cast-placeholder: the cast is not booked yet, so whose
+// performance it will carry is open). Its other credit refusals - a placeholder
+// author, a semicolon-joined list, a name that slugs to nothing (kana, kanji) -
+// are skipped for a listed row (refuseLibexCopyCredits), since this pass reads
+// no credit and so cannot mint the person those rules guard against. Unlisted
+// rows keep them all.
 
 // copyOf is one line of the --copies-of file: the copy row's ASIN and the
 // catalogued ASIN whose recording it is another marketplace's listing of.
@@ -62,9 +68,10 @@ type copyOf struct {
 
 // ReadCopiesOf reads a --copies-of file: one {"asin","anchor"} JSON object per
 // line, blank lines ignored, unknown keys ignored (the writer may say more
-// than this reader needs). Both ASINs must be well-formed and differ, and a
-// copy may name one anchor only. It returns copy ASIN -> anchor ASIN,
-// normalized.
+// than this reader needs). Both ASINs must be well-formed, and a copy may name
+// one anchor only. A copy listed as its own anchor is not an error that stops
+// the run: attachCopy refuses that one row. It returns copy ASIN -> anchor
+// ASIN, normalized.
 func ReadCopiesOf(path string) (map[string]string, error) {
 	f, err := os.Open(path)
 	if err != nil {
@@ -88,11 +95,8 @@ func parseCopiesOf(r io.Reader) (map[string]string, error) {
 			return nil, fmt.Errorf("line %d: %w", n, err)
 		}
 		asin, anchor := NormalizeASIN(c.ASIN), NormalizeASIN(c.Anchor)
-		switch {
-		case asin == "" || anchor == "":
+		if asin == "" || anchor == "" {
 			return nil, fmt.Errorf("line %d: asin %q and anchor %q must both be well-formed ASINs", n, c.ASIN, c.Anchor)
-		case asin == anchor:
-			return nil, fmt.Errorf("line %d: %s is listed as a copy of itself", n, asin)
 		}
 		if prev, listed := out[asin]; listed && prev != anchor {
 			return nil, fmt.Errorf("line %d: %s is listed as a copy of both %s and %s", n, asin, prev, anchor)
@@ -123,15 +127,77 @@ func (p *planner) splitCopies(books []sourceBook) (rows, copies []sourceBook) {
 }
 
 // planCopies attaches each listed copy row to its anchor's recording.
+//
+// A copy may be anchored on another listed copy (one production's second
+// marketplace named against its first), which only has a recording once that
+// copy is attached. So a row whose anchor is a copy still waiting in this run
+// waits a round, and the rounds end when one attaches nothing new; whatever is
+// left then (a cycle, a chain whose head was refused) is asked as it stands
+// and refused under the anchor rule.
 func (p *planner) planCopies(books []sourceBook) {
 	normalizeEditionMarkers(books)
-	for _, b := range books {
-		asin := NormalizeASIN(b.str("asin"))
-		p.setSource(asin, b)
-		p.attachCopy(b, asin, p.copiesOf[asin])
-		if p.fatal != nil {
+	p.warnUnlistedCopies(books)
+	pending := books
+	for len(pending) > 0 {
+		waiting := map[string]bool{}
+		for _, b := range pending {
+			waiting[NormalizeASIN(b.str("asin"))] = true
+		}
+		var later []sourceBook
+		for _, b := range pending {
+			asin := NormalizeASIN(b.str("asin"))
+			anchor := p.copiesOf[asin]
+			if _, located := p.asinLoc[anchor]; !located && anchor != asin && waiting[anchor] {
+				later = append(later, b)
+				continue
+			}
+			p.planCopy(b, asin, anchor)
+			if p.fatal != nil {
+				return
+			}
+		}
+		if len(later) == len(pending) {
+			for _, b := range later {
+				asin := NormalizeASIN(b.str("asin"))
+				p.planCopy(b, asin, p.copiesOf[asin])
+				if p.fatal != nil {
+					return
+				}
+			}
 			return
 		}
+		pending = later
+	}
+}
+
+// planCopy is one listed row's attachment, with its provenance recorded first.
+func (p *planner) planCopy(b sourceBook, asin, anchor string) {
+	p.setSource(asin, b)
+	p.attachCopy(b, asin, anchor)
+}
+
+// warnUnlistedCopies warns, in ASIN order, about every copy the --copies-of
+// file lists that the run has no row for and that the parse layer did not
+// refuse either: otherwise it vanishes from the run without a line, and the
+// caller learns only that nothing attached.
+func (p *planner) warnUnlistedCopies(books []sourceBook) {
+	present := make(map[string]bool, len(books)+len(p.summary.Skips))
+	for _, b := range books {
+		present[NormalizeASIN(b.str("asin"))] = true
+	}
+	for _, s := range p.summary.Skips {
+		present[s.ASIN] = true
+	}
+	var missing []string
+	for asin := range p.copiesOf {
+		if !present[asin] {
+			missing = append(missing, asin)
+		}
+	}
+	slices.Sort(missing)
+	for _, asin := range missing {
+		p.summary.Warnings = append(p.summary.Warnings, fmt.Sprintf(
+			"--copies-of lists %s as a copy of %s, but the run has no row for it; nothing attached", asin, p.copiesOf[asin]))
 	}
 }
 
@@ -143,6 +209,17 @@ func (p *planner) attachCopy(b sourceBook, asin, anchor string) {
 		return
 	}
 	warn := p.bookWarn(b)
+	if asin == anchor {
+		warn("listed as a copy of itself; not attached")
+		p.noteSkip(b, reasonCopyAnchorUnknown)
+		return
+	}
+	if p.sharedASINs[anchor] {
+		warn("copy of %s: the anchor ASIN is recorded on more than one recording, so which production this copies is "+
+			"not stated; not attached", anchor)
+		p.noteSkip(b, reasonCopyAnchorUnknown)
+		return
+	}
 	ref, located := p.asinLoc[anchor]
 	var ri *recInfo
 	if ws := p.works[ref.Work]; located && ws != nil {
@@ -206,6 +283,9 @@ func (p *planner) attachCopy(b sourceBook, asin, anchor string) {
 		return
 	}
 	p.registerASIN(asin, ref)
+	// asinLoc is otherwise the catalogue as loaded: a later copy anchored on
+	// this one has to find the recording it now sits on.
+	p.asinLoc[asin] = ref
 	p.summary.CopiesAttached++
 }
 

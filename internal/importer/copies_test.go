@@ -211,10 +211,15 @@ func TestParseCopiesOf(t *testing.T) {
 	if err != nil || !reflect.DeepEqual(got, want) {
 		t.Errorf("parseCopiesOf = %v, %v; want %v", got, err, want)
 	}
+	// A copy listed as its own anchor is one row's refusal (attachCopy), not a
+	// file error that stops the run.
+	if got, err := parseCopiesOf(strings.NewReader(`{"asin":"B0GV5C28QN","anchor":"B0GV5C28QN"}`)); err != nil ||
+		!reflect.DeepEqual(got, map[string]string{"B0GV5C28QN": "B0GV5C28QN"}) {
+		t.Errorf("parseCopiesOf(self anchor) = %v, %v; want it read", got, err)
+	}
 	for _, bad := range []string{
 		`{"asin":"B0GV5C28QN"}`,
 		`{"asin":"not-an-asin","anchor":"B0GV5B7VF2"}`,
-		`{"asin":"B0GV5B7VF2","anchor":"B0GV5B7VF2"}`,
 		`{"asin":"B0GV5C28QN","anchor":"B0GV5B7VF2"}` + "\n" + `{"asin":"B0GV5C28QN","anchor":"B0GV5H3V89"}`,
 		`["B0GV5C28QN","B0GV5B7VF2"]`,
 	} {
@@ -224,13 +229,14 @@ func TestParseCopiesOf(t *testing.T) {
 	}
 }
 
-// A listed copy skips the parse layer's credit refusals, all but the AI one:
-// a credit in a script that slugs to nothing (kanji), a semicolon-joined list
-// or a cast placeholder cannot mint a person on a pass that reads no credit,
-// so each copy attaches, while an AI narrator says the listing is another
-// production and refuses it. An unlisted row in the same run with the same
-// kanji credit is refused as before.
-func TestCopiesOfSkipsTheParseCreditRefusalsButTheAIOne(t *testing.T) {
+// A listed copy skips the parse layer's credit refusals but the production
+// ones: a credit in a script that slugs to nothing (kanji), a semicolon-joined
+// list or a placeholder AUTHOR cannot mint a person on a pass that reads no
+// credit, so each copy attaches, while an AI narrator, a platform account and
+// a placeholder NARRATOR say the listing is not the anchor's production and
+// refuse it. An unlisted row in the same run with the same kanji credit is
+// refused as before.
+func TestCopiesOfSkipsTheParseCreditRefusalsButTheProductionOnes(t *testing.T) {
 	const kanji = `[{"name":"山田太郎"}]`
 	dataDir := seedRebornCatalogue(t)
 	kanjiCopy := rebornCopyRow("B0GV5C28QN", "us", "english", "unabridged", 600, kanji)
@@ -239,9 +245,15 @@ func TestCopiesOfSkipsTheParseCreditRefusalsButTheAIOne(t *testing.T) {
 	listCopy := rebornCopyRow("B0GV5M8DBN", "de", "english", "unabridged", 600, `[{"name":"XKarnation; Ramon de Ocampo"}]`)
 	placeholderCopy := rebornCopyRow("B0GV5FD6SL", "fr", "english", "unabridged", 600, `[{"name":"To be announced"}]`)
 	unlisted := strings.Replace(kanjiCopy, "B0GV5C28QN", "B0GV5G17H4", 1)
+	withNarrator := func(row, name string) string {
+		return strings.Replace(row, `"narrators":[{"name":"Ramon de Ocampo"}]`, `"narrators":[{"name":"`+name+`"}]`, 1)
+	}
+	junkCopy := withNarrator(rebornCopyRow("B0GV5NYJ2Z", "jp", "english", "unabridged", 600, doubledAuthors), "acx-dev+gamma4")
+	tbaCopy := withNarrator(rebornCopyRow("B0GV5ITA01", "it", "english", "unabridged", 600, doubledAuthors), "To be announced")
 	sum := runCopies(t, dataDir, map[string]string{
 		"B0GV5C28QN": rebornAnchor, "B0GV5H3V89": rebornAnchor, "B0GV5M8DBN": rebornAnchor, "B0GV5FD6SL": rebornAnchor,
-	}, kanjiCopy, aiCopy, listCopy, placeholderCopy, unlisted)
+		"B0GV5NYJ2Z": rebornAnchor, "B0GV5ITA01": rebornAnchor,
+	}, kanjiCopy, aiCopy, listCopy, placeholderCopy, unlisted, junkCopy, tbaCopy)
 	if sum.CopiesAttached != 3 || sum.NewPeople != 0 {
 		t.Errorf("CopiesAttached/NewPeople = %d/%d, want 3/0", sum.CopiesAttached, sum.NewPeople)
 	}
@@ -249,7 +261,10 @@ func TestCopiesOfSkipsTheParseCreditRefusalsButTheAIOne(t *testing.T) {
 	for _, s := range sum.Skips {
 		got[s.ASIN] = s.Reason
 	}
-	want := map[string]string{"B0GV5H3V89": RefusalAINarrator, "B0GV5G17H4": RefusalCreditNotAPerson}
+	want := map[string]string{
+		"B0GV5H3V89": RefusalAINarrator, "B0GV5G17H4": RefusalCreditNotAPerson,
+		"B0GV5NYJ2Z": RefusalCreditPlatformAccount, "B0GV5ITA01": RefusalCreditCastPlaceholder,
+	}
 	if !reflect.DeepEqual(got, want) {
 		t.Errorf("skips = %v, want %v", got, want)
 	}
@@ -261,4 +276,73 @@ func TestCopiesOfSkipsTheParseCreditRefusalsButTheAIOne(t *testing.T) {
 		t.Errorf("regions = %v, want [ca us de fr]", regions)
 	}
 	assertTreeValid(t, dataDir)
+}
+
+// An anchor ASIN the catalogue records on two recordings names neither, so the
+// copy is refused rather than attached to whichever loaded first.
+func TestCopiesOfRefusesAnAnchorOnTwoRecordings(t *testing.T) {
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, map[string]string{
+		"people/ra/ramon-de-ocampo.json": `{"id":"ramon-de-ocampo","license":"CC0-1.0","name":"Ramon de Ocampo","sources":[{"type":"user"}]}`,
+		"works/re/reborn-as-a-demonic-tree-8/work.json": `{"authors":["ramon-de-ocampo"],"id":"reborn-as-a-demonic-tree-8","language":"en",` +
+			`"license":"CC0-1.0","sources":[{"type":"user"}],"title":"Reborn as a Demonic Tree 8"}`,
+		"works/re/reborn-as-a-demonic-tree-8/recordings/ramon-de-ocampo-2026.json": `{"abridged":false,"asin":[{"asin":"` + rebornAnchor +
+			`","region":"ca"}],"id":"ramon-de-ocampo-2026","language":"en","license":"CC0-1.0","narrators":["ramon-de-ocampo"],` +
+			`"runtime_min":600,"sources":[{"type":"user"}],"work":"reborn-as-a-demonic-tree-8"}`,
+		"works/re/reborn-as-a-demonic-tree-8/recordings/other-voice-2026.json": `{"abridged":false,"asin":[{"asin":"` + rebornAnchor +
+			`","region":"us"}],"id":"other-voice-2026","language":"en","license":"CC0-1.0","narrators":["ramon-de-ocampo"],` +
+			`"runtime_min":600,"sources":[{"type":"user"}],"work":"reborn-as-a-demonic-tree-8"}`,
+	})
+	sum := runCopies(t, dataDir, map[string]string{"B0GV5H3V89": rebornAnchor},
+		rebornCopyRow("B0GV5H3V89", "uk", "english", "unabridged", 600, doubledAuthors))
+	want := []RowSkip{{ASIN: "B0GV5H3V89", Reason: RefusalCopyAnchorUnknown}}
+	if sum.CopiesAttached != 0 || !reflect.DeepEqual(sum.Skips, want) {
+		t.Errorf("CopiesAttached/Skips = %d/%+v, want 0/%+v", sum.CopiesAttached, sum.Skips, want)
+	}
+	if !hasWarning(sum.Warnings, "more than one recording") {
+		t.Errorf("warnings = %q, want the shared anchor named", sum.Warnings)
+	}
+	if len(sum.Files) != 0 {
+		t.Errorf("a refused copy wrote %v", sum.Files)
+	}
+}
+
+// A copy anchored on another copy this run attaches is located, whichever row
+// comes first.
+func TestCopiesOfAttachesAChainedAnchor(t *testing.T) {
+	dataDir := seedRebornCatalogue(t)
+	copies := map[string]string{"B0GV5C28QN": rebornAnchor, "B0GV5H3V89": "B0GV5C28QN"}
+	sum := runCopies(t, dataDir, copies,
+		rebornCopyRow("B0GV5H3V89", "uk", "english", "unabridged", 600, doubledAuthors),
+		rebornCopyRow("B0GV5C28QN", "us", "english", "unabridged", 600, doubledAuthors))
+	if sum.CopiesAttached != 2 || len(sum.Skips) != 0 {
+		t.Errorf("CopiesAttached/Skips = %d/%+v, want 2/none", sum.CopiesAttached, sum.Skips)
+	}
+	if rec := readRebornRecording(t, dataDir); len(rec.ASIN) != 3 {
+		t.Errorf("asin = %+v, want the anchor and both copies", rec.ASIN)
+	}
+	assertTreeValid(t, dataDir)
+}
+
+// A line listing a copy as its own anchor refuses that row and lets the rest of
+// the run attach; a listed copy the run has no row for is warned about.
+func TestCopiesOfRefusesASelfAnchorAndWarnsOfAMissingRow(t *testing.T) {
+	dataDir := seedRebornCatalogue(t)
+	copies := map[string]string{"B0GV5C28QN": "B0GV5C28QN", "B0GV5H3V89": rebornAnchor, "B0GV5G17H4": rebornAnchor}
+	sum := runCopies(t, dataDir, copies,
+		rebornCopyRow("B0GV5C28QN", "us", "english", "unabridged", 600, doubledAuthors),
+		rebornCopyRow("B0GV5H3V89", "uk", "english", "unabridged", 600, doubledAuthors))
+	want := []RowSkip{{ASIN: "B0GV5C28QN", Reason: RefusalCopyAnchorUnknown}}
+	if sum.CopiesAttached != 1 || !reflect.DeepEqual(sum.Skips, want) {
+		t.Errorf("CopiesAttached/Skips = %d/%+v, want 1/%+v", sum.CopiesAttached, sum.Skips, want)
+	}
+	if !hasWarning(sum.Warnings, "copy of itself") {
+		t.Errorf("warnings = %q, want the self-anchored row named", sum.Warnings)
+	}
+	if !hasWarning(sum.Warnings, "--copies-of lists B0GV5G17H4") {
+		t.Errorf("warnings = %q, want the row-less listed copy named", sum.Warnings)
+	}
+	if hasWarning(sum.Warnings, "--copies-of lists B0GV5C28QN") || hasWarning(sum.Warnings, "--copies-of lists B0GV5H3V89") {
+		t.Errorf("warnings = %q: a listed copy WITH a row was reported missing", sum.Warnings)
+	}
 }

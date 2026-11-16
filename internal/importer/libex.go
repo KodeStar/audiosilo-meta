@@ -169,8 +169,8 @@ type libexParse struct {
 	// skips names each refused row that has an ASIN to name it by, under its
 	// rule (Summary.Skips, the --skipped worklist).
 	skips []RowSkip
-	// copies is Options.CopiesOf: parseRow refuses a row it lists for an AI
-	// credit alone (refuseLibexCopyCredits).
+	// copies is Options.CopiesOf: parseRow asks a row it lists only the
+	// production rules (refuseLibexCopyCredits).
 	copies map[string]string
 	// strs holds one copy of each genre-claim string the parse has kept
 	// (intern). nil leaves strings as they are: a one-row parse, such as
@@ -316,8 +316,8 @@ func parseLibexRelocation(r io.Reader) (libexParse, []relocationEvidence, error)
 // warning) when it lacks either of the two things the parse layer can decide on
 // its own - a well-formed ASIN (this source's identity and dedup key) or a
 // marketplace the recording schema knows - or when a credit names nobody this
-// catalogue can identify (refuseLibexCredits; a --copies-of row is asked the AI
-// rule alone, refuseLibexCopyCredits). Rows missing a title, author,
+// catalogue can identify (refuseLibexCredits; a --copies-of row is asked only
+// the production rules, refuseLibexCopyCredits). Rows missing a title, author,
 // narrator or language are left to addBook, which owns those rules for every
 // source.
 func (lp *libexParse) parseRow(e rawBook) {
@@ -351,8 +351,9 @@ func (lp *libexParse) parseRow(e rawBook) {
 	// A --copies-of row is the exception: the recordings-only pass attaches it
 	// by its anchor ASIN and never reads its credits (copies.go), so a credit
 	// that names nobody identifiable mints nothing there and refuses nothing.
-	// Only an AI credit still refuses it: an AI-narrated listing is another
-	// production, whatever skuGroup it shares.
+	// Only a credit that says the listing is another production still refuses
+	// it, whatever skuGroup it shares: an AI voice, a platform account, a
+	// placeholder narrator (refuseLibexCopyCredits).
 	authors, narrators := libexNames(e["authors"]), libexNames(e["narrators"])
 	refuse := refuseLibexCredits
 	if _, listed := lp.copies[asin]; listed {
@@ -606,8 +607,9 @@ func libexGenreClaims(v any, intern func(string) string) []genreClaim {
 // at the PARSE layer so they hold for every libex mode - create, --enrich,
 // --recordings-only - and all are applied through refuseLibexCredits, which the
 // bounded-subset selector (selectLibexRow) calls too. The one exception is a
-// --copies-of row, which takes the AI rule alone (refuseLibexCopyCredits): a
-// new rule that says a listing is another production belongs there as well.
+// --copies-of row, which takes only the rules that say the listing is not the
+// anchor's production - an AI voice, a platform account, a placeholder narrator
+// (refuseLibexCopyCredits): a new rule of that kind belongs there as well.
 // A row the importer will refuse must never be selected into a tranche as if
 // it were importable: it
 // would inflate the selection report and, worse, claim a series position slot a
@@ -650,13 +652,8 @@ func refuseLibexCredits(authors, narrators []string) (creditRefusal, bool) {
 	if r, refused := aiCreditRefusal(decAuthors, decNarrators); refused {
 		return r, true
 	}
-	if name, junk := firstJunkCredit(decAuthors, decNarrators); junk {
-		return creditRefusal{
-			class:  warnJunkCredit,
-			reason: reasonJunkCredit,
-			name:   name,
-			detail: fmt.Sprintf("credit %q is a platform account, not a person", name),
-		}, true
+	if r, refused := junkCreditRefusal(decAuthors, decNarrators); refused {
+		return r, true
 	}
 	if name, isList := firstListCredit(authors, narrators); isList {
 		return creditRefusal{
@@ -666,13 +663,8 @@ func refuseLibexCredits(authors, narrators []string) (creditRefusal, bool) {
 			detail: fmt.Sprintf("credit %q is a semicolon-joined list of people, not one person", name),
 		}, true
 	}
-	if name, placeholder := firstPlaceholderCredit(decAuthors, decNarrators); placeholder {
-		return creditRefusal{
-			class:  warnPlaceholderCredit,
-			reason: reasonPlaceholder,
-			name:   name,
-			detail: fmt.Sprintf("credit %q is a cast placeholder, not a person", name),
-		}, true
+	if r, refused := placeholderCreditRefusal(decAuthors, decNarrators); refused {
+		return r, true
 	}
 	if name, unnamed := firstUnnamedCredit(authors, narrators); unnamed {
 		return creditRefusal{
@@ -685,10 +677,51 @@ func refuseLibexCredits(authors, narrators []string) (creditRefusal, bool) {
 	return creditRefusal{}, false
 }
 
-// refuseLibexCopyCredits is refuseLibexCredits for a --copies-of row: the AI
-// rule alone (why: copies.go's header).
+// refuseLibexCopyCredits is refuseLibexCredits for a --copies-of row: only the
+// rules that say the LISTING is not the anchor's production (why: copies.go's
+// header). An AI voice is another production; a platform account marks a
+// developer or test listing; a placeholder NARRATOR is a cast not yet booked, so
+// whose performance the listing will carry is still open. A placeholder author
+// says nothing about the production and is not asked.
 func refuseLibexCopyCredits(authors, narrators []string) (creditRefusal, bool) {
-	return aiCreditRefusal(decodeNames(authors), decodeNames(narrators))
+	decAuthors, decNarrators := decodeNames(authors), decodeNames(narrators)
+	if r, refused := aiCreditRefusal(decAuthors, decNarrators); refused {
+		return r, true
+	}
+	if r, refused := junkCreditRefusal(decAuthors, decNarrators); refused {
+		return r, true
+	}
+	return placeholderCreditRefusal(nil, decNarrators)
+}
+
+// junkCreditRefusal is the platform-account rule of refuseLibexCredits over
+// DECODED names.
+func junkCreditRefusal(authors, narrators []string) (creditRefusal, bool) {
+	name, junk := firstJunkCredit(authors, narrators)
+	if !junk {
+		return creditRefusal{}, false
+	}
+	return creditRefusal{
+		class:  warnJunkCredit,
+		reason: reasonJunkCredit,
+		name:   name,
+		detail: fmt.Sprintf("credit %q is a platform account, not a person", name),
+	}, true
+}
+
+// placeholderCreditRefusal is the placeholder rule of refuseLibexCredits over
+// DECODED names.
+func placeholderCreditRefusal(authors, narrators []string) (creditRefusal, bool) {
+	name, placeholder := firstPlaceholderCredit(authors, narrators)
+	if !placeholder {
+		return creditRefusal{}, false
+	}
+	return creditRefusal{
+		class:  warnPlaceholderCredit,
+		reason: reasonPlaceholder,
+		name:   name,
+		detail: fmt.Sprintf("credit %q is a cast placeholder, not a person", name),
+	}, true
 }
 
 // aiCreditRefusal is the AI rule of refuseLibexCredits over DECODED names.
