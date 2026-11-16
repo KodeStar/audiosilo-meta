@@ -551,6 +551,11 @@ type Summary struct {
 	// a maintainer auditing one is not auditing the other. Empty when the rule
 	// never fired.
 	CredentialMerges []string
+	// DoubledCreditMerges is the same list for the list-scoped doubled-name
+	// drop (dropListDoubles): every doubled spelling resolved onto the entry the
+	// same credit list states ("XKarnation XKarnation -> XKarnation"). Empty
+	// when the rule never fired.
+	DoubledCreditMerges []string
 	// Files names the pack files the run's flush created or rewrote,
 	// data-relative and sorted (pack.Written.Wrote) - what a caller reporting
 	// the run lists, since it did not write them itself (the intake bot's import

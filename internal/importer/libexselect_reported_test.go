@@ -451,6 +451,36 @@ func TestReportedStandaloneGuard(t *testing.T) {
 		{name: `German "und" beside a held "&" (Rumo)`, refuse: true,
 			held: []held{{"rumo-die-wunder-im-dunkeln", "Rumo & Die Wunder im Dunkeln", "de", []string{"ada-mapmaker"}}},
 			row:  standaloneRow("B0RUMOUND1", "Rumo und Die Wunder im Dunkeln", "de", "german", ada, "Dee Voice")},
+		{name: `"and" beside a held "&" title carrying its series' name (Rivers & Roads, #2890)`, refuse: true,
+			held: []held{{"rivers-roads-the-long-way", "Rivers & Roads: The Long Way", "en", []string{"ada-mapmaker"}}},
+			series: `{"id":"rivers-roads","license":"CC0-1.0","name":"Rivers & Roads","sources":[{"type":"user"}],` +
+				`"works":[{"position":"3","work":"rivers-roads-the-long-way"}]}`,
+			row: standaloneRow("B0RIVROAD1", "Rivers and Roads: The Long Way", "us", "english", ada, "Dee Voice")},
+		{name: `"and" beside a held "&" title carrying a series name that holds no conjunction`, refuse: true,
+			held: []held{{"sky-saga-lords-ladies", "Sky Saga: Lords & Ladies", "en", []string{"ada-mapmaker"}}},
+			series: `{"id":"sky-saga","license":"CC0-1.0","name":"Sky Saga","sources":[{"type":"user"}],` +
+				`"works":[{"position":"3","work":"sky-saga-lords-ladies"}]}`,
+			row: standaloneRow("B0SKYSAGA1", "Sky Saga: Lords and Ladies", "us", "english", ada, "Dee Voice")},
+		{name: `"&" beside a held "and" title carrying a series name that holds no conjunction`, refuse: true,
+			held: []held{{"sky-saga-lords-and-ladies", "Sky Saga: Lords and Ladies", "en", []string{"ada-mapmaker"}}},
+			series: `{"id":"sky-saga","license":"CC0-1.0","name":"Sky Saga","sources":[{"type":"user"}],` +
+				`"works":[{"position":"3","work":"sky-saga-lords-and-ladies"}]}`,
+			row: standaloneRow("B0SKYSAGA2", "Sky Saga: Lords & Ladies", "us", "english", ada, "Dee Voice")},
+		{name: `"&" beside a held "and" title carrying its series' name (Rivers and Roads)`, refuse: true,
+			held: []held{{"rivers-and-roads-the-long-way", "Rivers and Roads: The Long Way", "en", []string{"ada-mapmaker"}}},
+			series: `{"id":"rivers-and-roads","license":"CC0-1.0","name":"Rivers and Roads","sources":[{"type":"user"}],` +
+				`"works":[{"position":"3","work":"rivers-and-roads-the-long-way"}]}`,
+			row: standaloneRow("B0RIVROAD3", "Rivers & Roads: The Long Way", "us", "english", ada, "Dee Voice")},
+		{name: `"&" beside a held "and" title whose series is stored with "&"`, refuse: true,
+			held: []held{{"rivers-and-roads-the-long-way", "Rivers and Roads: The Long Way", "en", []string{"ada-mapmaker"}}},
+			series: `{"id":"rivers-roads","license":"CC0-1.0","name":"Rivers & Roads","sources":[{"type":"user"}],` +
+				`"works":[{"position":"3","work":"rivers-and-roads-the-long-way"}]}`,
+			row: standaloneRow("B0RIVROAD4", "Rivers & Roads: The Long Way", "us", "english", ada, "Dee Voice")},
+		{name: "a row stating the volume a held work holds as its series position (Circus of the Dead, #2890)", refuse: true,
+			held: []held{{"circus-of-the-dead", "Circus of the Dead", "en", []string{"ada-mapmaker"}}},
+			series: `{"id":"carnival-nights","license":"CC0-1.0","name":"Carnival Nights","sources":[{"type":"user"}],` +
+				`"works":[{"position":"2","work":"circus-of-the-dead"}]}`,
+			row: standaloneRow("B0CIRCUS04", "Circus of the Dead, Book 2", "us", "english", ada, "Dee Voice")},
 
 		{name: "same title by a different author is kept",
 			held: []held{{"micro", "Micro", "en", []string{"ada-mapmaker"}}},
@@ -467,6 +497,26 @@ func TestReportedStandaloneGuard(t *testing.T) {
 		{name: "a row stating another volume is kept",
 			held: []held{{"circus-of-the-dead-book-1", "Circus of the Dead, Book 1", "en", []string{"ada-mapmaker"}}},
 			row:  standaloneRow("B0CIRCUS03", "Circus of the Dead, Book 2", "us", "english", ada, "Dee Voice")},
+		{name: "a row stating a volume the held work's series position is not is kept",
+			held: []held{{"circus-of-the-dead", "Circus of the Dead", "en", []string{"ada-mapmaker"}}},
+			series: `{"id":"carnival-nights","license":"CC0-1.0","name":"Carnival Nights","sources":[{"type":"user"}],` +
+				`"works":[{"position":"1","work":"circus-of-the-dead"}]}`,
+			row: standaloneRow("B0CIRCUS05", "Circus of the Dead, Book 2", "us", "english", ada, "Dee Voice")},
+		{name: "a row stating one volume of a held omnibus span is kept",
+			held: []held{{"circus-of-the-dead", "Circus of the Dead", "en", []string{"ada-mapmaker"}}},
+			series: `{"id":"carnival-nights","license":"CC0-1.0","name":"Carnival Nights","sources":[{"type":"user"}],` +
+				`"works":[{"position":"1-3","work":"circus-of-the-dead"}]}`,
+			row: standaloneRow("B0CIRCUS06", "Circus of the Dead, Book 2", "us", "english", ada, "Dee Voice")},
+		{name: `a "&" title carrying its series' name beside another title is kept`,
+			held: []held{{"rivers-roads-the-long-way", "Rivers & Roads: The Long Way", "en", []string{"ada-mapmaker"}}},
+			series: `{"id":"rivers-roads","license":"CC0-1.0","name":"Rivers & Roads","sources":[{"type":"user"}],` +
+				`"works":[{"position":"3","work":"rivers-roads-the-long-way"}]}`,
+			row: standaloneRow("B0RIVROAD2", "Rivers and Roads: The Short Way", "us", "english", ada, "Dee Voice")},
+		{name: `a "&" title carrying a series name beside another title of that series is kept`,
+			held: []held{{"sky-saga-lords-ladies", "Sky Saga: Lords & Ladies", "en", []string{"ada-mapmaker"}}},
+			series: `{"id":"sky-saga","license":"CC0-1.0","name":"Sky Saga","sources":[{"type":"user"}],` +
+				`"works":[{"position":"3","work":"sky-saga-lords-ladies"}]}`,
+			row: standaloneRow("B0SKYSAGA3", "Sky Saga: Lords and Lackeys", "us", "english", ada, "Dee Voice")},
 		{name: "a title that only starts like a held one is kept",
 			held: []held{{"the-barefoot-investor-for-families", "The Barefoot Investor for Families", "en", []string{"ada-mapmaker"}}},
 			row:  standaloneRow("B0BAREFT01", "The Barefoot Investor", "us", "english", ada, "Dee Voice")},
@@ -488,7 +538,11 @@ func TestReportedStandaloneGuard(t *testing.T) {
 					heldWork(t, dataDir, h.slug, h.title, h.lang, h.authors, fmt.Sprintf("%04d", i))
 				}
 				if tc.series != "" {
-					seedTree(t, dataDir, map[string]string{"series/ch/chaos-walking.json": tc.series})
+					var s struct{ ID string }
+					if err := json.Unmarshal([]byte(tc.series), &s); err != nil {
+						t.Fatal(err)
+					}
+					seedTree(t, dataDir, map[string]string{"series/" + s.ID[:2] + "/" + s.ID + ".json": tc.series})
 				}
 				run := selectWith(t, dataDir, []string{tc.row}, SelectOptions{Reported: true, AttachEditions: attach})
 				if tc.refuse {

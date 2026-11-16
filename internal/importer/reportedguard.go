@@ -51,7 +51,17 @@ import (
 // the catalogue holds as twins (30 English "&"/"and" pairs by one author, among
 // them "Crime & Punishment" and "Angels & Demons", and two German "&"/"und": "Dr.
 // Jekyll & Mr. Hyde", "Rumo & Die Wunder im Dunkeln"); "et", "y", "e", "+" and
-// "'n'" had none.
+// "'n'" had none. A held work in a series is folded a second way too, its title
+// alone with no series to strip (titleFolded): a row is series-less, so one whose
+// title carries the held work's series name keeps the series words the held key
+// sheds, and the two meet only on the unstripped title. "Rivers & Roads: The Long
+// Way" in series "Rivers & Roads" keys "longway" once the series is stripped, plain
+// or both folded, where the row "Rivers and Roads: The Long Way" keys the whole
+// title; so does "Sky Saga: Lords & Ladies" in series "Sky Saga" beside the row
+// "Sky Saga: Lords and Ladies", and either pair with the two spellings swapped.
+// Spelled alike the two titles share a slug and resolveWork has already landed the
+// row, so the unstripped key adds only the pairs a conjunction (or punctuation the
+// key drops) keeps apart.
 //
 // Two of the identity machinery's vetoes still release a pair, read so they do
 // not undo the rule: the COLLECTION status of the two forms that matched
@@ -62,10 +72,11 @@ import (
 // reading as a collection releases neither side, and a boxed set beside its first
 // volume, either way round, is refused with the accepted cost below), and the stated
 // VOLUME of the two full titles, in the create guard's positive form: a row whose
-// own title states a volume is a duplicate only of a held work whose title states
-// the same one (VolumeStatement.Agrees alone reads one-sided silence as agreement,
-// which would refuse "Circus of the Dead, Book 2" against a held "Circus of the
-// Dead").
+// own title states a volume is a duplicate only of a held work that states the same
+// one, in its title or, when its title states none, as a position it holds in a
+// series (VolumeStatement.Agrees alone reads one-sided silence as agreement, which
+// would refuse "Circus of the Dead, Book 2" against a held "Circus of the Dead" in
+// no series; held at position 2 of its series, it is that book).
 //
 // A row the create path resolves to a held work (resolveWork) is untouched: it
 // lands there as another recording or another ASIN, and minting nothing it needs
@@ -121,7 +132,10 @@ func (p *planner) reportedDuplicate(ctx creditContext, b sourceBook, workTitle s
 		}
 		if rowVolume.States {
 			heldVolume := titlerule.StatementOf(ws.title, held.full.series, titlerule.WriterPolicy)
-			if !heldVolume.States || !rowVolume.Agrees(heldVolume) {
+			if !rowVolume.Agrees(heldVolume) {
+				continue
+			}
+			if !heldVolume.States && !p.heldAtPosition(slug, rowVolume.Volume) {
 				continue
 			}
 		}
@@ -130,11 +144,13 @@ func (p *planner) reportedDuplicate(ctx creditContext, b sourceBook, workTitle s
 	return false
 }
 
-// titleForm is one spelling of a title with the identity key it reduces to, and
-// the key of the same spelling with its conjunctions folded (equal to key when
-// the title and series hold none to fold).
+// titleForm is one spelling of a title with the identity key it reduces to, the
+// key of the same spelling with its conjunctions folded (equal to key when the
+// title and series hold none to fold), and the key of the folded title alone, read
+// against no series (titleFolded: equal to folded for a form with no series; the
+// file header says why).
 type titleForm struct {
-	title, series, key, folded string
+	title, series, key, folded, titleFolded string
 }
 
 // titleForms are a title's full form and, when it has a subtitle, its main form
@@ -148,8 +164,13 @@ func identityForms(title, series string, key func(title, series string) string) 
 	form := func(t string) titleForm {
 		f := titleForm{title: t, series: series, key: key(t, series)}
 		f.folded = f.key
-		if ft := foldConjunctions(t); ft != t || foldedSeries != series {
+		ft := foldConjunctions(t)
+		if ft != t || foldedSeries != series {
 			f.folded = key(ft, foldedSeries)
+		}
+		f.titleFolded = f.folded
+		if series != "" {
+			f.titleFolded = key(ft, "")
 		}
 		return f
 	}
@@ -171,9 +192,17 @@ func foldConjunctions(s string) string {
 }
 
 // keyedAlike reports whether two forms reduce to one identity key, plainly or
-// with their conjunctions folded.
+// with their conjunctions folded (either fold on either side).
 func keyedAlike(a, b titleForm) bool {
-	return (a.key != "" && a.key == b.key) || (a.folded != "" && a.folded == b.folded)
+	if a.key != "" && a.key == b.key {
+		return true
+	}
+	for _, x := range [2]string{a.folded, a.titleFolded} {
+		if x != "" && (x == b.folded || x == b.titleFolded) {
+			return true
+		}
+	}
+	return false
 }
 
 // names reports whether the row's forms (f) name the held work's (h): one of the
@@ -187,6 +216,24 @@ func (f titleForms) names(h titleForms) bool {
 		}
 	}
 	return false
+}
+
+// heldAtPosition reports whether a held work sits at volume in any series the
+// catalogue lists it in: a single position, never a span ("1-3" is an omnibus,
+// not its second volume). The index is built on first use, like heldWorksOf's,
+// from the memberships the load read.
+func (p *planner) heldAtPosition(slug string, volume float64) bool {
+	if p.heldPositions == nil {
+		p.heldPositions = map[string][]float64{}
+		for _, ss := range p.series {
+			for work, pos := range ss.members {
+				if span, ok := PositionSpan(pos); ok && span[0] == span[1] {
+					p.heldPositions[work] = append(p.heldPositions[work], span[0])
+				}
+			}
+		}
+	}
+	return slices.Contains(p.heldPositions[slug], volume)
 }
 
 // heldWorksOf is every held work crediting any of the given identity authors, in

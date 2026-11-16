@@ -21,6 +21,7 @@ func TestADoubledCreditBesideItsHalfIsDropped(t *testing.T) {
 		{"one word, half first", []string{"XKarnation", "XKarnation XKarnation"}, []string{"XKarnation"}},
 		{"one word, doubled first", []string{"XKarnation XKarnation", "XKarnation"}, []string{"XKarnation"}},
 		{"case and diacritics fold", []string{"Zoë", "zoe ZOE"}, []string{"Zoë"}},
+		{"diacritics fold inside the doubled name", []string{"Zoe", "Zoë Zoe"}, []string{"Zoe"}},
 		{"beside a third credit", []string{"Ada Mapmaker", "Kenichi", "Kenichi Kenichi"}, []string{"Ada Mapmaker", "Kenichi"}},
 		{"two doubles of one name", []string{"Kenichi Kenichi", "Kenichi", "kenichi kenichi"}, []string{"Kenichi"}},
 	}
@@ -40,6 +41,43 @@ func TestADoubledCreditBesideItsHalfIsDropped(t *testing.T) {
 	// The comma-joined shape reads the same list.
 	if got := creditNamesOf(sourceCredits(nil, "XKarnation, XKarnation XKarnation", creditCensus{})); !reflect.DeepEqual(got, []string{"XKarnation"}) {
 		t.Errorf("joined: got %q", got)
+	}
+}
+
+// Every drop is reported, like the honorific and credential folds: a run lists
+// the doubled spellings it read as one person (Summary.DoubledCreditMerges), and
+// the census and the initials pre-pass never see the spelling the import drops.
+func TestADroppedDoubleIsReportedAndLeftOutOfTheCensus(t *testing.T) {
+	dataDir := seedRebornCatalogue(t)
+	row := `{"asin":"B0GV5C28QN","title":"A Book","region":"us","language":"english","lengthMinutes":600,` +
+		`"authors":[{"name":"Kenichi"},{"name":"Kenichi Kenichi"}],"narrators":[{"name":"Cal Voice"}]}`
+	sum := runLibexWith(t, dataDir, Options{}, row)
+	if want := []string{"Kenichi Kenichi -> Kenichi"}; !reflect.DeepEqual(sum.DoubledCreditMerges, want) {
+		t.Errorf("DoubledCreditMerges = %q, want %q", sum.DoubledCreditMerges, want)
+	}
+
+	p := newPlanner(nil, sourceLibex, Options{})
+	books := []sourceBook{{authors: []string{"Kenichi", "Kenichi Kenichi"}, narrators: []string{"A.", "A. A."}}}
+	author, narrator := p.creditCensusesOf(books)
+	if !author.anySide("Kenichi") || author.anySide("Kenichi Kenichi") {
+		t.Errorf("author census: Kenichi %v, Kenichi Kenichi %v; want only the survivor counted",
+			author.anySide("Kenichi"), author.anySide("Kenichi Kenichi"))
+	}
+	if narrator.sameSide("A. A.") {
+		t.Error("narrator census counts the dropped doubled spelling")
+	}
+	// "A. A." is an initials group of its own ("a-a"), so the pre-pass would
+	// have counted a spelling no record will ever carry.
+	c := newInitialsCensus()
+	p.decideInitialsOf(c, books, author, narrator)
+	g, slug, _ := c.group("A. A.")
+	if n := g.counts[slug]; n != 0 {
+		t.Errorf("the initials pre-pass counted the dropped spelling %d time(s)", n)
+	}
+	// A LibriVox row's list is read whole: two readers are two people.
+	lv := []sourceBook{{narrators: []string{"Kim", "Kim Kim"}, lv: &librivoxFacts{}}}
+	if _, narrator := p.creditCensusesOf(lv); !narrator.sameSide("Kim Kim") {
+		t.Error("a LibriVox reader list lost an entry from the census")
 	}
 }
 
