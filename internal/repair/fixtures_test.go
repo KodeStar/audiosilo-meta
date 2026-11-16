@@ -280,6 +280,15 @@ func censusOf(t testing.TB, res check.Result) census {
 // and a fixture that composes red would make every assertion over it meaningless.
 func seedSplit(t testing.TB, files map[string]string) (core, community string) {
 	t.Helper()
+	return seedSplitWithRedirects(t, files, nil)
+}
+
+// seedSplitWithRedirects is seedSplit with a tombstone table written into the core
+// root before the pair is validated, which is the only way to seed a community entry
+// still keyed by a retired work slug: the compose re-key resolves it through the
+// table, so the pair is green only once the table is there.
+func seedSplitWithRedirects(t testing.TB, files map[string]string, table model.Redirects) (core, community string) {
+	t.Helper()
 	coreFiles, comFiles := map[string]string{}, map[string]string{}
 	for address, body := range files {
 		if isSidecarAddress(address) {
@@ -299,6 +308,11 @@ func seedSplit(t testing.TB, files map[string]string) (core, community string) {
 			t.Fatal(err)
 		}
 		testpack.Seed(t, dir, set)
+	}
+	if table != nil {
+		if err := redirects.Write(core, table); err != nil {
+			t.Fatal(err)
+		}
 	}
 	if res := check.LoadProfile(core, pack.ProfileCore); len(res.Problems) > 0 {
 		t.Fatalf("split fixture: the core half does not validate: %v", res.Problems)

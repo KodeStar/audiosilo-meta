@@ -354,7 +354,9 @@ func fillXref(merged, lw entry) []mergedFacts {
 }
 
 // mergeSidecars moves the cluster's works-community entries onto the target,
-// merging DISJOINT members and refusing a member both sides hold.
+// merging DISJOINT members and refusing a member both sides hold. An entry still
+// keyed by a slug the core retired onto a cluster member counts as that member's
+// (sidecarHolders), because that is where check.LoadComposed lands it.
 //
 // It is also the ONE place a merge can learn that it must not proceed at all. The
 // collision refusal below is the human-decision guard over the CC BY-SA layer, and
@@ -370,24 +372,16 @@ func (t *txn) mergeSidecars(target string, losers []string) error {
 				"(KodeStar/audiosilo-meta-community) so the collision check can see them",
 			target, joinList(losers))
 	}
-	type holder struct {
-		slug string
-		e    entry
+	holders, err := t.sidecarHolders(audit.Cluster(target, losers))
+	if err != nil {
+		return err
 	}
-	var holders []holder
-	for _, slug := range audit.Cluster(target, losers) {
-		e, ok, err := t.community.get(slug)
-		if err != nil {
-			return err
-		}
-		if ok {
-			holders = append(holders, holder{slug: slug, e: e})
-		}
-	}
-	// Nothing to move when the target is the only holder (or there is none): staging its
-	// own entry back unchanged would queue a rewrite of a works-community pack per merge,
-	// and those are the packs the sidecar layer lives in.
-	if len(holders) == 0 || (len(holders) == 1 && holders[0].slug == target) {
+	// Nothing to move when every holder already describes the target (or there is
+	// none): staging its own entry back unchanged would queue a rewrite of a
+	// works-community pack per merge, and those are the packs the sidecar layer lives
+	// in. An entry riding a tombstone onto the target keeps riding it; this merge
+	// changes nothing about it.
+	if !slices.ContainsFunc(holders, func(h sidecarHolder) bool { return h.work != target }) {
 		return nil
 	}
 	merged := entry{}
@@ -399,9 +393,9 @@ func (t *txn) mergeSidecars(target string, losers []string) error {
 				return refusef(CatSidecarCollision,
 					"%s and %s both carry a %q sidecar for this book: a %s member is community-authored CC BY-SA content, "+
 						"so which one describes the surviving work is a human decision - merge the two by hand first",
-					prev, h.slug, name, name)
+					prev, h.label(), name, name)
 			}
-			owner[name] = h.slug
+			owner[name] = h.label()
 			member, err := rawentry.Decode(h.e[name])
 			if err != nil {
 				return fmt.Errorf("works-community entry %q member %q: %w", h.slug, name, err)
@@ -413,7 +407,7 @@ func (t *txn) mergeSidecars(target string, losers []string) error {
 			}
 			merged.SetRaw(name, m.MustRaw())
 			if h.slug != target {
-				moved = append(moved, name+" from "+h.slug)
+				moved = append(moved, name+" from "+h.label())
 			}
 		}
 	}
@@ -452,6 +446,71 @@ func (t *txn) mergeSidecars(target string, losers []string) error {
 		}
 	}
 	return nil
+}
+
+// sidecarHolder is one works-community entry that describes a cluster member: under
+// the member's own slug, or under a retired slug whose tombstone names it.
+type sidecarHolder struct {
+	slug string // the works-community key the entry sits under
+	work string // the cluster member it describes
+	e    entry
+}
+
+// label names the holder in a refusal or a note, saying when the key is a retired one,
+// because that is the entry an operator would otherwise look for under the live slug.
+func (h sidecarHolder) label() string {
+	if h.slug == h.work {
+		return h.slug
+	}
+	return h.slug + " (a retired slug of " + h.work + ")"
+}
+
+// sidecarHolders returns every works-community entry that describes one of works: the
+// entry under each slug, then every entry under a RETIRED slug whose tombstone names one
+// of them, in slug order.
+//
+// The second half is meta#2923. In the split layout a merge retires a slug in the core
+// while the community entry keeps its key until the re-key sweep, and check.LoadComposed
+// resolves such a key onto the survivor at build time. A collision check over literal
+// keys alone never saw it, so a merge whose survivor carried its characters under a
+// retired slug planned as clean and would have put two characters members on one work.
+// The tombstone table is collapsed (every entry names a live slug, pkg/redirects.Add),
+// so one hop answers "who resolves here", and it is the PLAN's table, so a slug an
+// earlier proposal retired is included - its entry, already folded by that proposal,
+// reads as gone.
+func (t *txn) sidecarHolders(works []string) ([]sidecarHolder, error) {
+	var out []sidecarHolder
+	add := func(slug, work string) error {
+		e, ok, err := t.community.get(slug)
+		if err != nil {
+			return err
+		}
+		if ok {
+			out = append(out, sidecarHolder{slug: slug, work: work, e: e})
+		}
+		return nil
+	}
+	describes := make(map[string]bool, len(works))
+	for _, w := range works {
+		describes[w] = true
+		if err := add(w, w); err != nil {
+			return nil, err
+		}
+	}
+	tomb := t.p.redirects[model.RedirectWorks]
+	var retired []string
+	for from, to := range tomb {
+		if describes[to] {
+			retired = append(retired, from)
+		}
+	}
+	slices.Sort(retired)
+	for _, from := range retired {
+		if err := add(from, tomb[from]); err != nil {
+			return nil, err
+		}
+	}
+	return out, nil
 }
 
 // rewriteMemberships re-points every series membership naming a loser at the target,

@@ -1005,6 +1005,84 @@ func TestMergeWorksUnderCoreRefusesTheCollisionThroughTheCommunityRoot(t *testin
 	}
 }
 
+// meta#2923: a community entry still keyed by a slug the core RETIRED onto a cluster
+// member describes that member, because check.LoadComposed lands it there. The
+// collision check has to see it under its retired key, or a merge plans as clean and
+// the build then holds two characters members for one work.
+func TestMergeWorksSeesSidecarsUnderARetiredSlug(t *testing.T) {
+	split := func(t *testing.T, files map[string]string, from, to string) (core, community string) {
+		t.Helper()
+		table := model.NewRedirects()
+		table[model.RedirectWorks][from] = to
+		return seedSplitWithRedirects(t, files, table)
+	}
+	runSplit := func(t *testing.T, core, community string) *Report {
+		t.Helper()
+		return run(t, Options{
+			DataDir: core, CommunityDir: community, Profile: pack.ProfileCore,
+			Ops: []string{"merge-works"}, Write: true,
+		})
+	}
+	refused := func(t *testing.T, core, community, retired string) {
+		t.Helper()
+		before := takeComposedCensus(t, core, community)
+		rep := runSplit(t, core, community)
+		if len(rep.Applied) != 0 {
+			t.Fatalf("a cluster with two characters sidecars was merged: %+v", rep.Applied)
+		}
+		if len(rep.Refused) != 1 || rep.Refused[0].Category != CatSidecarCollision {
+			t.Fatalf("refusals = %+v, want one %s", rep.Refused, CatSidecarCollision)
+		}
+		if !strings.Contains(rep.Refused[0].Reason, retired+" (a retired slug of ") {
+			t.Errorf("the refusal does not name the retired key: %q", rep.Refused[0].Reason)
+		}
+		if !entryExists(t, core, pack.FamilyWorks, "hammered-book-3") {
+			t.Error("the refused cluster's loser was deleted anyway")
+		}
+		if got := takeComposedCensus(t, core, community); !reflect.DeepEqual(got, before) {
+			t.Error("the refused run changed the database")
+		}
+	}
+
+	t.Run("the survivor's member under a retired slug collides", func(t *testing.T) {
+		files := hammeredCluster(t)
+		files["works/ha/hammered-unabridged/characters.json"] = charactersJSON(t, "hammered-unabridged", "atticus")
+		files["works/ha/hammered-book-3/characters.json"] = charactersJSON(t, "hammered-book-3", "atticus-onagain")
+		core, community := split(t, files, "hammered-unabridged", "hammered")
+		refused(t, core, community, "hammered-unabridged")
+	})
+
+	t.Run("a loser's member under a retired slug collides", func(t *testing.T) {
+		files := hammeredCluster(t)
+		files["works/ha/hammered/characters.json"] = charactersJSON(t, "hammered", "atticus")
+		files["works/ha/hammered-book-3-old/characters.json"] = charactersJSON(t, "hammered-book-3-old", "atticus-onagain")
+		core, community := split(t, files, "hammered-book-3-old", "hammered-book-3")
+		refused(t, core, community, "hammered-book-3-old")
+	})
+
+	t.Run("a disjoint member under a retired slug moves onto the target", func(t *testing.T) {
+		files := hammeredCluster(t)
+		files["works/ha/hammered-unabridged/recaps.json"] = recapsJSON(t, "hammered-unabridged", 3)
+		files["works/ha/hammered-book-3/characters.json"] = charactersJSON(t, "hammered-book-3", "atticus")
+		core, community := split(t, files, "hammered-unabridged", "hammered")
+		before := takeComposedCensus(t, core, community)
+
+		rep := runSplit(t, core, community)
+		if len(rep.Applied) != 1 || len(rep.Refused) != 0 {
+			t.Fatalf("applied %+v, refused %+v", rep.Applied, rep.Refused)
+		}
+		if !noteMentions(rep.Applied[0].Notes, "recaps from hammered-unabridged (a retired slug of hammered)") {
+			t.Errorf("the notes do not name the member riding the retired key: %v", rep.Applied[0].Notes)
+		}
+		// Both members land on the survivor and the pair still composes: no collision
+		// surfaced at build time.
+		after := takeComposedCensus(t, core, community)
+		if !reflect.DeepEqual(after.characters, before.characters) || !reflect.DeepEqual(after.recaps, before.recaps) {
+			t.Errorf("sidecar content changed: %v/%v -> %v/%v", before.characters, before.recaps, after.characters, after.recaps)
+		}
+	})
+}
+
 // A --community root that is not a community checkout is refused at the door, not
 // read as "no sidecars anywhere". Pointing the flag at the community repository's
 // top level rather than its data/ is the mistake it invites, and answering every
