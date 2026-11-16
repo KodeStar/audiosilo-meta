@@ -497,16 +497,15 @@ func (t *txn) sidecarHolders(works []string) ([]sidecarHolder, error) {
 			return nil, err
 		}
 	}
-	tomb := t.p.redirects[model.RedirectWorks]
 	var retired []string
-	for from, to := range tomb {
-		if describes[to] {
+	for from := range t.p.redirects[model.RedirectWorks] {
+		if to, ok := t.p.redirects.Survivor(model.RedirectWorks, from); ok && describes[to] {
 			retired = append(retired, from)
 		}
 	}
 	slices.Sort(retired)
 	for _, from := range retired {
-		if err := add(from, tomb[from]); err != nil {
+		if err := add(from, t.p.redirects.Live(model.RedirectWorks, from)); err != nil {
 			return nil, err
 		}
 	}
