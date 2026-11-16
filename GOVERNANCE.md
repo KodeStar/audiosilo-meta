@@ -271,7 +271,9 @@ configured with the queue's address and token. What it adds, and nothing more:
   title spelling its conjunction another way ("Daisy Jones and the Six" beside
   "Daisy Jones & The Six", or the German "und" beside "&"), which this guard
   alone reads alike: the normalized key every other path shares still keeps
-  them apart (#2890). It is
+  them apart (#2890). A row whose title states a volume is refused only beside
+  a held work stating the same volume, in its title or as its position in a
+  series. It is
   wider than the create path's own guard on purpose: a refused report is
   memoized and comes back later, a minted duplicate needs a repair. The price
   is a distinct book sharing a main title with a held book by the same author,

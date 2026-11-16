@@ -324,6 +324,9 @@ type planner struct {
 	// heldForms memoizes each held work's identity forms for that guard: every
 	// standalone by a prolific author, on every fixpoint pass, reads them again.
 	heldForms map[string]titleForms
+	// heldPositions is the catalogue's series positions by work, built on first
+	// use by the same guard's volume veto (heldAtPosition).
+	heldPositions map[string][]string
 	// seriesIndex is the catalogue's series evidence (seriesauthors.go) the batch
 	// resolution judges every claim against, built on first use from catalog, the
 	// catalogue load, which resolveSeriesTargets then lets go.
