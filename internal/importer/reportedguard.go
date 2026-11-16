@@ -51,11 +51,17 @@ import (
 // the catalogue holds as twins (30 English "&"/"and" pairs by one author, among
 // them "Crime & Punishment" and "Angels & Demons", and two German "&"/"und": "Dr.
 // Jekyll & Mr. Hyde", "Rumo & Die Wunder im Dunkeln"); "et", "y", "e", "+" and
-// "'n'" had none. A held title that carries its own series name is folded a second
-// way too, its title alone against the series as stored: "Rivers & Roads: The Long
+// "'n'" had none. A held work in a series is folded a second way too, its title
+// alone with no series to strip (titleFolded): a row is series-less, so one whose
+// title carries the held work's series name keeps the series words the held key
+// sheds, and the two meet only on the unstripped title. "Rivers & Roads: The Long
 // Way" in series "Rivers & Roads" keys "longway" once the series is stripped, plain
-// or both folded, while a series-less row "Rivers and Roads: The Long Way" keeps
-// the series words, and only the title-alone fold (which no longer strips) meets it.
+// or both folded, where the row "Rivers and Roads: The Long Way" keys the whole
+// title; so does "Sky Saga: Lords & Ladies" in series "Sky Saga" beside the row
+// "Sky Saga: Lords and Ladies", and either pair with the two spellings swapped.
+// Spelled alike the two titles share a slug and resolveWork has already landed the
+// row, so the unstripped key adds only the pairs a conjunction (or punctuation the
+// key drops) keeps apart.
 //
 // Two of the identity machinery's vetoes still release a pair, read so they do
 // not undo the rule: the COLLECTION status of the two forms that matched
@@ -140,9 +146,9 @@ func (p *planner) reportedDuplicate(ctx creditContext, b sourceBook, workTitle s
 
 // titleForm is one spelling of a title with the identity key it reduces to, the
 // key of the same spelling with its conjunctions folded (equal to key when the
-// title and series hold none to fold), and the key with the title's conjunctions
-// folded against the series as stored (titleFolded: equal to folded unless both
-// a series and a title conjunction are there; the file header says why).
+// title and series hold none to fold), and the key of the folded title alone, read
+// against no series (titleFolded: equal to folded for a form with no series; the
+// file header says why).
 type titleForm struct {
 	title, series, key, folded, titleFolded string
 }
@@ -163,8 +169,8 @@ func identityForms(title, series string, key func(title, series string) string) 
 			f.folded = key(ft, foldedSeries)
 		}
 		f.titleFolded = f.folded
-		if ft != t && series != "" {
-			f.titleFolded = key(ft, series)
+		if series != "" {
+			f.titleFolded = key(ft, "")
 		}
 		return f
 	}

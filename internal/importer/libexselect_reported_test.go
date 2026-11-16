@@ -456,6 +456,26 @@ func TestReportedStandaloneGuard(t *testing.T) {
 			series: `{"id":"rivers-roads","license":"CC0-1.0","name":"Rivers & Roads","sources":[{"type":"user"}],` +
 				`"works":[{"position":"3","work":"rivers-roads-the-long-way"}]}`,
 			row: standaloneRow("B0RIVROAD1", "Rivers and Roads: The Long Way", "us", "english", ada, "Dee Voice")},
+		{name: `"and" beside a held "&" title carrying a series name that holds no conjunction`, refuse: true,
+			held: []held{{"sky-saga-lords-ladies", "Sky Saga: Lords & Ladies", "en", []string{"ada-mapmaker"}}},
+			series: `{"id":"sky-saga","license":"CC0-1.0","name":"Sky Saga","sources":[{"type":"user"}],` +
+				`"works":[{"position":"3","work":"sky-saga-lords-ladies"}]}`,
+			row: standaloneRow("B0SKYSAGA1", "Sky Saga: Lords and Ladies", "us", "english", ada, "Dee Voice")},
+		{name: `"&" beside a held "and" title carrying a series name that holds no conjunction`, refuse: true,
+			held: []held{{"sky-saga-lords-and-ladies", "Sky Saga: Lords and Ladies", "en", []string{"ada-mapmaker"}}},
+			series: `{"id":"sky-saga","license":"CC0-1.0","name":"Sky Saga","sources":[{"type":"user"}],` +
+				`"works":[{"position":"3","work":"sky-saga-lords-and-ladies"}]}`,
+			row: standaloneRow("B0SKYSAGA2", "Sky Saga: Lords & Ladies", "us", "english", ada, "Dee Voice")},
+		{name: `"&" beside a held "and" title carrying its series' name (Rivers and Roads)`, refuse: true,
+			held: []held{{"rivers-and-roads-the-long-way", "Rivers and Roads: The Long Way", "en", []string{"ada-mapmaker"}}},
+			series: `{"id":"rivers-and-roads","license":"CC0-1.0","name":"Rivers and Roads","sources":[{"type":"user"}],` +
+				`"works":[{"position":"3","work":"rivers-and-roads-the-long-way"}]}`,
+			row: standaloneRow("B0RIVROAD3", "Rivers & Roads: The Long Way", "us", "english", ada, "Dee Voice")},
+		{name: `"&" beside a held "and" title whose series is stored with "&"`, refuse: true,
+			held: []held{{"rivers-and-roads-the-long-way", "Rivers and Roads: The Long Way", "en", []string{"ada-mapmaker"}}},
+			series: `{"id":"rivers-roads","license":"CC0-1.0","name":"Rivers & Roads","sources":[{"type":"user"}],` +
+				`"works":[{"position":"3","work":"rivers-and-roads-the-long-way"}]}`,
+			row: standaloneRow("B0RIVROAD4", "Rivers & Roads: The Long Way", "us", "english", ada, "Dee Voice")},
 		{name: "a row stating the volume a held work holds as its series position (Circus of the Dead, #2890)", refuse: true,
 			held: []held{{"circus-of-the-dead", "Circus of the Dead", "en", []string{"ada-mapmaker"}}},
 			series: `{"id":"carnival-nights","license":"CC0-1.0","name":"Carnival Nights","sources":[{"type":"user"}],` +
@@ -492,6 +512,11 @@ func TestReportedStandaloneGuard(t *testing.T) {
 			series: `{"id":"rivers-roads","license":"CC0-1.0","name":"Rivers & Roads","sources":[{"type":"user"}],` +
 				`"works":[{"position":"3","work":"rivers-roads-the-long-way"}]}`,
 			row: standaloneRow("B0RIVROAD2", "Rivers and Roads: The Short Way", "us", "english", ada, "Dee Voice")},
+		{name: `a "&" title carrying a series name beside another title of that series is kept`,
+			held: []held{{"sky-saga-lords-ladies", "Sky Saga: Lords & Ladies", "en", []string{"ada-mapmaker"}}},
+			series: `{"id":"sky-saga","license":"CC0-1.0","name":"Sky Saga","sources":[{"type":"user"}],` +
+				`"works":[{"position":"3","work":"sky-saga-lords-ladies"}]}`,
+			row: standaloneRow("B0SKYSAGA3", "Sky Saga: Lords and Lackeys", "us", "english", ada, "Dee Voice")},
 		{name: "a title that only starts like a held one is kept",
 			held: []held{{"the-barefoot-investor-for-families", "The Barefoot Investor for Families", "en", []string{"ada-mapmaker"}}},
 			row:  standaloneRow("B0BAREFT01", "The Barefoot Investor", "us", "english", ada, "Dee Voice")},
