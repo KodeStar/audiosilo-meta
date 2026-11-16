@@ -2390,6 +2390,10 @@
             {
               "asin": "B01MZB1171",
               "region": "uk"
+            },
+            {
+              "asin": "B0716KHYSK",
+              "region": "ca"
             }
           ],
           "chapters": [
@@ -2514,6 +2518,11 @@
               "imported_at": "2026-10-09",
               "ref": "B01MZB1171",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-15",
+              "ref": "B0716KHYSK",
+              "type": "libex-import"
             }
           ],
           "work": "gloria-gluhwurmchen-bezaubernde-gutenachtgeschichten"
@@ -2527,6 +2536,57 @@
         }
       ],
       "title": "Gloria Glühwürmchen - Bezaubernde Gutenachtgeschichten."
+    },
+    "gloria-gluhwurmchen-ein-schlaflied-fur-die-waldtiere": {
+      "added_at": "2026-11-15",
+      "authors": [
+        "kirsten-vogel",
+        "susanne-weber"
+      ],
+      "genres": [
+        "childrens"
+      ],
+      "id": "gloria-gluhwurmchen-ein-schlaflied-fur-die-waldtiere",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "cathlen-gawlich-2027": {
+          "abridged": false,
+          "added_at": "2026-11-15",
+          "asin": [
+            {
+              "asin": "B0HQRMJV99",
+              "region": "ca"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91OQnW4cs7L.jpg",
+          "id": "cathlen-gawlich-2027",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cathlen-gawlich"
+          ],
+          "publisher": "cbj audio",
+          "release_date": "2027-04-08",
+          "runtime_min": 125,
+          "sources": [
+            {
+              "imported_at": "2026-11-11",
+              "ref": "B0HQRMJV99",
+              "type": "libex-import"
+            }
+          ],
+          "work": "gloria-gluhwurmchen-ein-schlaflied-fur-die-waldtiere"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-11-11",
+          "ref": "B0HQRMJV99",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Gloria Glühwürmchen. Ein Schlaflied für die Waldtiere"
     },
     "gloria-parte-1": {
       "added_at": "2026-10-29",
