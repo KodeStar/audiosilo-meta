@@ -327,12 +327,15 @@ func seedSplitWithRedirects(t testing.TB, files map[string]string, table model.R
 }
 
 // isSidecarAddress reports whether a fixture address names a works-community
-// member. The two member names are the fixture syntax's own spelling of them (the
+// member. The member names are the fixture syntax's own spelling of them (the
 // same addresses testpack resolves), so this partitions the map rather than
 // defining a second notion of what a sidecar is.
 func isSidecarAddress(address string) bool {
-	base := path.Base(address)
-	return base == "characters.json" || base == "recaps.json"
+	switch path.Base(address) {
+	case "characters.json", "recaps.json", "description.json", "position_scale.json":
+		return true
+	}
+	return false
 }
 
 // communityHolds reports whether the community root still carries an entry under

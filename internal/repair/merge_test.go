@@ -1081,6 +1081,39 @@ func TestMergeWorksSeesSidecarsUnderARetiredSlug(t *testing.T) {
 			t.Errorf("sidecar content changed: %v/%v -> %v/%v", before.characters, before.recaps, after.characters, after.recaps)
 		}
 	})
+
+	// A scale and a member that already describe ONE work by two keys are not "a
+	// member another work carried": the composed build holds them side by side
+	// today, so an unrelated loser's description folds in without a refusal.
+	t.Run("a scale and a member reaching the target by two keys are one work's", func(t *testing.T) {
+		files := hammeredCluster(t)
+		files["works/ha/hammered/recaps.json"] = recapsJSON(t, "hammered", 3)
+		files["works/ha/hammered/position_scale.json"] = `{"length":5,"unit":"act"}`
+		files["works/ha/hammered-unabridged/characters.json"] = charactersJSON(t, "hammered-unabridged", "atticus")
+		files["works/ha/hammered-book-3/description.json"] = descriptionJSON(t, "hammered-book-3")
+		core, community := split(t, files, "hammered-unabridged", "hammered")
+		before := takeComposedCensus(t, core, community)
+
+		rep := runSplit(t, core, community)
+		if len(rep.Applied) != 1 || len(rep.Refused) != 0 {
+			t.Fatalf("applied %+v, refused %+v", rep.Applied, rep.Refused)
+		}
+		after := takeComposedCensus(t, core, community)
+		if !reflect.DeepEqual(after.characters, before.characters) || !reflect.DeepEqual(after.recaps, before.recaps) {
+			t.Errorf("sidecar content changed: %v/%v -> %v/%v", before.characters, before.recaps, after.characters, after.recaps)
+		}
+	})
+
+	// The ruler still stops at a member another WORK carried, whichever key that
+	// member sits under.
+	t.Run("a scale does not reach a loser's member under a retired slug", func(t *testing.T) {
+		files := hammeredCluster(t)
+		files["works/ha/hammered/recaps.json"] = recapsJSON(t, "hammered", 3)
+		files["works/ha/hammered/position_scale.json"] = `{"length":5,"unit":"act"}`
+		files["works/ha/hammered-book-3-old/characters.json"] = charactersJSON(t, "hammered-book-3-old", "atticus")
+		core, community := split(t, files, "hammered-book-3-old", "hammered-book-3")
+		refused(t, core, community, "hammered-book-3-old")
+	})
 }
 
 // A --community root that is not a community checkout is refused at the door, not

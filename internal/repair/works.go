@@ -385,7 +385,7 @@ func (t *txn) mergeSidecars(target string, losers []string) error {
 		return nil
 	}
 	merged := entry{}
-	owner := map[string]string{}
+	owner := map[string]sidecarHolder{}
 	var moved []string
 	for _, h := range holders {
 		for _, name := range rawentry.SortedKeys(h.e) {
@@ -393,9 +393,9 @@ func (t *txn) mergeSidecars(target string, losers []string) error {
 				return refusef(CatSidecarCollision,
 					"%s and %s both carry a %q sidecar for this book: a %s member is community-authored CC BY-SA content, "+
 						"so which one describes the surviving work is a human decision - merge the two by hand first",
-					prev, h.label(), name, name)
+					prev.label(), h.label(), name, name)
 			}
-			owner[name] = h.label()
+			owner[name] = h
 			member, err := rawentry.Decode(h.e[name])
 			if err != nil {
 				return fmt.Errorf("works-community entry %q member %q: %w", h.slug, name, err)
@@ -413,14 +413,18 @@ func (t *txn) mergeSidecars(target string, losers []string) error {
 	}
 	// A scale is a statement about the sidecars beside it, so a merge that would put
 	// it beside a member another work carried applies its ruler to positions nobody
-	// numbered on it: the same human decision as two members of one kind.
+	// numbered on it: the same human decision as two members of one kind. "Another
+	// work" is judged by the work a holder DESCRIBES, not the key it sits under: a
+	// scale and a member that reach one work by two keys (one riding a tombstone)
+	// already stand beside each other in the composed build, and this merge changes
+	// nothing about them.
 	if scaleOwner, scaled := owner[string(model.KindPositionScale)]; scaled {
 		for _, name := range []string{string(model.KindCharacters), string(model.KindRecaps)} {
-			if other, held := owner[name]; held && other != scaleOwner {
+			if other, held := owner[name]; held && other.work != scaleOwner.work {
 				return refusef(CatSidecarCollision,
 					"%s states a position_scale and %s carries the %s member: that ruler says nothing about %s's "+
 						"positions, so whether it applies to them is a human decision - merge the two by hand first",
-					scaleOwner, other, name, other)
+					scaleOwner.label(), other.label(), name, other.label())
 			}
 		}
 	}
