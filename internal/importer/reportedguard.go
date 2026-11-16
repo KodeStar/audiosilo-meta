@@ -218,19 +218,16 @@ func (f titleForms) names(h titleForms) bool {
 // from the memberships the load read.
 func (p *planner) heldAtPosition(slug string, volume float64) bool {
 	if p.heldPositions == nil {
-		p.heldPositions = map[string][]string{}
+		p.heldPositions = map[string][]float64{}
 		for _, ss := range p.series {
 			for work, pos := range ss.members {
-				p.heldPositions[work] = append(p.heldPositions[work], pos)
+				if span, ok := PositionSpan(pos); ok && span[0] == span[1] {
+					p.heldPositions[work] = append(p.heldPositions[work], span[0])
+				}
 			}
 		}
 	}
-	for _, pos := range p.heldPositions[slug] {
-		if span, ok := PositionSpan(pos); ok && span[0] == span[1] && span[0] == volume {
-			return true
-		}
-	}
-	return false
+	return slices.Contains(p.heldPositions[slug], volume)
 }
 
 // heldWorksOf is every held work crediting any of the given identity authors, in

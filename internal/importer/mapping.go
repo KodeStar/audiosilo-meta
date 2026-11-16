@@ -1159,10 +1159,7 @@ func dropListDoubles(credits []credit, onDrop func(from, to string)) []credit {
 	// Almost no list states a doubled name, and this runs for every list of
 	// every row: the shape test comes first, so the rest is paid for by the
 	// rare list that has one.
-	if len(credits) < 2 || !slices.ContainsFunc(credits, func(c credit) bool {
-		_, doubled := doubledFoldedHalf(c.name)
-		return doubled
-	}) {
+	if !mayHoldListDouble(len(credits), func(i int) string { return credits[i].name }) {
 		return credits
 	}
 	first := make(map[string]int, len(credits))
@@ -1234,14 +1231,26 @@ func doubledFoldedHalf(name string) (string, bool) {
 	return "", false
 }
 
+// mayHoldListDouble is the list rule's cheap shape test: a list of n names (name(i)
+// the i-th) can hold a doubled spelling only when it has two entries and one of
+// them has the doubled shape.
+func mayHoldListDouble(n int, name func(int) string) bool {
+	if n < 2 {
+		return false
+	}
+	for i := range n {
+		if _, doubled := doubledFoldedHalf(name(i)); doubled {
+			return true
+		}
+	}
+	return false
+}
+
 // withoutListDoubles is dropListDoubles over bare names, reporting nothing: the
 // batch census's reading of a list (creditCensusesOf), which has to leave out the
 // spelling the import will drop.
 func withoutListDoubles(names []string) []string {
-	if len(names) < 2 || !slices.ContainsFunc(names, func(n string) bool {
-		_, doubled := doubledFoldedHalf(n)
-		return doubled
-	}) {
+	if !mayHoldListDouble(len(names), func(i int) string { return names[i] }) {
 		return names
 	}
 	credits := make([]credit, len(names))

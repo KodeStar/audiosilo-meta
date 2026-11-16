@@ -324,9 +324,9 @@ type planner struct {
 	// heldForms memoizes each held work's identity forms for that guard: every
 	// standalone by a prolific author, on every fixpoint pass, reads them again.
 	heldForms map[string]titleForms
-	// heldPositions is the catalogue's series positions by work, built on first
-	// use by the same guard's volume veto (heldAtPosition).
-	heldPositions map[string][]string
+	// heldPositions is the catalogue's single series positions by work (spans left
+	// out), built on first use by the same guard's volume veto (heldAtPosition).
+	heldPositions map[string][]float64
 	// seriesIndex is the catalogue's series evidence (seriesauthors.go) the batch
 	// resolution judges every claim against, built on first use from catalog, the
 	// catalogue load, which resolveSeriesTargets then lets go.
@@ -1983,13 +1983,11 @@ func rowNarratorSplitIn(ctx creditContext, b sourceBook) (kept, dropped []string
 
 // rawNarratorNamesIn is the row's cleaned narrator names with nothing left off
 // (rawAuthorCreditsIn's narrator twin).
+// A LibriVox row keeps one name per reader credit, by index
+// (librivoxReaderCreditsByIndex): a reader is addressed by reader id, never by the
+// list rule (rowCreditsIn).
 func rawNarratorNamesIn(ctx creditContext, b sourceBook) []string {
-	if b.lv != nil {
-		// One name per reader credit, by index (librivoxReaderCreditsByIndex):
-		// a reader is addressed by reader id, never by the list rule.
-		return creditNamesOf(cleanedCredits(b.narrators, b.str("narrated_by"), ctx.narrator))
-	}
-	return creditNamesOf(sourceCredits(b.narrators, b.str("narrated_by"), ctx.narrator))
+	return creditNamesOf(rowCreditsIn(b, b.narrators, b.str("narrated_by"), ctx.narrator))
 }
 
 // creditContext is ONE batch's credit decisions, taken before any row of it is

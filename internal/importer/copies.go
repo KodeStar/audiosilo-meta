@@ -138,6 +138,8 @@ func (p *planner) planCopies(books []sourceBook) {
 	normalizeEditionMarkers(books)
 	p.warnUnlistedCopies(books)
 	pending := books
+	// stuck is a round that attached nothing: the next asks every row as it stands.
+	stuck := false
 	for len(pending) > 0 {
 		waiting := map[string]bool{}
 		for _, b := range pending {
@@ -147,33 +149,19 @@ func (p *planner) planCopies(books []sourceBook) {
 		for _, b := range pending {
 			asin := NormalizeASIN(b.str("asin"))
 			anchor := p.copiesOf[asin]
-			if _, located := p.asinLoc[anchor]; !located && anchor != asin && waiting[anchor] {
+			if _, located := p.asinLoc[anchor]; !stuck && !located && anchor != asin && waiting[anchor] {
 				later = append(later, b)
 				continue
 			}
-			p.planCopy(b, asin, anchor)
+			p.setSource(asin, b)
+			p.attachCopy(b, asin, anchor)
 			if p.fatal != nil {
 				return
 			}
 		}
-		if len(later) == len(pending) {
-			for _, b := range later {
-				asin := NormalizeASIN(b.str("asin"))
-				p.planCopy(b, asin, p.copiesOf[asin])
-				if p.fatal != nil {
-					return
-				}
-			}
-			return
-		}
+		stuck = len(later) == len(pending)
 		pending = later
 	}
-}
-
-// planCopy is one listed row's attachment, with its provenance recorded first.
-func (p *planner) planCopy(b sourceBook, asin, anchor string) {
-	p.setSource(asin, b)
-	p.attachCopy(b, asin, anchor)
 }
 
 // warnUnlistedCopies warns, in ASIN order, about every copy the --copies-of
