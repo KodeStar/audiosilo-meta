@@ -310,6 +310,26 @@ func TestRunWaitsForTheDrain(t *testing.T) {
 	}
 }
 
+// TestRunClosesTheIntakeQueueWhenItCannotListen: New starts the intake housekeeping
+// and opens the queue's file, so a Run that never gets its port must still end
+// both, as it did when the listener and the serving were one call.
+func TestRunClosesTheIntakeQueueWhenItCannotListen(t *testing.T) {
+	taken, err := net.Listen("tcp", "127.0.0.1:0")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() { _ = taken.Close() }()
+	srv := intakeServer(t, Config{Addr: taken.Addr().String()})
+	if err := srv.Run(t.Context()); err == nil {
+		t.Fatal("Run on a taken port returned no error")
+	}
+	select {
+	case <-srv.intake.done:
+	default:
+		t.Error("Run returned without closing the intake queue")
+	}
+}
+
 // TestNoRouteAnswersAPreflight pins what an OPTIONS on a catalogue route gets: no
 // route is registered for it, so the mux answers 405 (or, with a site, the site
 // its 404), never a 2xx and never the CORS preflight headers. A cross-origin

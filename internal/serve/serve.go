@@ -297,6 +297,9 @@ func (s *Server) Handler() http.Handler { return s.mux }
 func (s *Server) Run(ctx context.Context) error {
 	ln, err := net.Listen("tcp", cmp.Or(s.cfg.Addr, ":http"))
 	if err != nil {
+		// No request was ever taken, but New started the intake housekeeping and
+		// opened its file: end both here as serve does on its way out.
+		s.closeIntake()
 		return err
 	}
 	return s.serve(ctx, ln)
@@ -326,9 +329,7 @@ func (s *Server) serve(ctx context.Context, ln net.Listener) error {
 	if closed {
 		<-drained
 	}
-	if s.intake != nil {
-		s.closeIntake()
-	}
+	s.closeIntake()
 	if closed {
 		return nil
 	}
