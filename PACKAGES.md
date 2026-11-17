@@ -597,7 +597,10 @@ volume, gets no credit for a title that does not agree - unless the series lists
 it at exactly the stated position (an omnibus at 1-3,
 `TestMatchAnOmnibusListedAtTheStatedRange`). A LISTING VOUCHES for a work
 (`listedHere`): a series the request's names resolve to lists it at exactly the
-stated position (a range included), its closest recording is within
+request's position (a range included: its `position`, or else the volume its title's
+numbering carries, since audiosilo-server leaves `position` out beside a differing
+series folder and lets the leaf speak; vouching at a stated one alone measured -7 / 0,
+`TestMatchListingVouchesAtAReadPosition`, meta#2922), its closest recording is within
 `listedRuntimeAgrees` (2%, plus the stored minute's `runtimeStoredSlack`) of the
 runtime, and it is in the request's language when one is stated, else not listed
 through a series that translates another (`DB.seriesTranslators`) - and the

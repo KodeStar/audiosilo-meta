@@ -1447,9 +1447,12 @@ func (f *matchFacts) seriesVerdict(c *candidate, t, named, runtimeDiff float64) 
 
 // listedHere reports whether c's listing vouches for it as the stated volume:
 // a series the request's names resolve to (resolveSeries) lists it at exactly
-// the stated position (a range included), its closest recording is within
-// listedRuntimeAgrees of the runtime (runtimeDiff, +Inf when unjudged), and it
-// is in the request's language when one is stated - else its listing is not in
+// the request's position (a range included) - its `position`, or else the
+// volume its title's numbering carries, which a client sending a differing
+// series folder leaves to be read (TestMatchListingVouchesAtAReadPosition) -
+// its closest recording is within listedRuntimeAgrees of the runtime
+// (runtimeDiff, +Inf when unjudged), and it is in the request's language when
+// one is stated - else its listing is not in
 // a series that translates another, which the name resolves to as well (a
 // Polish "Star Force" beside the English one). Such a work is the volume
 // however its title is spelled: the series-named first volume with a subtitle

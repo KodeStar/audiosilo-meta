@@ -665,6 +665,27 @@ func TestMatchListedAtTheStatedPositionVouches(t *testing.T) {
 	wantScore(t, res, "denver-fury", 91)
 }
 
+// TestMatchListingVouchesAtAReadPosition: the listing vouches at the position
+// the request reads, its `position` or else the volume a title's numbering
+// carries. audiosilo-server leaves `position` out beside a series folder that
+// differs from the tagged series and lets the leaf's numbering speak ("Book 1 -
+// American Dragons"); vouching at the stated position alone cost 7 right
+// auto-applies on the LibraForge harness and saved no wrong one. The same Carl
+// request vouches (91) with its volume stated and with it read off "Book 001".
+func TestMatchListingVouchesAtAReadPosition(t *testing.T) {
+	_, ts := newTestServerForCatalog(t, listedCatalog())
+	q := url.Values{
+		"title": {"Dungeon Crawler Carl - Book 001 - The Apocalypse Will be Televised"}, "author": {"Matt Dinniman"},
+		"series": {"Dungeon Crawler Carl"}, "runtime": {"48660"},
+	}
+	read := wantScore(t, matchJSON(t, ts.URL, q), "dungeon-crawler-carl", 91)
+	if s := read["reasons"].(map[string]any)["series"]; s != string(seriesPosition) {
+		t.Errorf("a read position: series reason %v, want position", s)
+	}
+	q.Set("position", "1")
+	wantScore(t, matchJSON(t, ts.URL, q), "dungeon-crawler-carl", 91)
+}
+
 // TestMatchListedRivalsDoNotRise: the five rivals the rule's first prototype
 // raised to 91 beside the right volume - each listed at the stated position,
 // its recording on the runtime - score as they did without it, because the
