@@ -1325,8 +1325,9 @@ func (f *matchFacts) titleAgreement(c *candidate) (t, named float64, judged bool
 //   - a named title that clearly disagrees outranks a numbering match (see
 //     seriesDistrustLow/High), unless the listing vouches for the work
 //     (listedHere: the resolved series lists it at the stated position and its
-//     recording agrees with the runtime), when the title counts at least
-//     genericTitleValue;
+//     recording agrees with the runtime), when a title in or above the band
+//     counts at least genericTitleValue (one below it, sharing nothing with the
+//     request's, counts as it is);
 //   - in the named series but at ANOTHER volume, unless the title itself agrees
 //     ("Sharpe's Siege" filed as volume 20, which is volume 19), whatever it
 //     shares with the request's title is the series' naming pattern ("Tales
@@ -1375,7 +1376,10 @@ func (f *matchFacts) seriesVerdict(c *candidate, t, named, runtimeDiff float64) 
 	if elsewhere && named < seriesDistrustHigh {
 		value = 0
 	}
-	if vouched {
+	// The vouch lifts a title the band would distrust (or one above it), never
+	// one below: a title sharing nothing with the request's names another book
+	// ("Blood of Elves [Booktrack]" filed at The Last Wish's position, 0.12).
+	if vouched && t >= seriesDistrustLow {
 		value = max(value, genericTitleValue)
 	}
 	return agreement, value, elsewhere && !covered
