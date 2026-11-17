@@ -49,9 +49,25 @@ func stubBin(t *testing.T, dir, today string) string {
 	return bin
 }
 
+// aiVerifyFixture is a temp dir holding stubBin(today) and a one-line context file.
+func aiVerifyFixture(t *testing.T, today string) (dir, bin, context string) {
+	t.Helper()
+	dir = t.TempDir()
+	bin = stubBin(t, dir, today)
+	context = filepath.Join(dir, "context.txt")
+	if err := os.WriteFile(context, []byte("+ work \"x\"\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	return dir, bin, context
+}
+
 // aiVerifyRun is what one run of ai-verify.sh left behind: the system prompt and
-// message the stub claude was handed, and the verdict and comment files.
-type aiVerifyRun struct{ system, stdin, verdict, comment string }
+// message the stub claude was handed ("" when the CLI was not called), whether a
+// stub curl was, and the verdict and comment files.
+type aiVerifyRun struct {
+	system, stdin, verdict, comment string
+	curl                            bool
+}
 
 // runAIVerify runs ai-verify.sh over context with bin (stubBin) first on PATH
 // and nothing else inherited but PATH, so a PR_ORIGIN, CONTEXT_FORMAT or API key
@@ -66,9 +82,15 @@ func runAIVerify(t *testing.T, bin, context string, env ...string) aiVerifyRun {
 	if b, err := cmd.CombinedOutput(); err != nil {
 		t.Fatalf("ai-verify.sh %v: %v\n%s", env, err, b)
 	}
+	// The stub claude writes system.txt and stdin.txt only when the CLI is the
+	// transport; a missing one reads as "".
+	system, _ := os.ReadFile(filepath.Join(out, "system.txt"))
+	stdin, _ := os.ReadFile(filepath.Join(out, "stdin.txt"))
+	_, curlErr := os.Stat(filepath.Join(out, "curl-called"))
 	return aiVerifyRun{
-		readFile(t, filepath.Join(out, "system.txt")), readFile(t, filepath.Join(out, "stdin.txt")),
-		readFile(t, filepath.Join(out, "verdict.json")), readFile(t, filepath.Join(out, "comment.md")),
+		system: string(system), stdin: string(stdin),
+		verdict: readFile(t, filepath.Join(out, "verdict.json")), comment: readFile(t, filepath.Join(out, "comment.md")),
+		curl: curlErr == nil,
 	}
 }
 
@@ -99,12 +121,7 @@ var originPromptSHA256 = []struct{ origin, format, sha256 string }{
 func TestAIVerifyPromptByOrigin(t *testing.T) {
 	t.Parallel()
 	requireTools(t, "bash", "jq", "iconv", "perl")
-	dir := t.TempDir()
-	bin := stubBin(t, dir, "2026-01-01")
-	context := filepath.Join(dir, "context.txt")
-	if err := os.WriteFile(context, []byte("+ work \"x\"\n"), 0o644); err != nil {
-		t.Fatal(err)
-	}
+	dir, bin, context := aiVerifyFixture(t, "2026-01-01")
 	advisories := filepath.Join(dir, "advisories.txt")
 	if err := os.WriteFile(advisories, []byte("1 new advisory (orphan-person 1):\n- [orphan-person] people: entry p: an orphan record\n"), 0o644); err != nil {
 		t.Fatal(err)
@@ -235,12 +252,7 @@ func TestAIVerifyWorkflowOrigin(t *testing.T) {
 func TestAIVerifyCommentSaysWhatTheVerdictDoes(t *testing.T) {
 	t.Parallel()
 	requireTools(t, "bash", "jq", "iconv", "perl")
-	dir := t.TempDir()
-	bin := stubBin(t, dir, "2026-01-01")
-	context := filepath.Join(dir, "context.txt")
-	if err := os.WriteFile(context, []byte("+ work \"x\"\n"), 0o644); err != nil {
-		t.Fatal(err)
-	}
+	dir, bin, context := aiVerifyFixture(t, "2026-01-01")
 	flag := filepath.Join(dir, "flag.json")
 	if err := os.WriteFile(flag, []byte(`{"result":"{\"verdict\":\"flag\",\"findings\":[\"a finding\"]}"}`), 0o644); err != nil {
 		t.Fatal(err)
@@ -279,32 +291,15 @@ printf '%s' '{"content":[{"type":"text","text":"{\"verdict\":\"pass\",\"findings
 func TestAIVerifyPrefersTheAPIKey(t *testing.T) {
 	t.Parallel()
 	requireTools(t, "bash", "jq", "iconv", "perl")
-	dir := t.TempDir()
-	bin := stubBin(t, dir, "2026-01-01")
+	_, bin, context := aiVerifyFixture(t, "2026-01-01")
 	if err := os.WriteFile(filepath.Join(bin, "curl"), []byte(stubCurl), 0o755); err != nil {
 		t.Fatal(err)
 	}
-	context := filepath.Join(dir, "context.txt")
-	if err := os.WriteFile(context, []byte("+ work \"x\"\n"), 0o644); err != nil {
-		t.Fatal(err)
+	// runAIVerify always sets the subscription token.
+	if r := runAIVerify(t, bin, context, "ANTHROPIC_API_KEY=key"); !r.curl || r.stdin != "" || !strings.Contains(r.verdict, `"verdict":"pass"`) {
+		t.Errorf("both credentials: curl %v, cli %v, verdict %s; want the API alone", r.curl, r.stdin != "", r.verdict)
 	}
-	run := func(env ...string) (curl, cli bool, verdict string) {
-		t.Helper()
-		out := t.TempDir()
-		cmd := exec.Command("bash", abs(t, filepath.Join("..", ".github", "scripts", "ai-verify.sh")),
-			context, filepath.Join(out, "verdict.json"), filepath.Join(out, "comment.md"))
-		cmd.Env = append([]string{"PATH=" + bin + string(os.PathListSeparator) + os.Getenv("PATH"), "HOME=" + out, "OUTDIR=" + out}, env...)
-		if b, err := cmd.CombinedOutput(); err != nil {
-			t.Fatalf("ai-verify.sh %v: %v\n%s", env, err, b)
-		}
-		_, curlErr := os.Stat(filepath.Join(out, "curl-called"))
-		_, cliErr := os.Stat(filepath.Join(out, "stdin.txt"))
-		return curlErr == nil, cliErr == nil, readFile(t, filepath.Join(out, "verdict.json"))
-	}
-	if curl, cli, verdict := run("CLAUDE_CODE_OAUTH_TOKEN=test", "ANTHROPIC_API_KEY=key"); !curl || cli || !strings.Contains(verdict, `"verdict":"pass"`) {
-		t.Errorf("both credentials: curl %v, cli %v, verdict %s; want the API alone", curl, cli, verdict)
-	}
-	if curl, cli, _ := run("CLAUDE_CODE_OAUTH_TOKEN=test"); curl || !cli {
-		t.Errorf("the subscription token alone: curl %v, cli %v; want the CLI alone", curl, cli)
+	if r := runAIVerify(t, bin, context); r.curl || r.stdin == "" {
+		t.Errorf("the subscription token alone: curl %v, cli %v; want the CLI alone", r.curl, r.stdin != "")
 	}
 }

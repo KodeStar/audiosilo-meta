@@ -239,14 +239,9 @@ func TestAdvisoryDeltaSummary(t *testing.T) {
 func TestAIVerifyAdvisorySection(t *testing.T) {
 	t.Parallel()
 	requireTools(t, "bash", "jq", "iconv", "perl")
-	dir := t.TempDir()
 	// The stub claude (aiverify_test.go) records the system prompt and stdin and
 	// answers a pass - or, with REPLY_FILE set, that file's contents.
-	bin := stubBin(t, dir, "")
-	context := filepath.Join(dir, "context.txt")
-	if err := os.WriteFile(context, []byte("+ work \"x\"\n"), 0o644); err != nil {
-		t.Fatal(err)
-	}
+	dir, bin, context := aiVerifyFixture(t, "")
 	advisories := filepath.Join(dir, "advisories.txt")
 	if err := os.WriteFile(advisories, []byte("1 new advisory (orphan-person 1):\n- [orphan-person] people: entry p: an orphan record\n"), 0o644); err != nil {
 		t.Fatal(err)
