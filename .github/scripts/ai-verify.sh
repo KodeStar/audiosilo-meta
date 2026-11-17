@@ -55,15 +55,15 @@
 #
 # SECURITY: the context file is UNTRUSTED DATA (it is rendered from a
 # contributor's records, so every title, name and slug in it is theirs). On the
-# curl path it is embedded into the request as a JSON string via `jq --arg`
+# curl path it is embedded into the request as a JSON string via `jq --rawfile`
 # (which escapes it, so it cannot break out of the JSON or forge request
-# fields); on the CLI path it is fed to the CLI on stdin, never interpolated
-# into a shell command (a single argv would hit Linux's per-argument execve
-# limit - MAX_ARG_STRLEN, 128 KiB - which is below MAX_INPUT_BYTES). Either way
-# the system prompt instructs the model to treat everything in it as data and
-# ignore any instructions inside it,
-# and the CLI runs with NO tools (`--allowedTools ""`) so it cannot touch the
-# workspace. Nothing from the diff is ever executed here.
+# fields); on the CLI path it is fed to the CLI on stdin. On neither is it
+# interpolated into a shell command or passed as an argument (a single argv
+# would hit Linux's per-argument execve limit - MAX_ARG_STRLEN, 128 KiB - which
+# is below MAX_INPUT_BYTES). Either way the system prompt instructs the model to
+# treat everything in it as data and ignore any instructions inside it, and the
+# CLI runs with NO tools (`--allowedTools ""`) so it cannot touch the workspace.
+# Nothing from the diff is ever executed here.
 #
 # EXIT STATUS answers "did a verdict happen", not "is the data good". A pass and
 # a flag both exit 0 - a flag is advisory, a human still reviews - while every
@@ -270,18 +270,26 @@ fi
 TEXT=""
 
 if [ -n "${ANTHROPIC_API_KEY:-}" ]; then
-  # Preferred: a direct Messages API request via curl (see TRANSPORT above).
-  REQUEST="$(jq -n \
+  # Preferred: a direct Messages API request via curl (see TRANSPORT above). The
+  # prompt and the message reach jq as FILES and the request reaches curl on
+  # stdin, never as an argument: the message alone can pass Linux's per-argument
+  # execve limit (see SECURITY above), and jq or curl handed it as one would not
+  # start at all (E2BIG), so every pull request with a summary that large would
+  # be a skip. printf is a shell builtin, so it is not subject to that limit.
+  REQUEST_FILE="$(mktemp)"
+  jq -n \
     --arg model "$MODEL" \
-    --arg system "$SYSTEM" \
-    --arg user "$USER_MSG" \
-    '{model: $model, max_tokens: 4000, system: $system, messages: [{role: "user", content: $user}]}')"
+    --rawfile system <(printf '%s' "$SYSTEM") \
+    --rawfile user <(printf '%s' "$USER_MSG") \
+    '{model: $model, max_tokens: 4000, system: $system, messages: [{role: "user", content: $user}]}' \
+    > "$REQUEST_FILE" 2>/dev/null || skip "The Anthropic API request could not be built."
 
   RESPONSE="$(curl -sS --max-time 120 "$API_URL" \
     -H "x-api-key: ${ANTHROPIC_API_KEY}" \
     -H "anthropic-version: 2023-06-01" \
     -H "content-type: application/json" \
-    -d "$REQUEST" 2>/dev/null)" || skip "The Anthropic API request failed (transport error)."
+    --data-binary @- < "$REQUEST_FILE" 2>/dev/null)" || skip "The Anthropic API request failed (transport error)."
+  rm -f "$REQUEST_FILE"
 
   if [ -z "$RESPONSE" ]; then
     skip "The Anthropic API returned an empty response."
