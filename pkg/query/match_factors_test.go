@@ -836,6 +836,10 @@ func TestResolveSeries(t *testing.T) {
 		// "Mistborn", which no series spells, from reaching "Mistborn Era".
 		{"each name on its own", []string{"Mistborn", "Cosmere"}, []string{"Mistborn Era", "Cosmere"}, []string{"mistborn era", "cosmere"}},
 		{"each name spelled", []string{"Frontlines", "Cosmere"}, []string{"Frontlines", "Frontlines: Evolution", "Cosmere"}, []string{"frontlines", "cosmere"}},
+		// A loose guess beside the series another guess spells is that series:
+		// "Dresden" (a folder) adds no sub-series to the tag's "The Dresden Files".
+		{"a loose guess of a spelled series", []string{"Dresden", "The Dresden Files"}, []string{"The Dresden Files", "The Dresden Files: Bigfoot"}, []string{"the dresden files"}},
+		{"a loose guess first", []string{"The Dresden Files", "Dresden"}, []string{"The Dresden Files: Bigfoot", "The Dresden Files"}, []string{"the dresden files"}},
 		{"no series named", nil, []string{"Frontlines"}, nil},
 	} {
 		f := readFacts(matchRequest{titles: []string{"x y"}, series: tc.series})

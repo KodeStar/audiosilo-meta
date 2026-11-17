@@ -5,6 +5,7 @@ import (
 	"context"
 	"database/sql"
 	"errors"
+	"maps"
 	"math"
 	"net/http"
 	"net/url"
@@ -1486,7 +1487,10 @@ func (f *matchFacts) listedHere(c *candidate, runtimeDiff, named float64) bool {
 // "Frontlines: Evolution", and "Summoner School" not to "Summoner", while
 // "Aaron Crash (American Dragons)", which no series spells, still reaches
 // "American Dragons Series" - beside a "Cosmere" that one series does spell
-// (a folder's series and a tag's are two guesses, judged apart).
+// (a folder's series and a tag's are two guesses, judged apart). A guess no
+// series spells that fits one ANOTHER guess spells is that series said
+// loosely ("Dresden" beside "The Dresden Files") and adds nothing: its other
+// fits are the sub-series the spelled name rules out.
 //
 // It reads every candidate's title on the way (matchFacts.named), so it asks
 // the budget as the judging does; a pool cut short is one match() answers busy.
@@ -1506,7 +1510,8 @@ func (f *matchFacts) resolveSeries(ctx context.Context, cands []*candidate) {
 			}
 		}
 	}
-	f.resolved = map[string]bool{}
+	spelled := map[string]bool{}
+	var loose [][]string
 	for _, forms := range f.seriesGuesses {
 		var keys []string
 		for i := range forms {
@@ -1525,9 +1530,18 @@ func (f *matchFacts) resolveSeries(ctx context.Context, cands []*candidate) {
 			}
 		}
 		if len(whole) == 0 {
-			whole = fitting
+			loose = append(loose, fitting)
 		}
 		for _, name := range whole {
+			spelled[name] = true
+		}
+	}
+	f.resolved = maps.Clone(spelled)
+	for _, fitting := range loose {
+		if slices.ContainsFunc(fitting, func(name string) bool { return spelled[name] }) {
+			continue
+		}
+		for _, name := range fitting {
 			f.resolved[name] = true
 		}
 	}
