@@ -79,12 +79,13 @@ jobs:
     # delta (~1-2 minutes each). The bound is what stops a hung CLI call from
     # holding the concurrency group - and the PR's verdict - indefinitely.
     timeout-minutes: 30
-    # HAS_OAUTH gates the CLI-install step below. A step-level `if:` can read the
-    # `env` context but a `secrets` comparison there is fragile, so we resolve
-    # the presence of the OAuth secret into a plain boolean env var here (job
+    # HAS_OAUTH and HAS_API_KEY gate the CLI-install step below. A step-level `if:`
+    # can read the `env` context but a `secrets` comparison there is fragile, so we
+    # resolve the presence of each secret into a plain boolean env var here (job
     # `env` may reference `secrets`). Empty on fork PRs (no secrets).
     env:
       HAS_OAUTH: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
+      HAS_API_KEY: ${{ secrets.ANTHROPIC_API_KEY != '' }}
     # Same-repo branches (secrets + write token available) or a manual dispatch.
     # A fork PR is not run at all: it cannot reach the secret, so the ONLY thing
     # it could produce is the script's skip, and a skip is now a red check. The
@@ -317,9 +318,11 @@ jobs:
           bash .github/scripts/ai-verify-reuse.sh context.txt "$PR" verify-inputs.txt advisories.txt \
             .github/scripts/ai-verify.sh .github/scripts/ai-verify-reuse.sh .github/workflows/ai-verify.yml
 
-      # Only needed for the preferred CLAUDE_CODE_OAUTH_TOKEN transport (a
-      # subscription token authenticates through the CLI, not the raw API). When
-      # only ANTHROPIC_API_KEY is set the script uses curl and this is skipped.
+      # Only needed for the CLAUDE_CODE_OAUTH_TOKEN transport (a subscription
+      # token authenticates through the CLI, not the raw API). The script prefers
+      # ANTHROPIC_API_KEY, over curl, whenever it is set (meta-sync#63: the
+      # subscription is shared with meta-sync's resolver), so this runs only when
+      # the subscription token is the one credential there is.
       # ubuntu-latest ships Node 20+, so npm is available.
       #
       # `claude --version` is a LIVENESS PROBE, not a formality. For a window
@@ -341,7 +344,7 @@ jobs:
       # or `next`, which move daily. Dependabot does not see a version inside a
       # `run:` string.
       - name: Install Claude Code CLI
-        if: steps.gather.outputs.has_changes == 'true' && steps.reuse.outputs.reuse != 'true' && env.HAS_OAUTH == 'true'
+        if: steps.gather.outputs.has_changes == 'true' && steps.reuse.outputs.reuse != 'true' && env.HAS_OAUTH == 'true' && env.HAS_API_KEY != 'true'
         run: |
           npm install -g @anthropic-ai/claude-code@2.1.273
           claude --version
