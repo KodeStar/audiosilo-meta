@@ -15,7 +15,7 @@ const code =
   <div class="container py-14 sm:py-16">
     <div class="reveal mx-auto max-w-3xl text-body">
       <h1 class="mb-1 text-4xl font-black tracking-tight text-hi">Privacy Policy</h1>
-      <p class="mb-8 text-dim">Last updated: 5 November 2026</p>
+      <p class="mb-8 text-dim">Last updated: 17 November 2026</p>
 
       <p class="mb-6 text-lg leading-relaxed">
         AudioSilo Meta is a <strong class="text-hi">public, open source audiobook metadata
@@ -43,8 +43,8 @@ const code =
             not profile visitors.
           </li>
           <li>
-            The web server keeps ordinary technical logs, used only to run the service and deal with
-            abuse.
+            <strong class="text-hi">No</strong> access logs: the web server keeps only an error log,
+            used only to run the service and deal with abuse.
           </li>
           <li>
             Your library export never leaves your device: <span class={code}>/import</span> parses
@@ -64,18 +64,25 @@ const code =
 
       <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">Server logs</h2>
       <p class="mb-4 leading-relaxed">
-        Like any web server, ours keeps ordinary technical logs of the requests it answers: the
-        requested URL, a timestamp, the IP address the request came from, and the browser's user
-        agent. These are used <strong class="text-hi">only</strong> to operate the service and to
-        deal with abuse such as scraping floods or attacks. They are not used to profile anyone and
-        they are not shared.
+        The web server in front of this site keeps <strong class="text-hi">no access log</strong> of
+        the requests it answers over HTTPS, which is every page and every API call: the requested
+        URL, the time, your IP address and your browser's user agent are not written down. A plain
+        <span class={code}>http://</span> request, which is only redirected to HTTPS, can be.
+      </p>
+      <p class="mb-4 leading-relaxed">
+        It does keep an error log, which can record the IP address and the requested URL of a
+        request that goes wrong, such as one that cannot reach the service while it is restarting.
+        To apply a per-client rate limit, the service also holds a client's address in memory, not
+        on disk, while it is making requests and normally for a few minutes after. All of this is used
+        <strong class="text-hi">only</strong> to operate the service and to deal with abuse such as
+        scraping floods or attacks. It is not used to profile anyone and it is not shared.
       </p>
 
       <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">Search</h2>
       <p class="mb-4 leading-relaxed">
         Search queries go to this site's own API, on the same origin as the page you are reading.
-        They are handled like any other request - the ordinary logs described above, nothing more.
-        There is no search history, because there is nobody to attach one to.
+        They are handled like any other request: no access log (see above), nothing more. There is
+        no search history, because there is nobody to attach one to.
       </p>
 
       <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">Language filter</h2>
@@ -121,10 +128,10 @@ const code =
       </p>
       <p class="mb-4 leading-relaxed">
         A notification feed URL, and the calendar subscription URL that is the same feed in calendar
-        form, carry the watched series slugs in the URL, are served statelessly without storing a
-        subscription, and appear in ordinary access logs like any other request. Whatever service
-        you subscribe with - a feed reader, a calendar app, an automation service - sees that URL
-        and the series it lists, and so does our access log each time that service fetches it.
+        form, carry the watched series slugs in the URL and are served statelessly without storing
+        a subscription. Like any other request, a fetch of one is not written to an access log here.
+        Whatever service you subscribe with - a feed reader, a calendar app, an automation service -
+        sees that URL and the series it lists, and keeps whatever logs it keeps.
       </p>
       <p class="mb-4 leading-relaxed">
         The one notification service we run ourselves is the bot on the
@@ -163,10 +170,11 @@ const code =
         database does not hold yet. A report carries ASINs and nothing else we keep: the service
         stores each ASIN with a count and the first and last date it was reported, and stores no IP
         address with them. An address is held in memory for about a day after its last request to
-        enforce a rate limit. These reports are not written to the access log when they arrive over
-        HTTPS, which is how AudioSilo servers send them. The web server's error log can still record
-        the address of a request that goes wrong, such as a report that cannot reach the service
-        while it is restarting.
+        enforce a rate limit. These reports are never written to an access log when they arrive over
+        HTTPS, which is how AudioSilo servers send them: the web server skips logging them on their
+        own, whatever it does for the rest of the site. Its error log can still record the address of
+        a request that goes wrong, such as a report that cannot reach the service while it is
+        restarting.
       </p>
 
       <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">Contributing</h2>
