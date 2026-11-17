@@ -609,8 +609,10 @@ func listedCatalog() *model.Catalog {
 // series agreement over a title in the distrust band and counts that title at
 // genericTitleValue at least - the series-named first volume whose file names
 // only its subtitle (56 before: title 0.5 distrusted). A title below the band
-// is not lifted: a volume filed as "American Dragons, Book 1" in "American
-// Dragons Series" keeps its series and counts its 0.23 title as it is (54).
+// is lifted only while the request's title names no other work clearly: a
+// volume filed as "American Dragons, Book 1" in "American Dragons Series" (its
+// title 0.23, which names only the series' numbering) scores 91, not the 54 it
+// would count as it is.
 // Without the runtime, or off it, nothing changes.
 func TestMatchListedAtTheStatedPositionVouches(t *testing.T) {
 	_, ts := newTestServerForCatalog(t, listedCatalog())
@@ -649,7 +651,7 @@ func TestMatchListedAtTheStatedPositionVouches(t *testing.T) {
 	if len(res) == 0 || res[0]["id"] != "denver-fury" {
 		t.Fatalf("American Dragons 1: top = %v, want denver-fury", matchIDs(res))
 	}
-	wantScore(t, res, "denver-fury", 54)
+	wantScore(t, res, "denver-fury", 91)
 }
 
 // TestMatchListedRivalsDoNotRise: the five rivals the rule's first prototype
@@ -713,7 +715,8 @@ func TestMatchListedRivalsDoNotRise(t *testing.T) {
 		t.Fatalf("Polish request: top = %v, want podboj", matchIDs(res))
 	}
 	// Its translated title shares nothing with "Conquest" (0.13, below the band),
-	// so the listing keeps its series but lifts no title.
+	// which names the English work exactly, so the listing keeps its series but
+	// lifts no title.
 	q.Set("title", "Conquest")
 	res = matchJSON(t, ts.URL, q)
 	wantScore(t, res, "podboj", 48)
@@ -725,33 +728,53 @@ func TestMatchListedRivalsDoNotRise(t *testing.T) {
 
 // TestMatchListingLiftsNoTitleBelowTheBand: a listing vouches for the volume
 // whose title the request spells another way (the seriesDistrust band and
-// above), never for one whose title shares nothing with the request's. "Blood
-// of Elves [Booktrack]" filed at 1, on a file as long as The Last Wish, is a
-// mislabelled folder of another volume: The Last Wish keeps its series agreement
-// and the runtime's, but its 0.13 title counts as it is (48), not lifted to
-// genericTitleValue (91, an auto-apply of the wrong book). Blood of Elves, the
-// title it names, ranks first.
+// above). A title below the band shares nothing with the request's, and it is
+// lifted only while the request's title names no other work that could be the
+// book. "Blood of Elves [Booktrack]" filed at 1, on a file as long as The Last
+// Wish, names Blood of Elves: held here outside the series' listing (so
+// namedElsewhere does not see it) and as long as the file, it could be the
+// book, so The Last Wish keeps its series and the runtime's agreement but counts
+// its 0.13 title as it is (48), not lifted to genericTitleValue (91, the wrong
+// book first). Blood of Elves ranks first. A Blood of Elves a third longer
+// than the file is ruled out by its length: the tag is the mislabelled one
+// (Primer for the Apocalypse 1 tagged "The Realm Dungeon") and the listing
+// lifts The Last Wish as before.
 func TestMatchListingLiftsNoTitleBelowTheBand(t *testing.T) {
-	_, ts := newTestServerForCatalog(t, &model.Catalog{
-		People: []*model.Person{factorPerson("andrzej-sapkowski", "Andrzej Sapkowski")},
-		Works: []*model.Work{
-			factorWork("the-last-wish", "The Last Wish", "en", "andrzej-sapkowski", factorRec("wish", 793)),
-			factorWork("blood-of-elves", "Blood of Elves", "en", "andrzej-sapkowski", factorRec("elves", 1028)),
-		},
-		Series: []*model.Series{{ID: "the-witcher", Name: "The Witcher", License: "CC0-1.0", Works: []model.SeriesWork{
-			{Work: "the-last-wish", Position: "1"}, {Work: "blood-of-elves", Position: "3"},
-		}}},
-	})
-	res := matchJSON(t, ts.URL, url.Values{
-		"title": {"Blood of Elves [Booktrack]"}, "author": {"Andrzej Sapkowski"},
-		"series": {"The Witcher"}, "position": {"1"}, "runtime": {"47580"},
-	})
-	if len(res) == 0 || res[0]["id"] != "blood-of-elves" {
-		t.Fatalf("top = %v, want blood-of-elves", matchIDs(res))
-	}
-	wish := wantScore(t, res, "the-last-wish", 48)
-	if s := wish["reasons"].(map[string]any)["series"]; s != string(seriesPosition) {
-		t.Errorf("the-last-wish series reason %v, want position", s)
+	for _, tc := range []struct {
+		name      string
+		elvesMin  int
+		listed    bool
+		top       string
+		wishScore float64
+	}{
+		{"another work the title names could be the book", 800, false, "blood-of-elves", 48},
+		{"its runtime rules it out", 1028, true, "the-last-wish", 91},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			members := []model.SeriesWork{{Work: "the-last-wish", Position: "1"}}
+			if tc.listed {
+				members = append(members, model.SeriesWork{Work: "blood-of-elves", Position: "3"})
+			}
+			_, ts := newTestServerForCatalog(t, &model.Catalog{
+				People: []*model.Person{factorPerson("andrzej-sapkowski", "Andrzej Sapkowski")},
+				Works: []*model.Work{
+					factorWork("the-last-wish", "The Last Wish", "en", "andrzej-sapkowski", factorRec("wish", 793)),
+					factorWork("blood-of-elves", "Blood of Elves", "en", "andrzej-sapkowski", factorRec("elves", tc.elvesMin)),
+				},
+				Series: []*model.Series{{ID: "the-witcher", Name: "The Witcher", License: "CC0-1.0", Works: members}},
+			})
+			res := matchJSON(t, ts.URL, url.Values{
+				"title": {"Blood of Elves [Booktrack]"}, "author": {"Andrzej Sapkowski"},
+				"series": {"The Witcher"}, "position": {"1"}, "runtime": {"47580"},
+			})
+			if len(res) == 0 || res[0]["id"] != tc.top {
+				t.Fatalf("top = %v, want %s", matchIDs(res), tc.top)
+			}
+			wish := wantScore(t, res, "the-last-wish", tc.wishScore)
+			if s := wish["reasons"].(map[string]any)["series"]; s != string(seriesPosition) {
+				t.Errorf("the-last-wish series reason %v, want position", s)
+			}
+		})
 	}
 }
 

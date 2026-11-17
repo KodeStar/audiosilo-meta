@@ -326,6 +326,17 @@ type matchFacts struct {
 	// resolveSeries): a listing vouches for no work whose own title agrees
 	// less, once that reaches seriesDistrustHigh.
 	namedElsewhere float64
+	// named holds the request's title agreement with every candidate of the
+	// pool (titleAgreement, read once and then reused by judge), and namedBest,
+	// namedBestID and namedNext the two best named agreements over the works
+	// that could be the book (by a named author, the runtime not ruling them
+	// out): what a listing's lift of a title below the seriesDistrust band
+	// reads (namedByAnother). Filled by resolveSeries, the one place a listing
+	// can vouch from; nil otherwise.
+	named       map[*candidate]titleRead
+	namedBest   float64
+	namedBestID string
+	namedNext   float64
 	// edit is the edit distance's scratch, reused by every comparison of the
 	// request (judging runs on one goroutine).
 	edit *editBuf
@@ -1285,6 +1296,9 @@ func (f *matchFacts) structuredScore(c *candidate, v *scored, w wavg) float64 {
 // name (named, see structuredScore), and whether any guess was judged at all
 // (one naming an author of c is not).
 func (f *matchFacts) titleAgreement(c *candidate) (t, named float64, judged bool) {
+	if r, ok := f.named[c]; ok {
+		return r.t, r.named, r.judged
+	}
 	for i := range f.titles {
 		h := &f.titles[i]
 		if c.isAuthorName(h) {
@@ -1301,6 +1315,23 @@ func (f *matchFacts) titleAgreement(c *candidate) (t, named float64, judged bool
 		}
 	}
 	return t, named, judged
+}
+
+// titleRead is one candidate's titleAgreement, kept for the request
+// (matchFacts.named).
+type titleRead struct {
+	t, named float64
+	judged   bool
+}
+
+// namedByAnother is the best named title agreement the request's title reaches
+// with any work of the pool but c that could be the book (matchFacts.named; 0
+// before resolveSeries read the pool).
+func (f *matchFacts) namedByAnother(c *candidate) float64 {
+	if c.id == f.namedBestID {
+		return f.namedNext
+	}
+	return f.namedBest
 }
 
 // seriesVerdict is the ONE place a candidate's numbering is judged: its
@@ -1376,10 +1407,14 @@ func (f *matchFacts) seriesVerdict(c *candidate, t, named, runtimeDiff float64) 
 	if elsewhere && named < seriesDistrustHigh {
 		value = 0
 	}
-	// The vouch lifts a title the band would distrust (or one above it), never
-	// one below: a title sharing nothing with the request's names another book
-	// ("Blood of Elves [Booktrack]" filed at The Last Wish's position, 0.12).
-	if vouched && t >= seriesDistrustLow {
+	// The vouch lifts a title the band would distrust (or one above it). One
+	// below shares nothing with the request's, which is then either the series'
+	// numbering alone ("American Dragons, Book 3", a subtitle every LitRPG
+	// shares: no evidence against the listing) or the name of another book
+	// ("Blood of Elves" filed at The Last Wish's position, 0.12): lifted only
+	// while the request's title names no other work that could be the book
+	// clearly. namedElsewhere asks the same of the series' own siblings only.
+	if vouched && (t >= seriesDistrustLow || f.namedByAnother(c) < seriesDistrustHigh) {
 		value = max(value, genericTitleValue)
 	}
 	return agreement, value, elsewhere && !covered
@@ -1451,6 +1486,24 @@ func (f *matchFacts) resolveSeries(cands []*candidate) {
 	}
 	if f.position == "" {
 		return
+	}
+	f.named = make(map[*candidate]titleRead, len(cands))
+	for _, c := range cands {
+		t, named, judged := f.titleAgreement(c)
+		f.named[c] = titleRead{t: t, named: named, judged: judged}
+		// Only a work that could be this book names it: by a named author, its
+		// length not ruled out (a tag naming a volume a third longer than the
+		// file is a mislabelled tag, Primer for the Apocalypse 1 tagged "The
+		// Realm Dungeon").
+		if f.runtimeRulesOut(c) || (len(f.authors) > 0 && agreeAuthors(f.authors, c.authors) == authorNone) {
+			continue
+		}
+		switch {
+		case named > f.namedBest:
+			f.namedNext, f.namedBest, f.namedBestID = f.namedBest, named, c.id
+		case named > f.namedNext:
+			f.namedNext = named
+		}
 	}
 	for _, c := range cands {
 		here, other := false, false

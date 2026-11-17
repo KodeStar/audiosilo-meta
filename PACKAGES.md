@@ -610,8 +610,12 @@ volume a third longer than the file is a mislabelled tag,
 `TestMatchListingVouchesOverASiblingTheRuntimeRulesOut`); then the band does not distrust its series and its title,
 when it is in or above the band, counts at least `genericTitleValue` (the series-named first volume whose file names
 only the subtitle, a pack against its range); a title below the band shares nothing
-with the request's and counts as it is (`TestMatchListingLiftsNoTitleBelowTheBand`,
-meta#2922: "Blood of Elves [Booktrack]" filed at The Last Wish's position). The names
+with the request's and is lifted only while the request's title names no other work
+of the pool that could be the book (`namedByAnother`: by a named author, its runtime not
+ruled out; "American Dragons, Book 3" or a shared "A LitRPG Adventure" subtitle names
+none) - "Blood of Elves" filed at The Last Wish's position counts its 0.13 as it is
+(`TestMatchListingLiftsNoTitleBelowTheBand`, meta#2922). The pool's title agreements
+are read once for this (`matchFacts.named`) and reused by the scoring. The names
 resolve per request over the pool (`resolveSeries`, preferWholeName's rule): to the
 series spelled as named (`sameWords`, or `titlerule.SeriesKey`, so "Dark Road
 Series" is "Dark Road") when any is, else to every one that fits - so a fuzzy
