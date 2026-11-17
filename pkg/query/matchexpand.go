@@ -30,9 +30,10 @@ import (
 // never a requirement: out of budget, or on a read error, the match goes out as it
 // would have without expand, because a client that finds nothing inlined fetches as
 // it always did. That degraded answer is sent `no-store` (handleMatch): a cache
-// repeating it would send every client to the fetches for as long as it kept it. An older metaserve ignores the parameter, so clients handle that
-// anyway. It is all or nothing, so `work` present means series_facts was read too,
-// and a series missing from it is one nothing is known about.
+// repeating it would send every client to the fetches for as long as it kept it.
+// An older metaserve ignores the parameter, so clients handle that anyway. It is
+// all or nothing, so `work` present means series_facts was read too, and a series
+// missing from it is one nothing is known about.
 
 // matchExpandWork is the expand value that asks for all of this.
 const matchExpandWork = "work"

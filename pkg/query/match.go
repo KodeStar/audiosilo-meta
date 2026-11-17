@@ -43,7 +43,7 @@ import (
 //
 // CANDIDATES come from five bounded probes, unioned in this order:
 //
-//  1. the identifier (lookupIDs, /lookup without the card), a certain answer;
+//  1. the identifier (identifiedIDs, /lookup without the card), a certain answer;
 //  2. the free text, exactly as works/search reads it (the FTS page and both
 //     boosts), plus the exact-title probe of its leading and trailing word runs
 //     ("dune herbert" names the title "dune");

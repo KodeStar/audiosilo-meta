@@ -40,7 +40,7 @@ func bodylessStatus(status int) bool {
 // content headers to that copy - so `Content-Encoding: gzip` on a 304 tells a
 // client holding an identity-encoded copy to gunzip it. The spec route is the
 // live case: it revalidates on an ETag, and the middleware wraps it. The same
-// reasoning covers the CORS preflight's 204.
+// reasoning covers a 204.
 func (g *gzipResponseWriter) ensureHeader(status int) {
 	if g.wroteHeader {
 		return
