@@ -1606,7 +1606,7 @@
               },
               "recording_id": {
                 "type": "string",
-                "description": "The recording the identifier named, else (when `narrator` is given and a recording agrees, not more than 25% off `runtime`) the best-agreeing recording, the closest runtime breaking a tie, else the one whose runtime is closest to `runtime`. Omitted when none applies."
+                "description": "The recording the identifier is on (a work's print ISBN names the work and no recording), else (when `narrator` is given and a recording agrees, not more than 25% off `runtime`) the best-agreeing recording, the closest runtime breaking a tie, else the one whose runtime is closest to `runtime`. Omitted when none applies."
               },
               "reasons": { "$ref": "#/components/schemas/MatchReasons" },
               "work": {

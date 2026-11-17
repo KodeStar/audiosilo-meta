@@ -180,7 +180,8 @@ type matchResult struct {
 	workResult
 	// Score is 0-100: how well the work's own facts agree with the request.
 	Score int `json:"score"`
-	// RecordingID is the recording the identifier named, else the one whose
+	// RecordingID is the recording the identifier is on (a work's print ISBN is on
+	// none, so it names none), else the one whose
 	// narrators agree best with the request's (when it names any and one
 	// agrees, not more than runtimeFar off the runtime), the closer runtime
 	// breaking a tie, else the one whose runtime fits the requested one best,
@@ -233,13 +234,18 @@ func (s *handler) handleMatch(w http.ResponseWriter, r *http.Request, snap *DB) 
 	}
 	ctx, cancel := context.WithTimeout(r.Context(), s.cfg.MatchBudget)
 	defer cancel()
-	results, err := s.matchInSlot(ctx, snap, req)
+	results, whole, err := s.matchInSlot(ctx, snap, req)
 	switch {
 	case errors.Is(err, errMatchBusy) || (err != nil && ctx.Err() != nil):
 		s.matchBusy(w)
 	case err != nil:
 		s.fail(w, r, err)
 	default:
+		if !whole {
+			// The expansion was asked for and did not fit: a 200 without it is
+			// right this once, but not one to be served again from a cache.
+			w.Header().Set("Cache-Control", "no-store")
+		}
 		httpx.WriteJSON(w, http.StatusOK, map[string]any{"results": results})
 	}
 }
@@ -247,19 +253,21 @@ func (s *handler) handleMatch(w http.ResponseWriter, r *http.Request, snap *DB) 
 // matchInSlot runs a match and its expansion holding one of the match slots, and
 // gives the slot back before the answer is written. The slots bound the reads: an
 // expanded answer can run to a long work's whole document, and a client slow to take
-// it would otherwise hold a slot for as long as the server's write timeout.
-func (s *handler) matchInSlot(ctx context.Context, snap *DB, req matchRequest) ([]matchResult, error) {
+// it would otherwise hold a slot for as long as the server's write timeout. whole is
+// false when the request asked for the expansion and did not get it (expandBest).
+func (s *handler) matchInSlot(ctx context.Context, snap *DB, req matchRequest) (results []matchResult, whole bool, err error) {
 	select {
 	case s.matchSlots <- struct{}{}:
 		defer func() { <-s.matchSlots }()
 	case <-ctx.Done():
-		return nil, errMatchBusy
+		return nil, false, errMatchBusy
 	}
-	results, err := snap.match(ctx, req)
+	results, err = snap.match(ctx, req)
+	whole = true
 	if err == nil && req.expandWork {
-		snap.expandBest(ctx, results)
+		whole = snap.expandBest(ctx, results)
 	}
-	return results, err
+	return results, whole, err
 }
 
 // matchBusy answers a match that ran out of budget: 503, retry in a second.
@@ -509,7 +517,8 @@ type recordingRuntime struct {
 }
 
 // identification is the recording an identifier lookup named, with the
-// identifier's kind ("asin" / "isbn"); the zero value is none.
+// identifier's kind ("asin" / "isbn"); the zero value is none. recording is ""
+// for a work's print ISBN, which names no recording.
 type identification struct{ recording, by string }
 
 // scored is a candidate's verdict, what the ranking sorts by.
@@ -528,13 +537,15 @@ func (s *DB) match(ctx context.Context, req matchRequest) ([]matchResult, error)
 	facts := readFacts(req)
 	pool := newCandidatePool()
 
-	// lookupIDs reads ONE identifier (the ASIN when both are given), so each is
-	// asked on its own: a stale or regional ASIN must not hide a good ISBN.
+	// identifiedIDs reads ONE identifier (the ASIN when both are given), so each is
+	// asked on its own: a stale or regional ASIN must not hide a good ISBN. It is
+	// lookupIDs less the stand-in recording a print ISBN gets there: the recording
+	// is the one carrying the identifier, else the facts pick it (judge).
 	for _, id := range []struct{ by, asin, isbn string }{{"asin", req.asin, ""}, {"isbn", "", req.isbn}} {
 		if id.asin == "" && id.isbn == "" {
 			continue
 		}
-		workID, rid, found, err := s.lookupIDs(ctx, id.asin, id.isbn)
+		workID, rid, found, err := s.identifiedIDs(ctx, id.asin, id.isbn)
 		if err != nil {
 			return nil, err
 		}
@@ -1152,7 +1163,10 @@ func (f *matchFacts) judge(c *candidate) scored {
 	if c.identified.by != "" {
 		v.score = 1
 		v.reasons.Identifier = c.identified.by
-		v.recordingID = c.identified.recording
+		// A print ISBN names the work and no recording: the facts' pick stands.
+		if c.identified.recording != "" {
+			v.recordingID = c.identified.recording
+		}
 	}
 	v.score = math.Round(v.score*100) / 100
 	return v

@@ -651,7 +651,8 @@ request without `language` and `narrator` scores as before, except for the
 position and runtime factors, which apply to every request. Each title form, guess and series name is folded once
 (`termForm`), person and series names and work language tags once per request (`factMemo`). Each result is
 the `WorkResult` search returns plus `score` (0-100), `recording_id` (the
-identifier's, else the narrator-agreeing one's, else the closest runtime's, never a
+recording the identifier is ON - `identifiedIDs`, lookupIDs less the first-recording
+stand-in /lookup gives a work's print ISBN, which names no recording - else the narrator-agreeing one's, else the closest runtime's, never a
 dramatization by length unless the request's own text states one: `model.Recording.IsDramatization`,
 then `titlerule.DramatizationOf`, whose adaptation label speaks only for a recording stating no
 publisher and whose "(Dramatized)" stays on the title and speaks for all of them) and `reasons`
@@ -688,7 +689,8 @@ and the slot goes back before the answer is written (`matchInSlot`), so a client
 to take a long work's document holds none. Out of budget or on a read error the match
 goes out as it would have without expand, never a 503 of its own, and all or nothing:
 the client falls back to fetching, as it must anyway for an older metaserve, which
-ignores the parameter. An unknown value is
+ignores the parameter. That degraded 200 carries `Cache-Control: no-store`
+(`expandBest` reports it, `handleMatch` sets it), so no cache repeats it. An unknown value is
 ignored; without expand the answer is byte-identical. Measured on the 2026-11 core
 artifact at load ~520 on the Mac, so only the ratios mean anything: the expansion
 costs the same as the work read beside it (p50 25 ms against 29 ms over 300 series
@@ -1257,7 +1259,7 @@ is never read. Production behind a proxy MUST set it, or the whole site shares
 the proxy's bucket. A 429 carries `Cache-Control: no-store`. `cacheMW` stamps a
 200 that set no `Cache-Control` of its own with `public, max-age=600`, or
 `max-age=60` for routes ending `/search` or `/match` (`cacheMaxAgeFor`); a
-handler's own (watch feeds, the spec, a 301) wins. The HTML entity pages and
+handler's own (watch feeds, the spec, a 301, a works/match whose expansion did not fit) wins. The HTML entity pages and
 sitemaps are not rate limited.
 
 **The INTAKE QUEUE (internal/serve intake.go, intake_queue.go).** The one place metaserve takes anything from an anonymous caller: `POST /api/v1/intake/unknown-asins` names Audible ASINs the catalogue does not hold, for the sync bot to look up, and `GET` on the same path returns the queue behind a bearer token. Both are registered only when configured, as the webhook is: `METASERVE_INTAKE_DB` for the POST (a queue that will not open or cannot be written is logged and leaves the routes off, the API stays up, and an unset env has no route, state, goroutine or file), and `METASERVE_INTAKE_TOKEN` of at least 32 bytes as well for the GET (shorter, once trimmed, is logged without its value and leaves only the GET off). With the env unset both answer 404. With the POST on and no token, a GET is the static site's 404, or the mux's 405 on a deployment with no site.

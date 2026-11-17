@@ -243,6 +243,9 @@ func TestBatchLookupsAreIndexed(t *testing.T) {
 		{"summaries by series id, v7", seriesIDs, func(ph string) string { return seriesSummariesByIDSQL(ph, true, false) }, nil},
 		{"summaries by series id, v7 with orderings", seriesIDs, func(ph string) string { return seriesSummariesByIDSQL(ph, true, true) }, nil},
 		{"what each series translates", seriesIDs, seriesTranslationOfByIDSQL, nil},
+		// works/match?expand=work's series facts.
+		{"series languages by id", seriesIDs, func(ph string) string { return seriesLanguagesByIDSQL(ph, true) }, nil},
+		{"series languages by id, before v7", seriesIDs, func(ph string) string { return seriesLanguagesByIDSQL(ph, false) }, nil},
 		{"members of the probed series", seriesIDs, seriesMembersSQL, nil},
 		// works/match.
 		{"works by the matched people", personIDs, worksByPeopleSQL, []any{matchCandidatesMax}},

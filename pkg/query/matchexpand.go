@@ -2,6 +2,7 @@ package query
 
 import (
 	"context"
+	"database/sql"
 	"errors"
 	"slices"
 	"strings"
@@ -28,7 +29,8 @@ import (
 // same budget (matchInSlot), and every read takes that context. It is a saving,
 // never a requirement: out of budget, or on a read error, the match goes out as it
 // would have without expand, because a client that finds nothing inlined fetches as
-// it always did. An older metaserve ignores the parameter, so clients handle that
+// it always did. That degraded answer is sent `no-store` (handleMatch): a cache
+// repeating it would send every client to the fetches for as long as it kept it. An older metaserve ignores the parameter, so clients handle that
 // anyway. It is all or nothing, so `work` present means series_facts was read too,
 // and a series missing from it is one nothing is known about.
 
@@ -70,11 +72,13 @@ func bestResult(results []matchResult) int {
 	return max(slices.IndexFunc(results, func(r matchResult) bool { return r.Reasons.Identifier != "" }), 0)
 }
 
-// expandBest inlines the expansion on the best result, in place. Past the budget or
-// on a read error it leaves every result as it was: see the file header.
-func (s *DB) expandBest(ctx context.Context, results []matchResult) {
+// expandBest inlines the expansion on the best result, in place, and reports
+// whether the answer is whole: false when the budget or a read stopped it, which
+// leaves every result as it was (see the file header). No results is nothing to
+// expand, so whole.
+func (s *DB) expandBest(ctx context.Context, results []matchResult) bool {
 	if len(results) == 0 {
-		return
+		return true
 	}
 	best := &results[bestResult(results)]
 	work, facts, err := s.matchExpansion(ctx, best.ID)
@@ -82,9 +86,10 @@ func (s *DB) expandBest(ctx context.Context, results []matchResult) {
 		if ctx.Err() == nil {
 			s.logf("query: works/match expand of %s failed, serving the match alone: %v", best.ID, err)
 		}
-		return
+		return false
 	}
 	best.Work, best.SeriesFacts = work, facts
+	return true
 }
 
 // matchExpansion reads one work's document and its series' facts. A work that isn't
@@ -113,6 +118,11 @@ func (s *DB) matchExpansion(ctx context.Context, workID string) (*WorkDetail, ma
 // memberships in order, each once, up to matchExpandSeriesMax. A variant reading
 // order (ordering_of) is left out, as it is never a series a book of the work is in,
 // so the rules ask nothing of it. A series the catalogue doesn't hold has no entry.
+//
+// It reads the two facts and nothing else: not a search hit's member count (a
+// join over series_works) or ordering, which seriesResultsByID would read only for
+// them to be dropped here. translation_of comes from the read the search page and
+// GET series/{id} share (seriesTranslationOfByID), so the ids are theirs.
 func (s *DB) seriesFactsOf(ctx context.Context, refs []SeriesRef) (map[string]seriesFacts, error) {
 	var ids []string
 	for _, ref := range refs {
@@ -120,17 +130,48 @@ func (s *DB) seriesFactsOf(ctx context.Context, refs []SeriesRef) (map[string]se
 			ids = append(ids, ref.ID)
 		}
 	}
-	rows, err := s.seriesResultsByID(ctx, ids)
+	out := make(map[string]seriesFacts, len(ids))
+	languages := s.schemaVersion >= languagesSchemaVersion
+	err := eachChunk(ids, func(ph string, args []any) error {
+		rows, err := s.db.QueryContext(ctx, seriesLanguagesByIDSQL(ph, languages), args...)
+		if err != nil {
+			return err
+		}
+		defer func() { _ = rows.Close() }()
+		for rows.Next() {
+			var id string
+			var lang sql.NullString
+			if err := rows.Scan(&id, &lang); err != nil {
+				return err
+			}
+			out[id] = seriesFacts{Language: lang.String}
+		}
+		return rows.Err()
+	})
 	if err != nil {
 		return nil, err
 	}
-	out := make(map[string]seriesFacts, len(rows))
-	for id, r := range rows {
-		f := seriesFacts{Language: r.Language}
-		for _, t := range r.TranslationOf {
-			f.TranslationOf = append(f.TranslationOf, t.ID)
+	translated, err := s.seriesTranslationOfByID(ctx, ids)
+	if err != nil {
+		return nil, err
+	}
+	for id, of := range translated {
+		if f, ok := out[id]; ok {
+			for _, t := range of {
+				f.TranslationOf = append(f.TranslationOf, t.ID)
+			}
+			out[id] = f
 		}
-		out[id] = f
 	}
 	return out, nil
+}
+
+// seriesLanguagesByIDSQL reads each held series' derived language by primary key;
+// an artifact older than languagesSchemaVersion has no such column and selects NULL.
+func seriesLanguagesByIDSQL(ph string, languages bool) string {
+	col := "NULL"
+	if languages {
+		col = "language"
+	}
+	return `SELECT id, ` + col + ` FROM series WHERE id IN (` + ph + `)`
 }
