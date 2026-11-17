@@ -540,6 +540,10 @@ type scored struct {
 	runtimeDiff float64 // closest recording's runtime difference; +Inf when not judged
 	recordingID string
 	reasons     matchReasons
+	// positionConflict is whether the structured facts placed the work at
+	// another position than the stated one (seriesVerdict): the typed text's
+	// reading is scaled by it too unless the text names the work (judge).
+	positionConflict bool
 }
 
 // match runs one structured match over the snapshot. It returns at most
@@ -1150,7 +1154,15 @@ func (f *matchFacts) judge(c *candidate) scored {
 		// The typed text is judged as the facts it states about THIS work,
 		// by the same rules; only its title agreement is reported, as text.
 		t := scored{runtimeDiff: v.runtimeDiff}
-		v.score = max(v.score, f.textFacts(c).structuredScore(c, &t, base))
+		textScore := f.textFacts(c).structuredScore(c, &t, base)
+		// A sibling the facts place at another volume is that in the typed
+		// text's reading too ("cornwell sharpe" names every volume alike),
+		// unless the text names it: its title clearly, or its volume (an
+		// admin correcting a misfiled book).
+		if v.positionConflict && t.reasons.Series != seriesPosition && t.title < seriesDistrustHigh {
+			textScore *= positionConflictFactor
+		}
+		v.score = max(v.score, textScore)
 		text := t.title
 		if t.reasons.Series == seriesPosition && t.reasons.Title == nil {
 			text = 1 // it named the volume, which stood in for the title
@@ -1292,6 +1304,7 @@ func (f *matchFacts) structuredScore(c *candidate, v *scored, w wavg) float64 {
 	// numbering is volume 1's title), so the series weight alone left it a
 	// rival.
 	if positionConflict {
+		v.positionConflict = true
 		score *= positionConflictFactor
 	}
 	return score

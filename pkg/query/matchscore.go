@@ -95,8 +95,10 @@ const authorMismatchFactor = 0.75
 // stated position. The series weight alone left such a sibling 10 points behind
 // the stated volume when both titles agree ("Failure Frame, Vol. 4" against a
 // request for volume 1: 90 to 100), close enough to hold a confident match for
-// review; scaled, it sits near 72. A start value, tuned on the LibraForge
-// benchmark harness in audiosilo-server.
+// review; scaled, it sits near 72. The typed text's reading of such a sibling is
+// scaled too, unless the text names that work, its title clearly or its volume
+// (matchFacts.judge). A start value, tuned on the LibraForge benchmark harness
+// in audiosilo-server.
 const positionConflictFactor = 0.8
 
 // languageMismatchFactor scales a candidate's score when the request states a

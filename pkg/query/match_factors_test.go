@@ -105,6 +105,37 @@ func TestMatchPositionConflictScalesASibling(t *testing.T) {
 	wantScore(t, res, "collection-4-6", 65)
 }
 
+// TestMatchTypedTextKeepsThePositionFactor: the typed text is a second reading
+// of every candidate, and a sibling the structured facts place at another
+// position than the stated one is scaled by positionConflictFactor in it too,
+// unless the text names that work itself - its title clearly
+// (seriesDistrustHigh) or its volume ("sharpe 12"), the admin correcting a
+// misfiled book. "cornwell sharpe" beside volume 8's facts names no volume:
+// Sharpe's Siege reads 45 in it unscaled (its structured 18 already is), 36
+// scaled. A request without q is untouched.
+func TestMatchTypedTextKeepsThePositionFactor(t *testing.T) {
+	_, ts := newTestServerForCatalog(t, matchCatalog())
+	facts := url.Values{"title": {"Sharpe's Eagle"}, "author": {"Bernard Cornwell"}, "series": {"Richard Sharpe"}, "position": {"8"}}
+	for _, tc := range []struct {
+		q     string
+		id    string
+		score float64
+	}{
+		{"cornwell sharpe", "sharpes-siege", 36},
+		{"cornwell sharpe", "sharpes-revenge", 28},
+		{"cornwell sharpe", "sharpes-eagle", 100},
+		{"sharpes battle", "sharpes-battle", 100},
+		{"sharpe 12", "sharpes-battle", 100},
+		{"", "sharpes-siege", 18},
+	} {
+		q := maps.Clone(facts)
+		if tc.q != "" {
+			q.Set("q", tc.q)
+		}
+		wantScore(t, matchJSON(t, ts.URL, q), tc.id, tc.score)
+	}
+}
+
 func TestPositionCovers(t *testing.T) {
 	for _, tc := range []struct {
 		stored, stated string

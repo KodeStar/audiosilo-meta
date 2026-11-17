@@ -652,7 +652,11 @@ extra batch, `matchNarratorsSQL`, issued only for such a request), and pick
 `recording_id` (the best-agreeing recording, the closer runtime breaking a tie,
 unless it is far off the runtime, another edition, when the runtime's pick stands;
 `narratorVerdict`). The runtime and language factors scale the better of the two
-readings, never an identifier hit; the position factor is structuredScore's. A
+readings, never an identifier hit; the position factor is structuredScore's, and
+it scales the typed text's reading of the same sibling too unless the text names
+that work, its title at `seriesDistrustHigh` or its volume ("sharpe 12": an admin
+correcting a misfiled book), so `q` beside the facts no longer bypasses it
+(`TestMatchTypedTextKeepsThePositionFactor`, meta#2875). A
 request without `language` and `narrator` scores as before, except for the
 position and runtime factors, which apply to every request. Each title form, guess and series name is folded once
 (`termForm`), person and series names and work language tags once per request (`factMemo`). The ranking is score, then the identifier's hit (it scores 100 and a better-titled
