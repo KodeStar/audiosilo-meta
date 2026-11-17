@@ -704,7 +704,14 @@ to take a long work's document holds none. Out of budget or on a read error the 
 goes out as it would have without expand, never a 503 of its own, and all or nothing:
 the client falls back to fetching, as it must anyway for an older metaserve, which
 ignores the parameter. That degraded 200 carries `Cache-Control: no-store`
-(`expandBest` reports it, `handleMatch` sets it), so no cache repeats it. An unknown value is
+(`expandBest` reports it, `handleMatch` sets it), so no cache repeats it. Two
+additions an older metaserve ignores (meta#2875): `expand=work,lean` inlines the work
+without its CC BY-SA sidecars (characters, recaps, `recap_summary`, `position_scale`;
+`workDocument` skips their reads, the community description stays), about three
+quarters of a sampled long work's bytes and nothing a bulk match reads, and
+`expand_min=<1-100>` leaves a best no identifier found and scoring under it unexpanded,
+a whole answer (`parseExpansion`, `TestMatchExpandLeanLeavesTheSidecars`,
+`TestMatchExpandMinSkipsAWeakBest`). An unknown value is
 ignored; without expand the answer is byte-identical. Measured on the 2026-11 core
 artifact at load ~520 on the Mac, so only the ratios mean anything: the expansion
 costs the same as the work read beside it (p50 25 ms against 29 ms over 300 series

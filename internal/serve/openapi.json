@@ -429,10 +429,17 @@
             "name": "expand",
             "in": "query",
             "required": false,
-            "description": "What to inline, as a comma-separated list or by repeating the parameter. `work` puts on the best result (the first; an identifier hit ranks first) its `work`, exactly as `GET /api/v1/works/{id}` serves it, and its `series_facts`, so a client matching a whole library does not fetch either on its own. Only that one result carries them, and no series' member list is ever included. A value this server does not read is ignored, and so is the whole parameter on an older server. Treat the inlined members as a saving, never as a promise: they are read inside the match's own budget and left out when they do not fit in it, with the rest of the answer unchanged.",
-            "schema": { "type": "array", "items": { "type": "string", "enum": ["work"] } },
+            "description": "What to inline, as a comma-separated list or by repeating the parameter. `work` puts on the best result (the first; an identifier hit ranks first) its `work`, exactly as `GET /api/v1/works/{id}` serves it, and its `series_facts`, so a client matching a whole library does not fetch either on its own. Only that one result carries them, and no series' member list is ever included. A value this server does not read is ignored, and so is the whole parameter on an older server. Treat the inlined members as a saving, never as a promise: they are read inside the match's own budget and left out when they do not fit in it, with the rest of the answer unchanged. `lean` beside `work` inlines the work without its characters, recaps, `recap_summary` and `position_scale` (the community sidecars, most of a long work's bytes; the `community_description` stays); send both, so an older server that does not read `lean` still inlines the whole work. `lean` alone inlines nothing.",
+            "schema": { "type": "array", "items": { "type": "string", "enum": ["work", "lean"] } },
             "style": "form",
             "explode": false
+          },
+          {
+            "name": "expand_min",
+            "in": "query",
+            "required": false,
+            "description": "With `expand`: the score (1-100) under which the best result is not expanded unless an identifier found it, for a client that drops a weak best unread. A value outside 1-100 is ignored, and so is the parameter on an older server, which expands whatever the score.",
+            "schema": { "type": "integer", "minimum": 1, "maximum": 100 }
           }
         ],
         "responses": {

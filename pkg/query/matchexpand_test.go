@@ -197,6 +197,101 @@ func TestMatchExpandIsBounded(t *testing.T) {
 	}
 }
 
+// TestMatchExpandLeanLeavesTheSidecars: `lean` beside `work` inlines the work
+// without its characters, recaps, recap summary and the position scale they are
+// numbered on - the CC BY-SA sidecars a bulk match never reads, most of a long
+// work's bytes - and is otherwise the GET works/{id} document, the community
+// description included. `lean` alone asks for nothing, and an older metaserve
+// that does not know it inlines the whole work, which a client reads the same.
+func TestMatchExpandLeanLeavesTheSidecars(t *testing.T) {
+	_, ts := newTestServerForCatalog(t, artifacttest.Fixture())
+	params := url.Values{"title": {"Project Hail Mary"}, "author": {"Andy Weir"}}
+	_, doc := getRaw(t, ts.URL, "/api/v1/works/"+artifacttest.HailMary)
+	var want map[string]json.RawMessage
+	if err := json.Unmarshal(doc, &want); err != nil {
+		t.Fatal(err)
+	}
+	sidecars := []string{"characters", "recaps", "recap_summary", "position_scale"}
+	for _, key := range append(sidecars, "community_description") {
+		if _, has := want[key]; !has {
+			t.Fatalf("fixture: works/{id} carries no %s", key)
+		}
+	}
+	for _, key := range sidecars {
+		delete(want, key)
+	}
+
+	for _, values := range [][]string{{"work,lean"}, {"lean", "work"}, {" lean , work "}} {
+		params["expand"] = values
+		code, body := getRaw(t, ts.URL, matchPath(params))
+		if code != http.StatusOK {
+			t.Fatalf("expand=%q: status %d", values, code)
+		}
+		results := rawResults(t, body)
+		if len(results) == 0 || string(results[0]["id"]) != `"`+artifacttest.HailMary+`"` {
+			t.Fatalf("expand=%q: results %s", values, body)
+		}
+		var got map[string]json.RawMessage
+		if err := json.Unmarshal(results[0]["work"], &got); err != nil {
+			t.Fatalf("expand=%q: work %s: %v", values, results[0]["work"], err)
+		}
+		a, _ := json.Marshal(got)
+		b, _ := json.Marshal(want)
+		if !bytes.Equal(a, b) {
+			t.Errorf("expand=%q: lean work\n%s\nwant works/{id} without the sidecars\n%s", values, a, b)
+		}
+	}
+
+	params["expand"] = []string{"lean"}
+	if _, body := getRaw(t, ts.URL, matchPath(params)); bytes.Contains(body, []byte(`"work":`)) {
+		t.Errorf("expand=lean alone inlined a work: %s", body)
+	}
+}
+
+// TestMatchExpandMinSkipsAWeakBest: expand_min is the score under which a client
+// drops a best no identifier found, so its work is not inlined; the answer is
+// whole (not the degraded no-store one), since nothing it asked for is missing. An
+// identifier hit is inlined whatever the bar, and a value that is not a score in
+// 1-100 is ignored.
+func TestMatchExpandMinSkipsAWeakBest(t *testing.T) {
+	_, ts := newTestServerForCatalog(t, matchCatalog())
+	// "Sharpe's Eagle" by name and author alone scores 100; the bare author 40 or less.
+	for _, tc := range []struct {
+		name   string
+		params url.Values
+		min    string
+		inline bool
+	}{
+		{"a best above the bar", url.Values{"title": {"Sharpe's Eagle"}, "author": {"Bernard Cornwell"}}, "90", true},
+		{"a best below the bar", url.Values{"author": {"Bernard Cornwell"}}, "70", false},
+		{"no bar", url.Values{"author": {"Bernard Cornwell"}}, "", true},
+		{"a bar that is no score", url.Values{"author": {"Bernard Cornwell"}}, "x", true},
+		{"a bar above 100", url.Values{"author": {"Bernard Cornwell"}}, "101", true},
+		{"an identifier hit", url.Values{"asin": {"B002SQ7KVE"}}, "100", true},
+	} {
+		tc.params.Set("expand", "work")
+		if tc.min != "" {
+			tc.params.Set("expand_min", tc.min)
+		}
+		resp, err := http.Get(ts.URL + matchPath(tc.params))
+		if err != nil {
+			t.Fatal(err)
+		}
+		body, _ := io.ReadAll(resp.Body)
+		resp.Body.Close()
+		results := rawResults(t, body)
+		if len(results) == 0 {
+			t.Fatalf("%s: no results", tc.name)
+		}
+		if _, has := results[0]["work"]; has != tc.inline {
+			t.Errorf("%s: work inlined %v, want %v (score %s)", tc.name, has, tc.inline, results[0]["score"])
+		}
+		if cc := resp.Header.Get("Cache-Control"); cc == "no-store" {
+			t.Errorf("%s: a whole answer sent no-store", tc.name)
+		}
+	}
+}
+
 // TestMatchExpandValues: an unknown value is ignored, so the answer is the plain
 // one to the byte; the value is read from a list and from repeats.
 func TestMatchExpandValues(t *testing.T) {
@@ -300,7 +395,7 @@ func TestMatchExpandDegradesOutOfBudget(t *testing.T) {
 	spent, cancel := context.WithCancel(t.Context())
 	cancel()
 	results := plain()
-	if db.expandBest(spent, results) {
+	if db.expandBest(spent, results, matchExpansionReq{work: true}) {
 		t.Error("an expansion past the budget reported whole")
 	}
 	if got, _ := json.Marshal(results); !bytes.Equal(got, want) {
@@ -314,7 +409,7 @@ func TestMatchExpandDegradesOutOfBudget(t *testing.T) {
 		t.Fatal(err)
 	}
 	results = plain()
-	if gone.expandBest(t.Context(), results) {
+	if gone.expandBest(t.Context(), results, matchExpansionReq{work: true}) {
 		t.Error("an expansion after a failed read reported whole")
 	}
 	if got, _ := json.Marshal(results); !bytes.Equal(got, want) {
@@ -324,7 +419,7 @@ func TestMatchExpandDegradesOutOfBudget(t *testing.T) {
 	// A work the artifact doesn't hold is no expansion either.
 	results = plain()
 	results[0].ID = "no-such-work"
-	if db.expandBest(t.Context(), results) {
+	if db.expandBest(t.Context(), results, matchExpansionReq{work: true}) {
 		t.Error("an unknown work's expansion reported whole")
 	}
 	if results[0].Work != nil || results[0].SeriesFacts != nil {
@@ -332,10 +427,10 @@ func TestMatchExpandDegradesOutOfBudget(t *testing.T) {
 	}
 
 	// Whole: the expansion read, and an empty answer with nothing to expand.
-	if results = plain(); !db.expandBest(t.Context(), results) || results[0].Work == nil {
+	if results = plain(); !db.expandBest(t.Context(), results, matchExpansionReq{work: true}) || results[0].Work == nil {
 		t.Error("a successful expansion did not report whole")
 	}
-	if !db.expandBest(t.Context(), nil) {
+	if !db.expandBest(t.Context(), nil, matchExpansionReq{work: true}) {
 		t.Error("an empty answer did not report whole")
 	}
 }
@@ -466,7 +561,7 @@ func BenchmarkMatchExpansion(b *testing.B) {
 	defer func() { _ = db.Close() }()
 	ctx := context.Background()
 	for b.Loop() {
-		work, facts, err := db.matchExpansion(ctx, "sharpes-eagle")
+		work, facts, err := db.matchExpansion(ctx, "sharpes-eagle", true)
 		if err != nil {
 			b.Fatal(err)
 		}

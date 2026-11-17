@@ -823,7 +823,7 @@ func TestMatchReadsHonourTheContext(t *testing.T) {
 			return err
 		},
 		"matchExpansion": func(ctx context.Context) error {
-			_, _, err := snap.matchExpansion(ctx, "sharpes-eagle")
+			_, _, err := snap.matchExpansion(ctx, "sharpes-eagle", true)
 			return err
 		},
 	}

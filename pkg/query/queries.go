@@ -320,6 +320,13 @@ func (s *DB) WorkDetail(id string) (*WorkDetail, error) {
 // workDetail is WorkDetail under ctx, which every read takes: works/match?expand
 // (matchexpand.go) reads a work inside what is left of its budget.
 func (s *DB) workDetail(ctx context.Context, id string) (*WorkDetail, error) {
+	return s.workDocument(ctx, id, true)
+}
+
+// workDocument is workDetail, with the CC BY-SA sidecars (characters, recaps, the
+// recap summary and their position scale) read only when sidecars says so:
+// works/match's lean expansion leaves them, and their reads, out.
+func (s *DB) workDocument(ctx context.Context, id string, sidecars bool) (*WorkDetail, error) {
 	var d WorkDetail
 	var subtitle, firstPub, desc, wiki, ol, gr sql.NullString
 	err := s.db.QueryRowContext(ctx,
@@ -359,19 +366,21 @@ func (s *DB) workDetail(ctx context.Context, id string) (*WorkDetail, error) {
 	if d.Recordings, err = s.recordingsOf(ctx, id); err != nil {
 		return nil, err
 	}
-	if d.Characters, err = s.charactersOf(ctx, id); err != nil {
-		return nil, err
-	}
-	if d.Recaps, err = s.recapsOf(ctx, id); err != nil {
-		return nil, err
-	}
-	if d.RecapSummary, err = s.recapSummaryOf(ctx, id); err != nil {
-		return nil, err
-	}
-	// A scale is a statement about these members, and the schema refuses one without them.
-	if len(d.Characters)+len(d.Recaps) > 0 {
-		if d.PositionScale, err = s.positionScaleOf(ctx, id); err != nil {
+	if sidecars {
+		if d.Characters, err = s.charactersOf(ctx, id); err != nil {
 			return nil, err
+		}
+		if d.Recaps, err = s.recapsOf(ctx, id); err != nil {
+			return nil, err
+		}
+		if d.RecapSummary, err = s.recapSummaryOf(ctx, id); err != nil {
+			return nil, err
+		}
+		// A scale is a statement about these members, and the schema refuses one without them.
+		if len(d.Characters)+len(d.Recaps) > 0 {
+			if d.PositionScale, err = s.positionScaleOf(ctx, id); err != nil {
+				return nil, err
+			}
 		}
 	}
 	if d.CommunityDescription, err = s.communityDescriptionOf(ctx, id); err != nil {

@@ -119,8 +119,9 @@ type matchRequest struct {
 	// narrators are the narrator guesses, each split like an author credit.
 	language  string
 	narrators []string
-	// expandWork asks for the best result's work and series facts (matchexpand.go).
-	expandWork bool
+	// expand is what the expand parameters ask for: the best result's work and
+	// series facts, lean or whole, above a score (matchexpand.go).
+	expand matchExpansionReq
 }
 
 // parseMatchRequest reads the query parameters. Every text value is trimmed and
@@ -153,9 +154,9 @@ func parseMatchRequest(q url.Values) (matchRequest, bool) {
 		limit:   clampLimit(q.Get("limit"), matchLimitDefault, matchLimitMax),
 		// Neither is a fact a match can stand on alone, so neither counts
 		// toward ok below: they only weigh the candidates the others found.
-		language:   model.ReadLanguage(text(q.Get("language"))),
-		narrators:  list(q["narrator"], matchHypothesesMax),
-		expandWork: wantsWorkExpansion(q["expand"]),
+		language:  model.ReadLanguage(text(q.Get("language"))),
+		narrators: list(q["narrator"], matchHypothesesMax),
+		expand:    parseExpansion(q["expand"], q.Get(matchExpandMinParam)),
 	}
 	if len(r.asin) > maxMatchIdentifier {
 		r.asin = ""
@@ -264,8 +265,8 @@ func (s *handler) matchInSlot(ctx context.Context, snap *DB, req matchRequest) (
 	}
 	results, err = snap.match(ctx, req)
 	whole = true
-	if err == nil && req.expandWork {
-		whole = snap.expandBest(ctx, results)
+	if err == nil && req.expand.work {
+		whole = snap.expandBest(ctx, results, req.expand)
 	}
 	return results, whole, err
 }
