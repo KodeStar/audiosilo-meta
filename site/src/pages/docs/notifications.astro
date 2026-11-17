@@ -65,8 +65,9 @@ const tag =
         <p class="mt-4 text-base leading-relaxed text-body">
           The Watching page turns the series you follow into a feed URL, and that URL is the whole
           subscription: there is no account here, and no email address, phone number or other
-          contact detail of yours is stored. The feed URL itself, like any request, appears in
-          ordinary access logs - see the <a class={link} href="/privacy">privacy policy</a>.
+          contact detail of yours is stored. A fetch of the feed URL, like any request here, is not
+          written to an access log; the service you subscribe with sees the URL and keeps whatever
+          logs it keeps - see the <a class={link} href="/privacy">privacy policy</a>.
           Copy your URL from the
           <a class={link} href="/watching#notify">Get notified tab</a> on the Watching page, then
           pick one of the options below and follow its steps.
