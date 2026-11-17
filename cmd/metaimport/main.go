@@ -6,7 +6,7 @@
 //
 //	metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]
 //	metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]
-//	metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only [--copies-of <path>] | --relocate | --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>]] [--existing-series-only] [--attach-editions] [--skipped <path>]
+//	metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only [--copies-of <path>] | --relocate | --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>]] [--existing-series-only] [--attach-editions] [--intake] [--skipped <path>]
 //	metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--reported] [--refusals <path>] [--attachments <path>] [--date YYYY-MM-DD]
 //	metaimport librivox fetch  --out <snapshot> [--max-pages N]
 //	metaimport librivox import --from <snapshot> --ids <range> [--data data] [--dry-run] [--date YYYY-MM-DD] [--conflicts <path>] [--skipped <path>] [--worklist <path>]
@@ -38,6 +38,11 @@
 // as identity-duplicate. It is for the sync bot's reported-ASIN lane
 // (GOVERNANCE.md) and never for a full export; internal/importer/libexselect.go
 // and reportedguard.go have the reasoning.
+//
+// --intake (libex's create mode) marks a run of the reported-ASIN lane: every
+// record it writes is stamped libex-import with the ref "intake:<ASIN>" rather
+// than the bare ASIN, so the lane's records are one query apart from the feeds'
+// and can be retracted without the feeds' (GOVERNANCE.md, meta#2890).
 //
 // --attach-editions (libex-select, and libex's create mode) turns on the attach
 // rule (internal/importer/attach.go): a row claiming a series position the
@@ -272,6 +277,7 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	// Registered for every source so the wrong one is refused with a reason.
 	skipped := fs.String("skipped", "", "write one NDJSON line per row the run refused for a reason with a libex-select refusal code ({\"asin\",\"reason\"}) to this file (libex only)")
 	attachEditions := fs.Bool("attach-editions", false, "attach a row at a series position the catalogue already fills to the work there when it is another edition of it, and refuse it otherwise (libex only)")
+	intake := fs.Bool("intake", false, "stamp every record the run writes with the ref \"intake:<ASIN>\" instead of the bare ASIN: a run of the sync bot's reported-ASIN lane, so its records are one query apart from the feeds' (create mode, libex only)")
 	copiesOf := fs.String("copies-of", "", "with --recordings-only: attach each row this NDJSON file lists ({\"asin\",\"anchor\"} per line) to the recording its catalogued anchor ASIN sits on, its credits and series never read; refusals go to --skipped (libex only)")
 
 	// Accept the positional export path either before or after the flags.
@@ -295,6 +301,7 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	rules := append([]flagRule{
 		{"--skipped", true, notRegen, "cannot report a --regenerate-genres run's refusals: a refused row whose ASIN the catalogue holds is not listed, and every other row matched nothing"},
 		{"--attach-editions", true, func(m importer.Mode) bool { return m == importer.ModeCreate }, "attaches rows the CREATE path would plan; it is valid in that mode only"},
+		{"--intake", true, func(m importer.Mode) bool { return m == importer.ModeCreate }, "marks the reported-ASIN lane's create run; it is valid in that mode only"},
 		{"--copies-of", true, func(m importer.Mode) bool { return m == importer.ModeRecordingsOnly }, "attaches copies in the recordings-only pass; it requires --recordings-only"},
 		{"--existing-series-only", false, notRegen, inertInRegen},
 		{"--series-lookup", false, notRegen, inertInRegen},
@@ -340,6 +347,7 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		Conflicts:          conflictLog,
 		ExistingSeriesOnly: *existingSeriesOnly,
 		AttachEditions:     *attachEditions,
+		Intake:             *intake,
 		CopiesOf:           copies,
 		RowsAsOf:           *rowsAsOf,
 		Distinct:           audit.ReviewedDistinct(),
@@ -798,7 +806,7 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport audiosilo-books <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
-	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only [--copies-of <path>] | --relocate | --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>]] [--existing-series-only] [--attach-editions] [--skipped <path>]")
+	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only [--copies-of <path>] | --relocate | --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>]] [--existing-series-only] [--attach-editions] [--intake] [--skipped <path>]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--reported] [--refusals <path>] [--attachments <path>] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-fill  [--data data] [--works a,b] [--limit N] [--all-tiers | --released-preorders] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport narrations  -o <worklist.ndjson> [--data data] [--works a,b] [--user-library] [--limit N] [--rows <rows.ndjson>]")
@@ -819,6 +827,8 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "    one, and refuses it as identity-duplicate when a held work by one of its authors has the same title,")
 	fmt.Fprintln(os.Stderr, "    with or without a subtitle, an \"&\" or a German \"und\" read as \"and\". For the sync bot's reported-ASIN")
 	fmt.Fprintln(os.Stderr, "    lane, which caps its own records; never over a full export.")
+	fmt.Fprintln(os.Stderr, "  --intake (libex create) stamps every record the run writes with the ref \"intake:<ASIN>\", not the")
+	fmt.Fprintln(os.Stderr, "    bare ASIN: the reported-ASIN lane's run, so its records are one query apart from the feeds'.")
 	fmt.Fprintln(os.Stderr, "  --refusals / --attachments (libex-select) and --skipped (libex, librivox import) write NDJSON worklists with")
 	fmt.Fprintln(os.Stderr, "    stable reason codes, atomically.")
 	fmt.Fprintln(os.Stderr, "  --enrich (libex only) fills absent facts on ASIN-matched existing records; it never creates.")

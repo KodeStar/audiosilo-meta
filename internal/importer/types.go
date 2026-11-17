@@ -2,6 +2,7 @@ package importer
 
 import (
 	"io"
+	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -32,6 +33,16 @@ const (
 	sourceLibex    = model.SourceLibexImport
 	sourceLibrivox = model.SourceLibrivox
 )
+
+// IntakeRefPrefix opens the ref of a reported-ASIN lane run's stamp
+// (Options.Intake): "intake:B0..." is the row's ASIN, stated through the lane.
+// sourceASIN reads the ASIN back, so the refresh rules, which compare a stamp's
+// ref with a recording's first ASIN, read the lane's stamps as the feeds'.
+const IntakeRefPrefix = "intake:"
+
+// sourceASIN is the ASIN a libex stamp's ref names: the ref itself, a lane
+// stamp's (IntakeRefPrefix) without its prefix.
+func sourceASIN(ref string) string { return strings.TrimPrefix(ref, IntakeRefPrefix) }
 
 // OutSource is a record's provenance stamp (type/ref/imported_at).
 type OutSource struct {
@@ -300,6 +311,13 @@ type Options struct {
 	// behaviour exactly. The series-completion bot passes it, with
 	// libex-select's own --attach-editions.
 	AttachEditions bool
+	// Intake (`metaimport libex --intake`) marks a run of the series-completion
+	// bot's reported-ASIN lane (GOVERNANCE.md): every record it writes is stamped
+	// `libex-import` as the feeds' are, with the ref IntakeRefPrefix + the row's
+	// ASIN, so the lane's records can be found, and retracted, apart from the
+	// feeds' (meta#2890). A create run of libex rows only (runBooks refuses it
+	// anywhere else).
+	Intake bool
 	// CopiesOf (`metaimport libex --recordings-only --copies-of <file>`,
 	// ReadCopiesOf) maps a row's ASIN to the catalogued ANCHOR ASIN whose
 	// recording it is another marketplace's copy of, as the caller proved it

@@ -818,6 +818,27 @@ func TestAttachEditionsRejectsTheBoundedModes(t *testing.T) {
 	}
 }
 
+// --intake marks the reported-ASIN lane's create run: it reaches the importer
+// there, and every other mode refuses it before anything runs.
+func TestIntakeFlag(t *testing.T) {
+	var got importer.Options
+	ok := func(_ string, o importer.Options) (importer.Summary, error) { got = o; return importer.Summary{}, nil }
+	captureStdout(t, func() {
+		if code := runSource(boundedSource, []string{"export.json", "--intake", "--existing-series-only"}, ok); code != 0 || !got.Intake {
+			t.Errorf("--intake: exit %d, Options.Intake %v", code, got.Intake)
+		}
+	})
+	refused := func(string, importer.Options) (importer.Summary, error) {
+		t.Error("the import must not run")
+		return importer.Summary{}, nil
+	}
+	for _, mode := range []string{"--enrich", "--recordings-only", "--relocate"} {
+		if code := runSource(boundedSource, []string{"export.json", "--intake", mode}, refused); code != 2 {
+			t.Errorf("--intake %s: exit %d, want 2", mode, code)
+		}
+	}
+}
+
 func TestRelocateModeFlags(t *testing.T) {
 	for _, tc := range []struct {
 		source                       string
@@ -964,6 +985,7 @@ func TestRegenerateGenresRefusesInertFlags(t *testing.T) {
 		{"--series-lookup-limit", "5"},
 		{"--libex", "https://example.invalid"},
 		{"--attach-editions"},
+		{"--intake"},
 		{"--skipped", "s.ndjson"},
 	} {
 		args := append([]string{"export.json", "--regenerate-genres", "--rows-as-of", "2026-07-29"}, extra...)

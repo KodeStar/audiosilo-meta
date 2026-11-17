@@ -2261,7 +2261,10 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   auto-merge, under the bound and the ai-verify gate stated there and not
   restated here. That section's reported-ASIN lane reads metaserve's intake queue
   and selects with `libex-select --reported --attach-editions` instead, importing
-  under the same flags with no `--enrich`. Its code is that repository's, but its TOOLS are ours: it
+  under the same flags plus `--intake` (`Options.Intake`: every stamp's ref is
+  `intake:<ASIN>`, `IntakeRefPrefix`, which `sourceASIN` reads back for the refresh
+  rules, so the lane's records are one query apart from the feeds', meta#2890; the
+  bot passes it once its pin lists the flag) with no `--enrich`. Its code is that repository's, but its TOOLS are ours: it
   builds metaimport, metafmt and metacheck from a PINNED commit of this repo, so
   a CLI flag, a report shape or a selector rule changed here breaks it silently
   until the pin is bumped there - bumping it is part of making such a change.

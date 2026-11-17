@@ -492,6 +492,8 @@ type planner struct {
 	// (the per-row half is the book's ASIN); setSource composes the three.
 	sourceType string
 	importDate string
+	// intake is Options.Intake: the ref is the ASIN behind IntakeRefPrefix.
+	intake bool
 	curSource  OutSource
 	// curRefresh reports whether the row curSource stamps REFRESHED the
 	// recording it matched: only that stamp is let past the source
@@ -593,6 +595,9 @@ type planner struct {
 // record a row creates or changes carries it (see stampSource).
 func (p *planner) setSource(asin string, b sourceBook) {
 	ref := asin
+	if p.intake && asin != "" {
+		ref = IntakeRefPrefix + asin
+	}
 	if b.lv != nil {
 		// A LibriVox row has no ASIN; its identity is the project id.
 		ref = strconv.Itoa(b.lv.id)
@@ -849,6 +854,11 @@ func runBooks(books []sourceBook, sourceType string, opts Options, parseSkips []
 	if len(opts.CopiesOf) > 0 && (opts.Mode != ModeRecordingsOnly || sourceType != sourceLibex) {
 		return Summary{}, fmt.Errorf("copies (--copies-of) attach in the recordings-only pass of a libex run alone")
 	}
+	// The reported-ASIN lane imports libex rows in the create pass; anywhere else
+	// its stamp would mark records the lane never wrote.
+	if opts.Intake && (opts.Mode != ModeCreate || sourceType != sourceLibex) {
+		return Summary{}, fmt.Errorf("the intake stamp (--intake) marks a create run of libex rows alone")
+	}
 	// The run's trust tier, asked here as well as by newPlanner because the AI
 	// gate below runs before the planner exists and needs the same answer: a person's own library (or a hand submission) may admit a
 	// synthetic narration under the canonical record, the bulk mirror may not.
@@ -955,6 +965,7 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 		existingSeriesOnly: opts.ExistingSeriesOnly,
 		copiesOf:           opts.CopiesOf,
 		attachEditions:     opts.AttachEditions,
+		intake:             opts.Intake,
 		loadedPositions:    opts.AttachEditions,
 		regenRecs:          regenRecsFor(opts.Mode),
 		rowsAsOf:           opts.RowsAsOf,
