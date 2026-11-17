@@ -438,7 +438,7 @@
             "name": "expand_min",
             "in": "query",
             "required": false,
-            "description": "With `expand`: the score (1-100) under which the best result is not expanded unless an identifier found it, for a client that drops a weak best unread. A value outside 1-100 is ignored, and so is the parameter on an older server, which expands whatever the score.",
+            "description": "With `expand`: the score (1-100) under which the best result is not expanded (an identifier hit scores 100), for a client that drops a weak best unread. A value outside 1-100 is ignored, and so is the parameter on an older server, which expands whatever the score.",
             "schema": { "type": "integer", "minimum": 1, "maximum": 100 }
           }
         ],

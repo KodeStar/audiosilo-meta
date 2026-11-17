@@ -1382,8 +1382,8 @@ func (f *matchFacts) namedByAnother(c *candidate) float64 {
 //     seriesDistrustLow/High), unless the listing vouches for the work
 //     (listedHere: the resolved series lists it at the stated position and its
 //     recording agrees with the runtime), when a title in or above the band
-//     counts at least genericTitleValue (one below it, sharing nothing with the
-//     request's, counts as it is);
+//     counts at least genericTitleValue (one below it only while the request's
+//     title names no other work that could be the book, namedByAnother);
 //   - in the named series but at ANOTHER volume, unless the title itself agrees
 //     ("Sharpe's Siege" filed as volume 20, which is volume 19), whatever it
 //     shares with the request's title is the series' naming pattern ("Tales

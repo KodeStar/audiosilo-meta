@@ -251,8 +251,8 @@ func TestMatchExpandLeanLeavesTheSidecars(t *testing.T) {
 // TestMatchExpandMinSkipsAWeakBest: expand_min is the score under which a client
 // drops a best no identifier found, so its work is not inlined; the answer is
 // whole (not the degraded no-store one), since nothing it asked for is missing. An
-// identifier hit is inlined whatever the bar, and a value that is not a score in
-// 1-100 is ignored.
+// identifier hit scores 100, so it is inlined under any bar, and a value that is
+// not a score in 1-100 is ignored.
 func TestMatchExpandMinSkipsAWeakBest(t *testing.T) {
 	_, ts := newTestServerForCatalog(t, matchCatalog())
 	// "Sharpe's Eagle" by name and author alone scores 100; the bare author 40 or less.

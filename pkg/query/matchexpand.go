@@ -41,7 +41,7 @@ import (
 // client sends them unconditionally: `lean` beside `work` leaves the work's CC BY-SA
 // sidecars out (and unread), which a bulk match never reads and which are most of a
 // long work's bytes; `expand_min` skips the expansion of a best the client will
-// drop unread (no identifier, under its score), an answer that is still whole.
+// drop unread (under its score), an answer that is still whole.
 
 // matchExpandWork is the expand value that asks for all of this.
 const matchExpandWork = "work"
@@ -54,7 +54,7 @@ const matchExpandWork = "work"
 const matchExpandLean = "lean"
 
 // matchExpandMinParam names the score under which the best is not expanded
-// unless an identifier found it (1-100; anything else is ignored): a client that
+// (1-100; anything else is ignored; an identifier hit scores 100): a client that
 // drops a weak best unread (audiosilo-server's review floor) says so, and its
 // document is not read or sent. An older metaserve ignores it and expands.
 const matchExpandMinParam = "expand_min"
@@ -111,7 +111,8 @@ func (s *DB) expandBest(ctx context.Context, results []matchResult, x matchExpan
 		return true
 	}
 	best := &results[0]
-	if best.Score < x.min && best.Reasons.Identifier == "" {
+	// An identifier hit scores 100, so a bar never skips it.
+	if best.Score < x.min {
 		return true // the client drops it unread: nothing it asked for is missing
 	}
 	work, facts, err := s.matchExpansion(ctx, best.ID, !x.lean)

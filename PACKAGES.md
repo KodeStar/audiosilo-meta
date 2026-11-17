@@ -714,8 +714,8 @@ additions an older metaserve ignores (meta#2875): `expand=work,lean` inlines the
 without its CC BY-SA sidecars (characters, recaps, `recap_summary`, `position_scale`;
 `workDocument` skips their reads, the community description stays), about three
 quarters of a sampled long work's bytes and nothing a bulk match reads, and
-`expand_min=<1-100>` leaves a best no identifier found and scoring under it unexpanded,
-a whole answer (`parseExpansion`, `TestMatchExpandLeanLeavesTheSidecars`,
+`expand_min=<1-100>` leaves a best scoring under it unexpanded (an identifier hit
+scores 100), a whole answer (`parseExpansion`, `TestMatchExpandLeanLeavesTheSidecars`,
 `TestMatchExpandMinSkipsAWeakBest`). An unknown value is
 ignored; without expand the answer is byte-identical. Measured on the 2026-11 core
 artifact at load ~520 on the Mac, so only the ratios mean anything: the expansion
