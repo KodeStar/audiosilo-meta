@@ -273,12 +273,7 @@ func TestMatchExpandMinSkipsAWeakBest(t *testing.T) {
 		if tc.min != "" {
 			tc.params.Set("expand_min", tc.min)
 		}
-		resp, err := http.Get(ts.URL + matchPath(tc.params))
-		if err != nil {
-			t.Fatal(err)
-		}
-		body, _ := io.ReadAll(resp.Body)
-		_ = resp.Body.Close()
+		resp, body := watchFeedResponse(t, ts, matchPath(tc.params))
 		results := rawResults(t, body)
 		if len(results) == 0 {
 			t.Fatalf("%s: no results", tc.name)
@@ -365,8 +360,8 @@ func TestMatchExpandFollowsTheClientsBest(t *testing.T) {
 	_, ts := newTestServerForCatalog(t, matchCatalog())
 	params := url.Values{"title": {"Sharpe's Battle"}, "author": {"Bernard Cornwell"}, "asin": {"B002SQ7KVE"}, "limit": {"2"}, "expand": {"work"}}
 	res := matchJSON(t, ts.URL, params)
-	if len(res) != 2 || res[0]["id"] != "sharpes-eagle" || res[1]["id"] != "sharpes-battle" || res[0]["score"] != res[1]["score"] {
-		t.Fatalf("fixture: want the identifier's work ranked over the title's at one score, got %v", res)
+	if len(res) != 2 || res[0]["id"] != "sharpes-eagle" {
+		t.Fatalf("want the identifier's work first of two (TestMatchIdentifierHitSurvivesTheLimit), got %v", res)
 	}
 	if work, _ := res[0]["work"].(map[string]any); work == nil || work["id"] != "sharpes-eagle" {
 		t.Errorf("the identifier's result carries %v", res[0]["work"])

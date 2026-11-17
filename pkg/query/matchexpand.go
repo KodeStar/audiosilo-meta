@@ -95,7 +95,6 @@ func parseExpansion(values []string, minScore string) matchExpansionReq {
 			x.lean = true
 		}
 	}
-	x.lean = x.lean && x.work
 	if n, err := strconv.Atoi(strings.TrimSpace(minScore)); err == nil && n >= 1 && n <= 100 {
 		x.min = n
 	}

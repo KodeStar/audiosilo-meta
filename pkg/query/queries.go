@@ -314,18 +314,14 @@ type WorkDetail struct {
 
 // WorkDetail returns the full work document, or (nil, nil) when absent.
 func (s *DB) WorkDetail(id string) (*WorkDetail, error) {
-	return s.workDetail(context.Background(), id)
+	return s.workDocument(context.Background(), id, true)
 }
 
-// workDetail is WorkDetail under ctx, which every read takes: works/match?expand
-// (matchexpand.go) reads a work inside what is left of its budget.
-func (s *DB) workDetail(ctx context.Context, id string) (*WorkDetail, error) {
-	return s.workDocument(ctx, id, true)
-}
-
-// workDocument is workDetail, with the CC BY-SA sidecars (characters, recaps, the
-// recap summary and their position scale) read only when sidecars says so:
-// works/match's lean expansion leaves them, and their reads, out.
+// workDocument is WorkDetail under ctx, which every read takes (works/match's
+// expand, matchexpand.go, reads a work inside what is left of its budget), with
+// the CC BY-SA sidecars (characters, recaps, the recap summary and their
+// position scale) read only when sidecars says so: works/match's lean expansion
+// leaves them, and their reads, out.
 func (s *DB) workDocument(ctx context.Context, id string, sidecars bool) (*WorkDetail, error) {
 	var d WorkDetail
 	var subtitle, firstPub, desc, wiki, ol, gr sql.NullString
