@@ -1,6 +1,7 @@
 package model
 
 import (
+	"maps"
 	"regexp"
 	"strings"
 )
@@ -155,4 +156,78 @@ func SeriesLanguageOf(works []SeriesWork, byID map[string]*Work) string {
 		}
 		return ""
 	})
+}
+
+// languageSpellings maps the spellings a file's language tag takes to the
+// catalogue's language tag: the two English-name tables (languageWords,
+// librivoxLanguages), then the ISO 639-2 codes (bibliographic and terminology)
+// and a few own-language names of the languages the first one holds. The four
+// codes that state no single language (undetermined, multiple, no linguistic
+// content, uncoded) and "multilingual" map to "", unknown. Keys are lowercased
+// and carry no diacritics (ReadLanguage strips them first).
+var languageSpellings = func() map[string]string {
+	m := LanguageWords()
+	maps.Copy(m, librivoxLanguages)
+	maps.Copy(m, map[string]string{
+		"eng": "en", "tur": "tr", "ger": "de", "deu": "de", "fre": "fr", "fra": "fr",
+		"spa": "es", "ita": "it", "jpn": "ja", "por": "pt", "dut": "nl", "nld": "nl",
+		"pol": "pl", "rus": "ru", "chi": "zh", "zho": "zh", "dan": "da", "swe": "sv",
+		"ara": "ar", "hin": "hi", "heb": "he", "cze": "cs", "ces": "cs", "hun": "hu",
+		"fin": "fi", "nor": "no", "nob": "no", "nno": "no", "gre": "el", "ell": "el",
+		"mar": "mr", "rum": "ro", "ron": "ro", "mal": "ml",
+		// Norwegian's two written standards share the catalogue's "no".
+		"nb": "no", "nn": "no",
+		"deutsch": "de", "francais": "fr", "espanol": "es", "castellano": "es",
+		"italiano": "it", "nederlands": "nl", "portugues": "pt", "polski": "pl",
+		"svenska": "sv", "dansk": "da", "norsk": "no", "suomi": "fi",
+		"und": "", "mul": "", "multilingual": "", "zxx": "", "mis": "",
+	})
+	return m
+}()
+
+// languageSpellingCodes are the tags languageSpellings maps onto: every tag the
+// importers write, so every one the catalogue stores (Ancient Greek's "grc"
+// among them, a language with no 639-1 code). A well-formed tag outside it
+// ("xx", "na", a 639-2 code such as "kor" the table does not map) reads as
+// unknown: passed through it would never equal a work's tag.
+var languageSpellingCodes = func() map[string]bool {
+	out := map[string]bool{}
+	for _, lang := range languageSpellings {
+		if lang != "" {
+			out[lang] = true
+		}
+	}
+	return out
+}()
+
+// LanguageSpellings returns a copy of the table ReadLanguage reads: each
+// spelling a file's language tag takes (lowercased, diacritics stripped) mapped
+// to the catalogue's tag, "" for one that names no single language. For a
+// client that reads tags the way works/match does (audiosilo-server's bulk
+// match); ReadLanguage is the whole rule.
+func LanguageSpellings() map[string]string { return maps.Clone(languageSpellings) }
+
+// ReadLanguage reads a language as a file's tag spells it, the way works/match
+// compares languages: a BCP-47 tag's primary subtag ("en-US", "en_GB" -> "en"), a
+// 639-2 code ("eng") or a language's name ("English", "Deutsch", "Français")
+// mapped to the catalogue's tag, and "" for anything else - an unknown
+// language, which a comparison never judges, so a gap in the tables costs a
+// judgement, never a wrong one. A stored tag goes through the same reading, so
+// "nb" and "no" are one language.
+func ReadLanguage(raw string) string {
+	s := strings.ReplaceAll(strings.ToLower(strings.TrimSpace(StripMarks(raw))), "_", "-")
+	if lang, ok := languageSpellings[s]; ok {
+		return lang
+	}
+	if !ValidLanguageTag(s) {
+		return ""
+	}
+	p := PrimarySubtag(s)
+	if lang, ok := languageSpellings[p]; ok {
+		return lang
+	}
+	if !languageSpellingCodes[p] {
+		return ""
+	}
+	return p
 }

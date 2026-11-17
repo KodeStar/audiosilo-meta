@@ -4,6 +4,7 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"unicode/utf8"
 
 	"golang.org/x/text/unicode/norm"
 )
@@ -435,6 +436,29 @@ func WantPersonID(name string, librivoxReaderID, librivoxAuthorID int) string {
 		return lv
 	}
 	return want
+}
+
+// StripMarks removes combining marks after canonical decomposition, so a
+// precomposed "é" and a decomposed one both become "e"; an all-ASCII string is
+// returned as it is. Case and every other rune are kept.
+func StripMarks(s string) string {
+	ascii := true
+	for i := 0; i < len(s); i++ {
+		if s[i] >= utf8.RuneSelf {
+			ascii = false
+			break
+		}
+	}
+	if ascii {
+		return s
+	}
+	var b strings.Builder
+	for _, r := range norm.NFD.String(s) {
+		if !IsCombiningMark(r) {
+			b.WriteRune(r)
+		}
+	}
+	return b.String()
 }
 
 // IsCombiningMark reports whether r is a Unicode combining diacritical mark

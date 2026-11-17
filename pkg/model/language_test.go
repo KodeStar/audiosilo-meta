@@ -77,3 +77,43 @@ func TestSameLanguage(t *testing.T) {
 		}
 	}
 }
+
+// TestReadLanguage: a language as a file's tag spells it, read as the
+// catalogue's tag - a BCP-47 tag's primary subtag, a 639-2 code, an English, a
+// LibriVox or an own-language name - and "" for anything that names no single
+// language this table reads.
+func TestReadLanguage(t *testing.T) {
+	for in, want := range map[string]string{
+		"en": "en", "EN": "en", "en-US": "en", "en_gb": "en", "eng": "en", "English": "en",
+		"de": "de", "ger": "de", "deu": "de", "German": "de", "Deutsch": "de",
+		"fr": "fr", "fra": "fr", "Français": "fr", "es-419": "es", "Español": "es",
+		"ja": "ja", "jpn": "ja", "nb": "no", "nn": "no", "no": "no", "Norwegian": "no",
+		"pt-br": "pt", "sv": "sv", " Português ": "pt",
+		// LibriVox's name table, and its 639-2-only tags kept as stored.
+		"Catalan": "ca", "Ancient Greek": "grc", "grc": "grc", "ang": "ang", "Multilingual": "",
+		// A tag no table maps onto is unknown, never a language of its own
+		// ("kor" is not judged against "ko", nor "xx" against anything).
+		"kor": "", "ko": "ko", "xx": "", "NA": "", "zz-ZZ": "",
+		"": "", "und": "", "mul": "", "zxx": "", "mis": "", "Klingon": "", "en,de": "", "12": "", "English; German": "",
+	} {
+		if got := ReadLanguage(in); got != want {
+			t.Errorf("ReadLanguage(%q) = %q, want %q", in, got, want)
+		}
+	}
+}
+
+// TestLanguageSpellingsIsACopy: the exported table is the reader's, and a
+// caller changing its copy changes nothing ReadLanguage reads.
+func TestLanguageSpellingsIsACopy(t *testing.T) {
+	m := LanguageSpellings()
+	if m["deutsch"] != "de" || m["eng"] != "en" || m["english"] != "en" || m["catalan"] != "ca" {
+		t.Fatalf("LanguageSpellings misses the names, codes or LibriVox names: %d entries", len(m))
+	}
+	if v, ok := m["und"]; !ok || v != "" {
+		t.Errorf(`LanguageSpellings["und"] = %q, %v; want "" (no single language)`, v, ok)
+	}
+	m["deutsch"] = "xx"
+	if ReadLanguage("Deutsch") != "de" {
+		t.Error("changing the copy changed ReadLanguage")
+	}
+}

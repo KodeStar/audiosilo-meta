@@ -115,7 +115,7 @@ type matchRequest struct {
 	asin     string
 	isbn     string
 	limit    int
-	// language is the book's language as matchLanguage reads it, "" unknown;
+	// language is the book's language as model.ReadLanguage reads it, "" unknown;
 	// narrators are the narrator guesses, each split like an author credit.
 	language  string
 	narrators []string
@@ -153,7 +153,7 @@ func parseMatchRequest(q url.Values) (matchRequest, bool) {
 		limit:   clampLimit(q.Get("limit"), matchLimitDefault, matchLimitMax),
 		// Neither is a fact a match can stand on alone, so neither counts
 		// toward ok below: they only weigh the candidates the others found.
-		language:   matchLanguage(text(q.Get("language"))),
+		language:   model.ReadLanguage(text(q.Get("language"))),
 		narrators:  list(q["narrator"], matchHypothesesMax),
 		expandWork: wantsWorkExpansion(q["expand"]),
 	}
@@ -300,7 +300,7 @@ type matchFacts struct {
 	// 1" beside "02 - Throne of Glass") does not count.
 	tiedVolume bool
 	runtime    int
-	// language is the request's (matchLanguage), "" when unknown; narrators
+	// language is the request's (model.ReadLanguage), "" when unknown; narrators
 	// are its narrator guesses read as names (splitAuthors).
 	language  string
 	narrators []personName
@@ -490,7 +490,7 @@ type candidate struct {
 	authorWord map[string]bool
 	series     []candidateSeries
 	runtimes   []recordingRuntime
-	// language is the work's, as matchLanguage reads it ("" unknown).
+	// language is the work's, as model.ReadLanguage reads it ("" unknown).
 	language string
 	// narrated is each recording crediting narrators, in recording id order;
 	// read only when the request names narrators.
@@ -942,7 +942,7 @@ func matchNarratorsSQL(ph string) string {
 type factMemo struct {
 	people    map[string]memoPerson // by person id
 	series    map[string]*termForm  // by series name
-	languages map[string]string     // matchLanguage, by stored tag
+	languages map[string]string     // model.ReadLanguage, by stored tag
 }
 
 type memoPerson struct {
@@ -979,7 +979,7 @@ func (m *factMemo) language(tag string) string {
 	if l, ok := m.languages[tag]; ok {
 		return l
 	}
-	l := matchLanguage(tag)
+	l := model.ReadLanguage(tag)
 	m.languages[tag] = l
 	return l
 }

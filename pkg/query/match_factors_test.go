@@ -162,7 +162,7 @@ func TestPositionCovers(t *testing.T) {
 // TestMatchLanguageScalesAForeignEdition: the German edition, stored as its own
 // work under the same title, ties the English one without a language. With
 // `language` stated (in any of a tag's spellings) the edition in another KNOWN
-// language is scaled by languageMismatchFactor, and a language matchLanguage
+// language is scaled by languageMismatchFactor, and a language model.ReadLanguage
 // cannot read judges nothing.
 func TestMatchLanguageScalesAForeignEdition(t *testing.T) {
 	_, ts := newTestServerForCatalog(t, &model.Catalog{
@@ -217,7 +217,7 @@ func TestMatchLanguageScalesAForeignEdition(t *testing.T) {
 // unknown ("und") is neither scaled nor given a language reason.
 func TestMatchLanguageUnknownCandidateIsNotJudged(t *testing.T) {
 	facts := readFacts(matchRequest{titles: []string{"Dune"}, language: "en"})
-	c := &candidate{id: "dune-und", title: matchTerms("Dune"), titles: candidateTitleForms("Dune", matchTerms("Dune"), ""), language: matchLanguage("und")}
+	c := &candidate{id: "dune-und", title: matchTerms("Dune"), titles: candidateTitleForms("Dune", matchTerms("Dune"), ""), language: model.ReadLanguage("und")}
 	v := facts.judge(c)
 	if v.score != 1 || v.reasons.Language != "" {
 		t.Errorf("unknown-language candidate: score %v, language reason %q; want 1 and none", v.score, v.reasons.Language)
@@ -225,26 +225,6 @@ func TestMatchLanguageUnknownCandidateIsNotJudged(t *testing.T) {
 	c.language = "de"
 	if v := facts.judge(c); v.score != languageMismatchFactor || v.reasons.Language != "other" {
 		t.Errorf("German candidate: score %v, language reason %q; want %v and other", v.score, v.reasons.Language, languageMismatchFactor)
-	}
-}
-
-func TestMatchLanguage(t *testing.T) {
-	for in, want := range map[string]string{
-		"en": "en", "EN": "en", "en-US": "en", "en_gb": "en", "eng": "en", "English": "en",
-		"de": "de", "ger": "de", "deu": "de", "German": "de", "Deutsch": "de",
-		"fr": "fr", "fra": "fr", "Français": "fr", "es-419": "es", "Español": "es",
-		"ja": "ja", "jpn": "ja", "nb": "no", "nn": "no", "no": "no", "Norwegian": "no",
-		"pt-br": "pt", "sv": "sv",
-		// LibriVox's name table, and its 639-2-only tags kept as stored.
-		"Catalan": "ca", "Ancient Greek": "grc", "grc": "grc", "ang": "ang", "Multilingual": "",
-		// A tag no table maps onto is unknown, never a language of its own
-		// ("kor" is not judged against "ko", nor "xx" against anything).
-		"kor": "", "ko": "ko", "xx": "", "NA": "", "zz-ZZ": "",
-		"": "", "und": "", "mul": "", "zxx": "", "Klingon": "", "en,de": "", "12": "", "English; German": "",
-	} {
-		if got := matchLanguage(in); got != want {
-			t.Errorf("matchLanguage(%q) = %q, want %q", in, got, want)
-		}
 	}
 }
 
@@ -395,7 +375,7 @@ func TestMatchNarratorAbsentHasNoEffect(t *testing.T) {
 }
 
 // TestParseMatchRequestLanguageAndNarrators: language is read through
-// matchLanguage (one value), narrator is repeatable and bounded like author.
+// model.ReadLanguage (one value), narrator is repeatable and bounded like author.
 func TestParseMatchRequestLanguageAndNarrators(t *testing.T) {
 	r, ok := parseMatchRequest(url.Values{
 		"title":    {"Dune"},

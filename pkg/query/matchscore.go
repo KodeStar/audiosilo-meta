@@ -1,14 +1,11 @@
 package query
 
 import (
-	"maps"
 	"math"
 	"regexp"
 	"slices"
 	"strings"
 	"unicode/utf8"
-
-	"golang.org/x/text/unicode/norm"
 
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -173,29 +170,7 @@ const maxEditRunes = 96
 // are both "sharpes").
 func matchTerms(s string) []string {
 	s = strings.ReplaceAll(s, "&", " and ")
-	return strings.Fields(nameKey(stripMarks(s)))
-}
-
-// stripMarks removes combining marks after canonical decomposition, so a
-// precomposed "é" and a decomposed one both become "e".
-func stripMarks(s string) string {
-	ascii := true
-	for i := 0; i < len(s); i++ {
-		if s[i] >= utf8.RuneSelf {
-			ascii = false
-			break
-		}
-	}
-	if ascii {
-		return s
-	}
-	var b strings.Builder
-	for _, r := range norm.NFD.String(s) {
-		if !model.IsCombiningMark(r) {
-			b.WriteRune(r)
-		}
-	}
-	return b.String()
+	return strings.Fields(nameKey(model.StripMarks(s)))
 }
 
 // termForm is one string folded for comparison (matchTerms) with everything a
@@ -893,74 +868,6 @@ func (s seriesAgreement) value() float64 {
 		return 1
 	}
 	return 0
-}
-
-// ---- language ----------------------------------------------------------------------
-
-// matchLanguageWords maps the spellings a file's language tag takes to the
-// catalogue's language tag: model's two English-name tables
-// (model.LanguageWords, model.LibrivoxLanguages), then the ISO 639-2 codes
-// (bibliographic and terminology) and a few own-language names of the
-// languages the first one holds. The four codes that state no single language
-// (undetermined, multiple, no linguistic content, uncoded) map to "", unknown.
-var matchLanguageWords = func() map[string]string {
-	m := model.LanguageWords()
-	maps.Copy(m, model.LibrivoxLanguages())
-	maps.Copy(m, map[string]string{
-		"eng": "en", "tur": "tr", "ger": "de", "deu": "de", "fre": "fr", "fra": "fr",
-		"spa": "es", "ita": "it", "jpn": "ja", "por": "pt", "dut": "nl", "nld": "nl",
-		"pol": "pl", "rus": "ru", "chi": "zh", "zho": "zh", "dan": "da", "swe": "sv",
-		"ara": "ar", "hin": "hi", "heb": "he", "cze": "cs", "ces": "cs", "hun": "hu",
-		"fin": "fi", "nor": "no", "nob": "no", "nno": "no", "gre": "el", "ell": "el",
-		"mar": "mr", "rum": "ro", "ron": "ro", "mal": "ml",
-		// Norwegian's two written standards share the catalogue's "no".
-		"nb": "no", "nn": "no",
-		"deutsch": "de", "francais": "fr", "espanol": "es", "castellano": "es",
-		"italiano": "it", "nederlands": "nl", "portugues": "pt", "polski": "pl",
-		"svenska": "sv", "dansk": "da", "norsk": "no", "suomi": "fi",
-		"und": "", "mul": "", "multilingual": "", "zxx": "", "mis": "",
-	})
-	return m
-}()
-
-// matchLanguageCodes are the tags matchLanguageWords maps onto: every tag the
-// importers write, so every one the catalogue stores (Ancient Greek's "grc"
-// among them, a language with no 639-1 code). A well-formed tag outside it
-// ("xx", "na", a 639-2 code such as "kor" the table does not map) reads as
-// unknown: passed through it would never equal a work's tag and so judge every
-// work "other".
-var matchLanguageCodes = func() map[string]bool {
-	out := map[string]bool{}
-	for _, lang := range matchLanguageWords {
-		if lang != "" {
-			out[lang] = true
-		}
-	}
-	return out
-}()
-
-// matchLanguage reads a language as works/match compares it: a BCP-47 tag's
-// primary subtag ("en-US", "en_GB" -> "en"), a 639-2 code ("eng") or a
-// language's name ("English", "Deutsch") mapped to the catalogue's tag, and ""
-// for anything else - an unknown language, which is never judged, so a gap in
-// the tables costs a factor, never a wrong one. A work's stored tag goes
-// through the same reading, so "nb" and "no" are one language.
-func matchLanguage(raw string) string {
-	s := strings.ReplaceAll(strings.ToLower(strings.TrimSpace(stripMarks(raw))), "_", "-")
-	if lang, ok := matchLanguageWords[s]; ok {
-		return lang
-	}
-	if !model.ValidLanguageTag(s) {
-		return ""
-	}
-	p := model.PrimarySubtag(s)
-	if lang, ok := matchLanguageWords[p]; ok {
-		return lang
-	}
-	if !matchLanguageCodes[p] {
-		return ""
-	}
-	return p
 }
 
 // ---- runtime -----------------------------------------------------------------------
