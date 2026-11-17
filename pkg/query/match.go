@@ -285,10 +285,10 @@ type matchFacts struct {
 	structured bool
 	authors    []personName
 	series     []termForm
-	// seriesGuess is, for each of series' forms, the index of the request's
-	// series guess it was read from (its first, when two guesses fold alike):
+	// seriesGuesses holds series' forms grouped by the request's series guess
+	// each was read from (its first, when two guesses fold alike):
 	// resolveSeries settles each guess on its own.
-	seriesGuess []int
+	seriesGuesses [][]termForm
 	// seriesNames are the series as probed: the request's, numbering cut off
 	// ("03 - Tawny Man" is "Tawny Man"). series holds every hypothesis's
 	// forms together, so a candidate's agreement is the best any of them
@@ -373,17 +373,21 @@ func readFacts(req matchRequest) *matchFacts {
 	f.statesDramatization = slices.ContainsFunc(slices.Concat([]string{req.text}, req.titles, req.series, req.narrators), titlerule.StatesDramatization)
 	f.authors = readNames(req.authors)
 	f.narrators = readNames(req.narrators)
-	for i, series := range req.series {
+	for _, series := range req.series {
 		cut, _ := cutNumbering(series)
 		if cut != "" && !slices.Contains(f.seriesNames, cut) {
 			f.seriesNames = append(f.seriesNames, cut)
 		}
+		var guess []termForm
 		for _, v := range []string{series, cut} {
 			form := newTermForm(matchTerms(v))
 			if len(form.terms) > 0 && !slices.ContainsFunc(f.series, func(x termForm) bool { return x.joined == form.joined }) {
 				f.series = append(f.series, form)
-				f.seriesGuess = append(f.seriesGuess, i)
+				guess = append(guess, form)
 			}
+		}
+		if len(guess) > 0 {
+			f.seriesGuesses = append(f.seriesGuesses, guess)
 		}
 	}
 	// Every guess is read for numbering once, here: the number its prefix
@@ -1488,32 +1492,29 @@ func (f *matchFacts) resolveSeries(cands []*candidate) {
 		return
 	}
 	var names []*termForm
+	var nameKeys []string
 	seen := map[string]bool{}
 	for _, c := range cands {
 		for _, m := range c.series {
 			if !seen[m.name.joined] {
 				seen[m.name.joined] = true
 				names = append(names, m.name)
+				nameKeys = append(nameKeys, titlerule.SeriesKey(m.name.joined))
 			}
 		}
 	}
 	f.resolved = map[string]bool{}
-	for guess := 0; guess <= slices.Max(f.seriesGuess); guess++ {
-		var forms []termForm
+	for _, forms := range f.seriesGuesses {
 		var keys []string
-		for i := range f.series {
-			if f.seriesGuess[i] != guess {
-				continue
-			}
-			forms = append(forms, f.series[i])
-			if k := titlerule.SeriesKey(f.series[i].joined); k != "" {
+		for i := range forms {
+			if k := titlerule.SeriesKey(forms[i].joined); k != "" {
 				keys = append(keys, k)
 			}
 		}
 		var whole, fitting []string
-		for _, name := range names {
+		for n, name := range names {
 			switch {
-			case slices.Contains(keys, titlerule.SeriesKey(name.joined)) ||
+			case slices.Contains(keys, nameKeys[n]) ||
 				slices.ContainsFunc(forms, func(h termForm) bool { return sameWords(&h, name) }):
 				whole = append(whole, name.joined)
 			case slices.ContainsFunc(forms, func(h termForm) bool { return seriesNameFits(&h, name, f.edit) }):
@@ -1527,28 +1528,17 @@ func (f *matchFacts) resolveSeries(cands []*candidate) {
 			f.resolved[name] = true
 		}
 	}
-	if f.position == "" {
-		return
-	}
 	f.named = make(map[*candidate]titleRead, len(cands))
 	for _, c := range cands {
 		t, named, judged := f.titleAgreement(c)
 		f.named[c] = titleRead{t: t, named: named, judged: judged}
-		// Only a work that could be this book names it: by a named author, its
-		// length not ruled out (a tag naming a volume a third longer than the
-		// file is a mislabelled tag, Primer for the Apocalypse 1 tagged "The
-		// Realm Dungeon").
-		if f.runtimeRulesOut(c) || (len(f.authors) > 0 && agreeAuthors(f.authors, c.authors) == authorNone) {
+		// Only a work that could be this book names it: its length not ruled
+		// out (a tag naming a volume a third longer than the file is a
+		// mislabelled tag, Primer for the Apocalypse 1 tagged "The Realm
+		// Dungeon") and, for the lift's rivals, by a named author.
+		if f.runtimeRulesOut(c) {
 			continue
 		}
-		switch {
-		case named > f.namedBest:
-			f.namedNext, f.namedBest, f.namedBestID = f.namedBest, named, c.id
-		case named > f.namedNext:
-			f.namedNext = named
-		}
-	}
-	for _, c := range cands {
 		here, other := false, false
 		for _, m := range c.series {
 			if f.resolved[m.name.joined] {
@@ -1559,11 +1549,18 @@ func (f *matchFacts) resolveSeries(cands []*candidate) {
 				}
 			}
 		}
-		if !other || here || f.runtimeRulesOut(c) {
+		if other && !here {
+			f.namedElsewhere = max(f.namedElsewhere, named)
+		}
+		if len(f.authors) > 0 && agreeAuthors(f.authors, c.authors) == authorNone {
 			continue
 		}
-		_, named, _ := f.titleAgreement(c)
-		f.namedElsewhere = max(f.namedElsewhere, named)
+		switch {
+		case named > f.namedBest:
+			f.namedNext, f.namedBest, f.namedBestID = f.namedBest, named, c.id
+		case named > f.namedNext:
+			f.namedNext = named
+		}
 	}
 }
 
