@@ -1,6 +1,7 @@
 package query
 
 import (
+	"context"
 	"maps"
 	"math"
 	"net/url"
@@ -838,11 +839,27 @@ func TestResolveSeries(t *testing.T) {
 		{"no series named", nil, []string{"Frontlines"}, nil},
 	} {
 		f := readFacts(matchRequest{titles: []string{"x y"}, series: tc.series})
-		f.resolveSeries([]*candidate{cand(tc.pool...)})
+		f.resolveSeries(t.Context(), []*candidate{cand(tc.pool...)})
 		got := slices.Sorted(maps.Keys(f.resolved))
 		want := slices.Sorted(slices.Values(tc.want))
 		if !slices.Equal(got, want) {
 			t.Errorf("%s: resolved %q, want %q", tc.name, got, want)
+		}
+	}
+}
+
+// TestResolveSeriesAsksTheBudget: resolveSeries reads every candidate's title
+// (matchFacts.named), the judging's heavy half, so it stops on a spent budget
+// as the judging loop does rather than reading the whole pool past it.
+func TestResolveSeriesAsksTheBudget(t *testing.T) {
+	c := &candidate{id: "a", series: []candidateSeries{{name: ptr(newTermForm(matchTerms("Frontlines"))), position: "1"}}}
+	spent, cancel := context.WithCancel(t.Context())
+	cancel()
+	for ctx, want := range map[context.Context]int{t.Context(): 1, spent: 0} {
+		f := readFacts(matchRequest{titles: []string{"x y"}, series: []string{"Frontlines"}})
+		f.resolveSeries(ctx, []*candidate{c})
+		if len(f.named) != want {
+			t.Errorf("budget spent %v: %d titles read, want %d", ctx.Err() != nil, len(f.named), want)
 		}
 	}
 }

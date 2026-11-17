@@ -618,7 +618,8 @@ of the pool that could be the book (`namedByAnother`: by a named author, its run
 ruled out; "American Dragons, Book 3" or a shared "A LitRPG Adventure" subtitle names
 none) - "Blood of Elves" filed at The Last Wish's position counts its 0.13 as it is
 (`TestMatchListingLiftsNoTitleBelowTheBand`, meta#2922). The pool's title agreements
-are read once for this (`matchFacts.named`) and reused by the scoring. The names
+are read once for this (`matchFacts.named`, inside the budget like the judging) and
+reused by the scoring. The names
 resolve per request over the pool, each series guess on its own (`resolveSeries`,
 preferWholeName's rule; an exact "Cosmere" beside "Mistborn" no longer stops
 "Mistborn" reaching the series that only fits it, meta#2922): to the

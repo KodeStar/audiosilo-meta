@@ -673,7 +673,7 @@ func (s *DB) match(ctx context.Context, req matchRequest) ([]matchResult, error)
 	// Only a listing at a position, with a runtime to agree, can vouch
 	// (listedHere), so the pool's series are resolved only then.
 	if facts.position != "" && facts.runtime > 0 {
-		facts.resolveSeries(cands)
+		facts.resolveSeries(ctx, cands)
 	}
 	verdicts := make([]scored, 0, len(cands))
 	for i, c := range cands {
@@ -1487,7 +1487,10 @@ func (f *matchFacts) listedHere(c *candidate, runtimeDiff, named float64) bool {
 // "Aaron Crash (American Dragons)", which no series spells, still reaches
 // "American Dragons Series" - beside a "Cosmere" that one series does spell
 // (a folder's series and a tag's are two guesses, judged apart).
-func (f *matchFacts) resolveSeries(cands []*candidate) {
+//
+// It reads every candidate's title on the way (matchFacts.named), so it asks
+// the budget as the judging does; a pool cut short is one match() answers busy.
+func (f *matchFacts) resolveSeries(ctx context.Context, cands []*candidate) {
 	if len(f.series) == 0 {
 		return
 	}
@@ -1529,7 +1532,10 @@ func (f *matchFacts) resolveSeries(cands []*candidate) {
 		}
 	}
 	f.named = make(map[*candidate]titleRead, len(cands))
-	for _, c := range cands {
+	for i, c := range cands {
+		if i%256 == 0 && ctx.Err() != nil {
+			return
+		}
 		t, named, judged := f.titleAgreement(c)
 		f.named[c] = titleRead{t: t, named: named, judged: judged}
 		// Only a work that could be this book names it: its length not ruled
