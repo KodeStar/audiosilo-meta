@@ -278,7 +278,7 @@ func TestMatchExpandMinSkipsAWeakBest(t *testing.T) {
 			t.Fatal(err)
 		}
 		body, _ := io.ReadAll(resp.Body)
-		resp.Body.Close()
+		_ = resp.Body.Close()
 		results := rawResults(t, body)
 		if len(results) == 0 {
 			t.Fatalf("%s: no results", tc.name)
