@@ -23,6 +23,7 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"net"
 	"net/http"
 	"net/netip"
 	"strings"
@@ -294,6 +295,16 @@ func (s *Server) Handler() http.Handler { return s.mux }
 // Run starts the HTTP server and, when configured, the background poller. It
 // blocks until ctx is cancelled or the listener fails.
 func (s *Server) Run(ctx context.Context) error {
+	ln, err := net.Listen("tcp", cmp.Or(s.cfg.Addr, ":http"))
+	if err != nil {
+		return err
+	}
+	return s.serve(ctx, ln)
+}
+
+// serve is Run on a listener it is handed (a test's, on a port it knows). It
+// owns ln: it is closed when serve returns.
+func (s *Server) serve(ctx context.Context, ln net.Listener) error {
 	if s.cfg.Poll {
 		go s.pollLoop(ctx)
 	}
@@ -306,16 +317,19 @@ func (s *Server) Run(ctx context.Context) error {
 		defer cancel()
 		_ = srv.Shutdown(shutCtx)
 	}()
-	err := srv.ListenAndServe()
+	err := srv.Serve(ln)
+	// Serve returns as soon as Shutdown STARTS, so this waits for the requests in
+	// flight to drain (or Shutdown's 5 s to run out) on every deployment:
+	// returning earlier lets main exit under a request still being answered. The
+	// intake queue, the one thing here a request writes to, closes only after that.
+	closed := errors.Is(err, http.ErrServerClosed)
+	if closed {
+		<-drained
+	}
 	if s.intake != nil {
-		// ListenAndServe returns as soon as Shutdown STARTS. The queue is the one
-		// thing here a request writes to, so it closes only once they have drained.
-		if errors.Is(err, http.ErrServerClosed) {
-			<-drained
-		}
 		s.closeIntake()
 	}
-	if errors.Is(err, http.ErrServerClosed) {
+	if closed {
 		return nil
 	}
 	return err
@@ -536,6 +550,10 @@ func (s *Server) retryWait() time.Duration { return time.Duration(s.nextRetry.Lo
 
 // ---- middleware -------------------------------------------------------------
 
+// corsMW opens a route to scripts on any origin for SIMPLE requests only. It
+// answers no preflight: every route it wraps is registered for one method, so an
+// OPTIONS never reaches it (the mux answers 405, or the static site its 404), and
+// a cross-origin request that needs a preflight fails. A plain GET needs none.
 func corsMW(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		h := w.Header()
@@ -545,12 +563,6 @@ func corsMW(next http.Handler) http.Handler {
 		// read how long to wait.
 		h.Set("Access-Control-Expose-Headers", "Retry-After")
 		h.Add("Vary", "Origin")
-		if r.Method == http.MethodOptions {
-			h.Set("Access-Control-Allow-Methods", "GET, OPTIONS")
-			h.Set("Access-Control-Allow-Headers", "*")
-			w.WriteHeader(http.StatusNoContent)
-			return
-		}
 		next.ServeHTTP(w, r)
 	})
 }

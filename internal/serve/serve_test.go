@@ -2,9 +2,11 @@ package serve
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"io"
 	"log"
+	"net"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -248,4 +250,96 @@ func snapshotFor(t *testing.T, cat *model.Catalog) *query.DB {
 	}
 	t.Cleanup(func() { _ = snap.Close() })
 	return snap
+}
+
+// TestRunWaitsForTheDrain: Serve returns as soon as Shutdown starts, and Run must
+// not, on a deployment with no intake queue as on one with it, or main exits
+// under a request still being answered.
+func TestRunWaitsForTheDrain(t *testing.T) {
+	srv, err := New(Config{DBPath: artifacttest.Build(t, artifacttest.Fixture()), swapGrace: time.Minute})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if srv.intake != nil {
+		t.Fatal("this test needs a server with no intake queue")
+	}
+	entered, release := make(chan struct{}), make(chan struct{})
+	srv.mux = http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
+		close(entered)
+		<-release
+		_, _ = io.WriteString(w, "done")
+	})
+	ln, err := net.Listen("tcp", "127.0.0.1:0")
+	if err != nil {
+		t.Fatal(err)
+	}
+	ctx, cancel := context.WithCancel(t.Context())
+	defer cancel()
+	finished := make(chan error, 1)
+	go func() { finished <- srv.serve(ctx, ln) }()
+
+	answered := make(chan string, 1)
+	go func() {
+		resp, err := http.Get("http://" + ln.Addr().String() + "/slow")
+		if err != nil {
+			answered <- err.Error()
+			return
+		}
+		defer func() { _ = resp.Body.Close() }()
+		body, _ := io.ReadAll(resp.Body)
+		answered <- string(body)
+	}()
+	<-entered
+	cancel()
+	select {
+	case err := <-finished:
+		t.Fatalf("Run returned (%v) with a request still in flight", err)
+	case <-time.After(200 * time.Millisecond):
+	}
+	close(release)
+	select {
+	case err := <-finished:
+		if err != nil {
+			t.Fatalf("Run = %v", err)
+		}
+	case <-time.After(10 * time.Second):
+		t.Fatal("Run did not return after the request drained")
+	}
+	if got := <-answered; got != "done" {
+		t.Errorf("the request in flight got %q, want its whole answer", got)
+	}
+}
+
+// TestNoRouteAnswersAPreflight pins what an OPTIONS on a catalogue route gets: no
+// route is registered for it, so the mux answers 405 (or, with a site, the site
+// its 404), never a 2xx and never the CORS preflight headers. A cross-origin
+// request that needs a preflight fails; docs-developers/meta/api.md says so.
+func TestNoRouteAnswersAPreflight(t *testing.T) {
+	for name, site := range map[string]string{"api only": "", "with a site": writeSiteFixture(t)} {
+		t.Run(name, func(t *testing.T) {
+			srv, err := New(Config{DBPath: artifacttest.Build(t, artifacttest.Fixture()), Site: site, swapGrace: time.Minute})
+			if err != nil {
+				t.Fatal(err)
+			}
+			for _, path := range []string{"/api/v1/stats", "/api/v1/works/" + artifacttest.HailMary, "/api/v1/openapi.json"} {
+				r := httptest.NewRequest(http.MethodOptions, path, nil)
+				r.Header.Set("Origin", "https://elsewhere.example")
+				r.Header.Set("Access-Control-Request-Method", http.MethodGet)
+				r.Header.Set("Access-Control-Request-Headers", "x-custom")
+				rec := httptest.NewRecorder()
+				srv.Handler().ServeHTTP(rec, r)
+				if rec.Code >= 200 && rec.Code < 300 {
+					t.Errorf("OPTIONS %s = %d, want a refusal", path, rec.Code)
+				}
+				if name == "api only" && rec.Code != http.StatusMethodNotAllowed {
+					t.Errorf("OPTIONS %s = %d, want the mux's 405", path, rec.Code)
+				}
+				for _, h := range []string{"Access-Control-Allow-Methods", "Access-Control-Allow-Headers"} {
+					if v := rec.Header().Get(h); v != "" {
+						t.Errorf("OPTIONS %s carries %s: %q", path, h, v)
+					}
+				}
+			}
+		})
+	}
 }
