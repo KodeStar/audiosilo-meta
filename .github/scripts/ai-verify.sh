@@ -140,12 +140,15 @@ fi
 # than flagged (below), and is empty for a contributor's. PASS_NOTE and FLAG_LEAD
 # are what the comment says the verdict DOES: a maintainer reviews a contributor's
 # pull request whatever it is, while a bot (meta-sync) merges its own on a pass and
-# never on a flag, which for it is a merge block.
+# never on a flag, which for it is a merge block. Either FLAG_LEAD is ONE line
+# ending in a colon: meta-sync reads a flag that lists no findings by its prose
+# lines and drops the lead as the line that ends in one (its watcher.FindingOf), so
+# a lead ending otherwise would read there as the same finding on every such flag.
 UNFLAGGED_ORIGIN=""
 PASS_NOTE="This is advisory; a maintainer still reviews before merge."
 FLAG_LEAD="Claude flagged the following for a maintainer to check (advisory - not a merge block):"
 BOT_PASS_NOTE="The bot that opened this pull request merges it on this verdict once its other checks pass."
-BOT_FLAG_LEAD="Claude flagged the following. The bot that opened this pull request does not merge it while it is flagged: it answers the flag or leaves the pull request for a maintainer."
+BOT_FLAG_LEAD="The bot that opened this pull request does not merge it while it is flagged: it answers the flag or leaves the pull request for a maintainer. Claude flagged the following:"
 case "$PR_ORIGIN" in
 sync-bot)
   UNFLAGGED_ORIGIN="a series-completion bot"

@@ -279,6 +279,19 @@ func TestAIVerifyCommentSaysWhatTheVerdictDoes(t *testing.T) {
 		if got := strings.Contains(pass.comment, "a maintainer still reviews before merge"); got == tc.bot {
 			t.Errorf("%s: pass comment promises a maintainer's review = %v:\n%s", tc.origin, got, pass.comment)
 		}
+		// audiosilo-meta-sync reads a flag that lists no findings by its prose
+		// lines, dropping the lead as the one that ends in a colon
+		// (watcher.FindingOf). A lead ending otherwise would be the same "finding"
+		// on every such flag, which its ladder counts as a repeat.
+		for line := range strings.SplitSeq(flagged.comment, "\n") {
+			line = strings.TrimSpace(line)
+			if line == "" || strings.HasPrefix(line, "#") || strings.HasPrefix(line, "- ") {
+				continue
+			}
+			if !strings.HasSuffix(line, ":") {
+				t.Errorf("%s: the flag comment's lead does not end in a colon: %q", tc.origin, line)
+			}
+		}
 	}
 }
 
