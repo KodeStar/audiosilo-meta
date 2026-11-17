@@ -655,7 +655,10 @@ unless it is far off the runtime, another edition, when the runtime's pick stand
 readings, never an identifier hit; the position factor is structuredScore's. A
 request without `language` and `narrator` scores as before, except for the
 position and runtime factors, which apply to every request. Each title form, guess and series name is folded once
-(`termForm`), person and series names and work language tags once per request (`factMemo`). Each result is
+(`termForm`), person and series names and work language tags once per request (`factMemo`). The ranking is score, then the identifier's hit (it scores 100 and a better-titled
+work can tie it: it ranks first, so a `limit` never cuts the book the identifier
+names, `TestMatchIdentifierHitSurvivesTheLimit`, meta#2875), then title, runtime and
+id (`scored.better`). Each result is
 the `WorkResult` search returns plus `score` (0-100), `recording_id` (the
 recording the identifier is ON - `identifiedIDs`, lookupIDs less the first-recording
 stand-in /lookup gives a work's print ISBN, which names no recording - else the narrator-agreeing one's, else the closest runtime's, never a
@@ -683,8 +686,8 @@ change, so it answers against every published release. "match" became a
 RESERVED slug with the route.
 **`expand=work` on works/match** (`matchexpand.go`) carries what a bulk match
 otherwise fetches: over the public service the network is most of a run's time, and
-it pays one wait per book instead of three. Only the BEST result (`bestResult`: the
-first, or at its score the identifier's, as the client's own sort reads it) gains
+it pays one wait per book instead of three. Only the BEST result (the first: an
+identifier hit ranks first at its score, `scored.better`) gains
 `work`, byte for byte `GET works/{id}`, and `series_facts`, by series id the
 `language` and `translation_of` ids of the work's memberships in order (variant
 orders aside, at most `matchExpandSeriesMax`, 16, audiosilo-server's `maxSeriesFacts`)

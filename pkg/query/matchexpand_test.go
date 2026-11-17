@@ -263,34 +263,21 @@ func TestMatchWithoutExpandIsByteIdentical(t *testing.T) {
 	}
 }
 
-// TestMatchExpandFollowsTheClientsBest: a client takes the identifier's work first
-// at one score, whatever the ranking's title tie-break says, and a run reads only
-// that one, so that is the one inlined.
+// TestMatchExpandFollowsTheClientsBest: a client takes the identifier's work as
+// the match, and a run reads only that one, so that is the one inlined. It ranks
+// first even beside a work whose title agrees better at the same score.
 func TestMatchExpandFollowsTheClientsBest(t *testing.T) {
 	_, ts := newTestServerForCatalog(t, matchCatalog())
 	params := url.Values{"title": {"Sharpe's Battle"}, "author": {"Bernard Cornwell"}, "asin": {"B002SQ7KVE"}, "limit": {"2"}, "expand": {"work"}}
 	res := matchJSON(t, ts.URL, params)
-	if len(res) != 2 || res[0]["id"] != "sharpes-battle" || res[1]["id"] != "sharpes-eagle" || res[0]["score"] != res[1]["score"] {
-		t.Fatalf("fixture: want the title's work ranked over the identifier's at one score, got %v", res)
+	if len(res) != 2 || res[0]["id"] != "sharpes-eagle" || res[1]["id"] != "sharpes-battle" || res[0]["score"] != res[1]["score"] {
+		t.Fatalf("fixture: want the identifier's work ranked over the title's at one score, got %v", res)
 	}
-	if _, has := res[0]["work"]; has {
-		t.Error("the title's work is inlined, not the identifier's")
+	if work, _ := res[0]["work"].(map[string]any); work == nil || work["id"] != "sharpes-eagle" {
+		t.Errorf("the identifier's result carries %v", res[0]["work"])
 	}
-	if work, _ := res[1]["work"].(map[string]any); work == nil || work["id"] != "sharpes-eagle" {
-		t.Errorf("the identifier's result carries %v", res[1]["work"])
-	}
-	for _, tc := range []struct {
-		name    string
-		results []matchResult
-		want    int
-	}{
-		{"no identifier", []matchResult{{Score: 90}, {Score: 90}}, 0},
-		{"identifier first", []matchResult{{Score: 100, Reasons: matchReasons{Identifier: "asin"}}, {Score: 100}}, 0},
-		{"identifier in the tie", []matchResult{{Score: 100}, {Score: 100}, {Score: 100, Reasons: matchReasons{Identifier: "isbn"}}}, 2},
-	} {
-		if got := bestResult(tc.results); got != tc.want {
-			t.Errorf("%s: bestResult = %d, want %d", tc.name, got, tc.want)
-		}
+	if _, has := res[1]["work"]; has {
+		t.Error("the title's work is inlined, not only the identifier's")
 	}
 }
 
@@ -345,7 +332,7 @@ func TestMatchExpandDegradesOutOfBudget(t *testing.T) {
 	}
 
 	// Whole: the expansion read, and an empty answer with nothing to expand.
-	if results = plain(); !db.expandBest(t.Context(), results) || results[bestResult(results)].Work == nil {
+	if results = plain(); !db.expandBest(t.Context(), results) || results[0].Work == nil {
 		t.Error("a successful expansion did not report whole")
 	}
 	if !db.expandBest(t.Context(), nil) {

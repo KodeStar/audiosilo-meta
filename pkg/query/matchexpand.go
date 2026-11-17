@@ -17,7 +17,8 @@ import (
 // of the time (RTT ~80 ms against a 20 ms median match), so inlining them turns
 // three waits per book into one.
 //
-// WHAT IS INLINED, AND FOR WHICH RESULT. Only the BEST result (bestResult) carries
+// WHAT IS INLINED, AND FOR WHICH RESULT. Only the BEST result (the first: an
+// identifier hit ranks first, scored.better) carries
 // anything: a run reads the best candidate's whole document and of the next one only
 // the score and reasons every result has. It gets the work exactly as GET works/{id}
 // serves it, and series_facts, the two facts of its series that the client's series
@@ -65,14 +66,6 @@ func wantsWorkExpansion(values []string) bool {
 	return false
 }
 
-// bestResult is the index of the result a client takes as the match: the one the
-// identifier found, which is the book whatever else scores as well, else the first
-// (they are in rank order). An identifier hit always scores 100, so it is never below
-// the top score, but the ranking breaks a tie on the title, so it can rank second.
-func bestResult(results []matchResult) int {
-	return max(slices.IndexFunc(results, func(r matchResult) bool { return r.Reasons.Identifier != "" }), 0)
-}
-
 // expandBest inlines the expansion on the best result, in place, and reports
 // whether the answer is whole: false when the budget or a read stopped it, which
 // leaves every result as it was (see the file header). No results is nothing to
@@ -81,7 +74,7 @@ func (s *DB) expandBest(ctx context.Context, results []matchResult) bool {
 	if len(results) == 0 {
 		return true
 	}
-	best := &results[bestResult(results)]
+	best := &results[0]
 	work, facts, err := s.matchExpansion(ctx, best.ID)
 	if err != nil {
 		if ctx.Err() == nil {

@@ -679,12 +679,18 @@ func (s *DB) match(ctx context.Context, req matchRequest) ([]matchResult, error)
 	return s.matchResults(ctx, verdicts)
 }
 
-// better is the ranking: score, then title similarity (an exact title first),
-// then the closer runtime, then the id, so equal facts always rank the same way.
+// better is the ranking: score, then the identifier's hit (it scores 100, and
+// a work whose title agrees better can tie it there: the hit is the book, so a
+// limit must cut the rivals first), then title similarity (an exact title
+// first), then the closer runtime, then the id, so equal facts always rank the
+// same way.
 func (a scored) better(b scored) bool {
+	ai, bi := a.reasons.Identifier != "", b.reasons.Identifier != ""
 	switch {
 	case a.score != b.score:
 		return a.score > b.score
+	case ai != bi:
+		return ai
 	case a.title != b.title:
 		return a.title > b.title
 	case a.runtimeDiff != b.runtimeDiff:
