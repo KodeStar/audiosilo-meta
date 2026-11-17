@@ -242,9 +242,10 @@ Rate limit and caching: every API route (`/api/v1/*` and `/abs/search`, not
 (env `METASERVE_RATE_LIMIT`, default 100, `0` turns it off) with a burst of
 `--rate-burst` (env `METASERVE_RATE_BURST`, default 400; at least 1 while the
 limit is on - a burst of `0`, or a negative rate, is refused at startup rather
-than defaulted). The defaults are sized so an AudioSilo server's bulk match,
-which does not pace itself, never trips them (the arithmetic is in
-`internal/serve/ratelimit.go`). Past it a client gets
+than defaulted). The defaults are sized so an AudioSilo server's bulk match never
+trips them: since 2.6.0 a server paces a run to about 60 requests a second, and an
+older one, which does not pace itself, stays under the limit too (the arithmetic
+is in `internal/serve/ratelimit.go`). Past it a client gets
 429 with `Retry-After`. The client is the connection's address, or, when that
 address is one of `--trusted-proxy` (env `METASERVE_TRUSTED_PROXIES`, a
 comma-separated list of addresses and CIDR prefixes), the rightmost
