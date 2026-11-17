@@ -538,9 +538,7 @@ func (s *DB) match(ctx context.Context, req matchRequest) ([]matchResult, error)
 	pool := newCandidatePool()
 
 	// identifiedIDs reads ONE identifier (the ASIN when both are given), so each is
-	// asked on its own: a stale or regional ASIN must not hide a good ISBN. It is
-	// lookupIDs less the stand-in recording a print ISBN gets there: the recording
-	// is the one carrying the identifier, else the facts pick it (judge).
+	// asked on its own: a stale or regional ASIN must not hide a good ISBN.
 	for _, id := range []struct{ by, asin, isbn string }{{"asin", req.asin, ""}, {"isbn", "", req.isbn}} {
 		if id.asin == "" && id.isbn == "" {
 			continue

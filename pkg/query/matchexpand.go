@@ -133,20 +133,15 @@ func (s *DB) seriesFactsOf(ctx context.Context, refs []SeriesRef) (map[string]se
 	out := make(map[string]seriesFacts, len(ids))
 	languages := s.schemaVersion >= languagesSchemaVersion
 	err := eachChunk(ids, func(ph string, args []any) error {
-		rows, err := s.db.QueryContext(ctx, seriesLanguagesByIDSQL(ph, languages), args...)
-		if err != nil {
-			return err
-		}
-		defer func() { _ = rows.Close() }()
-		for rows.Next() {
+		return queryEach(ctx, s.db, seriesLanguagesByIDSQL(ph, languages), args, func(rows *sql.Rows) error {
 			var id string
 			var lang sql.NullString
 			if err := rows.Scan(&id, &lang); err != nil {
 				return err
 			}
 			out[id] = seriesFacts{Language: lang.String}
-		}
-		return rows.Err()
+			return nil
+		})
 	})
 	if err != nil {
 		return nil, err
