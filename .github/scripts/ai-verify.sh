@@ -276,15 +276,20 @@ if [ -n "${ANTHROPIC_API_KEY:-}" ]; then
   # execve limit (see SECURITY above), and jq or curl handed it as one would not
   # start at all (E2BIG), so every pull request with a summary that large would
   # be a skip. printf is a shell builtin, so it is not subject to that limit.
+  #
+  # max_tokens bounds the model's thinking as well as its reply, and on the raw
+  # API this model thinks unless told not to, so the ceiling leaves room for both:
+  # a reply-sized one can run out mid-thought and leave no verdict. --max-time
+  # allows for that longer answer.
   REQUEST_FILE="$(mktemp)"
   jq -n \
     --arg model "$MODEL" \
     --rawfile system <(printf '%s' "$SYSTEM") \
     --rawfile user <(printf '%s' "$USER_MSG") \
-    '{model: $model, max_tokens: 4000, system: $system, messages: [{role: "user", content: $user}]}' \
+    '{model: $model, max_tokens: 16000, system: $system, messages: [{role: "user", content: $user}]}' \
     > "$REQUEST_FILE" 2>/dev/null || skip "The Anthropic API request could not be built."
 
-  RESPONSE="$(curl -sS --max-time 120 "$API_URL" \
+  RESPONSE="$(curl -sS --max-time 300 "$API_URL" \
     -H "x-api-key: ${ANTHROPIC_API_KEY}" \
     -H "anthropic-version: 2023-06-01" \
     -H "content-type: application/json" \
