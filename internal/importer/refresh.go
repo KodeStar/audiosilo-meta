@@ -170,7 +170,7 @@ func awaitingRefresh(release, addedAt, firstASIN string, sources []model.Source)
 	// refresh's stamp, which is read from that ASIN alone. A merged regional
 	// ASIN's stamp is another ref and ends nothing.
 	for _, s := range sources {
-		if s.Ref == firstASIN && s.ImportedAt != "" && !before(s.ImportedAt) {
+		if sourceASIN(s.Ref) == firstASIN && s.ImportedAt != "" && !before(s.ImportedAt) {
 			return false
 		}
 	}
@@ -225,7 +225,7 @@ func (p *planner) redates(raw map[string]any, b sourceBook) bool {
 	}
 	day := b.capturedAt
 	for _, s := range rawSources(raw) {
-		if k := model.TimeKey(s.ImportedAt); s.Ref == asin && len(k) >= len(day) && k[:len(day)] > day {
+		if k := model.TimeKey(s.ImportedAt); sourceASIN(s.Ref) == asin && len(k) >= len(day) && k[:len(day)] > day {
 			return false
 		}
 	}

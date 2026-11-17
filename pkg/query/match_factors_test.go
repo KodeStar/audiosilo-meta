@@ -1,6 +1,7 @@
 package query
 
 import (
+	"context"
 	"maps"
 	"math"
 	"net/url"
@@ -105,6 +106,37 @@ func TestMatchPositionConflictScalesASibling(t *testing.T) {
 	wantScore(t, res, "collection-4-6", 65)
 }
 
+// TestMatchTypedTextKeepsThePositionFactor: the typed text is a second reading
+// of every candidate, and a sibling the structured facts place at another
+// position than the stated one is scaled by positionConflictFactor in it too,
+// unless the text names that work itself - its title clearly
+// (seriesDistrustHigh) or its volume ("sharpe 12"), the admin correcting a
+// misfiled book. "cornwell sharpe" beside volume 8's facts names no volume:
+// Sharpe's Siege reads 45 in it unscaled (its structured 18 already is), 36
+// scaled. A request without q is untouched.
+func TestMatchTypedTextKeepsThePositionFactor(t *testing.T) {
+	_, ts := newTestServerForCatalog(t, matchCatalog())
+	facts := url.Values{"title": {"Sharpe's Eagle"}, "author": {"Bernard Cornwell"}, "series": {"Richard Sharpe"}, "position": {"8"}}
+	for _, tc := range []struct {
+		q     string
+		id    string
+		score float64
+	}{
+		{"cornwell sharpe", "sharpes-siege", 36},
+		{"cornwell sharpe", "sharpes-revenge", 28},
+		{"cornwell sharpe", "sharpes-eagle", 100},
+		{"sharpes battle", "sharpes-battle", 100},
+		{"sharpe 12", "sharpes-battle", 100},
+		{"", "sharpes-siege", 18},
+	} {
+		q := maps.Clone(facts)
+		if tc.q != "" {
+			q.Set("q", tc.q)
+		}
+		wantScore(t, matchJSON(t, ts.URL, q), tc.id, tc.score)
+	}
+}
+
 func TestPositionCovers(t *testing.T) {
 	for _, tc := range []struct {
 		stored, stated string
@@ -131,7 +163,7 @@ func TestPositionCovers(t *testing.T) {
 // TestMatchLanguageScalesAForeignEdition: the German edition, stored as its own
 // work under the same title, ties the English one without a language. With
 // `language` stated (in any of a tag's spellings) the edition in another KNOWN
-// language is scaled by languageMismatchFactor, and a language matchLanguage
+// language is scaled by languageMismatchFactor, and a language model.ReadLanguage
 // cannot read judges nothing.
 func TestMatchLanguageScalesAForeignEdition(t *testing.T) {
 	_, ts := newTestServerForCatalog(t, &model.Catalog{
@@ -186,7 +218,7 @@ func TestMatchLanguageScalesAForeignEdition(t *testing.T) {
 // unknown ("und") is neither scaled nor given a language reason.
 func TestMatchLanguageUnknownCandidateIsNotJudged(t *testing.T) {
 	facts := readFacts(matchRequest{titles: []string{"Dune"}, language: "en"})
-	c := &candidate{id: "dune-und", title: matchTerms("Dune"), titles: candidateTitleForms("Dune", matchTerms("Dune"), ""), language: matchLanguage("und")}
+	c := &candidate{id: "dune-und", title: matchTerms("Dune"), titles: candidateTitleForms("Dune", matchTerms("Dune"), ""), language: model.ReadLanguage("und")}
 	v := facts.judge(c)
 	if v.score != 1 || v.reasons.Language != "" {
 		t.Errorf("unknown-language candidate: score %v, language reason %q; want 1 and none", v.score, v.reasons.Language)
@@ -194,26 +226,6 @@ func TestMatchLanguageUnknownCandidateIsNotJudged(t *testing.T) {
 	c.language = "de"
 	if v := facts.judge(c); v.score != languageMismatchFactor || v.reasons.Language != "other" {
 		t.Errorf("German candidate: score %v, language reason %q; want %v and other", v.score, v.reasons.Language, languageMismatchFactor)
-	}
-}
-
-func TestMatchLanguage(t *testing.T) {
-	for in, want := range map[string]string{
-		"en": "en", "EN": "en", "en-US": "en", "en_gb": "en", "eng": "en", "English": "en",
-		"de": "de", "ger": "de", "deu": "de", "German": "de", "Deutsch": "de",
-		"fr": "fr", "fra": "fr", "Français": "fr", "es-419": "es", "Español": "es",
-		"ja": "ja", "jpn": "ja", "nb": "no", "nn": "no", "no": "no", "Norwegian": "no",
-		"pt-br": "pt", "sv": "sv",
-		// LibriVox's name table, and its 639-2-only tags kept as stored.
-		"Catalan": "ca", "Ancient Greek": "grc", "grc": "grc", "ang": "ang", "Multilingual": "",
-		// A tag no table maps onto is unknown, never a language of its own
-		// ("kor" is not judged against "ko", nor "xx" against anything).
-		"kor": "", "ko": "ko", "xx": "", "NA": "", "zz-ZZ": "",
-		"": "", "und": "", "mul": "", "zxx": "", "Klingon": "", "en,de": "", "12": "", "English; German": "",
-	} {
-		if got := matchLanguage(in); got != want {
-			t.Errorf("matchLanguage(%q) = %q, want %q", in, got, want)
-		}
 	}
 }
 
@@ -364,7 +376,7 @@ func TestMatchNarratorAbsentHasNoEffect(t *testing.T) {
 }
 
 // TestParseMatchRequestLanguageAndNarrators: language is read through
-// matchLanguage (one value), narrator is repeatable and bounded like author.
+// model.ReadLanguage (one value), narrator is repeatable and bounded like author.
 func TestParseMatchRequestLanguageAndNarrators(t *testing.T) {
 	r, ok := parseMatchRequest(url.Values{
 		"title":    {"Dune"},
@@ -608,9 +620,11 @@ func listedCatalog() *model.Catalog {
 // the stated position, whose recording agrees with the runtime, keeps its
 // series agreement over a title in the distrust band and counts that title at
 // genericTitleValue at least - the series-named first volume whose file names
-// only its subtitle (56 before: title 0.5 distrusted), a volume filed as
-// "American Dragons, Book 1" in "American Dragons Series" (55 before: its title
-// 0.25, below the band, counted as it is).
+// only its subtitle (56 before: title 0.5 distrusted). A title below the band
+// is lifted only while the request's title names no other work clearly: a
+// volume filed as "American Dragons, Book 1" in "American Dragons Series" (its
+// title 0.23, which names only the series' numbering) scores 91, not the 54 it
+// would count as it is.
 // Without the runtime, or off it, nothing changes.
 func TestMatchListedAtTheStatedPositionVouches(t *testing.T) {
 	_, ts := newTestServerForCatalog(t, listedCatalog())
@@ -650,6 +664,27 @@ func TestMatchListedAtTheStatedPositionVouches(t *testing.T) {
 		t.Fatalf("American Dragons 1: top = %v, want denver-fury", matchIDs(res))
 	}
 	wantScore(t, res, "denver-fury", 91)
+}
+
+// TestMatchListingVouchesAtAReadPosition: the listing vouches at the position
+// the request reads, its `position` or else the volume a title's numbering
+// carries. audiosilo-server leaves `position` out beside a series folder that
+// differs from the tagged series and lets the leaf's numbering speak ("Book 1 -
+// American Dragons"); vouching at the stated position alone cost 7 right
+// auto-applies on the LibraForge harness and saved no wrong one. The same Carl
+// request vouches (91) with its volume stated and with it read off "Book 001".
+func TestMatchListingVouchesAtAReadPosition(t *testing.T) {
+	_, ts := newTestServerForCatalog(t, listedCatalog())
+	q := url.Values{
+		"title": {"Dungeon Crawler Carl - Book 001 - The Apocalypse Will be Televised"}, "author": {"Matt Dinniman"},
+		"series": {"Dungeon Crawler Carl"}, "runtime": {"48660"},
+	}
+	read := wantScore(t, matchJSON(t, ts.URL, q), "dungeon-crawler-carl", 91)
+	if s := read["reasons"].(map[string]any)["series"]; s != string(seriesPosition) {
+		t.Errorf("a read position: series reason %v, want position", s)
+	}
+	q.Set("position", "1")
+	wantScore(t, matchJSON(t, ts.URL, q), "dungeon-crawler-carl", 91)
 }
 
 // TestMatchListedRivalsDoNotRise: the five rivals the rule's first prototype
@@ -712,12 +747,71 @@ func TestMatchListedRivalsDoNotRise(t *testing.T) {
 	if len(res) == 0 || res[0]["id"] != "podboj" {
 		t.Fatalf("Polish request: top = %v, want podboj", matchIDs(res))
 	}
+	// Its translated title shares nothing with "Conquest" (0.13, below the band),
+	// which names the English work exactly: another edition of the book in a
+	// language the request rules out, not another book, so the listing still
+	// lifts the Polish volume and it stays first.
 	q.Set("title", "Conquest")
 	res = matchJSON(t, ts.URL, q)
+	if len(res) == 0 || res[0]["id"] != "podboj" {
+		t.Fatalf("Polish request titled in English: top = %v, want podboj", matchIDs(res))
+	}
 	wantScore(t, res, "podboj", 91)
 	english := wantScore(t, res, "conquest", 80)
 	if s := english["reasons"].(map[string]any)["language"]; s != "other" {
 		t.Errorf("conquest language reason %v, want other", s)
+	}
+}
+
+// TestMatchListingLiftsNoTitleBelowTheBand: a listing vouches for the volume
+// whose title the request spells another way (the seriesDistrust band and
+// above). A title below the band shares nothing with the request's, and it is
+// lifted only while the request's title names no other work that could be the
+// book. "Blood of Elves [Booktrack]" filed at 1, on a file as long as The Last
+// Wish, names Blood of Elves: held here outside the series' listing (so
+// namedElsewhere does not see it) and as long as the file, it could be the
+// book, so The Last Wish keeps its series and the runtime's agreement but counts
+// its 0.13 title as it is (48), not lifted to genericTitleValue (91, the wrong
+// book first). Blood of Elves ranks first. A Blood of Elves a third longer
+// than the file is ruled out by its length: the tag is the mislabelled one
+// (Primer for the Apocalypse 1 tagged "The Realm Dungeon") and the listing
+// lifts The Last Wish as before.
+func TestMatchListingLiftsNoTitleBelowTheBand(t *testing.T) {
+	for _, tc := range []struct {
+		name      string
+		elvesMin  int
+		listed    bool
+		top       string
+		wishScore float64
+	}{
+		{"another work the title names could be the book", 800, false, "blood-of-elves", 48},
+		{"its runtime rules it out", 1028, true, "the-last-wish", 91},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			members := []model.SeriesWork{{Work: "the-last-wish", Position: "1"}}
+			if tc.listed {
+				members = append(members, model.SeriesWork{Work: "blood-of-elves", Position: "3"})
+			}
+			_, ts := newTestServerForCatalog(t, &model.Catalog{
+				People: []*model.Person{factorPerson("andrzej-sapkowski", "Andrzej Sapkowski")},
+				Works: []*model.Work{
+					factorWork("the-last-wish", "The Last Wish", "en", "andrzej-sapkowski", factorRec("wish", 793)),
+					factorWork("blood-of-elves", "Blood of Elves", "en", "andrzej-sapkowski", factorRec("elves", tc.elvesMin)),
+				},
+				Series: []*model.Series{{ID: "the-witcher", Name: "The Witcher", License: "CC0-1.0", Works: members}},
+			})
+			res := matchJSON(t, ts.URL, url.Values{
+				"title": {"Blood of Elves [Booktrack]"}, "author": {"Andrzej Sapkowski"},
+				"series": {"The Witcher"}, "position": {"1"}, "runtime": {"47580"},
+			})
+			if len(res) == 0 || res[0]["id"] != tc.top {
+				t.Fatalf("top = %v, want %s", matchIDs(res), tc.top)
+			}
+			wish := wantScore(t, res, "the-last-wish", tc.wishScore)
+			if s := wish["reasons"].(map[string]any)["series"]; s != string(seriesPosition) {
+				t.Errorf("the-last-wish series reason %v, want position", s)
+			}
+		})
 	}
 }
 
@@ -742,14 +836,38 @@ func TestResolveSeries(t *testing.T) {
 		{"an article aside", []string{"System Apocalypse"}, []string{"The System Apocalypse", "System Apocalypse: Kismet"}, []string{"the system apocalypse"}},
 		{"a trailing Series aside", []string{"Dark Road"}, []string{"Dark Road Series", "Dark Road", "Dark Roads"}, []string{"dark road series", "dark road"}},
 		{"none spelled: every fit", []string{"New Era Online; Life Reset"}, []string{"New Era Online", "New Era", "Unrelated"}, []string{"new era online", "new era"}},
+		// Each name is resolved on its own: an exact "Cosmere" does not stop
+		// "Mistborn", which no series spells, from reaching "Mistborn Era".
+		{"each name on its own", []string{"Mistborn", "Cosmere"}, []string{"Mistborn Era", "Cosmere"}, []string{"mistborn era", "cosmere"}},
+		{"each name spelled", []string{"Frontlines", "Cosmere"}, []string{"Frontlines", "Frontlines: Evolution", "Cosmere"}, []string{"frontlines", "cosmere"}},
+		// A loose guess beside the series another guess spells is that series:
+		// "Dresden" (a folder) adds no sub-series to the tag's "The Dresden Files".
+		{"a loose guess of a spelled series", []string{"Dresden", "The Dresden Files"}, []string{"The Dresden Files", "The Dresden Files: Bigfoot"}, []string{"the dresden files"}},
+		{"a loose guess first", []string{"The Dresden Files", "Dresden"}, []string{"The Dresden Files: Bigfoot", "The Dresden Files"}, []string{"the dresden files"}},
 		{"no series named", nil, []string{"Frontlines"}, nil},
 	} {
 		f := readFacts(matchRequest{titles: []string{"x y"}, series: tc.series})
-		f.resolveSeries([]*candidate{cand(tc.pool...)})
+		f.resolveSeries(t.Context(), []*candidate{cand(tc.pool...)})
 		got := slices.Sorted(maps.Keys(f.resolved))
 		want := slices.Sorted(slices.Values(tc.want))
 		if !slices.Equal(got, want) {
 			t.Errorf("%s: resolved %q, want %q", tc.name, got, want)
+		}
+	}
+}
+
+// TestResolveSeriesAsksTheBudget: resolveSeries reads every candidate's title
+// (matchFacts.named), the judging's heavy half, so it stops on a spent budget
+// as the judging loop does rather than reading the whole pool past it.
+func TestResolveSeriesAsksTheBudget(t *testing.T) {
+	c := &candidate{id: "a", series: []candidateSeries{{name: ptr(newTermForm(matchTerms("Frontlines"))), position: "1"}}}
+	spent, cancel := context.WithCancel(t.Context())
+	cancel()
+	for ctx, want := range map[context.Context]int{t.Context(): 1, spent: 0} {
+		f := readFacts(matchRequest{titles: []string{"x y"}, series: []string{"Frontlines"}})
+		f.resolveSeries(ctx, []*candidate{c})
+		if len(f.named) != want {
+			t.Errorf("budget spent %v: %d titles read, want %d", ctx.Err() != nil, len(f.named), want)
 		}
 	}
 }

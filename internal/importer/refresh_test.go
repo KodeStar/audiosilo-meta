@@ -353,6 +353,12 @@ func TestAwaitingRefreshReadsTheFirstStatementAndTheRestatement(t *testing.T) {
 		{"a user-library source", "", []model.Source{src(mirror, "B1", "2026-08-02"), src(model.SourceUser, "form", "2026-08-03")}, false},
 		{"undated sources fall back to added_at", "2026-08-02", []model.Source{src(mirror, "B1", "")}, true},
 		{"undated sources and a later added_at", "2026-09-20", []model.Source{src(mirror, "B1", "")}, false},
+		// A reported-ASIN lane stamp (Options.Intake) names the same ASIN.
+		{"catalogued by the lane from the preorder listing", "", []model.Source{src(mirror, IntakeRefPrefix+"B1", "2026-08-02")}, true},
+		{"the lane's first ASIN restated after the release", "",
+			[]model.Source{src(mirror, IntakeRefPrefix+"B1", "2026-08-02"), src(mirror, "B1", "2026-10-06")}, false},
+		{"restated by the lane after the release", "",
+			[]model.Source{src(mirror, "B1", "2026-08-02"), src(mirror, IntakeRefPrefix+"B1", "2026-10-06")}, false},
 	} {
 		if got := awaitingRefresh(estRelease, tc.added, "B1", tc.sources); got != tc.want {
 			t.Errorf("%s: awaitingRefresh = %v, want %v", tc.name, got, tc.want)

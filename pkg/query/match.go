@@ -5,6 +5,7 @@ import (
 	"context"
 	"database/sql"
 	"errors"
+	"maps"
 	"math"
 	"net/http"
 	"net/url"
@@ -115,12 +116,13 @@ type matchRequest struct {
 	asin     string
 	isbn     string
 	limit    int
-	// language is the book's language as matchLanguage reads it, "" unknown;
+	// language is the book's language as model.ReadLanguage reads it, "" unknown;
 	// narrators are the narrator guesses, each split like an author credit.
 	language  string
 	narrators []string
-	// expandWork asks for the best result's work and series facts (matchexpand.go).
-	expandWork bool
+	// expand is what the expand parameters ask for: the best result's work and
+	// series facts, lean or whole, above a score (matchexpand.go).
+	expand matchExpansionReq
 }
 
 // parseMatchRequest reads the query parameters. Every text value is trimmed and
@@ -153,9 +155,9 @@ func parseMatchRequest(q url.Values) (matchRequest, bool) {
 		limit:   clampLimit(q.Get("limit"), matchLimitDefault, matchLimitMax),
 		// Neither is a fact a match can stand on alone, so neither counts
 		// toward ok below: they only weigh the candidates the others found.
-		language:   matchLanguage(text(q.Get("language"))),
-		narrators:  list(q["narrator"], matchHypothesesMax),
-		expandWork: wantsWorkExpansion(q["expand"]),
+		language:  model.ReadLanguage(text(q.Get("language"))),
+		narrators: list(q["narrator"], matchHypothesesMax),
+		expand:    parseExpansion(q["expand"], q.Get(matchExpandMinParam)),
 	}
 	if len(r.asin) > maxMatchIdentifier {
 		r.asin = ""
@@ -264,8 +266,8 @@ func (s *handler) matchInSlot(ctx context.Context, snap *DB, req matchRequest) (
 	}
 	results, err = snap.match(ctx, req)
 	whole = true
-	if err == nil && req.expandWork {
-		whole = snap.expandBest(ctx, results)
+	if err == nil && req.expand.work {
+		whole = snap.expandBest(ctx, results, req.expand)
 	}
 	return results, whole, err
 }
@@ -284,6 +286,10 @@ type matchFacts struct {
 	structured bool
 	authors    []personName
 	series     []termForm
+	// seriesGuesses holds series' forms grouped by the request's series guess
+	// each was read from (its first, when two guesses fold alike):
+	// resolveSeries settles each guess on its own.
+	seriesGuesses [][]termForm
 	// seriesNames are the series as probed: the request's, numbering cut off
 	// ("03 - Tawny Man" is "Tawny Man"). series holds every hypothesis's
 	// forms together, so a candidate's agreement is the best any of them
@@ -300,7 +306,7 @@ type matchFacts struct {
 	// 1" beside "02 - Throne of Glass") does not count.
 	tiedVolume bool
 	runtime    int
-	// language is the request's (matchLanguage), "" when unknown; narrators
+	// language is the request's (model.ReadLanguage), "" when unknown; narrators
 	// are its narrator guesses read as names (splitAuthors).
 	language  string
 	narrators []personName
@@ -326,6 +332,17 @@ type matchFacts struct {
 	// resolveSeries): a listing vouches for no work whose own title agrees
 	// less, once that reaches seriesDistrustHigh.
 	namedElsewhere float64
+	// named holds the request's title agreement with every candidate of the
+	// pool (titleAgreement, read once and then reused by judge), and namedBest,
+	// namedBestID and namedNext the two best named agreements over the works
+	// that could be the book (by a named author, the runtime not ruling them
+	// out, in no other language than a stated one): what a listing's lift of a
+	// title below the seriesDistrust band reads (namedByAnother). Filled by
+	// resolveSeries, the one place a listing can vouch from; nil otherwise.
+	named       map[*candidate]titleRead
+	namedBest   float64
+	namedBestID string
+	namedNext   float64
 	// edit is the edit distance's scratch, reused by every comparison of the
 	// request (judging runs on one goroutine).
 	edit *editBuf
@@ -362,11 +379,16 @@ func readFacts(req matchRequest) *matchFacts {
 		if cut != "" && !slices.Contains(f.seriesNames, cut) {
 			f.seriesNames = append(f.seriesNames, cut)
 		}
+		var guess []termForm
 		for _, v := range []string{series, cut} {
 			form := newTermForm(matchTerms(v))
 			if len(form.terms) > 0 && !slices.ContainsFunc(f.series, func(x termForm) bool { return x.joined == form.joined }) {
 				f.series = append(f.series, form)
+				guess = append(guess, form)
 			}
+		}
+		if len(guess) > 0 {
+			f.seriesGuesses = append(f.seriesGuesses, guess)
 		}
 	}
 	// Every guess is read for numbering once, here: the number its prefix
@@ -479,7 +501,7 @@ type candidate struct {
 	authorWord map[string]bool
 	series     []candidateSeries
 	runtimes   []recordingRuntime
-	// language is the work's, as matchLanguage reads it ("" unknown).
+	// language is the work's, as model.ReadLanguage reads it ("" unknown).
 	language string
 	// narrated is each recording crediting narrators, in recording id order;
 	// read only when the request names narrators.
@@ -529,6 +551,10 @@ type scored struct {
 	runtimeDiff float64 // closest recording's runtime difference; +Inf when not judged
 	recordingID string
 	reasons     matchReasons
+	// positionConflict is whether the structured facts placed the work at
+	// another position than the stated one (seriesVerdict): the typed text's
+	// reading is scaled by it too unless the text names the work (judge).
+	positionConflict bool
 }
 
 // match runs one structured match over the snapshot. It returns at most
@@ -648,7 +674,7 @@ func (s *DB) match(ctx context.Context, req matchRequest) ([]matchResult, error)
 	// Only a listing at a position, with a runtime to agree, can vouch
 	// (listedHere), so the pool's series are resolved only then.
 	if facts.position != "" && facts.runtime > 0 {
-		facts.resolveSeries(cands)
+		facts.resolveSeries(ctx, cands)
 	}
 	verdicts := make([]scored, 0, len(cands))
 	for i, c := range cands {
@@ -668,12 +694,18 @@ func (s *DB) match(ctx context.Context, req matchRequest) ([]matchResult, error)
 	return s.matchResults(ctx, verdicts)
 }
 
-// better is the ranking: score, then title similarity (an exact title first),
-// then the closer runtime, then the id, so equal facts always rank the same way.
+// better is the ranking: score, then the identifier's hit (it scores 100, and
+// a work whose title agrees better can tie it there: the hit is the book, so a
+// limit must cut the rivals first), then title similarity (an exact title
+// first), then the closer runtime, then the id, so equal facts always rank the
+// same way.
 func (a scored) better(b scored) bool {
+	ai, bi := a.reasons.Identifier != "", b.reasons.Identifier != ""
 	switch {
 	case a.score != b.score:
 		return a.score > b.score
+	case ai != bi:
+		return ai
 	case a.title != b.title:
 		return a.title > b.title
 	case a.runtimeDiff != b.runtimeDiff:
@@ -921,7 +953,7 @@ func matchNarratorsSQL(ph string) string {
 type factMemo struct {
 	people    map[string]memoPerson // by person id
 	series    map[string]*termForm  // by series name
-	languages map[string]string     // matchLanguage, by stored tag
+	languages map[string]string     // model.ReadLanguage, by stored tag
 }
 
 type memoPerson struct {
@@ -958,7 +990,7 @@ func (m *factMemo) language(tag string) string {
 	if l, ok := m.languages[tag]; ok {
 		return l
 	}
-	l := matchLanguage(tag)
+	l := model.ReadLanguage(tag)
 	m.languages[tag] = l
 	return l
 }
@@ -1133,7 +1165,15 @@ func (f *matchFacts) judge(c *candidate) scored {
 		// The typed text is judged as the facts it states about THIS work,
 		// by the same rules; only its title agreement is reported, as text.
 		t := scored{runtimeDiff: v.runtimeDiff}
-		v.score = max(v.score, f.textFacts(c).structuredScore(c, &t, base))
+		textScore := f.textFacts(c).structuredScore(c, &t, base)
+		// A sibling the facts place at another volume is that in the typed
+		// text's reading too ("cornwell sharpe" names every volume alike),
+		// unless the text names it: its title clearly, or its volume (an
+		// admin correcting a misfiled book).
+		if v.positionConflict && t.reasons.Series != seriesPosition && t.title < seriesDistrustHigh {
+			textScore *= positionConflictFactor
+		}
+		v.score = max(v.score, textScore)
 		text := t.title
 		if t.reasons.Series == seriesPosition && t.reasons.Title == nil {
 			text = 1 // it named the volume, which stood in for the title
@@ -1275,6 +1315,7 @@ func (f *matchFacts) structuredScore(c *candidate, v *scored, w wavg) float64 {
 	// numbering is volume 1's title), so the series weight alone left it a
 	// rival.
 	if positionConflict {
+		v.positionConflict = true
 		score *= positionConflictFactor
 	}
 	return score
@@ -1285,6 +1326,9 @@ func (f *matchFacts) structuredScore(c *candidate, v *scored, w wavg) float64 {
 // name (named, see structuredScore), and whether any guess was judged at all
 // (one naming an author of c is not).
 func (f *matchFacts) titleAgreement(c *candidate) (t, named float64, judged bool) {
+	if r, ok := f.named[c]; ok {
+		return r.t, r.named, r.judged
+	}
 	for i := range f.titles {
 		h := &f.titles[i]
 		if c.isAuthorName(h) {
@@ -1301,6 +1345,23 @@ func (f *matchFacts) titleAgreement(c *candidate) (t, named float64, judged bool
 		}
 	}
 	return t, named, judged
+}
+
+// titleRead is one candidate's titleAgreement, kept for the request
+// (matchFacts.named).
+type titleRead struct {
+	t, named float64
+	judged   bool
+}
+
+// namedByAnother is the best named title agreement the request's title reaches
+// with any work of the pool but c that could be the book (matchFacts.named; 0
+// before resolveSeries read the pool).
+func (f *matchFacts) namedByAnother(c *candidate) float64 {
+	if c.id == f.namedBestID {
+		return f.namedNext
+	}
+	return f.namedBest
 }
 
 // seriesVerdict is the ONE place a candidate's numbering is judged: its
@@ -1325,8 +1386,9 @@ func (f *matchFacts) titleAgreement(c *candidate) (t, named float64, judged bool
 //   - a named title that clearly disagrees outranks a numbering match (see
 //     seriesDistrustLow/High), unless the listing vouches for the work
 //     (listedHere: the resolved series lists it at the stated position and its
-//     recording agrees with the runtime), when the title counts at least
-//     genericTitleValue;
+//     recording agrees with the runtime), when a title in or above the band
+//     counts at least genericTitleValue (one below it only while the request's
+//     title names no other work that could be the book, namedByAnother);
 //   - in the named series but at ANOTHER volume, unless the title itself agrees
 //     ("Sharpe's Siege" filed as volume 20, which is volume 19), whatever it
 //     shares with the request's title is the series' naming pattern ("Tales
@@ -1375,7 +1437,14 @@ func (f *matchFacts) seriesVerdict(c *candidate, t, named, runtimeDiff float64) 
 	if elsewhere && named < seriesDistrustHigh {
 		value = 0
 	}
-	if vouched {
+	// The vouch lifts a title the band would distrust (or one above it). One
+	// below shares nothing with the request's, which is then either the series'
+	// numbering alone ("American Dragons, Book 3", a subtitle every LitRPG
+	// shares: no evidence against the listing) or the name of another book
+	// ("Blood of Elves" filed at The Last Wish's position, 0.12): lifted only
+	// while the request's title names no other work that could be the book
+	// clearly. namedElsewhere asks the same of the series' own siblings only.
+	if vouched && (t >= seriesDistrustLow || f.namedByAnother(c) < seriesDistrustHigh) {
 		value = max(value, genericTitleValue)
 	}
 	return agreement, value, elsewhere && !covered
@@ -1383,9 +1452,12 @@ func (f *matchFacts) seriesVerdict(c *candidate, t, named, runtimeDiff float64) 
 
 // listedHere reports whether c's listing vouches for it as the stated volume:
 // a series the request's names resolve to (resolveSeries) lists it at exactly
-// the stated position (a range included), its closest recording is within
-// listedRuntimeAgrees of the runtime (runtimeDiff, +Inf when unjudged), and it
-// is in the request's language when one is stated - else its listing is not in
+// the request's position (a range included) - its `position`, or else the
+// volume its title's numbering carries, which a client sending a differing
+// series folder leaves to be read (TestMatchListingVouchesAtAReadPosition) -
+// its closest recording is within listedRuntimeAgrees of the runtime
+// (runtimeDiff, +Inf when unjudged), and it is in the request's language when
+// one is stated - else its listing is not in
 // a series that translates another, which the name resolves to as well (a
 // Polish "Star Force" beside the English one). Such a work is the volume
 // however its title is spelled: the series-named first volume with a subtitle
@@ -1406,49 +1478,88 @@ func (f *matchFacts) listedHere(c *candidate, runtimeDiff, named float64) bool {
 }
 
 // resolveSeries settles which of the pool's series the request's series names
-// (matchFacts.resolved): those spelled as one of its forms when any is - the
-// same words (sameWords), or the same catalogue identity once an article and
-// a trailing "Series", "Novels" or "Trilogy" are peeled (titlerule.SeriesKey:
-// "Dark Road Series" is "Dark Road") - else every one that fits
-// (seriesNameFits). preferWholeName's rule, over the candidates: "Frontlines"
-// resolves to Frontlines, not to the sub-series "Frontlines: Evolution", and
-// "Summoner School" not to "Summoner", while "Aaron Crash (American Dragons)",
-// which no series spells, still reaches "American Dragons Series".
-func (f *matchFacts) resolveSeries(cands []*candidate) {
+// (matchFacts.resolved), each series guess on its own: the ones spelled as one
+// of the guess's forms when any is - the same words (sameWords), or the same
+// catalogue identity once an article and a trailing "Series", "Novels" or
+// "Trilogy" are peeled (titlerule.SeriesKey: "Dark Road Series" is "Dark Road")
+// - else every one that fits it (seriesNameFits). preferWholeName's rule, over
+// the candidates: "Frontlines" resolves to Frontlines, not to the sub-series
+// "Frontlines: Evolution", and "Summoner School" not to "Summoner", while
+// "Aaron Crash (American Dragons)", which no series spells, still reaches
+// "American Dragons Series" - beside a "Cosmere" that one series does spell
+// (a folder's series and a tag's are two guesses, judged apart). A guess no
+// series spells that fits one ANOTHER guess spells is that series said
+// loosely ("Dresden" beside "The Dresden Files") and adds nothing: its other
+// fits are the sub-series the spelled name rules out.
+//
+// It reads every candidate's title on the way (matchFacts.named), so it asks
+// the budget as the judging does; a pool cut short is one match() answers busy.
+func (f *matchFacts) resolveSeries(ctx context.Context, cands []*candidate) {
 	if len(f.series) == 0 {
 		return
 	}
-	keys := make([]string, 0, len(f.series))
-	for i := range f.series {
-		if k := titlerule.SeriesKey(f.series[i].joined); k != "" {
-			keys = append(keys, k)
-		}
-	}
-	whole, fitting, seen := map[string]bool{}, map[string]bool{}, map[string]bool{}
+	var names []*termForm
+	var nameKeys []string
+	seen := map[string]bool{}
 	for _, c := range cands {
 		for _, m := range c.series {
-			name := m.name.joined
-			if seen[name] {
-				continue
-			}
-			seen[name] = true
-			switch {
-			case slices.Contains(keys, titlerule.SeriesKey(name)) ||
-				slices.ContainsFunc(f.series, func(h termForm) bool { return sameWords(&h, m.name) }):
-				whole[name] = true
-			case slices.ContainsFunc(f.series, func(h termForm) bool { return seriesNameFits(&h, m.name, f.edit) }):
-				fitting[name] = true
+			if !seen[m.name.joined] {
+				seen[m.name.joined] = true
+				names = append(names, m.name)
+				nameKeys = append(nameKeys, titlerule.SeriesKey(m.name.joined))
 			}
 		}
 	}
-	f.resolved = fitting
-	if len(whole) > 0 {
-		f.resolved = whole
+	spelled := map[string]bool{}
+	var loose [][]string
+	for _, forms := range f.seriesGuesses {
+		var keys []string
+		for i := range forms {
+			if k := titlerule.SeriesKey(forms[i].joined); k != "" {
+				keys = append(keys, k)
+			}
+		}
+		var whole, fitting []string
+		for n, name := range names {
+			switch {
+			case slices.Contains(keys, nameKeys[n]) ||
+				slices.ContainsFunc(forms, func(h termForm) bool { return sameWords(&h, name) }):
+				whole = append(whole, name.joined)
+			case slices.ContainsFunc(forms, func(h termForm) bool { return seriesNameFits(&h, name, f.edit) }):
+				fitting = append(fitting, name.joined)
+			}
+		}
+		if len(whole) == 0 {
+			loose = append(loose, fitting)
+		}
+		for _, name := range whole {
+			spelled[name] = true
+		}
 	}
-	if f.position == "" {
-		return
+	f.resolved = maps.Clone(spelled)
+	for _, fitting := range loose {
+		if slices.ContainsFunc(fitting, func(name string) bool { return spelled[name] }) {
+			continue
+		}
+		for _, name := range fitting {
+			f.resolved[name] = true
+		}
 	}
-	for _, c := range cands {
+	f.named = make(map[*candidate]titleRead, len(cands))
+	for i, c := range cands {
+		if i%256 == 0 && ctx.Err() != nil {
+			return
+		}
+		t, named, judged := f.titleAgreement(c)
+		f.named[c] = titleRead{t: t, named: named, judged: judged}
+		// Only a work that could be this book names it: its length not ruled
+		// out (a tag naming a volume a third longer than the file is a
+		// mislabelled tag, Primer for the Apocalypse 1 tagged "The Realm
+		// Dungeon") and, for the lift's rivals, by a named author and in no
+		// other language than the stated one.
+		if f.runtimeRulesOut(c) {
+			continue
+		}
 		here, other := false, false
 		for _, m := range c.series {
 			if f.resolved[m.name.joined] {
@@ -1459,11 +1570,22 @@ func (f *matchFacts) resolveSeries(cands []*candidate) {
 				}
 			}
 		}
-		if !other || here || f.runtimeRulesOut(c) {
+		if other && !here {
+			f.namedElsewhere = max(f.namedElsewhere, named)
+		}
+		// A work in another known language than the stated one is another
+		// edition of a book (languageMismatchFactor), not another book: the
+		// Polish "Podbój" stays the volume of a Polish file tagged "Conquest".
+		if (len(f.authors) > 0 && agreeAuthors(f.authors, c.authors) == authorNone) ||
+			(f.language != "" && c.language != "" && c.language != f.language) {
 			continue
 		}
-		_, named, _ := f.titleAgreement(c)
-		f.namedElsewhere = max(f.namedElsewhere, named)
+		switch {
+		case named > f.namedBest:
+			f.namedNext, f.namedBest, f.namedBestID = f.namedBest, named, c.id
+		case named > f.namedNext:
+			f.namedNext = named
+		}
 	}
 }
 

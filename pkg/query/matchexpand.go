@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	"errors"
 	"slices"
+	"strconv"
 	"strings"
 )
 
@@ -17,7 +18,8 @@ import (
 // of the time (RTT ~80 ms against a 20 ms median match), so inlining them turns
 // three waits per book into one.
 //
-// WHAT IS INLINED, AND FOR WHICH RESULT. Only the BEST result (bestResult) carries
+// WHAT IS INLINED, AND FOR WHICH RESULT. Only the BEST result (the first: an
+// identifier hit ranks first, scored.better) carries
 // anything: a run reads the best candidate's whole document and of the next one only
 // the score and reasons every result has. It gets the work exactly as GET works/{id}
 // serves it, and series_facts, the two facts of its series that the client's series
@@ -34,9 +36,28 @@ import (
 // An older metaserve ignores the parameter, so clients handle that anyway. It is
 // all or nothing, so `work` present means series_facts was read too, and a series
 // missing from it is one nothing is known about.
+//
+// WHAT A CLIENT CAN LEAVE OUT. Two additions an older metaserve ignores, so a
+// client sends them unconditionally: `lean` beside `work` leaves the work's CC BY-SA
+// sidecars out (and unread), which a bulk match never reads and which are most of a
+// long work's bytes; `expand_min` skips the expansion of a best the client will
+// drop unread (under its score), an answer that is still whole.
 
 // matchExpandWork is the expand value that asks for all of this.
 const matchExpandWork = "work"
+
+// matchExpandLean, beside matchExpandWork, inlines the work without its CC BY-SA
+// sidecars (characters, recaps, the recap summary and the position scale they
+// are numbered on): most of a long work's bytes, and nothing a bulk match reads.
+// A client sends both, so an older metaserve, which ignores the value it does not
+// know, still inlines the whole work; alone it asks for nothing.
+const matchExpandLean = "lean"
+
+// matchExpandMinParam names the score under which the best is not expanded
+// (1-100; anything else is ignored; an identifier hit scores 100): a client that
+// drops a weak best unread (audiosilo-server's review floor) says so, and its
+// document is not read or sent. An older metaserve ignores it and expands.
+const matchExpandMinParam = "expand_min"
 
 // matchExpandSeriesMax bounds the series one expansion reads the facts of, like
 // audiosilo-server's maxSeriesFacts (internal/meta/seriesrules.go), which it must
@@ -53,36 +74,47 @@ type seriesFacts struct {
 	TranslationOf []string `json:"translation_of,omitempty"`
 }
 
-// wantsWorkExpansion reads the expand parameter: comma-separated values, repeatable,
-// and a value this server does not know is ignored rather than refused, so a client
-// can ask for a later addition without learning the server's version first.
-func wantsWorkExpansion(values []string) bool {
-	for part := range strings.SplitSeq(strings.Join(values, ","), ",") {
-		if strings.TrimSpace(part) == matchExpandWork {
-			return true
-		}
-	}
-	return false
+// matchExpansionReq is what a request's expand parameters ask for.
+type matchExpansionReq struct {
+	work bool // matchExpandWork
+	lean bool // matchExpandLean, beside work
+	min  int  // matchExpandMinParam, 0 for none
 }
 
-// bestResult is the index of the result a client takes as the match: the one the
-// identifier found, which is the book whatever else scores as well, else the first
-// (they are in rank order). An identifier hit always scores 100, so it is never below
-// the top score, but the ranking breaks a tie on the title, so it can rank second.
-func bestResult(results []matchResult) int {
-	return max(slices.IndexFunc(results, func(r matchResult) bool { return r.Reasons.Identifier != "" }), 0)
+// parseExpansion reads the expand parameter - comma-separated values, repeatable,
+// a value this server does not know ignored rather than refused, so a client can
+// ask for a later addition without learning the server's version first - and
+// expand_min.
+func parseExpansion(values []string, minScore string) matchExpansionReq {
+	var x matchExpansionReq
+	for part := range strings.SplitSeq(strings.Join(values, ","), ",") {
+		switch strings.TrimSpace(part) {
+		case matchExpandWork:
+			x.work = true
+		case matchExpandLean:
+			x.lean = true
+		}
+	}
+	if n, err := strconv.Atoi(strings.TrimSpace(minScore)); err == nil && n >= 1 && n <= 100 {
+		x.min = n
+	}
+	return x
 }
 
 // expandBest inlines the expansion on the best result, in place, and reports
 // whether the answer is whole: false when the budget or a read stopped it, which
 // leaves every result as it was (see the file header). No results is nothing to
 // expand, so whole.
-func (s *DB) expandBest(ctx context.Context, results []matchResult) bool {
+func (s *DB) expandBest(ctx context.Context, results []matchResult, x matchExpansionReq) bool {
 	if len(results) == 0 {
 		return true
 	}
-	best := &results[bestResult(results)]
-	work, facts, err := s.matchExpansion(ctx, best.ID)
+	best := &results[0]
+	// An identifier hit scores 100, so a bar never skips it.
+	if best.Score < x.min {
+		return true // the client drops it unread: nothing it asked for is missing
+	}
+	work, facts, err := s.matchExpansion(ctx, best.ID, !x.lean)
 	if err != nil {
 		if ctx.Err() == nil {
 			s.logf("query: works/match expand of %s failed, serving the match alone: %v", best.ID, err)
@@ -97,8 +129,8 @@ func (s *DB) expandBest(ctx context.Context, results []matchResult) bool {
 // there is an error like any read that fails, as a match only names works it read.
 // Its last step asks whether the context is still alive, so a read the budget cut
 // short can never pass for a whole one.
-func (s *DB) matchExpansion(ctx context.Context, workID string) (*WorkDetail, map[string]seriesFacts, error) {
-	work, err := s.workDetail(ctx, workID)
+func (s *DB) matchExpansion(ctx context.Context, workID string, sidecars bool) (*WorkDetail, map[string]seriesFacts, error) {
+	work, err := s.workDocument(ctx, workID, sidecars)
 	if err != nil {
 		return nil, nil, err
 	}

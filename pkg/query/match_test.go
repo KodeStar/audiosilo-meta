@@ -525,6 +525,25 @@ func TestMatchIdentifierFallsBackToTheISBN(t *testing.T) {
 	}
 }
 
+// TestMatchIdentifierHitSurvivesTheLimit: an identifier hit scores 100, and a
+// work whose title agrees better can score 100 beside it ("Sharpe's Battle" as
+// the title, Sharpe's Eagle's ASIN). The hit ranks first in that tie, so a
+// limit cuts the rivals, never the book the identifier names.
+func TestMatchIdentifierHitSurvivesTheLimit(t *testing.T) {
+	_, ts := newTestServerForCatalog(t, matchCatalog())
+	for _, limit := range []string{"1", "2"} {
+		res := matchJSON(t, ts.URL, url.Values{
+			"title": {"Sharpe's Battle"}, "author": {"Bernard Cornwell"}, "asin": {"B002SQ7KVE"}, "limit": {limit},
+		})
+		if len(res) == 0 || res[0]["id"] != "sharpes-eagle" || res[0]["score"] != float64(100) {
+			t.Fatalf("limit %s: results = %v, want sharpes-eagle first at 100", limit, matchIDs(res))
+		}
+		if limit == "2" && (len(res) != 2 || res[1]["id"] != "sharpes-battle" || res[1]["score"] != float64(100)) {
+			t.Errorf("limit 2: results = %v, want sharpes-battle second at 100", res)
+		}
+	}
+}
+
 // TestMatchISBNNamesItsRecording: an ISBN a recording carries names that
 // recording, whichever sorts first. A work's print ISBN names the work and no
 // recording, so the request's facts pick it (here the runtime), not the first by
@@ -804,7 +823,7 @@ func TestMatchReadsHonourTheContext(t *testing.T) {
 			return err
 		},
 		"matchExpansion": func(ctx context.Context) error {
-			_, _, err := snap.matchExpansion(ctx, "sharpes-eagle")
+			_, _, err := snap.matchExpansion(ctx, "sharpes-eagle", true)
 			return err
 		},
 	}

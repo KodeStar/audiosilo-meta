@@ -316,10 +316,13 @@ to the queue:
   the required checks, and an `ai-verified` verdict on its exact head before it
   merges, with the ladder below when the verdict does not come.
 - **It can be taken back.** Its records carry the typed `libex-import` provenance,
-  so they retract with that source and rank as bulk-mirror records. That type
-  does not tell the lane from the feeds, so retracting the lane alone goes through
-  its pull requests, each labelled `sync:intake` and listing the ASINs it was
-  given.
+  so they retract with that source and rank as bulk-mirror records. A lane run
+  imports with `metaimport libex --intake`, which stamps each record it writes with
+  the ref `intake:<ASIN>` where the feeds stamp the bare ASIN, so retracting the
+  lane alone is a query over `sources[].ref` (meta#2890). Records a lane run wrote
+  before the bot passed `--intake` carry the bare ASIN like the feeds'; for those,
+  retraction still goes through the lane's pull requests, each labelled
+  `sync:intake` and listing the ASINs it was given.
 
 A flag on a lane pull request goes through the ladder below like any other, with
 three differences, so a poisoned queue costs the lane its turns and cannot stall
