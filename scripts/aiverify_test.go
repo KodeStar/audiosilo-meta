@@ -227,3 +227,84 @@ func TestAIVerifyWorkflowOrigin(t *testing.T) {
 		}
 	}
 }
+
+// TestAIVerifyCommentSaysWhatTheVerdictDoes: a maintainer reviews a contributor's
+// pull request whatever the verdict, so its comment calls the verdict advisory; a
+// bot merges its own on a pass and never on a flag, so for a bot's pull request
+// the comment must not call a flag "not a merge block".
+func TestAIVerifyCommentSaysWhatTheVerdictDoes(t *testing.T) {
+	t.Parallel()
+	requireTools(t, "bash", "jq", "iconv", "perl")
+	dir := t.TempDir()
+	bin := stubBin(t, dir, "2026-01-01")
+	context := filepath.Join(dir, "context.txt")
+	if err := os.WriteFile(context, []byte("+ work \"x\"\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	flag := filepath.Join(dir, "flag.json")
+	if err := os.WriteFile(flag, []byte(`{"result":"{\"verdict\":\"flag\",\"findings\":[\"a finding\"]}"}`), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	const advisory, botMerges = "advisory - not a merge block", "does not merge it while it is flagged"
+	for _, tc := range []struct {
+		origin string
+		bot    bool
+	}{{"contributor", false}, {"sync-bot", true}, {"librivox-lane", true}} {
+		pass := runAIVerify(t, bin, context, "PR_ORIGIN="+tc.origin)
+		flagged := runAIVerify(t, bin, context, "PR_ORIGIN="+tc.origin, "REPLY_FILE="+flag)
+		if !strings.Contains(flagged.comment, "- a finding") {
+			t.Fatalf("%s: the flag's finding is missing: %s", tc.origin, flagged.comment)
+		}
+		if got := strings.Contains(flagged.comment, botMerges); got != tc.bot {
+			t.Errorf("%s: flag comment names the bot's merge block = %v:\n%s", tc.origin, got, flagged.comment)
+		}
+		if got := strings.Contains(flagged.comment, advisory); got == tc.bot {
+			t.Errorf("%s: flag comment calls itself advisory = %v:\n%s", tc.origin, got, flagged.comment)
+		}
+		if got := strings.Contains(pass.comment, "a maintainer still reviews before merge"); got == tc.bot {
+			t.Errorf("%s: pass comment promises a maintainer's review = %v:\n%s", tc.origin, got, pass.comment)
+		}
+	}
+}
+
+// stubCurl answers the Messages API with a pass and notes that it was called.
+const stubCurl = `#!/usr/bin/env bash
+touch "$OUTDIR/curl-called"
+printf '%s' '{"content":[{"type":"text","text":"{\"verdict\":\"pass\",\"findings\":[]}"}]}'
+`
+
+// TestAIVerifyPrefersTheAPIKey: with both credentials set the API key is used
+// (billed per pull request, not the subscription meta-sync's resolver shares),
+// and with the subscription token alone the CLI still is.
+func TestAIVerifyPrefersTheAPIKey(t *testing.T) {
+	t.Parallel()
+	requireTools(t, "bash", "jq", "iconv", "perl")
+	dir := t.TempDir()
+	bin := stubBin(t, dir, "2026-01-01")
+	if err := os.WriteFile(filepath.Join(bin, "curl"), []byte(stubCurl), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	context := filepath.Join(dir, "context.txt")
+	if err := os.WriteFile(context, []byte("+ work \"x\"\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	run := func(env ...string) (curl, cli bool, verdict string) {
+		t.Helper()
+		out := t.TempDir()
+		cmd := exec.Command("bash", abs(t, filepath.Join("..", ".github", "scripts", "ai-verify.sh")),
+			context, filepath.Join(out, "verdict.json"), filepath.Join(out, "comment.md"))
+		cmd.Env = append([]string{"PATH=" + bin + string(os.PathListSeparator) + os.Getenv("PATH"), "HOME=" + out, "OUTDIR=" + out}, env...)
+		if b, err := cmd.CombinedOutput(); err != nil {
+			t.Fatalf("ai-verify.sh %v: %v\n%s", env, err, b)
+		}
+		_, curlErr := os.Stat(filepath.Join(out, "curl-called"))
+		_, cliErr := os.Stat(filepath.Join(out, "stdin.txt"))
+		return curlErr == nil, cliErr == nil, readFile(t, filepath.Join(out, "verdict.json"))
+	}
+	if curl, cli, verdict := run("CLAUDE_CODE_OAUTH_TOKEN=test", "ANTHROPIC_API_KEY=key"); !curl || cli || !strings.Contains(verdict, `"verdict":"pass"`) {
+		t.Errorf("both credentials: curl %v, cli %v, verdict %s; want the API alone", curl, cli, verdict)
+	}
+	if curl, cli, _ := run("CLAUDE_CODE_OAUTH_TOKEN=test"); curl || !cli {
+		t.Errorf("the subscription token alone: curl %v, cli %v; want the CLI alone", curl, cli)
+	}
+}
