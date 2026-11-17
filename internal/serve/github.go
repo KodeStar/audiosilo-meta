@@ -320,9 +320,6 @@ func (s *Server) refresh(ctx context.Context) error {
 			return err
 		}
 		if errors.Is(err, errPatchNotTaken) {
-			// The expected case, not a fault: every release once the artifact
-			// is past the patch-base cap (production's ~2 GB is), and the first
-			// refresh after a boot.
 			s.log.Printf("serve: downloading %s in full (%v)", rel.Tag, err)
 		} else {
 			s.log.Printf("serve: patch refresh failed (%v); falling back to full download", err)
