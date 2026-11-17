@@ -210,7 +210,13 @@ size-capped); the one thing that cannot stream is the patch BASE, which a raw
 zstd dictionary requires as a contiguous slice - and the decoder's window over it
 costs about as much again, so peak transient is ~2x the base and `tryPatch`
 refuses outright above `defaultMaxPatchBase` (1 GiB), taking the streamed full
-download instead. Either way it hot-swaps the pointer; in-flight requests finish
+download instead. The real artifact has been past that cap since 2026-11 (about
+2 GB), so PRODUCTION TAKES THE FULL DOWNLOAD (about 530 MB) ON EVERY RELEASE and
+the patch path serves only smaller deployments: the cap stays (meta#2885), as
+raising it would cost 4-5 GB of transient memory on the serving host. The
+expected bail-outs (no loaded tag, over the cap, no delta from the loaded tag)
+wrap `errPatchNotTaken` and log as a routine "downloading <tag> in full"; only a
+patch that was tried and failed logs "patch refresh failed". Either way it hot-swaps the pointer; in-flight requests finish
 on the old handle (closed after a grace delay), a rejected patch never swaps, and
 a poll failure only logs and retries, never crashes the process. Before either
 download it checks the CACHE: if the volume already holds a file for the newest
