@@ -293,7 +293,8 @@ random value of at least 32 bytes (`openssl rand -hex 32`) to register the beare
 token `GET` on the same path as well. The file holds each reported ASIN with a
 count and its first and last UTC day, and nothing about who reported it; the POST's
 limit (6 a day per client) holds a client's address in memory until about a day
-after its last request, refused or not. That covers metaserve alone: a reverse proxy in front logs
+after its last request, refused or not (a POST that is not `application/json` is
+answered 415 before the limit and counts toward nothing). That covers metaserve alone: a reverse proxy in front logs
 what it is set to log, so check its access log for this route. The POST needs
 `METASERVE_TRUSTED_PROXIES` right behind a proxy
 even more than the API does, or every reporting server shares one 6-a-day bucket.

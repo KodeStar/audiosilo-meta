@@ -14,13 +14,18 @@ package serve
 //   - Its own middleware, never Server.public. That stack is CORS-open, and a write
 //     route must not be callable from a script on someone else's page: requiring
 //     application/json forces a browser's preflight, and with no OPTIONS route and
-//     no CORS header the preflight fails. Everything answers no-store.
+//     no CORS header the preflight fails. A cross-origin POST a browser sends with
+//     no preflight carries another Content-Type and is answered 415 IN FRONT of the
+//     limiter (jsonOnlyMW), so a page cannot spend a visitor's six reports either.
+//     Everything answers no-store.
 //   - A client's address reaches the limiter and stops there. The limiter holds it
 //     in memory (the bucket's key, an IPv6 address as its /64), and intakeLoop's
 //     sweep drops it about a day after the client's last request whether or not
 //     anybody else ever calls. Nothing on this path logs an address, a user agent,
-//     an ASIN or a batch, and nothing of the kind goes in the file, whose layout
-//     forgets the arrival order on the same tick (intakeQueue.compact).
+//     an ASIN or a batch, and no address, user agent or batch goes in the file. Its
+//     rows are ASINs, and their arrival order lasts only until the housekeeping
+//     tick after the report, about a minute, rewrites the file in key order
+//     (intakeQueue.compact).
 //   - Every snapshot this server serves filters the queue: a row leaves when the
 //     artifact knows it, or when it expires. There is no ack route. The housekeeping
 //     goroutine notices a new snapshot on its tick, however it was installed, and
@@ -248,7 +253,7 @@ func (s *Server) intakeRoutes() []route {
 	if s.intake == nil {
 		return nil
 	}
-	rs := []route{{"POST " + intakePath, noStoreMW(s.intake.limiter.middleware(http.HandlerFunc(s.handleIntakeReport)))}}
+	rs := []route{{"POST " + intakePath, noStoreMW(jsonOnlyMW(s.intake.limiter.middleware(http.HandlerFunc(s.handleIntakeReport))))}}
 	if s.intake.token != "" {
 		var read http.Handler = http.HandlerFunc(s.handleIntakeRead)
 		if s.limiter != nil {
@@ -282,13 +287,24 @@ func noStoreMW(next http.Handler) http.Handler {
 	})
 }
 
-// handleIntakeReport is POST /api/v1/intake/unknown-asins. The limiter has already
-// spent a token on it, so a refused report counts toward the six as well.
+// jsonOnlyMW answers 415 to a POST whose body is not application/json (a charset
+// parameter is allowed) before the limiter sees it. That is the shape a browser
+// sends cross-origin without a preflight (text/plain, a form), so if it spent a
+// token a script on any page could use up its visitors' six reports for nothing.
+func jsonOnlyMW(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if mt, _, err := mime.ParseMediaType(r.Header.Get("Content-Type")); err != nil || mt != "application/json" {
+			httpx.WriteErr(w, http.StatusUnsupportedMediaType, "the body must be application/json")
+			return
+		}
+		next.ServeHTTP(w, r)
+	})
+}
+
+// handleIntakeReport is POST /api/v1/intake/unknown-asins. jsonOnlyMW has checked
+// the Content-Type and the limiter has spent a token on it, so a report refused
+// from here on (too large, malformed) counts toward the six as well.
 func (s *Server) handleIntakeReport(w http.ResponseWriter, r *http.Request) {
-	if mt, _, err := mime.ParseMediaType(r.Header.Get("Content-Type")); err != nil || mt != "application/json" {
-		httpx.WriteErr(w, http.StatusUnsupportedMediaType, "the body must be application/json")
-		return
-	}
 	body, err := io.ReadAll(http.MaxBytesReader(w, r.Body, maxIntakeBodyBytes))
 	if err != nil {
 		var tooLarge *http.MaxBytesError

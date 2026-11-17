@@ -504,6 +504,34 @@ func TestIntakeReportRefusals(t *testing.T) {
 	}
 }
 
+// TestIntakeWrongTypeSpendsNothing: a POST that is not application/json, the shape
+// a browser sends cross-origin with no preflight, is refused before the limiter, so
+// a script on someone else's page cannot use up a visitor's six reports. A report
+// refused after the type check (malformed JSON) still spends one.
+func TestIntakeWrongTypeSpendsNothing(t *testing.T) {
+	srv := intakeServer(t, Config{})
+	remote := nextRemote()
+	for i := range intakeReportsPerDay + 2 {
+		for _, ctype := range []string{"text/plain", "application/x-www-form-urlencoded", "none"} {
+			if rec := (intakeReq{ctype: ctype, body: asinsBody(unknownA), remote: remote}).do(srv); rec.Code != http.StatusUnsupportedMediaType {
+				t.Fatalf("%s POST %d = %d, want 415", ctype, i+1, rec.Code)
+			}
+		}
+	}
+	if rec := (intakeReq{body: asinsBody(unknownA), remote: remote}).do(srv); rec.Code != http.StatusAccepted {
+		t.Fatalf("the JSON report after the refused ones = %d %s, want 202", rec.Code, rec.Body)
+	}
+	// The other five go on JSON the handler refuses: those still count.
+	for i := range intakeReportsPerDay - 1 {
+		if rec := (intakeReq{body: `{"asins":[`, remote: remote}).do(srv); rec.Code != http.StatusBadRequest {
+			t.Fatalf("malformed report %d = %d, want 400", i+1, rec.Code)
+		}
+	}
+	if rec := (intakeReq{body: asinsBody(unknownA), remote: remote}).do(srv); rec.Code != http.StatusTooManyRequests {
+		t.Errorf("the seventh JSON POST = %d, want 429", rec.Code)
+	}
+}
+
 // TestIntakeReportAtItsLimits: the bounds admit what they name.
 func TestIntakeReportAtItsLimits(t *testing.T) {
 	srv := intakeServer(t, Config{})
