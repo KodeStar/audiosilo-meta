@@ -285,6 +285,10 @@ type matchFacts struct {
 	structured bool
 	authors    []personName
 	series     []termForm
+	// seriesGuess is, for each of series' forms, the index of the request's
+	// series guess it was read from (its first, when two guesses fold alike):
+	// resolveSeries settles each guess on its own.
+	seriesGuess []int
 	// seriesNames are the series as probed: the request's, numbering cut off
 	// ("03 - Tawny Man" is "Tawny Man"). series holds every hypothesis's
 	// forms together, so a candidate's agreement is the best any of them
@@ -369,7 +373,7 @@ func readFacts(req matchRequest) *matchFacts {
 	f.statesDramatization = slices.ContainsFunc(slices.Concat([]string{req.text}, req.titles, req.series, req.narrators), titlerule.StatesDramatization)
 	f.authors = readNames(req.authors)
 	f.narrators = readNames(req.narrators)
-	for _, series := range req.series {
+	for i, series := range req.series {
 		cut, _ := cutNumbering(series)
 		if cut != "" && !slices.Contains(f.seriesNames, cut) {
 			f.seriesNames = append(f.seriesNames, cut)
@@ -378,6 +382,7 @@ func readFacts(req matchRequest) *matchFacts {
 			form := newTermForm(matchTerms(v))
 			if len(form.terms) > 0 && !slices.ContainsFunc(f.series, func(x termForm) bool { return x.joined == form.joined }) {
 				f.series = append(f.series, form)
+				f.seriesGuess = append(f.seriesGuess, i)
 			}
 		}
 	}
@@ -1465,44 +1470,59 @@ func (f *matchFacts) listedHere(c *candidate, runtimeDiff, named float64) bool {
 }
 
 // resolveSeries settles which of the pool's series the request's series names
-// (matchFacts.resolved): those spelled as one of its forms when any is - the
-// same words (sameWords), or the same catalogue identity once an article and
-// a trailing "Series", "Novels" or "Trilogy" are peeled (titlerule.SeriesKey:
-// "Dark Road Series" is "Dark Road") - else every one that fits
-// (seriesNameFits). preferWholeName's rule, over the candidates: "Frontlines"
-// resolves to Frontlines, not to the sub-series "Frontlines: Evolution", and
-// "Summoner School" not to "Summoner", while "Aaron Crash (American Dragons)",
-// which no series spells, still reaches "American Dragons Series".
+// (matchFacts.resolved), each series guess on its own: the ones spelled as one
+// of the guess's forms when any is - the same words (sameWords), or the same
+// catalogue identity once an article and a trailing "Series", "Novels" or
+// "Trilogy" are peeled (titlerule.SeriesKey: "Dark Road Series" is "Dark Road")
+// - else every one that fits it (seriesNameFits). preferWholeName's rule, over
+// the candidates: "Frontlines" resolves to Frontlines, not to the sub-series
+// "Frontlines: Evolution", and "Summoner School" not to "Summoner", while
+// "Aaron Crash (American Dragons)", which no series spells, still reaches
+// "American Dragons Series" - beside a "Cosmere" that one series does spell
+// (a folder's series and a tag's are two guesses, judged apart).
 func (f *matchFacts) resolveSeries(cands []*candidate) {
 	if len(f.series) == 0 {
 		return
 	}
-	keys := make([]string, 0, len(f.series))
-	for i := range f.series {
-		if k := titlerule.SeriesKey(f.series[i].joined); k != "" {
-			keys = append(keys, k)
-		}
-	}
-	whole, fitting, seen := map[string]bool{}, map[string]bool{}, map[string]bool{}
+	var names []*termForm
+	seen := map[string]bool{}
 	for _, c := range cands {
 		for _, m := range c.series {
-			name := m.name.joined
-			if seen[name] {
-				continue
-			}
-			seen[name] = true
-			switch {
-			case slices.Contains(keys, titlerule.SeriesKey(name)) ||
-				slices.ContainsFunc(f.series, func(h termForm) bool { return sameWords(&h, m.name) }):
-				whole[name] = true
-			case slices.ContainsFunc(f.series, func(h termForm) bool { return seriesNameFits(&h, m.name, f.edit) }):
-				fitting[name] = true
+			if !seen[m.name.joined] {
+				seen[m.name.joined] = true
+				names = append(names, m.name)
 			}
 		}
 	}
-	f.resolved = fitting
-	if len(whole) > 0 {
-		f.resolved = whole
+	f.resolved = map[string]bool{}
+	for guess := 0; guess <= slices.Max(f.seriesGuess); guess++ {
+		var forms []termForm
+		var keys []string
+		for i := range f.series {
+			if f.seriesGuess[i] != guess {
+				continue
+			}
+			forms = append(forms, f.series[i])
+			if k := titlerule.SeriesKey(f.series[i].joined); k != "" {
+				keys = append(keys, k)
+			}
+		}
+		var whole, fitting []string
+		for _, name := range names {
+			switch {
+			case slices.Contains(keys, titlerule.SeriesKey(name.joined)) ||
+				slices.ContainsFunc(forms, func(h termForm) bool { return sameWords(&h, name) }):
+				whole = append(whole, name.joined)
+			case slices.ContainsFunc(forms, func(h termForm) bool { return seriesNameFits(&h, name, f.edit) }):
+				fitting = append(fitting, name.joined)
+			}
+		}
+		if len(whole) == 0 {
+			whole = fitting
+		}
+		for _, name := range whole {
+			f.resolved[name] = true
+		}
 	}
 	if f.position == "" {
 		return

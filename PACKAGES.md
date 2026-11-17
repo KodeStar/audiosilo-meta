@@ -616,7 +616,9 @@ ruled out; "American Dragons, Book 3" or a shared "A LitRPG Adventure" subtitle 
 none) - "Blood of Elves" filed at The Last Wish's position counts its 0.13 as it is
 (`TestMatchListingLiftsNoTitleBelowTheBand`, meta#2922). The pool's title agreements
 are read once for this (`matchFacts.named`) and reused by the scoring. The names
-resolve per request over the pool (`resolveSeries`, preferWholeName's rule): to the
+resolve per request over the pool, each series guess on its own (`resolveSeries`,
+preferWholeName's rule; an exact "Cosmere" beside "Mistborn" no longer stops
+"Mistborn" reaching the series that only fits it, meta#2922): to the
 series spelled as named (`sameWords`, or `titlerule.SeriesKey`, so "Dark Road
 Series" is "Dark Road") when any is, else to every one that fits - so a fuzzy
 sub-series ("Frontlines: Evolution"), a shorter one ("Summoner" beside "Summoner

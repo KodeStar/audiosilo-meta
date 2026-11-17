@@ -810,6 +810,10 @@ func TestResolveSeries(t *testing.T) {
 		{"an article aside", []string{"System Apocalypse"}, []string{"The System Apocalypse", "System Apocalypse: Kismet"}, []string{"the system apocalypse"}},
 		{"a trailing Series aside", []string{"Dark Road"}, []string{"Dark Road Series", "Dark Road", "Dark Roads"}, []string{"dark road series", "dark road"}},
 		{"none spelled: every fit", []string{"New Era Online; Life Reset"}, []string{"New Era Online", "New Era", "Unrelated"}, []string{"new era online", "new era"}},
+		// Each name is resolved on its own: an exact "Cosmere" does not stop
+		// "Mistborn", which no series spells, from reaching "Mistborn Era".
+		{"each name on its own", []string{"Mistborn", "Cosmere"}, []string{"Mistborn Era", "Cosmere"}, []string{"mistborn era", "cosmere"}},
+		{"each name spelled", []string{"Frontlines", "Cosmere"}, []string{"Frontlines", "Frontlines: Evolution", "Cosmere"}, []string{"frontlines", "cosmere"}},
 		{"no series named", nil, []string{"Frontlines"}, nil},
 	} {
 		f := readFacts(matchRequest{titles: []string{"x y"}, series: tc.series})
