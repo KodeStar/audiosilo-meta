@@ -184,10 +184,21 @@ func (s *Server) newestCachedArtifact() (path, tag string, ok bool) {
 // worth taking (see applyPatchFile: the base artifact must be one contiguous
 // slice in memory). Peak transient is roughly TWICE the base, not once: the
 // contiguous dictionary copy plus the decoder's history window over it. So this
-// 1 GiB cap bounds the patch path at about 2 GiB of transient - it leaves the
-// 142k-work artifact comfortably inside the patch path while refusing the
+// 1 GiB cap bounds the patch path at about 2 GiB of transient, refusing the
 // multi-GB shapes where that transient would dominate the serving process.
+//
+// The catalogue's artifact passed it in 2026-11 (about 2 GB), so in production
+// every release now takes the streamed full download (about 530 MB) and the patch
+// path serves only a smaller deployment. That is the chosen trade (meta#2885):
+// raising the cap would cost the serving host 4-5 GB of transient memory per
+// release to save that download. refresh logs the skip as a routine full
+// download, not as a fault.
 const defaultMaxPatchBase = 1 << 30
+
+// errPatchNotTaken marks tryPatch's expected bail-outs - no loaded release to
+// patch from, a base over the cap, no delta from the loaded tag - which cost
+// nothing and are not a patch failing.
+var errPatchNotTaken = errors.New("patch path not taken")
 
 // pruneCacheLocked deletes every cache file this server owns except the live
 // artifact, s.cfg.DBPath, and every RETIRED artifact - one superseded by a swap
@@ -308,7 +319,11 @@ func (s *Server) refresh(ctx context.Context) error {
 			s.forgetETag()
 			return err
 		}
-		s.log.Printf("serve: patch refresh unavailable (%v); falling back to full download", err)
+		if errors.Is(err, errPatchNotTaken) {
+			s.log.Printf("serve: downloading %s in full (%v)", rel.Tag, err)
+		} else {
+			s.log.Printf("serve: patch refresh failed (%v); falling back to full download", err)
+		}
 		if err := s.fullRefresh(ctx, rel); err != nil {
 			// The 200 above already stored the new ETag; forget it so the next
 			// poll retries this release instead of 304-ing until the one after.
@@ -429,7 +444,7 @@ func (s *Server) tryPatch(ctx context.Context, rel *release.Release) error {
 		curTag = cur.Info().Tag
 	}
 	if curTag == "" {
-		return fmt.Errorf("no loaded release tag (first refresh is always full)")
+		return fmt.Errorf("%w: no loaded release tag (first refresh is always full)", errPatchNotTaken)
 	}
 	info, err := os.Stat(cur.Path())
 	if err != nil {
@@ -441,13 +456,13 @@ func (s *Server) tryPatch(ctx context.Context, rel *release.Release) error {
 	// is the better trade - the fallback is unconditional, so refusing here is
 	// safe, not a failure.
 	if maxBase := s.cfg.maxPatchBase; info.Size() > maxBase {
-		return fmt.Errorf("loaded artifact is %d bytes, over the %d-byte patch-base cap", info.Size(), maxBase)
+		return fmt.Errorf("%w: loaded artifact is %d bytes, over the %d-byte patch-base cap", errPatchNotTaken, info.Size(), maxBase)
 	}
 	// The most common bail-out - the server is 2+ releases behind, so no delta
 	// is based on our tag - must cost zero HTTP requests.
 	patchName := patchAssetName(curTag)
 	if _, ok := rel.Asset(patchName); !ok {
-		return fmt.Errorf("release %s has no %s asset", rel.Tag, patchName)
+		return fmt.Errorf("%w: release %s has no %s asset", errPatchNotTaken, rel.Tag, patchName)
 	}
 
 	// Fetch and parse the tiny raw-file checksum first, so a release that can't

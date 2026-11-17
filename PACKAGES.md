@@ -210,7 +210,13 @@ size-capped); the one thing that cannot stream is the patch BASE, which a raw
 zstd dictionary requires as a contiguous slice - and the decoder's window over it
 costs about as much again, so peak transient is ~2x the base and `tryPatch`
 refuses outright above `defaultMaxPatchBase` (1 GiB), taking the streamed full
-download instead. Either way it hot-swaps the pointer; in-flight requests finish
+download instead. The real artifact has been past that cap since 2026-11 (about
+2 GB), so PRODUCTION TAKES THE FULL DOWNLOAD (about 530 MB) ON EVERY RELEASE and
+the patch path serves only smaller deployments: the cap stays (meta#2885), as
+raising it would cost 4-5 GB of transient memory on the serving host. The
+expected bail-outs (no loaded tag, over the cap, no delta from the loaded tag)
+wrap `errPatchNotTaken` and log as a routine "downloading <tag> in full"; only a
+patch that was tried and failed logs "patch refresh failed". Either way it hot-swaps the pointer; in-flight requests finish
 on the old handle (closed after a grace delay), a rejected patch never swaps, and
 a poll failure only logs and retries, never crashes the process. Before either
 download it checks the CACHE: if the volume already holds a file for the newest
@@ -645,7 +651,8 @@ request without `language` and `narrator` scores as before, except for the
 position and runtime factors, which apply to every request. Each title form, guess and series name is folded once
 (`termForm`), person and series names and work language tags once per request (`factMemo`). Each result is
 the `WorkResult` search returns plus `score` (0-100), `recording_id` (the
-identifier's, else the narrator-agreeing one's, else the closest runtime's, never a
+recording the identifier is ON - `identifiedIDs`, lookupIDs less the first-recording
+stand-in /lookup gives a work's print ISBN, which names no recording - else the narrator-agreeing one's, else the closest runtime's, never a
 dramatization by length unless the request's own text states one: `model.Recording.IsDramatization`,
 then `titlerule.DramatizationOf`, whose adaptation label speaks only for a recording stating no
 publisher and whose "(Dramatized)" stays on the title and speaks for all of them) and `reasons`
@@ -682,7 +689,8 @@ and the slot goes back before the answer is written (`matchInSlot`), so a client
 to take a long work's document holds none. Out of budget or on a read error the match
 goes out as it would have without expand, never a 503 of its own, and all or nothing:
 the client falls back to fetching, as it must anyway for an older metaserve, which
-ignores the parameter. An unknown value is
+ignores the parameter. That degraded 200 carries `Cache-Control: no-store`
+(`expandBest` reports it, `handleMatch` sets it), so no cache repeats it. An unknown value is
 ignored; without expand the answer is byte-identical. Measured on the 2026-11 core
 artifact at load ~520 on the Mac, so only the ratios mean anything: the expansion
 costs the same as the work read beside it (p50 25 ms against 29 ms over 300 series
@@ -1241,7 +1249,7 @@ and a browser can read a 429's `Retry-After` (corsMW exposes it); `/healthz` doe
 is a per-client-address token bucket (an IPv6 address keyed as its /64, `bucketKey`; `Config.RateLimit`/`RateBurst`, metaserve
 `--rate-limit 100 --rate-burst 400` and their `METASERVE_*` env twins, sized from
 audiosilo-server internal/meta's concurrency so a bulk match never trips it and
-checked by TestDefaultsHoldAnAudioSiloBulkMatch against copies of those numbers (a change on the server side is not caught; the test's comment names each source constant: internal/matchrun/runner.go `workers`, internal/meta/service.go `maxConcurrentWorkFetches` and `maxConcurrentLookups`); a rate of zero is off, which is the
+checked by TestDefaultsHoldAnAudioSiloBulkMatch against copies of those numbers (a change on the server side is not caught; the test's comment names each source constant: internal/matchrun/runner.go `workers` and `maxRequestsPerSecond` (60, the pace a 2.6.0+ server holds a run to; an older one did not pace itself), internal/meta/service.go `maxConcurrentWorkFetches` and `maxConcurrentLookups`); a rate of zero is off, which is the
 zero Config every test builds on, and New refuses a negative, non-finite or vanishingly small rate (a refill past a Duration) or
 a limit with a burst under 1 (`validateRateLimit`) rather than defaulting it), idle full buckets swept each
 minute. The client is the connection's address, or - only when that is one of
@@ -1251,14 +1259,14 @@ is never read. Production behind a proxy MUST set it, or the whole site shares
 the proxy's bucket. A 429 carries `Cache-Control: no-store`. `cacheMW` stamps a
 200 that set no `Cache-Control` of its own with `public, max-age=600`, or
 `max-age=60` for routes ending `/search` or `/match` (`cacheMaxAgeFor`); a
-handler's own (watch feeds, the spec, a 301) wins. The HTML entity pages and
+handler's own (watch feeds, the spec, a 301, a works/match whose expansion did not fit) wins. The HTML entity pages and
 sitemaps are not rate limited.
 
 **The INTAKE QUEUE (internal/serve intake.go, intake_queue.go).** The one place metaserve takes anything from an anonymous caller: `POST /api/v1/intake/unknown-asins` names Audible ASINs the catalogue does not hold, for the sync bot to look up, and `GET` on the same path returns the queue behind a bearer token. Both are registered only when configured, as the webhook is: `METASERVE_INTAKE_DB` for the POST (a queue that will not open or cannot be written is logged and leaves the routes off, the API stays up, and an unset env has no route, state, goroutine or file), and `METASERVE_INTAKE_TOKEN` of at least 32 bytes as well for the GET (shorter, once trimmed, is logged without its value and leaves only the GET off). With the env unset both answer 404. With the POST on and no token, a GET is the static site's 404, or the mux's 405 on a deployment with no site.
 
 The file is the artifact's opposite and lives outside its lifecycle: `intake_asins(asin PK, count, first_day, last_day) WITHOUT ROWID` and nothing else (no client, no timestamp, UTC days only, so no row says who sent what, though same-day rows show which ASINs were reported that day and a day with one report is that report's whole list), `journal_mode=DELETE` so no WAL holds batches in arrival order, `secure_delete=ON`, `temp_store=MEMORY`, mode 0600, one connection. The layout is the schema's last gap: a leaf page's cell offsets list its rows as they arrived, so `intakeQueue.compact` (VACUUM) rewrites the file in key order on the first tick, on the tick after any report and on the way out, so at most about the last minute's reports are in arrival order on disk, for as long as the rewrite succeeds (a failure is logged and tried again on the next tick). Swaps and prune never touch it. Losing it costs nothing: servers re-report. Bounds: 8 KiB and 200 items a POST, 20,000 rows (at the cap a new ASIN evicts the lowest (count, last_day, asin) not in its own report), a row expires 90 days after its last report (`intakeLoop`, once a UTC day and at boot), and the POST limiter holds at most 100,000 clients (`rateLimiter.maxBuckets`; past that a new client costs an arbitrary one its bucket, since these live a day where the global limiter's live seconds). ASINs are exact (`^[A-Z0-9]{10}$`, pinned to the schema): a lower-case spelling is invalid, never normalized, and a repeat within one body counts once. Answers: 202 `{accepted, known, invalid}`; malformed JSON or a bad `asins` 400; over 200 items 400; over 8 KiB 413; not application/json 415; storage failure 503; refused reads 401 with `WWW-Authenticate: Bearer`.
 
-It wears its own stack, never `Server.public`: no CORS and no gzip, `Cache-Control: no-store` on every answer, and no OPTIONS route, so the required JSON content type makes a browser's preflight fail. The POST has a second `rateLimiter` instance, 6 a day per client with a burst of 6, keyed exactly as the global one through `TrustedProxies` and with its own 429 wording (`rateLimiter.refusal`); it does not pass the global limiter, so a report's address has one place to be, and a refused report spends a token too. The GET wears the global limiter when one is on. Nothing on this path logs an address, a user agent or an ASIN. `intakeLoop` is a goroutine that lives from `New` to `closeIntake` (Run calls it after requests drain) and does what no request can: `rateLimiter.sweepIdle` on a one-minute ticker, because `allow` only sweeps when called and the address must leave memory about a day after a client's last request even if nobody ever calls again (the bucket takes 24 h to refill, so dropping it then changes no answer); the daily expiry; the compact; and the PURGE. The tick compares `s.current()` with the snapshot it last purged against, so every way of installing one is reached with no hook on any of them (a purge can land up to a minute after an adopt, and several adopts between two ticks are one purge against the newest); it runs off the request path and outside `s.mu`, and a failure is only logged. A report and a purge each load `s.current()` once and read that snapshot throughout, as the query handler does; with no snapshot a report is taken whole and the first adopt filters it.
+It wears its own stack, never `Server.public`: no CORS and no gzip, `Cache-Control: no-store` on every answer, and no OPTIONS route, so the required JSON content type makes a browser's preflight fail. The POST has a second `rateLimiter` instance, 6 a day per client with a burst of 6, keyed exactly as the global one through `TrustedProxies` and with its own 429 wording (`rateLimiter.refusal`); it does not pass the global limiter, so a report's address has one place to be, and a refused report spends a token too, except a wrong `Content-Type`: `jsonOnlyMW` answers that 415 in front of the limiter, as a browser's cross-origin POST with no preflight (text/plain, a form) would otherwise let any page spend a visitor's six. The GET wears the global limiter when one is on. Nothing on this path logs an address, a user agent or an ASIN. `intakeLoop` is a goroutine that lives from `New` to `closeIntake` (Run calls it after requests drain) and does what no request can: `rateLimiter.sweepIdle` on a one-minute ticker, because `allow` only sweeps when called and the address must leave memory about a day after a client's last request even if nobody ever calls again (the bucket takes 24 h to refill, so dropping it then changes no answer); the daily expiry; the compact; and the PURGE. The tick compares `s.current()` with the snapshot it last purged against, so every way of installing one is reached with no hook on any of them (a purge can land up to a minute after an adopt, and several adopts between two ticks are one purge against the newest); it runs off the request path and outside `s.mu`, and a failure is only logged. A report and a purge each load `s.current()` once and read that snapshot throughout, as the query handler does; with no snapshot a report is taken whole and the first adopt filters it.
 
 The embedded `openapi.json` describes both routes, so `TestOpenAPICoversEveryRoute` holds them as it does the webhook, but the DOCUMENT A SERVER ANSWERS is `Server.servedSpec`: the file less whatever this deployment does not serve (`unofferedSpecMembers`, cut byte-precisely by `cutJSONMember` so the pretty-printing and the rest of the document stay as written), so an unset env serves no intake path or schema and a POST-only one no GET. There is no ack route: a row leaves when the artifact knows it or when it expires.
 

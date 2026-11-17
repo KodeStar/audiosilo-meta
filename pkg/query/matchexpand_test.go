@@ -122,6 +122,28 @@ func TestMatchExpandSeriesFactsAreTheSeriesRecords(t *testing.T) {
 	}
 }
 
+// TestMatchExpandSeriesFactsOnAV6Artifact: before the languages layer a series has
+// no language column, so its facts are empty rather than the read failing, and the
+// expansion is whole.
+func TestMatchExpandSeriesFactsOnAV6Artifact(t *testing.T) {
+	db := openTestDB(t, v6ShapedDB(t, artifacttest.Languages()))
+	srv := newHandler(func() *DB { return db }, HandlerOptions{Logger: artifacttest.QuietLogger()})
+	code, body := getRaw(t, httptestServer(t, srv), matchPath(url.Values{"title": {"Book One"}, "expand": {"work"}}))
+	if code != http.StatusOK {
+		t.Fatalf("status %d: %s", code, body)
+	}
+	results := rawResults(t, body)
+	var facts map[string]seriesFacts
+	if err := json.Unmarshal(results[0]["series_facts"], &facts); err != nil || len(facts) == 0 {
+		t.Fatalf("series_facts = %s (%v), want an entry per held series", results[0]["series_facts"], err)
+	}
+	for id, f := range facts {
+		if f.Language != "" || len(f.TranslationOf) != 0 {
+			t.Errorf("facts of %s on a v6 artifact = %+v, want none", id, f)
+		}
+	}
+}
+
 // TestMatchExpandIsBounded: a series adds its facts and none of its members,
 // and a work listed in more series than any real one reads the facts of the first
 // matchExpandSeriesMax alone.
@@ -291,7 +313,9 @@ func TestMatchExpandDegradesOutOfBudget(t *testing.T) {
 	spent, cancel := context.WithCancel(t.Context())
 	cancel()
 	results := plain()
-	db.expandBest(spent, results)
+	if db.expandBest(spent, results) {
+		t.Error("an expansion past the budget reported whole")
+	}
 	if got, _ := json.Marshal(results); !bytes.Equal(got, want) {
 		t.Errorf("past the budget:\n%s\nwant %s", got, want)
 	}
@@ -303,7 +327,9 @@ func TestMatchExpandDegradesOutOfBudget(t *testing.T) {
 		t.Fatal(err)
 	}
 	results = plain()
-	gone.expandBest(t.Context(), results)
+	if gone.expandBest(t.Context(), results) {
+		t.Error("an expansion after a failed read reported whole")
+	}
 	if got, _ := json.Marshal(results); !bytes.Equal(got, want) {
 		t.Errorf("after a failed read:\n%s\nwant %s", got, want)
 	}
@@ -311,9 +337,61 @@ func TestMatchExpandDegradesOutOfBudget(t *testing.T) {
 	// A work the artifact doesn't hold is no expansion either.
 	results = plain()
 	results[0].ID = "no-such-work"
-	db.expandBest(t.Context(), results)
+	if db.expandBest(t.Context(), results) {
+		t.Error("an unknown work's expansion reported whole")
+	}
 	if results[0].Work != nil || results[0].SeriesFacts != nil {
 		t.Errorf("an unknown work expanded to %v, %v", results[0].Work, results[0].SeriesFacts)
+	}
+
+	// Whole: the expansion read, and an empty answer with nothing to expand.
+	if results = plain(); !db.expandBest(t.Context(), results) || results[bestResult(results)].Work == nil {
+		t.Error("a successful expansion did not report whole")
+	}
+	if !db.expandBest(t.Context(), nil) {
+		t.Error("an empty answer did not report whole")
+	}
+}
+
+// TestMatchDegradedAnswerIsNotCached: a 200 whose expansion did not fit is sent
+// no-store, so no cache repeats it and sends its clients to the fetches; a whole
+// answer, and one that never asked for the expansion, state no Cache-Control and
+// take metaserve's default.
+func TestMatchDegradedAnswerIsNotCached(t *testing.T) {
+	serve := func(db *DB, params url.Values) *httptest.ResponseRecorder {
+		t.Helper()
+		srv := newHandler(func() *DB { return db }, HandlerOptions{Logger: artifacttest.QuietLogger()})
+		rec := httptest.NewRecorder()
+		srv.mux.ServeHTTP(rec, httptest.NewRequestWithContext(t.Context(), http.MethodGet, matchPath(params), nil))
+		if rec.Code != http.StatusOK {
+			t.Fatalf("status %d: %s", rec.Code, rec.Body)
+		}
+		return rec
+	}
+	expand := url.Values{"title": {"Sharpe's Eagle"}, "author": {"Bernard Cornwell"}, "expand": {"work"}}
+	plain := url.Values{"title": {"Sharpe's Eagle"}, "author": {"Bernard Cornwell"}}
+
+	// A work's document reads its genres and the match does not, so without the
+	// table the match answers and its expansion fails, every time.
+	broken := openTestDB(t, artifacttest.Altered(t, matchCatalog(), MaxSchemaVersion, "DROP TABLE work_genres"))
+	broken.SetLogger(artifacttest.QuietLogger())
+	rec := serve(broken, expand)
+	if bytes.Contains(rec.Body.Bytes(), []byte(`"work":`)) {
+		t.Fatalf("the expansion was inlined: %s", rec.Body)
+	}
+	if cc := rec.Header().Get("Cache-Control"); cc != "no-store" {
+		t.Errorf("degraded answer Cache-Control = %q, want no-store", cc)
+	}
+	if cc := serve(broken, plain).Header().Get("Cache-Control"); cc != "" {
+		t.Errorf("an answer that asked for no expansion: Cache-Control = %q, want none", cc)
+	}
+
+	rec = serve(openTestDB(t, artifacttest.Build(t, matchCatalog())), expand)
+	if !bytes.Contains(rec.Body.Bytes(), []byte(`"work":`)) {
+		t.Fatalf("nothing inlined: %s", rec.Body)
+	}
+	if cc := rec.Header().Get("Cache-Control"); cc != "" {
+		t.Errorf("whole answer Cache-Control = %q, want none", cc)
 	}
 }
 

@@ -568,13 +568,17 @@ func TestRefreshPrunesCache(t *testing.T) {
 // TestPatchSkippedOverBaseCap pins the memory guard on the patch path: the base
 // artifact has to be held in memory as a raw zstd dictionary, so past the cap
 // the refresh must decline the patch and fall back to the (fully streamed) gz
-// download rather than allocate it.
+// download rather than allocate it. Production's artifact is past the cap, so
+// that is every release there: it is logged as a routine full download, not as a
+// patch failing.
 func TestPatchSkippedOverBaseCap(t *testing.T) {
 	v1Path, v1, _, v2 := buildV1V2(t)
 	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, v1, "", nil)})
+	var logged bytes.Buffer
 	srv, err := New(Config{
 		DBPath: v1Path, Repo: "owner/name", CacheDir: t.TempDir(),
 		swapGrace: time.Minute, maxPatchBase: 1, // every artifact is over a 1-byte cap
+		Logger: log.New(&logged, "", 0),
 	})
 	if err != nil {
 		t.Fatal(err)
@@ -600,6 +604,31 @@ func TestPatchSkippedOverBaseCap(t *testing.T) {
 	}
 	if got := srv.current().Stats().Works; got != 5 {
 		t.Errorf("works = %d, want 5 (v2 adopted via full download)", got)
+	}
+	out := logged.String()
+	if !strings.Contains(out, "serve: downloading "+tagR2+" in full (patch path not taken: loaded artifact is ") {
+		t.Errorf("the cap skip was not logged as a routine full download:\n%s", out)
+	}
+	if strings.Contains(out, "failed") || strings.Contains(out, "unavailable") {
+		t.Errorf("the cap skip reads as a fault:\n%s", out)
+	}
+}
+
+// TestPatchFailureIsLoggedAsOne: a patch that was tried and failed is a fault,
+// and says so, unlike the expected skips.
+func TestPatchFailureIsLoggedAsOne(t *testing.T) {
+	v1Path, v1, _, v2 := buildV1V2(t)
+	srv, fake := setupR1(t, v1Path, v1)
+	var logged bytes.Buffer
+	srv.log = log.New(&logged, "", 0)
+	a := makeAssets(t, v2, tagR1, v1)
+	a[patchAssetName(tagR1)] = []byte("not a zstd frame")
+	fake.Publish(tagR2, a)
+	if err := srv.refresh(context.Background()); err != nil {
+		t.Fatalf("refresh should succeed via fallback: %v", err)
+	}
+	if out := logged.String(); !strings.Contains(out, "serve: patch refresh failed (") || strings.Contains(out, "in full (") {
+		t.Errorf("a failed patch was not logged as a failure:\n%s", out)
 	}
 }
 

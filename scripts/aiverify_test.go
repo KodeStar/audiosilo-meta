@@ -3,6 +3,7 @@ package scripts_test
 import (
 	"crypto/sha256"
 	"encoding/hex"
+	"encoding/json"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -49,9 +50,26 @@ func stubBin(t *testing.T, dir, today string) string {
 	return bin
 }
 
+// aiVerifyFixture is a temp dir holding stubBin(today) and a one-line context file.
+func aiVerifyFixture(t *testing.T, today string) (dir, bin, context string) {
+	t.Helper()
+	dir = t.TempDir()
+	bin = stubBin(t, dir, today)
+	context = filepath.Join(dir, "context.txt")
+	if err := os.WriteFile(context, []byte("+ work \"x\"\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	return dir, bin, context
+}
+
 // aiVerifyRun is what one run of ai-verify.sh left behind: the system prompt and
-// message the stub claude was handed, and the verdict and comment files.
-type aiVerifyRun struct{ system, stdin, verdict, comment string }
+// message the stub claude was handed ("" when the CLI was not called), whether a
+// stub curl was and the request body it read on stdin, and the verdict and
+// comment files.
+type aiVerifyRun struct {
+	system, stdin, verdict, comment, request string
+	curl                                     bool
+}
 
 // runAIVerify runs ai-verify.sh over context with bin (stubBin) first on PATH
 // and nothing else inherited but PATH, so a PR_ORIGIN, CONTEXT_FORMAT or API key
@@ -66,9 +84,16 @@ func runAIVerify(t *testing.T, bin, context string, env ...string) aiVerifyRun {
 	if b, err := cmd.CombinedOutput(); err != nil {
 		t.Fatalf("ai-verify.sh %v: %v\n%s", env, err, b)
 	}
+	// The stub claude writes system.txt and stdin.txt only when the CLI is the
+	// transport; a missing one reads as "".
+	system, _ := os.ReadFile(filepath.Join(out, "system.txt"))
+	stdin, _ := os.ReadFile(filepath.Join(out, "stdin.txt"))
+	_, curlErr := os.Stat(filepath.Join(out, "curl-called"))
+	request, _ := os.ReadFile(filepath.Join(out, "request.json"))
 	return aiVerifyRun{
-		readFile(t, filepath.Join(out, "system.txt")), readFile(t, filepath.Join(out, "stdin.txt")),
-		readFile(t, filepath.Join(out, "verdict.json")), readFile(t, filepath.Join(out, "comment.md")),
+		system: string(system), stdin: string(stdin), request: string(request),
+		verdict: readFile(t, filepath.Join(out, "verdict.json")), comment: readFile(t, filepath.Join(out, "comment.md")),
+		curl: curlErr == nil,
 	}
 }
 
@@ -99,12 +124,7 @@ var originPromptSHA256 = []struct{ origin, format, sha256 string }{
 func TestAIVerifyPromptByOrigin(t *testing.T) {
 	t.Parallel()
 	requireTools(t, "bash", "jq", "iconv", "perl")
-	dir := t.TempDir()
-	bin := stubBin(t, dir, "2026-01-01")
-	context := filepath.Join(dir, "context.txt")
-	if err := os.WriteFile(context, []byte("+ work \"x\"\n"), 0o644); err != nil {
-		t.Fatal(err)
-	}
+	dir, bin, context := aiVerifyFixture(t, "2026-01-01")
 	advisories := filepath.Join(dir, "advisories.txt")
 	if err := os.WriteFile(advisories, []byte("1 new advisory (orphan-person 1):\n- [orphan-person] people: entry p: an orphan record\n"), 0o644); err != nil {
 		t.Fatal(err)
@@ -225,5 +245,135 @@ func TestAIVerifyWorkflowOrigin(t *testing.T) {
 		if got := strings.TrimSpace(readFile(t, out)); got != "origin="+tc.want {
 			t.Errorf("branch %q labels %q: %s, want origin=%s", tc.branch, tc.labels, got, tc.want)
 		}
+	}
+}
+
+// TestAIVerifyCommentSaysWhatTheVerdictDoes: a maintainer reviews a contributor's
+// pull request whatever the verdict, so its comment calls the verdict advisory; a
+// bot merges its own on a pass and never on a flag, so for a bot's pull request
+// the comment must not call a flag "not a merge block".
+func TestAIVerifyCommentSaysWhatTheVerdictDoes(t *testing.T) {
+	t.Parallel()
+	requireTools(t, "bash", "jq", "iconv", "perl")
+	dir, bin, context := aiVerifyFixture(t, "2026-01-01")
+	flag := filepath.Join(dir, "flag.json")
+	if err := os.WriteFile(flag, []byte(`{"result":"{\"verdict\":\"flag\",\"findings\":[\"a finding\"]}"}`), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	const advisory, botMerges = "advisory - not a merge block", "does not merge it while it is flagged"
+	for _, tc := range []struct {
+		origin string
+		bot    bool
+	}{{"contributor", false}, {"sync-bot", true}, {"librivox-lane", true}} {
+		pass := runAIVerify(t, bin, context, "PR_ORIGIN="+tc.origin)
+		flagged := runAIVerify(t, bin, context, "PR_ORIGIN="+tc.origin, "REPLY_FILE="+flag)
+		if !strings.Contains(flagged.comment, "- a finding") {
+			t.Fatalf("%s: the flag's finding is missing: %s", tc.origin, flagged.comment)
+		}
+		if got := strings.Contains(flagged.comment, botMerges); got != tc.bot {
+			t.Errorf("%s: flag comment names the bot's merge block = %v:\n%s", tc.origin, got, flagged.comment)
+		}
+		if got := strings.Contains(flagged.comment, advisory); got == tc.bot {
+			t.Errorf("%s: flag comment calls itself advisory = %v:\n%s", tc.origin, got, flagged.comment)
+		}
+		if got := strings.Contains(pass.comment, "a maintainer still reviews before merge"); got == tc.bot {
+			t.Errorf("%s: pass comment promises a maintainer's review = %v:\n%s", tc.origin, got, pass.comment)
+		}
+		// audiosilo-meta-sync reads a flag that lists no findings by its prose
+		// lines, dropping the lead as the one that ends in a colon
+		// (watcher.FindingOf). A lead ending otherwise would be the same "finding"
+		// on every such flag, which its ladder counts as a repeat.
+		for line := range strings.SplitSeq(flagged.comment, "\n") {
+			line = strings.TrimSpace(line)
+			if line == "" || strings.HasPrefix(line, "#") || strings.HasPrefix(line, "- ") {
+				continue
+			}
+			if !strings.HasSuffix(line, ":") {
+				t.Errorf("%s: the flag comment's lead does not end in a colon: %q", tc.origin, line)
+			}
+		}
+	}
+}
+
+// argLimit is the head of a stub that refuses what Linux's execve refuses: one
+// argument over MAX_ARG_STRLEN (128 KiB with its NUL). macOS has no such limit,
+// so without it a request passed as an argument would only fail on the runners.
+const argLimit = `#!/usr/bin/env bash
+for a in "$@"; do
+  if [ "${#a}" -gt 131071 ]; then echo "$0: Argument list too long (${#a} bytes)" >&2; exit 126; fi
+done
+`
+
+// stubCurl answers the Messages API with a pass, notes that it was called and
+// keeps the request body it read on stdin.
+const stubCurl = argLimit + `touch "$OUTDIR/curl-called"
+cat > "$OUTDIR/request.json"
+printf '%s' '{"content":[{"type":"text","text":"{\"verdict\":\"pass\",\"findings\":[]}"}]}'
+`
+
+// TestAIVerifyPrefersTheAPIKey: with both credentials set the API key is used
+// (billed per pull request, not the subscription meta-sync's resolver shares),
+// and with the subscription token alone the CLI still is.
+func TestAIVerifyPrefersTheAPIKey(t *testing.T) {
+	t.Parallel()
+	requireTools(t, "bash", "jq", "iconv", "perl")
+	_, bin, context := aiVerifyFixture(t, "2026-01-01")
+	if err := os.WriteFile(filepath.Join(bin, "curl"), []byte(stubCurl), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	// runAIVerify always sets the subscription token.
+	if r := runAIVerify(t, bin, context, "ANTHROPIC_API_KEY=key"); !r.curl || r.stdin != "" || !strings.Contains(r.verdict, `"verdict":"pass"`) {
+		t.Errorf("both credentials: curl %v, cli %v, verdict %s; want the API alone", r.curl, r.stdin != "", r.verdict)
+	}
+	if r := runAIVerify(t, bin, context); r.curl || r.stdin == "" {
+		t.Errorf("the subscription token alone: curl %v, cli %v; want the CLI alone", r.curl, r.stdin != "")
+	}
+}
+
+// TestAIVerifyAPIRequestIsNeverAnArgument: on the API key transport the prompt and
+// the message reach jq as files and the request reaches curl on stdin. A summary
+// runs to recorddiff.DefaultMaxBytes (180 kB), past the 128 KiB Linux allows one
+// argument, where jq or curl handed it as one does not start and the run is a skip.
+func TestAIVerifyAPIRequestIsNeverAnArgument(t *testing.T) {
+	t.Parallel()
+	requireTools(t, "bash", "jq", "iconv", "perl")
+	realJQ, err := exec.LookPath("jq")
+	if err != nil {
+		t.Fatal(err)
+	}
+	dir, bin, context := aiVerifyFixture(t, "2026-01-01")
+	for name, body := range map[string]string{"curl": stubCurl, "jq": argLimit + `exec "` + realJQ + `" "$@"` + "\n"} {
+		if err := os.WriteFile(filepath.Join(bin, name), []byte(body), 0o755); err != nil {
+			t.Fatal(err)
+		}
+	}
+	const line = "+ work \"a title\" by an-author [en]\n"
+	summary := strings.Repeat(line, 150_000/len(line))
+	if err := os.WriteFile(context, []byte(summary), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	advisories := filepath.Join(dir, "advisories.txt")
+	if err := os.WriteFile(advisories, []byte("1 new advisory (orphan-person 1):\n- [orphan-person] people: entry p: an orphan record\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+
+	r := runAIVerify(t, bin, context, "ANTHROPIC_API_KEY=key", "ADVISORIES_FILE="+advisories)
+	var req struct {
+		Model     string `json:"model"`
+		MaxTokens int    `json:"max_tokens"`
+		System    string `json:"system"`
+		Messages  []struct{ Role, Content string }
+	}
+	if err := json.Unmarshal([]byte(r.request), &req); err != nil {
+		t.Fatalf("the request curl read on stdin is not JSON (%v): %.200s", err, r.request)
+	}
+	if req.Model == "" || req.MaxTokens == 0 || !strings.Contains(req.System, "You are a careful data reviewer") {
+		t.Errorf("request model %q, max_tokens %d, system %.80q", req.Model, req.MaxTokens, req.System)
+	}
+	if len(req.Messages) != 1 || req.Messages[0].Role != "user" {
+		t.Fatalf("messages = %d, want the one user message", len(req.Messages))
+	}
+	if msg := req.Messages[0].Content; !strings.Contains(msg, strings.TrimSuffix(summary, "\n")) || !strings.Contains(msg, "[orphan-person] people: entry p") {
+		t.Errorf("the message (%d bytes) does not carry the whole %d-byte summary and the advisories", len(msg), len(summary))
 	}
 }

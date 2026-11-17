@@ -525,6 +525,51 @@ func TestMatchIdentifierFallsBackToTheISBN(t *testing.T) {
 	}
 }
 
+// TestMatchISBNNamesItsRecording: an ISBN a recording carries names that
+// recording, whichever sorts first. A work's print ISBN names the work and no
+// recording, so the request's facts pick it (here the runtime), not the first by
+// id; /lookup, which has no facts to pick by, still points at the first.
+func TestMatchISBNNamesItsRecording(t *testing.T) {
+	const onRecording, printISBN = "9780575082441", "9780007120116"
+	cat := matchCatalog()
+	w := cat.Works[1] // sharpes-battle, one recording of 700 minutes
+	w.Recordings[0].ID = "a-first-" + w.ID
+	w.Recordings = append(w.Recordings, &model.Recording{
+		ID: "b-second-" + w.ID, Work: w.ID, Language: "en", RuntimeMin: 900, License: "CC0-1.0",
+		Narrators: []string{"rupert-farley"}, ISBN: []model.ISBNRef{{ISBN: onRecording}},
+	})
+	w.Xref = &model.WorkXref{ISBN: []string{printISBN}}
+	_, ts := newTestServerForCatalog(t, cat)
+
+	for _, tc := range []struct {
+		name   string
+		params url.Values
+		want   string
+	}{
+		{"an ISBN on the second recording", url.Values{"isbn": {onRecording}}, "b-second-" + w.ID},
+		// The runtime is in seconds: 700 and 900 minutes.
+		{"... whatever the runtime says", url.Values{"isbn": {onRecording}, "runtime": {"42000"}}, "b-second-" + w.ID},
+		{"a print ISBN, the runtime of the second", url.Values{"isbn": {printISBN}, "runtime": {"54000"}}, "b-second-" + w.ID},
+		{"a print ISBN, the runtime of the first", url.Values{"isbn": {printISBN}, "runtime": {"42000"}}, "a-first-" + w.ID},
+		{"a print ISBN and no facts", url.Values{"isbn": {printISBN}}, ""},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			res := matchJSON(t, ts.URL, tc.params)
+			if len(res) == 0 || res[0]["id"] != w.ID || res[0]["score"] != float64(100) {
+				t.Fatalf("results = %v, want %s at 100", res, w.ID)
+			}
+			if got, _ := res[0]["recording_id"].(string); got != tc.want {
+				t.Errorf("recording_id = %q, want %q", got, tc.want)
+			}
+		})
+	}
+
+	_, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/lookup?isbn="+printISBN)
+	if got := body["recording_id"]; got != "a-first-"+w.ID {
+		t.Errorf("lookup of the print ISBN: recording_id = %v, want the first recording", got)
+	}
+}
+
 // TestMatchAnAuthorAloneIsNotAMatch: every book by a named author is a
 // candidate, but without a title or a position nothing can say WHICH, so none
 // may read as a confident match.

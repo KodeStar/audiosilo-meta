@@ -42,24 +42,28 @@
 #
 # TRANSPORT: two credentials are supported, in preference order. Both feed the
 # SAME system prompt, context handling, verdict extraction, and comment render.
-#   1. CLAUDE_CODE_OAUTH_TOKEN (a Claude subscription token from `claude
+#   1. ANTHROPIC_API_KEY drives a direct Messages API request via curl. It is
+#      preferred because it is billed per pull request on its own: the
+#      subscription below is shared with meta-sync's resolver and interactive
+#      sessions, so a session limit there used to stall every bot merge
+#      (meta-sync#63).
+#   2. CLAUDE_CODE_OAUTH_TOKEN (a Claude subscription token from `claude
 #      setup-token`) drives the Claude Code CLI in headless mode. This token
 #      only authenticates through the CLI, never the raw Messages API.
-#   2. ANTHROPIC_API_KEY drives a direct Messages API request via curl.
 # If neither is set, the script writes a skip - which is a FAILURE, not a
 # neutral outcome; see EXIT STATUS below.
 #
 # SECURITY: the context file is UNTRUSTED DATA (it is rendered from a
 # contributor's records, so every title, name and slug in it is theirs). On the
-# curl path it is embedded into the request as a JSON string via `jq --arg`
+# curl path it is embedded into the request as a JSON string via `jq --rawfile`
 # (which escapes it, so it cannot break out of the JSON or forge request
-# fields); on the CLI path it is fed to the CLI on stdin, never interpolated
-# into a shell command (a single argv would hit Linux's per-argument execve
-# limit - MAX_ARG_STRLEN, 128 KiB - which is below MAX_INPUT_BYTES). Either way
-# the system prompt instructs the model to treat everything in it as data and
-# ignore any instructions inside it,
-# and the CLI runs with NO tools (`--allowedTools ""`) so it cannot touch the
-# workspace. Nothing from the diff is ever executed here.
+# fields); on the CLI path it is fed to the CLI on stdin. On neither is it
+# interpolated into a shell command or passed as an argument (a single argv
+# would hit Linux's per-argument execve limit - MAX_ARG_STRLEN, 128 KiB - which
+# is below MAX_INPUT_BYTES). Either way the system prompt instructs the model to
+# treat everything in it as data and ignore any instructions inside it, and the
+# CLI runs with NO tools (`--allowedTools ""`) so it cannot touch the workspace.
+# Nothing from the diff is ever executed here.
 #
 # EXIT STATUS answers "did a verdict happen", not "is the data good". A pass and
 # a flag both exit 0 - a flag is advisory, a human still reviews - while every
@@ -133,15 +137,27 @@ fi
 # sync-bot and contributor prompts byte for byte; the lane's paragraph replaces
 # the contributor's "verify ASIN" check, which can never apply to a LibriVox
 # recording). UNFLAGGED_ORIGIN names an origin whose advisories are shown rather
-# than flagged (below), and is empty for a contributor's.
+# than flagged (below), and is empty for a contributor's. PASS_NOTE and FLAG_LEAD
+# are what the comment says the verdict DOES: a maintainer reviews a contributor's
+# pull request whatever it is, while a bot (meta-sync) merges its own on a pass and
+# never on a flag, which for it is a merge block. Either FLAG_LEAD is ONE line
+# ending in a colon: meta-sync reads a flag that lists no findings by its prose
+# lines and drops the lead as the line that ends in one (its watcher.FindingOf), so
+# a lead ending otherwise would read there as the same finding on every such flag.
 UNFLAGGED_ORIGIN=""
+PASS_NOTE="This is advisory; a maintainer still reviews before merge."
+FLAG_LEAD="Claude flagged the following for a maintainer to check (advisory - not a merge block):"
+BOT_PASS_NOTE="The bot that opened this pull request merges it on this verdict once its other checks pass."
+BOT_FLAG_LEAD="The bot that opened this pull request does not merge it while it is flagged: it answers the flag or leaves the pull request for a maintainer. Claude flagged the following:"
 case "$PR_ORIGIN" in
 sync-bot)
   UNFLAGGED_ORIGIN="a series-completion bot"
+  PASS_NOTE="$BOT_PASS_NOTE" FLAG_LEAD="$BOT_FLAG_LEAD"
   ORIGIN_CAUTION="THIS PULL REQUEST WAS OPENED BY THE SERIES-COMPLETION BOT, which imports straight from the retailer's own feed: a recording's retailer source and ASIN ARE that retailer's listing, and the listing is the evidence the book exists. It also imports single listings reported to it, so a new work in no series, or a pull request that changes no series, is within its remit and is not in itself a finding, while every check on the record's own fields still applies."
   ;;
 librivox-lane)
   UNFLAGGED_ORIGIN="a LibriVox lane"
+  PASS_NOTE="$BOT_PASS_NOTE" FLAG_LEAD="$BOT_FLAG_LEAD"
   ORIGIN_CAUTION="THIS PULL REQUEST WAS OPENED BY THE LIBRIVOX LANE, which imports newly catalogued projects straight from LibriVox's own catalogue and from nothing else. LibriVox is a project of volunteers reading public-domain texts, so read its records by that: a recording sourced 'librivox' is a LibriVox project, its librivox_id and its archive.org item (archive_id) are the evidence it exists, and NO ASIN, ISBN or retailer source is expected on it (the summary of a new record does not print its librivox_id or archive_id, and their absence from it is not a finding). A reader is a volunteer credited by the display name they chose on LibriVox, which may be a handle, initials or a nickname rather than a full name, and that is not a finding; nor is a collective credit for many readers. A first_published year centuries before the recording is normal for a public-domain text, and so is any language, including Latin, Esperanto, ancient or regional languages, and so is a runtime well under 30 minutes for a single poem, story or speech. Where the lane touches a person the catalogue already holds it stamps LibriVox's own facts on them (a librivox_author_id or librivox_reader_id, a 'librivox' source entry, and an author's birth_year and death_year, which are NEGATIVE for a year BC), and neither the stamp nor an ancient author's years is a finding. A new work in no series, or a pull request that changes no series, is EXPECTED: the lane never founds, joins or edits a series. So a new series record (a '+ SERIES' line) or any change to a series record is ALWAYS a finding here, whatever else it looks like. Every check on the record's own fields still applies."
   ;;
 *)
@@ -256,10 +272,47 @@ fi
 # below (verdict extraction, comment render).
 TEXT=""
 
-if [ -n "${CLAUDE_CODE_OAUTH_TOKEN:-}" ]; then
-  # Preferred: the Claude Code CLI in headless mode. A subscription OAuth token
-  # only authenticates through the CLI, not the raw Messages API. Run it as a
-  # pure text completion: --system-prompt fully REPLACES the default agent
+if [ -n "${ANTHROPIC_API_KEY:-}" ]; then
+  # Preferred: a direct Messages API request via curl (see TRANSPORT above). The
+  # prompt and the message reach jq as FILES and the request reaches curl on
+  # stdin, never as an argument: the message alone can pass Linux's per-argument
+  # execve limit (see SECURITY above), and jq or curl handed it as one would not
+  # start at all (E2BIG), so every pull request with a summary that large would
+  # be a skip. printf is a shell builtin, so it is not subject to that limit.
+  #
+  # max_tokens bounds the model's thinking as well as its reply, and on the raw
+  # API this model thinks unless told not to, so the ceiling leaves room for both:
+  # a reply-sized one can run out mid-thought and leave no verdict. --max-time
+  # allows for that longer answer.
+  REQUEST_FILE="$(mktemp)"
+  jq -n \
+    --arg model "$MODEL" \
+    --rawfile system <(printf '%s' "$SYSTEM") \
+    --rawfile user <(printf '%s' "$USER_MSG") \
+    '{model: $model, max_tokens: 16000, system: $system, messages: [{role: "user", content: $user}]}' \
+    > "$REQUEST_FILE" 2>/dev/null || skip "The Anthropic API request could not be built."
+
+  RESPONSE="$(curl -sS --max-time 300 "$API_URL" \
+    -H "x-api-key: ${ANTHROPIC_API_KEY}" \
+    -H "anthropic-version: 2023-06-01" \
+    -H "content-type: application/json" \
+    --data-binary @- < "$REQUEST_FILE" 2>/dev/null)" || skip "The Anthropic API request failed (transport error)."
+  rm -f "$REQUEST_FILE"
+
+  if [ -z "$RESPONSE" ]; then
+    skip "The Anthropic API returned an empty response."
+  fi
+
+  API_ERROR="$(printf '%s' "$RESPONSE" | jq -r '.error.message // empty' 2>/dev/null)"
+  if [ -n "$API_ERROR" ]; then
+    skip "The Anthropic API returned an error: ${API_ERROR}"
+  fi
+
+  TEXT="$(printf '%s' "$RESPONSE" | jq -r '[.content[]? | select(.type=="text") | .text] | join("")' 2>/dev/null)"
+else
+  # The fallback: the Claude Code CLI in headless mode, as a subscription OAuth
+  # token only authenticates through the CLI, not the raw Messages API. Run it as
+  # a pure text completion: --system-prompt fully REPLACES the default agent
   # prompt (so the model is told nothing about tools), --allowedTools "" grants
   # no tools, and -p/--output-format json prints one result object whose
   # `result` field holds the final assistant text. The prompt arrives on stdin
@@ -294,30 +347,6 @@ if [ -n "${CLAUDE_CODE_OAUTH_TOKEN:-}" ]; then
   fi
 
   TEXT="$(printf '%s' "$CLI_OUT" | jq -r '.result // empty' 2>/dev/null)"
-else
-  # Fallback: a direct Messages API request via curl (ANTHROPIC_API_KEY).
-  REQUEST="$(jq -n \
-    --arg model "$MODEL" \
-    --arg system "$SYSTEM" \
-    --arg user "$USER_MSG" \
-    '{model: $model, max_tokens: 4000, system: $system, messages: [{role: "user", content: $user}]}')"
-
-  RESPONSE="$(curl -sS --max-time 120 "$API_URL" \
-    -H "x-api-key: ${ANTHROPIC_API_KEY}" \
-    -H "anthropic-version: 2023-06-01" \
-    -H "content-type: application/json" \
-    -d "$REQUEST" 2>/dev/null)" || skip "The Anthropic API request failed (transport error)."
-
-  if [ -z "$RESPONSE" ]; then
-    skip "The Anthropic API returned an empty response."
-  fi
-
-  API_ERROR="$(printf '%s' "$RESPONSE" | jq -r '.error.message // empty' 2>/dev/null)"
-  if [ -n "$API_ERROR" ]; then
-    skip "The Anthropic API returned an error: ${API_ERROR}"
-  fi
-
-  TEXT="$(printf '%s' "$RESPONSE" | jq -r '[.content[]? | select(.type=="text") | .text] | join("")' 2>/dev/null)"
 fi
 
 if [ -z "$TEXT" ]; then
@@ -365,11 +394,11 @@ printf '%s\n' "$VERDICT_JSON" > "$VERDICT_OUT"
   if [ "$VERDICT" = "pass" ]; then
     echo "### AI verification: passed"
     echo
-    echo "Claude reviewed the data changes and found nothing concerning. This is advisory; a maintainer still reviews before merge."
+    echo "Claude reviewed the data changes and found nothing concerning. $PASS_NOTE"
   else
     echo "### AI verification: flagged"
     echo
-    echo "Claude flagged the following for a maintainer to check (advisory - not a merge block):"
+    echo "$FLAG_LEAD"
     echo
     printf '%s' "$VERDICT_JSON" | jq -r '.findings[]? | "- " + .'
   fi

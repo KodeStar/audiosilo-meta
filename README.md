@@ -230,7 +230,11 @@ what the cache already holds either: the cached artifact for the newest release
 is verified against that release's published checksum and adopted as is. With
 `--db` as well, the local artifact serves immediately
 and the poller still runs a refresh at startup (not just once per `--interval`).
-Superseded artifacts are pruned from the cache after each hot-swap. Set
+Superseded artifacts are pruned from the cache after each hot-swap. A new
+release is applied as a binary delta against the loaded artifact only while that
+artifact is under 1 GiB (the delta needs about twice the artifact in memory); the
+public catalogue is past that, so each release there is a full download of about
+530 MB, logged as `downloading <tag> in full`. Set
 `GITHUB_TOKEN` to raise the API rate limit.
 
 Rate limit and caching: every API route (`/api/v1/*` and `/abs/search`, not
@@ -238,9 +242,10 @@ Rate limit and caching: every API route (`/api/v1/*` and `/abs/search`, not
 (env `METASERVE_RATE_LIMIT`, default 100, `0` turns it off) with a burst of
 `--rate-burst` (env `METASERVE_RATE_BURST`, default 400; at least 1 while the
 limit is on - a burst of `0`, or a negative rate, is refused at startup rather
-than defaulted). The defaults are sized so an AudioSilo server's bulk match,
-which does not pace itself, never trips them (the arithmetic is in
-`internal/serve/ratelimit.go`). Past it a client gets
+than defaulted). The defaults are sized so an AudioSilo server's bulk match never
+trips them: since 2.6.0 a server paces a run to about 60 requests a second, and an
+older one, which does not pace itself, stays under the limit too (the arithmetic
+is in `internal/serve/ratelimit.go`). Past it a client gets
 429 with `Retry-After`. The client is the connection's address, or, when that
 address is one of `--trusted-proxy` (env `METASERVE_TRUSTED_PROXIES`, a
 comma-separated list of addresses and CIDR prefixes), the rightmost
@@ -289,7 +294,8 @@ random value of at least 32 bytes (`openssl rand -hex 32`) to register the beare
 token `GET` on the same path as well. The file holds each reported ASIN with a
 count and its first and last UTC day, and nothing about who reported it; the POST's
 limit (6 a day per client) holds a client's address in memory until about a day
-after its last request, refused or not. That covers metaserve alone: a reverse proxy in front logs
+after its last request, refused or not (a POST that is not `application/json` is
+answered 415 before the limit and counts toward nothing). That covers metaserve alone: a reverse proxy in front logs
 what it is set to log, so check its access log for this route. The POST needs
 `METASERVE_TRUSTED_PROXIES` right behind a proxy
 even more than the API does, or every reporting server shares one 6-a-day bucket.

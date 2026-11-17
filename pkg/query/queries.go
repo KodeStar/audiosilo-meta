@@ -1620,9 +1620,23 @@ func (s *DB) KnownASINs(ctx context.Context, asins []string) (map[string]bool, e
 // lookupIDs resolves an identifier to the work and recording it names, without
 // building the work's card: the ASIN when both are given, else the ISBN (a
 // recording's, then a work's print ISBN, which points at its first recording).
-// lookup composes the card from it; works/match and the ABS facade need only the
-// ids. found is false when the identifier names nothing.
+// lookup composes the card from it and the ABS facade needs only the ids. found is
+// false when the identifier names nothing.
 func (s *DB) lookupIDs(ctx context.Context, asin, isbn string) (workID, rid string, found bool, err error) {
+	workID, rid, found, err = s.identifiedIDs(ctx, asin, isbn)
+	if found && rid == "" {
+		// A print ISBN names no recording: point at the work's first, if it has one.
+		_ = s.db.QueryRowContext(ctx, `SELECT id FROM recordings WHERE work_id=? ORDER BY id LIMIT 1`, workID).Scan(&rid)
+	}
+	return workID, rid, found, err
+}
+
+// identifiedIDs is lookupIDs without its stand-in recording: rid is the recording
+// the identifier is ON, and "" for a work's print ISBN, which no recording carries.
+// works/match reads it so, as a print ISBN says which book and nothing about which
+// edition: the recording is then the one the request's runtime and narrators pick,
+// not whichever sorts first.
+func (s *DB) identifiedIDs(ctx context.Context, asin, isbn string) (workID, rid string, found bool, err error) {
 	find := func(query, arg string) (bool, error) {
 		err := s.db.QueryRowContext(ctx, query, arg).Scan(&workID, &rid)
 		if err == sql.ErrNoRows {
@@ -1635,12 +1649,11 @@ func (s *DB) lookupIDs(ctx context.Context, asin, isbn string) (workID, rid stri
 		found, err = find(`SELECT work_id, recording_id FROM recording_asins WHERE asin=? ORDER BY region LIMIT 1`, asin)
 	case isbn != "":
 		if found, err = find(`SELECT work_id, recording_id FROM recording_isbns WHERE isbn=? LIMIT 1`, isbn); err == nil && !found {
-			// Fall back to a print ISBN on the work; point at its first recording.
+			// Fall back to a print ISBN on the work, which names no recording.
 			var wid string
 			e := s.db.QueryRowContext(ctx, `SELECT work_id FROM work_isbns WHERE isbn=? LIMIT 1`, isbn).Scan(&wid)
 			if e == nil {
-				workID, found = wid, true
-				_ = s.db.QueryRowContext(ctx, `SELECT id FROM recordings WHERE work_id=? ORDER BY id LIMIT 1`, wid).Scan(&rid)
+				workID, rid, found = wid, "", true
 			} else if e != sql.ErrNoRows {
 				err = e
 			}
