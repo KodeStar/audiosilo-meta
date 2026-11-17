@@ -1,8 +1,9 @@
 package importer
 
 import (
-	"strings"
 	"testing"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // TestLibexIntakeStampsTheLane: a reported-ASIN lane run (Options.Intake) stamps
@@ -22,21 +23,12 @@ func TestLibexIntakeStampsTheLane(t *testing.T) {
 		if _, err := RunLibex(writeBooks(t, export), Options{DataDir: dataDir, ImportDate: testImportDate, Intake: tc.intake}); err != nil {
 			t.Fatalf("intake %v: %v", tc.intake, err)
 		}
-		type sourced struct {
-			Sources []struct {
-				Type string `json:"type"`
-				Ref  string `json:"ref"`
-			} `json:"sources"`
+		var work struct {
+			Sources []model.Source `json:"sources"`
 		}
-		var work sourced
 		readEntity(t, dataDir, "works/th/the-lost-cartographer/work.json", &work)
 		if len(work.Sources) != 1 || work.Sources[0].Type != "libex-import" || work.Sources[0].Ref != tc.ref {
 			t.Errorf("intake %v: work sources = %+v, want one libex-import %s", tc.intake, work.Sources, tc.ref)
-		}
-		for _, s := range work.Sources {
-			if tc.intake != strings.HasPrefix(s.Ref, IntakeRefPrefix) {
-				t.Errorf("intake %v: ref %q", tc.intake, s.Ref)
-			}
 		}
 	}
 }

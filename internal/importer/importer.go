@@ -493,8 +493,8 @@ type planner struct {
 	sourceType string
 	importDate string
 	// intake is Options.Intake: the ref is the ASIN behind IntakeRefPrefix.
-	intake bool
-	curSource  OutSource
+	intake    bool
+	curSource OutSource
 	// curRefresh reports whether the row curSource stamps REFRESHED the
 	// recording it matched: only that stamp is let past the source
 	// deduplication (restates, refresh.go). It is PER ROW - setSource resets it
