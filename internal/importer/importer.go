@@ -3860,7 +3860,7 @@ func (p *planner) noteDroppedSeriesClaim(r seriesRef) {
 		return
 	}
 	ex := fmt.Sprintf("%q", r.name)
-	if ref := p.curSource.Ref; ref != "" {
+	if ref := sourceASIN(p.curSource.Ref); ref != "" {
 		ex += " (" + ref + ")"
 	}
 	if len(r.target.stepped) > 0 {

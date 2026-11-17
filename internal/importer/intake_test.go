@@ -45,3 +45,13 @@ func TestIntakeIsACreateRunOfLibexRows(t *testing.T) {
 		t.Error("an OpenAudible run with Intake was not refused")
 	}
 }
+
+// TestIntakeDropWarningNamesTheASIN: the lane runs existing-series-only, and
+// the warning for a claim it drops names the row by its ASIN, which is what a
+// maintainer looks the row up by, not by the lane's stamp.
+func TestIntakeDropWarningNamesTheASIN(t *testing.T) {
+	sum := runLibexWith(t, cordellLoganTree(t), Options{ExistingSeriesOnly: true, Intake: true}, chuteLibre)
+	if !hasWarning(sum.Warnings, `"Une Enquête de Cordell Logan" (B0GDJN7NZQ)`) {
+		t.Errorf("the drop warning does not name the row's ASIN: %v", sum.Warnings)
+	}
+}
