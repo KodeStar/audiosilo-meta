@@ -615,7 +615,9 @@ when it is in or above the band, counts at least `genericTitleValue` (the series
 only the subtitle, a pack against its range); a title below the band shares nothing
 with the request's and is lifted only while the request's title names no other work
 of the pool that could be the book (`namedByAnother`: by a named author, its runtime not
-ruled out; "American Dragons, Book 3" or a shared "A LitRPG Adventure" subtitle names
+ruled out, and in no other known language than a stated one, which is another edition
+of the book: the Polish "Podbój" stays the volume of a Polish file tagged "Conquest"; "American
+Dragons, Book 3" or a shared "A LitRPG Adventure" subtitle names
 none) - "Blood of Elves" filed at The Last Wish's position counts its 0.13 as it is
 (`TestMatchListingLiftsNoTitleBelowTheBand`, meta#2922). The pool's title agreements
 are read once for this (`matchFacts.named`, inside the budget like the judging) and

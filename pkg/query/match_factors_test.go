@@ -748,11 +748,15 @@ func TestMatchListedRivalsDoNotRise(t *testing.T) {
 		t.Fatalf("Polish request: top = %v, want podboj", matchIDs(res))
 	}
 	// Its translated title shares nothing with "Conquest" (0.13, below the band),
-	// which names the English work exactly, so the listing keeps its series but
-	// lifts no title.
+	// which names the English work exactly: another edition of the book in a
+	// language the request rules out, not another book, so the listing still
+	// lifts the Polish volume and it stays first.
 	q.Set("title", "Conquest")
 	res = matchJSON(t, ts.URL, q)
-	wantScore(t, res, "podboj", 48)
+	if len(res) == 0 || res[0]["id"] != "podboj" {
+		t.Fatalf("Polish request titled in English: top = %v, want podboj", matchIDs(res))
+	}
+	wantScore(t, res, "podboj", 91)
 	english := wantScore(t, res, "conquest", 80)
 	if s := english["reasons"].(map[string]any)["language"]; s != "other" {
 		t.Errorf("conquest language reason %v, want other", s)

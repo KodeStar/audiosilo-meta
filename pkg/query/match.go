@@ -336,9 +336,9 @@ type matchFacts struct {
 	// pool (titleAgreement, read once and then reused by judge), and namedBest,
 	// namedBestID and namedNext the two best named agreements over the works
 	// that could be the book (by a named author, the runtime not ruling them
-	// out): what a listing's lift of a title below the seriesDistrust band
-	// reads (namedByAnother). Filled by resolveSeries, the one place a listing
-	// can vouch from; nil otherwise.
+	// out, in no other language than a stated one): what a listing's lift of a
+	// title below the seriesDistrust band reads (namedByAnother). Filled by
+	// resolveSeries, the one place a listing can vouch from; nil otherwise.
 	named       map[*candidate]titleRead
 	namedBest   float64
 	namedBestID string
@@ -1555,7 +1555,8 @@ func (f *matchFacts) resolveSeries(ctx context.Context, cands []*candidate) {
 		// Only a work that could be this book names it: its length not ruled
 		// out (a tag naming a volume a third longer than the file is a
 		// mislabelled tag, Primer for the Apocalypse 1 tagged "The Realm
-		// Dungeon") and, for the lift's rivals, by a named author.
+		// Dungeon") and, for the lift's rivals, by a named author and in no
+		// other language than the stated one.
 		if f.runtimeRulesOut(c) {
 			continue
 		}
@@ -1572,7 +1573,11 @@ func (f *matchFacts) resolveSeries(ctx context.Context, cands []*candidate) {
 		if other && !here {
 			f.namedElsewhere = max(f.namedElsewhere, named)
 		}
-		if len(f.authors) > 0 && agreeAuthors(f.authors, c.authors) == authorNone {
+		// A work in another known language than the stated one is another
+		// edition of a book (languageMismatchFactor), not another book: the
+		// Polish "Podbój" stays the volume of a Polish file tagged "Conquest".
+		if (len(f.authors) > 0 && agreeAuthors(f.authors, c.authors) == authorNone) ||
+			(f.language != "" && c.language != "" && c.language != f.language) {
 			continue
 		}
 		switch {
