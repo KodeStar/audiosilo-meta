@@ -10,6 +10,7 @@ import (
 	"github.com/kodestar/audiosilo-meta/internal/audit"
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/rawentry"
+	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -151,6 +152,9 @@ func (t *txn) foldWork(target, loser string, merged entry, recs map[string]entry
 	}
 	lost, declined := mergeWorkFields(merged, lw, roles)
 	t.noteLost(lost, loser)
+	if added := addAlternateTitles(merged, lw); len(added) > 0 {
+		t.note("  alternate_titles: kept %s from %s, so a search for it still finds the work", joinQuoted(added), loser)
+	}
 	if len(declined) > 0 {
 		t.note("  authors: did not add %s from %s: the merged %s credits them in a non-author role, and a credit is not authorship",
 			joinList(declined), loser, target)
@@ -210,6 +214,49 @@ func (t *txn) moveRecording(target, loser, key string, recs map[string]entry, re
 		t.note("moved recording %s/%s to %s/%s", loser, key, target, key)
 	}
 	return nil
+}
+
+// addAlternateTitles keeps a folded record's titles on the merged work as alternate
+// titles, so a search for the title the loser was found by still finds the book
+// (merge-works keeps the survivor's title and drops the loser's): its own alternate
+// titles, and its title unless that only restates the survivor's - one comparison
+// key extending the other ("The Prince by Nicolo Machiavelli" beside "The Prince",
+// "Hammered: The Druid Tales, Book 3" beside "Hammered"), which a search for the
+// survivor's title already reaches. The survivor's title itself and a title already
+// listed are never added. It returns what it added, for the note.
+func addAlternateTitles(merged, lw entry) []string {
+	title := merged.Str("title")
+	have := merged.Strs("alternate_titles")
+	candidates := lw.Strs("alternate_titles")
+	if lt := lw.Str("title"); lt != "" && !restatesTitle(lt, title) {
+		candidates = append([]string{lt}, candidates...)
+	}
+	var added []string
+	for _, c := range candidates {
+		if c == title || slices.Contains(have, c) {
+			continue
+		}
+		have = append(have, c)
+		added = append(added, c)
+	}
+	rawentry.SetListOrDrop(merged, "alternate_titles", have)
+	return added
+}
+
+// restatesTitle reports whether one title's comparison key extends the other's:
+// the same book's title with decoration, a series designation or a subtitle added.
+func restatesTitle(a, b string) bool {
+	ka, kb := titlerule.CompareKey(titlerule.Clean(a, "")), titlerule.CompareKey(titlerule.Clean(b, ""))
+	return ka == "" || kb == "" || strings.HasPrefix(ka, kb) || strings.HasPrefix(kb, ka)
+}
+
+// joinQuoted renders a list of values for a note, each quoted.
+func joinQuoted(vs []string) string {
+	out := make([]string, len(vs))
+	for i, v := range vs {
+		out[i] = strconv.Quote(v)
+	}
+	return strings.Join(out, ", ")
 }
 
 type mergedFacts struct {

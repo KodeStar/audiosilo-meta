@@ -167,7 +167,7 @@ func triples(t *testing.T, db *sql.DB, query string) [][3]string {
 func TestBuildMeta(t *testing.T) {
 	db := buildFixture(t)
 	want := map[string]string{
-		"schema_version":        "11",
+		"schema_version":        "12",
 		"built_at":              "2026-07-11T00:00:00Z",
 		"count_works":           "2",
 		"count_recordings":      "2",
@@ -703,5 +703,44 @@ func TestBuildPositionScales(t *testing.T) {
 	}
 	if count != "2" {
 		t.Errorf("count_position_scales = %q, want 2", count)
+	}
+}
+
+// TestBuildAlternateTitles: a work's alternate titles land in work_alternate_titles in
+// the record's order, and in the work's search_fts NAMES (never its title column, which
+// the exact-title probe filters on), so a search for the other title finds the book.
+func TestBuildAlternateTitles(t *testing.T) {
+	cat := fixtureCatalog()
+	cat.Works[0].AlternateTitles = []string{"Hail Mary", "Project Hail Mary: A Novel"}
+	db := buildDB(t, cat)
+	rows, err := db.Query(`SELECT title FROM work_alternate_titles WHERE work_id=? ORDER BY ord`, cat.Works[0].ID)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() { _ = rows.Close() }()
+	var got []string
+	for rows.Next() {
+		var s string
+		if err := rows.Scan(&s); err != nil {
+			t.Fatal(err)
+		}
+		got = append(got, s)
+	}
+	if !slices.Equal(got, cat.Works[0].AlternateTitles) {
+		t.Errorf("alternate titles = %v, want %v", got, cat.Works[0].AlternateTitles)
+	}
+	var id string
+	if err := db.QueryRow(`SELECT id FROM search_fts WHERE search_fts MATCH ? AND kind='work'`, `names : "hail mary"`).Scan(&id); err != nil {
+		t.Fatalf("a search for the alternate title finds nothing: %v", err)
+	}
+	var n int
+	if err := db.QueryRow(`SELECT COUNT(*) FROM search_fts WHERE search_fts MATCH ? AND kind='work'`, `title : "novel"`).Scan(&n); err != nil {
+		t.Fatal(err)
+	}
+	if id != cat.Works[0].ID || n != 0 {
+		t.Errorf("search found %q, %d title-column hits on the alternate title; want %s and none", id, n, cat.Works[0].ID)
+	}
+	if err := db.QueryRow(`SELECT COUNT(*) FROM work_alternate_titles WHERE work_id=?`, cat.Works[1].ID).Scan(&n); err != nil || n != 0 {
+		t.Errorf("a work stating none has %d rows (%v)", n, err)
 	}
 }

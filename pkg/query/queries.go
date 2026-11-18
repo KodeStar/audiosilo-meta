@@ -282,15 +282,19 @@ type DescriptionOut struct {
 }
 
 type WorkDetail struct {
-	ID             string      `json:"id"`
-	Title          string      `json:"title"`
-	Subtitle       string      `json:"subtitle,omitempty"`
-	Authors        []PersonRef `json:"authors"`
-	Language       string      `json:"language"`
-	FirstPublished string      `json:"first_published,omitempty"`
-	Description    string      `json:"description,omitempty"`
-	Genres         []string    `json:"genres,omitempty"`
-	Series         []SeriesRef `json:"series"`
+	ID       string `json:"id"`
+	Title    string `json:"title"`
+	Subtitle string `json:"subtitle,omitempty"`
+	// AlternateTitles are the other titles the book is published or known under,
+	// in the record's order; omitted when it states none (or the artifact predates
+	// alternateTitlesSchemaVersion).
+	AlternateTitles []string    `json:"alternate_titles,omitempty"`
+	Authors         []PersonRef `json:"authors"`
+	Language        string      `json:"language"`
+	FirstPublished  string      `json:"first_published,omitempty"`
+	Description     string      `json:"description,omitempty"`
+	Genres          []string    `json:"genres,omitempty"`
+	Series          []SeriesRef `json:"series"`
 	// TranslationOf is the work(s) this one translates, and Translations the
 	// works that translate it - the two directions of the translations table,
 	// each in work id order and omitted when empty (or the artifact predates
@@ -342,6 +346,9 @@ func (s *DB) workDocument(ctx context.Context, id string, sidecars bool) (*WorkD
 		return nil, err
 	}
 	if d.Genres, err = s.workGenres(ctx, id); err != nil {
+		return nil, err
+	}
+	if d.AlternateTitles, err = s.workAlternateTitles(ctx, id); err != nil {
 		return nil, err
 	}
 	if d.Series, err = s.seriesOf(ctx, id); err != nil {

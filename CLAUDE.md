@@ -527,7 +527,11 @@ pre-migration layout was one file per record
 it, `pkg/check` and every writer now refuse it loudly.
 
 - **work** - an entry in the works family, keyed by work slug: the abstract book
-  (title, authors (person ids), language, first_published, xrefs (wikidata/
+  (title, optional `alternate_titles` (other titles the book is published or
+  known under: a retitled re-release, a regional title, another spelling; never
+  the title itself, `checkAlternateTitles`; merge-works fills it from a folded
+  record whose title names the book differently; search reads them as the work's
+  FTS names), authors (person ids), language, first_published, xrefs (wikidata/
   openlibrary/goodreads/print ISBNs), optional `genres` (values from the
   controlled vocabulary enum `common.schema.json#/$defs/genre` - a flat,
   retailer-neutral list the project owns; sorted ascending, enforced by
@@ -789,18 +793,20 @@ project's own title, section numbers, translators, section readers and genre
 names, which the LibriVox-shaped feed answers with; PACKAGES.md "The LIBRIVOX
 RECORDING layer"); the `position_scales(work_id, length, unit, partial)` table in
 **schema_version 10**; the STORE LINKS (`recordings.link_audiobookguild`,
-`recordings.link_graphicaudio`) in **schema_version 11** (the current version);
+`recordings.link_graphicaudio`) in **schema_version 11**; a work's ALTERNATE TITLES
+(`work_alternate_titles(work_id, title, ord)`, also in the work's `search_fts`
+names) in **schema_version 12** (the current version);
 character `ord`/recap
 position order preserved, deterministic), and `metaserve` returns
 them inline on `GET /works/{id}`
 (`workDetail.characters`/`.recaps`/`.recap_summary`/`.genres`/
-`.community_description`/`.position_scale`/`.translation_of`/`.translations`, `omitempty`). The
+`.community_description`/`.position_scale`/`.translation_of`/`.translations`/`.alternate_titles`, `omitempty`). The
 serve queries degrade gracefully if the tables are absent (a newer binary
 briefly serving an older release): characters/recaps gate on schema_version >= 2,
 the recap summary on >= 3, genres on >= 4, the slug redirects on >= 5, the
 community description on >= 6, the languages layer on >= 7, the LibriVox
 layer on >= 8, the LibriVox recording layer on >= 9, the position scales on
->= 10 and the store links on >= 11, so a
+>= 10, the store links on >= 11 and the alternate titles on >= 12, so a
 table's absence is "no data" (for redirects: a retired slug 404s as it did before
 the mechanism existed), not a 500. The redirect, description and languages gates
 are asked ONCE at load rather than per request - those tables are EMPTY in every

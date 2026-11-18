@@ -392,6 +392,23 @@ func checkGenresSorted(cat *model.Catalog, idx *pathIndex, add addFunc) {
 	}
 }
 
+// checkAlternateTitles holds a work's alternate titles apart from its title and
+// from blank padding: the schema already refuses an empty list, an empty string
+// and an exact repeat, and an alternate equal to the title it stands beside, or one
+// carrying leading or trailing space, is the same nothing said twice.
+func checkAlternateTitles(cat *model.Catalog, idx *pathIndex, add addFunc) {
+	for _, w := range cat.Works {
+		for _, alt := range w.AlternateTitles {
+			switch {
+			case strings.TrimSpace(alt) != alt:
+				add(idx.work[w], "alternate title %q carries leading or trailing space", alt)
+			case alt == w.Title:
+				add(idx.work[w], "alternate title %q is the work's own title", alt)
+			}
+		}
+	}
+}
+
 // checkCreditPairs enforces that a work never credits one person twice in the
 // SAME role. A person legitimately appears several times with DIFFERENT roles
 // (a source really does credit one person as "editor and translator", which the
