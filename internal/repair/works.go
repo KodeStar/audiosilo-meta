@@ -231,22 +231,28 @@ func (t *txn) noteRecordingMerged(from, into, why string, lost []rawentry.Record
 // titles, and its title unless that only restates the survivor's - one comparison
 // key extending the other ("The Prince by Nicolo Machiavelli" beside "The Prince",
 // "Hammered: The Druid Tales, Book 3" beside "Hammered"), which a search for the
-// survivor's title already reaches. The survivor's title itself and a title already
-// listed are never added. It returns what it added, for the note.
+// survivor's title already reaches - or an alternate the work already lists, which a
+// second loser of one cluster would otherwise repeat with its decoration. The
+// survivor's title itself and a title already listed are never added, and a title is
+// added trimmed: pkg/check refuses a padded alternate (checkAlternateTitles), which a
+// title may be. It returns what it added, for the note.
 func addAlternateTitles(merged, lw entry) []string {
 	title := merged.Str("title")
 	have := merged.Strs("alternate_titles")
-	candidates := lw.Strs("alternate_titles")
-	if lt := lw.Str("title"); lt != "" && !restatesTitle(lt, title) {
-		candidates = append([]string{lt}, candidates...)
-	}
 	var added []string
-	for _, c := range candidates {
-		if c == title || slices.Contains(have, c) {
-			continue
+	add := func(c string) {
+		if c = strings.TrimSpace(c); c == "" || c == title || slices.Contains(have, c) {
+			return
 		}
 		have = append(have, c)
 		added = append(added, c)
+	}
+	if lt := lw.Str("title"); !restatesTitle(lt, title) &&
+		!slices.ContainsFunc(have, func(alt string) bool { return restatesTitle(lt, alt) }) {
+		add(lt)
+	}
+	for _, c := range lw.Strs("alternate_titles") {
+		add(c)
 	}
 	rawentry.SetListOrDrop(merged, "alternate_titles", have)
 	return added

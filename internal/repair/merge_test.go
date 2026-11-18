@@ -1305,6 +1305,27 @@ func TestMergeWorksKeepsADifferentTitleAsAnAlternate(t *testing.T) {
 	}
 }
 
+// A second loser of one cluster whose title only restates an alternate the first one
+// left adds nothing, and a padded title is kept trimmed, as pkg/check requires of an
+// alternate.
+func TestAddAlternateTitlesSkipsARestatedAlternateAndTrims(t *testing.T) {
+	work := func(title string) entry {
+		e := entry{}
+		e.Set("title", title)
+		return e
+	}
+	merged := work("Dashing Devil")
+	if got := addAlternateTitles(merged, work("Hidden Hero ")); !slices.Equal(got, []string{"Hidden Hero"}) {
+		t.Fatalf("added %q, want the title trimmed", got)
+	}
+	if got := addAlternateTitles(merged, work("Hidden Hero: The Devil Tales, Book 1")); len(got) != 0 {
+		t.Errorf("added %q, want nothing: it restates the alternate already kept", got)
+	}
+	if got := merged.Strs("alternate_titles"); !slices.Equal(got, []string{"Hidden Hero"}) {
+		t.Errorf("alternate_titles = %q", got)
+	}
+}
+
 // restatesTitle extends a key only at a word boundary ("It" is not "Itch"), and a
 // title the slug fold cannot read is compared as written rather than read as
 // restating every other title.
