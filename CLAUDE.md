@@ -813,9 +813,10 @@ are asked ONCE at load rather than per request - those tables are EMPTY in every
 release until their first record lands, and all sit on ordinary 200 paths (the
 description on every work page, both guide pages and every ABS candidate; the
 translations and the ordering family on every work and series page) - so an
-artifact that CLAIMS version 5, 6, 7, 8, 9, 10 or 11 without its table (for 7: the
+artifact that CLAIMS version 5, 6, 7, 8, 9, 10, 11 or 12 without its table (for 7: the
 translations table or the series ordering columns; for 8: `librivoxShapeSQL`;
-for 9: `librivoxRecordingShapeSQL`; for 11: `storeLinksShapeSQL`) fails to open, with an
+for 9: `librivoxRecordingShapeSQL`; for 11: `storeLinksShapeSQL`; for 12:
+`alternateTitlesShapeSQL`) fails to open, with an
 error naming that claim; the builder writes the version and the table together,
 so the combination is a corrupt file rather than an old one. **Authoring the expressive
 layer is documented in the COMMUNITY repository's `AUTHORING.md`** (the reusable
