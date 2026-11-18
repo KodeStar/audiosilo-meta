@@ -633,7 +633,10 @@ jobs:
           # branch head is news rather than muted by the last one. Backticks,
           # angle brackets and @ are dropped (the line is pasted into a comment,
           # and must neither break its markdown, spell a marker nor mention
-          # anyone) and it is capped.
+          # anyone) and it is capped. The comment quotes the whole reason in one
+          # code span, which the dropped backticks leave nothing to close, so a
+          # link, an image, a bare URL or a #reference in the tool's line stays
+          # text under the bot's name.
           noted() {
             local pattern="${1:-.}" out status
             shift
@@ -829,7 +832,7 @@ jobs:
               # (its detail line included) is news and is said again.
               reason="$(printf '%s' "$failure" | sha256sum | cut -c 1-16)"
               comment_once "$number" "<!-- intake-sweep:rebase-failed ${attempted_sha} ${reason} -->" \
-                "The intake bot could not rebase this branch onto \`main\` mechanically: ${failure}. It needs a maintainer - see CONTRIBUTING.md, \"When two pull requests touch the same pack\". This note is not repeated until the branch or the reason changes."
+                "The intake bot could not rebase this branch onto \`main\` mechanically: \`${failure}\`. It needs a maintainer - see CONTRIBUTING.md, \"When two pull requests touch the same pack\". This note is not repeated until the branch or the reason changes."
             else
               echo "rebased and pushed"
               swept=$((swept + 1))

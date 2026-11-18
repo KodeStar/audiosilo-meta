@@ -583,13 +583,15 @@ func TestIntakeSweepFailsWhenTheListingFails(t *testing.T) {
 // The notice the sweep posts when it gives up on a branch is a contract:
 // audiosilo-meta-sync's steward knows it by the marker opening a line, or by
 // the sentence opening the body. Its detail line is the failing tool's, which
-// can quote the branch's data, so it mentions nobody, and the tool's output
-// reaches the log with workflow commands stopped.
+// can quote the branch's data, so it mentions nobody and sits with the rest of
+// the reason in one code span (a link or a #reference in it stays text), and
+// the tool's output reaches the log with workflow commands stopped. A second
+// sweep of the same head and reason says nothing more.
 func TestIntakeSweepGiveUpNotice(t *testing.T) {
 	t.Parallel()
 	requireBash4(t)
 	f := newSweepFixture(t)
-	f.write("scripts/pack-union-merge.sh", "#!/bin/sh\necho \"pack-union-merge: @KodeStar <b>refused</b> $1\"\necho \"::error::from the branch's data\"\nexit 1\n")
+	f.write("scripts/pack-union-merge.sh", "#!/bin/sh\necho \"pack-union-merge: @KodeStar <b>refused</b> [x](https://evil.example) #1 $1\"\necho \"::error::from the branch's data\"\nexit 1\n")
 	f.git("add", "-A")
 	f.git("commit", "-q", "-m", "a driver that refuses")
 	f.git("push", "-q", "origin", "main")
@@ -609,8 +611,13 @@ func TestIntakeSweepGiveUpNotice(t *testing.T) {
 	if !regexp.MustCompile(`^<!-- intake-sweep:rebase-failed ` + before + ` [0-9a-f]{16} -->$`).MatchString(marker) {
 		t.Errorf("the notice's first line is %q, want the rebase-failed marker naming %s", marker, before)
 	}
-	if !strings.HasPrefix(text, "The intake bot could not rebase this branch onto `main` mechanically: the pack merge could not resolve data/works/a.json: pack-union-merge: KodeStar brefused/b") {
-		t.Errorf("the notice does not open with the sentence and the tool's line:\n%s", text)
+	const reason = "the pack merge could not resolve data/works/a.json: pack-union-merge: KodeStar brefused/b [x](https://evil.example) #1 data/works/a.json"
+	if !strings.HasPrefix(text, "The intake bot could not rebase this branch onto `main` mechanically: `"+reason+"`. It needs a maintainer") {
+		t.Errorf("the notice does not open with the sentence and the tool's line in one code span:\n%s", text)
+	}
+	f.mustRun()
+	if again := f.comments(7); len(again) != 1 {
+		t.Errorf("a second sweep of the same head and reason commented again: %q", again)
 	}
 }
 
