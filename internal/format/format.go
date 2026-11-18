@@ -1,7 +1,8 @@
 // Package format is metafmt's business logic: canonical formatting of the data
 // tree plus, for families already in pack layout, the self-healing structural
 // pass (salvaging files that are not packs, relocating misplaced entries,
-// resolving duplicate slugs, and performing due splits and rebinds).
+// dropping identical duplicate slugs, and performing due splits and rebinds;
+// differing duplicates are refused, see WriteProfile).
 //
 // It is the glue between two packages that deliberately do not know about each
 // other: pkg/canonical owns per-file canonical form and is layout-agnostic,
@@ -13,10 +14,12 @@
 package format
 
 import (
+	"errors"
 	"fmt"
 	"maps"
 	"path/filepath"
 	"sort"
+	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/canonical"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
@@ -54,18 +57,20 @@ func (r Report) Clean() bool {
 
 // NeedsHuman reports whether something outstanding is beyond what --write can
 // fix: a file the tooling cannot read is never rewritten or deleted for the
-// contributor, it is only named.
+// contributor, it is only named, and an entry two packs hold in differing copies
+// makes --write refuse the whole tree.
 func (r Report) NeedsHuman() bool {
 	return len(r.Invalid) > 0 || !r.Pending.Healable()
 }
 
 // fixable reports whether anything outstanding is something --write performs.
 // An unparseable file is not: it is listed as non-canonical too, so that count
-// only means work when it exceeds the files nothing can parse.
+// only means work when it exceeds the files nothing can parse. Nor is a
+// conflict between differing copies.
 func (r Report) fixable() bool {
 	p := r.Pending
 	return len(r.NonCanonical) > len(r.Invalid) || len(r.Formatted) > 0 ||
-		len(p.Salvage) > 0 || len(p.Misplaced) > 0 || len(p.Conflicts) > 0 ||
+		len(p.Salvage) > 0 || len(p.Misplaced) > 0 || len(p.Conflicts) > len(p.Differing()) ||
 		len(p.Rebinds) > 0 || len(p.Packs) > 0 || len(p.Dirs) > 0
 }
 
@@ -74,6 +79,10 @@ func (r Report) fixable() bool {
 // them in a circle.
 func (r Report) Advice() string {
 	switch {
+	case len(r.Pending.Differing()) > 0:
+		// --write refuses the whole tree while any is outstanding, so "fix the
+		// rest" would be the circle.
+		return "metafmt --write refuses while an entry is held in differing copies: keep one copy by hand, then run metafmt --write"
 	case !r.NeedsHuman():
 		return "run metafmt --write to fix"
 	case !r.fixable():
@@ -226,10 +235,14 @@ func CheckProfile(dataDir string, p pack.Profile) (Report, error) {
 
 // Write formats every file canonically and makes every packed family
 // well-formed: files that are not packs are salvaged and deleted, entries move
-// to their bound-correct pack, duplicate slugs resolve to the correctly-placed
-// copy, and due splits and rebinds are performed. One pass converges - a second
-// run is a byte-level no-op - and a file the tooling cannot read is only
-// reported, never touched.
+// to their bound-correct pack, a slug held twice in identical copies keeps one,
+// and due splits and rebinds are performed. One pass converges - a second run
+// is a byte-level no-op - and a file the tooling cannot read is only reported,
+// never touched.
+//
+// A slug held twice in DIFFERING copies is refused before anything is written:
+// the error names each such entry and both files and wraps
+// pack.ErrDifferingCopies, and the tree is left exactly as it was.
 func Write(dataDir string) (Report, error) { return WriteProfile(dataDir, pack.ProfileAll) }
 
 // WriteProfile is Write over a root that holds only profile p's families (see
@@ -241,9 +254,43 @@ func WriteProfile(dataDir string, p pack.Profile) (Report, error) {
 	if err := refuseLegacy(dataDir, p); err != nil {
 		return Report{}, err
 	}
-	// Formatting runs first: Flush judges a pack no write reached by its
-	// on-disk size, which is only the pack's canonical size once the file is in
-	// canonical form. It is scoped to the profile exactly as Check's is, and
+	// The healing is PLANNED first, every family of it, because it can refuse:
+	// a slug held in differing copies is a human's to settle, and refusing it
+	// after the formatting pass had rewritten files would leave the tree half
+	// tidied under the refusal. Nothing is written until every family's plan
+	// stands.
+	s, families, err := openPacked(dataDir, p)
+	if err != nil {
+		return Report{}, err
+	}
+	var differing []pack.Conflict
+	for _, f := range families {
+		// ONE survey per family: what is outstanding (the report) and the
+		// queueing of its fixes come out of the same pass, rather than
+		// classifying every file in the family twice for the same answer.
+		pend, herr := s.HealPending(f)
+		if errors.Is(herr, pack.ErrDifferingCopies) {
+			differing = append(differing, pend.Differing()...)
+			continue
+		}
+		if herr != nil {
+			return Report{}, herr
+		}
+		mergePending(&rep.Pending, pend)
+	}
+	if len(differing) > 0 {
+		lines := make([]string, len(differing))
+		for i, c := range differing {
+			lines[i] = c.StringUnder(dataDir)
+		}
+		return Report{}, fmt.Errorf("%s\n%w", strings.Join(lines, "\n"), pack.ErrDifferingCopies)
+	}
+	// Formatting runs before the flush: Flush judges a pack no write reached by
+	// its on-disk size, which is only the pack's canonical size once the file
+	// is in canonical form. It rewrites files in place and creates or deletes
+	// none, so the store's view of which files exist still holds, and a pack
+	// the flush rewrites is rendered from its parsed entries, which formatting
+	// does not change. It is scoped to the profile exactly as Check's is, and
 	// here that scoping is load-bearing rather than tidy - a skipped file is
 	// never even read, so nothing this run disclaims can be rewritten.
 	changed, failed, err := canonical.WriteTreeExcept(dataDir, p.Excluded())
@@ -251,32 +298,15 @@ func WriteProfile(dataDir string, p pack.Profile) (Report, error) {
 		return Report{}, err
 	}
 	rep.Formatted, rep.Invalid = changed, failed
-	err = withPackedFamilies(dataDir, p, func(s *pack.Store, families []pack.Family) error {
-		for _, f := range families {
-			// ONE survey per family: what is outstanding (the report) and the
-			// queueing of its fixes come out of the same pass, rather than
-			// classifying every file in the family twice for the same answer.
-			pend, herr := s.HealPending(f)
-			if herr != nil {
-				return herr
-			}
-			mergePending(&rep.Pending, pend)
-		}
-		// A family that was already well-formed queued nothing, so a tree where
-		// that held throughout is never flushed at all - which is what makes a
-		// clean tree cost one pass over it and nothing more.
-		if rep.Pending.Empty() {
-			return nil
-		}
+	// A family that was already well-formed queued nothing, so a tree where that
+	// held throughout is never flushed at all - which is what makes a clean tree
+	// cost one pass over it and nothing more.
+	if s != nil && !rep.Pending.Empty() {
 		w, ferr := s.Flush()
 		if ferr != nil {
-			return ferr
+			return Report{}, ferr
 		}
 		rep.Wrote, rep.Deleted = w.Wrote, w.Deleted
-		return nil
-	})
-	if err != nil {
-		return Report{}, err
 	}
 	rep.dropUnreadableDuplicates()
 	return rep, nil
@@ -346,9 +376,19 @@ func refuseLegacy(dataDir string, p pack.Profile) error {
 // layout, in family order. fn is not called at all when no family is packed - an
 // empty tree, or one holding only families that do not exist yet.
 func withPackedFamilies(dataDir string, p pack.Profile, fn func(*pack.Store, []pack.Family) error) error {
+	s, packed, err := openPacked(dataDir, p)
+	if err != nil || s == nil {
+		return err
+	}
+	return fn(s, packed)
+}
+
+// openPacked opens the tree's store and lists the families in pack layout, in
+// family order. The store is nil when no family is packed.
+func openPacked(dataDir string, p pack.Profile) (*pack.Store, []pack.Family, error) {
 	s, err := pack.OpenProfile(dataDir, p)
 	if err != nil {
-		return err
+		return nil, nil, err
 	}
 	var packed []pack.Family
 	for _, d := range p.Families() {
@@ -357,7 +397,7 @@ func withPackedFamilies(dataDir string, p pack.Profile, fn func(*pack.Store, []p
 		}
 	}
 	if len(packed) == 0 {
-		return nil
+		return nil, nil, nil
 	}
-	return fn(s, packed)
+	return s, packed, nil
 }

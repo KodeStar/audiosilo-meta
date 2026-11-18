@@ -13,10 +13,12 @@ package format
 //     has to be a superset of metacheck's, or it rewrites what it cannot see.
 //  2. --check names the fix, in a line the contributor can act on.
 //  3. ONE --write converges: metacheck-green afterwards, with every entry still
-//     present (bar a duplicate the conflict rule deliberately drops).
+//     present (bar an identical duplicate the conflict rule deliberately drops;
+//     differing copies are refused instead, TestWriteRefusesDifferingCopies).
 //  4. A second --write is a byte-level no-op.
 
 import (
+	"errors"
 	"os"
 	"path/filepath"
 	"sort"
@@ -37,8 +39,8 @@ import (
 func personRec(slug string) string { return personNamed(slug, displayName(slug)) }
 
 // personNamed is personRec with the name spelled out, for the one fixture that
-// deliberately breaks the id == Slugify(name) rule: the stale duplicate copy,
-// which every case that uses it drops before metacheck sees the tree.
+// deliberately breaks the id == Slugify(name) rule: the differing duplicate
+// copy, which metafmt refuses to choose between.
 func personNamed(slug, name string) string {
 	return `{"id":"` + slug + `","license":"CC0-1.0","name":"` + name + `","sources":[{"type":"user"}]}`
 }
@@ -196,20 +198,20 @@ func TestHealsTheReviewReproductions(t *testing.T) {
 			wantLine: "people/p-mm.json is not a pack",
 		},
 		{
-			// The same slug in two packs, the shape a merge-conflict union
-			// leaves behind. The correctly-placed copy is the one readers see,
-			// so it is the one that survives.
+			// The same slug in two packs in identical copies, the shape a
+			// merge-conflict union leaves behind. The duplicate loses nothing,
+			// so it heals: the correctly-placed copy stays.
 			name: "duplicate entry across two packs",
 			files: map[string]string{
 				"people/0.json": packWith(map[string]string{
 					"p-aa": personRec("p-aa"),
-					"p-mm": personNamed("p-mm", "P Mm Stale Copy"),
+					"p-mm": personRec("p-mm"),
 				}),
 				"people/p-mm.json": packWith(map[string]string{"p-mm": personRec("p-mm")}),
 				"works/0/0.json":   packWith(map[string]string{"a-one": workRec("a-one")}),
 			},
 			wantLine: `entry "p-mm" is in both`,
-			// The stale duplicate is dropped, so the slug is still present once.
+			// The duplicate is dropped, so the slug is still present once.
 			wantDropped: []string{"people/p-mm"},
 		},
 	}
@@ -267,35 +269,49 @@ func TestHealsTheReviewReproductions(t *testing.T) {
 	}
 }
 
-// The conflict rule keeps the copy readers are seeing, not the misfiled one.
-func TestConflictKeepsTheCorrectlyPlacedCopy(t *testing.T) {
+// An entry two packs hold in DIFFERING copies is a human's call, never
+// metafmt's. Keeping "the correctly-placed copy" looked like a rule, but a stale
+// split pack moves the bounds, so the copy it calls misfiled can be main's newer
+// one (audiosilo-meta-community#517). --check names the entry and both files and
+// says --write will not help; --write refuses before it writes a byte - not even
+// the formatting pass runs - and names them too.
+func TestWriteRefusesDifferingCopies(t *testing.T) {
 	dir := t.TempDir()
 	writeFile(t, filepath.Join(dir, "people", "0.json"), packWith(map[string]string{
 		"p-aa": personRec("p-aa"),
-		"p-mm": personNamed("p-mm", "P Mm Stale Copy"),
+		"p-mm": personNamed("p-mm", "P Mm Newer Copy"),
 	}))
 	writeFile(t, filepath.Join(dir, "people", "p-mm.json"),
 		packWith(map[string]string{"p-mm": personRec("p-mm")}))
+	// Not canonical (packWith is compact), so a formatting pass that ran
+	// before the refusal would show in the snapshot.
+	writeFile(t, filepath.Join(dir, "works", "0", "0.json"),
+		packWith(map[string]string{"a-one": workRec("a-one")}))
+	before := testpack.Snapshot(t, dir)
+	inDir := func(rel string) string { return filepath.Join(dir, filepath.FromSlash(rel)) }
 
 	rep := mustCheck(t, dir)
-	if len(rep.Pending.Conflicts) != 1 {
-		t.Fatalf("conflicts = %+v, want one", rep.Pending.Conflicts)
+	if got := rep.Pending.Differing(); len(got) != 1 || got[0].Slug != "p-mm" {
+		t.Fatalf("differing conflicts = %+v, want p-mm", rep.Pending.Conflicts)
 	}
-	c := rep.Pending.Conflicts[0]
-	if c.Kept != "people/p-mm.json" || c.Dropped != "people/0.json" {
-		t.Errorf("conflict kept %s / dropped %s, want the correctly-placed copy kept", c.Kept, c.Dropped)
+	if !containsFragment(rep.Lines(), `entry "p-mm" is in both `+inDir("people/p-mm.json")+" and "+inDir("people/0.json")+" and the copies differ") {
+		t.Errorf("--check does not name the entry and both files:\n  %s", strings.Join(rep.Lines(), "\n  "))
+	}
+	if !rep.NeedsHuman() || !strings.Contains(rep.Advice(), "refuses") {
+		t.Errorf("NeedsHuman = %v, Advice = %q; want a human, and --write not offered as the fix", rep.NeedsHuman(), rep.Advice())
 	}
 
-	mustWrite(t, dir)
-	got, ok := readPack(t, dir, "people/p-mm.json").Get("p-mm")
-	if !ok {
-		t.Fatal("the surviving entry is gone")
+	_, err := Write(dir)
+	if !errors.Is(err, pack.ErrDifferingCopies) {
+		t.Fatalf("Write = %v, want pack.ErrDifferingCopies", err)
 	}
-	if strings.Contains(string(got), "Stale") {
-		t.Errorf("survivor = %s, want the correctly-placed copy", got)
+	for _, want := range []string{`"p-mm"`, inDir("people/p-mm.json"), inDir("people/0.json")} {
+		if !strings.Contains(err.Error(), want) {
+			t.Errorf("the refusal %q does not name %s", err, want)
+		}
 	}
-	if _, dup := readPack(t, dir, "people/0.json").Get("p-mm"); dup {
-		t.Error("the misfiled duplicate is still there")
+	if diff := treeDiff(before, testpack.Snapshot(t, dir)); diff != "" {
+		t.Errorf("a refused --write changed the tree: %s", diff)
 	}
 }
 

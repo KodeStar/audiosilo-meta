@@ -41,9 +41,10 @@ func surveyFixture(t *testing.T) string {
 	for i := range 20 {
 		slug := fmt.Sprintf("k%02d", i)
 		pairs := [][2]string{{slug, "K"}}
-		// k05 is also in k06's pack: a duplicate entry.
+		// k05 is also in k06's pack: a duplicate entry, identical so that
+		// HealPending heals it rather than refusing.
 		if i == 6 {
-			pairs = append(pairs, [2]string{"k05", "copy"})
+			pairs = append(pairs, [2]string{"k05", "K"})
 		}
 		files["works/0/"+slug+".json"] = packOfEntries(pairs...)
 	}

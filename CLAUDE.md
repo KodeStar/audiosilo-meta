@@ -480,7 +480,8 @@ single-entry exemption from the size cap (an entry bigger than the cap cannot be
 split). Only a family's very FIRST pack and directory are named `0`; every other
 pack is named by its own first slug and every other directory by its first pack's
 bound. Bounds change only on split. **Placement self-heals**: `metafmt --write`
-relocates a misplaced entry, resolves duplicate slugs, performs due splits and
+relocates a misplaced entry, drops an identical duplicate (and refuses differing
+copies, below), performs due splits and
 rebinds, and re-renders canonically - so nobody computes placement by hand, and a
 contributor's approximately-right edit is corrected mechanically. Two PRs editing
 one pack conflict; the resolution is a THREE-WAY merge of the entries (base
@@ -524,10 +525,13 @@ before any line merge happens, so the shape cannot arise; a clean rebase that
 merged this way is re-rendered and re-placed by the metafmt + `metacheck` pass
 the sweep runs after EVERY rebase, clean or not (a clean one with no merge at
 all can still keep a stale split pack, audiosilo-meta-community#517). metafmt
-runs as `--check` first and `--write` only when that lists work, and never over
-an entry two packs hold in DIFFERING copies: `--write` would keep the stale one
-a moved bound makes "correctly placed" and exit 0, so that tree is a
-maintainer's (`fmt` in intake.yml). The
+runs as `--check` first and `--write` only when that lists work (`fmt` in
+intake.yml). `metafmt --write` (every caller of `pack.Store.Heal`) REFUSES an
+entry two packs hold in DIFFERING copies, naming it and both files, writing
+nothing and exiting non-zero (`pack.ErrDifferingCopies`): it used to keep the
+copy in the bound-correct pack and exit 0, and a moved bound makes the stale
+copy the "correctly placed" one. Identical copies still heal. The sweep parks a
+branch on that refusal like any failed fmt. The
 pre-migration layout was one file per record
 (`data/works/<shard>/<slug>/work.json` and friends); `cmd/metamigrate` converted
 it, `pkg/check` and every writer now refuse it loudly.

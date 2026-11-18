@@ -11,7 +11,6 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/kodestar/audiosilo-meta/internal/format"
 	pkgpack "github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
@@ -45,12 +44,11 @@ case "$1 $2" in
 esac
 `
 
-// discardedCopy is the tail of the sentence pkg/pack renders for an entry two
-// packs hold in differing copies, one of which metafmt --write discards. The
-// sweep greps metafmt's --check report for it and leaves such a tree to a
-// maintainer (see fmt in the workflow); TestSweepKnowsMetafmtsDiscardSentence
-// holds the workflow, pkg/pack and the stub below to the one wording.
-const discardedCopy = "the copies differ, and the misfiled one is discarded"
+// differingCopies is pkg/pack's own sentence for an entry two packs hold in
+// differing copies, as a printf format taking the slug, the bound-correct pack
+// and the other one, so the stub metafmt below speaks with the real tool's words
+// rather than a copy of them that could drift.
+var differingCopies = pkgpack.Conflict{Slug: "%s", Kept: "%s", Dropped: "%s"}.String()
 
 // goSweepStub stands in for `go build -o DIR/ ./cmd/...`: tools that note
 // each run in $SWEEP_TOOLS_LOG (metafmt's --write as metafmt-write) and accept
@@ -58,31 +56,47 @@ const discardedCopy = "the copies differ, and the misfiled one is discarded"
 //
 //   - metafmt --check reports an entry two packs hold in differing copies, in
 //     pkg/pack's sentence, and lists a file holding the key "unformatted" as
-//     outstanding work; --write turns that key into "formatted".
+//     outstanding work. --write refuses the differing copies, naming them and
+//     exiting non-zero with nothing written; otherwise it turns that key into
+//     "formatted". The bound-correct pack is named first: in these flat
+//     fixtures it is the later of the two files.
 //   - metacheck refuses an ASIN two entries carry, which is a rule only the
 //     catalogue can apply: neither record is wrong alone.
-const goSweepStub = `#!/usr/bin/env bash
+func goSweepStub(t *testing.T) string {
+	t.Helper()
+	if strings.ContainsAny(differingCopies, `'\`) {
+		t.Fatalf("pkg/pack's sentence %q no longer fits in the stub's single-quoted printf format", differingCopies)
+	}
+	return `#!/usr/bin/env bash
 [ "$1" = build ] && [ "$2" = -o ] || { echo "unexpected: go $*" >&2; exit 2; }
 for t in metafmt metacheck metaredirectmerge; do printf '#!/bin/sh\necho %s >> "$SWEEP_TOOLS_LOG"\nexit 0\n' "$t" > "$3/$t"; chmod +x "$3/$t"; done
 cat > "$3/metafmt" <<'TOOL'
 #!/bin/sh
+differing() {
+  dup="$(find data -type f -name '*.json' -exec jq -cS '.entries | objects | to_entries[]' {} + | sort -u | jq -r '.key' | sort | uniq -d | head -n 1)"
+  [ -n "$dup" ] || return 1
+  set --
+  for f in $(find data -type f -name '*.json' | sort); do
+    if jq -e --arg k "$dup" '.entries | objects | has($k)' "$f" > /dev/null 2>&1; then set -- "$@" "$f"; fi
+  done
+  printf '` + differingCopies + `\n' "$dup" "$2" "$1"
+}
 case " $* " in
   *" --write "*)
     echo metafmt-write >> "$SWEEP_TOOLS_LOG"
+    if line="$(differing)"; then
+      echo "metafmt: $line" >&2
+      echo "` + pkgpack.ErrDifferingCopies.Error() + `" >&2
+      exit 2
+    fi
     for f in $(grep -rl '"unformatted"' data); do
       sed 's/"unformatted"/"formatted"/' "$f" > "$f.tmp" && mv "$f.tmp" "$f" && echo "formatted $f"
     done
     exit 0 ;;
 esac
 echo metafmt >> "$SWEEP_TOOLS_LOG"
-dup="$(find data -type f -name '*.json' -exec jq -cS '.entries | objects | to_entries[]' {} + | sort -u | jq -r '.key' | sort | uniq -d | head -n 1)"
-if [ -n "$dup" ]; then
-  set --
-  for f in $(find data -type f -name '*.json' | sort); do
-    if jq -e --arg k "$dup" '.entries | objects | has($k)' "$f" > /dev/null 2>&1; then set -- "$@" "$f"; fi
-  done
-  echo "entry \"$dup\" is in both $1 and $2: the correctly-placed copy is kept, ` + discardedCopy + `"
-  echo "1 duplicate entry (run metafmt --write to fix)" >&2
+if differing; then
+  echo "1 duplicate entry (metafmt --write refuses while an entry is held in differing copies)" >&2
   exit 1
 fi
 if grep -rl '"unformatted"' data; then
@@ -97,6 +111,7 @@ dup="$(find data -type f -name '*.json' -exec jq -r '.entries | objects | .[] | 
 [ -z "$dup" ] || { echo "metacheck: duplicate ASIN $dup"; exit 1; }
 TOOL
 `
+}
 
 // sweepScript is the step's run: block, dedented the way YAML reads it.
 func sweepScript(t *testing.T) string {
@@ -176,7 +191,7 @@ func newSweepFixture(t *testing.T) *sweepFixture {
 			t.Fatal(err)
 		}
 	}
-	for name, body := range map[string]string{"gh": ghSweepStub, "go": goSweepStub} {
+	for name, body := range map[string]string{"gh": ghSweepStub, "go": goSweepStub(t)} {
 		if err := os.WriteFile(filepath.Join(f.stubBin, name), []byte(body), 0o755); err != nil {
 			t.Fatal(err)
 		}
@@ -749,11 +764,11 @@ func TestIntakeSweepChecksACleanRebase(t *testing.T) {
 // branch that split a pack, rebased onto a main that split the same pack at
 // another cut, keeps its new pack, and with it a copy of an entry main now
 // holds elsewhere. Once main changes that entry the two copies differ, and
-// metafmt --write would settle it by keeping the one in the bound-correct
+// metafmt --write used to settle it by keeping the one in the bound-correct
 // pack (the branch's stale one, since its pack moved the bound) and exit 0
-// over a tree metacheck then passes. So the sweep reads metafmt's --check
-// report first and leaves such a tree to a maintainer: --write never runs,
-// nothing is pushed, and the note names the entry and both packs.
+// over a tree metacheck then passed. metafmt now refuses such a tree, and the
+// sweep parks the branch on that refusal like any other failed fmt: nothing
+// is pushed, and the note names the entry and both packs in metafmt's words.
 func TestIntakeSweepLeavesDifferingCopiesToAMaintainer(t *testing.T) {
 	t.Parallel()
 	f := newSweepFixture(t)
@@ -769,12 +784,15 @@ func TestIntakeSweepLeavesDifferingCopiesToAMaintainer(t *testing.T) {
 		t.Fatalf("a driver merged, so this is not the clean replay the test is about:\n%s", out)
 	}
 	f.wantUntouched("intake/issue-7", stale)
-	const reason = "metafmt could not normalize the rebased tree: metafmt: entry \"s\" is in both data/works/r.json and data/works/s.json and the copies differ; which one stays is a maintainer's call, so metafmt --write was not run"
+	// The reason is metafmt's own refusal line, cut where the sweep cuts a
+	// detail (200 characters).
+	refusal := "metafmt: " + fmt.Sprintf(differingCopies, "s", "data/works/s.json", "data/works/r.json")
+	reason := "metafmt could not normalize the rebased tree: " + refusal[:min(len(refusal), 200)]
 	if c := f.comments(7); len(c) != 1 || !strings.Contains(c[0], "`"+reason+"`") {
 		t.Errorf("want one give-up comment with the reason\n%s\ngot %q", reason, c)
 	}
-	if ran := f.toolsRan(); !slices.Equal(ran, []string{"metafmt"}) {
-		t.Errorf("the tools that ran were %q, want metafmt --check alone", ran)
+	if ran := f.toolsRan(); !slices.Equal(ran, []string{"metafmt", "metafmt-write"}) {
+		t.Errorf("the tools that ran were %q, want metafmt --check, then the --write that refused", ran)
 	}
 }
 
@@ -817,54 +835,6 @@ func TestIntakeSweepRunsNoToolsOverMainsOwnTree(t *testing.T) {
 	}
 	if ran := f.toolsRan(); len(ran) != 0 {
 		t.Errorf("tools ran over main's own tree: %q", ran)
-	}
-}
-
-// The sweep's fmt greps metafmt's report for one sentence of pkg/pack's. The
-// workflow, the stub tools above and pkg/pack must agree on it: reworded in
-// pkg/pack alone, the grep would stop matching and the sweep would go back to
-// pushing a branch that takes main's newer copy of an entry away. This runs
-// main's own check over a tree in that shape and holds the report to it.
-func TestSweepKnowsMetafmtsDiscardSentence(t *testing.T) {
-	t.Parallel()
-	dir := t.TempDir()
-	person := func(slug, more string) string {
-		return fmt.Sprintf(`%q:{"id":%q,"name":%q,"license":"CC0-1.0","sources":[{"type":"user"}]%s}`, slug, slug, strings.ToUpper(slug[:1])+slug[1:], more)
-	}
-	for name, entries := range map[string][]string{
-		"0.json":  {person("aa", "")},
-		"dd.json": {person("dd", ""), person("mm", `,"description":"what main merged since"`)},
-		"mm.json": {person("mm", ""), person("pp", "")},
-	} {
-		path := filepath.Join(dir, "people", name)
-		if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
-			t.Fatal(err)
-		}
-		if err := os.WriteFile(path, []byte(`{"entries":{`+strings.Join(entries, ",")+`}}`), 0o644); err != nil {
-			t.Fatal(err)
-		}
-	}
-	rep, err := format.CheckProfile(dir, pkgpack.ProfileCore)
-	if err != nil {
-		t.Fatal(err)
-	}
-	// The sweep cuts the sentence at cut to name the entry and its two packs.
-	const cut = ": the correctly-placed"
-	var line string
-	for _, l := range rep.Lines() {
-		if strings.Contains(l, discardedCopy) {
-			line = l
-		}
-	}
-	if !strings.HasPrefix(line, `entry "mm" is in both `) || !strings.Contains(line, cut) {
-		t.Fatalf("metafmt --check reports the differing copies of mm as %q in\n%s\nwant pkg/pack's sentence, cut by the sweep at %q and ending %q",
-			line, strings.Join(rep.Lines(), "\n"), cut, discardedCopy)
-	}
-	script := sweepScript(t)
-	for _, want := range []string{`grep -F -m 1 -- "` + discardedCopy + `"`, `${lost%%` + cut + `*}`} {
-		if !strings.Contains(script, want) {
-			t.Errorf("the sweep's fmt no longer holds %q", want)
-		}
 	}
 }
 

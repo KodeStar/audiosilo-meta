@@ -563,39 +563,21 @@ jobs:
           #
           # It ASKS before it writes. `metafmt --check` lists the outstanding
           # work, and a tree with none is left alone: one read of the tree
-          # where --write makes two, on every pull request of every sweep, and
-          # nothing of a contributor's is rewritten that metafmt did not name
-          # first. What --write may never be handed is an entry held twice in
-          # DIFFERING copies. It keeps the copy in the bound-correct pack,
-          # discards the other and exits 0, and metacheck then passes the
-          # tree, but a branch's stale split pack moves the bounds, so the
-          # copy it calls misfiled is main's newer one: the push would quietly
-          # take back what main merged since (audiosilo-meta-community#517,
-          # where main had added recaps to an entry the branch still held a
-          # copy of). Which copy stays is a maintainer's call. Identical
-          # copies lose nothing and are healed. The sentence grepped for is
-          # pkg/pack's (Conflict.StringUnder), pinned by
-          # scripts/intakesweep_test.go.
+          # where --write makes two, on every pull request of every sweep.
+          # --write refuses, writing nothing and exiting non-zero, an entry
+          # two packs hold in DIFFERING copies: a branch's stale split pack
+          # moves the bounds, so keeping "the correctly-placed copy" could
+          # quietly take back what main merged since
+          # (audiosilo-meta-community#517). Which copy stays is a maintainer's
+          # call, so that refusal parks the branch like any other failed fmt,
+          # its first line naming the entry and both packs.
           fmt() {
-            local report lost
             if ! git diff -z --name-only --diff-filter=d "$1" -- data \
                 | xargs -0 -r jq -n -e '[inputs | .entries | objects | keys_unsorted[] | test("\\A[a-z0-9-]+\\z")] | all' > /dev/null; then
               echo "metafmt: an entry key the branch brings is not a slug, or a file it changes is not JSON; metafmt was not run"
               return 1
             fi
-            report="$(mktemp)"
-            if "$tools/metafmt" --check --profile core > "$report" 2>&1; then
-              cat "$report"
-              rm -f "$report"
-              return 0
-            fi
-            cat "$report"
-            lost="$(grep -F -m 1 -- "the copies differ, and the misfiled one is discarded" "$report")" || lost=""
-            rm -f "$report"
-            if [ -n "$lost" ]; then
-              echo "metafmt: ${lost%%: the correctly-placed*} and the copies differ; which one stays is a maintainer's call, so metafmt --write was not run"
-              return 1
-            fi
+            "$tools/metafmt" --check --profile core && return 0
             "$tools/metafmt" --write --profile core
           }
 

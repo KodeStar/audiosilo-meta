@@ -5,6 +5,7 @@ import (
 	"errors"
 	"os"
 	"path/filepath"
+	"slices"
 	"sort"
 	"strings"
 	"testing"
@@ -225,13 +226,29 @@ func TestFlushRefusesAPackHoldingALaterPacksEntries(t *testing.T) {
 		t.Errorf("a refused flush wrote to the tree:\nbefore %v\nafter  %v", keysOf(before), keysOf(after))
 	}
 
-	// Healing is the documented remedy, and it keeps the copy readers see.
+	// Healing is the documented remedy, but not for this tree as it stands: the
+	// leftover differs from the copy readers see, and which one stays is a
+	// human's call, so Heal refuses and the tree is still untouched.
+	sh, err := Open(dir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := sh.Heal(FamilyWorks); !errors.Is(err, ErrDifferingCopies) {
+		t.Fatalf("Heal = %v, want ErrDifferingCopies", err)
+	}
+	if after := treeBytes(t, dir); !sameTree(before, after) {
+		t.Errorf("a refused heal wrote to the tree:\nbefore %v\nafter  %v", keysOf(before), keysOf(after))
+	}
+	// A human settles it (here: the leftover was stale, so it goes), and then
+	// healing converges.
+	writeFile(t, filepath.Join(dir, "works", "0", "nn.json"),
+		packOfEntries([2]string{"nn", "N"}, [2]string{"zz", "CURRENT"}))
 	healFlush(t, dir, FamilyWorks)
 	if got := entriesOf(t, dir, FamilyWorks); !equalStrings(got, []string{"ab", "nn", "zz"}) {
 		t.Fatalf("entries = %v, want [ab nn zz]", got)
 	}
 	if got := readPack(t, dir, "works/0/zz.json"); !strings.Contains(string(mustEntry(t, got, "zz")), "CURRENT") {
-		t.Error("healing kept the stale copy over the one every reader was seeing")
+		t.Error("healing lost the copy every reader was seeing")
 	}
 	s2, err := Open(dir)
 	if err != nil {
@@ -370,14 +387,17 @@ func TestFlushRefusesToRaiseABound(t *testing.T) {
 	}
 }
 
-// A slug held twice resolves to the CORRECTLY-PLACED copy - the one every reader
-// was already seeing. Taking the misfiled one would quietly revert it, which is
-// exactly what a merge-conflict union produces.
-func TestHealKeepsTheCorrectlyPlacedCopy(t *testing.T) {
+// A slug held twice in DIFFERING copies is refused, not resolved. "The
+// correctly-placed copy wins" is no rule for it: a stale split pack moves the
+// bounds, so the copy it calls misfiled can be the newer one
+// (audiosilo-meta-community#517). Heal names the entry and both files, queues
+// nothing, and a Flush after it writes nothing.
+func TestHealRefusesDifferingCopies(t *testing.T) {
 	dir := t.TempDir()
 	writeFile(t, filepath.Join(dir, "people", "0.json"), packOfEntries([2]string{"aa", "CURRENT"}))
 	writeFile(t, filepath.Join(dir, "people", "mm.json"),
-		packOfEntries([2]string{"aa", "STALE"}, [2]string{"mm", "M"}))
+		packOfEntries([2]string{"aa", "NEWER"}, [2]string{"mm", "M"}))
+	before := treeBytes(t, dir)
 
 	p := pendingOf(t, dir, FamilyPeople)
 	if len(p.Conflicts) != 1 {
@@ -385,45 +405,153 @@ func TestHealKeepsTheCorrectlyPlacedCopy(t *testing.T) {
 	}
 	c := p.Conflicts[0]
 	if c.Slug != "aa" || c.Kept != "people/0.json" || c.Dropped != "people/mm.json" || c.Identical {
-		t.Fatalf("conflict = %+v, want aa kept in 0.json, differing", c)
+		t.Fatalf("conflict = %+v, want aa in 0.json and mm.json, differing", c)
 	}
-	if len(p.Misplaced) != 0 {
-		t.Errorf("misplaced = %+v, want none: the duplicate is dropped, not moved", p.Misplaced)
+	if p.Healable() || len(p.Differing()) != 1 {
+		t.Errorf("Healable = %v, Differing = %+v: differing copies are a human's", p.Healable(), p.Differing())
 	}
-	if !strings.Contains(c.String(), "correctly-placed copy is kept") {
-		t.Errorf("conflict message = %q", c.String())
+	for _, want := range []string{`"aa"`, "people/0.json", "people/mm.json", "copies differ"} {
+		if !strings.Contains(c.String(), want) {
+			t.Errorf("conflict message = %q, want it to name %s", c.String(), want)
+		}
 	}
 
-	healFlush(t, dir, FamilyPeople)
-	raw, err := os.ReadFile(filepath.Join(dir, "people", "0.json"))
+	s, err := Open(dir)
 	if err != nil {
 		t.Fatal(err)
 	}
-	if !strings.Contains(string(raw), "CURRENT") || strings.Contains(string(raw), "STALE") {
-		t.Errorf("0.json = %s, want the current copy kept", raw)
+	hp, err := s.HealPending(FamilyPeople)
+	if !errors.Is(err, ErrDifferingCopies) {
+		t.Fatalf("HealPending = %v, want ErrDifferingCopies", err)
 	}
-	if got := readPack(t, dir, "people/mm.json").Slugs(); !equalStrings(got, []string{"mm"}) {
-		t.Errorf("mm.json = %v, want the duplicate dropped", got)
+	for _, want := range []string{`"aa"`, "people/0.json", "people/mm.json"} {
+		if !strings.Contains(err.Error(), want) {
+			t.Errorf("error = %v, want it to name %s", err, want)
+		}
+	}
+	if len(hp.Differing()) != 1 {
+		t.Errorf("the refusal's report = %+v, want the differing conflict in it", hp.Conflicts)
+	}
+	if w, err := s.Flush(); err != nil || len(w.Wrote) != 0 || len(w.Deleted) != 0 {
+		t.Errorf("Flush after a refused heal = %+v, %v; want nothing written", w, err)
+	}
+	if after := treeBytes(t, dir); !sameTree(before, after) {
+		t.Errorf("a refused heal changed the tree:\nbefore %v\nafter  %v", before, after)
+	}
+}
+
+// Copies that are byte-equal in canonical form heal as they always did: the
+// duplicate is dropped and reported, so nobody has to wonder whether the drop
+// lost anything. Formatting alone does not make two copies differ.
+func TestHealDropsAnIdenticalDuplicate(t *testing.T) {
+	dir := t.TempDir()
+	writeFile(t, filepath.Join(dir, "people", "0.json"), packOfEntries([2]string{"aa", "SAME"}))
+	writeFile(t, filepath.Join(dir, "people", "mm.json"),
+		`{"entries":{"mm":`+entry("mm", "M")+`,"aa":  {"name":"SAME",   "id":"aa"}}}`)
+	p := pendingOf(t, dir, FamilyPeople)
+	if len(p.Conflicts) != 1 || !p.Conflicts[0].Identical || !p.Healable() {
+		t.Fatalf("conflicts = %+v, want one identical and healable", p.Conflicts)
+	}
+	if !strings.Contains(p.Conflicts[0].String(), "identical") {
+		t.Errorf("message = %q", p.Conflicts[0].String())
+	}
+	healFlush(t, dir, FamilyPeople)
+	if got := entriesOf(t, dir, FamilyPeople); !equalStrings(got, []string{"aa", "mm"}) {
+		t.Errorf("entries = %v, want [aa mm]", got)
 	}
 	if after := pendingOf(t, dir, FamilyPeople); !after.Empty() {
 		t.Errorf("still pending: %v", after.Lines())
 	}
 }
 
-// An identical duplicate is still reported, so nobody has to wonder whether the
-// drop lost anything.
-func TestHealReportsAnIdenticalDuplicate(t *testing.T) {
-	dir := t.TempDir()
-	writeFile(t, filepath.Join(dir, "people", "0.json"), packOfEntries([2]string{"aa", "SAME"}))
-	writeFile(t, filepath.Join(dir, "people", "mm.json"),
-		packOfEntries([2]string{"aa", "SAME"}, [2]string{"mm", "M"}))
-	p := pendingOf(t, dir, FamilyPeople)
-	if len(p.Conflicts) != 1 || !p.Conflicts[0].Identical {
-		t.Fatalf("conflicts = %+v, want one identical", p.Conflicts)
+// Three copies of one slug: every duplicate is compared with the copy that
+// survives, so one differing copy among identical ones refuses the family, and
+// when no copy sits in the bound-correct pack the first one met is the
+// survivor the others are compared with (not the empty target pack, which
+// would call identical copies different).
+func TestHealThreeCopies(t *testing.T) {
+	for _, c := range []struct {
+		name    string
+		files   map[string]string
+		refused bool
+	}{
+		{
+			name: "correct pack and two identical misfiled copies",
+			files: map[string]string{
+				"people/0.json":  packOfEntries([2]string{"aa", "SAME"}),
+				"people/mm.json": packOfEntries([2]string{"aa", "SAME"}, [2]string{"mm", "M"}),
+				"people/tt.json": packOfEntries([2]string{"aa", "SAME"}, [2]string{"tt", "T"}),
+			},
+		},
+		{
+			name: "correct pack, one identical and one differing copy",
+			files: map[string]string{
+				"people/0.json":  packOfEntries([2]string{"aa", "SAME"}),
+				"people/mm.json": packOfEntries([2]string{"aa", "SAME"}, [2]string{"mm", "M"}),
+				"people/tt.json": packOfEntries([2]string{"aa", "OTHER"}, [2]string{"tt", "T"}),
+			},
+			refused: true,
+		},
+		{
+			name: "no copy in the bound-correct pack, all identical",
+			files: map[string]string{
+				"people/0.json":  packOfEntries([2]string{"ab", "A"}),
+				"people/mm.json": packOfEntries([2]string{"aa", "SAME"}, [2]string{"mm", "M"}),
+				"people/tt.json": packOfEntries([2]string{"aa", "SAME"}, [2]string{"tt", "T"}),
+			},
+		},
+		{
+			name: "no copy in the bound-correct pack, two differ",
+			files: map[string]string{
+				"people/0.json":  packOfEntries([2]string{"ab", "A"}),
+				"people/mm.json": packOfEntries([2]string{"aa", "ONE"}, [2]string{"mm", "M"}),
+				"people/tt.json": packOfEntries([2]string{"aa", "TWO"}, [2]string{"tt", "T"}),
+			},
+			refused: true,
+		},
+	} {
+		t.Run(c.name, func(t *testing.T) {
+			dir := t.TempDir()
+			writeFiles(t, dir, c.files)
+			before := treeBytes(t, dir)
+			entriesBefore := entriesOf(t, dir, FamilyPeople)
+			s, err := Open(dir)
+			if err != nil {
+				t.Fatal(err)
+			}
+			_, err = s.Heal(FamilyPeople)
+			if c.refused {
+				if !errors.Is(err, ErrDifferingCopies) {
+					t.Fatalf("Heal = %v, want ErrDifferingCopies", err)
+				}
+				if after := treeBytes(t, dir); !sameTree(before, after) {
+					t.Errorf("a refused heal changed the tree")
+				}
+				return
+			}
+			if err != nil {
+				t.Fatal(err)
+			}
+			if _, err := s.Flush(); err != nil {
+				t.Fatal(err)
+			}
+			if got, want := entriesOf(t, dir, FamilyPeople), uniqueStrings(entriesBefore); !equalStrings(got, want) {
+				t.Errorf("entries = %v, want %v", got, want)
+			}
+			if got := readPack(t, dir, "people/0.json"); !strings.Contains(string(mustEntry(t, got, "aa")), "SAME") {
+				t.Errorf("aa did not land in its bound-correct pack")
+			}
+			if after := pendingOf(t, dir, FamilyPeople); !after.Empty() {
+				t.Errorf("still pending: %v", after.Lines())
+			}
+		})
 	}
-	if !strings.Contains(p.Conflicts[0].String(), "identical") {
-		t.Errorf("message = %q", p.Conflicts[0].String())
-	}
+}
+
+func uniqueStrings(in []string) []string {
+	out := slices.Clone(in)
+	slices.Sort(out)
+	return slices.Compact(out)
 }
 
 // An empty pack is deleted, never filled. Treating it as a real bound would
@@ -684,7 +812,7 @@ func TestHealPendingReportsWhatItHeals(t *testing.T) {
 			"people/Not Bound.json": packOfEntries([2]string{"nn", "N"}),
 		},
 		"duplicate slug": {
-			"people/0.json":  packOfEntries([2]string{"aa", "A"}, [2]string{"mm", "X"}),
+			"people/0.json":  packOfEntries([2]string{"aa", "A"}, [2]string{"mm", "M"}),
 			"people/mm.json": packOfEntries([2]string{"mm", "M"}),
 		},
 		"unreadable": {

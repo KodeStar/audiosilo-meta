@@ -2,9 +2,11 @@ package pack
 
 import (
 	"bytes"
+	"errors"
 	"fmt"
 	"path"
 	"sort"
+	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/parallel"
 	"github.com/kodestar/audiosilo-meta/pkg/canonical"
@@ -38,32 +40,43 @@ func (m Misplaced) StringUnder(prefix string) string {
 		m.Slug, under(prefix, m.To.Path()), under(prefix, m.From.Path()))
 }
 
-// Conflict is one slug held by two files at once. The copy in the bound-correct
-// pack is authoritative and survives; the misfiled duplicate is dropped, never
-// merged into it, and never silently - this is the shape a merge-conflict union
-// produces, and taking the misfiled copy would quietly revert whatever the
-// correctly-placed one said.
+// ErrDifferingCopies is Heal's refusal of a family where one slug is held by two
+// files whose copies DIFFER. Nothing is queued: which copy is the right one is a
+// human's call, and no rule about placement can make it. "The correctly-placed
+// copy wins" looked like one, but a stale split pack on a rebased branch moves
+// the bounds, so the copy it calls misfiled can be main's newer one
+// (audiosilo-meta-community#517, where it would have dropped recaps main had
+// merged since).
+var ErrDifferingCopies = errors.New("an entry is held by two packs in differing copies, and which one stays is a human's call; nothing was written")
+
+// Conflict is one slug held by two files at once. Identical copies heal: the
+// copy in the bound-correct pack (or, when neither is, the first one met)
+// survives and the duplicate is dropped, never silently - it is reported. Copies
+// that DIFFER are not resolved at all: Heal refuses the family
+// (ErrDifferingCopies) and the tree stays as it is for a human to settle.
 type Conflict struct {
 	Family Family
 	Slug   string
-	// Kept is the path of the pack whose copy survives.
+	// Kept is the path of the file holding the copy that survives (it may still
+	// move to its bound-correct pack): the bound-correct pack when it holds the
+	// slug.
 	Kept string
 	// Dropped is the path the duplicate is dropped from.
 	Dropped string
-	// Identical reports that the two copies said the same thing, so the drop
-	// lost nothing.
+	// Identical reports that the two copies are byte-equal in canonical form,
+	// so the drop loses nothing. Only an identical conflict heals.
 	Identical bool
 }
 
 func (c Conflict) String() string { return c.StringUnder("") }
 
 func (c Conflict) StringUnder(prefix string) string {
-	tail := "the copies differ, and the misfiled one is discarded"
-	if c.Identical {
-		tail = "the copies are identical"
+	if !c.Identical {
+		return fmt.Sprintf("entry %q is in both %s and %s and the copies differ: the tooling will not choose between them, a human has to keep one and delete the other",
+			c.Slug, under(prefix, c.Kept), under(prefix, c.Dropped))
 	}
-	return fmt.Sprintf("entry %q is in both %s and %s: the correctly-placed copy is kept, %s",
-		c.Slug, under(prefix, c.Kept), under(prefix, c.Dropped), tail)
+	return fmt.Sprintf("entry %q is in both %s and %s: the copies are identical, so the one in %s is dropped",
+		c.Slug, under(prefix, c.Kept), under(prefix, c.Dropped), under(prefix, c.Dropped))
 }
 
 // Salvage is a file under a family root that must not exist where or as it is:
@@ -176,12 +189,13 @@ type Pending struct {
 	// the files deleted. It is listed first because everything else is computed
 	// against the packs that remain once these are set aside.
 	Salvage []Salvage
-	// Unreadable holds files Heal cannot interpret. It is the only category a
-	// Heal + Flush pass does not clear.
+	// Unreadable holds files Heal cannot interpret. A Heal + Flush pass leaves
+	// them as they are and clears everything else.
 	Unreadable []Unreadable
 	// Misplaced holds entries sitting outside their bound-correct pack.
 	Misplaced []Misplaced
-	// Conflicts holds slugs held twice over, and which copy survives.
+	// Conflicts holds slugs held twice over, and which copy survives. One whose
+	// copies differ is not healed at all: Heal refuses the family (see Differing).
 	Conflicts []Conflict
 	// Rebinds holds the packs whose bound or directory has to widen downward.
 	Rebinds []DueRebind
@@ -198,8 +212,20 @@ func (p Pending) Empty() bool {
 }
 
 // Healable reports whether everything outstanding is something Heal + Flush can
-// fix. Only Unreadable is not.
-func (p Pending) Healable() bool { return len(p.Unreadable) == 0 }
+// fix. An unreadable file is not, and neither is a slug held in differing copies.
+func (p Pending) Healable() bool { return len(p.Unreadable) == 0 && len(p.Differing()) == 0 }
+
+// Differing returns the conflicts whose copies differ: the ones Heal refuses to
+// resolve (ErrDifferingCopies).
+func (p Pending) Differing() []Conflict {
+	var out []Conflict
+	for _, c := range p.Conflicts {
+		if !c.Identical {
+			out = append(out, c)
+		}
+	}
+	return out
+}
 
 // Lines renders every outstanding item, in the order Heal performs them.
 func (p Pending) Lines() []string { return p.LinesUnder("") }
@@ -280,9 +306,11 @@ func (s *Store) pendingFrom(fs *familySurvey) (Pending, error) {
 	p := Pending{Salvage: fs.salvage, Unreadable: fs.unreadable}
 	t := fs.tree
 
-	// claimed records which pack keeps each slug. An entry already sitting in
-	// its bound-correct pack claims it before any relocation is considered, so
-	// a misfiled duplicate can never displace the copy readers are seeing.
+	// claimed records which file holds the copy of each slug that survives. An
+	// entry already sitting in its bound-correct pack claims it before any
+	// relocation is considered, so a misfiled duplicate can never displace the
+	// copy readers are seeing; an entry that relocates claims it from the file
+	// it sits in now, which is the copy any later duplicate is compared with.
 	claimed := map[string]string{}
 	for i, ref := range t.Packs() {
 		lo, hi, _ := t.Range(i)
@@ -340,10 +368,12 @@ func (s *Store) pendingFrom(fs *familySurvey) (Pending, error) {
 }
 
 // noteMove records what happens to one entry that has to leave where it is: it
-// relocates to its bound-correct pack, unless that pack already holds the slug,
-// in which case the correctly-placed copy wins and this one is a dropped
-// duplicate. from is nil for an entry coming out of a salvaged file, which has
-// no pack identity to report a relocation against.
+// relocates to its bound-correct pack, unless another copy of the slug has
+// already claimed it (the bound-correct pack's own, or a relocating one met
+// first), in which case this one is a duplicate - dropped when the two are
+// identical, refused by Heal when they differ. from is nil for an entry coming
+// out of a salvaged file, which has no pack identity to report a relocation
+// against.
 func (s *Store) noteMove(p *Pending, def FamilyDef, fs *familySurvey, claimed map[string]string, fromPath, slug string, from *PackRef) {
 	to := targetFor(def, fs.tree, slug)
 	if kept, taken := claimed[slug]; taken && kept != fromPath {
@@ -356,7 +386,7 @@ func (s *Store) noteMove(p *Pending, def FamilyDef, fs *familySurvey, claimed ma
 		})
 		return
 	}
-	claimed[slug] = to.Path()
+	claimed[slug] = fromPath
 	if from == nil || *from == to {
 		// A slug below the family's lowest bound looks up to the very pack it
 		// already sits in. Nothing relocates - the pack's bound widens down to
@@ -470,11 +500,14 @@ func dueDirSplits(def FamilyDef, t *Tree) []DueDirSplit {
 //
 // It performs, in order: set the files that are not bounds aside (their entries
 // are re-queued into their bound-correct packs and the files deleted), move the
-// entries sitting outside their pack's range, resolve a slug held twice by
-// keeping the correctly-placed copy, and mark the packs that owe a split. The
-// bound rebinds and the directory splits are Flush's own normalization. After
-// Heal + Flush, Pending on the family is empty apart from files nothing could
-// read.
+// entries sitting outside their pack's range, drop the duplicate of a slug held
+// twice in identical copies, and mark the packs that owe a split. The bound
+// rebinds and the directory splits are Flush's own normalization. After Heal +
+// Flush, Pending on the family is empty apart from files nothing could read.
+//
+// A slug held twice in DIFFERING copies is refused, not resolved: Heal returns
+// ErrDifferingCopies naming each one and queues nothing for the family, so a
+// Flush after it writes nothing of the family's.
 //
 // It narrows the family's tree to the packs that survive, so no later Upsert or
 // Flush can address a file that is on its way out.
@@ -493,6 +526,9 @@ func (s *Store) Heal(f Family) ([]Misplaced, error) {
 // A caller that wants both - metafmt reports what is outstanding and then fixes
 // it - would otherwise survey the family twice, reading and classifying every
 // file in it for a second answer identical to the first.
+//
+// On ErrDifferingCopies the report is returned beside the error, so a caller can
+// render the refused conflicts in its own terms (Pending.Differing).
 func (s *Store) HealPending(f Family) (Pending, error) {
 	def, err := s.def(f)
 	if err != nil {
@@ -505,6 +541,13 @@ func (s *Store) HealPending(f Family) (Pending, error) {
 	p, err := s.pendingFrom(fs)
 	if err != nil {
 		return Pending{}, err
+	}
+	if differing := p.Differing(); len(differing) > 0 {
+		lines := make([]string, len(differing))
+		for i, c := range differing {
+			lines[i] = c.String()
+		}
+		return p, fmt.Errorf("%s: %w", strings.Join(lines, "; "), ErrDifferingCopies)
 	}
 
 	// From here on only the surviving packs are addressable.

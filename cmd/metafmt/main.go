@@ -5,7 +5,10 @@
 // file a real pack, no duplicate entry, no pack or directory over its caps.
 // --check lists the outstanding work, naming each fix, and exits 1; --write
 // performs all of it in one converging pass. A file that cannot be read as a
-// pack is only ever named: it needs a human, and --write exits 1 saying so.
+// pack is only ever named: it needs a human, and --write exits 1 saying so. An
+// entry two packs hold in DIFFERING copies needs a human too, and there --write
+// refuses outright: it names the entry and both files, writes nothing at all and
+// exits 2 (identical copies are deduplicated as part of the pass).
 //
 // --profile names which families the root is meant to hold (pack.Profile),
 // defaulting to "all" - the whole database in one tree, which is this
