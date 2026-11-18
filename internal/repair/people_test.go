@@ -238,3 +238,25 @@ func TestMergePeopleDropsTheReadersOfASoleNarrator(t *testing.T) {
 		t.Fatalf("apply: %v (post-write problems %v)", err, rn.rep.PostProblems)
 	}
 }
+
+// A year filled from the loser that would put the death before the target's own birth
+// is dropped and named, rather than writing a life span pkg/check refuses.
+func TestMergePeopleKeepsTheLifeSpanConsistent(t *testing.T) {
+	files := hunterTree(t)
+	files["people/ja/james-a-hunter.json"] = testpack.WithFields(t, personJSON(t, "james-a-hunter", "James A. Hunter"),
+		map[string]any{"librivox_author_id": 11, "death_year": 1950})
+	rn, tx := planFixture(t, seedTree(t, files))
+	if err := rn.mergePeople(tx, peopleFinding("james-a-hunter", "james-hunter")); err != nil {
+		t.Fatal(err)
+	}
+	p := tx.people.puts["james-a-hunter"]
+	if p.Has("birth_year") {
+		t.Errorf("birth_year = %s, want the loser's 1980 dropped beside the target's death in 1950", p["birth_year"])
+	}
+	if d, _ := p.IntAt("death_year"); d != 1950 {
+		t.Errorf("death_year = %d, want the target's own", d)
+	}
+	if !slices.ContainsFunc(tx.notes, func(n string) bool { return strings.Contains(n, "birth_year") && strings.Contains(n, "1980") }) {
+		t.Errorf("notes %v do not name the dropped birth_year", tx.notes)
+	}
+}

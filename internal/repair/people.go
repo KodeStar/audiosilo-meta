@@ -137,11 +137,29 @@ func (rn *runner) mergePeople(t *txn, fd audit.Finding) error {
 func mergePersonFields(t *txn, merged, le entry, loser string) {
 	merged.Set("sources", rawentry.UnionSources(merged.Sources(), le.Sources()))
 	t.noteLost(fillStrings(merged, le, "name", "sort_name", "kind", "description"), loser)
-	for _, field := range []string{"birth_year", "death_year"} {
-		if rawentry.FillAbsentRaw(merged, le, field) || !le.Has(field) || sameRawMember(merged, le, field) {
+	years := []string{"birth_year", "death_year"}
+	filled := map[string]bool{}
+	for _, field := range years {
+		if rawentry.FillAbsentRaw(merged, le, field) {
+			filled[field] = true
+			continue
+		}
+		if !le.Has(field) || sameRawMember(merged, le, field) {
 			continue
 		}
 		t.noteLost([]mergedFacts{{field: field, kept: factValue(merged[field]), dropped: factValue(le[field])}}, loser)
+	}
+	// The two years are one statement: a year filled from the loser beside the target's
+	// own other year can put the death before the birth, which pkg/check refuses, so the
+	// target's own year stands alone and the filled one is a loss.
+	birth, _ := merged.IntAt("birth_year")
+	if death, _ := merged.IntAt("death_year"); birth != 0 && death != 0 && death < birth {
+		for _, field := range years {
+			if filled[field] {
+				t.noteLost([]mergedFacts{{field: field, dropped: factValue(merged[field])}}, loser)
+				delete(merged, field)
+			}
+		}
 	}
 	t.noteLost(fillXref(merged, le), loser)
 	for _, ns := range []struct{ id, aliases string }{
