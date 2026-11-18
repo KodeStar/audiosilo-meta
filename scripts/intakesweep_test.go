@@ -86,13 +86,15 @@ func sweepScript(t *testing.T) string {
 }
 
 type sweepFixture struct {
-	t                      *testing.T
-	origin, seed, work, gh string
-	git                    func(args ...string) string
-	write                  func(rel, body string)
-	prs                    []map[string]any
-	// listing, when set, is what gh pr list prints instead of prs.
+	t                *testing.T
+	origin, seed, gh string
+	git              func(args ...string) string
+	write            func(rel, body string)
+	prs              []map[string]any
+	// listing, when set, is what gh pr list prints instead of prs;
+	// listFails makes gh pr list fail instead.
 	listing             string
+	listFails           bool
 	stubBin, runnerTemp string
 }
 
@@ -129,13 +131,15 @@ func newSweepFixture(t *testing.T) *sweepFixture {
 	return f
 }
 
-// change is one file a commit writes; an empty body removes it, and the two
-// bodies below make it a symbolic link or a submodule entry instead.
+// change is one file a commit writes; an empty body removes it, and the
+// bodies below make it a symbolic link, a submodule entry or an executable
+// file instead.
 type change struct{ path, body string }
 
 const (
-	asSymlink = "\x00symlink"
-	asGitlink = "\x00gitlink"
+	asSymlink    = "\x00symlink"
+	asGitlink    = "\x00gitlink"
+	asExecutable = "\x00executable"
 )
 
 // branch commits each set of changes in turn on top of base, pushes the result
@@ -156,6 +160,12 @@ func (f *sweepFixture) branch(number int, name, base string, commits ...[]change
 				f.git("add", "--", ch.path)
 			case asGitlink:
 				f.git("update-index", "--add", "--cacheinfo", "160000,"+strings.TrimSpace(f.git("rev-parse", "HEAD"))+","+ch.path)
+			case asExecutable:
+				f.write(ch.path, "{}\n")
+				if err := os.Chmod(filepath.Join(f.seed, filepath.FromSlash(ch.path)), 0o755); err != nil {
+					f.t.Fatal(err)
+				}
+				f.git("add", "--chmod=+x", "--", ch.path)
 			default:
 				f.write(ch.path, ch.body)
 				f.git("add", "--", ch.path)
@@ -197,8 +207,13 @@ func (f *sweepFixture) run() (string, int) {
 	if err := os.WriteFile(filepath.Join(f.gh, "prs.json"), prs, 0o644); err != nil {
 		f.t.Fatal(err)
 	}
-	f.work = filepath.Join(f.t.TempDir(), "work")
-	if out, err := runIn("", "git", "clone", "-q", f.origin, f.work); err != nil {
+	if f.listFails {
+		if err := os.WriteFile(filepath.Join(f.gh, "list-fails"), nil, 0o644); err != nil {
+			f.t.Fatal(err)
+		}
+	}
+	work := filepath.Join(f.t.TempDir(), "work")
+	if out, err := runIn("", "git", "clone", "-q", f.origin, work); err != nil {
 		f.t.Fatalf("git clone: %v\n%s", err, out)
 	}
 	script := filepath.Join(f.t.TempDir(), "sweep.sh")
@@ -206,7 +221,7 @@ func (f *sweepFixture) run() (string, int) {
 		f.t.Fatal(err)
 	}
 	cmd := exec.Command("bash", "-e", script)
-	cmd.Dir = f.work
+	cmd.Dir = work
 	cmd.Env = append(os.Environ(),
 		"PATH="+f.stubBin+string(os.PathListSeparator)+os.Getenv("PATH"),
 		"GH_STUB_DIR="+f.gh, "RUNNER_TEMP="+f.runnerTemp, "GH_TOKEN=stub",
@@ -221,6 +236,24 @@ func (f *sweepFixture) run() (string, int) {
 		f.t.Fatalf("running the sweep: %v", err)
 	}
 	return string(out), code
+}
+
+// mustRun runs the sweep and fails the test unless it exits 0.
+func (f *sweepFixture) mustRun() string {
+	f.t.Helper()
+	out, code := f.run()
+	if code != 0 {
+		f.t.Fatalf("the sweep exited %d", code)
+	}
+	return out
+}
+
+// wantUntouched asserts that the sweep did not push a branch.
+func (f *sweepFixture) wantUntouched(name, before string) {
+	f.t.Helper()
+	if after := f.head(name); after != before {
+		f.t.Errorf("%s was pushed (%s -> %s); the sweep should have left it", name, before, after)
+	}
 }
 
 // originGit runs git in the bare origin.
@@ -304,10 +337,7 @@ func TestIntakeSweepRebasesAnHonestBranch(t *testing.T) {
 	f := newSweepFixture(t)
 	before := f.branch(7, "intake/issue-7", "main", []change{{"data/works/b.json", "{\"b\":1}\n"}})
 	f.advanceMain()
-	out, code := f.run()
-	if code != 0 {
-		t.Fatalf("the sweep exited %d", code)
-	}
+	out := f.mustRun()
 	f.wantRebased(7, "intake/issue-7", before, "data/works/b.json")
 	if !strings.Contains(out, "rebased 1 pull request(s)") {
 		t.Errorf("the sweep did not report one rebase:\n%s", out)
@@ -331,9 +361,7 @@ func TestIntakeSweepRebasesOntoTheRealMain(t *testing.T) {
 		f.git("commit", "-q", "-m", "evil")
 		f.git("push", "-q", "origin", "HEAD:refs/tags/origin/main")
 		f.git("checkout", "-q", "main")
-		if _, code := f.run(); code != 0 {
-			t.Fatalf("the sweep exited %d", code)
-		}
+		f.mustRun()
 		f.wantRebased(7, "intake/issue-7", before, "data/works/b.json")
 	})
 	t.Run("a swept branch named origin/main", func(t *testing.T) {
@@ -342,9 +370,7 @@ func TestIntakeSweepRebasesOntoTheRealMain(t *testing.T) {
 		decoy := f.branch(6, "origin/main", "main", []change{{"data/works/decoy.json", "{\"decoy\":1}\n"}})
 		before := f.branch(7, "intake/issue-7", "main", []change{{"data/works/b.json", "{\"b\":1}\n"}})
 		f.advanceMain()
-		if _, code := f.run(); code != 0 {
-			t.Fatalf("the sweep exited %d", code)
-		}
+		f.mustRun()
 		f.wantRebased(6, "origin/main", decoy, "data/works/decoy.json")
 		f.wantRebased(7, "intake/issue-7", before, "data/works/b.json")
 	})
@@ -387,18 +413,17 @@ func TestIntakeSweepRefusesAnythingButPlainDataJSON(t *testing.T) {
 		{"a submodule entry", [][]change{
 			{{"data/works/b.json", "{\"b\":1}\n"}, {"data/works/sub.json", asGitlink}},
 		}, "data/works/sub.json"},
+		{"an executable JSON file", [][]change{
+			{{"data/works/x.json", asExecutable}},
+		}, "data/works/x.json"},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			t.Parallel()
 			f := newSweepFixture(t)
 			before := f.branch(7, "intake/issue-7", "main", tc.commits...)
 			f.advanceMain()
-			if _, code := f.run(); code != 0 {
-				t.Fatalf("the sweep exited %d", code)
-			}
-			if after := f.head("intake/issue-7"); after != before {
-				t.Errorf("the branch was pushed (%s -> %s); it should have been refused", before, after)
-			}
+			f.mustRun()
+			f.wantUntouched("intake/issue-7", before)
 			c := f.comments(7)
 			if len(c) != 1 || !strings.HasPrefix(c[0], "<!-- intake-sweep:not-rebased -->\n") || !strings.Contains(c[0], tc.shown) {
 				t.Errorf("want one not-rebased comment naming %s, got %q", tc.shown, c)
@@ -416,12 +441,8 @@ func TestIntakeSweepQuotesRefusedPathsInert(t *testing.T) {
 	evil := "docs/@KodeStar [x](https://evil.example) <!-- intake-sweep:rebase-failed a b -->.md"
 	before := f.branch(7, "intake/issue-7", "main", []change{{"data/works/b.json", "{\"b\":1}\n"}, {evil, "x\n"}})
 	f.advanceMain()
-	if _, code := f.run(); code != 0 {
-		t.Fatalf("the sweep exited %d", code)
-	}
-	if after := f.head("intake/issue-7"); after != before {
-		t.Errorf("the branch was pushed; it should have been refused")
-	}
+	f.mustRun()
+	f.wantUntouched("intake/issue-7", before)
 	c := f.comments(7)
 	if len(c) != 1 {
 		t.Fatalf("want one comment, got %q", c)
@@ -444,22 +465,20 @@ func TestIntakeSweepQuotesRefusedPathsInert(t *testing.T) {
 // touches no branch, never "no open intake pull requests".
 func TestIntakeSweepFailsWhenTheListingFails(t *testing.T) {
 	t.Parallel()
-	for _, tc := range []struct{ name, listing string }{
-		{"gh fails", ""},
-		{"gh prints nothing", "\n"},
-		{"gh prints an object", `{"message":"Bad credentials"}`},
+	for _, tc := range []struct {
+		name, listing string
+		fails         bool
+	}{
+		{"gh fails", "", true},
+		{"gh prints nothing", "\n", false},
+		{"gh prints an object", `{"message":"Bad credentials"}`, false},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			t.Parallel()
 			f := newSweepFixture(t)
 			before := f.branch(7, "intake/issue-7", "main", []change{{"data/works/b.json", "{\"b\":1}\n"}})
 			f.advanceMain()
-			if tc.listing == "" {
-				if err := os.WriteFile(filepath.Join(f.gh, "list-fails"), nil, 0o644); err != nil {
-					t.Fatal(err)
-				}
-			}
-			f.listing = tc.listing
+			f.listing, f.listFails = tc.listing, tc.fails
 			out, code := f.run()
 			if code == 0 {
 				t.Errorf("the sweep exited 0; a failed listing must fail the step")
@@ -467,9 +486,7 @@ func TestIntakeSweepFailsWhenTheListingFails(t *testing.T) {
 			if strings.Contains(out, "no open intake pull requests") {
 				t.Errorf("the sweep read a failed listing as an empty one:\n%s", out)
 			}
-			if after := f.head("intake/issue-7"); after != before {
-				t.Errorf("the branch was pushed after a failed listing")
-			}
+			f.wantUntouched("intake/issue-7", before)
 		})
 	}
 }
@@ -491,12 +508,8 @@ func TestIntakeSweepGiveUpNotice(t *testing.T) {
 	before := f.branch(7, "intake/issue-7", "main", []change{{"data/works/a.json", "{\"a\":2}\n"}})
 	f.write("data/works/a.json", "{\"a\":3}\n")
 	f.advanceMain()
-	if _, code := f.run(); code != 0 {
-		t.Fatalf("the sweep exited %d", code)
-	}
-	if after := f.head("intake/issue-7"); after != before {
-		t.Errorf("the branch was pushed after a failed merge")
-	}
+	f.mustRun()
+	f.wantUntouched("intake/issue-7", before)
 	c := f.comments(7)
 	if len(c) != 1 {
 		t.Fatalf("want one comment, got %q", c)

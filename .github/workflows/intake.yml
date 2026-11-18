@@ -414,13 +414,10 @@ jobs:
   # data/redirects.json) - are built and copied from MAIN into the
   # runner temp before the first branch is touched, and a branch is swept at all
   # only when it is a same-repository branch whose every commit, and whose whole
-  # diff against main, touches only plainly named JSON files under data/ with no
-  # symbolic link (a fork's is a log line, since it recurs on every push to
-  # main; a refused branch is a warning and one comment). Every ref is spelled
-  # out in full (refs/remotes/origin/main), because a short name like
-  # origin/main is resolved through tags and local branches first, and a tag or
-  # a swept branch named origin/main would otherwise become the base every pull
-  # request is rebased onto. Everything left that reads the branch reads it as
+  # diff against main, writes only regular files plainly named data/**/*.json
+  # (a fork's is a log line, since it recurs on every push to main; a refused
+  # branch is a warning and one comment). Every ref is spelled out in full (see
+  # main_ref in the loop). Everything left that reads the branch reads it as
   # data.
   #
   # The step runs under `bash -e` (GitHub's default for a run: with no shell:),
@@ -488,11 +485,11 @@ jobs:
           # nothing is touched either way, but a green sweep would hide it. The
           # files live in the runner temp, out of the checkout the loop moves.
           prs="${RUNNER_TEMP}/intake-sweep-prs"
-          if ! gh pr list --state open --label bot-intake --limit 500 \
+          if ! { gh pr list --state open --label bot-intake --limit 500 \
                 --json number,headRefName,headRefOid,isCrossRepository,updatedAt > "${prs}.json" \
-              || ! jq -e 'type == "array"' "${prs}.json" > /dev/null \
-              || ! jq -r '.[] | select(.isCrossRepository) | "::warning::PR #\(.number) is from a fork; the sweep only rebases branches in this repository. Skipped."' "${prs}.json" \
-              || ! jq -r 'sort_by(.updatedAt) | .[] | select(.isCrossRepository | not) | [.number, .headRefName, .headRefOid] | @tsv' "${prs}.json" > "${prs}.tsv"; then
+              && jq -e 'type == "array"' "${prs}.json" > /dev/null \
+              && jq -r '.[] | select(.isCrossRepository) | "::warning::PR #\(.number) is from a fork; the sweep only rebases branches in this repository. Skipped."' "${prs}.json" \
+              && jq -r 'sort_by(.updatedAt) | .[] | select(.isCrossRepository | not) | [.number, .headRefName, .headRefOid] | @tsv' "${prs}.json" > "${prs}.tsv"; }; then
             echo "::error::could not list the open intake pull requests; no branch was touched"
             exit 1
           fi
@@ -630,7 +627,7 @@ jobs:
           }
           refuse() {
             echo "::warning::PR #$1 is not rebased by the sweep: $2"
-            comment_once "$1" "$refused_marker" "The intake bot does not rebase this pull request onto \`main\`: $2. Its sweep checks a branch out beside a write token, so it only takes branches whose every commit changes nothing but plainly named JSON files under \`data/\`. A maintainer has to rebase this one (or split the other change out). This note is posted once."
+            comment_once "$1" "$refused_marker" "The intake bot does not rebase this pull request onto \`main\`: $2. Its sweep checks a branch out beside a write token, so it only takes branches whose every commit changes nothing but regular, plainly named JSON files under \`data/\`. A maintainer has to rebase this one (or split the other change out). This note is posted once."
           }
 
           swept=0
@@ -658,42 +655,29 @@ jobs:
             elif ! attempted_sha="$(git rev-parse --verify --quiet "${head_ref}^{commit}")"; then
               attempted_sha="$listed_sha"
               failure="the fetched branch could not be resolved"
-            elif ! outside="$( { git diff --no-renames --name-only "${main_ref}...${head_ref}" \
-                  && git log --no-renames --format= --name-only "${main_ref}..${head_ref}"; } \
-                | { grep -v -e '^data/[A-Za-z0-9._/-]*\.json$' -e '^$' || true; } | sort -u)"; then
+            elif ! refused="$( { git diff --no-renames --raw "${main_ref}...${head_ref}" \
+                  && git log --no-renames --raw --format= "${main_ref}..${head_ref}"; } \
+                | awk -F'\t' '/^:/ { split($1, mode, " ")
+                    if ((mode[2] != "100644" && mode[2] != "000000") || $2 !~ "^data/[A-Za-z0-9._/-]*\\.json$") print $2 }' \
+                | sort -u)"; then
               # Unclassifiable is not sweepable: the rule below cannot be asked.
               failure="the branch's changed files could not be listed"
-            elif ! links="$(git log --no-renames --raw --format= "${main_ref}..${head_ref}" \
-                | awk -F'\t' '{ split($1, mode, " "); if (mode[2] == "120000" || mode[2] == "160000") print $2 }')"; then
-              failure="the branch's commits could not be listed"
-            elif [ -n "$links" ]; then
-              # A SYMBOLIC LINK added or retargeted by ANY of the branch's
-              # commits (--raw's second mode column is the new mode; every
-              # commit, since a conflict can stop the replay at one where a
-              # later commit's removal has not happened yet). metafmt --write
-              # reads and rewrites files through a link, so one under data/
-              # pointing at .git/config or a workflow would be followed out of
-              # the tree with the token persisted. A submodule entry (160000)
-              # is no data file either, and is refused with it.
-              refuse "$number" "it adds or changes a symbolic link or a submodule ($(shown "$links"))"
-              echo "::endgroup::"
-              continue
-            elif [ -n "$outside" ]; then
-              # The pull request reaches beyond plainly named data/**/*.json -
-              # scripts/, a .gitattributes at any depth (data/ included),
-              # data/go.mod - so rebasing it would put this job's write token
-              # beside a checkout of something nobody here reviewed. Both the
-              # whole change (three-dot: against the merge base) and EVERY
-              # commit are asked, as for links above: a commit that adds a file
-              # a later one removes still puts it in the tree mid-replay, and
-              # back on the branch with the push. (A merge commit lists no
-              # files, and the rebase drops it: the commits it brings in are
-              # listed, and replayed, one by one.) The name is held to
-              # [A-Za-z0-9._/-]: git quotes a name with a control or non-ASCII
-              # character, which then matches nothing here. --no-renames: a
-              # rename INTO data/ would otherwise list only its destination and
-              # hide the path it removed.
-              refuse "$number" "it changes files other than plainly named \`data/**/*.json\` ($(shown "$outside"))"
+            elif [ -n "$refused" ]; then
+              # The branch writes something other than a regular file plainly
+              # named data/**/*.json - scripts/, a .gitattributes at any depth,
+              # data/go.mod, a symbolic link (metafmt --write would follow one
+              # out of the tree to .git/config), a submodule - so rebasing it
+              # would put this job's write token beside a checkout of something
+              # nobody here reviewed. --raw's second mode column is the new
+              # mode (000000: removed). EVERY commit is asked, not only the
+              # whole change (three-dot: against the merge base): a file one
+              # commit adds and a later one removes is in the tree mid-replay,
+              # and a conflict can stop the replay right there. (A merge commit
+              # lists nothing, and the rebase drops it.) git quotes a name with
+              # a control or non-ASCII character, which then matches nothing.
+              # --no-renames: a rename INTO data/ would otherwise list only its
+              # destination and hide the path it removed.
+              refuse "$number" "it changes something other than a regular file plainly named \`data/**/*.json\` ($(shown "$refused"))"
               echo "::endgroup::"
               continue
             elif git merge-base --is-ancestor "$main_ref" "$head_ref"; then

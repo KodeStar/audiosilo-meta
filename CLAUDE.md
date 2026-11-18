@@ -918,8 +918,9 @@ keep this index in step (one line per topic).
   rebase sweep runs only MAIN's tools (metafmt, metacheck and the two merge
   drivers, built and copied before the loop) and sweeps only same-repository
   branches every commit of which (not just the net diff: a file added then
-  removed is in the tree mid-replay) touches nothing but plainly named
-  `data/**/*.json` and adds or changes no symbolic link or submodule. It names
+  removed is in the tree mid-replay) writes nothing but regular files
+  plainly named `data/**/*.json` (no symbolic link, submodule or executable
+  bit: one `--raw` pass checks mode and name together). It names
   every ref in full (`refs/remotes/origin/main`, `refs/heads/<branch>`, the
   push leased on the checked head), since a tag or branch called `origin/main`
   would otherwise become the rebase base, quotes a refused path with only
