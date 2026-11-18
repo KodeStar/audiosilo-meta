@@ -184,10 +184,11 @@ never noticed (ai-verify read only the metadiff summary). Two halves:
   `audit.ReviewedDistinct()` -> `check.LoadOptions.Distinct` -> `LoadProfileWith`,
   supplied by cmd/metacheck alone. So a triage records "not one book" as such a
   rejection - and rejects only the distinct subset of a group holding a real
-  duplicate, which it asserts instead. `merge-people` (`audit.OpMergePeople`) exists
-  only to be rejected - no detector proposes it and no repair applies it, so an
-  accept or an assert of it does not parse - and is how "two people, not one" is
-  recorded for an honorific pair (Dr. Alex George / Alex George). A merge
+  duplicate, which it asserts instead. `merge-people` (`audit.OpMergePeople`) is
+  never accepted - no detector proposes it, so an accept of it does not parse. Its
+  rejection is how "two people, not one" is recorded for an honorific pair (Dr. Alex
+  George / Alex George), and its assertion ("one person") is what metarepair folds
+  (`internal/repair`'s `people.go`). A merge
   rejection matching no fresh proposal is reported `census-only` in SUMMARY.md, not
   STALE, because the census honours it whatever the detectors propose and pruning
   it would bring the pair back - unless fewer than two of its records are still
