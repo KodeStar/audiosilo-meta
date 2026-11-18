@@ -2,6 +2,7 @@ package pack
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -460,8 +461,8 @@ func TestStoreFlushRefusesAPackNamedByANonSlugKey(t *testing.T) {
 			t.Fatal(err)
 		}
 	}
-	if _, err := s.Flush(); err == nil {
-		t.Fatal("the flush split a pack under a non-slug bound")
+	if _, err := s.Flush(); !errors.Is(err, ErrInvalidBound) {
+		t.Fatalf("Flush() = %v, want ErrInvalidBound: the flush must refuse a pack named by a non-slug key", err)
 	}
 	if _, err := os.Stat(filepath.Join(root, "escape.json")); !os.IsNotExist(err) {
 		t.Errorf("the flush wrote outside the data root (stat: %v)", err)
