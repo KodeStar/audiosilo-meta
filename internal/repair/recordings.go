@@ -59,9 +59,6 @@ func (rn *runner) mergeRecordings(t *txn, fd audit.Finding) error {
 		return fmt.Errorf("work %q: %w", p.Target, err)
 	}
 	t.works.put(p.Target, next)
-	t.note("merged recording %s/%s into %s/%s (same production: %s)", p.Target, p.From, p.Target, p.To, why)
-	for _, f := range lost {
-		t.noteLost([]mergedFacts{{field: f.Field, kept: f.Kept, dropped: f.Dropped}}, p.Target+"/"+p.From)
-	}
+	t.noteRecordingMerged(p.Target+"/"+p.From, p.Target+"/"+p.To, why, lost)
 	return nil
 }

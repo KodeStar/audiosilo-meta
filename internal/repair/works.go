@@ -204,16 +204,24 @@ func (t *txn) moveRecording(target, loser, key string, recs map[string]entry, re
 	}
 	switch {
 	case move.Merged:
-		t.note("merged recording %s/%s into %s/%s (same production: %s)", loser, key, target, key, move.Why)
-		for _, f := range move.Lost {
-			t.noteLost([]mergedFacts{{field: f.Field, kept: f.Kept, dropped: f.Dropped}}, loser+"/"+key)
-		}
+		t.noteRecordingMerged(loser+"/"+key, target+"/"+key, move.Why, move.Lost)
 	case move.ID != key:
 		t.note("re-keyed recording %s/%s as %s/%s and moved it intact (%s)", loser, key, target, move.ID, move.Why)
 	default:
 		t.note("moved recording %s/%s to %s/%s", loser, key, target, key)
 	}
 	return nil
+}
+
+// noteRecordingMerged notes one recording folded into another, from and into each
+// "<work>/<recording>", with every value the fold chose away.
+func (t *txn) noteRecordingMerged(from, into, why string, lost []rawentry.RecordingLoss) {
+	t.note("merged recording %s into %s (same production: %s)", from, into, why)
+	facts := make([]mergedFacts, len(lost))
+	for i, f := range lost {
+		facts[i] = mergedFacts{field: f.Field, kept: f.Kept, dropped: f.Dropped}
+	}
+	t.noteLost(facts, from)
 }
 
 // addAlternateTitles keeps a folded record's titles on the merged work as alternate
@@ -250,13 +258,13 @@ func restatesTitle(a, b string) bool {
 	return ka == "" || kb == "" || strings.HasPrefix(ka, kb) || strings.HasPrefix(kb, ka)
 }
 
-// joinQuoted renders a list of values for a note, each quoted.
+// joinQuoted renders a list of values for a note, each as quoteFact does one.
 func joinQuoted(vs []string) string {
 	out := make([]string, len(vs))
 	for i, v := range vs {
-		out[i] = strconv.Quote(v)
+		out[i] = quoteFact(v)
 	}
-	return strings.Join(out, ", ")
+	return joinList(out)
 }
 
 type mergedFacts struct {

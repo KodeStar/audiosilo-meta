@@ -61,8 +61,11 @@ type plan struct {
 	workLinks   *linkIndex
 	seriesLinks *linkIndex
 	// personRefs indexes which works and series name each person, for merge-people
-	// (people.go); a committed fold folds its losers' entries into its target's.
+	// (people.go); a committed fold folds its losers' entries into its target's. It is
+	// built from loaded at the first merge-people (personIndex), so a run that folds
+	// no person never walks every credit of the catalogue.
 	personRefs *personIndex
+	loaded     *model.Catalog
 	// workLang is the primary language of every work, off the load (workLanguages),
 	// so a derived series language is judged without parsing a pack for a work the run
 	// has not touched.
@@ -86,7 +89,7 @@ func newPlan(store *pack.Store, communityRO *pack.Store, cat *model.Catalog, tab
 		seriesOf:      map[string]map[string]bool{},
 	}
 	p.workLinks, p.seriesLinks = newLinkIndexes(cat)
-	p.personRefs = newPersonIndex(cat)
+	p.loaded = cat
 	p.workLang = workLanguages(cat)
 	for _, s := range cat.Series {
 		set := make(map[string]bool, len(s.Works))
@@ -421,6 +424,14 @@ type txn struct {
 	refold []personFold
 }
 
+// personIndex returns the plan's person index, built on first use.
+func (p *plan) personIndex() *personIndex {
+	if p.personRefs == nil {
+		p.personRefs = newPersonIndex(p.loaded)
+	}
+	return p.personRefs
+}
+
 func (p *plan) begin() *txn {
 	return &txn{
 		p:         p,
@@ -491,7 +502,7 @@ func (t *txn) commit(key string) error {
 	t.series.commit()
 	t.people.commit()
 	for _, f := range t.refold {
-		t.p.personRefs.fold(f)
+		t.p.personIndex().fold(f)
 	}
 	for _, slug := range rawentry.SortedKeys(t.reindex) {
 		t.p.noteSeriesMembers(slug, t.reindex[slug])

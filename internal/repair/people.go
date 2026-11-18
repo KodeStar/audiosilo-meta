@@ -1,11 +1,14 @@
 package repair
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"slices"
+	"strconv"
 
 	"github.com/kodestar/audiosilo-meta/internal/audit"
+	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/rawentry"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
@@ -34,17 +37,10 @@ import (
 // alias rule asks for, and dropping the id would let the next LibriVox import mint
 // the loser again.
 //
-// The referencing records are found through the plan's person index (plan.personRefs),
-// which is the catalogue at load with every earlier fold of the run folded into it; a
-// work or series an earlier proposal retired is read at its survivor.
-
-// The plain slug lists a fold re-points: a work's and a series' authors, a
-// recording's narrators. Credits and chapter readers are lists inside objects, each
-// with its own re-pointer below.
-var (
-	authorLists   = []string{"authors"}
-	narratorLists = []string{"narrators"}
-)
+// The referencing records are found through the plan's person index
+// (plan.personIndex), which is the catalogue at load with every earlier fold of the
+// run folded into it; a work or series an earlier proposal retired is read at its
+// survivor.
 
 // mergePeople plans one person fold into t.
 func (rn *runner) mergePeople(t *txn, fd audit.Finding) error {
@@ -54,14 +50,13 @@ func (rn *runner) mergePeople(t *txn, fd audit.Finding) error {
 		return err
 	}
 	merged := te.Clone()
-	retiring := map[string]bool{}
 	for i, slug := range losers {
 		mergePersonFields(t, merged, loserEntries[i], slug)
-		retiring[slug] = true
 	}
 	t.people.put(target, merged)
+	retiring := importer.ToSet(losers)
 
-	works, series := t.p.personRefs.recordsNaming(losers, t.p.redirects)
+	works, series := t.p.personIndex().recordsNaming(losers, t.p.redirects)
 	var reWorks, reRecs, reSeries int
 	for _, slug := range works {
 		e, ok, err := t.works.get(slug)
@@ -72,20 +67,19 @@ func (rn *runner) mergePeople(t *txn, fd audit.Finding) error {
 			continue // an earlier proposal of the run deleted it; nothing names the person there now
 		}
 		next := e.Clone()
-		changed := repointLists(next, authorLists, retiring, target)
-		changed = repointCredits(next, retiring, target) || changed
+		changed := repointPeople(next, "authors", retiring, target)
 		recs, err := next.Recordings()
 		if err != nil {
 			return fmt.Errorf("work %q: %w", slug, err)
 		}
 		for _, key := range rawentry.SortedKeys(recs) {
 			rec := recs[key].Clone()
-			changedRec := repointLists(rec, narratorLists, retiring, target)
-			changedRec = repointCredits(rec, retiring, target) || changedRec
-			if changedRec, err = repointChapterReaders(rec, retiring, target, changedRec); err != nil {
+			changedRec := repointPeople(rec, "narrators", retiring, target)
+			readers, err := repointChapterReaders(rec, retiring, target)
+			if err != nil {
 				return fmt.Errorf("work %q recording %q: %w", slug, key, err)
 			}
-			if changedRec {
+			if changedRec || readers {
 				recs[key] = rec
 				reRecs++
 				changed = true
@@ -109,7 +103,7 @@ func (rn *runner) mergePeople(t *txn, fd audit.Finding) error {
 			continue
 		}
 		next := e.Clone()
-		if repointLists(next, authorLists, retiring, target) {
+		if repointList(next, "authors", retiring, target) {
 			t.series.put(slug, next)
 			reSeries++
 		}
@@ -132,11 +126,8 @@ func (rn *runner) mergePeople(t *txn, fd audit.Finding) error {
 // mergePersonFields folds one loser's person-level facts into merged (see the file
 // comment for the rule), noting every value chosen away.
 func mergePersonFields(t *txn, merged, le entry, loser string) {
-	if name := le.Str("name"); name != merged.Str("name") {
-		t.note("  name: kept %s, dropped %s from %s (the slug redirects)", quoteFact(merged.Str("name")), quoteFact(name), loser)
-	}
 	merged.Set("sources", rawentry.UnionSources(merged.Sources(), le.Sources()))
-	t.noteLost(fillStrings(merged, le, "sort_name", "kind", "description"), loser)
+	t.noteLost(fillStrings(merged, le, "name", "sort_name", "kind", "description"), loser)
 	for _, field := range []string{"birth_year", "death_year"} {
 		if rawentry.FillAbsentRaw(merged, le, field) || !le.Has(field) || sameRawMember(merged, le, field) {
 			continue
@@ -167,28 +158,32 @@ func mergePersonFields(t *txn, merged, le entry, loser string) {
 	}
 }
 
-// repointLists rewrites every listed member of e naming a retiring person to target,
+// repointList rewrites every member of e's field naming a retiring person to target,
 // dropping the repeat that leaves, and reports whether anything changed.
-func repointLists(e entry, fields []string, retiring map[string]bool, target string) bool {
-	changed := false
-	for _, field := range fields {
-		list := e.Strs(field)
-		if !slices.ContainsFunc(list, func(s string) bool { return retiring[s] }) {
-			continue
-		}
-		out := make([]string, 0, len(list))
-		for _, s := range list {
-			if retiring[s] {
-				s = target
-			}
-			if !slices.Contains(out, s) {
-				out = append(out, s)
-			}
-		}
-		rawentry.SetListOrDrop(e, field, out)
-		changed = true
+func repointList(e entry, field string, retiring map[string]bool, target string) bool {
+	list := e.Strs(field)
+	if !slices.ContainsFunc(list, func(s string) bool { return retiring[s] }) {
+		return false
 	}
-	return changed
+	out := make([]string, 0, len(list))
+	for _, s := range list {
+		if retiring[s] {
+			s = target
+		}
+		if !slices.Contains(out, s) {
+			out = append(out, s)
+		}
+	}
+	rawentry.SetListOrDrop(e, field, out)
+	return true
+}
+
+// repointPeople re-points e's slug list field and its credits, reporting whether
+// either changed.
+func repointPeople(e entry, field string, retiring map[string]bool, target string) bool {
+	list := repointList(e, field, retiring, target)
+	credits := repointCredits(e, retiring, target)
+	return list || credits
 }
 
 // repointCredits rewrites e's credits naming a retiring person to target, dropping a
@@ -208,28 +203,40 @@ func repointCredits(e entry, retiring map[string]bool, target string) bool {
 }
 
 // repointChapterReaders rewrites the readers of rec's chapters naming a retiring
-// person, as repointLists does a list. Only the readers member of a chapter is
-// re-rendered; every other member, the timeline's numbers included, is carried as the
-// bytes it was. changed is passed through when nothing here changes.
-func repointChapterReaders(rec entry, retiring map[string]bool, target string, changed bool) (bool, error) {
-	if !rec.Has("chapters") {
-		return changed, nil
+// person, as repointList does a list, and reports whether any changed. Only the
+// readers member of a chapter is re-rendered; every other member, the timeline's
+// numbers included, is carried as the bytes it was.
+func repointChapterReaders(rec entry, retiring map[string]bool, target string) (bool, error) {
+	raw := rec["chapters"]
+	// Most folds name no chapter reader: skip decoding every chapter when no retiring
+	// slug appears in the bytes at all.
+	if !namesAny(raw, retiring) {
+		return false, nil
 	}
 	var chapters []entry
-	if err := json.Unmarshal(rec["chapters"], &chapters); err != nil {
-		return changed, err
+	if err := json.Unmarshal(raw, &chapters); err != nil {
+		return false, err
 	}
 	touched := false
 	for _, ch := range chapters {
-		if repointLists(ch, []string{"readers"}, retiring, target) {
+		if repointList(ch, "readers", retiring, target) {
 			touched = true
 		}
 	}
-	if !touched {
-		return changed, nil
+	if touched {
+		rec.Set("chapters", chapters)
 	}
-	rec.Set("chapters", chapters)
-	return true, nil
+	return touched, nil
+}
+
+// namesAny reports whether raw holds any of slugs as a JSON string.
+func namesAny(raw []byte, slugs map[string]bool) bool {
+	for slug := range slugs {
+		if bytes.Contains(raw, []byte(strconv.Quote(slug))) {
+			return true
+		}
+	}
+	return false
 }
 
 // personFold is a committed person fold, kept on the txn so the plan's person index
@@ -246,38 +253,40 @@ type personIndex struct {
 	works, series map[string]map[string]bool
 }
 
+// addRef records that slug names person in m.
+func addRef(m map[string]map[string]bool, person, slug string) {
+	if m[person] == nil {
+		m[person] = map[string]bool{}
+	}
+	m[person][slug] = true
+}
+
 func newPersonIndex(cat *model.Catalog) *personIndex {
 	ix := &personIndex{works: map[string]map[string]bool{}, series: map[string]map[string]bool{}}
-	add := func(m map[string]map[string]bool, person, slug string) {
-		if m[person] == nil {
-			m[person] = map[string]bool{}
-		}
-		m[person][slug] = true
-	}
 	for _, w := range cat.Works {
 		for _, a := range w.Authors {
-			add(ix.works, a, w.ID)
+			addRef(ix.works, a, w.ID)
 		}
 		for _, c := range w.Credits {
-			add(ix.works, c.Person, w.ID)
+			addRef(ix.works, c.Person, w.ID)
 		}
 		for _, r := range w.Recordings {
 			for _, n := range r.Narrators {
-				add(ix.works, n, w.ID)
+				addRef(ix.works, n, w.ID)
 			}
 			for _, c := range r.Credits {
-				add(ix.works, c.Person, w.ID)
+				addRef(ix.works, c.Person, w.ID)
 			}
 			for _, ch := range r.Chapters {
 				for _, rd := range ch.Readers {
-					add(ix.works, rd, w.ID)
+					addRef(ix.works, rd, w.ID)
 				}
 			}
 		}
 	}
 	for _, s := range cat.Series {
 		for _, a := range s.Authors {
-			add(ix.series, a, s.ID)
+			addRef(ix.series, a, s.ID)
 		}
 	}
 	return ix
@@ -303,10 +312,7 @@ func (ix *personIndex) fold(f personFold) {
 	for _, m := range []map[string]map[string]bool{ix.works, ix.series} {
 		for _, l := range f.losers {
 			for slug := range m[l] {
-				if m[f.target] == nil {
-					m[f.target] = map[string]bool{}
-				}
-				m[f.target][slug] = true
+				addRef(m, f.target, slug)
 			}
 		}
 	}
