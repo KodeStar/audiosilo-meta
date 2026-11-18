@@ -288,7 +288,17 @@ func WriteProfile(dataDir string, p pack.Profile) (Report, error) {
 	// does not change. It is scoped to the profile exactly as Check's is, and
 	// here that scoping is load-bearing rather than tidy - a skipped file is
 	// never even read, so nothing this run disclaims can be rewritten.
-	changed, failed, err := canonical.WriteTreeExcept(dataDir, p.Excluded())
+	//
+	// It also skips every file the survey could not read as a pack, which the
+	// report tells the contributor the tooling will not touch. Formatting is
+	// not exempt from that promise: a pack carrying one key twice (git's line
+	// merge writing both sides, issue #1695) is still valid JSON, and
+	// formatting it would keep the LAST copy and quietly discard the other.
+	skip := p.Excluded()
+	for _, u := range rep.Pending.Unreadable {
+		skip = append(skip, u.Path)
+	}
+	changed, failed, err := canonical.WriteTreeExcept(dataDir, skip)
 	if err != nil {
 		return Report{}, err
 	}

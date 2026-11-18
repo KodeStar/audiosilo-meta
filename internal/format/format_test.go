@@ -339,6 +339,9 @@ func TestUnreadableFilesAreNamedAndTheRestStillHeals(t *testing.T) {
 	}{
 		{"not JSON", `{"entries":{`},
 		{"not a pack wrapper", `{"id":"zz-bad","name":"a record, not a pack"}`},
+		// Valid JSON, so the formatter alone would render it, keeping the
+		// LAST copy of the key and discarding the first (issue #1695's shape).
+		{"a key written twice", `{"entries":{"zz-bad":{"id":"zz-bad","name":"One"},"zz-bad":{"id":"zz-bad","name":"Two"}}}`},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			dir := t.TempDir()
@@ -379,15 +382,14 @@ func TestUnreadableFilesAreNamedAndTheRestStillHeals(t *testing.T) {
 			if got := readPack(t, dir, "people/mm.json").Slugs(); len(got) != 2 {
 				t.Errorf("people/mm.json = %v, want the relocated entry", got)
 			}
-			// The file is still there, holding what it held. Canonical
-			// formatting may have reindented it - that is the layout-agnostic
-			// formatter doing its job and it changes no meaning - but nothing
-			// restructured or deleted it.
+			// The file is still there, byte for byte: the formatting pass skips
+			// what the survey could not read, or the key written twice would
+			// lose its first copy to the formatter.
 			raw, err := os.ReadFile(broken)
 			if err != nil {
 				t.Fatal(err)
 			}
-			if string(raw) != tc.body && string(raw) != canonicalOf(tc.body) {
+			if string(raw) != tc.body {
 				t.Errorf("the unreadable file was rewritten:\n%s", raw)
 			}
 
