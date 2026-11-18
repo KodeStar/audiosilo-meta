@@ -5,6 +5,7 @@ import (
 
 	"github.com/kodestar/audiosilo-meta/internal/audit"
 	"github.com/kodestar/audiosilo-meta/internal/rawentry"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // recordings.go applies merge-recordings: recording From of work Target folds into
@@ -16,7 +17,10 @@ import (
 // rawentry.SameProduction - the question merge-works asks of two colliding
 // recordings - and refuses where it says no: a LibriVox project is a production of
 // its own, two narrator sets or an abridgement are two productions, and a runtime
-// more than 10% apart contradicts the claim. Those are facts on the records, which a
+// more than 10% apart contradicts the claim. SameProduction leaves the language to
+// its caller, so the fold asks that too: two recordings stating different languages
+// are two productions (the importer offers a moved recording only its same-language
+// siblings). Those are facts on the records, which a
 // reviewer fixes first if they are wrong. What folds is rawentry.MergeRecordings'
 // rule: identifiers and provenance unioned, the keeper's scalars kept, the mover's
 // filling only gaps, and every value chosen away named in the notes.
@@ -46,6 +50,10 @@ func (rn *runner) mergeRecordings(t *txn, fd audit.Finding) error {
 	mover, ok := recs[p.From]
 	if !ok {
 		return refusef(CatMissing, "work %q holds no recording %q to fold", p.Target, p.From)
+	}
+	if kl, ml := keep.Str("language"), mover.Str("language"); kl != "" && ml != "" && !model.SameLanguage(kl, ml) {
+		return refusef(CatProduction, "recordings %s and %s of %s are not one production on the records: languages %s and %s differ",
+			p.To, p.From, p.Target, kl, ml)
 	}
 	why, same := rawentry.SameProduction(keep, mover)
 	if !same {

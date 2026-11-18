@@ -199,7 +199,8 @@ const (
 	// CatProduction: a merge-recordings assertion names two recordings the records
 	// themselves say are two productions (rawentry.SameProduction): a LibriVox
 	// project beside another, two narrator sets, an abridgement, runtimes more than
-	// 10% apart. The records are fixed first, or the assertion is wrong.
+	// 10% apart, or two stated languages, which SameProduction leaves to its caller.
+	// The records are fixed first, or the assertion is wrong.
 	CatProduction Category = "different-production"
 	// CatStaleValue: the record no longer states the value the proposal was written
 	// against.

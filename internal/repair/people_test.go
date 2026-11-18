@@ -208,6 +208,17 @@ func TestMergeRecordingsRefusesTwoProductions(t *testing.T) {
 	}
 }
 
+// Two recordings stating different languages are two productions, whatever else
+// agrees: rawentry.SameProduction leaves the language to its caller.
+func TestMergeRecordingsRefusesTwoLanguages(t *testing.T) {
+	rn, tx := planFixture(t, seedTree(t, reissueTree(t, testpack.WithRecLanguage("de"))))
+	assertRefusal(t, rn.mergeRecordings(tx, recordingsFinding("postwar", "ralph-cosham-2017", "ralph-cosham-2011")),
+		CatProduction, "languages en and de differ")
+	if len(tx.works.puts) != 0 {
+		t.Errorf("a refused fold staged %v", rawentry.SortedKeys(tx.works.puts))
+	}
+}
+
 // A LibriVox recording read by two records of one reader collapses to one narrator:
 // the chapter readers go too, since pkg/check refuses readers on every chapter of a
 // one-narrator recording, and the applied tree validates.
