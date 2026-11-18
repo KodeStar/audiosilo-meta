@@ -413,12 +413,13 @@ jobs:
   # and the two merge drivers (packjson for the packs, redirectsjson for
   # data/redirects.json) - are built and copied from MAIN into the
   # runner temp before the first branch is touched, and a branch is swept at all
-  # only when it is a same-repository branch whose every commit, and whose whole
-  # diff against main, writes only regular files plainly named data/**/*.json
-  # (a fork's is a log line, since it recurs on every push to main; a refused
-  # branch is a warning and one comment). Every ref is spelled out in full (see
-  # main_ref in the loop). Everything left that reads the branch reads it as
-  # data.
+  # only when it is the same-repository head of a pull request into main whose
+  # every commit, and whose whole diff against main, writes only regular files
+  # plainly named data/**/*.json (a fork's is a log line, since it recurs on
+  # every push to main; a refused branch is a warning and one comment). Every
+  # ref is spelled out in full (see main_ref in the loop). Everything left that
+  # reads the branch reads it as data, and what the tools say about it is
+  # printed with workflow commands stopped (see logged).
   #
   # The step runs under `bash -e` (GitHub's default for a run: with no shell:),
   # which does not reach a command tested by if, elif, ! or ||; every failure
@@ -484,8 +485,10 @@ jobs:
           # requests to jq), is a red step, not "no open intake pull requests":
           # nothing is touched either way, but a green sweep would hide it. The
           # files live in the runner temp, out of the checkout the loop moves.
+          # --base main: the loop rebases onto main, so a labelled pull request
+          # into any other branch is not this sweep's to rewrite.
           prs="${RUNNER_TEMP}/intake-sweep-prs"
-          if ! { gh pr list --state open --label bot-intake --limit 500 \
+          if ! { gh pr list --state open --base main --label bot-intake --limit 500 \
                 --json number,headRefName,headRefOid,isCrossRepository,updatedAt > "${prs}.json" \
               && jq -e 'type == "array"' "${prs}.json" > /dev/null \
               && jq -r '.[] | select(.isCrossRepository) | "::warning::PR #\(.number) is from a fork; the sweep only rebases branches in this repository. Skipped."' "${prs}.json" \
@@ -587,6 +590,20 @@ jobs:
               || echo "::warning::could not comment on PR #$1"
           }
 
+          # logged prints a log the swept branch's data reached (the replay's,
+          # a driver's or a tool's output) with workflow commands stopped, as
+          # check-verdict.sh does for job logs: a record key or field can carry
+          # a newline and then a line the runner would act on (an ::error::
+          # annotation, a mask, a stop of its own). The resume token is made up
+          # after the log was written, on a line of its own.
+          logged() {
+            local resume="intake-sweep-log-$$-$RANDOM$RANDOM"
+            echo "::stop-commands::${resume}"
+            cat "$1"
+            echo
+            echo "::${resume}::"
+          }
+
           # noted runs one of the sweep's steps with its output kept in the job
           # log, and on failure leaves in `detail` the one line that failure is
           # best told apart by: the first line matching the ERE $1 (empty: the
@@ -602,7 +619,7 @@ jobs:
             out="$(mktemp)"
             "$@" > "$out" 2>&1
             status=$?
-            cat "$out"
+            logged "$out"
             detail=""
             if [ "$status" -ne 0 ]; then
               detail="$(grep -E -m 1 -- "$pattern" "$out" || grep -v '^[[:space:]]*$' "$out" | tail -n 1)"
@@ -620,10 +637,12 @@ jobs:
           # most, each cut short and in a code span of its own, with every
           # character outside [A-Za-z0-9._/ -] turned into ?, so no file name
           # can make a mention, a link, markup, a marker or a second log line
-          # out of the warning or the bot's comment.
+          # out of the warning or the bot's comment. The sed's backticks are
+          # escaped inside double quotes, since a backtick in single quotes is
+          # SC2016 to actionlint's shell check (workflows.yml).
           shown() {
             printf '%s\n' "$1" | head -n 5 | cut -c 1-120 \
-              | LC_ALL=C tr -c 'A-Za-z0-9._/ \n-' '?' | sed 's/.*/`&`/' | paste -sd ' ' -
+              | LC_ALL=C tr -c 'A-Za-z0-9._/ \n-' '?' | sed "s/.*/\`&\`/" | paste -sd ' ' -
           }
           refuse() {
             echo "::warning::PR #$1 is not rebased by the sweep: $2"
@@ -692,7 +711,7 @@ jobs:
               # inside the replay, and says so on the line grepped for below.
               rebaselog="${RUNNER_TEMP:-/tmp}/rebase-${number}.log"
               if git rebase "$main_ref" > "$rebaselog" 2>&1; then
-                cat "$rebaselog"
+                logged "$rebaselog"
                 if grep -q "merged both sides" "$rebaselog"; then
                   # Both drivers print "merged both sides"; only the pack driver's
                   # "... records" line needs metafmt: its merge lands as jq's
@@ -715,7 +734,7 @@ jobs:
                   fi
                 fi
               else
-                cat "$rebaselog"
+                logged "$rebaselog"
                 # Three-way merge every conflicted pack file, then let metafmt place
                 # and re-render the result. Anything else - a conflict outside
                 # data/, or one record edited on both sides - is for a person.

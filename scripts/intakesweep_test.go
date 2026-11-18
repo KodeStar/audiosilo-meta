@@ -21,13 +21,15 @@ import (
 // shell GitHub gives a `run:` with no `shell:`.
 
 // ghSweepStub answers the gh calls the sweep makes from files in $GH_STUB_DIR:
-// prs.json is the listing (list-fails makes it fail), and a comment is kept as
+// prs.json is the listing (list-fails makes it fail; a listing not narrowed to
+// pull requests into main is refused), and a comment is kept as
 // one JSON line per pull request, which `pr view` reads back.
 const ghSweepStub = `#!/usr/bin/env bash
 set -u
 d="$GH_STUB_DIR"
 case "$1 $2" in
   "pr list")
+    case " $* " in *" --base main "*) ;; *) echo "gh pr list without --base main" >&2; exit 2 ;; esac
     if [ -f "$d/list-fails" ]; then echo "gh: HTTP 502" >&2; exit 1; fi
     cat "$d/prs.json" ;;
   "api graphql") echo "intake-bot" ;;
@@ -344,6 +346,53 @@ func TestIntakeSweepRebasesAnHonestBranch(t *testing.T) {
 	}
 }
 
+// The honest path through main's driver: a branch and main each add an entry
+// to the same pack, main's .gitattributes routes it to main's driver (which
+// the sweep names by its absolute path in the runner temp), the replay merges
+// both sides, and the merged branch is pushed with nothing said.
+func TestIntakeSweepMergesAPackWithMainsDriver(t *testing.T) {
+	t.Parallel()
+	f := newSweepFixture(t)
+	pack := func(keys ...string) string {
+		entries := map[string]any{}
+		for _, k := range keys {
+			entries[k] = map[string]string{"title": k}
+		}
+		raw, err := json.MarshalIndent(map[string]any{"entries": entries}, "", "  ")
+		if err != nil {
+			t.Fatal(err)
+		}
+		return string(raw) + "\n"
+	}
+	f.write("scripts/pack-union-merge.sh", readFile(t, "pack-union-merge.sh"))
+	f.write(".gitattributes", "/data/**/*.json merge=packjson\n")
+	f.write("data/works/p.json", pack("m"))
+	f.git("add", "-A")
+	f.git("commit", "-q", "-m", "a pack and main's driver")
+	f.git("push", "-q", "origin", "main")
+	before := f.branch(7, "intake/issue-7", "main", []change{{"data/works/p.json", pack("b", "m")}})
+	f.write("data/works/p.json", pack("a", "m"))
+	f.advanceMain()
+	out := f.mustRun()
+	if !strings.Contains(out, "merged both sides' records") {
+		t.Errorf("main's driver did not merge the pack:\n%s", out)
+	}
+	f.wantRebased(7, "intake/issue-7", before)
+	merged, err := f.originGit("show", f.head("intake/issue-7")+":data/works/p.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var doc struct{ Entries map[string]any }
+	if err := json.Unmarshal([]byte(merged), &doc); err != nil {
+		t.Fatalf("the merged pack is not JSON: %v\n%s", err, merged)
+	}
+	for _, k := range []string{"a", "b", "m"} {
+		if _, ok := doc.Entries[k]; !ok {
+			t.Errorf("the merged pack lost entry %q:\n%s", k, merged)
+		}
+	}
+}
+
 // A short name like origin/main resolves through refs/tags/ and refs/heads/
 // before refs/remotes/, so a tag named origin/main, or the local branch the
 // sweep makes for a swept branch named origin/main, must not become the base
@@ -494,22 +543,26 @@ func TestIntakeSweepFailsWhenTheListingFails(t *testing.T) {
 // The notice the sweep posts when it gives up on a branch is a contract:
 // audiosilo-meta-sync's steward knows it by the marker opening a line, or by
 // the sentence opening the body. Its detail line is the failing tool's, which
-// can quote the branch's data, so it mentions nobody.
+// can quote the branch's data, so it mentions nobody, and the tool's output
+// reaches the log with workflow commands stopped.
 func TestIntakeSweepGiveUpNotice(t *testing.T) {
 	t.Parallel()
 	if out, err := exec.Command("bash", "-c", "type mapfile").CombinedOutput(); err != nil {
 		t.Skipf("the sweep's conflict path needs bash 4 (mapfile): %s", out)
 	}
 	f := newSweepFixture(t)
-	f.write("scripts/pack-union-merge.sh", "#!/bin/sh\necho \"pack-union-merge: @KodeStar <b>refused</b> $1\"\nexit 1\n")
+	f.write("scripts/pack-union-merge.sh", "#!/bin/sh\necho \"pack-union-merge: @KodeStar <b>refused</b> $1\"\necho \"::error::from the branch's data\"\nexit 1\n")
 	f.git("add", "-A")
 	f.git("commit", "-q", "-m", "a driver that refuses")
 	f.git("push", "-q", "origin", "main")
 	before := f.branch(7, "intake/issue-7", "main", []change{{"data/works/a.json", "{\"a\":2}\n"}})
 	f.write("data/works/a.json", "{\"a\":3}\n")
 	f.advanceMain()
-	f.mustRun()
+	out := f.mustRun()
 	f.wantUntouched("intake/issue-7", before)
+	if !commandsStopped(out, "::error::from the branch's data") {
+		t.Errorf("the tool's output reached the log with workflow commands on:\n%s", out)
+	}
 	c := f.comments(7)
 	if len(c) != 1 {
 		t.Fatalf("want one comment, got %q", c)
@@ -521,4 +574,25 @@ func TestIntakeSweepGiveUpNotice(t *testing.T) {
 	if !strings.HasPrefix(text, "The intake bot could not rebase this branch onto `main` mechanically: the pack merge could not resolve data/works/a.json: pack-union-merge: KodeStar brefused/b") {
 		t.Errorf("the notice does not open with the sentence and the tool's line:\n%s", text)
 	}
+}
+
+// commandsStopped reports whether every copy of line in a step's output sits
+// between a ::stop-commands::<token> line and the ::<token>:: that resumes
+// them, so the runner prints it rather than acting on it.
+func commandsStopped(out, line string) bool {
+	found, stopped := false, ""
+	for _, l := range strings.Split(out, "\n") {
+		switch {
+		case stopped == "" && strings.HasPrefix(l, "::stop-commands::"):
+			stopped = strings.TrimPrefix(l, "::stop-commands::")
+		case stopped != "" && l == "::"+stopped+"::":
+			stopped = ""
+		case l == line:
+			if stopped == "" {
+				return false
+			}
+			found = true
+		}
+	}
+	return found
 }
