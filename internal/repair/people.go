@@ -38,12 +38,12 @@ import (
 // which is the catalogue at load with every earlier fold of the run folded into it; a
 // work or series an earlier proposal retired is read at its survivor.
 
-// personListFields are the members of a work, recording or series entry that list
-// person slugs, by the family the entry lives in.
+// The plain slug lists a fold re-points: a work's and a series' authors, a
+// recording's narrators. Credits and chapter readers are lists inside objects, each
+// with its own re-pointer below.
 var (
-	workPersonLists   = []string{"authors"}
-	seriesPersonLists = []string{"authors"}
-	recPersonLists    = []string{"narrators"}
+	authorLists   = []string{"authors"}
+	narratorLists = []string{"narrators"}
 )
 
 // mergePeople plans one person fold into t.
@@ -72,7 +72,7 @@ func (rn *runner) mergePeople(t *txn, fd audit.Finding) error {
 			continue // an earlier proposal of the run deleted it; nothing names the person there now
 		}
 		next := e.Clone()
-		changed := repointLists(next, workPersonLists, retiring, target)
+		changed := repointLists(next, authorLists, retiring, target)
 		changed = repointCredits(next, retiring, target) || changed
 		recs, err := next.Recordings()
 		if err != nil {
@@ -80,7 +80,7 @@ func (rn *runner) mergePeople(t *txn, fd audit.Finding) error {
 		}
 		for _, key := range rawentry.SortedKeys(recs) {
 			rec := recs[key].Clone()
-			changedRec := repointLists(rec, recPersonLists, retiring, target)
+			changedRec := repointLists(rec, narratorLists, retiring, target)
 			changedRec = repointCredits(rec, retiring, target) || changedRec
 			if changedRec, err = repointChapterReaders(rec, retiring, target, changedRec); err != nil {
 				return fmt.Errorf("work %q recording %q: %w", slug, key, err)
@@ -109,7 +109,7 @@ func (rn *runner) mergePeople(t *txn, fd audit.Finding) error {
 			continue
 		}
 		next := e.Clone()
-		if repointLists(next, seriesPersonLists, retiring, target) {
+		if repointLists(next, authorLists, retiring, target) {
 			t.series.put(slug, next)
 			reSeries++
 		}
