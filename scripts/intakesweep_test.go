@@ -43,10 +43,11 @@ esac
 `
 
 // goSweepStub stands in for `go build -o DIR/ ./cmd/...`: tools that accept
-// anything, since a clean rebase never runs them.
+// anything, since a clean rebase never runs them, and note each run in
+// $SWEEP_TOOLS_LOG.
 const goSweepStub = `#!/usr/bin/env bash
 [ "$1" = build ] && [ "$2" = -o ] || { echo "unexpected: go $*" >&2; exit 2; }
-for t in metafmt metacheck metaredirectmerge; do printf '#!/bin/sh\nexit 0\n' > "$3/$t"; chmod +x "$3/$t"; done
+for t in metafmt metacheck metaredirectmerge; do printf '#!/bin/sh\necho %s >> "$SWEEP_TOOLS_LOG"\nexit 0\n' "$t" > "$3/$t"; chmod +x "$3/$t"; done
 `
 
 // sweepScript is the step's run: block, dedented the way YAML reads it.
@@ -98,6 +99,8 @@ type sweepFixture struct {
 	listing             string
 	listFails           bool
 	stubBin, runnerTemp string
+	// prepare, when set, runs in the job's clone before the sweep does.
+	prepare func(work string)
 }
 
 // newSweepFixture is an origin whose main holds a data pack, data/go.mod and
@@ -218,6 +221,9 @@ func (f *sweepFixture) run() (string, int) {
 	if out, err := runIn("", "git", "clone", "-q", f.origin, work); err != nil {
 		f.t.Fatalf("git clone: %v\n%s", err, out)
 	}
+	if f.prepare != nil {
+		f.prepare(work)
+	}
 	script := filepath.Join(f.t.TempDir(), "sweep.sh")
 	if err := os.WriteFile(script, []byte(sweepScript(f.t)), 0o644); err != nil {
 		f.t.Fatal(err)
@@ -227,6 +233,7 @@ func (f *sweepFixture) run() (string, int) {
 	cmd.Env = append(os.Environ(),
 		"PATH="+f.stubBin+string(os.PathListSeparator)+os.Getenv("PATH"),
 		"GH_STUB_DIR="+f.gh, "RUNNER_TEMP="+f.runnerTemp, "GH_TOKEN=stub",
+		"SWEEP_TOOLS_LOG="+f.toolsLog(),
 		"GIT_CONFIG_GLOBAL=/dev/null", "GIT_CONFIG_NOSYSTEM=1")
 	out, err := cmd.CombinedOutput()
 	f.t.Logf("sweep output:\n%s", out)
@@ -258,6 +265,55 @@ func (f *sweepFixture) wantUntouched(name, before string) {
 	}
 }
 
+// toolsLog is where the stub tools note each run.
+func (f *sweepFixture) toolsLog() string { return filepath.Join(f.runnerTemp, "tools.log") }
+
+// toolsRan lists the stub tools the sweep ran, in order.
+func (f *sweepFixture) toolsRan() []string {
+	raw, err := os.ReadFile(f.toolsLog())
+	if os.IsNotExist(err) {
+		return nil
+	} else if err != nil {
+		f.t.Fatal(err)
+	}
+	return strings.Fields(string(raw))
+}
+
+// requireBash4 skips a test that reaches the sweep's conflict path, which
+// reads the conflicted files with mapfile.
+func requireBash4(t *testing.T) {
+	t.Helper()
+	if out, err := exec.Command("bash", "-c", "type mapfile").CombinedOutput(); err != nil {
+		t.Skipf("the sweep's conflict path needs bash 4 (mapfile): %s", out)
+	}
+}
+
+// packJSON renders a pack holding an entry per key.
+func packJSON(t *testing.T, keys ...string) string {
+	t.Helper()
+	entries := map[string]any{}
+	for _, k := range keys {
+		entries[k] = map[string]string{"title": k}
+	}
+	raw, err := json.MarshalIndent(map[string]any{"entries": entries}, "", "  ")
+	if err != nil {
+		t.Fatal(err)
+	}
+	return string(raw) + "\n"
+}
+
+// withMainsDriver puts the real pack driver and the .gitattributes that
+// routes packs to it on main, with one pack holding m.
+func (f *sweepFixture) withMainsDriver() {
+	f.t.Helper()
+	f.write("scripts/pack-union-merge.sh", readFile(f.t, "pack-union-merge.sh"))
+	f.write(".gitattributes", "/data/**/*.json merge=packjson\n")
+	f.write("data/works/p.json", packJSON(f.t, "m"))
+	f.git("add", "-A")
+	f.git("commit", "-q", "-m", "a pack and main's driver")
+	f.git("push", "-q", "origin", "main")
+}
+
 // originGit runs git in the bare origin.
 func (f *sweepFixture) originGit(args ...string) (string, error) {
 	out, err := runIn(f.origin, "git", args...)
@@ -266,7 +322,7 @@ func (f *sweepFixture) originGit(args ...string) (string, error) {
 
 func (f *sweepFixture) head(name string) string {
 	f.t.Helper()
-	out, err := f.originGit("rev-parse", "refs/heads/"+name)
+	out, err := f.originGit("show-ref", "--verify", "--hash", "refs/heads/"+name)
 	if err != nil {
 		f.t.Fatalf("origin has no branch %s: %v", name, err)
 	}
@@ -353,25 +409,9 @@ func TestIntakeSweepRebasesAnHonestBranch(t *testing.T) {
 func TestIntakeSweepMergesAPackWithMainsDriver(t *testing.T) {
 	t.Parallel()
 	f := newSweepFixture(t)
-	pack := func(keys ...string) string {
-		entries := map[string]any{}
-		for _, k := range keys {
-			entries[k] = map[string]string{"title": k}
-		}
-		raw, err := json.MarshalIndent(map[string]any{"entries": entries}, "", "  ")
-		if err != nil {
-			t.Fatal(err)
-		}
-		return string(raw) + "\n"
-	}
-	f.write("scripts/pack-union-merge.sh", readFile(t, "pack-union-merge.sh"))
-	f.write(".gitattributes", "/data/**/*.json merge=packjson\n")
-	f.write("data/works/p.json", pack("m"))
-	f.git("add", "-A")
-	f.git("commit", "-q", "-m", "a pack and main's driver")
-	f.git("push", "-q", "origin", "main")
-	before := f.branch(7, "intake/issue-7", "main", []change{{"data/works/p.json", pack("b", "m")}})
-	f.write("data/works/p.json", pack("a", "m"))
+	f.withMainsDriver()
+	before := f.branch(7, "intake/issue-7", "main", []change{{"data/works/p.json", packJSON(t, "b", "m")}})
+	f.write("data/works/p.json", packJSON(t, "a", "m"))
 	f.advanceMain()
 	out := f.mustRun()
 	if !strings.Contains(out, "merged both sides' records") {
@@ -547,9 +587,7 @@ func TestIntakeSweepFailsWhenTheListingFails(t *testing.T) {
 // reaches the log with workflow commands stopped.
 func TestIntakeSweepGiveUpNotice(t *testing.T) {
 	t.Parallel()
-	if out, err := exec.Command("bash", "-c", "type mapfile").CombinedOutput(); err != nil {
-		t.Skipf("the sweep's conflict path needs bash 4 (mapfile): %s", out)
-	}
+	requireBash4(t)
 	f := newSweepFixture(t)
 	f.write("scripts/pack-union-merge.sh", "#!/bin/sh\necho \"pack-union-merge: @KodeStar <b>refused</b> $1\"\necho \"::error::from the branch's data\"\nexit 1\n")
 	f.git("add", "-A")
@@ -595,4 +633,84 @@ func commandsStopped(out, line string) bool {
 		}
 	}
 	return found
+}
+
+// metafmt names a split's new pack after the entry key at the cut, so it runs
+// only once every key in a pack the branch changed is a slug: a key like
+// a/../../x is a maintainer's to look at, and metafmt never sees it.
+func TestIntakeSweepRunsMetafmtOnlyOnSlugKeys(t *testing.T) {
+	t.Parallel()
+	f := newSweepFixture(t)
+	f.withMainsDriver()
+	before := f.branch(7, "intake/issue-7", "main", []change{{"data/works/p.json", packJSON(t, "b", "b/../../../escape", "m")}})
+	f.write("data/works/p.json", packJSON(t, "a", "m"))
+	f.advanceMain()
+	f.mustRun()
+	f.wantUntouched("intake/issue-7", before)
+	if ran := f.toolsRan(); slices.Contains(ran, "metafmt") {
+		t.Errorf("metafmt ran over a non-slug key (tools: %q)", ran)
+	}
+	if c := f.comments(7); len(c) != 1 || !strings.Contains(c[0], "an entry key the branch brings is not a slug") {
+		t.Errorf("want one give-up comment naming the key rule, got %q", c)
+	}
+}
+
+// The sweep reads main and the branch through refs of its own and then by
+// commit id, so neither a branch named HEAD (whose remote-tracking ref can be
+// a pointer at origin/main) nor tags named like any ref the sweep might read
+// can change the base, or block another pull request.
+func TestIntakeSweepIgnoresNamesLikeItsRefs(t *testing.T) {
+	t.Parallel()
+	f := newSweepFixture(t)
+	headTip := f.branch(6, "HEAD", "main", []change{{"data/works/h.json", "{\"h\":1}\n"}})
+	before := f.branch(7, "intake/issue-7", "main", []change{{"data/works/b.json", "{\"b\":1}\n"}})
+	realMain := f.advanceMain()
+	f.git("checkout", "-q", "-B", "evil", "main")
+	f.write("scripts/evil.sh", "#!/bin/sh\necho owned\n")
+	f.git("add", "-A")
+	f.git("commit", "-q", "-m", "evil")
+	for _, tag := range []string{"main", "origin/main", "refs/heads/main", "refs/remotes/origin/main",
+		"refs/intake-sweep/main", "refs/intake-sweep/head", "intake/issue-7", "origin/intake/issue-7"} {
+		f.git("tag", tag, "evil")
+	}
+	f.git("push", "-q", "origin", "--tags")
+	f.git("checkout", "-q", "main")
+	f.mustRun()
+	if got := f.head("main"); got != realMain {
+		t.Errorf("origin's main moved: %s, want %s", got, realMain)
+	}
+	f.wantUntouched("HEAD", headTip)
+	// Read through refs/remotes/origin/HEAD, the branch was compared with
+	// itself and passed as already on top of main; read as itself, it is
+	// behind main and fails as no name a branch can be checked out under.
+	if c := f.comments(6); len(c) != 1 || !strings.Contains(c[0], "the branch could not be checked out") {
+		t.Errorf("want one give-up comment on the branch named HEAD, got %q", c)
+	}
+	f.wantRebased(7, "intake/issue-7", before, "data/works/b.json")
+	if base, err := f.originGit("rev-parse", f.head("intake/issue-7")+"~1"); err != nil || base != realMain {
+		t.Errorf("intake/issue-7 sits on %s, want the real main %s", base, realMain)
+	}
+}
+
+// A rebase that stops with no conflicted path has left a tree nobody checked:
+// no tool runs over it and nothing is continued or pushed.
+func TestIntakeSweepStopsOnARebaseWithoutAConflict(t *testing.T) {
+	t.Parallel()
+	requireBash4(t)
+	f := newSweepFixture(t)
+	before := f.branch(7, "intake/issue-7", "main", []change{{"data/works/b.json", "{\"b\":1}\n"}})
+	f.advanceMain()
+	f.prepare = func(work string) {
+		if err := os.Mkdir(filepath.Join(work, ".git", "rebase-merge"), 0o755); err != nil {
+			t.Fatal(err)
+		}
+	}
+	f.mustRun()
+	f.wantUntouched("intake/issue-7", before)
+	if ran := f.toolsRan(); len(ran) != 0 {
+		t.Errorf("tools ran over a stopped rebase: %q", ran)
+	}
+	if c := f.comments(7); len(c) != 1 || !strings.Contains(c[0], "the rebase stopped without a conflict to resolve") {
+		t.Errorf("want one give-up comment saying the rebase stopped, got %q", c)
+	}
 }

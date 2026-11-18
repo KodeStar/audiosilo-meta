@@ -921,12 +921,18 @@ keep this index in step (one line per topic).
   (not just the net diff: a file added then removed is in the tree mid-replay)
   writes nothing but regular files plainly named `data/**/*.json` (no symbolic
   link, submodule or executable bit: one `--raw` pass checks mode and name
-  together). It names every ref in full (`refs/remotes/origin/main`,
-  `refs/heads/<branch>`, the push leased on the checked head), since a tag or
-  branch called `origin/main` would otherwise become the rebase base, quotes a
-  refused path with only `[A-Za-z0-9._/ -]` left, prints what its tools and
-  the replay say about the branch's data with workflow commands stopped
-  (`logged`), and fails red on a pull request listing it cannot read. The step
+  together). It fetches into refs of its own (`refs/intake-sweep/{main,head}`)
+  and works by commit id from there, pushing `refs/heads/<branch>` leased on
+  the checked head, since a tag or branch called `origin/main`, or a branch
+  called `HEAD` (whose `refs/remotes/origin/HEAD` points at main), would
+  otherwise change the rebase base; it quotes a refused path with only
+  `[A-Za-z0-9._/ -]` left, prints what its tools and the replay say about the
+  branch's data with workflow commands stopped (`logged`), runs metafmt only
+  when every entry key in the packs the branch changed is a slug (`fmt`; a
+  split names its new pack after the key at the cut, and pkg/pack's
+  `plannedPaths` refuses a non-slug bound too, `ErrInvalidBound`), gives up on
+  a rebase that stops with no conflicted path, and fails red on a pull
+  request listing it cannot read. The step
   runs under `bash -e`, so a status it reads goes through `||`
   (scripts/intakesweep_test.go drives the step against a local origin;
   audiosilo-meta-community's intake.yml carries the same sweep, keep the two in

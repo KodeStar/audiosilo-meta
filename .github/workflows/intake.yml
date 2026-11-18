@@ -416,10 +416,12 @@ jobs:
   # only when it is the same-repository head of a pull request into main whose
   # every commit, and whose whole diff against main, writes only regular files
   # plainly named data/**/*.json (a fork's is a log line, since it recurs on
-  # every push to main; a refused branch is a warning and one comment). Every
-  # ref is spelled out in full (see main_ref in the loop). Everything left that
-  # reads the branch reads it as data, and what the tools say about it is
-  # printed with workflow commands stopped (see logged).
+  # every push to main; a refused branch is a warning and one comment). The
+  # sweep reads main and the branch through refs of its own, by commit id (see
+  # main_ref in the loop). Everything left that reads the branch reads it as
+  # data, and what the tools say about it is printed with workflow commands
+  # stopped (see logged). The one thing in that data metafmt turns into a file
+  # name, an entry key at a split's cut, is checked first (see fmt).
   #
   # The step runs under `bash -e` (GitHub's default for a run: with no shell:),
   # which does not reach a command tested by if, elif, ! or ||; every failure
@@ -536,6 +538,25 @@ jobs:
           # side deleted), but not "... records", so metafmt is skipped.
           git config merge.redirectsjson.name "three-way merge of the slug tombstone table"
           git config merge.redirectsjson.driver "'$tools/metaredirectmerge' %O %A %B %P"
+
+          # fmt runs main's metafmt over the merged tree, once every entry key
+          # in a pack the branch changed (against main, commit $1) is a slug.
+          # metafmt names a split's new pack after the key its cut falls on,
+          # and main's pkg/pack refuses one that is no slug; this is the guard
+          # in front of it, so a key like a/../../x never reaches a metafmt
+          # that would join it into a path outside data/ with the token
+          # persisted. metacheck refuses such a key a step later anyway, so
+          # nothing mergeable is lost. \A and \z, not ^ and $, which can match
+          # at a line break inside a key; a file jq cannot read fails too.
+          # main's own packs are not read: main's keys are main's.
+          fmt() {
+            if ! git diff -z --name-only --diff-filter=d "$1" -- data \
+                | xargs -0 -r jq -n -e '[inputs | .entries | objects | keys_unsorted[] | test("\\A[a-z0-9-]+\\z")] | all' > /dev/null; then
+              echo "metafmt: an entry key the branch brings is not a slug, or a file it changes is not JSON; metafmt was not run"
+              return 1
+            fi
+            "$tools/metafmt" --write --profile core
+          }
 
           # restore returns the checkout to a clean copy of main. `git clean` is
           # not optional: metafmt --write can CREATE pack files before metacheck
@@ -659,23 +680,31 @@ jobs:
             # a failure that stops short of the fetch still names the branch's
             # state and still changes when the branch does.
             attempted_sha="$listed_sha"
-            # Full ref names only, never origin/main or origin/<branch>: git
+            # The sweep's OWN two refs, by full name, and from there commit
+            # ids. Never origin/main or a name spelled from the branch: git
             # resolves a short name through refs/tags/ and refs/heads/ before
             # refs/remotes/, so a tag named origin/main, or the local branch
             # `checkout -B` makes for a swept branch named origin/main, would
-            # otherwise be the base every later pull request is rebased onto -
-            # content no rule below ever looked at. The fetch names both sides
-            # in full for the same reason (a remote tag can shadow a branch).
-            main_ref="refs/remotes/origin/main"
-            head_ref="refs/remotes/origin/${branch}"
+            # become the base every later pull request is rebased onto. Nor
+            # refs/remotes/origin/<branch>, full as it is: a branch named HEAD
+            # lands on refs/remotes/origin/HEAD, which git may hold as a
+            # pointer at origin/main, so the fetch would write the branch over
+            # main's ref and the rules below would compare it with itself. Only
+            # this fetch writes refs/intake-sweep/, and each ref is read once,
+            # into a commit id, since a tag named like either would make the
+            # name ambiguous (which `checkout -B` refuses outright). The fetch
+            # names its sources in full too (a remote tag can shadow a branch).
+            main_ref="refs/intake-sweep/main"
+            head_ref="refs/intake-sweep/head"
 
             if ! git fetch --quiet origin "+refs/heads/main:${main_ref}" "+refs/heads/${branch}:${head_ref}"; then
               failure="the branch could not be fetched (deleted, or renamed?)"
-            elif ! attempted_sha="$(git rev-parse --verify --quiet "${head_ref}^{commit}")"; then
+            elif ! main_sha="$(git rev-parse --verify --quiet "${main_ref}^{commit}")" \
+                || ! attempted_sha="$(git rev-parse --verify --quiet "${head_ref}^{commit}")"; then
               attempted_sha="$listed_sha"
               failure="the fetched branch could not be resolved"
-            elif ! refused="$( { git diff --no-renames --raw "${main_ref}...${head_ref}" \
-                  && git log --no-renames --raw --format= "${main_ref}..${head_ref}"; } \
+            elif ! refused="$( { git diff --no-renames --raw "${main_sha}...${attempted_sha}" \
+                  && git log --no-renames --raw --format= "${main_sha}..${attempted_sha}"; } \
                 | awk -F'\t' '/^:/ { split($1, mode, " ")
                     if ((mode[2] != "100644" && mode[2] != "000000") || $2 !~ "^data/[A-Za-z0-9._/-]*\\.json$") print $2 }' \
                 | sort -u)"; then
@@ -699,18 +728,18 @@ jobs:
               refuse "$number" "it changes something other than a regular file plainly named \`data/**/*.json\` ($(shown "$refused"))"
               echo "::endgroup::"
               continue
-            elif git merge-base --is-ancestor "$main_ref" "$head_ref"; then
+            elif git merge-base --is-ancestor "$main_sha" "$attempted_sha"; then
               echo "already on top of main"
               echo "::endgroup::"
               continue
-            elif ! git checkout --quiet -B "$branch" "$head_ref"; then
+            elif ! git checkout --quiet -B "$branch" "$attempted_sha"; then
               failure="the branch could not be checked out"
             else
               # The rebase output is kept because a CLEAN rebase can still have
               # merged two branches' entries: the driver resolves a pack conflict
               # inside the replay, and says so on the line grepped for below.
               rebaselog="${RUNNER_TEMP:-/tmp}/rebase-${number}.log"
-              if git rebase "$main_ref" > "$rebaselog" 2>&1; then
+              if git rebase "$main_sha" > "$rebaselog" 2>&1; then
                 logged "$rebaselog"
                 if grep -q "merged both sides" "$rebaselog"; then
                   # Both drivers print "merged both sides"; only the pack driver's
@@ -721,7 +750,7 @@ jobs:
                   # straight to metacheck (its target may be a record the other
                   # side deleted).
                   if grep -q "merged both sides' records" "$rebaselog" \
-                      && ! noted '^(metafmt:|invalid JSON)' "$tools/metafmt" --write --profile core; then
+                      && ! noted '^(metafmt:|invalid JSON)' fmt "$main_sha"; then
                     failure="metafmt could not normalize the merged tree${detail:+: ${detail}}"
                   elif ! noted '' "$tools/metacheck" --profile core; then
                     failure="metacheck rejected the merged tree${detail:+: ${detail}}"
@@ -746,6 +775,13 @@ jobs:
                 # pipeline's subshell would throw that away, turning the
                 # fail-safe arm into a silent pass.
                 mapfile -d '' -t conflicted < <(git diff -z --name-only --diff-filter=U)
+                if [ "${#conflicted[@]}" -eq 0 ]; then
+                  # Stopped with NO conflicted path: not a conflict, so nothing
+                  # the recipe below resolves, and the working tree is whatever
+                  # git left when it gave up. metafmt is not run over that, and
+                  # `rebase --continue` is not asked to finish it.
+                  failure="the rebase stopped without a conflict to resolve"
+                fi
                 for f in "${conflicted[@]}"; do
                   case "$f" in
                     # Before data/*.json, which a case pattern's * also matches. With
@@ -758,7 +794,7 @@ jobs:
                   esac
                   [ -z "$failure" ] || break
                 done
-                if [ -z "$failure" ] && ! noted '^(metafmt:|invalid JSON)' "$tools/metafmt" --write --profile core; then
+                if [ -z "$failure" ] && ! noted '^(metafmt:|invalid JSON)' fmt "$main_sha"; then
                   failure="metafmt could not normalize the merged tree${detail:+: ${detail}}"
                 fi
                 if [ -z "$failure" ] && ! noted '' "$tools/metacheck" --profile core; then
