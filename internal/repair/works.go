@@ -6,6 +6,7 @@ import (
 	"slices"
 	"strconv"
 	"strings"
+	"unicode"
 
 	"github.com/kodestar/audiosilo-meta/internal/audit"
 	"github.com/kodestar/audiosilo-meta/internal/importer"
@@ -251,11 +252,45 @@ func addAlternateTitles(merged, lw entry) []string {
 	return added
 }
 
-// restatesTitle reports whether one title's comparison key extends the other's:
-// the same book's title with decoration, a series designation or a subtitle added.
+// restatesTitle reports whether one title's comparison key extends the other's at a
+// WORD boundary: the same book's title with decoration, a series designation or a
+// subtitle added. A bare prefix of the joined keys is not enough - "It" would restate
+// "Itch". A title in a script the key folds away (titlerule.CompareWords has no words
+// for it) is compared word by word as written, so a regional title in Cyrillic is
+// never read as restating a Latin one, nor one Cyrillic title another.
 func restatesTitle(a, b string) bool {
-	ka, kb := titlerule.CompareKey(titlerule.Clean(a, "")), titlerule.CompareKey(titlerule.Clean(b, ""))
-	return ka == "" || kb == "" || strings.HasPrefix(ka, kb) || strings.HasPrefix(kb, ka)
+	wa, wb := titlerule.CompareWords(titlerule.Clean(a, "")), titlerule.CompareWords(titlerule.Clean(b, ""))
+	if len(wa) == 0 || len(wb) == 0 {
+		wa, wb = scriptWords(a), scriptWords(b)
+		if len(wa) == 0 || len(wb) == 0 {
+			return true // nothing to search by
+		}
+	}
+	return wordsExtend(wa, wb) || wordsExtend(wb, wa)
+}
+
+// wordsExtend reports whether long's leading words join to exactly short's words
+// joined: the key short spells is long's up to a word boundary. Joined, not compared
+// word for word, so "A.B. Kovacs" (a, b, kovacs) and "AB Kovacs" (ab, kovacs) still
+// meet, as their keys do.
+func wordsExtend(long, short []string) bool {
+	key, joined := strings.Join(short, ""), ""
+	for _, w := range long {
+		if joined += w; len(joined) >= len(key) {
+			return joined == key
+		}
+	}
+	return false
+}
+
+// scriptWords is a title's lower-cased letter and digit runs, in any script: the words
+// restatesTitle compares when the slug fold has none. The title is read as written,
+// not through titlerule.Clean, whose segment peels judge a segment by its Latin key and
+// so drop a Cyrillic one whole ("Война и мир: Том 1" cleans to "Том 1").
+func scriptWords(title string) []string {
+	return strings.FieldsFunc(strings.ToLower(title), func(r rune) bool {
+		return !unicode.IsLetter(r) && !unicode.IsNumber(r)
+	})
 }
 
 // joinQuoted renders a list of values for a note, each as quoteFact does one.

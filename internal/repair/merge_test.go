@@ -1304,3 +1304,30 @@ func TestMergeWorksKeepsADifferentTitleAsAnAlternate(t *testing.T) {
 			"Hammered: The Druid Tales, Book 3", "Hammered")
 	}
 }
+
+// restatesTitle extends a key only at a word boundary ("It" is not "Itch"), and a
+// title the slug fold cannot read is compared as written rather than read as
+// restating every other title.
+func TestRestatesTitle(t *testing.T) {
+	for _, c := range []struct {
+		a, b string
+		want bool
+	}{
+		{"Hammered: The Druid Tales, Book 3", "Hammered", true},
+		{"The Prince by Nicolo Machiavelli", "The Prince", true},
+		{"A.B. Kovacs Saga", "AB Kovacs Saga", true},
+		{"Itch", "It", false},
+		{"Redemption", "Red", false},
+		{"Hidden Hero", "Dashing Devil", false},
+		{"Война и мир", "War and Peace", false},
+		{"Война и мир", "Анна Каренина", false},
+		{"Война и мир: Том 1", "Война и мир", true},
+	} {
+		if got := restatesTitle(c.a, c.b); got != c.want {
+			t.Errorf("restatesTitle(%q, %q) = %v, want %v", c.a, c.b, got, c.want)
+		}
+		if got := restatesTitle(c.b, c.a); got != c.want {
+			t.Errorf("restatesTitle(%q, %q) = %v, want %v (symmetric)", c.b, c.a, got, c.want)
+		}
+	}
+}
