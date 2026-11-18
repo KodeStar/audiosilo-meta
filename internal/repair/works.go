@@ -6,10 +6,12 @@ import (
 	"slices"
 	"strconv"
 	"strings"
+	"unicode"
 
 	"github.com/kodestar/audiosilo-meta/internal/audit"
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/rawentry"
+	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -151,6 +153,9 @@ func (t *txn) foldWork(target, loser string, merged entry, recs map[string]entry
 	}
 	lost, declined := mergeWorkFields(merged, lw, roles)
 	t.noteLost(lost, loser)
+	if added := addAlternateTitles(merged, lw); len(added) > 0 {
+		t.note("  alternate_titles: kept %s from %s, so a search for it still finds the work", joinQuoted(added), loser)
+	}
 	if len(declined) > 0 {
 		t.note("  authors: did not add %s from %s: the merged %s credits them in a non-author role, and a credit is not authorship",
 			joinList(declined), loser, target)
@@ -200,16 +205,110 @@ func (t *txn) moveRecording(target, loser, key string, recs map[string]entry, re
 	}
 	switch {
 	case move.Merged:
-		t.note("merged recording %s/%s into %s/%s (same production: %s)", loser, key, target, key, move.Why)
-		for _, f := range move.Lost {
-			t.noteLost([]mergedFacts{{field: f.Field, kept: f.Kept, dropped: f.Dropped}}, loser+"/"+key)
-		}
+		t.noteRecordingMerged(loser+"/"+key, target+"/"+key, move.Why, move.Lost)
 	case move.ID != key:
 		t.note("re-keyed recording %s/%s as %s/%s and moved it intact (%s)", loser, key, target, move.ID, move.Why)
 	default:
 		t.note("moved recording %s/%s to %s/%s", loser, key, target, key)
 	}
 	return nil
+}
+
+// noteRecordingMerged notes one recording folded into another, from and into each
+// "<work>/<recording>", with every value the fold chose away.
+func (t *txn) noteRecordingMerged(from, into, why string, lost []rawentry.RecordingLoss) {
+	t.note("merged recording %s into %s (same production: %s)", from, into, why)
+	facts := make([]mergedFacts, len(lost))
+	for i, f := range lost {
+		facts[i] = mergedFacts{field: f.Field, kept: f.Kept, dropped: f.Dropped}
+	}
+	t.noteLost(facts, from)
+}
+
+// addAlternateTitles keeps a folded record's titles on the merged work as alternate
+// titles, so a search for the title the loser was found by still finds the book
+// (merge-works keeps the survivor's title and drops the loser's): its own alternate
+// titles, and its title unless that only restates the survivor's - one comparison
+// key extending the other ("The Prince by Nicolo Machiavelli" beside "The Prince",
+// "Hammered: The Druid Tales, Book 3" beside "Hammered"), which a search for the
+// survivor's title already reaches - or an alternate the work already lists, which a
+// second loser of one cluster would otherwise repeat with its decoration. The
+// survivor's title itself and a title already listed are never added, and a title is
+// added trimmed: pkg/check refuses a padded alternate (checkAlternateTitles), which a
+// title may be. It returns what it added, for the note.
+func addAlternateTitles(merged, lw entry) []string {
+	title := merged.Str("title")
+	have := merged.Strs("alternate_titles")
+	var added []string
+	add := func(c string) {
+		if c = strings.TrimSpace(c); c == "" || c == title || slices.Contains(have, c) {
+			return
+		}
+		have = append(have, c)
+		added = append(added, c)
+	}
+	if lt := lw.Str("title"); !restatesTitle(lt, title) &&
+		!slices.ContainsFunc(have, func(alt string) bool { return restatesTitle(lt, alt) }) {
+		add(lt)
+	}
+	for _, c := range lw.Strs("alternate_titles") {
+		add(c)
+	}
+	rawentry.SetListOrDrop(merged, "alternate_titles", have)
+	return added
+}
+
+// restatesTitle reports whether one title's comparison key extends the other's at a
+// WORD boundary: the same book's title with decoration, a series designation or a
+// subtitle added. A bare prefix of the joined keys is not enough - "It" would restate
+// "Itch". A title in a script the key folds away (titlerule.CompareWords has no words
+// for it) is compared word by word as written, so a regional title in Cyrillic is
+// never read as restating a Latin one, nor one Cyrillic title another.
+func restatesTitle(a, b string) bool {
+	wa, wb := titlerule.CompareWords(titlerule.Clean(a, "")), titlerule.CompareWords(titlerule.Clean(b, ""))
+	if len(wa) == 0 || len(wb) == 0 {
+		wa, wb = scriptWords(a), scriptWords(b)
+		if len(wa) == 0 || len(wb) == 0 {
+			return true // nothing to search by
+		}
+	}
+	return wordsExtend(wa, wb) || wordsExtend(wb, wa)
+}
+
+// wordsExtend reports whether long's leading words join to exactly short's words
+// joined: the key short spells is long's up to a word boundary. Joined, not compared
+// word for word, so "A.B. Kovacs" (a, b, kovacs) and "AB Kovacs" (ab, kovacs) still
+// meet, as their keys do.
+func wordsExtend(long, short []string) bool {
+	key, joined := strings.Join(short, ""), ""
+	for _, w := range long {
+		if joined += w; len(joined) >= len(key) {
+			return joined == key
+		}
+	}
+	return false
+}
+
+// scriptWords is a title's lower-cased letter and digit runs, in any script: the words
+// restatesTitle compares when the slug fold has none. The title is read as written,
+// not through titlerule.Clean, whose segment peels judge a segment by its Latin key and
+// so drop a Cyrillic one whole ("Война и мир: Том 1" cleans to "Том 1"). A combining
+// mark is part of its word (a Hebrew point, a Devanagari vowel sign, a decomposed
+// accent): split there, a word's first letters would read as a word of their own, the
+// bare prefix restatesTitle exists to refuse.
+func scriptWords(title string) []string {
+	return strings.FieldsFunc(strings.ToLower(title), func(r rune) bool {
+		return !unicode.IsLetter(r) && !unicode.IsNumber(r) && !unicode.IsMark(r)
+	})
+}
+
+// joinQuoted renders a list of values for a note, each as quoteFact does one.
+func joinQuoted(vs []string) string {
+	out := make([]string, len(vs))
+	for i, v := range vs {
+		out[i] = quoteFact(v)
+	}
+	return joinList(out)
 }
 
 type mergedFacts struct {

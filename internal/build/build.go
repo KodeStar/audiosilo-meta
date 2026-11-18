@@ -40,13 +40,14 @@ import (
 // (the ruler a work's sidecars are numbered on) arrived; bumped to 11 when the
 // STORE LINKS arrived - recordings.link_audiobookguild and
 // recordings.link_graphicaudio (a recording's product page in a store the
-// identifier-derived purchase links do not reach).
+// identifier-derived purchase links do not reach); bumped to 12 when a work's
+// ALTERNATE TITLES arrived in the work_alternate_titles table.
 //
 // It versions what a reader may SELECT, so it is bumped only when a table or
 // column appears. Adding an index is invisible to every reader (the same rows
 // come back, faster), so the index additions below did not bump it - an older
 // artifact without them still serves correctly, just more slowly.
-const SchemaVersion = 11
+const SchemaVersion = 12
 
 const ddl = `
 CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
@@ -75,6 +76,10 @@ CREATE INDEX idx_work_genres_work ON work_genres(work_id);
 -- record's order. The LibriVox feed reads its translators from here.
 CREATE TABLE work_credits (work_id TEXT NOT NULL, person_id TEXT NOT NULL, role TEXT NOT NULL, ord INTEGER NOT NULL);
 CREATE INDEX idx_work_credits_work ON work_credits(work_id);
+-- schema_version 12: the other titles a work is published or known under, in the
+-- record's order. Search reaches them through the work's search_fts names.
+CREATE TABLE work_alternate_titles (work_id TEXT NOT NULL, title TEXT NOT NULL, ord INTEGER NOT NULL);
+CREATE INDEX idx_work_alternate_titles_work ON work_alternate_titles(work_id);
 -- The stats languages census (GROUP BY language, read once per snapshot at
 -- load) walks this as a covering index. It is deliberately the language alone:
 -- works/latest orders by (added_at IS NULL), which no index column can serve. The
@@ -486,6 +491,7 @@ type stmts struct {
 	workISBN   *sql.Stmt
 	workGenre  *sql.Stmt
 	workCredit *sql.Stmt
+	workAltT   *sql.Stmt
 	workFTS    *sql.Stmt
 
 	recording   *sql.Stmt
@@ -544,6 +550,7 @@ func prepareStmts(tx *sql.Tx) (*stmts, func(), error) {
 		{&s.workISBN, `INSERT INTO work_isbns(work_id, isbn) VALUES(?,?)`},
 		{&s.workGenre, `INSERT INTO work_genres(work_id, genre) VALUES(?,?)`},
 		{&s.workCredit, `INSERT INTO work_credits(work_id, person_id, role, ord) VALUES(?,?,?,?)`},
+		{&s.workAltT, `INSERT INTO work_alternate_titles(work_id, title, ord) VALUES(?,?,?)`},
 		{&s.workFTS, `INSERT INTO search_fts(kind, id, title, names, language) VALUES('work', ?, ?, ?, ?)`},
 
 		{&s.recording, `INSERT INTO recordings(work_id, id, abridged, language, runtime_min, release_date, publisher, cover_url, license, librivox_id, archive_id, link_librivox, link_zip, link_rss, link_text, copyright_year, added_at, librivox_title, link_audiobookguild, link_graphicaudio) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`},
@@ -657,6 +664,17 @@ func insertWorks(st *stmts, works []*model.Work, nameByID map[string]string, ser
 		}
 		for _, sn := range seriesNamesByWork[w.ID] {
 			names = appendName(names, sn)
+		}
+		// An alternate title is searched as one of the row's NAMES, not its title:
+		// the title column is what the exact-title and series-position probes filter
+		// on and order by, and both compare against the work's own title, so a
+		// second title there would only crowd their windows. Here a search for the
+		// book's other title still finds it.
+		for i, alt := range w.AlternateTitles {
+			if _, err := st.workAltT.Exec(w.ID, alt, i); err != nil {
+				return err
+			}
+			names = appendName(names, alt)
 		}
 
 		ftsTitle := strings.TrimSpace(w.Title + " " + w.Subtitle)

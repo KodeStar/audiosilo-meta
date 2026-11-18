@@ -70,12 +70,20 @@ const (
 	OpSplitSeries     = "split-series"
 	OpSetWorkLanguage = "set-work-language"
 	OpReview          = "review" // no mechanical action: a human decides
-	// OpMergePeople folds person Others onto Target. No detector proposes it and no
-	// repair applies it: it exists so reviewed.json can REJECT it, recording "two
-	// people, not one" for a pair metacheck's honorific-person census would otherwise
-	// name forever and the importer's honorific fold would otherwise re-merge
-	// (ReviewedDistinct). People have no merge pass yet.
+	// OpMergePeople folds person Others onto Target. No detector proposes it (P-DUP
+	// stays advisory throughout): reviewed.json REJECTS it, recording "two people, not
+	// one" for a pair metacheck's honorific-person census would otherwise name forever
+	// and the importer's honorific fold would otherwise re-merge (ReviewedDistinct), or
+	// ASSERTS it, which internal/repair applies (people.go): every credit moves onto
+	// Target and the losers' slugs are tombstoned.
 	OpMergePeople = "merge-people"
+	// OpMergeRecordings folds recording From of work Target into its recording To:
+	// two records of one production (a reissue under a second ASIN the importer
+	// attached as a recording of its own). No detector proposes it; a reviewed
+	// assertion sources it and internal/repair applies it (recordings.go), only where
+	// rawentry.SameProduction agrees. Recording ids have no tombstone namespace, so
+	// From is simply gone afterwards.
+	OpMergeRecordings = "merge-recordings"
 	// OpLinkLibrivoxRepackage records that recording From of work Target is a
 	// retailer's repackage of LibriVox recording To of the same work: a LINK between
 	// two recordings that stay two, never a merge. R-REPACKAGE proposes it, always

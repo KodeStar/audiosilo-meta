@@ -147,15 +147,20 @@ type WorkXref struct {
 
 // Work is the abstract book.
 type Work struct {
-	ID             string   `json:"id"`
-	Title          string   `json:"title"`
-	Subtitle       string   `json:"subtitle,omitempty"`
-	Authors        []string `json:"authors"`
-	Credits        []Credit `json:"credits,omitempty"`
-	Language       string   `json:"language"`
-	FirstPublished string   `json:"first_published,omitempty"`
-	Description    string   `json:"description,omitempty"`
-	Genres         []string `json:"genres,omitempty"`
+	ID       string `json:"id"`
+	Title    string `json:"title"`
+	Subtitle string `json:"subtitle,omitempty"`
+	// AlternateTitles are other titles this one book is published or known under
+	// (a retitled re-release, a regional title, another spelling): search finds
+	// the work by them, and Title stays the one it leads with. Never the title
+	// itself (pkg/check), never a decorated listing.
+	AlternateTitles []string `json:"alternate_titles,omitempty"`
+	Authors         []string `json:"authors"`
+	Credits         []Credit `json:"credits,omitempty"`
+	Language        string   `json:"language"`
+	FirstPublished  string   `json:"first_published,omitempty"`
+	Description     string   `json:"description,omitempty"`
+	Genres          []string `json:"genres,omitempty"`
 	// TranslationOf links a TRANSLATION to the work(s) it translates, as a set
 	// of work slugs. Stated evidence only, never inferred; almost always one
 	// element (an array so a translated omnibus of two originals fits).

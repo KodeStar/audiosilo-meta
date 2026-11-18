@@ -477,6 +477,7 @@ func load(lst *pack.Listing, rdr *pack.Reader, opts LoadOptions) (Result, *pathI
 	checkStoreLinks(recs, add)
 	checkSeriesPositions(cat, idx, add)
 	checkGenresSorted(cat, idx, add)
+	checkAlternateTitles(cat, idx, add)
 	checkCreditPairs(cat, recs, idx, add)
 	checkPersonSlug(cat, idx, add)
 	checkUnslugFallback(cat, recs, idx, add)

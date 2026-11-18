@@ -3,9 +3,11 @@ package issueform
 import (
 	"maps"
 	"os"
+	"slices"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
+	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 	"github.com/kodestar/audiosilo-meta/pkg/redirects"
@@ -197,5 +199,47 @@ func TestRetitleAliasCommitsOnlyWithItsRecord(t *testing.T) {
 	commit()
 	if !c.redirectsChanged || c.redirects[model.RedirectWorks]["a-better-title"] != "existing-work" {
 		t.Errorf("after commit: changed = %v, table = %v", c.redirectsChanged, c.redirects)
+	}
+}
+
+// TestCorrectTitleOntoAnAlternateTitleTakesItOffTheList: a correction that makes one of
+// the work's alternate titles its title leaves it an alternate no longer (pkg/check
+// refuses an alternate equal to the title), as metarepair's retitle-work does; the
+// other alternates stay, and the corrected tree validates.
+func TestCorrectTitleOntoAnAlternateTitleTakesItOffTheList(t *testing.T) {
+	for name, tc := range map[string]struct {
+		alternates string
+		want       []string
+	}{
+		"one of two": {`["A Better Title", "The Old Title"]`, []string{"The Old Title"}},
+		"the only":   {`["A Better Title"]`, nil},
+	} {
+		t.Run(name, func(t *testing.T) {
+			files := seedFiles()
+			files["works/ex/existing-work/work.json"] = `{
+  "alternate_titles": ` + tc.alternates + `,
+  "authors": ["jane-doe"],
+  "id": "existing-work",
+  "language": "en",
+  "license": "CC0-1.0",
+  "sources": [{"type": "user", "imported_at": "2026-07-01"}],
+  "title": "Existing Work"
+}`
+			dir := t.TempDir()
+			testpack.Seed(t, dir, files)
+			res := correctTitle(t, dir, "existing-work", "A Better Title")
+			if res.Status != StatusOK {
+				t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
+			}
+			after := check.Load(dir)
+			if len(after.Problems) > 0 {
+				t.Fatalf("the corrected tree does not validate: %v", after.Problems)
+			}
+			for _, w := range after.Catalog.Works {
+				if w.ID == "existing-work" && (w.Title != "A Better Title" || !slices.Equal(w.AlternateTitles, tc.want)) {
+					t.Errorf("title = %q, alternate_titles = %q, want %q", w.Title, w.AlternateTitles, tc.want)
+				}
+			}
+		})
 	}
 }

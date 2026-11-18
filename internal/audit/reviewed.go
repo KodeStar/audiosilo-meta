@@ -6,6 +6,7 @@ import (
 	_ "embed"
 	"encoding/json"
 	"fmt"
+	"maps"
 	"slices"
 	"strconv"
 	"strings"
@@ -98,6 +99,12 @@ var assertClass = map[string]string{
 	// Wil Wheaton)" reads its trailing "In" as a dangling connective), so no proposal exists
 	// for an accept to meet.
 	OpRetitle: ClassWorkTitle,
+	// P-DUP is advisory throughout and proposes only reviews, so a person fold exists only
+	// as an assertion: one person's two records, which internal/repair folds (people.go).
+	OpMergePeople: ClassPersonDup,
+	// No detector compares a work's recordings with each other for a reissue, so a fold of
+	// two recordings of one production is asserted, in the class a duplicate is read in.
+	OpMergeRecordings: ClassWorkDup,
 }
 
 // SubclassAsserted is the subclass an asserted proposal is emitted under. internal/repair
@@ -226,11 +233,11 @@ func knownReviewOp(op string) bool {
 
 // unappliableOps are the ops the audit emits that no repair carries out (a review, a
 // rename candidate, a sidecar re-point: each names a decision a rule may not make; a
-// people merge; a record-only link). An acceptance promoting one would be counted as
+// record-only link). An acceptance promoting one would be counted as
 // made mechanical while nothing applies it, so it is refused at parse unless the op is
 // record-only. internal/repair's TestAcceptableOpsAreAppliable pins this set against
 // the ops the repair can apply.
-var unappliableOps = map[string]bool{OpReview: true, OpRenameCandidate: true, OpRepointSidecar: true, OpMergePeople: true,
+var unappliableOps = map[string]bool{OpReview: true, OpRenameCandidate: true, OpRepointSidecar: true,
 	OpLinkLibrivoxRepackage: true}
 
 // recordOnlyOps are the ops whose reviewed decision IS the record of a fact and is
@@ -249,8 +256,8 @@ var recordOnlyOps = map[string]bool{OpLinkLibrivoxRepackage: true}
 func AcceptableOp(op string) bool { return knownReviewOp(op) && !unappliableOps[op] }
 
 // Ops returns every op opPhrase renders, review included, sorted: every op the
-// audit emits, plus merge-people, which no detector emits and only a reviewed
-// rejection names.
+// audit emits, plus merge-people and merge-recordings, which no detector emits and
+// only a reviewed decision names.
 func Ops() []string {
 	var out []string
 	for op := range opPhrase {
@@ -309,12 +316,18 @@ func parseReviewed(raw []byte) ([]reviewedDecision, error) {
 				return nil, fmt.Errorf("entry %d: %q is not a slug", i, slug)
 			}
 		}
-		if r.Op == OpMergePeople && (r.Decision != "reject" || r.Target == "" || len(r.Others) == 0 ||
+		// No detector proposes a people merge, so an accept would meet nothing: it is a
+		// reject ("two people") or an assert ("one person", which metarepair applies).
+		if r.Op == OpMergePeople && (r.Decision == "accept" || r.Target == "" || len(r.Others) == 0 ||
 			r.Series != "" || r.Field != "" || r.From != "" || r.To != "" || slices.Contains(r.Others, r.Target)) {
-			return nil, fmt.Errorf("entry %d: a %s decision is a reject naming a target and the distinct others, nothing else", i, OpMergePeople)
+			return nil, fmt.Errorf("entry %d: a %s decision is a reject or an assert naming a target and the distinct others, nothing else",
+				i, OpMergePeople)
 		}
-		if r.Op == OpLinkLibrivoxRepackage && (r.Target == "" || !model.ValidSlug(r.From) ||
-			!model.ValidSlug(r.To) || r.From == r.To || r.Series != "" || r.Field != "" || len(r.Others) > 0) {
+		if r.Op == OpMergeRecordings && (r.Decision == "accept" || !recordingPair(r)) {
+			return nil, fmt.Errorf("entry %d: a %s decision is a reject or an assert naming the work (target), the recording "+
+				"that folds (from) and the one it folds into (to), two different recording ids, nothing else", i, OpMergeRecordings)
+		}
+		if r.Op == OpLinkLibrivoxRepackage && !recordingPair(r) {
 			return nil, fmt.Errorf("entry %d: a %s decision is an accept (the link recorded) or a reject naming the work "+
 				"(target), the retail recording (from) and the LibriVox recording (to), two different recording ids, nothing else", i,
 				OpLinkLibrivoxRepackage)
@@ -373,8 +386,10 @@ func parseReviewed(raw []byte) ([]reviewedDecision, error) {
 // detector would and a detector making the same proposal is found as redundant.
 func validAssertion(r reviewedDecision) error {
 	if _, ok := assertClass[r.Op]; !ok {
-		return fmt.Errorf("a %q proposal cannot be asserted (want %s, %s, %s, %s or %s)", r.Op, OpAddSeriesMember, OpDropMembership,
-			OpMergeSeries, OpMergeWorks, OpRetitle)
+		return fmt.Errorf("a %q proposal cannot be asserted (want %s)", r.Op, strings.Join(slices.Sorted(maps.Keys(assertClass)), ", "))
+	}
+	if r.Op == OpMergeRecordings {
+		return nil // parseReviewed holds its shape, whatever the decision
 	}
 	if r.Op == OpRetitle {
 		if !assertedOnTarget(r, fieldTitle) || r.Series != "" {
@@ -435,12 +450,9 @@ func oneLineTrimmed(s string) bool {
 // has been applied; one resolving elsewhere would silently widen the merge to fold
 // that other survivor too.
 func retiredElsewhere(r reviewedDecision, target string, reds model.Redirects) []string {
-	if r.Op != OpMergeWorks && r.Op != OpMergeSeries {
+	kind := distinctKind(r.Op)
+	if kind == "" {
 		return nil
-	}
-	kind := model.RedirectWorks
-	if r.Op == OpMergeSeries {
-		kind = model.RedirectSeries
 	}
 	var out []string
 	for _, o := range r.Others {
@@ -467,6 +479,9 @@ var judgesOneWork = map[string]bool{
 	OpRetitle:         true,
 	OpSetWorkLanguage: true,
 	OpFillField:       true,
+	// Two of the work's own recordings, by id: a survivor's recordings are other records,
+	// even where a merge moved one of them across under the same key.
+	OpMergeRecordings: true,
 }
 
 // retiredSubject says why an accepted or asserted decision of a judgesOneWork op whose
@@ -932,18 +947,20 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, s
 	if s.ix == nil {
 		return nil, 0, statusStale, "no catalogue to find its records in"
 	}
-	if (p.Op == OpMergeWorks || p.Op == OpMergeSeries) && len(p.Others) == 0 {
+	if distinctKind(p.Op) != "" && len(p.Others) == 0 {
 		return nil, 0, statusStale, "applied: every record it folds now resolves to " + p.Target
 	}
-	var works, series []string
+	var works, series, people []string
 	switch p.Op {
 	case OpMergeWorks:
 		works = Cluster(p.Target, p.Others)
 	case OpMergeSeries:
 		series = Cluster(p.Target, p.Others)
+	case OpMergePeople:
+		people = Cluster(p.Target, p.Others)
 	case OpAddSeriesMember, OpDropMembership:
 		works, series = []string{p.Target}, []string{p.Series}
-	case OpRetitle:
+	case OpRetitle, OpMergeRecordings:
 		works = []string{p.Target}
 	}
 	fd := Finding{Subclass: SubclassAsserted,
@@ -963,6 +980,13 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, s
 			fd.Series = append(fd.Series, s.ix.seriesRef(se))
 		} else {
 			missing = append(missing, "series "+id)
+		}
+	}
+	for _, id := range people {
+		if pe := s.ix.personByID[id]; pe != nil {
+			fd.People = append(fd.People, s.ix.personRef(pe))
+		} else {
+			missing = append(missing, "person "+id)
 		}
 	}
 	if len(missing) > 0 {
@@ -989,6 +1013,20 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, s
 		}
 	}
 	switch p.Op {
+	case OpMergeRecordings:
+		// The work's recordings as they stand now: the folded one gone while the one it
+		// folds into stays is what an applied fold leaves (recording ids have no tombstone).
+		held := map[string]bool{}
+		for _, rec := range s.ix.workByID[p.Target].Recordings {
+			held[rec.ID] = true
+		}
+		switch {
+		case !held[p.To]:
+			return nil, 0, statusRefused, fmt.Sprintf("work %s holds no recording %s to fold into", p.Target, p.To)
+		case !held[p.From]:
+			return nil, 0, statusStale, fmt.Sprintf("applied: work %s holds %s and no recording %s", p.Target, p.To, p.From)
+		}
+		fd.Recording = p.From
 	case OpRetitle:
 		// The title is compared with the work as it stands now:
 		// metarepair re-reads it the same way and refuses any other title as stale-value.
@@ -1040,8 +1078,11 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, s
 		}
 	}
 	base := "asserted/" + p.Target
-	if p.Op == OpAddSeriesMember || p.Op == OpDropMembership {
+	switch p.Op {
+	case OpAddSeriesMember, OpDropMembership:
 		base += "@" + p.Series
+	case OpMergeRecordings:
+		base += "/" + p.From
 	}
 	fd.Key = base
 	for n := 2; s.keys[class+" "+fd.Key]; n++ {
@@ -1058,4 +1099,11 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, s
 	}
 	c.add(fd)
 	return c, len(c.rows) - 1, "", ""
+}
+
+// recordingPair reports whether r names two recordings of one work and nothing else:
+// the work (target), two different recording ids (from, to).
+func recordingPair(r reviewedDecision) bool {
+	return r.Target != "" && model.ValidSlug(r.From) && model.ValidSlug(r.To) && r.From != r.To &&
+		r.Series == "" && r.Field == "" && len(r.Others) == 0
 }

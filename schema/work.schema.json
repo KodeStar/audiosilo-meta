@@ -18,6 +18,16 @@
       "type": "string",
       "minLength": 1
     },
+    "alternate_titles": {
+      "description": "Other titles this one book is published or known under (a retitled re-release, a regional title, another spelling), each a title, never a decorated listing. Search finds the work by them; the title stays the one it leads with. Optional: metarepair's merge-works fills it from a folded record whose title differs, and pkg/check holds it apart from the title.",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
     "authors": {
       "description": "The work's authors as person slugs. The slug is the identity, so the list may not repeat one.",
       "type": "array",

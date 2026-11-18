@@ -2788,6 +2788,15 @@
     "target": "jack-london"
   },
   {
+    "decision": "assert",
+    "op": "merge-people",
+    "others": [
+      "james-hunter"
+    ],
+    "reason": "one author: James A. Hunter, the Shadow Alley Press LitRPG and urban fantasy writer (Viridian Gate Online, Rogue Dungeon, Shadowcroft Academy, Yancy Lazarus); 14 Viridian Gate Online works credited both records after the LibraForge merges (meta#2910)",
+    "target": "james-a-hunter"
+  },
+  {
     "decision": "reject",
     "op": "merge-people",
     "others": [
@@ -2959,6 +2968,15 @@
     "target": "matthew-barnes"
   },
   {
+    "decision": "assert",
+    "op": "merge-people",
+    "others": [
+      "maxime-durand"
+    ],
+    "reason": "one author: Maxime J. Durand of Vainqueur the Dragon; maxime-durand is a store listing's spelling credited only on a second record of Vainqueur the Dragon (meta#2926)",
+    "target": "maxime-j-durand"
+  },
+  {
     "decision": "reject",
     "op": "merge-people",
     "others": [
@@ -2966,6 +2984,15 @@
     ],
     "reason": "two people: Dr. Michael Goldberg is the physician of The Myth of Autism; Michael Goldberg is the sales trainer of Knock Out Networking",
     "target": "michael-goldberg"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-people",
+    "others": [
+      "nicolo-machiavelli"
+    ],
+    "reason": "one author: Niccolo Machiavelli (1469-1527), LibriVox author 885; nicolo-machiavelli is a store listing's spelling credited only on two readings of The Prince (meta#2926)",
+    "target": "niccolo-machiavelli"
   },
   {
     "decision": "reject",
@@ -3182,6 +3209,30 @@
     ],
     "reason": "two people: Worthington George Smith (1835-1917) wrote Mushrooms and Toadstools; George Smith (1833-1919) wrote A Short History of Christian Missions",
     "target": "worthington-george-smith"
+  },
+  {
+    "decision": "assert",
+    "from": "john-bedford-lloyd-2019",
+    "op": "merge-recordings",
+    "reason": "one production: John Bedford Lloyd's unabridged reading at 834 and 833 minutes, the 2012 HarperCollins release and its 2019 HarperAudio listing (meta#2910)",
+    "target": "micro",
+    "to": "john-bedford-lloyd-2012"
+  },
+  {
+    "decision": "assert",
+    "from": "ralph-cosham-2017",
+    "op": "merge-recordings",
+    "reason": "one production: Ralph Cosham's unabridged reading at 2581 minutes both, the 2011 Blackstone release and its 2017 Vintage Digital listing (meta#2910)",
+    "target": "postwar-a-history-of-europe-since-1945",
+    "to": "ralph-cosham-2011"
+  },
+  {
+    "decision": "assert",
+    "from": "adam-kay-2024",
+    "op": "merge-recordings",
+    "reason": "one production: Adam Kay's own unabridged reading at 347 minutes both, the 2022 Mariner release and its 2024 Macmillan Digital Audio listing (meta#2910)",
+    "target": "this-is-going-to-hurt",
+    "to": "adam-kay-2022"
   },
   {
     "decision": "assert",
@@ -26150,6 +26201,24 @@
     ],
     "reason": "one book: Dante King's Beast Shifter 3, The Primal Talisman, read by Lewis Alexander and Rozelyn Rader (637 and 619 min); the 2025 record is the Royal Guard Publishing re-release; found by the LibraForge benchmark",
     "target": "the-primal-talisman-beast-shifter-3"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-prince-by-nicolo-machiavelli"
+    ],
+    "reason": "one book: The Prince by Niccolo Machiavelli, Stewart Crank's 2021 reading at 229 minutes; the author's name in the title is listing text and the record was apart only by the author spelling folded in meta#2926",
+    "target": "the-prince-niccolo-machiavelli"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "the-prince-nicolo-machiavelli"
+    ],
+    "reason": "one book: The Prince by Niccolo Machiavelli; the runtime gap is between readings and translations (Ian Richardson 189 min and Joseph Gomez 195 beside the held work's readings of 173 to 355), each kept as its own recording; the two records were apart only by the author spelling folded in meta#2926",
+    "target": "the-prince-niccolo-machiavelli"
   },
   {
     "decision": "reject",

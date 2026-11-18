@@ -1993,12 +1993,17 @@
       },
       "WorkDetail": {
         "type": "object",
-        "description": "The full work document. `characters`, `recaps`, `recap_summary`, `community_description`, `position_scale`, `genres`, `translation_of` and `translations` are additionally gated on the loaded artifact's internal schema version: a server briefly serving an older artifact omits them rather than failing.",
+        "description": "The full work document. `characters`, `recaps`, `recap_summary`, `community_description`, `position_scale`, `genres`, `translation_of`, `translations` and `alternate_titles` are additionally gated on the loaded artifact's internal schema version: a server briefly serving an older artifact omits them rather than failing.",
         "required": ["id", "title", "authors", "language", "series", "recordings"],
         "properties": {
           "id": { "type": "string" },
           "title": { "type": "string" },
           "subtitle": { "type": "string", "description": "Omitted when none." },
+          "alternate_titles": {
+            "type": "array",
+            "description": "Other titles the book is published or known under (a retitled re-release, a regional title, another spelling), in the record's order; search finds the work by them. Omitted when none.",
+            "items": { "type": "string" }
+          },
           "authors": {
             "type": "array",
             "description": "The identity author list, in billing order.",

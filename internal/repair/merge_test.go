@@ -1268,3 +1268,88 @@ func TestMergeWorksHandlesThePositionScale(t *testing.T) {
 		}
 	})
 }
+
+// A merge keeps the loser's title as an alternate title when it names the book
+// differently, so a search for it still finds the survivor; a title that only
+// restates the survivor's with a series designation or a subtitle adds nothing.
+func TestMergeWorksKeepsADifferentTitleAsAnAlternate(t *testing.T) {
+	files := map[string]string{
+		"people/ja/jane-doe.json":      personJSON(t, "jane-doe", "Jane Doe"),
+		"people/na/nate-narrator.json": personJSON(t, "nate-narrator", "Nate Narrator"),
+		"works/da/dashing-devil/work.json": testpack.WithField(t, workJSON(t, "dashing-devil", "Dashing Devil"),
+			"alternate_titles", []string{"The Devil Dashes"}),
+		"works/da/dashing-devil/recordings/r.json": recJSON(t, "r", "dashing-devil"),
+		"works/hi/hidden-hero/work.json": testpack.WithField(t, workJSON(t, "hidden-hero", "Hidden Hero"),
+			"alternate_titles", []string{"Dashing Devil", "The Devil Dashes", "A Hidden Hero"}),
+		"works/hi/hidden-hero/recordings/s.json": recJSON(t, "s", "hidden-hero"),
+	}
+	rn, tx := planFixture(t, seedTree(t, files))
+	if err := rn.mergeWorks(tx, mergeFinding("dashing-devil", "hidden-hero")); err != nil {
+		t.Fatal(err)
+	}
+	got := tx.works.puts["dashing-devil"].Strs("alternate_titles")
+	if want := []string{"The Devil Dashes", "Hidden Hero", "A Hidden Hero"}; !slices.Equal(got, want) {
+		t.Errorf("alternate_titles = %v, want %v (the survivor's own first, its title never)", got, want)
+	}
+	if !slices.ContainsFunc(tx.notes, func(n string) bool { return strings.Contains(n, `alternate_titles: kept "Hidden Hero"`) }) {
+		t.Errorf("notes %v do not name the kept title", tx.notes)
+	}
+
+	rn, tx = planFixture(t, seedTree(t, hammeredCluster(t)))
+	if err := rn.mergeWorks(tx, mergeFinding("hammered", "hammered-book-3")); err != nil {
+		t.Fatal(err)
+	}
+	if got := tx.works.puts["hammered"]; got.Has("alternate_titles") {
+		t.Errorf("alternate_titles = %v, want none: %q restates %q", got.Strs("alternate_titles"),
+			"Hammered: The Druid Tales, Book 3", "Hammered")
+	}
+}
+
+// A second loser of one cluster whose title only restates an alternate the first one
+// left adds nothing, and a padded title is kept trimmed, as pkg/check requires of an
+// alternate.
+func TestAddAlternateTitlesSkipsARestatedAlternateAndTrims(t *testing.T) {
+	work := func(title string) entry {
+		e := entry{}
+		e.Set("title", title)
+		return e
+	}
+	merged := work("Dashing Devil")
+	if got := addAlternateTitles(merged, work("Hidden Hero ")); !slices.Equal(got, []string{"Hidden Hero"}) {
+		t.Fatalf("added %q, want the title trimmed", got)
+	}
+	if got := addAlternateTitles(merged, work("Hidden Hero: The Devil Tales, Book 1")); len(got) != 0 {
+		t.Errorf("added %q, want nothing: it restates the alternate already kept", got)
+	}
+	if got := merged.Strs("alternate_titles"); !slices.Equal(got, []string{"Hidden Hero"}) {
+		t.Errorf("alternate_titles = %q", got)
+	}
+}
+
+// restatesTitle extends a key only at a word boundary ("It" is not "Itch"), and a
+// title the slug fold cannot read is compared as written rather than read as
+// restating every other title.
+func TestRestatesTitle(t *testing.T) {
+	for _, c := range []struct {
+		a, b string
+		want bool
+	}{
+		{"Hammered: The Druid Tales, Book 3", "Hammered", true},
+		{"The Prince by Nicolo Machiavelli", "The Prince", true},
+		{"A.B. Kovacs Saga", "AB Kovacs Saga", true},
+		{"Itch", "It", false},
+		{"Redemption", "Red", false},
+		{"Hidden Hero", "Dashing Devil", false},
+		{"Война и мир", "War and Peace", false},
+		{"Война и мир", "Анна Каренина", false},
+		{"Война и мир: Том 1", "Война и мир", true},
+		{"किताबें", "कि", false}, // a vowel sign is inside its word, not a boundary
+	} {
+		if got := restatesTitle(c.a, c.b); got != c.want {
+			t.Errorf("restatesTitle(%q, %q) = %v, want %v", c.a, c.b, got, c.want)
+		}
+		if got := restatesTitle(c.b, c.a); got != c.want {
+			t.Errorf("restatesTitle(%q, %q) = %v, want %v (symmetric)", c.b, c.a, got, c.want)
+		}
+	}
+}

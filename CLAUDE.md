@@ -132,7 +132,11 @@ either: it is a dry run by default and a `--write` is a data change with its own
 pull request. It re-runs the audit in process over the tree it is about to modify
 and applies only what that fresh run still proposes as non-advisory, so a stale
 report cannot resurrect a decision the data no longer supports - see
-`internal/repair`.
+`internal/repair`. Two of its ops are sourced only by a reviewed `assert` in
+`internal/audit/reviewed.json`, never by a detector: `merge-people` (one person's
+two records: every credit re-pointed, the loser's slug tombstoned) and
+`merge-recordings` (a work's reissue folded into the recording it repeats, only
+where the records agree it is one production).
 
 **The defect classes it found cannot be re-created**, which is the PREVENTION half
 of that campaign and is in the gate (three layers over one rule -
@@ -180,10 +184,11 @@ never noticed (ai-verify read only the metadiff summary). Two halves:
   `audit.ReviewedDistinct()` -> `check.LoadOptions.Distinct` -> `LoadProfileWith`,
   supplied by cmd/metacheck alone. So a triage records "not one book" as such a
   rejection - and rejects only the distinct subset of a group holding a real
-  duplicate, which it asserts instead. `merge-people` (`audit.OpMergePeople`) exists
-  only to be rejected - no detector proposes it and no repair applies it, so an
-  accept or an assert of it does not parse - and is how "two people, not one" is
-  recorded for an honorific pair (Dr. Alex George / Alex George). A merge
+  duplicate, which it asserts instead. `merge-people` (`audit.OpMergePeople`) is
+  never accepted - no detector proposes it, so an accept of it does not parse. Its
+  rejection is how "two people, not one" is recorded for an honorific pair (Dr. Alex
+  George / Alex George), and its assertion ("one person") is what metarepair folds
+  (`internal/repair`'s `people.go`). A merge
   rejection matching no fresh proposal is reported `census-only` in SUMMARY.md, not
   STALE, because the census honours it whatever the detectors propose and pruning
   it would bring the pair back - unless fewer than two of its records are still
@@ -523,7 +528,11 @@ pre-migration layout was one file per record
 it, `pkg/check` and every writer now refuse it loudly.
 
 - **work** - an entry in the works family, keyed by work slug: the abstract book
-  (title, authors (person ids), language, first_published, xrefs (wikidata/
+  (title, optional `alternate_titles` (other titles the book is published or
+  known under: a retitled re-release, a regional title, another spelling; never
+  the title itself, `checkAlternateTitles`; merge-works fills it from a folded
+  record whose title names the book differently; search reads them as the work's
+  FTS names), authors (person ids), language, first_published, xrefs (wikidata/
   openlibrary/goodreads/print ISBNs), optional `genres` (values from the
   controlled vocabulary enum `common.schema.json#/$defs/genre` - a flat,
   retailer-neutral list the project owns; sorted ascending, enforced by
@@ -785,27 +794,30 @@ project's own title, section numbers, translators, section readers and genre
 names, which the LibriVox-shaped feed answers with; PACKAGES.md "The LIBRIVOX
 RECORDING layer"); the `position_scales(work_id, length, unit, partial)` table in
 **schema_version 10**; the STORE LINKS (`recordings.link_audiobookguild`,
-`recordings.link_graphicaudio`) in **schema_version 11** (the current version);
+`recordings.link_graphicaudio`) in **schema_version 11**; a work's ALTERNATE TITLES
+(`work_alternate_titles(work_id, title, ord)`, also in the work's `search_fts`
+names) in **schema_version 12** (the current version);
 character `ord`/recap
 position order preserved, deterministic), and `metaserve` returns
 them inline on `GET /works/{id}`
 (`workDetail.characters`/`.recaps`/`.recap_summary`/`.genres`/
-`.community_description`/`.position_scale`/`.translation_of`/`.translations`, `omitempty`). The
+`.community_description`/`.position_scale`/`.translation_of`/`.translations`/`.alternate_titles`, `omitempty`). The
 serve queries degrade gracefully if the tables are absent (a newer binary
 briefly serving an older release): characters/recaps gate on schema_version >= 2,
 the recap summary on >= 3, genres on >= 4, the slug redirects on >= 5, the
 community description on >= 6, the languages layer on >= 7, the LibriVox
 layer on >= 8, the LibriVox recording layer on >= 9, the position scales on
->= 10 and the store links on >= 11, so a
+>= 10, the store links on >= 11 and the alternate titles on >= 12, so a
 table's absence is "no data" (for redirects: a retired slug 404s as it did before
 the mechanism existed), not a 500. The redirect, description and languages gates
 are asked ONCE at load rather than per request - those tables are EMPTY in every
 release until their first record lands, and all sit on ordinary 200 paths (the
 description on every work page, both guide pages and every ABS candidate; the
 translations and the ordering family on every work and series page) - so an
-artifact that CLAIMS version 5, 6, 7, 8, 9, 10 or 11 without its table (for 7: the
+artifact that CLAIMS version 5, 6, 7, 8, 9, 10, 11 or 12 without its table (for 7: the
 translations table or the series ordering columns; for 8: `librivoxShapeSQL`;
-for 9: `librivoxRecordingShapeSQL`; for 11: `storeLinksShapeSQL`) fails to open, with an
+for 9: `librivoxRecordingShapeSQL`; for 11: `storeLinksShapeSQL`; for 12:
+`alternateTitlesShapeSQL`) fails to open, with an
 error naming that claim; the builder writes the version and the table together,
 so the combination is a corrupt file rather than an old one. **Authoring the expressive
 layer is documented in the COMMUNITY repository's `AUTHORING.md`** (the reusable

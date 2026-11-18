@@ -398,6 +398,14 @@ func trimStopwordTail(s string) string {
 // value a repair pass would write back.
 func CompareKey(cleaned string) string { return FoldKey(dropLeadingArticle(cleaned)) }
 
+// CompareWords is CompareKey's key as the words it joins (strings.Join(words, "") ==
+// CompareKey(cleaned)), for a caller asking whether one key extends another at a WORD
+// boundary: on the joined keys alone "it" is a prefix of "itch". A script the slug
+// fold drops (Cyrillic, CJK) has no words here, as it has no key.
+func CompareWords(cleaned string) []string {
+	return strings.FieldsFunc(model.Slugify(dropLeadingArticle(cleaned)), func(r rune) bool { return r == '-' })
+}
+
 // CompareKeyWhole is CompareKey over the WHOLE title: the same fold, without the
 // slug cap FoldKey inherits from Slugify. Two long titles that differ only past
 // the cap ("..., Book 3)" against "..., Book 4)") share a CompareKey and differ

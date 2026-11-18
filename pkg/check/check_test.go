@@ -1234,3 +1234,37 @@ func TestRecordingWithItsOwnISBNBesidePrintISBNPasses(t *testing.T) {
 		t.Errorf("problems:\n%s", joinProblems(res.Problems))
 	}
 }
+
+// TestWorkAlternateTitles covers the optional alternate_titles field: other titles
+// validate and reach the catalog, while one equal to the work's own title, one with
+// padding, an empty list and a repeat are refused.
+func TestWorkAlternateTitles(t *testing.T) {
+	work := func(alts string) string {
+		return `{"alternate_titles":` + alts + `,"authors":["author-one"],"id":"book-one","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book One"}`
+	}
+	load := func(alts string) Result {
+		dir := t.TempDir()
+		files := baseValid()
+		files["works/bo/book-one/work.json"] = work(alts)
+		writeEntities(t, dir, files)
+		return Load(dir)
+	}
+	res := load(`["The First Book","Book the First"]`)
+	if !res.OK() {
+		t.Fatalf("alternate titles should validate, got: %v", res.Problems)
+	}
+	if got := res.Catalog.Works[0].AlternateTitles; len(got) != 2 || got[0] != "The First Book" {
+		t.Errorf("alternate titles did not load: %v", got)
+	}
+	for name, alts := range map[string]string{
+		"the title":  `["Book One"]`,
+		"padded":     `[" The First Book"]`,
+		"empty list": `[]`,
+		"repeat":     `["The First Book","The First Book"]`,
+		"empty":      `[""]`,
+	} {
+		if load(alts).OK() {
+			t.Errorf("%s: validated, want a problem", name)
+		}
+	}
+}

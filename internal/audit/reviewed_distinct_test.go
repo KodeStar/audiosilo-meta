@@ -95,9 +95,10 @@ func TestReviewedDistinctSuppressesTheCensusGroup(t *testing.T) {
 	}
 }
 
-// A `merge-people` decision is a reject naming a target and distinct others -
-// nothing else parses - and it reads into the people namespace. No detector
-// proposes the op, so the audit reports it census-only, never stale.
+// A `merge-people` decision is a reject (or an assert, which metarepair applies)
+// naming a target and distinct others - nothing else parses - and a reject reads into
+// the people namespace. No detector proposes the op, so the audit reports a reject
+// census-only, never stale.
 func TestReviewedMergePeopleRejection(t *testing.T) {
 	rs := mustParse(t, `[{"decision":"reject","op":"merge-people","others":["sir-richard-burton"],`+
 		`"reason":"the Victorian translator and the actor are two people","target":"richard-burton"}]`)
@@ -107,7 +108,6 @@ func TestReviewedMergePeopleRejection(t *testing.T) {
 	}
 	for name, entry := range map[string]string{
 		"accept":    `{"decision":"accept","op":"merge-people","others":["b"],"reason":"r","target":"a"}`,
-		"assert":    `{"decision":"assert","op":"merge-people","others":["b"],"reason":"r","target":"a"}`,
 		"no target": `{"decision":"reject","op":"merge-people","others":["b"],"reason":"r"}`,
 		"no others": `{"decision":"reject","op":"merge-people","reason":"r","target":"a"}`,
 		"a field":   `{"decision":"reject","field":"name","op":"merge-people","others":["b"],"reason":"r","target":"a"}`,
@@ -121,6 +121,7 @@ func TestReviewedMergePeopleRejection(t *testing.T) {
 			t.Errorf("%s: parsed, want a refusal", name)
 		}
 	}
+	mustParse(t, `[{"decision":"assert","op":"merge-people","others":["b"],"reason":"r","target":"a"}]`)
 
 	rep := runFixtureRejecting(t, map[string]string{
 		"people/ja/jane-doe.json":           testpack.PersonJSON(t, "jane-doe", "Jane Doe"),
