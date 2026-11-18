@@ -1343,6 +1343,7 @@ func TestRestatesTitle(t *testing.T) {
 		{"Война и мир", "War and Peace", false},
 		{"Война и мир", "Анна Каренина", false},
 		{"Война и мир: Том 1", "Война и мир", true},
+		{"किताबें", "कि", false}, // a vowel sign is inside its word, not a boundary
 	} {
 		if got := restatesTitle(c.a, c.b); got != c.want {
 			t.Errorf("restatesTitle(%q, %q) = %v, want %v", c.a, c.b, got, c.want)

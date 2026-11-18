@@ -292,10 +292,13 @@ func wordsExtend(long, short []string) bool {
 // scriptWords is a title's lower-cased letter and digit runs, in any script: the words
 // restatesTitle compares when the slug fold has none. The title is read as written,
 // not through titlerule.Clean, whose segment peels judge a segment by its Latin key and
-// so drop a Cyrillic one whole ("Война и мир: Том 1" cleans to "Том 1").
+// so drop a Cyrillic one whole ("Война и мир: Том 1" cleans to "Том 1"). A combining
+// mark is part of its word (a Hebrew point, a Devanagari vowel sign, a decomposed
+// accent): split there, a word's first letters would read as a word of their own, the
+// bare prefix restatesTitle exists to refuse.
 func scriptWords(title string) []string {
 	return strings.FieldsFunc(strings.ToLower(title), func(r rune) bool {
-		return !unicode.IsLetter(r) && !unicode.IsNumber(r)
+		return !unicode.IsLetter(r) && !unicode.IsNumber(r) && !unicode.IsMark(r)
 	})
 }
 
