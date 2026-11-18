@@ -17,10 +17,14 @@ const alternateTitlesSchemaVersion = 12
 // table's columns and reads no row.
 const alternateTitlesShapeSQL = `SELECT work_id, title, ord FROM work_alternate_titles LIMIT 0`
 
+// hasAlternateTitles reports whether the artifact carries the work_alternate_titles
+// table.
+func (s *DB) hasAlternateTitles() bool { return s.schemaVersion >= alternateTitlesSchemaVersion }
+
 // workAlternateTitles returns a work's alternate titles in the record's order, or
 // nil when it states none (or the artifact predates the table).
 func (s *DB) workAlternateTitles(ctx context.Context, workID string) ([]string, error) {
-	if s.schemaVersion < alternateTitlesSchemaVersion {
+	if !s.hasAlternateTitles() {
 		return nil, nil
 	}
 	rows, err := s.db.QueryContext(ctx, `SELECT title FROM work_alternate_titles WHERE work_id=? ORDER BY ord`, workID)

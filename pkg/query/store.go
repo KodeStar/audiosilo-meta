@@ -395,7 +395,7 @@ func (s *DB) loadStats() error {
 		}
 	}
 	// The ALTERNATE TITLES (version 12), the same way: every work page reads them.
-	if s.schemaVersion >= alternateTitlesSchemaVersion {
+	if s.hasAlternateTitles() {
 		if _, err := s.db.Exec(alternateTitlesShapeSQL); err != nil {
 			return fmt.Errorf("%s: artifact schema_version %d requires the work_alternate_titles table: %w",
 				s.path, s.schemaVersion, err)

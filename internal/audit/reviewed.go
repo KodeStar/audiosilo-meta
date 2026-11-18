@@ -323,13 +323,11 @@ func parseReviewed(raw []byte) ([]reviewedDecision, error) {
 			return nil, fmt.Errorf("entry %d: a %s decision is a reject or an assert naming a target and the distinct others, nothing else",
 				i, OpMergePeople)
 		}
-		if r.Op == OpMergeRecordings && (r.Decision == "accept" || r.Target == "" || !model.ValidSlug(r.From) ||
-			!model.ValidSlug(r.To) || r.From == r.To || r.Series != "" || r.Field != "" || len(r.Others) > 0) {
+		if r.Op == OpMergeRecordings && (r.Decision == "accept" || !recordingPair(r)) {
 			return nil, fmt.Errorf("entry %d: a %s decision is a reject or an assert naming the work (target), the recording "+
 				"that folds (from) and the one it folds into (to), two different recording ids, nothing else", i, OpMergeRecordings)
 		}
-		if r.Op == OpLinkLibrivoxRepackage && (r.Target == "" || !model.ValidSlug(r.From) ||
-			!model.ValidSlug(r.To) || r.From == r.To || r.Series != "" || r.Field != "" || len(r.Others) > 0) {
+		if r.Op == OpLinkLibrivoxRepackage && !recordingPair(r) {
 			return nil, fmt.Errorf("entry %d: a %s decision is an accept (the link recorded) or a reject naming the work "+
 				"(target), the retail recording (from) and the LibriVox recording (to), two different recording ids, nothing else", i,
 				OpLinkLibrivoxRepackage)
@@ -1101,4 +1099,11 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, s
 	}
 	c.add(fd)
 	return c, len(c.rows) - 1, "", ""
+}
+
+// recordingPair reports whether r names two recordings of one work and nothing else:
+// the work (target), two different recording ids (from, to).
+func recordingPair(r reviewedDecision) bool {
+	return r.Target != "" && model.ValidSlug(r.From) && model.ValidSlug(r.To) && r.From != r.To &&
+		r.Series == "" && r.Field == "" && len(r.Others) == 0
 }
