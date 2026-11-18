@@ -1,6 +1,8 @@
 package repair
 
 import (
+	"slices"
+
 	"github.com/kodestar/audiosilo-meta/internal/audit"
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/rawentry"
@@ -67,8 +69,14 @@ func (rn *runner) retitleWork(t *txn, fd audit.Finding) error {
 	}
 	next := e.Clone()
 	next.Set("title", p.To)
-	t.works.put(p.Target, next)
 	t.note("retitled %s: %q -> %q", p.Target, p.From, p.To)
+	// An alternate title the work now leads with is no longer an alternate: pkg/check
+	// refuses one equal to the title (checkAlternateTitles).
+	if alts := next.Strs("alternate_titles"); slices.Contains(alts, p.To) {
+		rawentry.SetListOrDrop(next, "alternate_titles", slices.DeleteFunc(alts, func(s string) bool { return s == p.To }))
+		t.note("  alternate_titles: dropped %q, now its title", p.To)
+	}
+	t.works.put(p.Target, next)
 	return t.aliasRetitle(p.Target, next)
 }
 

@@ -486,3 +486,16 @@ func TestFamilyRenumberedKeepsTheTargetsNumbering(t *testing.T) {
 		assertRefusal(t, rn.mergeSeries(tx, fd), CatMalformed, `names field "name"`)
 	})
 }
+
+// A retitle onto one of the work's alternate titles takes it off the alternates:
+// pkg/check refuses an alternate equal to the title.
+func TestRetitleOntoAnAlternateTitleDropsIt(t *testing.T) {
+	tx := retitleTxn(t, map[string]string{
+		"works/th/the-hobbit/work.json": testpack.WithField(t, workJSON(t, "the-hobbit", "The Hobbit (Unabridged)"),
+			"alternate_titles", []string{"The Hobbit", "There and Back Again"}),
+		"people/ja/jane-doe.json": personJSON(t, "jane-doe", "Jane Doe"),
+	}, "the-hobbit", "The Hobbit (Unabridged)", "The Hobbit")
+	if got := tx.works.puts["the-hobbit"].Strs("alternate_titles"); !slices.Equal(got, []string{"There and Back Again"}) {
+		t.Errorf("alternate_titles = %v, want the new title taken off", got)
+	}
+}
