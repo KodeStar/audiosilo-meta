@@ -542,7 +542,11 @@ func (rn *runner) apply(store *pack.Store) error {
 	// pack, a split).
 	fr, err := format.WriteProfile(rn.opts.DataDir, rn.opts.Profile)
 	if err != nil {
-		return err
+		// The repair's own packs and tombstones are on disk by now, whatever the
+		// heal says of itself: its refusal of differing copies reads "nothing
+		// was written", which is true of the heal alone.
+		return fmt.Errorf("repair: the heal after the write failed; the change is on disk, so recover with `git checkout -- %s`: %w",
+			rn.opts.DataDir, err)
 	}
 	rn.rep.Formatted, rn.rep.HealedWrote, rn.rep.HealedGone = fr.Formatted, fr.Wrote, fr.Deleted
 	if fr.NeedsHuman() {
