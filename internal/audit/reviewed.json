@@ -26203,6 +26203,24 @@
     "target": "the-primal-talisman-beast-shifter-3"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-prince-by-nicolo-machiavelli"
+    ],
+    "reason": "one book: The Prince by Niccolo Machiavelli, Stewart Crank's 2021 reading at 229 minutes; the author's name in the title is listing text and the record was apart only by the author spelling folded in meta#2926",
+    "target": "the-prince-niccolo-machiavelli"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "the-prince-nicolo-machiavelli"
+    ],
+    "reason": "one book: The Prince by Niccolo Machiavelli; the runtime gap is between readings and translations (Ian Richardson 189 min and Joseph Gomez 195 beside the held work's readings of 173 to 355), each kept as its own recording; the two records were apart only by the author spelling folded in meta#2926",
+    "target": "the-prince-niccolo-machiavelli"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
