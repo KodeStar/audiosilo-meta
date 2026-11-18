@@ -1,6 +1,7 @@
 package repair
 
 import (
+	"encoding/json"
 	"fmt"
 	"slices"
 
@@ -16,8 +17,9 @@ import (
 // advisory throughout); a reviewed assertion in internal/audit/reviewed.json sources
 // it, so a person fold is always a human's decision about identity.
 //
-// WHAT MOVES. A person is named by slug in five places: a work's authors and
-// credits, a recording's narrators and credits, and a series' authors. Each list
+// WHAT MOVES. A person is named by slug in six places, pkg/check's forEachPersonRef
+// enumeration: a work's authors and credits, a recording's narrators, credits and
+// chapter readers, and a series' authors. Each list
 // re-points the loser to the target and drops the repeat that leaves (a work two
 // records of one author were both credited on lists them once, in the first-seen
 // order), and a credit list is re-sorted into its canonical order. Nothing else
@@ -78,7 +80,12 @@ func (rn *runner) mergePeople(t *txn, fd audit.Finding) error {
 		}
 		for _, key := range rawentry.SortedKeys(recs) {
 			rec := recs[key].Clone()
-			if repointLists(rec, recPersonLists, retiring, target) || repointCredits(rec, retiring, target) {
+			changedRec := repointLists(rec, recPersonLists, retiring, target)
+			changedRec = repointCredits(rec, retiring, target) || changedRec
+			if changedRec, err = repointChapterReaders(rec, retiring, target, changedRec); err != nil {
+				return fmt.Errorf("work %q recording %q: %w", slug, key, err)
+			}
+			if changedRec {
 				recs[key] = rec
 				reRecs++
 				changed = true
@@ -200,6 +207,31 @@ func repointCredits(e entry, retiring map[string]bool, target string) bool {
 	return true
 }
 
+// repointChapterReaders rewrites the readers of rec's chapters naming a retiring
+// person, as repointLists does a list. Only the readers member of a chapter is
+// re-rendered; every other member, the timeline's numbers included, is carried as the
+// bytes it was. changed is passed through when nothing here changes.
+func repointChapterReaders(rec entry, retiring map[string]bool, target string, changed bool) (bool, error) {
+	if !rec.Has("chapters") {
+		return changed, nil
+	}
+	var chapters []entry
+	if err := json.Unmarshal(rec["chapters"], &chapters); err != nil {
+		return changed, err
+	}
+	touched := false
+	for _, ch := range chapters {
+		if repointLists(ch, []string{"readers"}, retiring, target) {
+			touched = true
+		}
+	}
+	if !touched {
+		return changed, nil
+	}
+	rec.Set("chapters", chapters)
+	return true, nil
+}
+
 // personFold is a committed person fold, kept on the txn so the plan's person index
 // learns it at commit (and not before: a refused txn must leave the index alone).
 type personFold struct {
@@ -235,6 +267,11 @@ func newPersonIndex(cat *model.Catalog) *personIndex {
 			}
 			for _, c := range r.Credits {
 				add(ix.works, c.Person, w.ID)
+			}
+			for _, ch := range r.Chapters {
+				for _, rd := range ch.Readers {
+					add(ix.works, rd, w.ID)
+				}
 			}
 		}
 	}

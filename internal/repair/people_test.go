@@ -35,7 +35,11 @@ func hunterTree(t testing.TB) map[string]string {
 		"works/vi/viridian-gate/recordings/r.json": recJSON(t, "r", "viridian-gate"),
 		"works/vi/vigil/work.json": workJSON(t, "vigil", "Vigil",
 			withAuthors("jane-doe"), withCredits("james-hunter", "editor")),
-		"works/vi/vigil/recordings/r.json": recJSON(t, "r", "vigil", withNarrators("james-hunter", "nate-narrator")),
+		"works/vi/vigil/recordings/r.json": testpack.WithFields(t, recJSON(t, "r", "vigil", withNarrators("james-hunter", "nate-narrator", "james-a-hunter")),
+			map[string]any{"librivox_id": 4242, "chapters": []map[string]any{
+				{"title": "One", "start_ms": 0, "length_ms": 60000, "readers": []string{"james-hunter"}},
+				{"title": "Two", "start_ms": 60000, "length_ms": 1500, "readers": []string{"nate-narrator", "james-hunter", "james-a-hunter"}},
+			}}),
 		"works/ot/other/work.json":         workJSON(t, "other", "Other", withAuthors("james-a-hunter")),
 		"works/ot/other/recordings/r.json": recJSON(t, "r", "other"),
 		"series/vi/viridian.json": testpack.WithFields(t, seriesJSON(t, "viridian", "Viridian Gate Online", "viridian-gate@1"),
@@ -74,6 +78,11 @@ func TestMergePeopleRecreditsEveryRecordAndRetiresTheLoser(t *testing.T) {
 	}
 	if got := recs["r"].Strs("narrators"); !slices.Equal(got, []string{"james-a-hunter", "nate-narrator"}) {
 		t.Errorf("vigil narrators = %v", got)
+	}
+	chapters := recs["r"].Chapters()
+	if len(chapters) != 2 || !slices.Equal(chapters[0].Readers, []string{"james-a-hunter"}) ||
+		!slices.Equal(chapters[1].Readers, []string{"nate-narrator", "james-a-hunter"}) || chapters[1].LengthMS != 1500 {
+		t.Errorf("vigil chapters = %+v, want the readers re-pointed and the timeline untouched", chapters)
 	}
 	if _, touched := tx.works.puts["other"]; touched {
 		t.Error("other names only the survivor and must not be rewritten")
