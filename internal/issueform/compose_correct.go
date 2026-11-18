@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"maps"
+	"slices"
 	"sort"
 	"strconv"
 	"strings"
@@ -51,8 +52,9 @@ const (
 // name slugs to its id, a publisher of record is not a regional imprint, a link
 // already written introduces no fault), and that one no-op rule stays the verdict.
 //
-// A scalar may also carry implies, which records what the write means OUTSIDE
-// the record - a work's retitle ALIAS in the tombstone table (aliasRetitle). It
+// A scalar may also carry implies, which records what the write means beyond the
+// field itself - a work's retitle ALIAS in the tombstone table (aliasRetitle), and
+// the new title leaving the work's alternate_titles (retitled). It
 // runs on the corrected record after the no-op test and decides everything before
 // the record is queued: it fails the run itself and reports false when the
 // consequence cannot be recorded, and otherwise hands back commit (nil when there
@@ -84,7 +86,7 @@ type correctOp struct {
 // ordering fields' compose-time checks).
 var correctableFields = map[model.Kind]map[string]correctOp{
 	model.KindWork: {
-		"title": {kind: kindString, implies: (*composer).aliasRetitle}, "subtitle": {kind: kindString},
+		"title": {kind: kindString, implies: (*composer).retitled}, "subtitle": {kind: kindString},
 		"language": {kind: kindLanguage, resolve: (*composer).checkWorkLanguage}, "first_published": {kind: kindDateYear},
 		"translation_of": {add: (*composer).correctTranslationOf},
 	},
@@ -241,6 +243,37 @@ func (c *composer) correctOne(ref recordRef, field, corrected, evidence string) 
 			c.note("%s", note)
 		}
 	}
+}
+
+// retitled is everything a work's title correction implies: inside the record, the new
+// title leaves alternate_titles when it was listed there (an alternate the work now
+// leads with is no alternate, and pkg/check's checkAlternateTitles refuses one equal to
+// the title - without this the correction most worth filing, "the book's real title is
+// its other one", would be refused as invalid); outside it, the retitle alias
+// (aliasRetitle). Both are metarepair's retitle-work's rules. The record is only queued
+// when the alias can be recorded, so a refusal there writes neither.
+func (c *composer) retitled(addr entryAddr, record map[string]any) (func() string, bool) {
+	title, _ := record["title"].(string)
+	alternates, _ := record["alternate_titles"].([]any)
+	kept := slices.DeleteFunc(slices.Clone(alternates), func(alt any) bool { return alt == title })
+	alias, ok := c.aliasRetitle(addr, record)
+	if !ok || len(kept) == len(alternates) {
+		return alias, ok
+	}
+	if len(kept) == 0 {
+		delete(record, "alternate_titles") // the schema refuses an empty list
+	} else {
+		record["alternate_titles"] = kept
+	}
+	return func() string {
+		note := fmt.Sprintf("took %q off alternate_titles: it is the title now", title)
+		if alias != nil {
+			if aliased := alias(); aliased != "" {
+				note += "; " + aliased
+			}
+		}
+		return note
+	}, true
 }
 
 // aliasRetitle records a work's retitle ALIAS, the rule metarepair's retitle-work
