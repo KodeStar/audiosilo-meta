@@ -207,3 +207,34 @@ func TestMergeRecordingsRefusesTwoProductions(t *testing.T) {
 		t.Errorf("a refused fold staged %v", rawentry.SortedKeys(tx.works.puts))
 	}
 }
+
+// A LibriVox recording read by two records of one reader collapses to one narrator:
+// the chapter readers go too, since pkg/check refuses readers on every chapter of a
+// one-narrator recording, and the applied tree validates.
+func TestMergePeopleDropsTheReadersOfASoleNarrator(t *testing.T) {
+	files := hunterTree(t)
+	files["works/vi/vigil/recordings/r.json"] = testpack.WithFields(t, recJSON(t, "r", "vigil", withNarrators("james-hunter", "james-a-hunter")),
+		map[string]any{"librivox_id": 4242, "chapters": []map[string]any{
+			{"title": "One", "start_ms": 0, "length_ms": 60000, "readers": []string{"james-hunter"}},
+			{"title": "Two", "start_ms": 60000, "length_ms": 1500, "readers": []string{"james-a-hunter"}},
+		}})
+	rn, tx := planFixture(t, seedTree(t, files))
+	if err := rn.mergePeople(tx, peopleFinding("james-a-hunter", "james-hunter")); err != nil {
+		t.Fatal(err)
+	}
+	recs, err := tx.works.puts["vigil"].Recordings()
+	if err != nil {
+		t.Fatal(err)
+	}
+	for i, ch := range recs["r"].Chapters() {
+		if len(ch.Readers) != 0 || (i == 1 && ch.LengthMS != 1500) {
+			t.Errorf("chapter %d = %+v, want no readers and the timeline untouched", i, ch)
+		}
+	}
+	if err := tx.commit("fold"); err != nil {
+		t.Fatal(err)
+	}
+	if err := rn.apply(rn.plan.people.write); err != nil {
+		t.Fatalf("apply: %v (post-write problems %v)", err, rn.rep.PostProblems)
+	}
+}

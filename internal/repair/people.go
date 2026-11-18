@@ -79,6 +79,15 @@ func (rn *runner) mergePeople(t *txn, fd audit.Finding) error {
 			if err != nil {
 				return fmt.Errorf("work %q recording %q: %w", slug, key, err)
 			}
+			if changedRec {
+				dropped, err := dropSoleNarratorReaders(rec)
+				if err != nil {
+					return fmt.Errorf("work %q recording %q: %w", slug, key, err)
+				}
+				if dropped {
+					t.note("  dropped the chapter readers of %s/%s: its narrators folded into one, who reads every chapter", slug, key)
+				}
+			}
 			if changedRec || readers {
 				recs[key] = rec
 				reRecs++
@@ -227,6 +236,30 @@ func repointChapterReaders(rec entry, retiring map[string]bool, target string) (
 		rec.Set("chapters", chapters)
 	}
 	return touched, nil
+}
+
+// dropSoleNarratorReaders removes the readers of every chapter of rec when the fold
+// left it one narrator and every chapter lists readers, and reports whether it did.
+// pkg/check refuses that shape (checkLibrivox: no readers on a one-narrator recording
+// already says they read every chapter), and a LibriVox recording read by two records
+// of one reader is exactly how a person fold reaches it.
+func dropSoleNarratorReaders(rec entry) (bool, error) {
+	raw, ok := rec["chapters"]
+	if !ok || len(rec.Strs("narrators")) != 1 {
+		return false, nil
+	}
+	var chapters []entry
+	if err := json.Unmarshal(raw, &chapters); err != nil {
+		return false, err
+	}
+	if len(chapters) == 0 || slices.ContainsFunc(chapters, func(ch entry) bool { return len(ch.Strs("readers")) == 0 }) {
+		return false, nil
+	}
+	for _, ch := range chapters {
+		delete(ch, "readers")
+	}
+	rec.Set("chapters", chapters)
+	return true, nil
 }
 
 // namesAny reports whether raw holds any of slugs as a JSON string.
