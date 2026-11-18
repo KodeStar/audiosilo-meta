@@ -806,7 +806,15 @@ jobs:
                 if grep -q "merged both sides" "$rebaselog"; then
                   tree="merged"
                 fi
-                if ! noted '^(metafmt:|invalid JSON)' fmt "$main_sha"; then
+                if [ "$(git rev-parse --verify --quiet HEAD)" = "$main_sha" ]; then
+                  # The replay dropped every commit as already upstream, so
+                  # HEAD is main's own tip and the tree is main's: nothing of
+                  # the branch's is left to normalize or check, and an amend
+                  # here would rewrite MAIN's commit into the branch. Pushed
+                  # as it stands, as it was before the tools ran on every
+                  # rebase.
+                  echo "the rebase left nothing on top of main"
+                elif ! noted '^(metafmt:|invalid JSON)' fmt "$main_sha"; then
                   failure="metafmt could not normalize the ${tree} tree${detail:+: ${detail}}"
                 elif ! noted '' "$tools/metacheck" --profile core; then
                   failure="metacheck rejected the ${tree} tree${detail:+: ${detail}}"

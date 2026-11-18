@@ -800,6 +800,26 @@ func TestIntakeSweepCommitsWhatMetafmtWrites(t *testing.T) {
 	}
 }
 
+// A replay that drops every commit, because main already holds all the branch
+// brought, leaves HEAD on main's own tip. No tool runs over main's tree, and
+// nothing is amended: an amend there would rewrite main's commit into the
+// branch.
+func TestIntakeSweepRunsNoToolsOverMainsOwnTree(t *testing.T) {
+	t.Parallel()
+	f := newSweepFixture(t)
+	before := f.branch(7, "intake/issue-7", "main", []change{{"data/works/b.json", "{\"b\":1}\n"}})
+	f.write("data/works/b.json", "{\"b\":1}\n")
+	main := f.advanceMain()
+	f.mustRun()
+	f.wantRebased(7, "intake/issue-7", before)
+	if after := f.head("intake/issue-7"); after != main {
+		t.Errorf("the branch was pushed as %s, want main's own tip %s", after, main)
+	}
+	if ran := f.toolsRan(); len(ran) != 0 {
+		t.Errorf("tools ran over main's own tree: %q", ran)
+	}
+}
+
 // The sweep's fmt greps metafmt's report for one sentence of pkg/pack's. The
 // workflow, the stub tools above and pkg/pack must agree on it: reworded in
 // pkg/pack alone, the grep would stop matching and the sweep would go back to
