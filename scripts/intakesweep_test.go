@@ -10,6 +10,8 @@ import (
 	"slices"
 	"strings"
 	"testing"
+
+	pkgpack "github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
 // Tests of the intake rebase sweep (.github/workflows/intake.yml, the step
@@ -17,7 +19,7 @@ import (
 // checks intake branches out and force-pushes them, so these drive the step's
 // own script, extracted from the workflow, against a local bare origin with a
 // stub gh (the pull request listing and the comments) and a stub go (main's
-// tools, which only a conflicted rebase runs). It runs under `bash -e`, the
+// tools, which every rebase runs). It runs under `bash -e`, the
 // shell GitHub gives a `run:` with no `shell:`.
 
 // ghSweepStub answers the gh calls the sweep makes from files in $GH_STUB_DIR:
@@ -42,13 +44,74 @@ case "$1 $2" in
 esac
 `
 
-// goSweepStub stands in for `go build -o DIR/ ./cmd/...`: tools that accept
-// anything, since a clean rebase never runs them, and note each run in
-// $SWEEP_TOOLS_LOG.
-const goSweepStub = `#!/usr/bin/env bash
+// differingCopies is pkg/pack's own sentence for an entry two packs hold in
+// differing copies, as a printf format taking the slug, the bound-correct pack
+// and the other one, so the stub metafmt below speaks with the real tool's words
+// rather than a copy of them that could drift.
+var differingCopies = pkgpack.Conflict{Slug: "%s", Kept: "%s", Dropped: "%s"}.String()
+
+// goSweepStub stands in for `go build -o DIR/ ./cmd/...`: tools that note
+// each run in $SWEEP_TOOLS_LOG (metafmt's --write as metafmt-write) and accept
+// anything but what these tests are about, each the way main's tool does:
+//
+//   - metafmt --check reports an entry two packs hold in differing copies, in
+//     pkg/pack's sentence, and lists a file holding the key "unformatted" as
+//     outstanding work. --write refuses the differing copies, naming them and
+//     exiting non-zero with nothing written; otherwise it turns that key into
+//     "formatted". The bound-correct pack is named first: in these flat
+//     fixtures it is the later of the two files.
+//   - metacheck refuses an ASIN two entries carry, which is a rule only the
+//     catalogue can apply: neither record is wrong alone.
+func goSweepStub(t *testing.T) string {
+	t.Helper()
+	if strings.ContainsAny(differingCopies, `'\`) {
+		t.Fatalf("pkg/pack's sentence %q no longer fits in the stub's single-quoted printf format", differingCopies)
+	}
+	return `#!/usr/bin/env bash
 [ "$1" = build ] && [ "$2" = -o ] || { echo "unexpected: go $*" >&2; exit 2; }
 for t in metafmt metacheck metaredirectmerge; do printf '#!/bin/sh\necho %s >> "$SWEEP_TOOLS_LOG"\nexit 0\n' "$t" > "$3/$t"; chmod +x "$3/$t"; done
+cat > "$3/metafmt" <<'TOOL'
+#!/bin/sh
+differing() {
+  dup="$(find data -type f -name '*.json' -exec jq -cS '.entries | objects | to_entries[]' {} + | sort -u | jq -r '.key' | sort | uniq -d | head -n 1)"
+  [ -n "$dup" ] || return 1
+  set --
+  for f in $(find data -type f -name '*.json' | sort); do
+    if jq -e --arg k "$dup" '.entries | objects | has($k)' "$f" > /dev/null 2>&1; then set -- "$@" "$f"; fi
+  done
+  printf '` + differingCopies + `\n' "$dup" "$2" "$1"
+}
+case " $* " in
+  *" --write "*)
+    echo metafmt-write >> "$SWEEP_TOOLS_LOG"
+    if line="$(differing)"; then
+      echo "metafmt: $line" >&2
+      echo "` + pkgpack.ErrDifferingCopies.Error() + `" >&2
+      exit 2
+    fi
+    for f in $(grep -rl '"unformatted"' data); do
+      sed 's/"unformatted"/"formatted"/' "$f" > "$f.tmp" && mv "$f.tmp" "$f" && echo "formatted $f"
+    done
+    exit 0 ;;
+esac
+echo metafmt >> "$SWEEP_TOOLS_LOG"
+if differing; then
+  echo "1 duplicate entry (metafmt --write refuses while an entry is held in differing copies)" >&2
+  exit 1
+fi
+if grep -rl '"unformatted"' data; then
+  echo "1 file not canonical (run metafmt --write to fix)" >&2
+  exit 1
+fi
+TOOL
+cat > "$3/metacheck" <<'TOOL'
+#!/bin/sh
+echo metacheck >> "$SWEEP_TOOLS_LOG"
+dup="$(find data -type f -name '*.json' -exec jq -r '.entries | objects | .[] | objects | .asin // empty' {} + | sort | uniq -d | head -n 1)"
+[ -z "$dup" ] || { echo "metacheck: duplicate ASIN $dup"; exit 1; }
+TOOL
 `
+}
 
 // sweepScript is the step's run: block, dedented the way YAML reads it.
 func sweepScript(t *testing.T) string {
@@ -128,7 +191,7 @@ func newSweepFixture(t *testing.T) *sweepFixture {
 			t.Fatal(err)
 		}
 	}
-	for name, body := range map[string]string{"gh": ghSweepStub, "go": goSweepStub} {
+	for name, body := range map[string]string{"gh": ghSweepStub, "go": goSweepStub(t)} {
 		if err := os.WriteFile(filepath.Join(f.stubBin, name), []byte(body), 0o755); err != nil {
 			t.Fatal(err)
 		}
@@ -295,6 +358,12 @@ func packJSON(t *testing.T, keys ...string) string {
 	for _, k := range keys {
 		entries[k] = map[string]string{"title": k}
 	}
+	return packOf(t, entries)
+}
+
+// packOf renders a pack holding entries as given.
+func packOf(t *testing.T, entries map[string]any) string {
+	t.Helper()
 	raw, err := json.MarshalIndent(map[string]any{"entries": entries}, "", "  ")
 	if err != nil {
 		t.Fatal(err)
@@ -633,13 +702,14 @@ func TestIntakeSweepContainsAFailedStaging(t *testing.T) {
 	before := f.branch(7, "intake/issue-7", "main", []change{{"data/works/b.json", "{\"b\":1}\n"}})
 	f.write("data/works/p.json", packJSON(t, "a", "m"))
 	f.advanceMain()
-	// The sweep stages a merged tree with `git add data` and nothing else
-	// does, so a git that fails exactly that fails only the merged branch.
+	// The sweep stages every rebased tree with `git add data` and nothing
+	// else does, so a git that fails exactly that over the merged pack (the
+	// one holding b) fails only the merged branch.
 	realGit, err := exec.LookPath("git")
 	if err != nil {
 		t.Fatal(err)
 	}
-	wrapper := "#!/usr/bin/env bash\nif [ \"$*\" = \"add data\" ]; then echo \"fatal: Unable to create index.lock\" >&2; exit 128; fi\nexec \"" + realGit + "\" \"$@\"\n"
+	wrapper := "#!/usr/bin/env bash\nif [ \"$*\" = \"add data\" ] && grep -q '\"b\"' data/works/p.json; then echo \"fatal: Unable to create index.lock\" >&2; exit 128; fi\nexec \"" + realGit + "\" \"$@\"\n"
 	if err := os.WriteFile(filepath.Join(f.stubBin, "git"), []byte(wrapper), 0o755); err != nil {
 		t.Fatal(err)
 	}
@@ -651,6 +721,120 @@ func TestIntakeSweepContainsAFailedStaging(t *testing.T) {
 	f.wantRebased(7, "intake/issue-7", before, "data/works/b.json")
 	if !strings.Contains(out, "rebased 1 pull request(s)") {
 		t.Errorf("the sweep did not go on to the next pull request:\n%s", out)
+	}
+}
+
+// The tools run over EVERY clean rebase, not only one a driver merged, since a
+// replay with no conflict at all can still leave a tree nobody may push. Here
+// it is one only the catalogue can judge: the branch and main each add a work
+// under the same ASIN, in packs of their own, so nothing conflicts, no driver
+// runs and metafmt has nothing to do. metacheck refuses the tree, the branch
+// is left where it was with one note, and a second sweep says nothing more;
+// the honest branch beside it is checked the same way and pushed.
+func TestIntakeSweepChecksACleanRebase(t *testing.T) {
+	t.Parallel()
+	f := newSweepFixture(t)
+	f.withMainsDriver()
+	clash := f.branch(6, "intake/issue-6", "main", []change{{"data/works/c.json", packOf(t, map[string]any{"c": map[string]string{"asin": "B0CLASH"}})}})
+	before := f.branch(7, "intake/issue-7", "main", []change{{"data/works/b.json", "{\"b\":1}\n"}})
+	f.write("data/works/d.json", packOf(t, map[string]any{"d": map[string]string{"asin": "B0CLASH"}}))
+	f.advanceMain()
+	out := f.mustRun()
+	if strings.Contains(out, "merged both sides") {
+		t.Fatalf("a driver merged, so this is not the clean replay the test is about:\n%s", out)
+	}
+	f.wantUntouched("intake/issue-6", clash)
+	c := f.comments(6)
+	if len(c) != 1 || !strings.HasPrefix(c[0], "<!-- intake-sweep:rebase-failed "+clash+" ") ||
+		!strings.Contains(c[0], "`metacheck rejected the rebased tree: metacheck: duplicate ASIN B0CLASH`") {
+		t.Errorf("want one give-up comment saying metacheck rejected the rebased tree, got %q", c)
+	}
+	f.wantRebased(7, "intake/issue-7", before, "data/works/b.json")
+	if ran := f.toolsRan(); !slices.Equal(ran, []string{"metafmt", "metacheck", "metafmt", "metacheck"}) {
+		t.Errorf("the tools that ran were %q, want metafmt --check and metacheck for each branch and no --write", ran)
+	}
+	f.mustRun()
+	f.wantUntouched("intake/issue-6", clash)
+	if again := f.comments(6); len(again) != 1 {
+		t.Errorf("a second sweep of the same head and reason commented again: %q", again)
+	}
+}
+
+// The shape audiosilo-meta-community#517 was pushed in for three days: a
+// branch that split a pack, rebased onto a main that split the same pack at
+// another cut, keeps its new pack, and with it a copy of an entry main now
+// holds elsewhere. Once main changes that entry the two copies differ, and
+// metafmt --write used to settle it by keeping the one in the bound-correct
+// pack (the branch's stale one, since its pack moved the bound) and exit 0
+// over a tree metacheck then passed. metafmt now refuses such a tree, and the
+// sweep parks the branch on that refusal like any other failed fmt: nothing
+// is pushed, and the note names the entry and both packs in metafmt's words.
+func TestIntakeSweepLeavesDifferingCopiesToAMaintainer(t *testing.T) {
+	t.Parallel()
+	f := newSweepFixture(t)
+	f.withMainsDriver()
+	stale := f.branch(7, "intake/issue-7", "main", []change{{"data/works/s.json", packJSON(t, "s", "z")}})
+	f.write("data/works/r.json", packOf(t, map[string]any{
+		"r": map[string]string{"title": "r"},
+		"s": map[string]string{"title": "s", "recap": "what main merged since"},
+	}))
+	f.advanceMain()
+	out := f.mustRun()
+	if strings.Contains(out, "merged both sides") {
+		t.Fatalf("a driver merged, so this is not the clean replay the test is about:\n%s", out)
+	}
+	f.wantUntouched("intake/issue-7", stale)
+	// The reason is metafmt's own refusal line, cut where the sweep cuts a
+	// detail (200 characters).
+	refusal := "metafmt: " + fmt.Sprintf(differingCopies, "s", "data/works/s.json", "data/works/r.json")
+	reason := "metafmt could not normalize the rebased tree: " + refusal[:min(len(refusal), 200)]
+	if c := f.comments(7); len(c) != 1 || !strings.Contains(c[0], "`"+reason+"`") {
+		t.Errorf("want one give-up comment with the reason\n%s\ngot %q", reason, c)
+	}
+	if ran := f.toolsRan(); !slices.Equal(ran, []string{"metafmt", "metafmt-write"}) {
+		t.Errorf("the tools that ran were %q, want metafmt --check, then the --write that refused", ran)
+	}
+}
+
+// What metafmt --check lists, --write does, and the sweep commits it onto the
+// branch's own commit before metacheck's verdict and the push: the pushed
+// branch is one commit on main, holding the file as metafmt left it.
+func TestIntakeSweepCommitsWhatMetafmtWrites(t *testing.T) {
+	t.Parallel()
+	f := newSweepFixture(t)
+	before := f.branch(7, "intake/issue-7", "main", []change{{"data/works/u.json", "{\"unformatted\":1}\n"}})
+	main := f.advanceMain()
+	f.mustRun()
+	f.wantRebased(7, "intake/issue-7", before, "data/works/u.json")
+	after := f.head("intake/issue-7")
+	if got, err := f.originGit("show", after+":data/works/u.json"); err != nil || got != "{\"formatted\":1}" {
+		t.Errorf("the pushed file is %q (%v), want it as metafmt --write left it", got, err)
+	}
+	if parent, err := f.originGit("rev-parse", after+"~1"); err != nil || parent != main {
+		t.Errorf("the pushed branch sits on %s (%v), want one commit on main %s", parent, err, main)
+	}
+	if ran := f.toolsRan(); !slices.Equal(ran, []string{"metafmt", "metafmt-write", "metacheck"}) {
+		t.Errorf("the tools that ran were %q, want metafmt --check, --write, then metacheck", ran)
+	}
+}
+
+// A replay that drops every commit, because main already holds all the branch
+// brought, leaves HEAD on main's own tip. No tool runs over main's tree, and
+// nothing is amended: an amend there would rewrite main's commit into the
+// branch.
+func TestIntakeSweepRunsNoToolsOverMainsOwnTree(t *testing.T) {
+	t.Parallel()
+	f := newSweepFixture(t)
+	before := f.branch(7, "intake/issue-7", "main", []change{{"data/works/b.json", "{\"b\":1}\n"}})
+	f.write("data/works/b.json", "{\"b\":1}\n")
+	main := f.advanceMain()
+	f.mustRun()
+	f.wantRebased(7, "intake/issue-7", before)
+	if after := f.head("intake/issue-7"); after != main {
+		t.Errorf("the branch was pushed as %s, want main's own tip %s", after, main)
+	}
+	if ran := f.toolsRan(); len(ran) != 0 {
+		t.Errorf("tools ran over main's own tree: %q", ran)
 	}
 }
 

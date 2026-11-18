@@ -165,9 +165,10 @@ Two automations sit in front of the human review step. Neither bypasses it.
   the data: it three-way merges the two sides' records (the merge base included,
   so a deliberate deletion is never handed back), re-renders with
   `metafmt --write`, re-validates with `metacheck`, and force-pushes. Anything it
-  cannot resolve mechanically - the same record edited on both sides, or one side
-  deleting what the other edited - is left alone with a comment asking for a
-  maintainer. It only ever touches branches this workflow created,
+  cannot resolve mechanically - the same record edited on both sides, one side
+  deleting what the other edited, or one record left in two packs in differing
+  copies (metafmt refuses to pick one) - is left alone with a comment asking for
+  a maintainer. It only ever touches branches this workflow created,
   and it runs on `push` to `main`, so no fork code is executed. Humans use the
   same recipe (CONTRIBUTING.md, "When two pull requests touch the same pack").
 

@@ -31,7 +31,8 @@ func TestMain(m *testing.M) {
 const redirectsPath = "data/redirects.json"
 
 // driverMergedMarker is what .github/workflows/intake.yml greps a rebase's output
-// for to know a clean rebase still merged something and must be re-checked.
+// for, to say in a give-up reason that the tree it checked was a driver's merge
+// (it checks every rebased tree, merged or not).
 const driverMergedMarker = "merged both sides"
 
 // table renders a works-only tombstone table from "old=new" pairs, in the bytes
@@ -97,8 +98,7 @@ func TestDriver(t *testing.T) {
 				if !strings.Contains(out, driverMergedMarker) {
 					t.Errorf("the rebase output does not carry %q, which .github/workflows/intake.yml greps for:\n%s", driverMergedMarker, out)
 				}
-				// The pack driver's line, which makes the sweep run a tree-wide
-				// metafmt --write this file never needs.
+				// The pack driver's line: each driver names what it merged.
 				if strings.Contains(out, "merged both sides' records") {
 					t.Errorf("the output carries the pack driver's marker:\n%s", out)
 				}

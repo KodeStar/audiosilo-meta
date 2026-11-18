@@ -117,7 +117,10 @@ roughly the right file - or the wrong one - and run `go run ./cmd/metafmt
 --write`: it moves entries to the pack their slug belongs in, splits a pack that
 has grown too big, and re-renders everything canonically. `metafmt --check`
 (what CI runs) names the file an entry should have been in. This is deliberate:
-placement is arithmetic, and arithmetic is the tooling's job.
+placement is arithmetic, and arithmetic is the tooling's job. The one thing it
+will not decide for you is an entry held in two files whose copies DIFFER:
+`--write` then refuses, names the entry and both files and writes nothing, and
+you keep the right copy by hand (identical copies are just deduplicated).
 
 The exact required fields are defined by the JSON Schemas in `schema/*.schema.json` -
 those are authoritative. `metacheck` validates against them.

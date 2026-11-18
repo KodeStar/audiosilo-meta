@@ -21,9 +21,10 @@
 //
 // The result is the exact bytes pkg/redirects.Write produces, so metafmt has
 // nothing to re-render. It says "merged both sides" on success, which the intake
-// sweep greps a rebase's output for to know it must run metacheck: a merged
-// tombstone can name a record the other side deleted, and only the catalogue can
-// tell.
+// sweep greps a rebase's output for to call the tree a driver's merge in a
+// give-up reason. The sweep runs metacheck after every rebase, and this merge is
+// one reason it must: a merged tombstone can name a record the other side
+// deleted, and only the catalogue can tell.
 //
 // On a conflict - and on a refusal of a version it cannot read as a table (exit 1)
 // - the driver leaves the file the way git's own merge would: the line merge's

@@ -59,7 +59,7 @@ func (c *MergeConflict) Error() string {
 // Whether every target still names a live record is a question about the
 // catalogue (the other side may have deleted the record a new tombstone points
 // at), which this package does not read: pkg/check answers it over the merged
-// tree, which is why the intake sweep runs metacheck after any driver merge.
+// tree, which is one reason the intake sweep runs metacheck after every rebase.
 func Merge(base, ours, theirs model.Redirects) (model.Redirects, error) {
 	b, err := normalize(base)
 	if err != nil {

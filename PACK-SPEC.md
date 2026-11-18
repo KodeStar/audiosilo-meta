@@ -336,14 +336,20 @@ their bound-correct pack and performs any due splits; `metafmt --check` (CI)
 fails with the canonical location named. A contributor can add an entry to
 approximately the right file - or the wrong one - and formatting fixes it.
 This is the contributor-ergonomics answer: nobody has to compute placement by
-hand, ever.
+hand, ever. An entry held by two files heals only when the copies are
+byte-equal in canonical form (one is dropped and reported). Copies that DIFFER
+are refused: `--write` names the entry and both files, exits non-zero and
+writes nothing (`pack.ErrDifferingCopies`). Placement cannot say which copy is
+right - a stale split pack moves the bounds, so "the correctly-placed copy" can
+be the older one (audiosilo-meta-community#517).
 
 A plain writer (an importer, the intake bot) does NOT heal: it refuses. A pack
 holding an entry that belongs in a later pack has a range that no longer
 describes what it holds, and splitting it would mint a bound that later pack
 already carries - so `Store.Flush` names the entry and stops, before it has
 written anything at all. Healing is `metafmt --write`'s job, and its resolution
-rules (the correctly-placed copy wins) are the ones that must decide.
+rules (an identical duplicate is dropped, differing copies are refused) are the
+ones that must decide.
 
 The refusal covers the packs a flush READS, which is every pack it could
 rewrite: an untouched, in-cap pack is never opened, mints no bound and so
