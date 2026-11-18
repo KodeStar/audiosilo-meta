@@ -442,3 +442,31 @@ func TestStoreLocate(t *testing.T) {
 		t.Errorf("Dir() = %s, want %s", s.Dir(), dir)
 	}
 }
+
+// A split names its new pack after the entry key the cut falls on, and a key
+// is only data: one that is not a slug (a/../../x) would otherwise be joined
+// into a path that leaves the data root. The flush refuses before it writes
+// anything, wherever the bound came from.
+func TestStoreFlushRefusesAPackNamedByANonSlugKey(t *testing.T) {
+	withCaps(t, FamilyPeople, Caps{TargetSize: 150, HardSize: 300, Entries: 1000, DirPacks: 512})
+	root := t.TempDir()
+	dir := filepath.Join(root, "data")
+	s, err := Open(dir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, k := range []string{"a", "b/../../../escape"} {
+		if err := s.Upsert(FamilyPeople, k, entryOf(200)); err != nil {
+			t.Fatal(err)
+		}
+	}
+	if _, err := s.Flush(); err == nil {
+		t.Fatal("the flush split a pack under a non-slug bound")
+	}
+	if _, err := os.Stat(filepath.Join(root, "escape.json")); !os.IsNotExist(err) {
+		t.Errorf("the flush wrote outside the data root (stat: %v)", err)
+	}
+	if got := packPaths(t, dir, FamilyPeople); len(got) != 0 {
+		t.Errorf("the refused flush wrote %v", got)
+	}
+}
