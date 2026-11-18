@@ -917,8 +917,17 @@ keep this index in step (one line per topic).
   is the Go version and moves by hand with go.mod and every setup-go. The
   rebase sweep runs only MAIN's tools (metafmt, metacheck and the two merge
   drivers, built and copied before the loop) and sweeps only same-repository
-  branches whose diff is confined to `data/` and whose commits add or change
-  no symbolic link; a branch it refuses gets ONE marked comment saying why,
+  branches every commit of which (not just the net diff: a file added then
+  removed is in the tree mid-replay) touches nothing but plainly named
+  `data/**/*.json` and adds or changes no symbolic link or submodule. It names
+  every ref in full (`refs/remotes/origin/main`, `refs/heads/<branch>`, the
+  push leased on the checked head), since a tag or branch called `origin/main`
+  would otherwise become the rebase base, quotes a refused path with only
+  `[A-Za-z0-9._/ -]` left, and fails red on a pull request listing it cannot
+  read. The step runs under `bash -e`, so a status it reads goes through `||`
+  (scripts/intakesweep_test.go drives the step against a local origin;
+  audiosilo-meta-community's intake.yml carries the same sweep, keep the two in
+  step). A branch it refuses gets ONE marked comment saying why,
   and a branch it fails to rebase gets one per (attempted head, reason) through
   the same `comment_once` helper, so a stuck branch is not re-told on every push
   to main while a new commit or a new failure still is - the reason carries the
