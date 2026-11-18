@@ -431,10 +431,13 @@ jobs:
   rebase:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
-    # Observed up to ~9 minutes; the loop's cost scales with the number of open
-    # bot pull requests (a metafmt + metacheck pass over the whole tree for
-    # each one the pack driver touched), so the headroom is generous. A hung
-    # sweep holds the intake-rebase group, which is what the bound is for.
+    # Observed up to ~9 minutes when only a driver merge was checked; the
+    # loop's cost scales with the number of open bot pull requests (a metafmt
+    # + metacheck pass over the whole tree, about a minute, for EVERY one it
+    # rebases since audiosilo-meta-community#517), so the headroom is generous,
+    # and a sweep the bound cuts short leaves the unswept ones at the front of
+    # the next. A hung sweep holds the intake-rebase group, which is what the
+    # bound is for.
     timeout-minutes: 45
     # Narrower than the intake job's: no issues: write, because nothing here
     # touches an issue.
@@ -533,9 +536,9 @@ jobs:
           # data/redirects.json is no pack, so .gitattributes routes it to a
           # driver of its own: two branches each recording one tombstone touch
           # adjacent sorted lines, which git's line merge stops on. It prints
-          # "merged both sides" too, so a driver merge of it is followed by the
-          # metacheck pass below (a merged tombstone may name a record the other
-          # side deleted), but not "... records", so metafmt is skipped.
+          # "merged both sides" too. Like every clean rebase, a driver merge of
+          # it is followed by the metafmt and metacheck pass below (a merged
+          # tombstone may name a record the other side deleted).
           git config merge.redirectsjson.name "three-way merge of the slug tombstone table"
           git config merge.redirectsjson.driver "'$tools/metaredirectmerge' %O %A %B %P"
 
@@ -749,30 +752,33 @@ jobs:
               rebaselog="${RUNNER_TEMP:-/tmp}/rebase-${number}.log"
               if git rebase "$main_sha" > "$rebaselog" 2>&1; then
                 logged "$rebaselog"
+                # EVERY clean rebase is normalized and checked before the push,
+                # not only one a driver merged. A replay with no conflict at all
+                # can still leave a tree no pack rule allows: a branch that split
+                # a pack, rebased onto a main that split the same pack at another
+                # cut, keeps its new pack while the shrink of the old one merges
+                # away, so the pushed branch held a stale copy of main's entries
+                # in a second pack (audiosilo-meta-community#517, re-pushed on
+                # every push to main for three days). Both drivers print "merged
+                # both sides"; the reason names the tree a driver merged as such.
+                tree="rebased"
                 if grep -q "merged both sides" "$rebaselog"; then
-                  # Both drivers print "merged both sides"; only the pack driver's
-                  # "... records" line needs metafmt: its merge lands as jq's
-                  # rendering of the entry map, and the merged pack may now be due
-                  # a split. The tombstone driver writes canonical bytes, so a
-                  # redirects-only merge skips the tree-wide rewrite and goes
-                  # straight to metacheck (its target may be a record the other
-                  # side deleted).
-                  if grep -q "merged both sides' records" "$rebaselog" \
-                      && ! noted '^(metafmt:|invalid JSON)' fmt "$main_sha"; then
-                    failure="metafmt could not normalize the merged tree${detail:+: ${detail}}"
-                  elif ! noted '' "$tools/metacheck" --profile core; then
-                    failure="metacheck rejected the merged tree${detail:+: ${detail}}"
-                  elif ! git add data; then
-                    # Tested like every other step of the replay: bare, a
-                    # failure here would stop the whole step under -e, and a
-                    # branch that fails it every time stays least recently
-                    # updated, so every pull request behind it would go unswept
-                    # on every push to main, with nothing said on any of them.
-                    failure="the merged tree could not be staged"
-                  elif ! git diff --cached --quiet; then
-                    GIT_EDITOR=true git commit --amend --no-edit --quiet \
-                      || failure="the normalized merge could not be committed"
-                  fi
+                  tree="merged"
+                fi
+                if ! noted '^(metafmt:|invalid JSON)' fmt "$main_sha"; then
+                  failure="metafmt could not normalize the ${tree} tree${detail:+: ${detail}}"
+                elif ! noted '' "$tools/metacheck" --profile core; then
+                  failure="metacheck rejected the ${tree} tree${detail:+: ${detail}}"
+                elif ! git add data; then
+                  # Tested like every other step of the replay: bare, a
+                  # failure here would stop the whole step under -e, and a
+                  # branch that fails it every time stays least recently
+                  # updated, so every pull request behind it would go unswept
+                  # on every push to main, with nothing said on any of them.
+                  failure="the ${tree} tree could not be staged"
+                elif ! git diff --cached --quiet; then
+                  GIT_EDITOR=true git commit --amend --no-edit --quiet \
+                    || failure="the normalized ${tree} tree could not be committed"
                 fi
               else
                 logged "$rebaselog"

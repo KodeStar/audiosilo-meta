@@ -522,7 +522,8 @@ cannot re-render, so the sweep left the branch stuck instead of converging (issu
 #1695, twice on 2026-08-09). As a driver the script sees the three versions
 before any line merge happens, so the shape cannot arise; a clean rebase that
 merged this way is re-rendered and re-placed by the `metafmt --write` +
-`metacheck` pass the sweep runs when the driver reports it merged. The
+`metacheck` pass the sweep runs after EVERY rebase, clean or not (a clean one
+with no merge at all can still keep a stale split pack, audiosilo-meta-community#517). The
 pre-migration layout was one file per record
 (`data/works/<shard>/<slug>/work.json` and friends); `cmd/metamigrate` converted
 it, `pkg/check` and every writer now refuse it loudly.

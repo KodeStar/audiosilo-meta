@@ -17,7 +17,7 @@ import (
 // checks intake branches out and force-pushes them, so these drive the step's
 // own script, extracted from the workflow, against a local bare origin with a
 // stub gh (the pull request listing and the comments) and a stub go (main's
-// tools, which only a conflicted rebase runs). It runs under `bash -e`, the
+// tools, which every rebase runs). It runs under `bash -e`, the
 // shell GitHub gives a `run:` with no `shell:`.
 
 // ghSweepStub answers the gh calls the sweep makes from files in $GH_STUB_DIR:
@@ -42,12 +42,19 @@ case "$1 $2" in
 esac
 `
 
-// goSweepStub stands in for `go build -o DIR/ ./cmd/...`: tools that accept
-// anything, since a clean rebase never runs them, and note each run in
-// $SWEEP_TOOLS_LOG.
+// goSweepStub stands in for `go build -o DIR/ ./cmd/...`: tools that note
+// each run in $SWEEP_TOOLS_LOG and accept anything, except that metacheck
+// refuses a tree holding one entry key in two packs, the shape a clean rebase
+// once pushed (audiosilo-meta-community#517).
 const goSweepStub = `#!/usr/bin/env bash
 [ "$1" = build ] && [ "$2" = -o ] || { echo "unexpected: go $*" >&2; exit 2; }
 for t in metafmt metacheck metaredirectmerge; do printf '#!/bin/sh\necho %s >> "$SWEEP_TOOLS_LOG"\nexit 0\n' "$t" > "$3/$t"; chmod +x "$3/$t"; done
+cat > "$3/metacheck" <<'TOOL'
+#!/bin/sh
+echo metacheck >> "$SWEEP_TOOLS_LOG"
+dup="$(find data -type f -name '*.json' -exec jq -r '.entries | objects | keys[]' {} + | sort | uniq -d | head -n 1)"
+[ -z "$dup" ] || { echo "metacheck: entry $dup is in two packs"; exit 1; }
+TOOL
 `
 
 // sweepScript is the step's run: block, dedented the way YAML reads it.
@@ -633,13 +640,14 @@ func TestIntakeSweepContainsAFailedStaging(t *testing.T) {
 	before := f.branch(7, "intake/issue-7", "main", []change{{"data/works/b.json", "{\"b\":1}\n"}})
 	f.write("data/works/p.json", packJSON(t, "a", "m"))
 	f.advanceMain()
-	// The sweep stages a merged tree with `git add data` and nothing else
-	// does, so a git that fails exactly that fails only the merged branch.
+	// The sweep stages every rebased tree with `git add data` and nothing
+	// else does, so a git that fails exactly that over the merged pack (the
+	// one holding b) fails only the merged branch.
 	realGit, err := exec.LookPath("git")
 	if err != nil {
 		t.Fatal(err)
 	}
-	wrapper := "#!/usr/bin/env bash\nif [ \"$*\" = \"add data\" ]; then echo \"fatal: Unable to create index.lock\" >&2; exit 128; fi\nexec \"" + realGit + "\" \"$@\"\n"
+	wrapper := "#!/usr/bin/env bash\nif [ \"$*\" = \"add data\" ] && grep -q '\"b\"' data/works/p.json; then echo \"fatal: Unable to create index.lock\" >&2; exit 128; fi\nexec \"" + realGit + "\" \"$@\"\n"
 	if err := os.WriteFile(filepath.Join(f.stubBin, "git"), []byte(wrapper), 0o755); err != nil {
 		t.Fatal(err)
 	}
@@ -651,6 +659,36 @@ func TestIntakeSweepContainsAFailedStaging(t *testing.T) {
 	f.wantRebased(7, "intake/issue-7", before, "data/works/b.json")
 	if !strings.Contains(out, "rebased 1 pull request(s)") {
 		t.Errorf("the sweep did not go on to the next pull request:\n%s", out)
+	}
+}
+
+// A clean rebase with no driver merge can still leave a tree no pack rule
+// allows: a branch that split a pack, rebased onto a main that split the same
+// pack at another cut, keeps its new pack, a stale copy of an entry main now
+// holds elsewhere (audiosilo-meta-community#517, pushed for three days). The
+// tools run over every rebase, so metacheck refuses it and nothing is pushed;
+// the honest branch beside it is checked the same way and pushed.
+func TestIntakeSweepChecksACleanRebase(t *testing.T) {
+	t.Parallel()
+	f := newSweepFixture(t)
+	f.withMainsDriver()
+	stale := f.branch(6, "intake/issue-6", "main", []change{{"data/works/s.json", packJSON(t, "s", "z")}})
+	before := f.branch(7, "intake/issue-7", "main", []change{{"data/works/b.json", "{\"b\":1}\n"}})
+	f.write("data/works/r.json", packJSON(t, "r", "s"))
+	f.advanceMain()
+	out := f.mustRun()
+	if strings.Contains(out, "merged both sides") {
+		t.Fatalf("a driver merged, so this is not the clean replay the test is about:\n%s", out)
+	}
+	f.wantUntouched("intake/issue-6", stale)
+	c := f.comments(6)
+	if len(c) != 1 || !strings.HasPrefix(c[0], "<!-- intake-sweep:rebase-failed "+stale+" ") ||
+		!strings.Contains(c[0], "metacheck rejected the rebased tree: metacheck: entry s is in two packs") {
+		t.Errorf("want one give-up comment saying metacheck rejected the rebased tree, got %q", c)
+	}
+	f.wantRebased(7, "intake/issue-7", before, "data/works/b.json")
+	if ran := f.toolsRan(); !slices.Equal(ran, []string{"metafmt", "metacheck", "metafmt", "metacheck"}) {
+		t.Errorf("the tools that ran were %q, want metafmt and metacheck for each branch", ran)
 	}
 }
 
