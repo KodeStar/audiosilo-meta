@@ -40,7 +40,8 @@ type Report struct {
 	Invalid []string
 	// Pending is every structural problem the packed families have, merged
 	// across them. It is pkg/pack's own report: Check names it, Write performs
-	// all of it but the unreadable files.
+	// all of it but the unreadable files (and refuses the whole tree while any
+	// slug is held in differing copies).
 	Pending pack.Pending
 	// Wrote and Deleted hold the pack files the structural pass created,
 	// rewrote, or removed, data-relative.

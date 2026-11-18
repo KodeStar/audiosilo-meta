@@ -310,6 +310,13 @@ func TestWriteRefusesDifferingCopies(t *testing.T) {
 			t.Errorf("the refusal %q does not name %s", err, want)
 		}
 	}
+	// The FIRST line names them: metafmt prints it as "metafmt: <line>", and
+	// that is the line the intake sweep's fmt quotes in its give-up comment
+	// (the first matching ^metafmt:), so a refusal that led with its generic
+	// sentence would park a branch without saying which entry.
+	if first, _, _ := strings.Cut(err.Error(), "\n"); !strings.HasPrefix(first, `entry "p-mm" is in both `) {
+		t.Errorf("the refusal's first line is %q, want the entry and both files", first)
+	}
 	if diff := treeDiff(before, testpack.Snapshot(t, dir)); diff != "" {
 		t.Errorf("a refused --write changed the tree: %s", diff)
 	}
