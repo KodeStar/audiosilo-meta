@@ -10,6 +10,9 @@ import (
 	"slices"
 	"strings"
 	"testing"
+
+	"github.com/kodestar/audiosilo-meta/internal/format"
+	pkgpack "github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
 // Tests of the intake rebase sweep (.github/workflows/intake.yml, the step
@@ -42,18 +45,56 @@ case "$1 $2" in
 esac
 `
 
+// discardedCopy is the tail of the sentence pkg/pack renders for an entry two
+// packs hold in differing copies, one of which metafmt --write discards. The
+// sweep greps metafmt's --check report for it and leaves such a tree to a
+// maintainer (see fmt in the workflow); TestSweepKnowsMetafmtsDiscardSentence
+// holds the workflow, pkg/pack and the stub below to the one wording.
+const discardedCopy = "the copies differ, and the misfiled one is discarded"
+
 // goSweepStub stands in for `go build -o DIR/ ./cmd/...`: tools that note
-// each run in $SWEEP_TOOLS_LOG and accept anything, except that metacheck
-// refuses a tree holding one entry key in two packs, the shape a clean rebase
-// once pushed (audiosilo-meta-community#517).
+// each run in $SWEEP_TOOLS_LOG (metafmt's --write as metafmt-write) and accept
+// anything but what these tests are about, each the way main's tool does:
+//
+//   - metafmt --check reports an entry two packs hold in differing copies, in
+//     pkg/pack's sentence, and lists a file holding the key "unformatted" as
+//     outstanding work; --write turns that key into "formatted".
+//   - metacheck refuses an ASIN two entries carry, which is a rule only the
+//     catalogue can apply: neither record is wrong alone.
 const goSweepStub = `#!/usr/bin/env bash
 [ "$1" = build ] && [ "$2" = -o ] || { echo "unexpected: go $*" >&2; exit 2; }
 for t in metafmt metacheck metaredirectmerge; do printf '#!/bin/sh\necho %s >> "$SWEEP_TOOLS_LOG"\nexit 0\n' "$t" > "$3/$t"; chmod +x "$3/$t"; done
+cat > "$3/metafmt" <<'TOOL'
+#!/bin/sh
+case " $* " in
+  *" --write "*)
+    echo metafmt-write >> "$SWEEP_TOOLS_LOG"
+    for f in $(grep -rl '"unformatted"' data); do
+      sed 's/"unformatted"/"formatted"/' "$f" > "$f.tmp" && mv "$f.tmp" "$f" && echo "formatted $f"
+    done
+    exit 0 ;;
+esac
+echo metafmt >> "$SWEEP_TOOLS_LOG"
+dup="$(find data -type f -name '*.json' -exec jq -cS '.entries | objects | to_entries[]' {} + | sort -u | jq -r '.key' | sort | uniq -d | head -n 1)"
+if [ -n "$dup" ]; then
+  set --
+  for f in $(find data -type f -name '*.json' | sort); do
+    if jq -e --arg k "$dup" '.entries | objects | has($k)' "$f" > /dev/null 2>&1; then set -- "$@" "$f"; fi
+  done
+  echo "entry \"$dup\" is in both $1 and $2: the correctly-placed copy is kept, ` + discardedCopy + `"
+  echo "1 duplicate entry (run metafmt --write to fix)" >&2
+  exit 1
+fi
+if grep -rl '"unformatted"' data; then
+  echo "1 file not canonical (run metafmt --write to fix)" >&2
+  exit 1
+fi
+TOOL
 cat > "$3/metacheck" <<'TOOL'
 #!/bin/sh
 echo metacheck >> "$SWEEP_TOOLS_LOG"
-dup="$(find data -type f -name '*.json' -exec jq -r '.entries | objects | keys[]' {} + | sort | uniq -d | head -n 1)"
-[ -z "$dup" ] || { echo "metacheck: entry $dup is in two packs"; exit 1; }
+dup="$(find data -type f -name '*.json' -exec jq -r '.entries | objects | .[] | objects | .asin // empty' {} + | sort | uniq -d | head -n 1)"
+[ -z "$dup" ] || { echo "metacheck: duplicate ASIN $dup"; exit 1; }
 TOOL
 `
 
@@ -302,6 +343,12 @@ func packJSON(t *testing.T, keys ...string) string {
 	for _, k := range keys {
 		entries[k] = map[string]string{"title": k}
 	}
+	return packOf(t, entries)
+}
+
+// packOf renders a pack holding entries as given.
+func packOf(t *testing.T, entries map[string]any) string {
+	t.Helper()
 	raw, err := json.MarshalIndent(map[string]any{"entries": entries}, "", "  ")
 	if err != nil {
 		t.Fatal(err)
@@ -662,33 +709,142 @@ func TestIntakeSweepContainsAFailedStaging(t *testing.T) {
 	}
 }
 
-// A clean rebase with no driver merge can still leave a tree no pack rule
-// allows: a branch that split a pack, rebased onto a main that split the same
-// pack at another cut, keeps its new pack, a stale copy of an entry main now
-// holds elsewhere (audiosilo-meta-community#517, pushed for three days). The
-// tools run over every rebase, so metacheck refuses it and nothing is pushed;
+// The tools run over EVERY clean rebase, not only one a driver merged, since a
+// replay with no conflict at all can still leave a tree nobody may push. Here
+// it is one only the catalogue can judge: the branch and main each add a work
+// under the same ASIN, in packs of their own, so nothing conflicts, no driver
+// runs and metafmt has nothing to do. metacheck refuses the tree, the branch
+// is left where it was with one note, and a second sweep says nothing more;
 // the honest branch beside it is checked the same way and pushed.
 func TestIntakeSweepChecksACleanRebase(t *testing.T) {
 	t.Parallel()
 	f := newSweepFixture(t)
 	f.withMainsDriver()
-	stale := f.branch(6, "intake/issue-6", "main", []change{{"data/works/s.json", packJSON(t, "s", "z")}})
+	clash := f.branch(6, "intake/issue-6", "main", []change{{"data/works/c.json", packOf(t, map[string]any{"c": map[string]string{"asin": "B0CLASH"}})}})
 	before := f.branch(7, "intake/issue-7", "main", []change{{"data/works/b.json", "{\"b\":1}\n"}})
-	f.write("data/works/r.json", packJSON(t, "r", "s"))
+	f.write("data/works/d.json", packOf(t, map[string]any{"d": map[string]string{"asin": "B0CLASH"}}))
 	f.advanceMain()
 	out := f.mustRun()
 	if strings.Contains(out, "merged both sides") {
 		t.Fatalf("a driver merged, so this is not the clean replay the test is about:\n%s", out)
 	}
-	f.wantUntouched("intake/issue-6", stale)
+	f.wantUntouched("intake/issue-6", clash)
 	c := f.comments(6)
-	if len(c) != 1 || !strings.HasPrefix(c[0], "<!-- intake-sweep:rebase-failed "+stale+" ") ||
-		!strings.Contains(c[0], "metacheck rejected the rebased tree: metacheck: entry s is in two packs") {
+	if len(c) != 1 || !strings.HasPrefix(c[0], "<!-- intake-sweep:rebase-failed "+clash+" ") ||
+		!strings.Contains(c[0], "`metacheck rejected the rebased tree: metacheck: duplicate ASIN B0CLASH`") {
 		t.Errorf("want one give-up comment saying metacheck rejected the rebased tree, got %q", c)
 	}
 	f.wantRebased(7, "intake/issue-7", before, "data/works/b.json")
 	if ran := f.toolsRan(); !slices.Equal(ran, []string{"metafmt", "metacheck", "metafmt", "metacheck"}) {
-		t.Errorf("the tools that ran were %q, want metafmt and metacheck for each branch", ran)
+		t.Errorf("the tools that ran were %q, want metafmt --check and metacheck for each branch and no --write", ran)
+	}
+	f.mustRun()
+	f.wantUntouched("intake/issue-6", clash)
+	if again := f.comments(6); len(again) != 1 {
+		t.Errorf("a second sweep of the same head and reason commented again: %q", again)
+	}
+}
+
+// The shape audiosilo-meta-community#517 was pushed in for three days: a
+// branch that split a pack, rebased onto a main that split the same pack at
+// another cut, keeps its new pack, and with it a copy of an entry main now
+// holds elsewhere. Once main changes that entry the two copies differ, and
+// metafmt --write would settle it by keeping the one in the bound-correct
+// pack (the branch's stale one, since its pack moved the bound) and exit 0
+// over a tree metacheck then passes. So the sweep reads metafmt's --check
+// report first and leaves such a tree to a maintainer: --write never runs,
+// nothing is pushed, and the note names the entry and both packs.
+func TestIntakeSweepLeavesDifferingCopiesToAMaintainer(t *testing.T) {
+	t.Parallel()
+	f := newSweepFixture(t)
+	f.withMainsDriver()
+	stale := f.branch(7, "intake/issue-7", "main", []change{{"data/works/s.json", packJSON(t, "s", "z")}})
+	f.write("data/works/r.json", packOf(t, map[string]any{
+		"r": map[string]string{"title": "r"},
+		"s": map[string]string{"title": "s", "recap": "what main merged since"},
+	}))
+	f.advanceMain()
+	out := f.mustRun()
+	if strings.Contains(out, "merged both sides") {
+		t.Fatalf("a driver merged, so this is not the clean replay the test is about:\n%s", out)
+	}
+	f.wantUntouched("intake/issue-7", stale)
+	const reason = "metafmt could not normalize the rebased tree: metafmt: entry \"s\" is in both data/works/r.json and data/works/s.json and the copies differ; which one stays is a maintainer's call, so metafmt --write was not run"
+	if c := f.comments(7); len(c) != 1 || !strings.Contains(c[0], "`"+reason+"`") {
+		t.Errorf("want one give-up comment with the reason\n%s\ngot %q", reason, c)
+	}
+	if ran := f.toolsRan(); !slices.Equal(ran, []string{"metafmt"}) {
+		t.Errorf("the tools that ran were %q, want metafmt --check alone", ran)
+	}
+}
+
+// What metafmt --check lists, --write does, and the sweep commits it onto the
+// branch's own commit before metacheck's verdict and the push: the pushed
+// branch is one commit on main, holding the file as metafmt left it.
+func TestIntakeSweepCommitsWhatMetafmtWrites(t *testing.T) {
+	t.Parallel()
+	f := newSweepFixture(t)
+	before := f.branch(7, "intake/issue-7", "main", []change{{"data/works/u.json", "{\"unformatted\":1}\n"}})
+	main := f.advanceMain()
+	f.mustRun()
+	f.wantRebased(7, "intake/issue-7", before, "data/works/u.json")
+	after := f.head("intake/issue-7")
+	if got, err := f.originGit("show", after+":data/works/u.json"); err != nil || got != "{\"formatted\":1}" {
+		t.Errorf("the pushed file is %q (%v), want it as metafmt --write left it", got, err)
+	}
+	if parent, err := f.originGit("rev-parse", after+"~1"); err != nil || parent != main {
+		t.Errorf("the pushed branch sits on %s (%v), want one commit on main %s", parent, err, main)
+	}
+	if ran := f.toolsRan(); !slices.Equal(ran, []string{"metafmt", "metafmt-write", "metacheck"}) {
+		t.Errorf("the tools that ran were %q, want metafmt --check, --write, then metacheck", ran)
+	}
+}
+
+// The sweep's fmt greps metafmt's report for one sentence of pkg/pack's. The
+// workflow, the stub tools above and pkg/pack must agree on it: reworded in
+// pkg/pack alone, the grep would stop matching and the sweep would go back to
+// pushing a branch that takes main's newer copy of an entry away. This runs
+// main's own check over a tree in that shape and holds the report to it.
+func TestSweepKnowsMetafmtsDiscardSentence(t *testing.T) {
+	t.Parallel()
+	dir := t.TempDir()
+	person := func(slug, more string) string {
+		return fmt.Sprintf(`%q:{"id":%q,"name":%q,"license":"CC0-1.0","sources":[{"type":"user"}]%s}`, slug, slug, strings.ToUpper(slug[:1])+slug[1:], more)
+	}
+	for name, entries := range map[string][]string{
+		"0.json":  {person("aa", "")},
+		"dd.json": {person("dd", ""), person("mm", `,"description":"what main merged since"`)},
+		"mm.json": {person("mm", ""), person("pp", "")},
+	} {
+		path := filepath.Join(dir, "people", name)
+		if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(path, []byte(`{"entries":{`+strings.Join(entries, ",")+`}}`), 0o644); err != nil {
+			t.Fatal(err)
+		}
+	}
+	rep, err := format.CheckProfile(dir, pkgpack.ProfileCore)
+	if err != nil {
+		t.Fatal(err)
+	}
+	// The sweep cuts the sentence at cut to name the entry and its two packs.
+	const cut = ": the correctly-placed"
+	var line string
+	for _, l := range rep.Lines() {
+		if strings.Contains(l, discardedCopy) {
+			line = l
+		}
+	}
+	if !strings.HasPrefix(line, `entry "mm" is in both `) || !strings.Contains(line, cut) {
+		t.Fatalf("metafmt --check reports the differing copies of mm as %q in\n%s\nwant pkg/pack's sentence, cut by the sweep at %q and ending %q",
+			line, strings.Join(rep.Lines(), "\n"), cut, discardedCopy)
+	}
+	script := sweepScript(t)
+	for _, want := range []string{`grep -F -m 1 -- "` + discardedCopy + `"`, `${lost%%` + cut + `*}`} {
+		if !strings.Contains(script, want) {
+			t.Errorf("the sweep's fmt no longer holds %q", want)
+		}
 	}
 }
 

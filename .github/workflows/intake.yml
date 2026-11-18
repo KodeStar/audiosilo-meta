@@ -431,13 +431,21 @@ jobs:
   rebase:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
-    # Observed up to ~9 minutes when only a driver merge was checked; the
-    # loop's cost scales with the number of open bot pull requests (a metafmt
-    # + metacheck pass over the whole tree, about a minute, for EVERY one it
-    # rebases since audiosilo-meta-community#517), so the headroom is generous,
-    # and a sweep the bound cuts short leaves the unswept ones at the front of
-    # the next. A hung sweep holds the intake-rebase group, which is what the
-    # bound is for.
+    # Observed up to ~9 minutes when only a driver merge was checked, 3 to 7 of
+    # them the full-history checkout. The loop's cost scales with the number of
+    # open bot pull requests: since audiosilo-meta-community#517 EVERY one it
+    # rebases gets a `metafmt --check` and a metacheck pass over the whole
+    # tree, and check.yml observes 1.5 to 2.5 minutes for metacheck alone, so
+    # count about 3 minutes each (an estimate, not yet observed here) and
+    # about a dozen pull requests to the bound; three were the most open at
+    # once in the weeks before the change. A sweep the bound cuts short leaves
+    # the ones it did not reach at the front of the next, but a branch it gave
+    # up on stays there too (it is never pushed, so it stays least recently
+    # updated): each of those costs its 3 minutes at the head of every sweep
+    # until a maintainer deals with it. audiosilo-meta-sync recycles its pull
+    # request after 30 minutes behind main (BehindStallAfter), and that one is
+    # usually the newest, so the last the sweep reaches. A hung sweep holds
+    # the intake-rebase group, which is what the bound is for.
     timeout-minutes: 45
     # Narrower than the intake job's: no issues: write, because nothing here
     # touches an issue.
@@ -542,7 +550,7 @@ jobs:
           git config merge.redirectsjson.name "three-way merge of the slug tombstone table"
           git config merge.redirectsjson.driver "'$tools/metaredirectmerge' %O %A %B %P"
 
-          # fmt runs main's metafmt over the merged tree, once every entry key
+          # fmt runs main's metafmt over the rebased tree, once every entry key
           # in a pack the branch changed (against main, commit $1) is a slug.
           # metafmt names a split's new pack after the key its cut falls on,
           # and main's pkg/pack refuses one that is no slug; this is the guard
@@ -552,10 +560,40 @@ jobs:
           # nothing mergeable is lost. \A and \z, not ^ and $, which can match
           # at a line break inside a key; a file jq cannot read fails too.
           # main's own packs are not read: main's keys are main's.
+          #
+          # It ASKS before it writes. `metafmt --check` lists the outstanding
+          # work, and a tree with none is left alone: one read of the tree
+          # where --write makes two, on every pull request of every sweep, and
+          # nothing of a contributor's is rewritten that metafmt did not name
+          # first. What --write may never be handed is an entry held twice in
+          # DIFFERING copies. It keeps the copy in the bound-correct pack,
+          # discards the other and exits 0, and metacheck then passes the
+          # tree, but a branch's stale split pack moves the bounds, so the
+          # copy it calls misfiled is main's newer one: the push would quietly
+          # take back what main merged since (audiosilo-meta-community#517,
+          # where main had added recaps to an entry the branch still held a
+          # copy of). Which copy stays is a maintainer's call. Identical
+          # copies lose nothing and are healed. The sentence grepped for is
+          # pkg/pack's (Conflict.StringUnder), pinned by
+          # scripts/intakesweep_test.go.
           fmt() {
+            local report lost
             if ! git diff -z --name-only --diff-filter=d "$1" -- data \
                 | xargs -0 -r jq -n -e '[inputs | .entries | objects | keys_unsorted[] | test("\\A[a-z0-9-]+\\z")] | all' > /dev/null; then
               echo "metafmt: an entry key the branch brings is not a slug, or a file it changes is not JSON; metafmt was not run"
+              return 1
+            fi
+            report="$(mktemp)"
+            if "$tools/metafmt" --check --profile core > "$report" 2>&1; then
+              cat "$report"
+              rm -f "$report"
+              return 0
+            fi
+            cat "$report"
+            lost="$(grep -F -m 1 -- "the copies differ, and the misfiled one is discarded" "$report")" || lost=""
+            rm -f "$report"
+            if [ -n "$lost" ]; then
+              echo "metafmt: ${lost%%: the correctly-placed*} and the copies differ; which one stays is a maintainer's call, so metafmt --write was not run"
               return 1
             fi
             "$tools/metafmt" --write --profile core
@@ -759,8 +797,11 @@ jobs:
                 # cut, keeps its new pack while the shrink of the old one merges
                 # away, so the pushed branch held a stale copy of main's entries
                 # in a second pack (audiosilo-meta-community#517, re-pushed on
-                # every push to main for three days). Both drivers print "merged
-                # both sides"; the reason names the tree a driver merged as such.
+                # every push to main for three days). fmt heals that tree when
+                # the copies are identical and gives up on it when they differ
+                # (see fmt); metacheck then judges whatever is left. Both drivers
+                # print "merged both sides"; the reason names the tree a driver
+                # merged as such.
                 tree="rebased"
                 if grep -q "merged both sides" "$rebaselog"; then
                   tree="merged"

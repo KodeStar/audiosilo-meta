@@ -521,9 +521,13 @@ applies BOTH, writing the key twice - a file `pkg/pack` refuses and `metafmt`
 cannot re-render, so the sweep left the branch stuck instead of converging (issue
 #1695, twice on 2026-08-09). As a driver the script sees the three versions
 before any line merge happens, so the shape cannot arise; a clean rebase that
-merged this way is re-rendered and re-placed by the `metafmt --write` +
-`metacheck` pass the sweep runs after EVERY rebase, clean or not (a clean one
-with no merge at all can still keep a stale split pack, audiosilo-meta-community#517). The
+merged this way is re-rendered and re-placed by the metafmt + `metacheck` pass
+the sweep runs after EVERY rebase, clean or not (a clean one with no merge at
+all can still keep a stale split pack, audiosilo-meta-community#517). metafmt
+runs as `--check` first and `--write` only when that lists work, and never over
+an entry two packs hold in DIFFERING copies: `--write` would keep the stale one
+a moved bound makes "correctly placed" and exit 0, so that tree is a
+maintainer's (`fmt` in intake.yml). The
 pre-migration layout was one file per record
 (`data/works/<shard>/<slug>/work.json` and friends); `cmd/metamigrate` converted
 it, `pkg/check` and every writer now refuse it loudly.
