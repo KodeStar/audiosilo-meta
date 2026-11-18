@@ -3390,6 +3390,12 @@
       "authors": [
         "stephen-king"
       ],
+      "credits": [
+        {
+          "person": "joachim-korber",
+          "role": "translator"
+        }
+      ],
       "genres": [
         "fantasy",
         "horror",
@@ -3400,6 +3406,97 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "david-nathan-2027": {
+          "abridged": false,
+          "added_at": "2026-11-18",
+          "asin": [
+            {
+              "asin": "B0HQZP8H8N",
+              "region": "ca"
+            },
+            {
+              "asin": "B0HQZW9YZL",
+              "region": "us"
+            },
+            {
+              "asin": "B0HQZFP36G",
+              "region": "br"
+            },
+            {
+              "asin": "B0HQZRYW18",
+              "region": "uk"
+            },
+            {
+              "asin": "B0HQZQS4F4",
+              "region": "au"
+            },
+            {
+              "asin": "B0HQZYCD2B",
+              "region": "de"
+            },
+            {
+              "asin": "B0HQZSD21N",
+              "region": "fr"
+            },
+            {
+              "asin": "B0HQZRGNCZ",
+              "region": "jp"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81KdaAuBwsL.jpg",
+          "id": "david-nathan-2027",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-nathan"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2027-02-01",
+          "runtime_min": 500,
+          "sources": [
+            {
+              "imported_at": "2026-11-13",
+              "ref": "B0HQZP8H8N",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-17",
+              "ref": "B0HQZW9YZL",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-18",
+              "ref": "B0HQZFP36G",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-18",
+              "ref": "B0HQZRYW18",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-18",
+              "ref": "B0HQZQS4F4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-18",
+              "ref": "B0HQZYCD2B",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-18",
+              "ref": "B0HQZSD21N",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-18",
+              "ref": "B0HQZRGNCZ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "schwarz"
+        },
         "vittorio-alfieri-2006": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -3488,6 +3585,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B00TIOLYZO",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-11-13",
+          "ref": "B0HQZP8H8N",
           "type": "libex-import"
         }
       ],
