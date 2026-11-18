@@ -621,6 +621,39 @@ func TestIntakeSweepGiveUpNotice(t *testing.T) {
 	}
 }
 
+// A merged tree that cannot be staged is that pull request's failure, like
+// every other step of the replay: the step runs under bash -e, and stopping
+// there would leave every pull request behind it unswept, on every push, since
+// the one that fails keeps the oldest updatedAt.
+func TestIntakeSweepContainsAFailedStaging(t *testing.T) {
+	t.Parallel()
+	f := newSweepFixture(t)
+	f.withMainsDriver()
+	stuck := f.branch(6, "intake/issue-6", "main", []change{{"data/works/p.json", packJSON(t, "b", "m")}})
+	before := f.branch(7, "intake/issue-7", "main", []change{{"data/works/b.json", "{\"b\":1}\n"}})
+	f.write("data/works/p.json", packJSON(t, "a", "m"))
+	f.advanceMain()
+	// The sweep stages a merged tree with `git add data` and nothing else
+	// does, so a git that fails exactly that fails only the merged branch.
+	realGit, err := exec.LookPath("git")
+	if err != nil {
+		t.Fatal(err)
+	}
+	wrapper := "#!/usr/bin/env bash\nif [ \"$*\" = \"add data\" ]; then echo \"fatal: Unable to create index.lock\" >&2; exit 128; fi\nexec \"" + realGit + "\" \"$@\"\n"
+	if err := os.WriteFile(filepath.Join(f.stubBin, "git"), []byte(wrapper), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	out := f.mustRun()
+	f.wantUntouched("intake/issue-6", stuck)
+	if c := f.comments(6); len(c) != 1 || !strings.Contains(c[0], "the merged tree could not be staged") {
+		t.Errorf("want one give-up comment saying the tree could not be staged, got %q", c)
+	}
+	f.wantRebased(7, "intake/issue-7", before, "data/works/b.json")
+	if !strings.Contains(out, "rebased 1 pull request(s)") {
+		t.Errorf("the sweep did not go on to the next pull request:\n%s", out)
+	}
+}
+
 // commandsStopped reports whether every copy of line in a step's output sits
 // between a ::stop-commands::<token> line and the ::<token>:: that resumes
 // them, so the runner prints it rather than acting on it.
