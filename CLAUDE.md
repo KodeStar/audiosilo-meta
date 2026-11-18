@@ -916,9 +916,20 @@ keep this index in step (one line per topic).
   ones become LTS, and every `golang` minor and major, since the image's minor
   is the Go version and moves by hand with go.mod and every setup-go. The
   rebase sweep runs only MAIN's tools (metafmt, metacheck and the two merge
-  drivers, built and copied before the loop) and sweeps only same-repository
-  branches whose diff is confined to `data/` and whose commits add or change
-  no symbolic link; a branch it refuses gets ONE marked comment saying why,
+  drivers, built and copied before the loop) and sweeps only the
+  same-repository branches of pull requests into main, every commit of which
+  (not just the net diff: a file added then removed is in the tree mid-replay)
+  writes nothing but regular files plainly named `data/**/*.json`. It reads
+  main and the branch by commit id through refs of its own, never a short
+  name; what the branch controls reaches its comments only inert (a refused
+  path, the reason in a code span) and its log only with workflow commands
+  stopped (`logged`); metafmt runs only once every entry key in the packs the
+  branch changed is a slug (`fmt`); and the step runs under `bash -e`, so a
+  status it reads, and every step that may fail for one pull request, goes
+  through `if` or `||` (the mechanism and its reasons: PACKAGES.md, `.github/`;
+  scripts/intakesweep_test.go drives the step against a local origin;
+  audiosilo-meta-community's intake.yml carries the same sweep, keep the two in
+  step). A branch it refuses gets ONE marked comment saying why,
   and a branch it fails to rebase gets one per (attempted head, reason) through
   the same `comment_once` helper, so a stuck branch is not re-told on every push
   to main while a new commit or a new failure still is - the reason carries the

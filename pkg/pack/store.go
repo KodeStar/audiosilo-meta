@@ -9,12 +9,18 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // ErrLegacyLayout is returned for a family still in the file-per-entity layout.
 // pkg/pack only reads and writes pack layout; during the dual-layout window a
 // caller checks Store.Layout first and falls back to the legacy reader.
 var ErrLegacyLayout = errors.New("family is in the legacy file-per-entity layout")
+
+// ErrInvalidBound means a flush would name a pack or directory by something
+// that is not a slug: an entry key that is no slug, at a split's cut.
+var ErrInvalidBound = errors.New("pack bound is not a slug")
 
 // Store is a read-through, write-behind view over a data tree's pack files: it
 // answers reads from the queue first and from disk second, and writes nothing
@@ -839,11 +845,20 @@ func checkInRange(def FamilyDef, pp planPack, next PackRef) error {
 // route to it into a failed run instead of missing data. It runs while a family
 // is being planned, so every family is resolved before the flush writes its
 // first byte.
+//
+// Every bound and directory has to be a slug, too. A split names its new pack
+// after the entry key its cut falls on, and an entry key is whatever the pack
+// file says: one like a/../../x would be joined into a path outside the data
+// root (survey refuses such a name on disk, but a key never passed through it).
 func plannedPaths(def FamilyDef, after []planPack) ([]PackRef, map[string]bool, error) {
 	refs := make([]PackRef, 0, len(after))
 	seen := make(map[string]bool, len(after))
 	first := make(map[string]planPack, len(after))
 	for _, pp := range after {
+		if !model.ValidSlug(pp.bound) || (pp.dir != "" && !model.ValidSlug(pp.dir)) {
+			return nil, nil, fmt.Errorf("%s: %w: a pack would be named by %q (directory %q), refusing to write",
+				def.Family.Root(), ErrInvalidBound, pp.bound, pp.dir)
+		}
 		ref := PackRef{Family: def.Family, Dir: pp.dir, Bound: pp.bound}
 		p := ref.Path()
 		if seen[p] {
