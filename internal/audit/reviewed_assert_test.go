@@ -720,3 +720,61 @@ func TestReviewedAssertRetitleRefusedOnAMergedWork(t *testing.T) {
 		})
 	}
 }
+
+// A fold assertion naming a record the tree does not hold is REFUSED (a typo must not
+// read as applied); a recording fold whose mover is gone while its keeper stays is
+// STALE, which is what an applied fold leaves.
+func TestReviewedFoldAssertionsRefusedOrStale(t *testing.T) {
+	people := reviewedDecision{Op: OpMergePeople, Target: "jane-doe", Others: []string{"jane-q-doe"},
+		Decision: "assert", Reason: "one person"}
+	recs := func(from, to string) reviewedDecision {
+		return reviewedDecision{Op: OpMergeRecordings, Target: "the-ruins-of-gorlan", From: from, To: to,
+			Decision: "assert", Reason: "one production"}
+	}
+	for _, tc := range []struct {
+		name   string
+		r      reviewedDecision
+		status outcomeStatus
+	}{
+		{"no such person", people, statusRefused},
+		{"no keeper", recs("r", "r-2"), statusRefused},
+		{"mover gone", recs("r-2", "r"), statusStale},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			rep := runFixtureRejecting(t, rangerTree(t), tc.r)
+			all := rep.Reviewed.All
+			if len(all) != 1 || all[0].Status != tc.status {
+				t.Fatalf("tally = %+v, want %s", all, tc.status)
+			}
+		})
+	}
+}
+
+// A merge-recordings decision names the work, the recording that folds and the one it
+// folds into, two different ids, nothing else; and no detector proposes it, so it is
+// never an accept.
+func TestReviewedMergeRecordingsShape(t *testing.T) {
+	const ok = `{"decision":"assert","from":"b","op":"merge-recordings","reason":"r","target":"w","to":"a"}`
+	for name, entry := range map[string]string{
+		"accept":   `{"decision":"accept","from":"b","op":"merge-recordings","reason":"r","target":"w","to":"a"}`,
+		"no from":  `{"decision":"assert","op":"merge-recordings","reason":"r","target":"w","to":"a"}`,
+		"same ids": `{"decision":"assert","from":"a","op":"merge-recordings","reason":"r","target":"w","to":"a"}`,
+		"others":   `{"decision":"assert","from":"b","op":"merge-recordings","others":["x"],"reason":"r","target":"w","to":"a"}`,
+		"a field":  `{"decision":"assert","field":"id","from":"b","op":"merge-recordings","reason":"r","target":"w","to":"a"}`,
+	} {
+		raw, err := canonical.Format([]byte("[" + entry + "]"))
+		if err != nil {
+			t.Fatal(err)
+		}
+		if _, err := parseReviewed(raw); err == nil {
+			t.Errorf("%s: parsed, want a refusal", name)
+		}
+	}
+	raw, err := canonical.Format([]byte("[" + ok + "]"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := parseReviewed(raw); err != nil {
+		t.Errorf("a well-formed assertion is refused: %v", err)
+	}
+}

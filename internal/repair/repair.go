@@ -62,9 +62,10 @@ import (
 	"github.com/kodestar/audiosilo-meta/pkg/redirects"
 )
 
-// writeFamilies are the families a repair writes. people is deliberately absent:
-// P-DUP is advisory throughout, so nothing here ever merges a person.
-var writeFamilies = []pack.Family{pack.FamilyWorks, pack.FamilyWorksCommunity, pack.FamilySeries}
+// writeFamilies are the families a repair writes. people is written by a reviewed
+// merge-people assertion alone (people.go): P-DUP is advisory throughout, so no
+// detector's proposal ever merges a person.
+var writeFamilies = []pack.Family{pack.FamilyWorks, pack.FamilyWorksCommunity, pack.FamilySeries, pack.FamilyPeople}
 
 // openCommunity opens Options.CommunityDir as a READ-ONLY community root, or
 // returns nil when the flag was not given. Nothing here ever writes to it: it is
@@ -130,6 +131,8 @@ func writeFamiliesIn(p pack.Profile) []pack.Family {
 // gap here: each names a decision a rule may not make. set-work-language is appliable
 // although the audit never proposes it mechanically: a language is only ever set by a
 // reviewed decision, and the op exists so that decision has a writer (membership.go).
+// merge-people and merge-recordings are the same: no detector proposes either, and a
+// reviewed assertion is what sources one (people.go, recordings.go).
 var appliableOps = map[string]bool{
 	audit.OpMergeWorks:      true,
 	audit.OpMergeSeries:     true,
@@ -143,6 +146,8 @@ var appliableOps = map[string]bool{
 	audit.OpMoveMembership:  true,
 	audit.OpSplitSeries:     true,
 	audit.OpSetWorkLanguage: true,
+	audit.OpMergePeople:     true,
+	audit.OpMergeRecordings: true,
 }
 
 // AppliableOps returns the ops --op accepts, sorted. The CLI prints it, so the flag's
@@ -191,6 +196,11 @@ const (
 	CatOrderingLink Category = "ordering-link-conflict"
 	// CatRecordingKey: a colliding recording key had no free numbered variant.
 	CatRecordingKey Category = "recording-key-exhausted"
+	// CatProduction: a merge-recordings assertion names two recordings the records
+	// themselves say are two productions (rawentry.SameProduction): a LibriVox
+	// project beside another, two narrator sets, an abridgement, runtimes more than
+	// 10% apart. The records are fixed first, or the assertion is wrong.
+	CatProduction Category = "different-production"
 	// CatStaleValue: the record no longer states the value the proposal was written
 	// against.
 	CatStaleValue Category = "stale-value"
@@ -208,7 +218,7 @@ const (
 func Categories() []Category {
 	return []Category{
 		CatStaleProposal, CatNotProposed, CatCommunityRequired, CatMissing, CatRetired,
-		CatSidecarCollision, CatPositionConflict, CatTranslationLink, CatOrderingLink, CatRecordingKey, CatStaleValue,
+		CatSidecarCollision, CatPositionConflict, CatTranslationLink, CatOrderingLink, CatRecordingKey, CatProduction, CatStaleValue,
 		CatNoValue, CatMalformed, CatRedirect,
 	}
 }
@@ -459,6 +469,10 @@ func (rn *runner) planOne(c candidate) {
 		err = rn.splitSeries(t, c.fd)
 	case audit.OpSetWorkLanguage:
 		err = rn.setWorkLanguage(t, c.fd)
+	case audit.OpMergePeople:
+		err = rn.mergePeople(t, c.fd)
+	case audit.OpMergeRecordings:
+		err = rn.mergeRecordings(t, c.fd)
 	default:
 		// Unreachable: selectProposals only yields appliableOps. Loud rather than
 		// silent, because a new op added to that map and not to this switch would
@@ -502,7 +516,7 @@ func (rn *runner) refuse(c candidate, category Category, reason string) {
 // validate afterwards is a FAILED run: it exits non-zero with the problems named,
 // so a red tree is never left quietly behind.
 func (rn *runner) apply(store *pack.Store) error {
-	for _, v := range []*view{rn.plan.works, rn.plan.community, rn.plan.series} {
+	for _, v := range []*view{rn.plan.works, rn.plan.community, rn.plan.series, rn.plan.people} {
 		if err := v.queue(); err != nil {
 			return err
 		}

@@ -32,6 +32,7 @@ type plan struct {
 	works     *view
 	community *view
 	series    *view
+	people    *view
 
 	// redirects is the tombstone table as the run will write it, and tombs counts what
 	// this run added to it - accumulated where the writes happen, so the report never
@@ -59,6 +60,9 @@ type plan struct {
 	// what earlier proposals re-pointed. Both are updated as a txn commits.
 	workLinks   *linkIndex
 	seriesLinks *linkIndex
+	// personRefs indexes which works and series name each person, for merge-people
+	// (people.go); a committed fold folds its losers' entries into its target's.
+	personRefs *personIndex
 	// workLang is the primary language of every work, off the load (workLanguages),
 	// so a derived series language is judged without parsing a pack for a work the run
 	// has not touched.
@@ -75,12 +79,14 @@ func newPlan(store *pack.Store, communityRO *pack.Store, cat *model.Catalog, tab
 		works:         newView(store, pack.FamilyWorks),
 		community:     newCommunityView(store, communityRO),
 		series:        newView(store, pack.FamilySeries),
+		people:        newView(store, pack.FamilyPeople),
 		redirects:     cloneRedirects(table),
 		retired:       map[string]string{},
 		seriesMembers: make(map[string]map[string]bool, len(cat.Series)),
 		seriesOf:      map[string]map[string]bool{},
 	}
 	p.workLinks, p.seriesLinks = newLinkIndexes(cat)
+	p.personRefs = newPersonIndex(cat)
 	p.workLang = workLanguages(cat)
 	for _, s := range cat.Series {
 		set := make(map[string]bool, len(s.Works))
@@ -353,6 +359,8 @@ func (t *txn) stageFor(f pack.Family) *stage {
 		return t.community
 	case pack.FamilySeries:
 		return t.series
+	case pack.FamilyPeople:
+		return t.people
 	}
 	panic("repair: no stage for family " + f.Root())
 }
@@ -401,12 +409,16 @@ type txn struct {
 	works     *stage
 	community *stage
 	series    *stage
+	people    *stage
 	tombs     []tomb
 	retires   []string
 	notes     []string
 	// reindex holds the membership lists this proposal wrote, so the plan's
 	// series index is updated at commit rather than as the plan is composed.
 	reindex map[string][]model.SeriesWork
+	// refold holds the person folds this proposal made, for the plan's person index,
+	// at commit for the same reason.
+	refold []personFold
 }
 
 func (p *plan) begin() *txn {
@@ -415,6 +427,7 @@ func (p *plan) begin() *txn {
 		works:     newStage(p.works),
 		community: newStage(p.community),
 		series:    newStage(p.series),
+		people:    newStage(p.people),
 		reindex:   map[string][]model.SeriesWork{},
 	}
 }
@@ -476,6 +489,10 @@ func (t *txn) commit(key string) error {
 	t.works.commit()
 	t.community.commit()
 	t.series.commit()
+	t.people.commit()
+	for _, f := range t.refold {
+		t.p.personRefs.fold(f)
+	}
 	for _, slug := range rawentry.SortedKeys(t.reindex) {
 		t.p.noteSeriesMembers(slug, t.reindex[slug])
 	}

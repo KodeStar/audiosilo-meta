@@ -132,7 +132,11 @@ either: it is a dry run by default and a `--write` is a data change with its own
 pull request. It re-runs the audit in process over the tree it is about to modify
 and applies only what that fresh run still proposes as non-advisory, so a stale
 report cannot resurrect a decision the data no longer supports - see
-`internal/repair`.
+`internal/repair`. Two of its ops are sourced only by a reviewed `assert` in
+`internal/audit/reviewed.json`, never by a detector: `merge-people` (one person's
+two records: every credit re-pointed, the loser's slug tombstoned) and
+`merge-recordings` (a work's reissue folded into the recording it repeats, only
+where the records agree it is one production).
 
 **The defect classes it found cannot be re-created**, which is the PREVENTION half
 of that campaign and is in the gate (three layers over one rule -

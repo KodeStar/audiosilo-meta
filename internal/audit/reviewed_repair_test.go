@@ -583,3 +583,80 @@ func TestReviewedAssertedRetitleReachesMetarepair(t *testing.T) {
 		t.Fatalf("second run=%+v", again)
 	}
 }
+
+// The two folds only an assertion sources, merge-people and merge-recordings, reach
+// metarepair through the same gate: one author's two records become one (every credit
+// re-pointed, the loser's slug tombstoned) and a work's reissue folds into the
+// recording it repeats. A re-run finds both STALE and proposes nothing.
+func TestReviewedAssertedFoldsReachMetarepair(t *testing.T) {
+	files := map[string]string{
+		"people/xx/james-a-hunter.json": testpack.PersonJSON(t, "james-a-hunter", "James A. Hunter"),
+		"people/xx/james-hunter.json":   testpack.PersonJSON(t, "james-hunter", "James Hunter"),
+		"people/xx/nate-narrator.json":  testpack.PersonJSON(t, "nate-narrator", "Nate Narrator"),
+		"works/xx/vigil/work.json":      testpack.WorkJSON(t, "vigil", "Vigil", testpack.WithAuthors("james-hunter", "james-a-hunter")),
+		"works/xx/vigil/recordings/nate-narrator-2020.json": testpack.RecJSON(t, "nate-narrator-2020", "vigil",
+			testpack.WithRuntime(600)),
+		"works/xx/vigil/recordings/nate-narrator-2024.json": testpack.RecJSON(t, "nate-narrator-2024", "vigil",
+			testpack.WithRuntime(601), testpack.WithPublisher("Reissue Audio")),
+	}
+	root := t.TempDir()
+	data := filepath.Join(root, "data")
+	testpack.Seed(t, data, files)
+	audit.SetReviewedForTest(t, []byte(`[
+  {
+    "decision": "assert",
+    "op": "merge-people",
+    "others": [
+      "james-hunter"
+    ],
+    "reason": "one LitRPG author's two records",
+    "target": "james-a-hunter"
+  },
+  {
+    "decision": "assert",
+    "from": "nate-narrator-2024",
+    "op": "merge-recordings",
+    "reason": "the 2024 listing is a reissue of the 2020 audio",
+    "target": "vigil",
+    "to": "nate-narrator-2020"
+  }
+]
+`))
+	commitFixture(t, root)
+	opts := repair.Options{DataDir: data, Ops: []string{audit.OpMergePeople, audit.OpMergeRecordings}, Write: true}
+	rep, err := repair.Run(opts)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(rep.Applied) != 2 || len(rep.Refused) != 0 {
+		t.Fatalf("repair applied %+v, refused %+v", rep.Applied, rep.Refused)
+	}
+	after := check.Load(data)
+	if len(after.Problems) > 0 {
+		t.Fatalf("after repair: %v", after.Problems)
+	}
+	if to, ok := after.Catalog.Redirects.Survivor(model.RedirectPeople, "james-hunter"); !ok || to != "james-a-hunter" {
+		t.Fatalf("james-hunter resolves to %q, %v", to, ok)
+	}
+	for _, w := range after.Catalog.Works {
+		if w.ID != "vigil" {
+			continue
+		}
+		if !slices.Equal(w.Authors, []string{"james-a-hunter"}) || len(w.Recordings) != 1 || w.Recordings[0].ID != "nate-narrator-2020" ||
+			len(w.Recordings[0].ASIN) != 2 {
+			t.Fatalf("vigil = %+v, recordings %+v", w, w.Recordings)
+		}
+	}
+	fresh := audit.Analyze(after)
+	if len(fresh.Reviewed.Stale()) != 2 || len(fresh.Reviewed.Outcomes()) != 0 {
+		t.Fatalf("after applying, reviewed = %+v, want both assertions stale", fresh.Reviewed)
+	}
+	opts.Write = false
+	again, err := repair.Run(opts)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(again.Applied) != 0 || again.Considered != 0 {
+		t.Fatalf("second run=%+v", again)
+	}
+}

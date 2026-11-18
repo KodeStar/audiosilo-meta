@@ -20,6 +20,9 @@ var opPhrase = map[string]func(Proposal) string{
 	OpMergePeople: func(p Proposal) string {
 		return "review as one person: fold " + truncateList(p.Others, 8) + " onto " + p.Target
 	},
+	OpMergeRecordings: func(p Proposal) string {
+		return fmt.Sprintf("review as one production: fold recording %s of %s into %s", p.From, p.Target, p.To)
+	},
 	OpMergeSeries: func(p Proposal) string {
 		if p.Field == FieldPosition {
 			// SER-DUP's family-renumbered fold: the target's numbers are the ones kept.
