@@ -19,7 +19,6 @@ import (
 	"maps"
 	"path/filepath"
 	"sort"
-	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/canonical"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
@@ -279,11 +278,7 @@ func WriteProfile(dataDir string, p pack.Profile) (Report, error) {
 		mergePending(&rep.Pending, pend)
 	}
 	if len(differing) > 0 {
-		lines := make([]string, len(differing))
-		for i, c := range differing {
-			lines[i] = c.StringUnder(dataDir)
-		}
-		return Report{}, fmt.Errorf("%s\n%w", strings.Join(lines, "\n"), pack.ErrDifferingCopies)
+		return Report{}, pack.DifferingError(differing, dataDir)
 	}
 	// Formatting runs before the flush: Flush judges a pack no write reached by
 	// its on-disk size, which is only the pack's canonical size once the file
@@ -301,7 +296,7 @@ func WriteProfile(dataDir string, p pack.Profile) (Report, error) {
 	// A family that was already well-formed queued nothing, so a tree where that
 	// held throughout is never flushed at all - which is what makes a clean tree
 	// cost one pass over it and nothing more.
-	if s != nil && !rep.Pending.Empty() {
+	if !rep.Pending.Empty() {
 		w, ferr := s.Flush()
 		if ferr != nil {
 			return Report{}, ferr

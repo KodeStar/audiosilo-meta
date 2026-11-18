@@ -70,6 +70,17 @@ type Conflict struct {
 
 func (c Conflict) String() string { return c.StringUnder("") }
 
+// DifferingError is the refusal of the conflicts cs, whose copies differ: one
+// line per conflict with its paths beneath prefix, then ErrDifferingCopies,
+// which it wraps.
+func DifferingError(cs []Conflict, prefix string) error {
+	lines := make([]string, len(cs))
+	for i, c := range cs {
+		lines[i] = c.StringUnder(prefix)
+	}
+	return fmt.Errorf("%s\n%w", strings.Join(lines, "\n"), ErrDifferingCopies)
+}
+
 func (c Conflict) StringUnder(prefix string) string {
 	if !c.Identical {
 		return fmt.Sprintf("entry %q is in both %s and %s and the copies differ: the tooling will not choose between them, a human has to keep one and delete the other",
@@ -528,7 +539,8 @@ func (s *Store) Heal(f Family) ([]Misplaced, error) {
 // file in it for a second answer identical to the first.
 //
 // On ErrDifferingCopies the report is returned beside the error, so a caller can
-// render the refused conflicts in its own terms (Pending.Differing).
+// render the refused conflicts under its own path prefix (DifferingError of
+// Pending.Differing).
 func (s *Store) HealPending(f Family) (Pending, error) {
 	def, err := s.def(f)
 	if err != nil {
@@ -543,11 +555,7 @@ func (s *Store) HealPending(f Family) (Pending, error) {
 		return Pending{}, err
 	}
 	if differing := p.Differing(); len(differing) > 0 {
-		lines := make([]string, len(differing))
-		for i, c := range differing {
-			lines[i] = c.String()
-		}
-		return p, fmt.Errorf("%s: %w", strings.Join(lines, "; "), ErrDifferingCopies)
+		return p, DifferingError(differing, "")
 	}
 
 	// From here on only the surviving packs are addressable.
