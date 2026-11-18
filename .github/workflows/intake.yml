@@ -616,9 +616,14 @@ jobs:
           # check-verdict.sh does for job logs: a record key or field can carry
           # a newline and then a line the runner would act on (an ::error::
           # annotation, a mask, a stop of its own). The resume token is made up
-          # after the log was written, on a line of its own.
+          # after the log was written, on a line of its own, and from the
+          # kernel's random source rather than $RANDOM alone: a sweep prints
+          # one token per log into a job log anyone can watch as it runs, bash's
+          # generator can be run forward from two of them, and a branch pushed
+          # mid-sweep is fetched only when its turn comes.
           logged() {
-            local resume="intake-sweep-log-$$-$RANDOM$RANDOM"
+            local resume
+            resume="intake-sweep-log-$$-$RANDOM-$(od -An -N16 -tx1 /dev/urandom | tr -d ' \n')"
             echo "::stop-commands::${resume}"
             cat "$1"
             echo
