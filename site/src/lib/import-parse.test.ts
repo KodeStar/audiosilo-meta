@@ -745,6 +745,39 @@ describe('parseExport - audiosilo-books envelope', () => {
     expect(FORMATS.audiobookshelf.factualKeys).toEqual(FORMATS.audiosilobooks.factualKeys)
   })
 
+  it('writes chapters only for a positive count (ABS numChapters can say 0)', () => {
+    for (const chapters of [0, -2, '0']) {
+      expect('chapters' in parseExport(envelope({ title: 'A', chapters })).books[0].raw).toBe(false)
+    }
+    expect(parseExport(envelope({ title: 'A', chapters: 12 })).books[0].raw['chapters']).toBe(12)
+    const abs = parseExport(
+      JSON.stringify({ results: [{ media: { metadata: { title: 'A' }, numChapters: 0 } }], total: 1 })
+    ).books[0]
+    expect('chapters' in abs.raw).toBe(false)
+  })
+
+  it('cleans names to a fixed point, so a re-dropped download reads the same', () => {
+    const names = [
+      'Ann Author - Editor - Narrator',
+      'Dan Veksler - Translator - translator',
+      'Ann Author, MD - narrator',
+      'Jane Doe - translator, PhD',
+      'Some - Band',
+    ]
+    const first = parseExport(envelope({ title: 'A', authors: names, narrators: names })).books[0]
+    expect(first.authors).toEqual([
+      'Ann Author',
+      'Dan Veksler',
+      'Ann Author MD',
+      'Jane Doe PhD',
+      'Some - Band',
+    ])
+    const again = parseExport(envelope(first.raw)).books[0]
+    expect(again.authors).toEqual(first.authors)
+    expect(again.narrators).toEqual(first.narrators)
+    expect(again.raw).toEqual(first.raw)
+  })
+
   it('reads an https cover_url and drops a non-https one', () => {
     const good = parseExport(envelope({ title: 'A', cover_url: 'https://img.example/c.jpg' }))
     expect(good.books[0].coverUrl).toBe('https://img.example/c.jpg')

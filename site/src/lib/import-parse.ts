@@ -361,16 +361,31 @@ function peelSuffixChunk(name: string): [string, string] {
   return parts.length === 0 ? [name, ''] : [head, parts.join(' ')]
 }
 
-// Normalize one raw credit: trim, strip a trailing role qualifier (behind any
-// ", <suffix>" tail, which goes back on the name); null when nothing usable
+// Normalize one raw credit: trim, strip every trailing role qualifier (behind
+// any ", <suffix>" tail, which goes back on the name); null when nothing usable
 // remains. Shared by every name-list shape (comma-joined strings and the
 // folder-scan's arrays).
+//
+// It runs to a FIXED POINT, so cleaning a cleaned name changes nothing: a
+// re-dropped audiosilo-books download (whose names went through here once) must
+// display exactly as the first drop did. Stacked qualifiers ("A - Editor -
+// Narrator") all come off, as the importer's creditWithRolesSided loop takes
+// them off, and a pass that leaves a ", <suffix>" chunk at the end ("A, MD -
+// narrator" -> "A, MD") is peeled by the next one. Every changing pass makes the
+// name shorter, so the loop ends.
 function cleanName(part: string): string | null {
-  const name = part.trim()
+  let name = part.trim()
   if (name === '') return null
-  const [head, suffix] = peelSuffixChunk(name)
-  const cleaned = stripRoleQualifier(head)
-  return suffix === '' ? cleaned : `${cleaned} ${suffix}`
+  for (;;) {
+    const [head, suffix] = peelSuffixChunk(name)
+    let cleaned = head
+    for (let next = stripRoleQualifier(cleaned); next !== cleaned; next = stripRoleQualifier(cleaned)) {
+      cleaned = next
+    }
+    const out = suffix === '' ? cleaned : `${cleaned} ${suffix}`
+    if (out === name) return out
+    name = out
+  }
 }
 
 // Split a comma-joined name list, trim each, rejoin a suffix-only piece onto
@@ -790,7 +805,11 @@ function curatedProjection(
   if (b.releaseDate) p['release_date'] = b.releaseDate
   if (b.publisher) p['publisher'] = b.publisher
   if (b.runtimeMin !== undefined) p['runtime_min'] = b.runtimeMin
-  if (b.chapterCount !== undefined) p['chapters'] = b.chapterCount
+  // Only a real count: ABS's numChapters (or a hand-edited download) can say 0
+  // or less, which states nothing about the recording.
+  if (b.chapterCount !== undefined && Number.isInteger(b.chapterCount) && b.chapterCount > 0) {
+    p['chapters'] = b.chapterCount
+  }
   if (statedAbridged) p['abridged'] = true
   return p
 }
