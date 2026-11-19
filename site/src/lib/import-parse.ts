@@ -41,7 +41,9 @@ export interface ParsedBook {
   chapterCount?: number
   abridged?: boolean // tri-state: undefined when unknown
   format: KnownFormat // the source format (drives the factual-subset allowlist)
-  raw: Record<string, unknown> // the original entry (for the factual-subset download)
+  // The original entry, or for an Audiobookshelf-derived book the curated
+  // projection rebuilt from the parsed values (for the factual-subset download).
+  raw: Record<string, unknown>
 }
 
 export type ExportFormat =
@@ -122,10 +124,11 @@ export function abridgedFromMarker(title: string): boolean | undefined {
 }
 
 // An Audiobookshelf-derived entry's abridged tri-state, by the Go importer's
-// audiosiloBookToBook rule: a stated TRUE flag, else the edition marker on the
-// raw title or subtitle (a marker IS a statement, unlike ABS's default false).
-function absAbridged(flag: unknown, title: string, subtitle: string): boolean | undefined {
-  return absStatedAbridged(flag) ?? abridgedFromMarker(title) ?? abridgedFromMarker(subtitle)
+// audiosiloBookToBook rule: a stated TRUE flag (absStatedAbridged's reading),
+// else the edition marker on the raw title or subtitle (a marker IS a
+// statement, unlike ABS's default false).
+function absAbridged(stated: true | undefined, title: string, subtitle: string): boolean | undefined {
+  return stated ?? abridgedFromMarker(title) ?? abridgedFromMarker(subtitle)
 }
 
 // --- Runtime helpers --------------------------------------------------------
@@ -835,7 +838,7 @@ function parseAudiosiloBook(raw: Record<string, unknown>): ParsedBook {
     region: undefined, // the curated projection carries no marketplace region
     coverUrl,
     chapterCount,
-    abridged: absAbridged(raw['abridged'], title, subtitle),
+    abridged: absAbridged(statedAbridged, title, subtitle),
     format: 'audiosilobooks',
   }
   return { ...book, raw: curatedProjection(book, statedAbridged) }
@@ -959,7 +962,7 @@ function parseAudiobookshelfBook(raw: Record<string, unknown>): ParsedBook {
     region: undefined, // ABS carries no marketplace region
     coverUrl: undefined,
     chapterCount,
-    abridged: absAbridged(md['abridged'], title, subtitle),
+    abridged: absAbridged(statedAbridged, title, subtitle),
     format: 'audiobookshelf',
   }
   return { ...book, raw: curatedProjection(book, statedAbridged) }

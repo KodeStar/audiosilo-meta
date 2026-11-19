@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import {
+  FORMATS,
   parseExport,
   normalizeAsin,
   normalizeIsbn,
@@ -717,6 +718,31 @@ describe('parseExport - audiosilo-books envelope', () => {
       })
     ).books[0]
     expect(b.raw).toEqual({ title: 'A', authors: ['Lee Child'] })
+  })
+
+  it('projects every fact onto a key the download allowlist keeps', () => {
+    // curatedProjection and CURATED_KEYS list the keys twice; a key added to one
+    // and not the other would silently vanish from the download.
+    const b = parseExport(
+      envelope({
+        title: 'A',
+        subtitle: 'B',
+        authors: ['X'],
+        narrators: ['Y'],
+        series: 'S',
+        series_position: '1',
+        asin: 'B076HYPQLK',
+        isbn: '9780553505405',
+        language: 'en',
+        release_date: '1997',
+        publisher: 'P',
+        runtime_min: 60,
+        chapters: 3,
+        abridged: true,
+      })
+    ).books[0]
+    expect(Object.keys(b.raw).sort()).toEqual([...FORMATS.audiosilobooks.factualKeys].sort())
+    expect(FORMATS.audiobookshelf.factualKeys).toEqual(FORMATS.audiosilobooks.factualKeys)
   })
 
   it('reads an https cover_url and drops a non-https one', () => {

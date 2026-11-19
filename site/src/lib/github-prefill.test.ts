@@ -669,6 +669,8 @@ describe('newBooksPayload', () => {
     expect(b.seriesPosition).toBe(a.seriesPosition)
     expect(b.asin).toBe(a.asin)
     expect(b.isbn).toBe(a.isbn)
+    // And the re-drop's own download is the first drop's envelope again.
+    expect(newBooksPayload(second.books)).toEqual(payload)
   })
 
   it('carries an https cover through the audiosilo-books envelope round-trip', () => {
