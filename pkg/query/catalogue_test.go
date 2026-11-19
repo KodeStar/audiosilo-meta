@@ -9,6 +9,7 @@ import (
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -111,15 +112,15 @@ func TestSeriesListeningGuideBoundsAndFacts(t *testing.T) {
 
 // TestSeriesOrderSQLMatchesGoOverThePositionGrammar pins the two series orders to
 // each other over every shape series.schema.json's position pattern admits: the
-// SQL one (seriesListeningMembersSQL: CAST(position AS REAL), position, work_id),
-// which the listening guide pages with, and the Go one in Series(), which sorts
+// SQL one the listening guide pages with (seriesListeningMembersSQL:
+// CAST(position AS REAL), position, work_id), and the Go one in Series(), which sorts
 // by positionStart, then the position string, then the work id. SQLite's CAST
 // reads the longest numeric prefix ("1-15" -> 1, "2.10-3" -> 2.1) and
 // parsePositionRange the range's start, so the two agree only while the grammar
 // stays numeric; ranges, a decimal whose digits sort differently as text ("2.10"
 // vs "2.9"), a leading zero, 0 and a fraction below 1 are all here.
 func TestSeriesOrderSQLMatchesGoOverThePositionGrammar(t *testing.T) {
-	grammar := regexp.MustCompile(`^\d+(\.\d+)?(-\d+(\.\d+)?)?$`)
+	grammar := regexp.MustCompile(testpack.SeriesPositionPattern(t))
 	// Listed out of order, with work ids that disagree with the position order.
 	members := []struct{ work, position string }{
 		{"w-01", "10.0"}, {"w-02", "2.9"}, {"w-03", "1-3.5"}, {"w-04", "0.5"},
@@ -148,22 +149,14 @@ func TestSeriesOrderSQLMatchesGoOverThePositionGrammar(t *testing.T) {
 	}
 	snap := openTestDB(t, artifacttest.Build(t, cat))
 
-	rows, err := snap.db.Query(seriesListeningMembersSQL, "grammar", len(members), 0)
+	guide, err := snap.SeriesListeningGuide(t.Context(), "grammar", len(members), 0)
 	if err != nil {
 		t.Fatal(err)
 	}
 	var fromSQL []string
-	for rows.Next() {
-		var work, position string
-		if err := rows.Scan(&work, &position); err != nil {
-			t.Fatal(err)
-		}
-		fromSQL = append(fromSQL, work)
+	for _, entry := range guide.Entries {
+		fromSQL = append(fromSQL, entry.Work.ID)
 	}
-	if err := rows.Err(); err != nil {
-		t.Fatal(err)
-	}
-	_ = rows.Close()
 
 	series, err := snap.Series("grammar", 0, 0)
 	if err != nil {
@@ -299,14 +292,11 @@ func TestBrowseAndRecordingChapterWindows(t *testing.T) {
 // ones still serve every catalogue read, with a legacy false read as unknown;
 // the 12 one keeps its alternate titles.
 func TestAbridgementLegacyArtifacts(t *testing.T) {
-	cat := catalogueFixture()
-	for _, w := range cat.Works {
-		if w.ID == "book-000" {
-			w.AlternateTitles = []string{"Book Zero"}
-		}
-	}
 	for _, version := range []int{7, 11, 12, 13} {
 		t.Run(fmt.Sprint(version), func(t *testing.T) {
+			t.Parallel() // each subtest builds the 1,000-recording fixture
+			cat := catalogueFixture()
+			cat.Works[0].AlternateTitles = []string{"Book Zero"} // book-000
 			var stmts []string
 			if version < 13 {
 				stmts = append(stmts, "ALTER TABLE recordings DROP COLUMN abridgement", "DROP INDEX idx_series_works_position", "DROP INDEX idx_recording_narrators_person_recording")
@@ -353,7 +343,7 @@ func TestAbridgementLegacyArtifacts(t *testing.T) {
 			}
 		})
 	}
-	path := artifacttest.Altered(t, cat, 13, "ALTER TABLE recordings DROP COLUMN abridgement")
+	path := artifacttest.Altered(t, artifacttest.Fixture(), 13, "ALTER TABLE recordings DROP COLUMN abridgement")
 	if db, err := Open(path, ""); err == nil {
 		_ = db.Close()
 		t.Fatal("accepted v13 without abridgement")

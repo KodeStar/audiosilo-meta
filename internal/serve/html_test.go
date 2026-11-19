@@ -170,11 +170,7 @@ func TestHTMLRoutesNeedASiteDirectory(t *testing.T) {
 	for _, r := range srv.htmlRoutes() {
 		path := fill.Replace(strings.TrimPrefix(r.pattern, "GET "))
 		for _, target := range []string{path, path + "?id=project-hail-mary&page=2"} {
-			resp, err := http.Get(ts.URL + target)
-			if err != nil {
-				t.Fatal(err)
-			}
-			_ = resp.Body.Close()
+			resp := get(t, ts.URL+target, nil)
 			if resp.StatusCode != http.StatusNotFound {
 				t.Errorf("GET %s without a site dir = %d, want 404 (the route is not registered)", target, resp.StatusCode)
 			}

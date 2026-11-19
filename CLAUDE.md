@@ -810,9 +810,8 @@ RECORDING layer"); the `position_scales(work_id, length, unit, partial)` table i
 **schema_version 10**; the STORE LINKS (`recordings.link_audiobookguild`,
 `recordings.link_graphicaudio`) in **schema_version 11**; a work's ALTERNATE TITLES
 (`work_alternate_titles(work_id, title, ord)`, also in the work's `search_fts`
-names) in **schema_version 12**; the recordings' `abridgement` column (whether
-the source STATED the abridged flag, so a stated false reads as unabridged rather
-than unknown) in **schema_version 13** (the current version);
+names) in **schema_version 12**; the recordings' `abridgement` column in
+**schema_version 13** (the current version);
 character `ord`/recap
 position order preserved, deterministic), and `metaserve` returns
 them inline on `GET /works/{id}`
@@ -824,7 +823,7 @@ the recap summary on >= 3, genres on >= 4, the slug redirects on >= 5, the
 community description on >= 6, the languages layer on >= 7, the LibriVox
 layer on >= 8, the LibriVox recording layer on >= 9, the position scales on
 >= 10, the store links on >= 11, the alternate titles on >= 12 and the
-recordings' abridgement on >= 13 (below it a stated false reads as unknown), so a
+recordings' abridgement on >= 13, so a
 table's absence is "no data" (for redirects: a retired slug 404s as it did before
 the mechanism existed), not a 500. The redirect, description and languages gates
 are asked ONCE at load rather than per request - those tables are EMPTY in every
