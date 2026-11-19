@@ -186,7 +186,7 @@ func TestSeriesListeningGuideMatchesAPITiesWithoutPositionIndex(t *testing.T) {
 		t.Run(fmt.Sprintf("indexed=%t", indexed), func(t *testing.T) {
 			path := artifacttest.Build(t, cat)
 			if !indexed {
-				path = artifacttest.Altered(t, cat, 11, "ALTER TABLE recordings DROP COLUMN abridgement", "DROP INDEX idx_series_works_position")
+				path = artifacttest.Altered(t, cat, 11, "ALTER TABLE recordings DROP COLUMN abridgement", "DROP INDEX idx_series_works_position", "DROP TABLE work_alternate_titles")
 			}
 			snap := openTestDB(t, path)
 			want := []string{"work-1", "work-0", "work-3", "work-4", "work-2", "work-5"}
@@ -299,7 +299,8 @@ func TestAbridgementLegacyArtifacts(t *testing.T) {
 			cat.Works[0].AlternateTitles = []string{"Book Zero"} // book-000
 			var stmts []string
 			if version < 13 {
-				stmts = append(stmts, "ALTER TABLE recordings DROP COLUMN abridgement", "DROP INDEX idx_series_works_position", "DROP INDEX idx_recording_narrators_person_recording")
+				stmts = append(stmts, "ALTER TABLE recordings DROP COLUMN abridgement", "DROP INDEX idx_series_works_position", "DROP INDEX idx_recording_narrators_person_recording",
+					"DROP INDEX idx_works_title_nocase", "DROP INDEX idx_people_name_nocase", "DROP INDEX idx_series_name_nocase")
 			}
 			if version < 12 {
 				stmts = append(stmts, "DROP TABLE work_alternate_titles")

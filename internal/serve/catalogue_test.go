@@ -281,7 +281,7 @@ func TestSeriesHTMLPageTwoKeepsFractionalAndRangePositions(t *testing.T) {
 	}
 	cfg := quietConfig(t, cat, markedShells)
 	// A supported older artifact has no numeric-position expression index.
-	cfg.DBPath = artifacttest.Altered(t, cat, 11, "ALTER TABLE recordings DROP COLUMN abridgement", "DROP INDEX idx_series_works_position")
+	cfg.DBPath = artifacttest.Altered(t, cat, 11, "ALTER TABLE recordings DROP COLUMN abridgement", "DROP INDEX idx_series_works_position", "DROP TABLE work_alternate_titles")
 	_, ts := newPageServerFrom(t, cfg)
 	code, page := getPage(t, ts.URL, "/series/the-stormlight-archive?page=2")
 	if code != 200 {

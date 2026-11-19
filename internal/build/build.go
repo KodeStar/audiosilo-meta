@@ -88,8 +88,9 @@ CREATE INDEX idx_work_alternate_titles_work ON work_alternate_titles(work_id);
 -- language-scoped latest (internal/serve's lang filter) needed no index of its own:
 -- it narrows through this one for a minority language and scans for a majority one.
 CREATE INDEX idx_works_language ON works(language);
--- Optional display-order directory indexes, first built with schema 13 (an index
--- bumps no version: a schema 11 or 12 artifact without them still serves).
+-- Optional display-order directory indexes (this one, idx_people_name_nocase and
+-- idx_series_name_nocase below), first built with schema 13 (an index bumps no
+-- version: a schema 11 or 12 artifact without them still serves).
 CREATE INDEX idx_works_title_nocase ON works(title COLLATE NOCASE, id);
 
 CREATE TABLE recordings (

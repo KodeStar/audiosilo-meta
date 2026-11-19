@@ -127,7 +127,7 @@ func TestBrowseFilterValidationAndLegacyIndexes(t *testing.T) {
 	if f, err := NormalizeBrowseFilters(BrowseFilters{Query: "  Mixed  Stormlight  ", Letter: "other"}); err != nil || f.Query != "Mixed Stormlight" || f.Letter != "Other" {
 		t.Fatalf("normalization: %+v %v", f, err)
 	}
-	path := artifacttest.Altered(t, discoveryFixture(), 11, "DROP INDEX idx_works_title_nocase", "DROP INDEX idx_people_name_nocase", "DROP INDEX idx_series_name_nocase", "ALTER TABLE recordings DROP COLUMN abridgement")
+	path := artifacttest.Altered(t, discoveryFixture(), 11, "DROP INDEX idx_works_title_nocase", "DROP INDEX idx_people_name_nocase", "DROP INDEX idx_series_name_nocase", "ALTER TABLE recordings DROP COLUMN abridgement", "DROP TABLE work_alternate_titles")
 	snap := openTestDB(t, path)
 	for _, family := range []PageFamily{WorkPages, PersonPages, SeriesPages, CharacterPages, RecapPages} {
 		page, err := snap.BrowseFiltered(t.Context(), family, BrowseFilters{Letter: "Z"}, 50, 0)
