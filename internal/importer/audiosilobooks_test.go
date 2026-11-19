@@ -87,9 +87,11 @@ func TestRunAudiosiloBooks(t *testing.T) {
 		t.Errorf("work sources = %+v", work.Sources)
 	}
 
-	// Recording: two narrators, region defaulted to us, abridged emitted, the
-	// projection's https cover_url carried through to cover_url, and its isbn
-	// recorded in normalized (hyphenless) form.
+	// Recording: two narrators, region defaulted to us, the stated "abridged":
+	// false NOT recorded (it is Audiobookshelf's default, see
+	// TestAudiosiloBooksAbridgedOnlyTrueIsStated), the projection's https
+	// cover_url carried through to cover_url, and its isbn recorded in normalized
+	// (hyphenless) form.
 	var rec struct {
 		ISBN      []string `json:"isbn"`
 		Narrators []string `json:"narrators"`
@@ -107,8 +109,8 @@ func TestRunAudiosiloBooks(t *testing.T) {
 	if len(rec.Narrators) != 2 {
 		t.Errorf("narrators = %v, want 2", rec.Narrators)
 	}
-	if rec.Abridged == nil || *rec.Abridged != false {
-		t.Errorf("abridged = %v, want explicit false", rec.Abridged)
+	if rec.Abridged != nil {
+		t.Errorf("abridged = %v, want absent (an envelope's false is ABS's default)", *rec.Abridged)
 	}
 	if rec.CoverURL != "https://m.media-amazon.com/images/I/way-of-kings._SL500_.jpg" {
 		t.Errorf("cover_url = %q, want the https projection cover", rec.CoverURL)
@@ -163,6 +165,49 @@ func TestAudiosiloBooksISBNRidesAnAttestingMerge(t *testing.T) {
 	readEntity(t, dataDir, tierRecRel, &rec)
 	if len(rec.ISBN) != 1 || rec.ISBN[0] != "9781427210005" {
 		t.Errorf("isbn = %v, want [9781427210005] once", rec.ISBN)
+	}
+}
+
+// TestAudiosiloBooksAbridgedOnlyTrueIsStated pins the envelope's abridged
+// reading. Audiobookshelf forces an unset abridged flag to false, so the
+// envelope's false is no statement: it is recorded as unknown (the field
+// omitted), in either spelling. A true is a statement and is kept, and a title's
+// "(Unabridged)" marker still states false on its own, whatever the flag says.
+func TestAudiosiloBooksAbridgedOnlyTrueIsStated(t *testing.T) {
+	env := `{"format":"audiosilo-books","version":1,"books":[
+	  {"title": "Stated Abridged", "authors": ["Ann Author"], "narrators": ["Nia Narrator"],
+	   "asin": "B0ABR00001", "language": "en", "abridged": true},
+	  {"title": "Default False", "authors": ["Ann Author"], "narrators": ["Nia Narrator"],
+	   "asin": "B0ABR00002", "language": "en", "abridged": false},
+	  {"title": "String False", "authors": ["Ann Author"], "narrators": ["Nia Narrator"],
+	   "asin": "B0ABR00003", "language": "en", "abridged": "false"},
+	  {"title": "Marked Book (Unabridged)", "authors": ["Ann Author"], "narrators": ["Nia Narrator"],
+	   "asin": "B0ABR00004", "language": "en", "abridged": false}
+	]}`
+	_, dataDir := runAudiosiloBooks(t, env, false)
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("imported tree failed validation:\n%v", res.Problems)
+	}
+	tru, fls := true, false
+	for _, tc := range []struct {
+		rec  string
+		want *bool
+	}{
+		{"works/st/stated-abridged/recordings/nia-narrator.json", &tru},
+		{"works/de/default-false/recordings/nia-narrator.json", nil},
+		{"works/st/string-false/recordings/nia-narrator.json", nil},
+		{"works/ma/marked-book/recordings/nia-narrator.json", &fls},
+	} {
+		var rec struct {
+			Abridged *bool `json:"abridged"`
+		}
+		readEntity(t, dataDir, tc.rec, &rec)
+		switch {
+		case tc.want == nil && rec.Abridged != nil:
+			t.Errorf("%s: abridged = %v, want absent", tc.rec, *rec.Abridged)
+		case tc.want != nil && (rec.Abridged == nil || *rec.Abridged != *tc.want):
+			t.Errorf("%s: abridged = %v, want %v", tc.rec, rec.Abridged, *tc.want)
+		}
 	}
 }
 

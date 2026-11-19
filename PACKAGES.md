@@ -1764,7 +1764,11 @@ positions accept omnibus ranges (`"1-3.5"`), spelled with or without whitespace
 around the dash (`NormalizeSequence` tolerates it on INPUT and removes it on the
 way to the canonical value, so what is stored still satisfies the schema's
 whitespace-free pattern), and `recording.abridged` is optional
-(emitted only when the source states it) - see the schema notes below. On the
+(emitted only when the source states it) - see the schema notes below. An
+`audiosilo-books` envelope's `abridged: false` is NOT a statement: Audiobookshelf,
+the envelope's source, forces an unset flag to false at scan time, so only a true
+is read (and a title's "(Unabridged)" marker, read off the raw title before the
+cleaning strips it); the site's ABS parser no longer emits false either. On the
 intake side (`internal/issueform`): the bot **sniffs a self-identifying
 `audiosilo-books` envelope and routes it to that importer regardless of the
 form's export-type dropdown** (the file is trusted over the form). A
