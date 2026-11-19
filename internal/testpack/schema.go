@@ -39,9 +39,9 @@ func SchemaDefEnum(t *testing.T, def string) map[string]bool {
 
 // SeriesPositionPattern reads a series member's position pattern straight out of
 // the embedded series.schema.json, so a test that depends on the position
-// grammar checks its fixture against the CONTRACT rather than a copy of it.
-// (pkg/model's own drift guard keeps a twin: its internal test cannot import
-// this package, which imports pkg/model.)
+// grammar checks its fixture against the CONTRACT rather than a copy of it. It
+// is the one reader of that pattern: pkg/model's NormalizeSequence drift guard
+// uses it too, from an external test package, since this one imports pkg/model.
 func SeriesPositionPattern(t *testing.T) string {
 	t.Helper()
 	raw, err := meta.SchemaFS.ReadFile("schema/series.schema.json")
