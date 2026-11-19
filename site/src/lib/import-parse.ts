@@ -738,12 +738,59 @@ function parseFolderscanBook(raw: Record<string, unknown>): ParsedBook {
 
 // --- audiosilo-books mapping (this site's own bulk new-books download) --------
 // The `{ format: "audiosilo-books", version: 1, books: [...] }` envelope wraps
-// the flat, already-curated projections newBooksPayload emits (github-prefill.ts)
-// so a user can re-drop the download here. Each entry is ParsedBook-shaped and
-// privacy-safe by construction (built from a ParsedBook, never a raw export), so
-// parsing is a passthrough/normalization consistent with the other parsers. The
-// projection may carry an https `cover_url` (see factualSubset); it is read back
-// here and, on the Go side, mapped into the recording's cover.
+// the flat curated projections newBooksPayload emits (github-prefill.ts) so a
+// user can re-drop the download here. Each entry is normalized like any other
+// parser's, and `raw` is rebuilt from the parsed values (curatedProjection), so
+// a re-drop's download is the same envelope again and nothing a hand-edited
+// entry adds can ride into it. The projection may carry an https `cover_url`
+// (see factualSubset); it is read back here and, on the Go side, mapped into
+// the recording's cover.
+
+// The keys of the curated projection, the factual allowlist of both formats
+// whose `raw` it is (FORMATS.audiobookshelf, FORMATS.audiosilobooks).
+const CURATED_KEYS = [
+  'title',
+  'subtitle',
+  'authors',
+  'narrators',
+  'series',
+  'series_position',
+  'asin',
+  'isbn',
+  'language',
+  'release_date',
+  'publisher',
+  'runtime_min',
+  'chapters',
+  'abridged',
+] as const
+
+// The flat, privacy-safe projection an Audiobookshelf-derived book stores as
+// `raw`: built from the PARSED values, never the dropped entry (an ABS item
+// carries local coverPath/path/audio-file listings), and holding only present
+// facts. Only a stated TRUE abridged flag rides (absStatedAbridged): a
+// marker-derived value is re-read off the projection's own title by the Go
+// importer, and ABS's default false is no statement.
+function curatedProjection(
+  b: Omit<ParsedBook, 'raw'>,
+  statedAbridged: true | undefined
+): Record<string, unknown> {
+  const p: Record<string, unknown> = { title: b.title }
+  if (b.subtitle) p['subtitle'] = b.subtitle
+  if (b.authors.length) p['authors'] = b.authors
+  if (b.narrators.length) p['narrators'] = b.narrators
+  if (b.seriesName) p['series'] = b.seriesName
+  if (b.seriesPosition) p['series_position'] = b.seriesPosition
+  if (b.asin) p['asin'] = b.asin
+  if (b.isbn) p['isbn'] = b.isbn
+  if (b.language) p['language'] = b.language
+  if (b.releaseDate) p['release_date'] = b.releaseDate
+  if (b.publisher) p['publisher'] = b.publisher
+  if (b.runtimeMin !== undefined) p['runtime_min'] = b.runtimeMin
+  if (b.chapterCount !== undefined) p['chapters'] = b.chapterCount
+  if (statedAbridged) p['abridged'] = true
+  return p
+}
 
 function parseAudiosiloBook(raw: Record<string, unknown>): ParsedBook {
   const asin = normalizeAsin(coerceStr(raw['asin']))
@@ -762,22 +809,16 @@ function parseAudiosiloBook(raw: Record<string, unknown>): ParsedBook {
   const releaseDate = DATE_PATTERN.test(releaseRaw) ? releaseRaw : undefined
   const publisher = coerceStr(raw['publisher'])
   const chapterCount = coerceInt(raw['chapters']) // a count in the curated shape
-  // The envelope wraps Audiobookshelf books only (newBooksPayload), so an older
+  // The envelope's books all came from an Audiobookshelf export, so an older
   // download's false is ABS's default, not a statement. The Go importer reads the
   // envelope by the same rule.
-  const abridged = absAbridged(raw['abridged'], title, subtitle)
-  // `raw` is what a re-download projects (factualSubset), so it carries only the
-  // stated true, as parseAudiobookshelfBook's projection does: a stale false
-  // never rides into the next envelope.
-  const projection: Record<string, unknown> = { ...raw }
-  delete projection['abridged']
-  if (absStatedAbridged(raw['abridged'])) projection['abridged'] = true
+  const statedAbridged = absStatedAbridged(raw['abridged'])
   // The curated projection carries the cover as an https `cover_url` (emitted by
   // factualSubset from ParsedBook.coverUrl), so a re-dropped download keeps it.
   const cover = coerceStr(raw['cover_url'])
   const coverUrl = cover.startsWith('https://') ? cover : undefined
 
-  return {
+  const book: Omit<ParsedBook, 'raw'> = {
     asin: asin || undefined,
     isbn: isbn || undefined,
     title,
@@ -794,10 +835,10 @@ function parseAudiosiloBook(raw: Record<string, unknown>): ParsedBook {
     region: undefined, // the curated projection carries no marketplace region
     coverUrl,
     chapterCount,
-    abridged,
+    abridged: absAbridged(raw['abridged'], title, subtitle),
     format: 'audiosilobooks',
-    raw: projection,
   }
+  return { ...book, raw: curatedProjection(book, statedAbridged) }
 }
 
 // --- Audiobookshelf mapping (an ABS library export) --------------------------
@@ -898,31 +939,10 @@ function parseAudiobookshelfBook(raw: Record<string, unknown>): ParsedBook {
   // coverUrl is emitted (like the folder scan).
   const chapters = media['chapters']
   const chapterCount = Array.isArray(chapters) ? chapters.length : coerceInt(media['numChapters'])
-  // The projection carries only the stated flag: a marker-derived value is
-  // re-read off the projection's own title by the Go importer.
   const statedAbridged = absStatedAbridged(md['abridged'])
-  const abridged = absAbridged(md['abridged'], title, subtitle)
 
-  // `raw` for the factual download is a curated, privacy-safe projection - NEVER
-  // the ABS item, which carries local coverPath/path/audio-file listings. Only
-  // present facts are included, so the shallow factual-subset filter both keeps
-  // it minimal and can never leak a local path.
-  const projection: Record<string, unknown> = { title }
-  if (subtitle) projection['subtitle'] = subtitle
-  if (authors.length) projection['authors'] = authors
-  if (narrators.length) projection['narrators'] = narrators
-  if (seriesName) projection['series'] = seriesName
-  if (seriesPosition) projection['series_position'] = seriesPosition
-  if (asin) projection['asin'] = asin
-  if (isbn) projection['isbn'] = isbn
-  if (language) projection['language'] = language
-  if (releaseDate) projection['release_date'] = releaseDate
-  if (publisher) projection['publisher'] = publisher
-  if (runtimeMin !== undefined) projection['runtime_min'] = runtimeMin
-  if (chapterCount !== undefined) projection['chapters'] = chapterCount
-  if (statedAbridged !== undefined) projection['abridged'] = statedAbridged
-
-  return {
+  // `raw` for the factual download is the curated projection, NEVER the ABS item.
+  const book: Omit<ParsedBook, 'raw'> = {
     asin: asin || undefined,
     isbn: isbn || undefined,
     title,
@@ -939,10 +959,10 @@ function parseAudiobookshelfBook(raw: Record<string, unknown>): ParsedBook {
     region: undefined, // ABS carries no marketplace region
     coverUrl: undefined,
     chapterCount,
-    abridged,
+    abridged: absAbridged(md['abridged'], title, subtitle),
     format: 'audiobookshelf',
-    raw: projection,
   }
+  return { ...book, raw: curatedProjection(book, statedAbridged) }
 }
 
 // --- Format registry ----------------------------------------------------------
@@ -964,13 +984,19 @@ interface FormatSpec {
    * device beyond this.
    */
   factualKeys: readonly string[]
+  /**
+   * The self-identifying envelope (`{ format, version: 1, books }`) the bulk
+   * download wraps this format's books in (github-prefill.ts newBooksPayload),
+   * or null for a bare array a format's own keys already detect.
+   */
+  downloadEnvelope: string | null
 }
 
 // The folder-scan is a single object with this discriminator (not an array).
 const FOLDERSCAN_FORMAT = 'audiosilo-folder-scan'
 // This site's own bulk new-books download uses this envelope discriminator (a
 // single object, books under 'books'). Kept EXACTLY in sync with the Go intake
-// consumer and github-prefill.ts's newBooksPayload.
+// consumer (internal/importer/audiosilobooks.go).
 const AUDIOSILO_BOOKS_FORMAT = 'audiosilo-books'
 
 // Keys that mark an OpenAudible entry (lowercase; Libation uses PascalCase).
@@ -991,29 +1017,15 @@ export const FORMATS: Record<KnownFormat, FormatSpec> = {
       coerceStr(data['format']) === AUDIOSILO_BOOKS_FORMAT &&
       coerceInt(data['version']) === 1,
     parse: parseAudiosiloBook,
-    // The curated projection's keys (already privacy-safe - built from a
-    // ParsedBook, never a raw export, so no local path can appear).
-    factualKeys: [
-      'title',
-      'subtitle',
-      'authors',
-      'narrators',
-      'series',
-      'series_position',
-      'asin',
-      'isbn',
-      'language',
-      'release_date',
-      'publisher',
-      'runtime_min',
-      'chapters',
-      'abridged',
-    ],
+    factualKeys: CURATED_KEYS, // curatedProjection's, rebuilt from the parsed values
+    // A re-dropped download wraps again, so it round-trips as the same envelope.
+    downloadEnvelope: AUDIOSILO_BOOKS_FORMAT,
   },
   openaudible: {
     label: 'OpenAudible library export',
     detect: (_data, entries) => entriesHaveAnyKey(entries, OPENAUDIBLE_KEYS),
     parse: parseBook,
+    downloadEnvelope: null,
     factualKeys: [
       'asin',
       'title',
@@ -1042,6 +1054,7 @@ export const FORMATS: Record<KnownFormat, FormatSpec> = {
     label: 'Libation library export',
     detect: (_data, entries) => entriesHaveAnyKey(entries, LIBATION_KEYS),
     parse: parseLibationBook,
+    downloadEnvelope: null,
     factualKeys: [
       'AudibleProductId',
       'Title',
@@ -1067,24 +1080,12 @@ export const FORMATS: Record<KnownFormat, FormatSpec> = {
     // an ABS item (asin/authors/series all live under media.metadata).
     detect: (_data, entries) => entriesLookLikeAbs(entries),
     parse: parseAudiobookshelfBook,
-    // The factual keys of the curated projection parseAudiobookshelfBook stores
-    // as `raw` (already privacy-safe - it never contains a local path).
-    factualKeys: [
-      'title',
-      'subtitle',
-      'authors',
-      'narrators',
-      'series',
-      'series_position',
-      'asin',
-      'isbn',
-      'language',
-      'release_date',
-      'publisher',
-      'runtime_min',
-      'chapters',
-      'abridged',
-    ],
+    // The keys of the curated projection parseAudiobookshelfBook stores as `raw`
+    // (privacy-safe - it never contains a local path).
+    factualKeys: CURATED_KEYS,
+    // Its flat projection carries an `asin` key, so a bare array would misdetect
+    // as an OpenAudible export (dropping authors/narrators/series).
+    downloadEnvelope: AUDIOSILO_BOOKS_FORMAT,
   },
   folderscan: {
     label: 'audiosilo folder scan',
@@ -1096,6 +1097,7 @@ export const FORMATS: Record<KnownFormat, FormatSpec> = {
       coerceStr(data['format']) === FOLDERSCAN_FORMAT &&
       coerceInt(data['version']) === 1,
     parse: parseFolderscanBook,
+    downloadEnvelope: FOLDERSCAN_FORMAT,
     factualKeys: [
       'asin',
       'isbn',

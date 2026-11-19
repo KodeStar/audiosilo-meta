@@ -724,12 +724,8 @@ describe('newBooksPayload', () => {
     })
     expect(books[1]['abridged']).toBe(true)
 
-    const second = parseExport(JSON.stringify(payload))
-    expect(second.format).toBe('audiosilobooks')
-    expect(second.books[0].authors).toEqual(['Lee Child'])
-    expect(second.books[0].narrators).toEqual(['Jeff Harding'])
-    expect(second.books[0].abridged).toBeUndefined()
-    expect(second.books[1].abridged).toBe(true)
+    // A fixed point: dropping that download again gives the same envelope back.
+    expect(newBooksPayload(parseExport(JSON.stringify(payload)).books)).toEqual(payload)
   })
 
   it('leaves OpenAudible books as a bare array (still detectable, still round-trips)', () => {

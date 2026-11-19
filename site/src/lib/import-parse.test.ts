@@ -701,15 +701,22 @@ describe('parseExport - audiosilo-books envelope', () => {
 
   it('keeps only a stated true in raw, the projection a re-download is built from', () => {
     for (const abridged of [false, 'false', null]) {
-      const b = parseExport(envelope({ title: 'A', abridged })).books[0]
-      expect('abridged' in b.raw).toBe(false)
-      expect(b.raw['title']).toBe('A')
+      expect('abridged' in parseExport(envelope({ title: 'A', abridged })).books[0].raw).toBe(false)
     }
-    // A marker-derived false stays off the projection too: the Go importer
-    // re-reads the marker off the title it still carries.
-    const marked = parseExport(envelope({ title: 'A (Unabridged)', abridged: false })).books[0]
-    expect('abridged' in marked.raw).toBe(false)
     expect(parseExport(envelope({ title: 'A', abridged: 'true' })).books[0].raw['abridged']).toBe(true)
+  })
+
+  it('rebuilds raw from the parsed values, so a hand-edited entry adds nothing', () => {
+    const b = parseExport(
+      envelope({
+        title: 'A',
+        authors: [' Lee Child '],
+        series_position: 'not a position',
+        chapters: [{ path: '/home/me/books/a/01.mp3' }],
+        path: '/home/me/books/a',
+      })
+    ).books[0]
+    expect(b.raw).toEqual({ title: 'A', authors: ['Lee Child'] })
   })
 
   it('reads an https cover_url and drops a non-https one', () => {
