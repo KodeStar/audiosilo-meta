@@ -171,8 +171,9 @@ func TestAudiosiloBooksISBNRidesAnAttestingMerge(t *testing.T) {
 // TestAudiosiloBooksAbridgedOnlyTrueIsStated pins the envelope's abridged
 // reading. Audiobookshelf forces an unset abridged flag to false, so the
 // envelope's false is no statement: it is recorded as unknown (the field
-// omitted), in either spelling. A true is a statement and is kept, and a title's
-// "(Unabridged)" marker still states false on its own, whatever the flag says.
+// omitted), in either spelling. A true is a statement and is kept, and an edition
+// marker on the raw title or subtitle states the flag when no true does (a stated
+// true outranks a marker, as a stated flag does in normalizeEditionMarkers).
 func TestAudiosiloBooksAbridgedOnlyTrueIsStated(t *testing.T) {
 	env := `{"format":"audiosilo-books","version":1,"books":[
 	  {"title": "Stated Abridged", "authors": ["Ann Author"], "narrators": ["Nia Narrator"],
@@ -182,7 +183,13 @@ func TestAudiosiloBooksAbridgedOnlyTrueIsStated(t *testing.T) {
 	  {"title": "String False", "authors": ["Ann Author"], "narrators": ["Nia Narrator"],
 	   "asin": "B0ABR00003", "language": "en", "abridged": "false"},
 	  {"title": "Marked Book (Unabridged)", "authors": ["Ann Author"], "narrators": ["Nia Narrator"],
-	   "asin": "B0ABR00004", "language": "en", "abridged": false}
+	   "asin": "B0ABR00004", "language": "en", "abridged": false},
+	  {"title": "Short Cut (Abridged)", "authors": ["Ann Author"], "narrators": ["Nia Narrator"],
+	   "asin": "B0ABR00005", "language": "en", "abridged": false},
+	  {"title": "Sub Marked", "subtitle": "Saga, Book 1 (Unabridged)", "authors": ["Ann Author"],
+	   "narrators": ["Nia Narrator"], "asin": "B0ABR00006", "language": "en"},
+	  {"title": "Flag Wins (Unabridged)", "authors": ["Ann Author"], "narrators": ["Nia Narrator"],
+	   "asin": "B0ABR00007", "language": "en", "abridged": true}
 	]}`
 	_, dataDir := runAudiosiloBooks(t, env, false)
 	if res := check.Load(dataDir); !res.OK() {
@@ -197,13 +204,20 @@ func TestAudiosiloBooksAbridgedOnlyTrueIsStated(t *testing.T) {
 		{"works/de/default-false/recordings/nia-narrator.json", nil},
 		{"works/st/string-false/recordings/nia-narrator.json", nil},
 		{"works/ma/marked-book/recordings/nia-narrator.json", &fls},
+		{"works/sh/short-cut/recordings/nia-narrator.json", &tru},
+		{"works/su/sub-marked/recordings/nia-narrator.json", &fls},
+		{"works/fl/flag-wins/recordings/nia-narrator.json", &tru},
 	} {
 		got := readAbridged(t, dataDir, tc.rec)
 		switch {
 		case tc.want == nil && got != nil:
 			t.Errorf("%s: abridged = %v, want absent", tc.rec, *got)
 		case tc.want != nil && (got == nil || *got != *tc.want):
-			t.Errorf("%s: abridged = %v, want %v", tc.rec, got, *tc.want)
+			if got == nil {
+				t.Errorf("%s: abridged absent, want %v", tc.rec, *tc.want)
+			} else {
+				t.Errorf("%s: abridged = %v, want %v", tc.rec, *got, *tc.want)
+			}
 		}
 	}
 }
