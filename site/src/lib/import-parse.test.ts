@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import {
+  FORMATS,
   parseExport,
   normalizeAsin,
   normalizeIsbn,
@@ -679,7 +680,7 @@ describe('parseExport - audiosilo-books envelope', () => {
         publisher: 'Acme Audio',
         runtime_min: 742,
         chapters: 34,
-        abridged: false,
+        abridged: true,
       })
     )
     const b = out.books[0]
@@ -687,7 +688,97 @@ describe('parseExport - audiosilo-books envelope', () => {
     expect(b.publisher).toBe('Acme Audio')
     expect(b.runtimeMin).toBe(742)
     expect(b.chapterCount).toBe(34)
-    expect(b.abridged).toBe(false)
+    expect(b.abridged).toBe(true)
+  })
+
+  it("reads an older download's abridged false as unknown (ABS's default)", () => {
+    expect(parseExport(envelope({ title: 'A', abridged: false })).books[0].abridged).toBeUndefined()
+    expect(parseExport(envelope({ title: 'A', abridged: 'false' })).books[0].abridged).toBeUndefined()
+    expect(parseExport(envelope({ title: 'A', abridged: 'true' })).books[0].abridged).toBe(true)
+    expect(parseExport(envelope({ title: 'A' })).books[0].abridged).toBeUndefined()
+    const marked = parseExport(envelope({ title: 'A (Unabridged)', abridged: false }))
+    expect(marked.books[0].abridged).toBe(false)
+    // The download leaves a marker-derived flag out and the Go importer re-reads
+    // the marker off the title, so the projection's title must keep it.
+    expect(marked.books[0].raw['title']).toBe('A (Unabridged)')
+  })
+
+  it('keeps only a stated true in raw, the projection a re-download is built from', () => {
+    for (const abridged of [false, 'false', null]) {
+      expect('abridged' in parseExport(envelope({ title: 'A', abridged })).books[0].raw).toBe(false)
+    }
+    expect(parseExport(envelope({ title: 'A', abridged: 'true' })).books[0].raw['abridged']).toBe(true)
+  })
+
+  it('rebuilds raw from the parsed values, so a hand-edited entry adds nothing', () => {
+    const b = parseExport(
+      envelope({
+        title: 'A',
+        authors: [' Lee Child '],
+        series_position: 'not a position',
+        chapters: [{ path: '/home/me/books/a/01.mp3' }],
+        path: '/home/me/books/a',
+      })
+    ).books[0]
+    expect(b.raw).toEqual({ title: 'A', authors: ['Lee Child'] })
+  })
+
+  it('projects every fact onto a key the download allowlist keeps', () => {
+    // curatedProjection and CURATED_KEYS list the keys twice; a key added to one
+    // and not the other would silently vanish from the download.
+    const b = parseExport(
+      envelope({
+        title: 'A',
+        subtitle: 'B',
+        authors: ['X'],
+        narrators: ['Y'],
+        series: 'S',
+        series_position: '1',
+        asin: 'B076HYPQLK',
+        isbn: '9780553505405',
+        language: 'en',
+        release_date: '1997',
+        publisher: 'P',
+        runtime_min: 60,
+        chapters: 3,
+        abridged: true,
+      })
+    ).books[0]
+    expect(Object.keys(b.raw).sort()).toEqual([...FORMATS.audiosilobooks.factualKeys].sort())
+    expect(FORMATS.audiobookshelf.factualKeys).toEqual(FORMATS.audiosilobooks.factualKeys)
+  })
+
+  it('writes chapters only for a positive count (ABS numChapters can say 0)', () => {
+    for (const chapters of [0, -2, '0']) {
+      expect('chapters' in parseExport(envelope({ title: 'A', chapters })).books[0].raw).toBe(false)
+    }
+    expect(parseExport(envelope({ title: 'A', chapters: 12 })).books[0].raw['chapters']).toBe(12)
+    const abs = parseExport(
+      JSON.stringify({ results: [{ media: { metadata: { title: 'A' }, numChapters: 0 } }], total: 1 })
+    ).books[0]
+    expect('chapters' in abs.raw).toBe(false)
+  })
+
+  it('cleans names to a fixed point, so a re-dropped download reads the same', () => {
+    const names = [
+      'Ann Author - Editor - Narrator',
+      'Dan Veksler - Translator - translator',
+      'Ann Author, MD - narrator',
+      'Jane Doe - translator, PhD',
+      'Some - Band',
+    ]
+    const first = parseExport(envelope({ title: 'A', authors: names, narrators: names })).books[0]
+    expect(first.authors).toEqual([
+      'Ann Author',
+      'Dan Veksler',
+      'Ann Author MD',
+      'Jane Doe PhD',
+      'Some - Band',
+    ])
+    const again = parseExport(envelope(first.raw)).books[0]
+    expect(again.authors).toEqual(first.authors)
+    expect(again.narrators).toEqual(first.narrators)
+    expect(again.raw).toEqual(first.raw)
   })
 
   it('reads an https cover_url and drops a non-https one', () => {
@@ -745,7 +836,7 @@ describe('parseExport - Audiobookshelf field mapping (full shape)', () => {
     expect(b.language).toBe('en')
     expect(b.releaseDate).toBe('1997')
     expect(b.publisher).toBe('Random House')
-    expect(b.abridged).toBe(false)
+    expect(b.abridged).toBeUndefined() // ABS's default false is no statement
     expect(b.runtimeMin).toBe(742) // round(44521.7 / 60)
     expect(b.chapterCount).toBe(3)
     expect(b.region).toBeUndefined()
@@ -776,6 +867,35 @@ describe('parseExport - Audiobookshelf field mapping (full shape)', () => {
     const k = parseOne({ title: 'A', language: 'Klingon' })
     expect(k.language).toBeUndefined()
     expect(k.languageRaw).toBe('Klingon')
+  })
+
+  it("keeps only a true abridged flag (ABS's false is its default, not a statement)", () => {
+    const yes = parseOne({ title: 'A', abridged: true })
+    expect(yes.abridged).toBe(true)
+    expect(yes.raw['abridged']).toBe(true)
+    for (const abridged of [false, 'false', undefined, null]) {
+      const b = parseOne({ title: 'A', abridged })
+      expect(b.abridged).toBeUndefined()
+      // Nor does the projection the download and envelope are built from carry it.
+      expect('abridged' in b.raw).toBe(false)
+    }
+  })
+
+  it('reads an edition marker on the title or subtitle as a statement', () => {
+    // A marker states the edition even when ABS's flag is its default false, so
+    // a single-book hand-off still prefills it (the issue form strips the
+    // marker without reading it). The projection keeps the raw title and only
+    // the stated flag; the Go importer re-reads the marker off the title.
+    const marked = parseOne({ title: 'A (Unabridged)', abridged: false })
+    expect(marked.abridged).toBe(false)
+    expect('abridged' in marked.raw).toBe(false)
+    // The Go importer reads the statement back off these, so neither is stripped.
+    expect(marked.raw['title']).toBe('A (Unabridged)')
+    const subtitled = parseOne({ title: 'A', subtitle: 'Book 1 [Abridged]' })
+    expect(subtitled.abridged).toBe(true)
+    expect(subtitled.raw['subtitle']).toBe('Book 1 [Abridged]')
+    // A stated true outranks a marker, as in the Go importer.
+    expect(parseOne({ title: 'A (Unabridged)', abridged: true }).abridged).toBe(true)
   })
 
   it('omits a zero/absent runtime and an absent chapter count', () => {

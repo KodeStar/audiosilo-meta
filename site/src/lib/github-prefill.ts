@@ -322,25 +322,18 @@ export function factualSubset(book: ParsedBook): Record<string, unknown> {
 
 /**
  * The bulk new-books download payload: every book reduced to its factual
- * subset. Two formats are wrapped in a self-identifying envelope (format
- * discriminator + version, WITHOUT any local-only fields) so the download
- * round-trips through parseExport instead of misdetecting, and so it is
- * machine-parseable when attached to the import-library issue form:
- *  - folder-scan books re-wrap in the `audiosilo-folder-scan` scan envelope;
- *  - Audiobookshelf books wrap in the `audiosilo-books` envelope - their flat
- *    curated projections carry an `asin` key, which would otherwise misdetect
- *    as an OpenAudible export (silently dropping authors/narrators/series).
+ * subset. A format whose descriptor names a `downloadEnvelope` is wrapped in
+ * that self-identifying envelope (format discriminator + version, WITHOUT any
+ * local-only fields) so the download round-trips through parseExport instead of
+ * misdetecting, and so it is machine-parseable when attached to the
+ * import-library issue form: folder-scan books in `audiosilo-folder-scan`,
+ * Audiobookshelf books and a re-dropped download of them in `audiosilo-books`.
  * OpenAudible and Libation are already detectable as bare arrays of their own
  * keys, so they stay bare. Each book's factual subset carries an https `cover_url`
  * when the source provided one (factualSubset), so covers survive the envelopes.
  */
 export function newBooksPayload(books: ParsedBook[]): unknown {
   const subsets = books.map(factualSubset)
-  if (books[0]?.format === 'folderscan') {
-    return { format: 'audiosilo-folder-scan', version: 1, books: subsets }
-  }
-  if (books[0]?.format === 'audiobookshelf') {
-    return { format: 'audiosilo-books', version: 1, books: subsets }
-  }
-  return subsets
+  const envelope = books[0] ? FORMATS[books[0].format].downloadEnvelope : null
+  return envelope ? { format: envelope, version: 1, books: subsets } : subsets
 }

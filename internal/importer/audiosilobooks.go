@@ -19,8 +19,9 @@ import (
 //
 // whose entries are already the flat, factual ParsedBook projection (title,
 // subtitle, authors[], narrators[], series, series_position, asin, isbn,
-// language, release_date, publisher, runtime_min, chapters (a COUNT), abridged,
-// cover_url (https only, optional)).
+// language, release_date, publisher, runtime_min, chapters (a COUNT), abridged
+// (only true is read as a statement: see audiosiloBookToBook), cover_url (https
+// only, optional)).
 // Each entry is normalized into the same internal sourceBook the OpenAudible and
 // Libation paths produce, so it shares every mapping/dedup/series/person rule via
 // runBooks. Consuming this envelope is a cross-repo contract: the site produces
@@ -125,14 +126,14 @@ func audiosiloBookToBook(e rawBook) sourceBook {
 	// Strip any trailing (Unabridged)/(Abridged) edition marker off BOTH strings
 	// FIRST: a marker on the concatenated title ("...Book 6 (Unabridged)") would
 	// otherwise defeat the ": "+subtitle CutSuffix and leak into the work slug.
-	// We only clean here; runBooks is the SINGLE mechanism that derives the
-	// abridged flag from a marker (before it mutates titles), so this path does
-	// not touch sb.abridged (ABS entries carry their own explicit abridged field).
-	// The title qualifiers stay on for normalizeEditionMarkers, the one place that
-	// strips them, which keeps the qualified titles as merge targets (a work
-	// catalogued under its label, a labelled slug a repair retired).
-	title := qualifiedWorkTitle(e.str("title"))
-	sub := qualifiedWorkTitle(e.str("subtitle"))
+	// The marker is gone before normalizeEditionMarkers could read it, so the
+	// abridged flag it states is derived below from the RAW strings. The title
+	// qualifiers stay on for normalizeEditionMarkers, the one place that strips
+	// them, which keeps the qualified titles as merge targets (a work catalogued
+	// under its label, a labelled slug a repair retired).
+	rawTitle, rawSub := e.str("title"), e.str("subtitle")
+	title := qualifiedWorkTitle(rawTitle)
+	sub := qualifiedWorkTitle(rawSub)
 	titleShort := title
 	if sub != "" {
 		if prefix, cut := strings.CutSuffix(title, ": "+sub); cut && strings.TrimSpace(prefix) != "" {
@@ -170,7 +171,15 @@ func audiosiloBookToBook(e rawBook) sourceBook {
 	if mins, ok := coerceInt(e["runtime_min"]); ok && mins > 0 {
 		sb.runtimeMin = int(mins)
 	}
-	sb.abridged = coerceBoolPtr(e["abridged"])
+	// Only a TRUE abridged flag is a statement in this envelope: it wraps
+	// Audiobookshelf books, whose scanner forces an unset flag to false (the
+	// site's absStatedAbridged, import-parse.ts, states the rule and no longer
+	// emits false; this is the backstop for an older or hand-built envelope). A
+	// title marker ("(Unabridged)") IS a statement, read off the raw strings.
+	sb.abridged = abridgedFromMarkers(rawTitle, rawSub)
+	if a := coerceBoolPtr(e["abridged"]); a != nil && *a {
+		sb.abridged = a
+	}
 	// Dropped quietly when malformed, like a non-https cover: the site already
 	// normalized it (import-parse.ts normalizeIsbn).
 	sb.isbns = sourceISBNs(e["isbn"], nil)
