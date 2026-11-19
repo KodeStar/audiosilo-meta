@@ -26,7 +26,7 @@ const ENTITY = '<!--ssr:entity-->'
 // /works/{slug}/recap and /works/{slug}/characters through - they go through the
 // very same head/body injection, so a dropped marker turns those pages back into
 // empty client-only shells exactly as it would a work page.
-const shells = ['work', 'person', 'series', 'recap', 'characters'] as const
+const shells = ['work', 'person', 'series', 'recap', 'characters', 'browse', 'chapters'] as const
 
 function distPath(page: string): string {
   return fileURLToPath(new URL(`../../dist/${page}/index.html`, import.meta.url))

@@ -39,18 +39,35 @@ function replaceHash(hash: string): void {
  */
 export function useHashTab<T extends string>(
   fromHash: (hash: string) => T,
-  toHash: (tab: T) => string
+  toHash: (tab: T) => string,
+  preserveHash: (hash: string) => boolean = () => false
 ): [T, (next: T) => void] {
   const read = useRef(fromHash)
   read.current = fromHash
   const write = useRef(toHash)
   write.current = toHash
+  const preserve = useRef(preserveHash)
+  preserve.current = preserveHash
+
+  // A recording link may reveal the General panel. Scroll after the React
+  // commit and the parent has removed its SSR fact sheet, so the target exists
+  // and is visible by the time the browser positions it.
+  const scrollToPreservedTarget = () => {
+    if (!preserve.current(window.location.hash)) return
+    window.requestAnimationFrame(() => {
+      const hash = window.location.hash
+      if (!preserve.current(hash)) return
+      const id = decodeURIComponent(hash.slice(1))
+      document.getElementById(id)?.scrollIntoView()
+    })
+  }
 
   const [tab, setTab] = useState<T>(() => fromHash(window.location.hash))
 
   useEffect(() => {
     const canonical = toHash(tab)
-    if (window.location.hash !== canonical) replaceHash(canonical)
+    if (!preserve.current(window.location.hash) && window.location.hash !== canonical) replaceHash(canonical)
+    scrollToPreservedTarget()
     // Mount only: from here on selectTab owns the hash.
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -60,7 +77,8 @@ export function useHashTab<T extends string>(
       setTab(next)
       // replaceHash fires no hashchange, so this cannot re-enter.
       const canonical = write.current(next)
-      if (window.location.hash !== canonical) replaceHash(canonical)
+      if (!preserve.current(window.location.hash) && window.location.hash !== canonical) replaceHash(canonical)
+      scrollToPreservedTarget()
     }
     window.addEventListener('hashchange', onHashChange)
     return () => window.removeEventListener('hashchange', onHashChange)

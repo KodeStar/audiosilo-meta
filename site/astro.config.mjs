@@ -23,7 +23,7 @@ export default defineConfig({
       // very queries the guide pages exist to win. The real entity URLs are
       // listed by metaserve's own /sitemaps/ shards.
       filter: (page) =>
-        !['/work/', '/person/', '/series/', '/recap/', '/characters/'].some((shell) =>
+        !['/work/', '/person/', '/series/', '/recap/', '/characters/', '/chapters/'].some((shell) =>
           page.endsWith(shell)
         ),
     }),

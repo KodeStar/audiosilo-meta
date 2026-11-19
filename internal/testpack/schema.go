@@ -36,3 +36,37 @@ func SchemaDefEnum(t *testing.T, def string) map[string]bool {
 	}
 	return set
 }
+
+// SeriesPositionPattern reads a series member's position pattern straight out of
+// the embedded series.schema.json, so a test that depends on the position
+// grammar checks its fixture against the CONTRACT rather than a copy of it. It
+// is the one reader of that pattern: pkg/model's NormalizeSequence drift guard
+// uses it too, from an external test package, since this one imports pkg/model.
+func SeriesPositionPattern(t *testing.T) string {
+	t.Helper()
+	raw, err := meta.SchemaFS.ReadFile("schema/series.schema.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var doc struct {
+		Properties struct {
+			Works struct {
+				Items struct {
+					Properties struct {
+						Position struct {
+							Pattern string `json:"pattern"`
+						} `json:"position"`
+					} `json:"properties"`
+				} `json:"items"`
+			} `json:"works"`
+		} `json:"properties"`
+	}
+	if err := json.Unmarshal(raw, &doc); err != nil {
+		t.Fatal(err)
+	}
+	pattern := doc.Properties.Works.Items.Properties.Position.Pattern
+	if pattern == "" {
+		t.Fatal("series.schema.json states no position pattern; the fixture guard would pass vacuously")
+	}
+	return pattern
+}

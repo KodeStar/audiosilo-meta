@@ -1,0 +1,8 @@
+---
+import Base from '../layouts/Base.astro'
+import { ENTITY_MARKER } from '../lib/ssr-markers'
+---
+
+<Base title="Browse the catalogue - AudioSilo Meta" description="Browse audiobook works, series, people and community listening guides." hasHero>
+  <Fragment set:html={ENTITY_MARKER} />
+</Base>

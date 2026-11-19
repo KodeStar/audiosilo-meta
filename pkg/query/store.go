@@ -198,13 +198,13 @@ type LanguageCount struct {
 
 // MaxSchemaVersion is the newest artifact schema_version this code understands:
 // internal/build.SchemaVersion, which TestMaxSchemaVersionIsTheBuilders pins it
-// to, and the newest of the version gates below (alternateTitlesSchemaVersion). An
+// to, and the newest of the version gates below (abridgementSchemaVersion). An
 // artifact NEWER than it still opens and serves (every optional read is gated
 // with >=); the consumer that embeds this package (a mirror-mode AudioSilo
 // server) shows that its copy is newer than it understands. Artifact schema
 // changes must therefore stay ADDITIVE - new tables and columns - because such
 // consumers lag.
-const MaxSchemaVersion = 12
+const MaxSchemaVersion = 13
 
 // Open opens the artifact at path read-only and runs the load-time integrity
 // checks (loadStats: a schema_version claim without the tables it implies is a
@@ -398,6 +398,14 @@ func (s *DB) loadStats() error {
 	if s.hasAlternateTitles() {
 		if _, err := s.db.Exec(alternateTitlesShapeSQL); err != nil {
 			return fmt.Errorf("%s: artifact schema_version %d requires the work_alternate_titles table: %w",
+				s.path, s.schemaVersion, err)
+		}
+	}
+	// The ABRIDGEMENT column (version 13), the same way: every work page's
+	// recordings read it.
+	if s.hasAbridgement() {
+		if _, err := s.db.Exec(abridgementShapeSQL); err != nil {
+			return fmt.Errorf("%s: artifact schema_version %d requires the abridgement column: %w",
 				s.path, s.schemaVersion, err)
 		}
 	}

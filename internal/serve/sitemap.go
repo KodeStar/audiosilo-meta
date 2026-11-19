@@ -49,10 +49,11 @@ const (
 	// sitemapNS is the sitemap protocol's namespace, on both document kinds.
 	sitemapNS = "http://www.sitemaps.org/schemas/sitemap/0.9"
 	// sitemapMaxAge bounds how long a sitemap may be reused without revalidating.
-	// The content changes exactly when the artifact does, which the ETag captures;
-	// an hour only bounds how long a crawler can miss a data release, and a
-	// revalidation costs a 304 rather than a re-render.
+	// Validators track data and renderer changes; an hour bounds how long a
+	// crawler can miss a new representation before revalidating.
 	sitemapMaxAge = "public, max-age=3600"
+	// Bump when rendered XML changes, including builds without VCS metadata.
+	sitemapRendererVersion = "1"
 )
 
 // sitemapShardURLs is the protocol's per-file URL cap (50,000). It is a var
@@ -65,13 +66,8 @@ var sitemapShardURLs = 50000
 // entries, the shard route's file names and the per-family query are all read
 // from, so a fourth family is a row rather than four edits.
 //
-// The ORDER of the table is the order the index lists them in, and it is the
-// crawl-budget decision the campaign rests on: the two GUIDE families first (one
-// shard each today, and the highest-value new content there is - a recap page is
-// what answers "<title> recap"), then series and people (few files, high query
-// value - series reading order and narrator-name queries), works last. A young
-// domain gets its six-figure page count indexed slowly, so what the early crawl
-// budget is spent on is the part we control.
+// The table determines document order only. Sitemap ordering does not set
+// crawler priority or control which URLs a search engine chooses to index.
 type sitemapFamily struct {
 	name   string // the shard file's prefix, e.g. "works"
 	prefix string // the page path prefix these ids are addressed at
@@ -196,10 +192,10 @@ func (s *Server) handleSitemapShard(w http.ResponseWriter, r *http.Request) {
 	}
 	doc, err := s.sitemapShard(snap, fam, shard)
 	if err != nil {
-		// No validator and no cache policy on this path: a hot swap closing the db
-		// mid-request is a 500 that must never be stored, let alone 304-renewed
-		// under the document's own ETag for the life of the release.
-		s.fail(w, r, err)
+		s.log.Printf("serve: rendering %q failed: %v", r.URL.Path, err)
+		w.Header().Set("Cache-Control", "no-store")
+		w.Header().Set("Retry-After", httpx.RetryAfter(s.retryWait()))
+		httpx.WriteErr(w, http.StatusServiceUnavailable, "sitemap temporarily unavailable")
 		return
 	}
 	s.writeSitemap(w, r, etag, doc)
@@ -326,9 +322,9 @@ func (s *Server) sitemapIndex(snap *query.DB, static bool) *sitemapIndexDoc {
 	return doc
 }
 
-// sitemapShard composes one shard: up to sitemapShardURLs entity page URLs, in
-// id order, each with the record's own added_at as its lastmod where the family
-// has one.
+// sitemapShard composes one shard in id order. The artifact does not track
+// content revisions; creation/import dates cannot establish page modification,
+// so per-URL lastmod is omitted.
 func (s *Server) sitemapShard(snap *query.DB, fam sitemapFamily, shard int) (*urlSetDoc, error) {
 	pages, err := snap.Pages(fam.pages, sitemapShardURLs, shard*sitemapShardURLs)
 	if err != nil {
@@ -337,23 +333,13 @@ func (s *Server) sitemapShard(snap *query.DB, fam sitemapFamily, shard int) (*ur
 	doc := &urlSetDoc{NS: sitemapNS}
 	for _, p := range pages {
 		entry := urlEntryDoc{Loc: s.cfg.SiteURL + fam.prefix + p.ID + fam.suffix}
-		if p.AddedAt != nil {
-			entry.LastMod = w3cDate(*p.AddedAt)
-		}
 		doc.URLs = append(doc.URLs, entry)
 	}
 	return doc, nil
 }
 
-// w3cDate normalizes a stored date to the W3C Datetime forms the sitemap
-// protocol accepts. The artifact carries added_at in the two spellings the data
-// model allows (see the added_at note in CLAUDE.md): a bare YYYY-MM-DD, which is
-// already a valid lastmod and is passed through, and a full RFC 3339 timestamp,
-// which is normalized to UTC so one instant has one spelling in every document.
-//
-// Anything else returns "" and the caller omits the element. A lastmod a crawler
-// cannot parse is worse than none, and inventing a date for a record that states
-// no usable one would be stating a fact nobody gave us.
+// w3cDate normalizes the shard document's build timestamp for the index.
+// It is not used as a content revision date for individual pages.
 func w3cDate(v string) string {
 	v = strings.TrimSpace(v)
 	if v == "" {
@@ -382,9 +368,8 @@ func w3cDate(v string) string {
 // public caching and this document's own ETag, or a shared cache would
 // 304-renew that error for the life of the release.
 //
-// The validator is the ARTIFACT's identity, the configured origin and the
-// document's own name. For a SHARD that is everything it is rendered from: the
-// dist's identity deliberately does not appear (it does for an entity page - see
+// The validator tracks the artifact, origin, document and renderer. The dist's
+// identity deliberately does not appear (it does for an entity page - see
 // pageIdentity), because not one byte of the built shell reaches a shard. The
 // INDEX is the exception, and its name carries the difference - it lists the
 // dist's static sitemap when there is one, so the presence bit rides in the
@@ -413,13 +398,11 @@ func (s *Server) sitemapNotModified(w http.ResponseWriter, r *http.Request, snap
 // when the server is polling; a local --db artifact has no tag, so the build
 // timestamp stands in - entityETag's rule, because it is the same question.
 //
-// The ORIGIN is in it because every loc is built from it: a --site-url change
-// against an unchanged data release would otherwise renew a 304 forever for a
-// document naming the wrong host. Weak, and stripped of quotes and backslashes
-// for the same reason entityETag is - a quote in any component would end the tag
-// early.
+// The origin and renderer identity prevent an unchanged data release from
+// renewing XML produced by a different configuration or rendering policy.
+// httpx.Identity length-prefixes and hashes the components into header-safe text.
 func sitemapETag(snap *query.DB, siteURL, doc string) string {
-	return `W/"` + strings.NewReplacer(`"`, "", `\`, "").Replace(snap.Version()+"/"+siteURL+doc) + `"`
+	return `W/"` + httpx.Identity(sitemapRendererVersion, snap.Version(), siteURL, doc, buildRevision()) + `"`
 }
 
 // writeSitemap renders a document and writes it under the validator the

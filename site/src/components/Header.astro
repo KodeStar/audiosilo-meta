@@ -25,6 +25,7 @@ interface NavItem {
 }
 
 const nav: NavItem[] = [
+  { label: 'Browse', href: '/browse' },
   { label: 'Watching', href: '/watching', badge: true },
   { label: 'Import', href: '/import' },
   { label: 'Contribute', href: '/contribute' },
@@ -62,7 +63,7 @@ const WATCH_BADGE_CLASS =
     </div>
 
     <!-- Desktop nav -->
-    <nav class="hidden shrink-0 items-center gap-5 md:flex" aria-label="Primary">
+    <nav class="hidden shrink-0 items-center gap-5 xl:flex" aria-label="Primary">
       {
         nav.map((item) => (
           <a
@@ -102,7 +103,7 @@ const WATCH_BADGE_CLASS =
     </nav>
 
     <!-- Mobile disclosure menu (no framework) -->
-    <details class="site-menu relative md:hidden">
+    <details class="site-menu relative xl:hidden">
       <summary
         class="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-md text-body transition-colors hover:text-hi"
         aria-label="Open menu"

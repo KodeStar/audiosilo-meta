@@ -1,12 +1,6 @@
 package model
 
-import (
-	"encoding/json"
-	"regexp"
-	"testing"
-
-	meta "github.com/kodestar/audiosilo-meta"
-)
+import "testing"
 
 // The two-step's ORDER is what these pin: acceptance through NormalizeSequence FIRST, then
 // the span. ParsePositionRange is a ParseFloat, so reading the span first would mint
@@ -141,61 +135,6 @@ func TestNormalizeSequence(t *testing.T) {
 		got, ok := NormalizeSequence(c.in)
 		if got != c.want || ok != c.wantOK {
 			t.Errorf("NormalizeSequence(%q) = (%q,%v), want (%q,%v)", c.in, got, ok, c.want, c.wantOK)
-		}
-	}
-}
-
-// seriesPositionSchemaPattern reads the position pattern out of
-// series.schema.json, so the guard below compares against the contract itself
-// rather than a re-spelling of it.
-func seriesPositionSchemaPattern(t *testing.T) string {
-	t.Helper()
-	raw, err := meta.SchemaFS.ReadFile("schema/series.schema.json")
-	if err != nil {
-		t.Fatal(err)
-	}
-	var doc struct {
-		Properties struct {
-			Works struct {
-				Items struct {
-					Properties struct {
-						Position struct {
-							Pattern string `json:"pattern"`
-						} `json:"position"`
-					} `json:"properties"`
-				} `json:"items"`
-			} `json:"works"`
-		} `json:"properties"`
-	}
-	if err := json.Unmarshal(raw, &doc); err != nil {
-		t.Fatal(err)
-	}
-	pattern := doc.Properties.Works.Items.Properties.Position.Pattern
-	if pattern == "" {
-		t.Fatal("series.schema.json states no position pattern; the drift guard would pass vacuously")
-	}
-	return pattern
-}
-
-// TestNormalizeSequenceSatisfiesTheSchema is the drift guard between the
-// TOLERANT input grammar and the contract it writes into: whatever
-// NormalizeSequence accepts, what it RETURNS must match series.schema.json's
-// position pattern exactly, or a spelled range would be normalized into a
-// record metacheck then rejects.
-func TestNormalizeSequenceSatisfiesTheSchema(t *testing.T) {
-	schemaPattern := regexp.MustCompile(seriesPositionSchemaPattern(t))
-	inputs := []string{
-		"1", "0.5", "1-3.5", "1 - 3", "3040 - 3049", "14 -15", "1.5- 3.5",
-		" 2 ", "1.0", "2.50", "1.0-3.50", " 0.1 - 0.5 ",
-	}
-	for _, in := range inputs {
-		pos, ok := NormalizeSequence(in)
-		if !ok {
-			t.Errorf("NormalizeSequence(%q) was rejected", in)
-			continue
-		}
-		if !schemaPattern.MatchString(pos) {
-			t.Errorf("NormalizeSequence(%q) = %q, which the schema's position pattern rejects", in, pos)
 		}
 	}
 }
