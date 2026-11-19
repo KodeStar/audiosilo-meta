@@ -695,6 +695,8 @@ describe('parseExport - audiosilo-books envelope', () => {
     expect(parseExport(envelope({ title: 'A', abridged: 'false' })).books[0].abridged).toBeUndefined()
     expect(parseExport(envelope({ title: 'A', abridged: 'true' })).books[0].abridged).toBe(true)
     expect(parseExport(envelope({ title: 'A' })).books[0].abridged).toBeUndefined()
+    const marked = parseExport(envelope({ title: 'A (Unabridged)', abridged: false }))
+    expect(marked.books[0].abridged).toBe(false)
   })
 
   it('reads an https cover_url and drops a non-https one', () => {
@@ -795,6 +797,19 @@ describe('parseExport - Audiobookshelf field mapping (full shape)', () => {
       // Nor does the projection the download and envelope are built from carry it.
       expect('abridged' in b.raw).toBe(false)
     }
+  })
+
+  it('reads an edition marker on the title or subtitle as a statement', () => {
+    // A marker states the edition even when ABS's flag is its default false, so
+    // a single-book hand-off still prefills it (the issue form strips the
+    // marker without reading it). The projection keeps the raw title and only
+    // the stated flag; the Go importer re-reads the marker off the title.
+    const marked = parseOne({ title: 'A (Unabridged)', abridged: false })
+    expect(marked.abridged).toBe(false)
+    expect('abridged' in marked.raw).toBe(false)
+    expect(parseOne({ title: 'A', subtitle: 'Book 1 [Abridged]' }).abridged).toBe(true)
+    // A stated true outranks a marker, as in the Go importer.
+    expect(parseOne({ title: 'A (Unabridged)', abridged: true }).abridged).toBe(true)
   })
 
   it('omits a zero/absent runtime and an absent chapter count', () => {

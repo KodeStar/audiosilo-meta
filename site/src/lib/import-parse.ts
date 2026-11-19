@@ -106,6 +106,28 @@ function absStatedAbridged(v: unknown): true | undefined {
   return coerceBool(v) || undefined
 }
 
+const UNABRIDGED_MARKER_RE = /[([]unabridged[)\]]/i
+const ABRIDGED_MARKER_RE = /[([]abridged[)\]]/i
+
+/**
+ * The abridged tri-state stated by a title's edition marker: "(Unabridged)" ->
+ * false, "(Abridged)" -> true, no marker -> undefined. The title printing the
+ * edition is a fact the publisher stated on the release, so reading it is not a
+ * guess. Unabridged is checked first (mirrors Go abridgedFromMarker).
+ */
+export function abridgedFromMarker(title: string): boolean | undefined {
+  if (UNABRIDGED_MARKER_RE.test(title)) return false
+  if (ABRIDGED_MARKER_RE.test(title)) return true
+  return undefined
+}
+
+// An Audiobookshelf-derived entry's abridged tri-state, by the Go importer's
+// audiosiloBookToBook rule: a stated TRUE flag, else the edition marker on the
+// raw title or subtitle (a marker IS a statement, unlike ABS's default false).
+function absAbridged(flag: unknown, title: string, subtitle: string): boolean | undefined {
+  return absStatedAbridged(flag) ?? abridgedFromMarker(title) ?? abridgedFromMarker(subtitle)
+}
+
 // --- Runtime helpers --------------------------------------------------------
 
 // Whole minutes from a seconds count, positive-only: a sub-minute file rounds to
@@ -743,7 +765,7 @@ function parseAudiosiloBook(raw: Record<string, unknown>): ParsedBook {
   // The envelope wraps Audiobookshelf books only (newBooksPayload), so an older
   // download's false is ABS's default, not a statement. (`raw` keeps it as
   // dropped; the Go importer reads the envelope by the same rule.)
-  const abridged = absStatedAbridged(raw['abridged'])
+  const abridged = absAbridged(raw['abridged'], title, subtitle)
   // The curated projection carries the cover as an https `cover_url` (emitted by
   // factualSubset from ParsedBook.coverUrl), so a re-dropped download keeps it.
   const cover = coerceStr(raw['cover_url'])
@@ -870,7 +892,10 @@ function parseAudiobookshelfBook(raw: Record<string, unknown>): ParsedBook {
   // coverUrl is emitted (like the folder scan).
   const chapters = media['chapters']
   const chapterCount = Array.isArray(chapters) ? chapters.length : coerceInt(media['numChapters'])
-  const abridged = absStatedAbridged(md['abridged'])
+  // The projection carries only the stated flag: a marker-derived value is
+  // re-read off the projection's own title by the Go importer.
+  const statedAbridged = absStatedAbridged(md['abridged'])
+  const abridged = absAbridged(md['abridged'], title, subtitle)
 
   // `raw` for the factual download is a curated, privacy-safe projection - NEVER
   // the ABS item, which carries local coverPath/path/audio-file listings. Only
@@ -889,7 +914,7 @@ function parseAudiobookshelfBook(raw: Record<string, unknown>): ParsedBook {
   if (publisher) projection['publisher'] = publisher
   if (runtimeMin !== undefined) projection['runtime_min'] = runtimeMin
   if (chapterCount !== undefined) projection['chapters'] = chapterCount
-  if (abridged !== undefined) projection['abridged'] = abridged
+  if (statedAbridged !== undefined) projection['abridged'] = statedAbridged
 
   return {
     asin: asin || undefined,

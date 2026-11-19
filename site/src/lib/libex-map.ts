@@ -29,9 +29,12 @@ import { mapGenreClaims } from './audible-genres'
 // formatAsinLine only: github-prefill's own reference back to this module is
 // type-only (erased at build time), so there is no runtime import cycle.
 import { formatAsinLine } from './github-prefill'
-import { mapLanguageLoose, mapRegion, normalizeSequence } from './import-parse'
+import { abridgedFromMarker, mapLanguageLoose, mapRegion, normalizeSequence } from './import-parse'
 import { LIBEX_HOST } from './libex'
 import type { LibexBook } from './libex'
+
+// Re-exported: the marker rule lives beside the export parsers, which read it too.
+export { abridgedFromMarker }
 
 /**
  * The facts a libex record contributes to an add-work issue. Field names are
@@ -74,8 +77,6 @@ export interface LibexPrefill {
 // edition markers with their surrounding whitespace - the TS twin of the Go
 // importer's editionMarkerRE.
 const EDITION_MARKER_RE = /(?:\s*[([](?:un)?abridged[)\]])+\s*$/i
-const UNABRIDGED_MARKER_RE = /[([]unabridged[)\]]/i
-const ABRIDGED_MARKER_RE = /[([]abridged[)\]]/i
 
 /**
  * Strip trailing edition markers from a work title, so "Mageling (Unabridged)"
@@ -86,18 +87,6 @@ export function cleanWorkTitle(title: string): string {
   const cleaned = title.trim()
   const stripped = cleaned.replace(EDITION_MARKER_RE, '').trim()
   return stripped === '' ? cleaned : stripped
-}
-
-/**
- * The abridged tri-state stated by a title's edition marker: "(Unabridged)" ->
- * false, "(Abridged)" -> true, no marker -> undefined. The title printing the
- * edition is a fact the publisher stated on the release, so reading it is not a
- * guess. Unabridged is checked first (mirrors Go abridgedFromMarker).
- */
-export function abridgedFromMarker(title: string): boolean | undefined {
-  if (UNABRIDGED_MARKER_RE.test(title)) return false
-  if (ABRIDGED_MARKER_RE.test(title)) return true
-  return undefined
 }
 
 /** libex's bookFormat, when it states an edition. Any other value is unknown. */
