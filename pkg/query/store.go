@@ -403,9 +403,10 @@ func (s *DB) loadStats() error {
 	}
 	// The ABRIDGEMENT column (version 13), the same way: every work page's
 	// recordings read it.
-	if s.schemaVersion >= abridgementSchemaVersion {
-		if _, err := s.db.Exec(`SELECT abridgement FROM recordings LIMIT 0`); err != nil {
-			return fmt.Errorf("%s: artifact schema_version %d requires the abridgement column: %w", s.path, s.schemaVersion, err)
+	if s.hasAbridgement() {
+		if _, err := s.db.Exec(abridgementShapeSQL); err != nil {
+			return fmt.Errorf("%s: artifact schema_version %d requires the abridgement column: %w",
+				s.path, s.schemaVersion, err)
 		}
 	}
 	s.stats = st

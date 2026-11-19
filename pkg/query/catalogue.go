@@ -10,10 +10,22 @@ import (
 )
 
 const (
-	abridgementSchemaVersion = 13
 	CataloguePageMax         = 100
 	listeningRecordingsLimit = 5
 )
+
+// abridgementSchemaVersion is the artifact schema_version that first carried
+// recordings.abridgement: whether the source STATED the abridged flag, so a
+// stated false reads as unabridged rather than unknown.
+const abridgementSchemaVersion = 13
+
+// abridgementShapeSQL proves what a version 13 artifact claims: it names the
+// column abridgementColumn reads, so loadStats refuses an artifact claiming 13
+// without it rather than a work page failing on it.
+const abridgementShapeSQL = `SELECT abridgement FROM recordings LIMIT 0`
+
+// hasAbridgement reports whether the artifact carries recordings.abridgement.
+func (s *DB) hasAbridgement() bool { return s.schemaVersion >= abridgementSchemaVersion }
 
 // abridgementColumn never treats a legacy false as proof of unabridgement.
 func abridgementColumn(prefix string, present bool) string {
@@ -207,7 +219,7 @@ func (s *DB) recordingSummaries(ctx context.Context, credits []narratedCredit) (
 		return out, nil
 	}
 	selected, args := selectedRecordingsSQL(credits)
-	rows, err := s.db.QueryContext(ctx, recordingSummariesSQL(selected, s.schemaVersion >= abridgementSchemaVersion), args...)
+	rows, err := s.db.QueryContext(ctx, recordingSummariesSQL(selected, s.hasAbridgement()), args...)
 	if err != nil {
 		return nil, err
 	}

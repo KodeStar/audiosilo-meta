@@ -927,7 +927,7 @@ func (s *DB) workISBNs(ctx context.Context, workID string) ([]string, error) {
 // (omitempty would hide the gap).
 func (s *DB) recordingsBase(ctx context.Context, workID string) ([]RecordingDetail, error) {
 	librivox, store := s.hasLibrivoxLayer(), s.hasStoreLinks()
-	rows, err := s.db.QueryContext(ctx, recordingsOfSQL(librivox, store, s.schemaVersion >= abridgementSchemaVersion), workID)
+	rows, err := s.db.QueryContext(ctx, recordingsOfSQL(librivox, store, s.hasAbridgement()), workID)
 	if err != nil {
 		return nil, err
 	}
