@@ -88,7 +88,8 @@ CREATE INDEX idx_work_alternate_titles_work ON work_alternate_titles(work_id);
 -- language-scoped latest (internal/serve's lang filter) needed no index of its own:
 -- it narrows through this one for a minority language and scans for a majority one.
 CREATE INDEX idx_works_language ON works(language);
--- Optional display-order directory indexes within the unreleased schema 12.
+-- Optional display-order directory indexes, first built with schema 13 (an index
+-- bumps no version: a schema 11 or 12 artifact without them still serves).
 CREATE INDEX idx_works_title_nocase ON works(title COLLATE NOCASE, id);
 
 CREATE TABLE recordings (
@@ -122,7 +123,7 @@ CREATE TABLE recordings (
   -- store listing did not state.
   link_audiobookguild TEXT,
   link_graphicaudio   TEXT,
-  -- schema_version 12: NULL when the source did not state the abridged flag.
+  -- schema_version 13: NULL when the source did not state the abridged flag.
   abridgement TEXT CHECK (abridgement IN ('abridged', 'unabridged')),
   PRIMARY KEY (work_id, id)
 );

@@ -577,7 +577,7 @@ it, `pkg/check` and every writer now refuse it loudly.
   unknown, so importers omit it rather than guess; `model.Recording.AbridgedKnown`
   preserves explicit false on JSON round trips), runtime_min, release_date,
   publisher and identifiers.
-  The artifact preserves this presence from schema 12, and API recordings add
+  The artifact preserves this presence from schema 13, and API recordings add
   optional `abridgement: abridged | unabridged`; absence is unknown. Legacy false
   in an older artifact is unknown, while legacy true proves abridged.
   Other fields include region-scoped `asin[]`, `isbn[]`, cover_url, chapters,
@@ -810,7 +810,9 @@ RECORDING layer"); the `position_scales(work_id, length, unit, partial)` table i
 **schema_version 10**; the STORE LINKS (`recordings.link_audiobookguild`,
 `recordings.link_graphicaudio`) in **schema_version 11**; a work's ALTERNATE TITLES
 (`work_alternate_titles(work_id, title, ord)`, also in the work's `search_fts`
-names) in **schema_version 12** (the current version);
+names) in **schema_version 12**; the recordings' `abridgement` column (whether
+the source STATED the abridged flag, so a stated false reads as unabridged rather
+than unknown) in **schema_version 13** (the current version);
 character `ord`/recap
 position order preserved, deterministic), and `metaserve` returns
 them inline on `GET /works/{id}`
@@ -821,17 +823,18 @@ briefly serving an older release): characters/recaps gate on schema_version >= 2
 the recap summary on >= 3, genres on >= 4, the slug redirects on >= 5, the
 community description on >= 6, the languages layer on >= 7, the LibriVox
 layer on >= 8, the LibriVox recording layer on >= 9, the position scales on
->= 10, the store links on >= 11 and the alternate titles on >= 12, so a
+>= 10, the store links on >= 11, the alternate titles on >= 12 and the
+recordings' abridgement on >= 13 (below it a stated false reads as unknown), so a
 table's absence is "no data" (for redirects: a retired slug 404s as it did before
 the mechanism existed), not a 500. The redirect, description and languages gates
 are asked ONCE at load rather than per request - those tables are EMPTY in every
 release until their first record lands, and all sit on ordinary 200 paths (the
 description on every work page, both guide pages and every ABS candidate; the
 translations and the ordering family on every work and series page) - so an
-artifact that CLAIMS version 5, 6, 7, 8, 9, 10, 11 or 12 without its table (for 7: the
+artifact that CLAIMS version 5, 6, 7, 8, 9, 10, 11, 12 or 13 without its table (for 7: the
 translations table or the series ordering columns; for 8: `librivoxShapeSQL`;
 for 9: `librivoxRecordingShapeSQL`; for 11: `storeLinksShapeSQL`; for 12:
-`alternateTitlesShapeSQL`) fails to open, with an
+`alternateTitlesShapeSQL`; for 13: the `recordings.abridgement` column) fails to open, with an
 error naming that claim; the builder writes the version and the table together,
 so the combination is a corrupt file rather than an old one. **Authoring the expressive
 layer is documented in the COMMUNITY repository's `AUTHORING.md`** (the reusable

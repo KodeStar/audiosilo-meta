@@ -223,7 +223,7 @@ cached pages after renderer changes.
 
 Recordings may carry `abridgement: abridged | unabridged`; absence means unknown.
 Explicit false in source JSON remains distinct from absence in artifact schema
-12. Older artifacts prove abridgement only when the legacy `abridged` is true.
+13. Older artifacts prove abridgement only when the legacy `abridged` is true.
 The comparison and JSON-LD agree on those states. A missing artifact or temporary
 page composition failure returns 503, Retry-After and no-store, while missing
 records return 404 and a broken site template returns an uncached 500.

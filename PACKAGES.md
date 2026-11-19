@@ -876,8 +876,8 @@ Filters survive paging and directory changes; search or letter changes reset
 the page. Repeated/invalid parameters and oversized searches return 400;
 normalized URLs use deterministic letter/page/q ordering. Filtered content has
 its own canonical and ETag; nonempty searches are noindex,follow. Optional
-NOCASE display indexes in unreleased artifact 12 accelerate new builds without
-being required by published schema 11 artifacts. The homepage/header/footer link to `/browse`.
+NOCASE display indexes in artifact 13 accelerate new builds without
+being required by published schema 11 and 12 artifacts. The homepage/header/footer link to `/browse`.
 `/works/{id}/recordings/{recording}/chapters?page=N` uses 100 bounded chapter
 rows, validates the work/recording pair and page bounds, and displays title,
 start and duration. Empty chapter lists remain useful pages for real recordings;
