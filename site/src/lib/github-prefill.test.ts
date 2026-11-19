@@ -687,6 +687,51 @@ describe('newBooksPayload', () => {
     expect(out.books[0].coverUrl).toBe('https://img.example/c.jpg')
   })
 
+  it('re-wraps a re-dropped audiosilo-books download as the same envelope, stale false dropped', () => {
+    // An older download (built before ABS's default false was read as unknown)
+    // still says abridged: false. Re-dropping it must give the same envelope
+    // back, not a bare array that would read as an OpenAudible export, and the
+    // false must not ride into it.
+    const old = {
+      format: 'audiosilo-books',
+      version: 1,
+      books: [
+        {
+          title: 'Killing Floor',
+          authors: ['Lee Child'],
+          narrators: ['Jeff Harding'],
+          series: 'Jack Reacher',
+          series_position: '1',
+          asin: 'B076HYPQLK',
+          abridged: false,
+        },
+        { title: 'An Abridged One', authors: ['A. Writer'], abridged: true },
+      ],
+    }
+    const first = parseExport(JSON.stringify(old))
+    expect(first.format).toBe('audiosilobooks')
+    const payload = newBooksPayload(first.books) as Record<string, unknown>
+    expect(payload['format']).toBe('audiosilo-books')
+    expect(payload['version']).toBe(1)
+    const books = payload['books'] as Record<string, unknown>[]
+    expect(books[0]).toEqual({
+      title: 'Killing Floor',
+      authors: ['Lee Child'],
+      narrators: ['Jeff Harding'],
+      series: 'Jack Reacher',
+      series_position: '1',
+      asin: 'B076HYPQLK',
+    })
+    expect(books[1]['abridged']).toBe(true)
+
+    const second = parseExport(JSON.stringify(payload))
+    expect(second.format).toBe('audiosilobooks')
+    expect(second.books[0].authors).toEqual(['Lee Child'])
+    expect(second.books[0].narrators).toEqual(['Jeff Harding'])
+    expect(second.books[0].abridged).toBeUndefined()
+    expect(second.books[1].abridged).toBe(true)
+  })
+
   it('leaves OpenAudible books as a bare array (still detectable, still round-trips)', () => {
     const oaText = JSON.stringify([
       {

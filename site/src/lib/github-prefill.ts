@@ -330,6 +330,8 @@ export function factualSubset(book: ParsedBook): Record<string, unknown> {
  *  - Audiobookshelf books wrap in the `audiosilo-books` envelope - their flat
  *    curated projections carry an `asin` key, which would otherwise misdetect
  *    as an OpenAudible export (silently dropping authors/narrators/series).
+ *    A re-dropped audiosilo-books download wraps again, so it round-trips as
+ *    the same envelope rather than degrading to that bare array.
  * OpenAudible and Libation are already detectable as bare arrays of their own
  * keys, so they stay bare. Each book's factual subset carries an https `cover_url`
  * when the source provided one (factualSubset), so covers survive the envelopes.
@@ -339,7 +341,7 @@ export function newBooksPayload(books: ParsedBook[]): unknown {
   if (books[0]?.format === 'folderscan') {
     return { format: 'audiosilo-folder-scan', version: 1, books: subsets }
   }
-  if (books[0]?.format === 'audiobookshelf') {
+  if (books[0]?.format === 'audiobookshelf' || books[0]?.format === 'audiosilobooks') {
     return { format: 'audiosilo-books', version: 1, books: subsets }
   }
   return subsets

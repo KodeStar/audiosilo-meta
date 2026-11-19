@@ -763,9 +763,15 @@ function parseAudiosiloBook(raw: Record<string, unknown>): ParsedBook {
   const publisher = coerceStr(raw['publisher'])
   const chapterCount = coerceInt(raw['chapters']) // a count in the curated shape
   // The envelope wraps Audiobookshelf books only (newBooksPayload), so an older
-  // download's false is ABS's default, not a statement. (`raw` keeps it as
-  // dropped; the Go importer reads the envelope by the same rule.)
+  // download's false is ABS's default, not a statement. The Go importer reads the
+  // envelope by the same rule.
   const abridged = absAbridged(raw['abridged'], title, subtitle)
+  // `raw` is what a re-download projects (factualSubset), so it carries only the
+  // stated true, as parseAudiobookshelfBook's projection does: a stale false
+  // never rides into the next envelope.
+  const projection: Record<string, unknown> = { ...raw }
+  delete projection['abridged']
+  if (absStatedAbridged(raw['abridged'])) projection['abridged'] = true
   // The curated projection carries the cover as an https `cover_url` (emitted by
   // factualSubset from ParsedBook.coverUrl), so a re-dropped download keeps it.
   const cover = coerceStr(raw['cover_url'])
@@ -790,7 +796,7 @@ function parseAudiosiloBook(raw: Record<string, unknown>): ParsedBook {
     chapterCount,
     abridged,
     format: 'audiosilobooks',
-    raw,
+    raw: projection,
   }
 }
 
