@@ -3,6 +3,8 @@ package query
 import (
 	"fmt"
 	"net/http"
+	"regexp"
+	"slices"
 	"strings"
 	"testing"
 
@@ -104,6 +106,78 @@ func TestSeriesListeningGuideBoundsAndFacts(t *testing.T) {
 		if page != nil && len(page.Entries) != 0 {
 			t.Fatalf("%s: nonempty page %+v", tt.id, page)
 		}
+	}
+}
+
+// TestSeriesOrderSQLMatchesGoOverThePositionGrammar pins the two series orders to
+// each other over every shape series.schema.json's position pattern admits: the
+// SQL one (seriesListeningMembersSQL: CAST(position AS REAL), position, work_id),
+// which the listening guide pages with, and the Go one in Series(), which sorts
+// by positionStart, then the position string, then the work id. SQLite's CAST
+// reads the longest numeric prefix ("1-15" -> 1, "2.10-3" -> 2.1) and
+// parsePositionRange the range's start, so the two agree only while the grammar
+// stays numeric; ranges, a decimal whose digits sort differently as text ("2.10"
+// vs "2.9"), a leading zero, 0 and a fraction below 1 are all here.
+func TestSeriesOrderSQLMatchesGoOverThePositionGrammar(t *testing.T) {
+	grammar := regexp.MustCompile(`^\d+(\.\d+)?(-\d+(\.\d+)?)?$`)
+	// Listed out of order, with work ids that disagree with the position order.
+	members := []struct{ work, position string }{
+		{"w-01", "10.0"}, {"w-02", "2.9"}, {"w-03", "1-3.5"}, {"w-04", "0.5"},
+		{"w-05", "2.10-3"}, {"w-06", "1"}, {"w-07", "9"}, {"w-08", "02"},
+		{"w-09", "1-15"}, {"w-10", "0"}, {"w-11", "2.10"}, {"w-12", "10"},
+		{"w-14", "1.5"}, {"w-13", "1.5"}, {"w-15", "2"},
+	}
+	want := []string{
+		"w-10",                 // 0
+		"w-04",                 // 0.5
+		"w-06", "w-09", "w-03", // 1, 1-15, 1-3.5: one start, then the string
+		"w-13", "w-14", // 1.5 twice: the work id breaks the tie
+		"w-08", "w-15", // 02, 2
+		"w-11", "w-05", // 2.10, 2.10-3: 2.1, not 2.10 > 2.9
+		"w-02",         // 2.9
+		"w-07",         // 9
+		"w-12", "w-01", // 10, 10.0
+	}
+	cat := &model.Catalog{Series: []*model.Series{{ID: "grammar", Name: "Grammar", License: "CC0-1.0"}}}
+	for _, m := range members {
+		if !grammar.MatchString(m.position) {
+			t.Fatalf("fixture position %q is outside the schema grammar", m.position)
+		}
+		cat.Works = append(cat.Works, &model.Work{ID: m.work, Title: m.work, License: "CC0-1.0"})
+		cat.Series[0].Works = append(cat.Series[0].Works, model.SeriesWork{Work: m.work, Position: m.position})
+	}
+	snap := openTestDB(t, artifacttest.Build(t, cat))
+
+	rows, err := snap.db.Query(seriesListeningMembersSQL, "grammar", len(members), 0)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var fromSQL []string
+	for rows.Next() {
+		var work, position string
+		if err := rows.Scan(&work, &position); err != nil {
+			t.Fatal(err)
+		}
+		fromSQL = append(fromSQL, work)
+	}
+	if err := rows.Err(); err != nil {
+		t.Fatal(err)
+	}
+	_ = rows.Close()
+
+	series, err := snap.Series("grammar", 0, 0)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var fromGo []string
+	for _, w := range series.Works {
+		fromGo = append(fromGo, w.Work.ID)
+	}
+	if !slices.Equal(fromSQL, want) {
+		t.Errorf("SQL order = %v\nwant        %v", fromSQL, want)
+	}
+	if !slices.Equal(fromGo, fromSQL) {
+		t.Errorf("Go order (Series) = %v\nSQL order         %v", fromGo, fromSQL)
 	}
 }
 
@@ -220,13 +294,25 @@ func TestBrowseAndRecordingChapterWindows(t *testing.T) {
 	}
 }
 
+// TestAbridgementLegacyArtifacts: the abridgement column arrived in schema 13.
+// A schema 12 artifact (alternate titles, no abridgement column) and the older
+// ones still serve every catalogue read, with a legacy false read as unknown;
+// the 12 one keeps its alternate titles.
 func TestAbridgementLegacyArtifacts(t *testing.T) {
 	cat := catalogueFixture()
-	for _, version := range []int{7, 11, 12} {
+	for _, w := range cat.Works {
+		if w.ID == "book-000" {
+			w.AlternateTitles = []string{"Book Zero"}
+		}
+	}
+	for _, version := range []int{7, 11, 12, 13} {
 		t.Run(fmt.Sprint(version), func(t *testing.T) {
 			var stmts []string
-			if version < 12 {
+			if version < 13 {
 				stmts = append(stmts, "ALTER TABLE recordings DROP COLUMN abridgement", "DROP INDEX idx_series_works_position", "DROP INDEX idx_recording_narrators_person_recording")
+			}
+			if version < 12 {
+				stmts = append(stmts, "DROP TABLE work_alternate_titles")
 			}
 			if version < 8 {
 				stmts = append(stmts, "ALTER TABLE chapters DROP COLUMN audio_url")
@@ -237,7 +323,7 @@ func TestAbridgementLegacyArtifacts(t *testing.T) {
 				t.Fatal(err)
 			}
 			want := ""
-			if version == 12 {
+			if version >= 13 {
 				want = "unabridged"
 			}
 			if page.Entries[0].Recordings[0].Abridgement != want || page.Entries[0].Recordings[1].Abridgement != "abridged" {
@@ -250,6 +336,13 @@ func TestAbridgementLegacyArtifacts(t *testing.T) {
 			if work.Recordings[0].Abridgement != want || work.Recordings[0].Language != "en" || work.Recordings[1].Abridgement != "abridged" || !work.Recordings[1].Abridged {
 				t.Fatalf("legacy work = %+v", work.Recordings)
 			}
+			var wantAlt []string
+			if version >= 12 {
+				wantAlt = []string{"Book Zero"}
+			}
+			if !slices.Equal(work.AlternateTitles, wantAlt) {
+				t.Fatalf("v%d alternate titles = %v, want %v", version, work.AlternateTitles, wantAlt)
+			}
 			chapters, err := snap.RecordingChapters(t.Context(), "book-000", "reading-00", 100, 100)
 			if err != nil || len(chapters.Chapters) != 100 {
 				t.Fatalf("old chapters = %+v, %v", chapters, err)
@@ -260,10 +353,10 @@ func TestAbridgementLegacyArtifacts(t *testing.T) {
 			}
 		})
 	}
-	path := artifacttest.Altered(t, cat, 12, "ALTER TABLE recordings DROP COLUMN abridgement")
+	path := artifacttest.Altered(t, cat, 13, "ALTER TABLE recordings DROP COLUMN abridgement")
 	if db, err := Open(path, ""); err == nil {
 		_ = db.Close()
-		t.Fatal("accepted v12 without abridgement")
+		t.Fatal("accepted v13 without abridgement")
 	} else if !strings.Contains(err.Error(), "requires the abridgement column") {
 		t.Fatal(err)
 	}

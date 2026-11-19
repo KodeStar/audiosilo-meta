@@ -159,11 +159,29 @@ func TestHTMLRoutesAreDisjointFromTheAPI(t *testing.T) {
 }
 
 // TestHTMLRoutesNeedASiteDirectory pins the registration condition: an API-only
-// deployment serves no pages, because there is no shell to inject into.
+// deployment serves no pages, because there is no shell to inject into. Every
+// page route htmlRoutes registers (entity pages, legacy query-param twins, the
+// browse directories, the guides and the chapter pages) is walked from the one
+// table, so a page added later is covered too: each is a plain 404, never a 500
+// for a missing shell and never an HTML page.
 func TestHTMLRoutesNeedASiteDirectory(t *testing.T) {
-	_, ts := newTestServer(t) // no Site
-	if code, _ := getPage(t, ts.URL, "/works/project-hail-mary"); code != http.StatusNotFound {
-		t.Errorf("entity page without a site dir = %d, want 404 (the route is not registered)", code)
+	srv, ts := newTestServer(t) // no Site
+	fill := strings.NewReplacer("{id}", "project-hail-mary", "{recording}", "ray-porter-2021")
+	for _, r := range srv.htmlRoutes() {
+		path := fill.Replace(strings.TrimPrefix(r.pattern, "GET "))
+		for _, target := range []string{path, path + "?id=project-hail-mary&page=2"} {
+			resp, err := http.Get(ts.URL + target)
+			if err != nil {
+				t.Fatal(err)
+			}
+			_ = resp.Body.Close()
+			if resp.StatusCode != http.StatusNotFound {
+				t.Errorf("GET %s without a site dir = %d, want 404 (the route is not registered)", target, resp.StatusCode)
+			}
+			if ct := resp.Header.Get("Content-Type"); strings.HasPrefix(ct, "text/html") {
+				t.Errorf("GET %s without a site dir served %s", target, ct)
+			}
+		}
 	}
 }
 
