@@ -94,6 +94,18 @@ function coerceBool(v: unknown): boolean | undefined {
   return undefined
 }
 
+// The abridged flag of an Audiobookshelf-derived entry: only a TRUE is a
+// statement. ABS stores abridged as a plain boolean that its scanner forces to
+// false when nothing stated it (advplyr/audiobookshelf
+// server/scanner/BookScanner.js, `bookMetadata.abridged = !!bookMetadata.abridged
+// // Ensure boolean`), so an ABS export says false for nearly every book whether
+// or not anyone knows the edition. Absence means unknown here (facts only), so a
+// false is read as undefined. The Go importer applies the same rule to the
+// audiosilo-books envelope (internal/importer/audiosilobooks.go) as a backstop.
+function absStatedAbridged(v: unknown): true | undefined {
+  return coerceBool(v) === true ? true : undefined
+}
+
 // --- Runtime helpers --------------------------------------------------------
 
 // Whole minutes from a seconds count, positive-only: a sub-minute file rounds to
@@ -728,7 +740,10 @@ function parseAudiosiloBook(raw: Record<string, unknown>): ParsedBook {
   const releaseDate = DATE_PATTERN.test(releaseRaw) ? releaseRaw : undefined
   const publisher = coerceStr(raw['publisher'])
   const chapterCount = coerceInt(raw['chapters']) // a count in the curated shape
-  const abridged = coerceBool(raw['abridged'])
+  // The envelope wraps Audiobookshelf books only (newBooksPayload), so an older
+  // download's false is ABS's default, not a statement. (`raw` keeps it as
+  // dropped; the Go importer reads the envelope by the same rule.)
+  const abridged = absStatedAbridged(raw['abridged'])
   // The curated projection carries the cover as an https `cover_url` (emitted by
   // factualSubset from ParsedBook.coverUrl), so a re-dropped download keeps it.
   const cover = coerceStr(raw['cover_url'])
@@ -855,7 +870,7 @@ function parseAudiobookshelfBook(raw: Record<string, unknown>): ParsedBook {
   // coverUrl is emitted (like the folder scan).
   const chapters = media['chapters']
   const chapterCount = Array.isArray(chapters) ? chapters.length : coerceInt(media['numChapters'])
-  const abridged = coerceBool(md['abridged'])
+  const abridged = absStatedAbridged(md['abridged'])
 
   // `raw` for the factual download is a curated, privacy-safe projection - NEVER
   // the ABS item, which carries local coverPath/path/audio-file listings. Only

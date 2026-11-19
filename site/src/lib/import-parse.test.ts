@@ -679,7 +679,7 @@ describe('parseExport - audiosilo-books envelope', () => {
         publisher: 'Acme Audio',
         runtime_min: 742,
         chapters: 34,
-        abridged: false,
+        abridged: true,
       })
     )
     const b = out.books[0]
@@ -687,7 +687,14 @@ describe('parseExport - audiosilo-books envelope', () => {
     expect(b.publisher).toBe('Acme Audio')
     expect(b.runtimeMin).toBe(742)
     expect(b.chapterCount).toBe(34)
-    expect(b.abridged).toBe(false)
+    expect(b.abridged).toBe(true)
+  })
+
+  it("reads an older download's abridged false as unknown (ABS's default)", () => {
+    expect(parseExport(envelope({ title: 'A', abridged: false })).books[0].abridged).toBeUndefined()
+    expect(parseExport(envelope({ title: 'A', abridged: 'false' })).books[0].abridged).toBeUndefined()
+    expect(parseExport(envelope({ title: 'A', abridged: 'true' })).books[0].abridged).toBe(true)
+    expect(parseExport(envelope({ title: 'A' })).books[0].abridged).toBeUndefined()
   })
 
   it('reads an https cover_url and drops a non-https one', () => {
@@ -745,7 +752,7 @@ describe('parseExport - Audiobookshelf field mapping (full shape)', () => {
     expect(b.language).toBe('en')
     expect(b.releaseDate).toBe('1997')
     expect(b.publisher).toBe('Random House')
-    expect(b.abridged).toBe(false)
+    expect(b.abridged).toBeUndefined() // ABS's default false is no statement
     expect(b.runtimeMin).toBe(742) // round(44521.7 / 60)
     expect(b.chapterCount).toBe(3)
     expect(b.region).toBeUndefined()
@@ -776,6 +783,18 @@ describe('parseExport - Audiobookshelf field mapping (full shape)', () => {
     const k = parseOne({ title: 'A', language: 'Klingon' })
     expect(k.language).toBeUndefined()
     expect(k.languageRaw).toBe('Klingon')
+  })
+
+  it("keeps only a true abridged flag (ABS's false is its default, not a statement)", () => {
+    const yes = parseOne({ title: 'A', abridged: true })
+    expect(yes.abridged).toBe(true)
+    expect(yes.raw['abridged']).toBe(true)
+    for (const abridged of [false, 'false', undefined, null]) {
+      const b = parseOne({ title: 'A', abridged })
+      expect(b.abridged).toBeUndefined()
+      // Nor does the projection the download and envelope are built from carry it.
+      expect('abridged' in b.raw).toBe(false)
+    }
   })
 
   it('omits a zero/absent runtime and an absent chapter count', () => {
