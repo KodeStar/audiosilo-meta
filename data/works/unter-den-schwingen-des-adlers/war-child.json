@@ -1780,166 +1780,6 @@
     "war-cry-wilbur-smith": {
       "added_at": "2026-11-19",
       "authors": [
-        "wilbur-smith"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "historical-romance",
-        "romance",
-        "thriller-suspense"
-      ],
-      "id": "war-cry-wilbur-smith",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "sean-barrett-2018": {
-          "abridged": false,
-          "added_at": "2026-11-19",
-          "asin": [
-            {
-              "asin": "B07K3R3QCM",
-              "region": "ca"
-            },
-            {
-              "asin": "1460791444",
-              "region": "de"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2512166,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3134090,
-              "start_ms": 2512166,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4664981,
-              "start_ms": 5646256,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3560547,
-              "start_ms": 10311237,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4126371,
-              "start_ms": 13871784,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3059321,
-              "start_ms": 17998155,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 3210065,
-              "start_ms": 21057476,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 3302527,
-              "start_ms": 24267541,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 4799239,
-              "start_ms": 27570068,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 3018269,
-              "start_ms": 32369307,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 3001922,
-              "start_ms": 35387576,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 3883955,
-              "start_ms": 38389498,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 3271552,
-              "start_ms": 42273453,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 3374045,
-              "start_ms": 45545005,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 3445887,
-              "start_ms": 48919050,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 3269601,
-              "start_ms": 52364937,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 2898593,
-              "start_ms": 55634538,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 2701966,
-              "start_ms": 58533131,
-              "title": "Chapter 18"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81mxvcHqKNL.jpg",
-          "id": "sean-barrett-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "sean-barrett"
-          ],
-          "publisher": "HarperAudio",
-          "release_date": "2018-11-02",
-          "runtime_min": 1020,
-          "sources": [
-            {
-              "imported_at": "2026-11-19",
-              "ref": "B07K3R3QCM",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-11-19",
-              "ref": "1460791444",
-              "type": "libex-import"
-            }
-          ],
-          "work": "war-cry-wilbur-smith"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-11-19",
-          "ref": "B07K3R3QCM",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-11-19",
-          "ref": "1460791444",
-          "type": "libex-import"
-        }
-      ],
-      "title": "War Cry"
-    },
-    "war-cry-wilbur-smith-2": {
-      "added_at": "2026-11-19",
-      "authors": [
         "wilbur-smith",
         "david-churchill"
       ],
@@ -1956,7 +1796,7 @@
         "thriller-suspense",
         "war-military-fiction"
       ],
-      "id": "war-cry-wilbur-smith-2",
+      "id": "war-cry-wilbur-smith",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -2259,38 +2099,147 @@
               "type": "libex-import"
             }
           ],
-          "work": "war-cry-wilbur-smith-2"
+          "work": "war-cry-wilbur-smith"
+        },
+        "sean-barrett-2018": {
+          "abridged": false,
+          "added_at": "2026-11-19",
+          "asin": [
+            {
+              "asin": "B07K3R3QCM",
+              "region": "ca"
+            },
+            {
+              "asin": "1460791444",
+              "region": "de"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2512166,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3134090,
+              "start_ms": 2512166,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4664981,
+              "start_ms": 5646256,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3560547,
+              "start_ms": 10311237,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4126371,
+              "start_ms": 13871784,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3059321,
+              "start_ms": 17998155,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3210065,
+              "start_ms": 21057476,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3302527,
+              "start_ms": 24267541,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 4799239,
+              "start_ms": 27570068,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3018269,
+              "start_ms": 32369307,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 3001922,
+              "start_ms": 35387576,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 3883955,
+              "start_ms": 38389498,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 3271552,
+              "start_ms": 42273453,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 3374045,
+              "start_ms": 45545005,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 3445887,
+              "start_ms": 48919050,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 3269601,
+              "start_ms": 52364937,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 2898593,
+              "start_ms": 55634538,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 2701966,
+              "start_ms": 58533131,
+              "title": "Chapter 18"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81mxvcHqKNL.jpg",
+          "id": "sean-barrett-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sean-barrett"
+          ],
+          "publisher": "HarperAudio",
+          "release_date": "2018-11-02",
+          "runtime_min": 1020,
+          "sources": [
+            {
+              "imported_at": "2026-11-19",
+              "ref": "B07K3R3QCM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-19",
+              "ref": "1460791444",
+              "type": "libex-import"
+            }
+          ],
+          "work": "war-cry-wilbur-smith"
         }
       },
       "sources": [
         {
           "imported_at": "2026-11-19",
-          "ref": "B071XZR9DV",
+          "ref": "B07K3R3QCM",
           "type": "libex-import"
         },
         {
           "imported_at": "2026-11-19",
-          "ref": "B06XRZGR2W",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-11-19",
-          "ref": "B07Z8BNQ1Y",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-11-19",
-          "ref": "B07B9T92PY",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-11-19",
-          "ref": "B06XJ5JNPZ",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-11-19",
-          "ref": "B06XJ7VKDJ",
+          "ref": "1460791444",
           "type": "libex-import"
         }
       ],
