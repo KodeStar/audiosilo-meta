@@ -372,11 +372,15 @@ function peelSuffixChunk(name: string): [string, string] {
 // Narrator") all come off, as the importer's creditWithRolesSided loop takes
 // them off, and a pass that leaves a ", <suffix>" chunk at the end ("A, MD -
 // narrator" -> "A, MD") is peeled by the next one. Every changing pass makes the
-// name shorter, so the loop ends.
+// name shorter (a qualifier comes off, or ", " becomes " "), so the loop ends;
+// CLEAN_NAME_MAX_PASSES only guards the page against a later rule change that
+// broke that, as the importer caps its own stripping loop.
+const CLEAN_NAME_MAX_PASSES = 16
+
 function cleanName(part: string): string | null {
   let name = part.trim()
   if (name === '') return null
-  for (;;) {
+  for (let pass = 0; pass < CLEAN_NAME_MAX_PASSES; pass++) {
     const [head, suffix] = peelSuffixChunk(name)
     let cleaned = head
     for (let next = stripRoleQualifier(cleaned); next !== cleaned; next = stripRoleQualifier(cleaned)) {
@@ -386,6 +390,7 @@ function cleanName(part: string): string | null {
     if (out === name) return out
     name = out
   }
+  return name
 }
 
 // Split a comma-joined name list, trim each, rejoin a suffix-only piece onto

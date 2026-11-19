@@ -698,6 +698,9 @@ describe('parseExport - audiosilo-books envelope', () => {
     expect(parseExport(envelope({ title: 'A' })).books[0].abridged).toBeUndefined()
     const marked = parseExport(envelope({ title: 'A (Unabridged)', abridged: false }))
     expect(marked.books[0].abridged).toBe(false)
+    // The download leaves a marker-derived flag out and the Go importer re-reads
+    // the marker off the title, so the projection's title must keep it.
+    expect(marked.books[0].raw['title']).toBe('A (Unabridged)')
   })
 
   it('keeps only a stated true in raw, the projection a re-download is built from', () => {
@@ -886,7 +889,11 @@ describe('parseExport - Audiobookshelf field mapping (full shape)', () => {
     const marked = parseOne({ title: 'A (Unabridged)', abridged: false })
     expect(marked.abridged).toBe(false)
     expect('abridged' in marked.raw).toBe(false)
-    expect(parseOne({ title: 'A', subtitle: 'Book 1 [Abridged]' }).abridged).toBe(true)
+    // The Go importer reads the statement back off these, so neither is stripped.
+    expect(marked.raw['title']).toBe('A (Unabridged)')
+    const subtitled = parseOne({ title: 'A', subtitle: 'Book 1 [Abridged]' })
+    expect(subtitled.abridged).toBe(true)
+    expect(subtitled.raw['subtitle']).toBe('Book 1 [Abridged]')
     // A stated true outranks a marker, as in the Go importer.
     expect(parseOne({ title: 'A (Unabridged)', abridged: true }).abridged).toBe(true)
   })
