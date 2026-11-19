@@ -126,13 +126,14 @@ func audiosiloBookToBook(e rawBook) sourceBook {
 	// Strip any trailing (Unabridged)/(Abridged) edition marker off BOTH strings
 	// FIRST: a marker on the concatenated title ("...Book 6 (Unabridged)") would
 	// otherwise defeat the ": "+subtitle CutSuffix and leak into the work slug.
-	// Because the marker is gone before runBooks (normalizeEditionMarkers) could
-	// read it, the abridged flag it states is derived below from the RAW strings,
-	// through the same abridgedFromMarker rule. The title qualifiers stay on for
-	// normalizeEditionMarkers, the one place that strips them, which keeps the qualified titles as merge targets (a work
-	// catalogued under its label, a labelled slug a repair retired).
-	title := qualifiedWorkTitle(e.str("title"))
-	sub := qualifiedWorkTitle(e.str("subtitle"))
+	// The marker is gone before normalizeEditionMarkers could read it, so the
+	// abridged flag it states is derived below from the RAW strings. The title
+	// qualifiers stay on for normalizeEditionMarkers, the one place that strips
+	// them, which keeps the qualified titles as merge targets (a work catalogued
+	// under its label, a labelled slug a repair retired).
+	rawTitle, rawSub := e.str("title"), e.str("subtitle")
+	title := qualifiedWorkTitle(rawTitle)
+	sub := qualifiedWorkTitle(rawSub)
 	titleShort := title
 	if sub != "" {
 		if prefix, cut := strings.CutSuffix(title, ": "+sub); cut && strings.TrimSpace(prefix) != "" {
@@ -170,22 +171,14 @@ func audiosiloBookToBook(e rawBook) sourceBook {
 	if mins, ok := coerceInt(e["runtime_min"]); ok && mins > 0 {
 		sb.runtimeMin = int(mins)
 	}
-	// Only a TRUE abridged flag is a statement in this envelope. Its one
-	// first-party producer is the site's Audiobookshelf path, and ABS stores
-	// abridged as a plain boolean that its scanner forces to false when nothing
-	// stated it (advplyr/audiobookshelf server/scanner/BookScanner.js,
-	// `bookMetadata.abridged = !!bookMetadata.abridged // Ensure boolean`), so a
-	// false says nothing about the edition. The site no longer emits false
-	// (import-parse.ts absStatedAbridged); this is the backstop for an envelope
-	// built by an older site or by hand. An unabridged recording still gets its
-	// false from a title marker ("(Unabridged)"), which IS a statement - read off
-	// the raw title, then subtitle, since the cleaning above has removed it.
+	// Only a TRUE abridged flag is a statement in this envelope: it wraps
+	// Audiobookshelf books, whose scanner forces an unset flag to false (the
+	// site's absStatedAbridged, import-parse.ts, states the rule and no longer
+	// emits false; this is the backstop for an older or hand-built envelope). A
+	// title marker ("(Unabridged)") IS a statement, read off the raw strings.
+	sb.abridged = abridgedFromMarkers(rawTitle, rawSub)
 	if a := coerceBoolPtr(e["abridged"]); a != nil && *a {
 		sb.abridged = a
-	} else if a := abridgedFromMarker(e.str("title")); a != nil {
-		sb.abridged = a
-	} else {
-		sb.abridged = abridgedFromMarker(e.str("subtitle"))
 	}
 	// Dropped quietly when malformed, like a non-https cover: the site already
 	// normalized it (import-parse.ts normalizeIsbn).

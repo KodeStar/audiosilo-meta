@@ -55,6 +55,17 @@ func abridgedFromMarker(title string) *bool {
 	return nil
 }
 
+// abridgedFromMarkers is abridgedFromMarker over several spellings of one
+// title, in precedence order: the first that carries a marker decides.
+func abridgedFromMarkers(titles ...string) *bool {
+	for _, t := range titles {
+		if a := abridgedFromMarker(t); a != nil {
+			return a
+		}
+	}
+	return nil
+}
+
 // cleanWorkTitle removes the decorations that are not part of a work's identity,
 // so two listings of one book resolve to one work. Three rules, in this order
 // because the first is a TRAILING marker and the second reads what the title
@@ -1284,9 +1295,10 @@ func (p *planner) planCreate(books []sourceBook) {
 // tri-state from the title's edition marker when the source did not state it (and,
 // failing that, from the recording qualifiers its series claims were cleaned of -
 // seriesClaimsAbridged), then (2) runs cleanWorkTitle over the raw title/title_short. This is the
-// SINGLE marker-derivation mechanism for ALL sources (the ABS path already
-// cleans its titles locally to fix its subtitle split, but never derives
-// abridged), so step 1 must run BEFORE the titles are mutated. Cleaning once
+// marker-derivation mechanism for every source but one (the audiosilo-books path
+// cleans its titles locally to fix its subtitle split, so audiosiloBookToBook
+// derives its flag from the raw strings first), so step 1 must run BEFORE the
+// titles are mutated. Cleaning once
 // here means downstream work-title resolution and full-title re-derivation read
 // undecorated titles without re-cleaning.
 //
@@ -1302,12 +1314,7 @@ func (p *planner) planCreate(books []sourceBook) {
 func normalizeEditionMarkers(books []sourceBook) {
 	for i := range books {
 		if books[i].abridged == nil {
-			for _, key := range []string{"title_short", "title"} {
-				if a := abridgedFromMarker(books[i].str(key)); a != nil {
-					books[i].abridged = a
-					break
-				}
-			}
+			books[i].abridged = abridgedFromMarkers(books[i].str("title_short"), books[i].str("title"))
 		}
 		if books[i].abridged == nil {
 			books[i].abridged = seriesClaimsAbridged(books[i].series)

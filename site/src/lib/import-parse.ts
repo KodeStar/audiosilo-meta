@@ -103,7 +103,7 @@ function coerceBool(v: unknown): boolean | undefined {
 // false is read as undefined. The Go importer applies the same rule to the
 // audiosilo-books envelope (internal/importer/audiosilobooks.go) as a backstop.
 function absStatedAbridged(v: unknown): true | undefined {
-  return coerceBool(v) === true ? true : undefined
+  return coerceBool(v) || undefined
 }
 
 // --- Runtime helpers --------------------------------------------------------

@@ -198,15 +198,12 @@ func TestAudiosiloBooksAbridgedOnlyTrueIsStated(t *testing.T) {
 		{"works/st/string-false/recordings/nia-narrator.json", nil},
 		{"works/ma/marked-book/recordings/nia-narrator.json", &fls},
 	} {
-		var rec struct {
-			Abridged *bool `json:"abridged"`
-		}
-		readEntity(t, dataDir, tc.rec, &rec)
+		got := readAbridged(t, dataDir, tc.rec)
 		switch {
-		case tc.want == nil && rec.Abridged != nil:
-			t.Errorf("%s: abridged = %v, want absent", tc.rec, *rec.Abridged)
-		case tc.want != nil && (rec.Abridged == nil || *rec.Abridged != *tc.want):
-			t.Errorf("%s: abridged = %v, want %v", tc.rec, rec.Abridged, *tc.want)
+		case tc.want == nil && got != nil:
+			t.Errorf("%s: abridged = %v, want absent", tc.rec, *got)
+		case tc.want != nil && (got == nil || *got != *tc.want):
+			t.Errorf("%s: abridged = %v, want %v", tc.rec, got, *tc.want)
 		}
 	}
 }
