@@ -1769,8 +1769,9 @@ whitespace-free pattern), and `recording.abridged` is optional
 the envelope's source, forces an unset flag to false at scan time, so only a true
 is read (and a title's "(Unabridged)" marker, read off the raw title before the
 cleaning strips it); the site's ABS parser reads the same way (a true flag, else
-the marker) and puts only a true flag in its projection, though a re-dropped older
-download still carries its false through to the next envelope. On the
+the marker) and puts only a true flag in its projection, and so does its parser
+for a re-dropped envelope, whose next download (`newBooksPayload`) is the same
+envelope again rather than a bare array an OpenAudible reading would take. On the
 intake side (`internal/issueform`): the bot **sniffs a self-identifying
 `audiosilo-books` envelope and routes it to that importer regardless of the
 form's export-type dropdown** (the file is trusted over the form). A
