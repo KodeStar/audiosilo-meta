@@ -308,14 +308,23 @@ jobs:
         # inputs (the artifact as a whole is not: meta(built_at) is the wall clock)
         # (metabuild moves a stamp that is not after the previous release's own
         # to one second past it, so a changed page's date always advances). %ct
-        # is a Unix time, which compares without parsing.
+        # is a Unix time, which compares without parsing. A commit time in the
+        # FUTURE (a skewed clock, a rewritten date) is capped at the wall clock:
+        # left alone it would become revisions_at, and the clamp would then hold
+        # every later release to one second past it.
         run: |
           set -euo pipefail
           args=(-data data --community community/data -o meta.sqlite)
           if [ -n "$PREV_TAG" ]; then
             core_ct="$(git log -1 --format=%ct)"
             community_ct="$(git -C community log -1 --format=%ct)"
-            revised_at="$(date -u -d "@$(( core_ct > community_ct ? core_ct : community_ct ))" +%Y-%m-%dT%H:%M:%SZ)"
+            stamp=$(( core_ct > community_ct ? core_ct : community_ct ))
+            now="$(date -u +%s)"
+            if [ "$stamp" -gt "$now" ]; then
+              echo "::warning::the newest commit time is in the future; stamping the wall clock instead"
+              stamp="$now"
+            fi
+            revised_at="$(date -u -d "@${stamp}" +%Y-%m-%dT%H:%M:%SZ)"
             args+=(--previous prev/meta.sqlite --previous-tag "$PREV_TAG" --revised-at "$revised_at")
           fi
           go run ./cmd/metabuild "${args[@]}"
