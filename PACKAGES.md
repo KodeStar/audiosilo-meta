@@ -48,9 +48,9 @@ internal/migrate    metamigrate's business logic: its OWN parsing of the retired
 internal/build      SQLite builder (deterministic, FTS5 search_fts, asin/isbn indexes plus the per-(work,recording) and per-series covering indexes every serve request reads - guarded by `TestServeLookupsAreIndexed` in pkg/query, which EXPLAIN-QUERY-PLANs the very query CONSTANTS the request path uses and fails on a full table scan, so an edited query cannot drift away from its index; adding an index does NOT bump SchemaVersion, which versions what a reader may SELECT; added_at from the record, else the newest sources[].imported_at compared chronologically; the slug tombstone table as redirects(kind, old_slug, new_slug) at schema_version 5, rows in namespace-then-slug order and the primary key doubling as the lookup index; the community spoiler-free description as work_descriptions(work_id, text, license) at schema_version 6, one row per work carrying the member, inserted in work-id order, work_id being both the key and the index; the LANGUAGES layer at schema_version 7 - `translations(kind, id, target)` in primary-key order (namespace, translation, target, each record's set re-sorted so an unchecked catalogue is still deterministic) with `idx_translations_target(kind, target, id)` COVERING the reverse read, the series table's `language` (DERIVED here through `model.SeriesLanguageOf`, the one definition pkg/check, internal/repair, internal/issueform and internal/audit share - a series states no language, so the artifact is where the derivation is written down; NULL on a tie), `ordering` and `ordering_of` columns with `idx_series_ordering_of`, `idx_works_language(language)` for the stats census, and `search_fts.language` as the LAST column (a work's tag, a series' derived language or '', a person '') so no existing column index moves. `TestBuildLanguagesIsDeterministic` rebuilds with the input slices reversed and requires the same bytes). `sources.go` is the OTHER half: `Sources{Data, Community}` and the one choice `--community` exists to make - one root through `check.Load`, or two through `check.LoadComposed`. Nothing about the artifact changes either way (no SchemaVersion question, the same sorted-id inserts), and `TestComposedArtifactEqualsSingleTree` pins that for a pair whose keys are all LIVE: split a fixture tree's works-community into a second root, compose it back, and the SQLite file is byte-identical. The same proof was taken by hand over the 1.6GB seeded tree, which is what the cutover rests on. (Inside a tombstone window the compose is deliberately more permissive than one tree - see check.LoadComposed.) HOW the two roots meet is deliberately NOT here - the profiles, the cross-tree rules and the retired-key resolution are validation rules over a catalogue, so they live in pkg/check
 pkg/query           PUBLIC: the read side of the artifact and the JSON API over it - `DB` (metaserve's "snapshot": `Open(path, tag)` runs the loadStats integrity gates, `Info`, `Close`), `KnownASINs(ctx, asins)` (the exported known-ASIN read: which of these an artifact's recordings carry, in any region, by exact spelling; metaserve's intake queue filters with it), every SQL query the server runs (lookup, works/people/series detail, FTS search and its boosts, the STRUCTURED MATCH in match.go + the pure scoring in matchscore.go, coverage, the watch feeds, the ABS provider, the sitemap page families and guide probes in pages.go) and `NewHandler(current, HandlerOptions)`, the handler for every artifact-reading API route (`Routes()`; healthz, stats, the four searches, latest, match, watch feeds, works/{id}, chapters, people/{id}, series/{id}, lookup, coverage, the LibriVox feed, /abs). It is the very handler metaserve serves and the one a mirror-mode AudioSilo server mounts in-process, so see the PUBLIC API note under the API server below. `MaxSchemaVersion` is pinned to `internal/build.SchemaVersion` by `TestMaxSchemaVersionIsTheBuilders`. No CORS, no gzip: those are the caller's
 pkg/query/querytest PUBLIC test support: `Build(tb, dir)` writes a small real artifact (the shared fixture, compiled by internal/build, deterministic, <1 MiB) plus constants naming its facts (an ASIN/ISBN that look up, a missing ASIN, a numerically ordered series, a chaptered recording, a retired slug, the community layer) - for downstream tests against true metaserve behaviour; `public_test.go` checks every constant through `NewHandler`
-pkg/release         PUBLIC: the GitHub DATA-release fetcher, the ONE implementation of the asset contract - `LatestData(ctx, etag)` (newest non-draft, non-prerelease release carrying meta.sqlite.gz by max published_at, conditional; the caller keeps the ETag), `DownloadData` (gz streamed through gunzip into a temp file beside the destination, verified against meta.sqlite.gz.sha256, fsynced, renamed; bounded by `DecompressBound`, stall-guarded, allowlisted hosts via internal/ghhost) and the pieces metaserve's patch and cache paths need (`ReadDigest`, `DownloadAsset`, `InstallVerified`, `VerifyFile`). Shared by metaserve's poller and mirror-mode AudioSilo servers
+pkg/release         PUBLIC: the GitHub DATA-release fetcher, the ONE implementation of the asset contract - `LatestData(ctx, etag)` (newest non-draft, non-prerelease release carrying meta.sqlite.gz by max published_at, conditional; the caller keeps the ETag), `DownloadData` (gz streamed through gunzip into a temp file beside the destination, verified against meta.sqlite.gz.sha256, fsynced, renamed; bounded by `DecompressBound`, stall-guarded, allowlisted hosts via internal/ghhost) and the pieces metaserve's cache path needs (`ReadDigest`, `VerifyFile`). Shared by metaserve's poller and mirror-mode AudioSilo servers
 pkg/release/releasetest PUBLIC test support (imported only by tests, here and downstream: audiosilo-server's mirror-mode tests publish their data releases on it): the ONE fake of GitHub's releases API (ETag/304, hit counts, the User-Agent of every request, failing/down/throttled/hung knobs, a redirect route) and the checksum/gzip helpers, shared by pkg/release's and internal/serve's suites. It must not import pkg/release (that package's internal tests import it), so asset names are literals pinned by `TestReleasetestNamesTheContract`
-internal/serve      metaserve: serves pkg/query's handler for the API routes (registering `query.Routes` in front of it behind its CORS + gzip + per-client rate limit, ratelimit.go, and default Cache-Control, cache.go) and adds what is its own - the snapshot hot swap and its refcounted retirement, the GitHub-release poller over pkg/release (with the binary-delta and cache-volume paths, github.go), the release webhook, the optional unknown-ASIN INTAKE QUEUE (intake.go + intake_queue.go, its own SQLite file and middleware, off unless `METASERVE_INTAKE_DB` is set; "The INTAKE QUEUE" below), the OpenAPI document, the server-rendered HTML ENTITY PAGES (html.go/shell.go/jsonld.go/guides.go: /works|people|series/{id} injected into the built Astro shells) and the SITEMAPS over them (sitemap.go: /sitemap-index.xml + /sitemaps/<family>-<n>.xml, rendered from pkg/query's page families); the schema_version 7 LANGUAGES reads (translation links, series language/ordering/family, the primary-first series choice, the stats census) are described with the rest of the server below
+internal/serve      metaserve: serves pkg/query's handler for the API routes (registering `query.Routes` in front of it behind its CORS + gzip + per-client rate limit, ratelimit.go, and default Cache-Control, cache.go) and adds what is its own - the snapshot hot swap and its refcounted retirement, the GitHub-release poller over pkg/release (with the cache-volume path, github.go), the release webhook, the optional unknown-ASIN INTAKE QUEUE (intake.go + intake_queue.go, its own SQLite file and middleware, off unless `METASERVE_INTAKE_DB` is set; "The INTAKE QUEUE" below), the OpenAPI document, the server-rendered HTML ENTITY PAGES (html.go/shell.go/jsonld.go/guides.go: /works|people|series/{id} injected into the built Astro shells) and the SITEMAPS over them (sitemap.go: /sitemap-index.xml + /sitemaps/<family>-<n>.xml, rendered from pkg/query's page families); the schema_version 7 LANGUAGES reads (translation links, series language/ordering/family, the primary-first series choice, the stats census) are described with the rest of the server below
 internal/httpx      the response helpers pkg/query and internal/serve share - a LEAF: the JSON writers and error envelope, the one fixed 500 (`Fail`/`InternalErrMsg`), the no-artifact 503 (`WriteNoArtifact`) and Retry-After rendering, the If-None-Match comparisons, the validator digest and the XML renderer - so the two packages answering on one server cannot spell any of it twice
 internal/artifacttest test support (imported only by tests and pkg/query/querytest): the fixture catalogues, the facts they are built from (querytest's public constants alias them), the deterministic artifact builders (`Build`, `Altered`, `Downgraded`, `Golden`) and the HTTP helpers (`GetJSON`, `GetNoFollow(With)`, `QuietLogger`) pkg/query's and internal/serve's suites share, so the suite that tests the query layer and the one that tests the server on it build from one fixture
 schema/             JSON Schemas (the contract), embedded via schema.go; the four pack-*.schema.json wrappers are load-bearing (pkg/check validates every entry and entry key through its family's wrapper fragments); redirects.schema.json is the one whole-DOCUMENT schema (the tombstone table is a file, not an entry)
@@ -161,20 +161,22 @@ non-draft, non-prerelease release carrying `meta.sqlite.gz` with the maximum
 `published_at`, so code/image `v*` releases are skipped (pkg/release's `LatestData`
 scans the release list and selects by max `published_at`, since the list order
 is not publish-chronological; GitHub's "latest" can be a code release with no
-data assets). On a
-new release the poller first tries a `--patch-from` binary delta against the
-currently-loaded artifact (`tryPatch` -> `applyPatchFile`: zstd raw-dict id 0,
-the CLI's patch-from convention; `--long=31` window; the patched file verified
-byte-for-byte against `meta.sqlite.sha256` before it is installed) and falls back
-unconditionally to a full `meta.sqlite.gz` download (`fullRefresh`, verified
-against `meta.sqlite.gz.sha256`) whenever a patch is unavailable or fails - the
-first refresh after boot is always full. **Every artifact-sized asset streams**,
-never buffered: `fullRefresh` hashes the response body while decompressing it
-straight into the artifact's temp file in ONE pass (`release.Client.DownloadData` -> `gunzipStreamTo`), so no
-`.gz` is ever staged on the cache volume, and the patch asset streams to disk
-(`DownloadAsset`). Both land through pkg/release's `installStream`, which runs the verification
-gate AFTER the copy and BEFORE the rename, so unverified bytes never become a
-file. EVERY artifact-sized writer is additionally BOUNDED, and the bound is a
+data assets). A
+new release the cache volume does not already hold (below) is a full
+`meta.sqlite.gz` download (`fullRefresh`, verified against
+`meta.sqlite.gz.sha256`). There is NO DELTA PATH: releases up to 2026-11-19 also
+carried a zstd `--patch-from` delta (`meta.sqlite.patch.from-<prev tag>.zst`),
+but once the artifact passed 2 GB the zstd CLI refused to build one and
+metaserve's own 1 GiB patch-base cap (a raw zstd dictionary is one contiguous
+slice, ~2x the base in transient memory) declined it anyway, so both the asset
+and the poller's patch path were removed; a release that still carries one is
+adopted through the gz like any other. **The artifact streams**, never buffered:
+`fullRefresh` hashes the response body while decompressing it straight into the
+artifact's temp file in ONE pass (`release.Client.DownloadData` ->
+`gunzipStreamTo`), so no `.gz` is ever staged on the cache volume. It lands
+through pkg/release's `installStream`, which runs the verification gate AFTER the
+copy and BEFORE the rename, so unverified bytes never become a file. That writer
+is additionally BOUNDED, and the bound is a
 CEILING whose failure mode must never be being too LOW: a bound the real artifact
 exceeds is not a caught attack, it is every refresh failing forever - the whole
 asset re-downloaded each poll, maxBytes+1 bytes written to the cache volume each
@@ -187,11 +189,9 @@ catalogue instead of needing a constant raised by hand (the release client's
 `release.WithBaseSize`; a release that declares NO size logs a warning naming
 the asset and lands on the other two arms - the 1 GiB floor it used to land on was
 below the ~1.6 GB artifact it was bounding). A bound is needed at all because a
-gzip stream and a zstd frame both declare no output size and the sha256 gate only
-fires once the bytes are on disk; hitting it fails the copy, and the temp file
-goes exactly as it does on a digest mismatch. The PATCH download takes the
-declared size as an EXACT bound instead (`DownloadAsset`): nothing is decompressed
-there, so there is no expansion to allow for. Asset downloads are also
+gzip stream declares no output size and the sha256 gate only fires once the
+bytes are on disk; hitting it fails the copy, and the temp file goes exactly as
+it does on a digest mismatch. Asset downloads are also
 HOST-ALLOWLISTED before the request is built (`checkAssetTarget` over
 internal/ghhost: github.com, api.github.com, `*.githubusercontent.com`, over https
 AND WITH NO EXPLICIT PORT - the allowlist reads `u.Hostname()`, which strips the
@@ -208,19 +208,9 @@ CDN a `browser_download_url` 302s to and has moved it before (*.s3.amazonaws.com
 so a hop allowlist would one day mean every refresh failing forever - and it would
 buy nothing, since net/http strips the Authorization header on a cross-host hop.
 Only the ~80-byte checksum assets are read into memory (`ReadDigest`,
-size-capped); the one thing that cannot stream is the patch BASE, which a raw
-zstd dictionary requires as a contiguous slice - and the decoder's window over it
-costs about as much again, so peak transient is ~2x the base and `tryPatch`
-refuses outright above `defaultMaxPatchBase` (1 GiB), taking the streamed full
-download instead. The real artifact has been past that cap since 2026-11 (about
-2 GB), so PRODUCTION TAKES THE FULL DOWNLOAD (about 530 MB) ON EVERY RELEASE and
-the patch path serves only smaller deployments: the cap stays (meta#2885), as
-raising it would cost 4-5 GB of transient memory on the serving host. The
-expected bail-outs (no loaded tag, over the cap, no delta from the loaded tag)
-wrap `errPatchNotTaken` and log as a routine "downloading <tag> in full"; only a
-patch that was tried and failed logs "patch refresh failed". Either way it hot-swaps the pointer; in-flight requests finish
-on the old handle (closed after a grace delay), a rejected patch never swaps, and
-a poll failure only logs and retries, never crashes the process. Before either
+size-capped). An adopted release hot-swaps the pointer; in-flight requests finish
+on the old handle (closed after a grace delay), a rejected download never swaps,
+and a poll failure only logs and retries, never crashes the process. Before the
 download it checks the CACHE: if the volume already holds a file for the newest
 tag it is hashed against that release's published `meta.sqlite.sha256` and
 adopted as is (`cachedRefresh`), so a restarted container does not re-download
@@ -2349,7 +2339,8 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   full refresh downloads, hashes and decompresses in ONE pass with no staged
   `.gz` - superseded cache files are pruned on every adopt and again after the
   swap grace (sparing every artifact still draining, not just the newest), and the
-  patch path declines a base artifact over 1 GiB. D3: the image no
+  patch path declines a base artifact over 1 GiB (the patch path and its release
+  asset were removed altogether on 2026-11-20). D3: the image no
   longer bakes data - see the Dockerfile note above - and the cache volume is
   what makes that safe: a restart adopts the artifact it already holds after
   verifying it, and a boot that cannot reach GitHub serves it as stale rather

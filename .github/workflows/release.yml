@@ -15,11 +15,11 @@ name: release
 # The artifact is composed from TWO repositories since the community-repo split:
 # this one holds the CC0 core (works, people, series, redirects.json) and
 # KodeStar/audiosilo-meta-community holds the CC BY-SA layer (works-community).
-# The release stream is unchanged - one artifact, one set of assets, one patch
-# chain, cut from here - so metaserve, the poller and the webhook see nothing
-# new. What IS new is the third trigger: a merge in the community repo cannot
-# push to this one's main, so its notify-core.yml sends a `community-data`
-# repository_dispatch instead.
+# The release stream is unchanged - one artifact, one set of assets, cut from
+# here - so metaserve, the poller and the webhook see nothing new. What IS new
+# is the third trigger: a merge in the community repo cannot push to this one's
+# main, so its notify-core.yml sends a `community-data` repository_dispatch
+# instead.
 on:
   push:
     branches: [main]
@@ -59,12 +59,13 @@ on:
 permissions:
   contents: write
 
-# Serialize data releases: a patch is generated against the previous release, so
-# two quick merges must not both base their delta on the same prev tag (the
-# second would then publish a patch from an artifact that is no longer latest).
-# In-progress runs are never cancelled. GitHub keeps at most one queued run per
-# group, so a superseded queued run gets no dedicated release - harmless, since
-# its changes ride the newer queued run's artifact.
+# Serialize data releases: every consumer selects the release with the maximum
+# published_at, so the runs must publish in the order they started - two
+# overlapping runs could otherwise publish the OLDER composition last, and it
+# would become the catalogue until the next release. In-progress runs are never
+# cancelled. GitHub keeps at most one queued run per group, so a superseded
+# queued run gets no dedicated release - harmless, since its changes ride the
+# newer queued run's artifact.
 concurrency:
   group: data-release
   cancel-in-progress: false
@@ -72,11 +73,11 @@ concurrency:
 jobs:
   release:
     runs-on: ubuntu-latest
-    # Observed up to ~24 minutes: two checkouts, metacheck, the compose of a
-    # 1.7 GB artifact, a zstd -19 delta against the previous one and ~400 MB of
-    # uploads. Twice that. A run cut off here leaves at most a draft, which the
-    # next run's identify step deletes before composing again.
-    timeout-minutes: 50
+    # Observed up to ~13 minutes (2026-11): two checkouts, metacheck, the
+    # compose of a ~2.1 GB artifact and ~570 MB of uploads. About twice that. A
+    # run cut off here leaves at most a draft, which the next run's identify
+    # step deletes before composing again.
+    timeout-minutes: 30
     steps:
       - name: Checkout
         # A shallow checkout is enough: git history is no longer load-bearing.
@@ -128,12 +129,11 @@ jobs:
         #
         #   data-vYYYY.MM.DD-<core7>-<community7>
         #
-        # Consumers are unaffected. Nothing reads the tag's SHAPE: metaserve's
-        # latestDataRelease and this workflow's own prev-release lookup both select
-        # by ASSET PRESENCE (a non-draft, non-prerelease release carrying
-        # meta.sqlite.gz) at the maximum published_at, and the patch asset names
-        # whatever tag it was built from. Older `data-vYYYY.MM.DD-<sha>` releases
-        # stay valid and selectable exactly as they are.
+        # Consumers are unaffected. Nothing reads the tag's SHAPE: metaserve and
+        # every mirror select by ASSET PRESENCE (a non-draft, non-prerelease
+        # release carrying meta.sqlite.gz) at the maximum published_at. Older
+        # `data-vYYYY.MM.DD-<sha>` releases stay valid and selectable exactly as
+        # they are.
         #
         # If that exact tag already exists as a PUBLISHED release, the two trees
         # are byte-for-byte the ones it was composed from - there is genuinely
@@ -233,94 +233,42 @@ jobs:
         # sources[].imported_at for anything that carries neither.
         run: go run ./cmd/metabuild -data data --community community/data -o meta.sqlite
 
-      - name: Download previous release artifact
-        id: prev
-        if: steps.build.outputs.skip != 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        # The repo publishes BOTH data releases (data-v*, carrying meta.sqlite.gz)
-        # and code/image releases (v*, no data assets), so GitHub's "latest"
-        # release can be either. The patch base is therefore the non-draft,
-        # non-prerelease release carrying a meta.sqlite.gz asset with the MAXIMUM
-        # published_at - by publish time, NOT list position, mirroring
-        # LatestData in pkg/release/release.go (its doc comment has the full
-        # rationale: the list order is not publish-chronological). The
-        # non-draft half of that filter earns its keep now that releases are
-        # drafted before they are published: a draft is never a patch base, so a
-        # leftover one cannot become the chain's next link. If it
-        # downloads AND gunzips cleanly, export its tag so the compress step
-        # generates a binary delta from prev.sqlite.
-        # The gunzip stays inside the guard: a corrupt previous asset must skip
-        # patch generation, not fail the step (which would block every future
-        # release, since each run re-downloads the same latest asset). The
-        # first-ever release (or any hiccup) just skips patch generation.
-        # Placed after metacheck/metabuild so a failing build never wastes the
-        # download.
-        run: |
-          # -e is on by default (`bash -e {0}`); -u and pipefail are not. The
-          # tolerance for a missing or corrupt previous release is DELIBERATE and
-          # survives it: the `|| true` catches the API lookup, and the download
-          # and gunzip sit in an `if` condition, which errexit never fires on.
-          set -euo pipefail
-          prev_tag="$(gh api 'repos/${{ github.repository }}/releases?per_page=15' \
-            --jq '([.[] | select((.draft or .prerelease) | not) | select(any(.assets[]?; .name == "meta.sqlite.gz"))] | max_by(.published_at) | .tag_name) // empty' \
-            2>/dev/null || true)"
-          if [ -n "$prev_tag" ] && gh release download "$prev_tag" --pattern meta.sqlite.gz --output prev.sqlite.gz && gunzip prev.sqlite.gz; then
-            echo "tag=$prev_tag" >> "$GITHUB_OUTPUT"
-          else
-            echo "no previous data release; skipping patch generation"
-          fi
-
       - name: Compress and checksum
         if: steps.build.outputs.skip != 'true'
-        env:
-          PREV_TAG: ${{ steps.prev.outputs.tag }}
-        # gz + its checksum stay exactly as before (the universal anchor). Also
-        # publish a checksum of the RAW sqlite so a patched artifact can be
-        # verified byte-for-byte (metabuild is deterministic). When a previous
-        # release was fetched, emit a zstd --patch-from binary delta against it;
-        # --single-thread is upstream's recommendation for patch-from quality and
-        # --long=31 matches the poller's decoder window (patchWindowLog in
-        # internal/serve/github.go - bump both together; CLI consumers also need
-        # --long=31 at decompression time). The delta is best-effort: a zstd
-        # failure logs a warning and the release ships without it - the gz
-        # anchor is never held hostage by patch generation.
+        # The gz + its checksum are the universal anchor every download is
+        # verified against. The checksum of the RAW sqlite verifies a file that
+        # was NOT just downloaded through the anchor - metaserve's cache volume
+        # adopts an artifact a previous container left only once it matches
+        # (metabuild is deterministic, so the same tree hashes the same).
+        #
+        # Releases up to 2026-11-19 also carried a zstd --patch-from delta
+        # against the previous release. It was removed once the artifact passed
+        # 2 GB: the zstd CLI refuses a --patch-from base that large, and
+        # metaserve declined any patch base over 1 GiB anyway.
         run: |
-          # PREV_TAG is always defined (an empty step output is an empty string,
-          # not an unset variable), and the best-effort zstd keeps its own `||`
-          # recovery, so -u and pipefail change nothing about the tolerances here.
           set -euo pipefail
           gzip -kf meta.sqlite
           sha256sum meta.sqlite.gz > meta.sqlite.gz.sha256
           sha256sum meta.sqlite > meta.sqlite.sha256
-          if [ -n "$PREV_TAG" ]; then
-            zstd -19 --single-thread --long=31 -f \
-              --patch-from=prev.sqlite \
-              -o "meta.sqlite.patch.from-${PREV_TAG}.zst" meta.sqlite \
-            || { echo "warning: patch generation failed; releasing without a delta"; rm -f "meta.sqlite.patch.from-${PREV_TAG}.zst"; }
-          fi
 
       - name: Create the release as a draft and upload artifacts
         if: steps.build.outputs.skip != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-          PREV_TAG: ${{ steps.prev.outputs.tag }}
           TAG: ${{ steps.build.outputs.tag }}
           CORE_SHA: ${{ steps.build.outputs.core }}
           COMMUNITY_SHA: ${{ steps.build.outputs.community }}
-        # Always upload the gz anchor + both checksums; append the binary delta
-        # only when the compress step actually produced one (file existence, not
-        # PREV_TAG - a failed best-effort zstd run leaves no file behind).
-        # The notes name BOTH composed SHAs: the artifact is built from two
-        # repositories, so one sha does not identify it.
+        # Uploads the gz anchor and both checksums. The notes name BOTH composed
+        # SHAs: the artifact is built from two repositories, so one sha does not
+        # identify it.
         #
         # DRAFT FIRST. The release is created invisible and published two steps
         # down, once every asset has been verified, because publishing on
         # creation raced the uploads twice over: a consumer selecting the newest
         # non-draft release carrying meta.sqlite.gz (metaserve's
-        # latestDataRelease, this workflow's own prev lookup, every CLI consumer)
-        # could pick this release while its checksum files were still going up,
-        # and a verification that then failed left a broken release visible with
+        # latestDataRelease, every mirror, every CLI consumer) could pick this
+        # release while its checksum files were still going up, and a
+        # verification that then failed left a broken release visible with
         # nothing but a manual deletion to withdraw it. A draft is invisible to
         # all of them, so neither race exists: the release becomes selectable
         # already complete and already checked.
@@ -332,9 +280,6 @@ jobs:
         run: |
           set -euo pipefail
           assets=(meta.sqlite.gz meta.sqlite.gz.sha256 meta.sqlite.sha256)
-          if [ -n "$PREV_TAG" ] && [ -f "meta.sqlite.patch.from-${PREV_TAG}.zst" ]; then
-            assets+=("meta.sqlite.patch.from-${PREV_TAG}.zst")
-          fi
           notes="$(printf 'Automated data release composed from:\n\n- core: KodeStar/audiosilo-meta@%s\n- community: KodeStar/audiosilo-meta-community@%s\n' \
             "$CORE_SHA" "$COMMUNITY_SHA")"
           gh release create "$TAG" \
@@ -348,11 +293,10 @@ jobs:
         id: verify
         if: steps.build.outputs.skip != 'true'
         env:
-          PREV_TAG: ${{ steps.prev.outputs.tag }}
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ steps.build.outputs.tag }}
-        # The assets ARE the consumer contract - metaserve, the CLI consumers and
-        # the patch chain all select a release by asset presence and then trust
+        # The assets ARE the consumer contract - metaserve, the mirrors and the
+        # CLI consumers all select a release by asset presence and then trust
         # the checksums beside it - so an upload that silently truncated or
         # dropped a file is a broken catalogue for everyone, not a broken run.
         # This is why it runs against the DRAFT: nothing can have selected it
@@ -364,9 +308,9 @@ jobs:
         # they are read back exactly as a consumer reads them. `gh release
         # download` resolves a draft by tag - its by-tag REST lookup falls back
         # to a draft search - which is what makes that possible before the
-        # release is public. EVERY asset (including the 410MB gz and the delta)
-        # is then verified through the release API's own `size` and `digest`
-        # fields - GitHub's SHA-256 of the bytes it stored, computed on its side,
+        # release is public. EVERY asset (the ~570MB gz included) is then
+        # verified through the release API's own `size` and `digest` fields -
+        # GitHub's SHA-256 of the bytes it stored, computed on its side,
         # not something we hand it - so a truncated or dropped upload is caught
         # without pulling half a gigabyte back down the wire to hash locally. A
         # null digest is a FAILURE, not a pass: an API that stopped exposing the
@@ -381,11 +325,8 @@ jobs:
           cmp meta.sqlite.gz.sha256 published/meta.sqlite.gz.sha256
           cmp meta.sqlite.sha256 published/meta.sqlite.sha256
 
-          # The same asset list the upload step composed, by the same test.
+          # The same asset list the upload step composed.
           assets=(meta.sqlite.gz meta.sqlite.gz.sha256 meta.sqlite.sha256)
-          if [ -n "$PREV_TAG" ] && [ -f "meta.sqlite.patch.from-${PREV_TAG}.zst" ]; then
-            assets+=("meta.sqlite.patch.from-${PREV_TAG}.zst")
-          fi
 
           # Read from the release LISTING, not from `releases/tags/<tag>`: the
           # draft has no git tag yet, so the by-tag endpoint 404s on it. The
@@ -464,10 +405,9 @@ jobs:
         # GitHub creates the git tag, at the --target the create step pinned.
         #
         # The draft flag is READ BACK rather than inferred from gh's exit status:
-        # a release still sitting as a draft is invisible to metaserve, to the
-        # patch chain and to the next run's prev lookup, which is a silently
-        # skipped release rather than a failed one - exactly the kind of quiet
-        # that this ordering exists to remove.
+        # a release still sitting as a draft is invisible to metaserve and to
+        # every mirror, which is a silently skipped release rather than a failed
+        # one - exactly the kind of quiet that this ordering exists to remove.
         run: |
           set -euo pipefail
           gh release edit "$TAG" --repo "$GITHUB_REPOSITORY" --draft=false

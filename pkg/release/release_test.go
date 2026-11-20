@@ -36,36 +36,17 @@ func TestReleasetestNamesTheContract(t *testing.T) {
 	}
 }
 
-// TestInstallVerified covers the checksum gate every streamed asset now goes
-// through: matching bytes install, tampered bytes do not (and leave nothing
-// behind), and an unusable checksum file is an error rather than a panic.
-func TestInstallVerified(t *testing.T) {
+// TestExpectedDigest: a `sha256sum`-format checksum file yields its digest, and
+// an unusable one is an error rather than a panic.
+func TestExpectedDigest(t *testing.T) {
 	data := []byte("the compressed artifact bytes")
-	good := releasetest.SumFile("meta.sqlite.gz", data)
-	want, err := ExpectedDigest(good)
+	got, err := ExpectedDigest(releasetest.SumFile("meta.sqlite.gz", data))
 	if err != nil {
-		t.Fatalf("expectedDigest: %v", err)
+		t.Fatalf("ExpectedDigest: %v", err)
 	}
-
-	dir := t.TempDir()
-	dst := filepath.Join(dir, "asset.bin")
-	if _, err := InstallVerified(bytes.NewReader(data), dst, want, 0); err != nil {
-		t.Errorf("good checksum rejected: %v", err)
+	if want := releasetest.Digest(data); got != want {
+		t.Errorf("ExpectedDigest = %s, want %s", got, want)
 	}
-	if got, _ := os.ReadFile(dst); !bytes.Equal(got, data) {
-		t.Errorf("installed bytes differ from the source")
-	}
-
-	// A corrupted download must be rejected and must not replace the file.
-	tampered := filepath.Join(dir, "tampered.bin")
-	if _, err := InstallVerified(bytes.NewReader([]byte("tampered")), tampered, want, 0); err == nil {
-		t.Errorf("corrupted download accepted")
-	}
-	if _, err := os.Stat(tampered); !os.IsNotExist(err) {
-		t.Errorf("destination created despite a checksum mismatch")
-	}
-
-	// An empty checksum file is an error, not a panic.
 	if _, err := ExpectedDigest([]byte("")); err == nil {
 		t.Errorf("empty checksum file accepted")
 	}
@@ -104,7 +85,7 @@ func TestGunzipStreamTo(t *testing.T) {
 	}
 }
 
-// TestDecompressBound pins the arithmetic both refresh paths write under. The
+// TestDecompressBound pins the arithmetic the full download writes under. The
 // property that matters is that it is a CEILING and never a trap: too low is
 // not a caught attack, it is every refresh failing forever while the server
 // serves stale data.
@@ -353,45 +334,6 @@ func TestRefusedAssetHostIsNeverDialed(t *testing.T) {
 	}
 	if n := hits.Load(); n != 0 {
 		t.Errorf("the refused host was dialed %d times", n)
-	}
-}
-
-// TestAssetDownloadIsBoundedByItsDeclaredSize is the finding on the one
-// artifact-sized writer that had no bound at all: the patch asset streamed to
-// disk with maxBytes 0, although the release states its size right at the call
-// site. Nothing is decompressed on that path, so the declared size is the EXACT
-// bound rather than a multiple of it.
-func TestAssetDownloadIsBoundedByItsDeclaredSize(t *testing.T) {
-	payload := bytes.Repeat([]byte("p"), 4096)
-	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: "data-v1", Assets: map[string][]byte{"blob.bin": payload}})
-	c := clientFor(fake)
-	dst := filepath.Join(t.TempDir(), "blob.bin")
-	url := fake.URL + "/dl/data-v1/blob.bin"
-
-	over := &Release{Tag: "data-v1", Assets: []Asset{
-		{Name: "blob.bin", Size: int64(len(payload)) - 1, URL: url},
-	}}
-	if _, err := c.DownloadAsset(context.Background(), over, "blob.bin", dst); err == nil {
-		t.Error("an asset one byte past its declared size was installed")
-	} else if !strings.Contains(err.Error(), "bound") {
-		t.Errorf("error = %v, want the bound named", err)
-	}
-	if _, err := os.Stat(dst); !os.IsNotExist(err) {
-		t.Error("destination created despite the bound")
-	}
-
-	exact := &Release{Tag: "data-v1", Assets: []Asset{
-		{Name: "blob.bin", Size: int64(len(payload)), URL: url},
-	}}
-	if n, err := c.DownloadAsset(context.Background(), exact, "blob.bin", dst); err != nil || n != int64(len(payload)) {
-		t.Errorf("an asset exactly at its declared size: %d bytes, %v", n, err)
-	}
-
-	// A release that declares no size falls back to the expansion bound rather
-	// than to no bound at all.
-	none := &Release{Tag: "data-v1", Assets: []Asset{{Name: "blob.bin", URL: url}}}
-	if _, err := c.DownloadAsset(context.Background(), none, "blob.bin", dst); err != nil {
-		t.Errorf("an asset declaring no size was refused: %v", err)
 	}
 }
 
