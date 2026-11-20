@@ -122,7 +122,7 @@ func (s *DB) PageRevision(family PageFamily, id string) (string, error) {
 	}
 	var at string
 	err := s.db.QueryRow(pageRevisionSQL, string(family), id).Scan(&at)
-	if err == sql.ErrNoRows {
+	if errors.Is(err, sql.ErrNoRows) {
 		return "", nil
 	}
 	if err != nil {
