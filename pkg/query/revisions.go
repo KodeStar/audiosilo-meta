@@ -55,9 +55,10 @@ const (
 	// pageRevisionSQL is one page's revision date: the point query every entity
 	// page makes, through the table's primary key.
 	pageRevisionSQL = `SELECT revised_at FROM page_revisions WHERE kind = ? AND id = ?`
-	// anyRevisionSQL settles DB.hasRevisions at load (and proves the table a
-	// version 14 artifact claims).
-	anyRevisionSQL = `SELECT EXISTS(SELECT 1 FROM page_revisions)`
+	// anyRevisionSQL settles DB.hasRevisions at load and proves the table a
+	// version 14 artifact claims - with the three columns every revision read
+	// names, so a malformed table fails the load rather than every page.
+	anyRevisionSQL = `SELECT EXISTS(SELECT kind, id, revised_at FROM page_revisions)`
 	// allRevisionsSQL is the whole table, for the release-time revision pass
 	// (internal/revision) - a deliberate scan, never a serve read.
 	allRevisionsSQL = `SELECT kind, id, revised_at FROM page_revisions`

@@ -111,6 +111,20 @@ func TestRevisionClaimWithoutItsTableFails(t *testing.T) {
 	}
 }
 
+// TestRevisionTableWithoutItsColumnsFails: the load proves the columns every
+// revision read names, not just the table, so a malformed table fails the open
+// rather than every page and sitemap shard.
+func TestRevisionTableWithoutItsColumnsFails(t *testing.T) {
+	path := artifacttest.Altered(t, artifacttest.Fixture(), revisionsSchemaVersion,
+		"DROP TABLE page_revisions", "CREATE TABLE page_revisions(kind TEXT, id TEXT, PRIMARY KEY(kind, id)) WITHOUT ROWID")
+	if db, err := Open(path, ""); err == nil {
+		_ = db.Close()
+		t.Fatal("accepted v14 with a page_revisions table lacking revised_at")
+	} else if !strings.Contains(err.Error(), "requires the page_revisions table") {
+		t.Fatal(err)
+	}
+}
+
 // TestRevisionReadsAreIndexed puts the revision layer's reads through the index
 // guard: the point query and every family's revised shard spelling, which must
 // still walk its family's index with a primary-key probe per row.
