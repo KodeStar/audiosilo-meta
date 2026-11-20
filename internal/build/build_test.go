@@ -644,7 +644,7 @@ func TestBuildWorkCredits(t *testing.T) {
 // TestBuildRedirects pins the slug tombstone table's row shape and its ORDER:
 // namespace order first (model.RedirectKinds is sorted), then retired slug, so an
 // unchanged table produces byte-identical rows however the map was walked. That
-// determinism is what makes the binary delta between two releases small.
+// determinism is what keeps the raw-artifact digest stable for an unchanged tree.
 func TestBuildRedirects(t *testing.T) {
 	got := triples(t, buildFixture(t), `SELECT kind, old_slug, new_slug FROM redirects`)
 	want := [][3]string{

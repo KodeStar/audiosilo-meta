@@ -63,13 +63,13 @@ func v2Catalog() *model.Catalog {
 }
 
 // buildV1V2 builds the two artifacts the refresh tests need, ONCE each: v1 (the
-// base fixture, 4 works) and v2 (one extra work, 5). Both come back as (path,
-// bytes) - the paths double as poll-server seeds; the bytes as release assets.
-func buildV1V2(t *testing.T) (v1Path string, v1 []byte, v2Path string, v2 []byte) {
+// base fixture, 4 works) and v2 (one extra work, 5). v1 comes back as (path,
+// bytes) - the path seeds a poll server, the bytes are a release asset - and v2
+// as bytes only.
+func buildV1V2(t *testing.T) (v1Path string, v1, v2 []byte) {
 	t.Helper()
 	v1Path = artifacttest.Build(t, artifacttest.Fixture())
-	v2Path = artifacttest.Build(t, v2Catalog())
-	return v1Path, readDB(t, v1Path), v2Path, readDB(t, v2Path)
+	return v1Path, readDB(t, v1Path), readDB(t, artifacttest.Build(t, v2Catalog()))
 }
 
 // newPollServer seeds a server from a local artifact (so New() doesn't poll) and
@@ -189,7 +189,7 @@ func TestRefreshRejectsCorruptDownload(t *testing.T) {
 // download must clear it - otherwise every subsequent poll 304s and the server
 // is stranded on the old artifact until the NEXT release is cut.
 func TestRefreshRetriesAfterFailedDownload(t *testing.T) {
-	v1Path, v1, _, v2 := buildV1V2(t)
+	v1Path, v1, v2 := buildV1V2(t)
 	srv, fake := setupR1(t, v1Path, v1)
 
 	// R2 is published, but its gz download 500s: the refresh must error and
@@ -223,7 +223,7 @@ func TestRefreshRetriesAfterFailedDownload(t *testing.T) {
 // release CARRYING the data asset. A code release plus a draft and a prerelease
 // data decoy sit in front of the real R2, pinning each branch of the filter.
 func TestRefreshSkipsNonDataReleases(t *testing.T) {
-	v1Path, v1, _, v2 := buildV1V2(t)
+	v1Path, v1, v2 := buildV1V2(t)
 	srv, fake := setupR1(t, v1Path, v1)
 
 	fake.SetReleases(codeOnlyRel, draftDecoy, preRelDecoy, releasetest.Rel{Tag: tagR2, Assets: releasetest.DataAssets(t, v2)})
@@ -247,7 +247,7 @@ func TestRefreshSkipsNonDataReleases(t *testing.T) {
 // based on exactly the loaded tag, is adopted through the gz anchor and the
 // delta is never fetched.
 func TestRefreshIgnoresALegacyPatchAsset(t *testing.T) {
-	v1Path, v1, _, v2 := buildV1V2(t)
+	v1Path, v1, v2 := buildV1V2(t)
 	srv, fake := setupR1(t, v1Path, v1)
 
 	legacy := "meta.sqlite.patch.from-" + tagR1 + ".zst"
@@ -279,7 +279,7 @@ func TestRefreshIgnoresALegacyPatchAsset(t *testing.T) {
 // lexicographically-larger tag) BEFORE the real newest - and the poller must
 // adopt the newer-published one, not the first-listed.
 func TestRefreshSelectsByPublishedAt(t *testing.T) {
-	v1Path, v1, _, v2 := buildV1V2(t)
+	v1Path, v1, v2 := buildV1V2(t)
 
 	// Same-day tags mirroring the production incident: the stale tag sorts
 	// lexicographically ABOVE the newer one, but was published earlier.
@@ -317,7 +317,7 @@ func TestRefreshSelectsByPublishedAt(t *testing.T) {
 // returns the last of a tied pair) - the selector a shell consumer of the
 // release list writes, so the two agree even on a same-second tie.
 func TestRefreshTieBreaksLikeJq(t *testing.T) {
-	v1Path, v1, _, v2 := buildV1V2(t)
+	v1Path, v1, v2 := buildV1V2(t)
 
 	tie := time.Date(2026, 7, 12, 17, 9, 32, 0, time.UTC)
 	first := releasetest.Rel{Tag: "data-v2026.07.12-aaaaaaa", Published: tie, Assets: releasetest.DataAssets(t, v1)}
@@ -366,7 +366,7 @@ func TestRefreshErrorsWithoutDataRelease(t *testing.T) {
 // grace elapses only the live artifact may remain - and the streamed download's
 // transient .gz must be gone as soon as the refresh that created it finished.
 func TestRefreshPrunesCache(t *testing.T) {
-	v1Path, v1, _, v2 := buildV1V2(t)
+	v1Path, v1, v2 := buildV1V2(t)
 	cache := t.TempDir()
 	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: releasetest.DataAssets(t, v1)})
 	srv, err := New(Config{DBPath: v1Path, Repo: "owner/name", CacheDir: cache, swapGrace: 10 * time.Millisecond})
@@ -453,7 +453,7 @@ func TestBootWithoutDataServesDegraded(t *testing.T) {
 	}
 
 	// Once a release is reachable, the same process becomes healthy.
-	_, v1, _, _ := buildV1V2(t)
+	v1 := readDB(t, artifacttest.Build(t, artifacttest.Fixture()))
 	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: releasetest.DataAssets(t, v1)})
 	srv.gh = srv.newGHClient("owner/name", fake.URL)
 	if err := srv.refresh(context.Background()); err != nil {
@@ -472,7 +472,7 @@ func TestBootWithoutDataServesDegraded(t *testing.T) {
 // fake publishes a newer R2 release, and Interval defaults to an hour - so ONLY
 // the startup refresh can adopt R2 within the test's seconds-long deadline.
 func TestPollLoopRefreshesAtStartup(t *testing.T) {
-	v1Path, _, _, v2 := buildV1V2(t)
+	v1Path, _, v2 := buildV1V2(t)
 	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: releasetest.DataAssets(t, v2)})
 	srv := newPollServer(t, v1Path, fake) // Interval defaults to time.Hour
 

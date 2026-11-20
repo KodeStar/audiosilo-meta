@@ -49,7 +49,7 @@ const tagR3 = "data-v2026.07.13-r3"
 // connections lazily, the very next concurrent query on it fails with "unable to
 // open database file".
 func TestPruneSparesEveryArtifactStillInGrace(t *testing.T) {
-	v1Path, v1, _, v2 := buildV1V2(t)
+	v1Path, v1, v2 := buildV1V2(t)
 	v3 := readDB(t, artifacttest.Build(t, v3Catalog()))
 	cache := t.TempDir()
 
@@ -106,7 +106,7 @@ func TestPruneSparesEveryArtifactStillInGrace(t *testing.T) {
 // retired path must not mean keeping them forever - once a snapshot's grace
 // fires, its file is collectable again.
 func TestPruneCollectsArtifactsOnceGraceElapses(t *testing.T) {
-	v1Path, v1, _, v2 := buildV1V2(t)
+	v1Path, v1, v2 := buildV1V2(t)
 	cache := t.TempDir()
 	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: releasetest.DataAssets(t, v1)})
 	srv := newPollServerIn(t, v1Path, cache, f, 20*time.Millisecond)
@@ -144,7 +144,7 @@ func TestPruneCollectsArtifactsOnceGraceElapses(t *testing.T) {
 // takes many times the stall timeout in total must complete. Under a
 // whole-request deadline of the same size it would be killed every attempt.
 func TestSlowButHealthyDownloadIsNotAborted(t *testing.T) {
-	v1Path, _, _, v2 := buildV1V2(t)
+	v1Path, _, v2 := buildV1V2(t)
 	cache := t.TempDir()
 	assets := releasetest.DataAssets(t, v2)
 	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: assets})
@@ -175,7 +175,7 @@ func TestSlowButHealthyDownloadIsNotAborted(t *testing.T) {
 // timeout, with the usual invariants (no swap, no artifact, no temp file) and
 // with the ETag forgotten so the next poll really retries.
 func TestStalledDownloadIsAbandoned(t *testing.T) {
-	v1Path, _, _, v2 := buildV1V2(t)
+	v1Path, _, v2 := buildV1V2(t)
 	cache := t.TempDir()
 	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: releasetest.DataAssets(t, v2)})
 	f.HangOn(release.DataAsset)
@@ -211,7 +211,7 @@ func TestStalledDownloadIsAbandoned(t *testing.T) {
 // is already on the volume (a restarted container), so the refresh must verify
 // it against the published digest and adopt it WITHOUT downloading it again.
 func TestRefreshAdoptsVerifiedCachedArtifact(t *testing.T) {
-	v1Path, _, _, v2 := buildV1V2(t)
+	v1Path, _, v2 := buildV1V2(t)
 	cache := t.TempDir()
 	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: releasetest.DataAssets(t, v2)})
 	srv := newPollServerIn(t, v1Path, cache, f, time.Minute)
@@ -238,7 +238,7 @@ func TestRefreshAdoptsVerifiedCachedArtifact(t *testing.T) {
 // name whose bytes are NOT the release's must never be adopted - the cache is
 // verified, not trusted.
 func TestRefreshRedownloadsAnUnverifiableCachedArtifact(t *testing.T) {
-	v1Path, v1, _, v2 := buildV1V2(t)
+	v1Path, v1, v2 := buildV1V2(t)
 	cache := t.TempDir()
 	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: releasetest.DataAssets(t, v2)})
 	srv := newPollServerIn(t, v1Path, cache, f, time.Minute)
@@ -264,7 +264,7 @@ func TestRefreshRedownloadsAnUnverifiableCachedArtifact(t *testing.T) {
 // as stale is the fix - and the first reachable poll then confirms it against
 // the release without downloading anything.
 func TestDegradedBootServesStaleCachedArtifact(t *testing.T) {
-	_, v1, _, _ := buildV1V2(t)
+	v1 := readDB(t, artifacttest.Build(t, artifacttest.Fixture()))
 	cache := t.TempDir()
 	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: releasetest.DataAssets(t, v1)})
 	f.SetDown(true)

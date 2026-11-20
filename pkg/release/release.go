@@ -330,8 +330,7 @@ func (c *Client) setCommonHeaders(req *http.Request) {
 // that holds no artifact yet finds nothing to load if enough code/image releases
 // ever pushed every data release out of these 15, and every retry scans the
 // same exhausted window. A wider window (or pagination) is the fix if the
-// cadence of code releases ever approaches this. release.yml's prev-release
-// selection scans the same window (TestWorkflowMatchesTheSelection).
+// cadence of code releases ever approaches this.
 const releaseListPageSize = 15
 
 // apiAsset and apiRelease are the GitHub releases API's JSON, as much of it as
@@ -407,10 +406,9 @@ func (c *Client) LatestData(ctx context.Context, etag string) (rel *Release, new
 		if r.Draft || r.Prerelease || !hasAsset(r, DataAsset) {
 			continue
 		}
-		// Greater-or-equal keeps the LATER-in-list entry on equal timestamps,
-		// matching jq's max_by (a stable sort, so it returns the last of a tied
-		// pair) - the selector a shell consumer of the release list writes, so
-		// the two agree even on a same-second tie.
+		// Greater-or-equal keeps the LATER-in-list entry on equal timestamps, so
+		// a same-second tie resolves the same way on every poll (and the way jq's
+		// max_by, a stable sort, resolves it for a shell consumer of the list).
 		if best == nil || !r.PublishedAt.Before(best.PublishedAt) {
 			best = r
 		}
@@ -699,18 +697,16 @@ func TempFile(name string) bool {
 }
 
 // installStream streams src into dstPath atomically (temp file + fsync + rename
-// in dstPath's directory). When verify is non-nil it runs AFTER the copy and
-// BEFORE the rename: an error from it means nothing is installed. Any failure
-// removes the temp file and never creates dstPath. Returns the number of bytes
-// written.
+// in dstPath's directory). verify runs AFTER the copy and BEFORE the rename: an
+// error from it means nothing is installed. Any failure removes the temp file
+// and never creates dstPath. Returns the number of bytes written.
 //
 // The gate is a callback rather than a digest because the bytes that must be
-// verified are not always the bytes being written: DownloadData decompresses
-// while it downloads, so what it can check against the published checksum is
-// the COMPRESSED input as well as the artifact landing on disk.
+// verified are not the bytes being written: DownloadData decompresses while it
+// downloads, so what it checks against the published checksum is the
+// COMPRESSED input, not the artifact landing on disk.
 //
-// maxBytes is the bound on what is written (0 means unbounded, which no caller
-// passes: every artifact-sized writer carries a bound). The check lives here
+// maxBytes is the required bound on what is written. The check lives here
 // because this is where the copy's byte count already is, and it is applied
 // exactly as a failed verification is: the temp file goes and dstPath is never
 // created. src is read at most one byte past the bound, which is all it takes to
@@ -726,9 +722,7 @@ func installStream(src io.Reader, dstPath string, maxBytes int64, verify func() 
 	tmpName := tmp.Name()
 	defer func() { _ = os.Remove(tmpName) }()
 
-	if maxBytes > 0 {
-		src = io.LimitReader(src, maxBytes+1)
-	}
+	src = io.LimitReader(src, maxBytes+1)
 	// writerOnly hides *os.File's ReadFrom: with no file or socket to splice
 	// from, it falls back to io.Copy's 32 KiB buffer, and an artifact-sized
 	// download would then be read in 32 KiB calls whatever buffer is passed here.
@@ -745,13 +739,11 @@ func installStream(src io.Reader, dstPath string, maxBytes int64, verify func() 
 	if err := tmp.Close(); err != nil {
 		return 0, err
 	}
-	if maxBytes > 0 && n > maxBytes {
+	if n > maxBytes {
 		return 0, fmt.Errorf("the asset expands past the %d-byte bound: refusing it as unverifiable", maxBytes)
 	}
-	if verify != nil {
-		if err := verify(); err != nil {
-			return 0, err
-		}
+	if err := verify(); err != nil {
+		return 0, err
 	}
 	if err := os.Rename(tmpName, dstPath); err != nil {
 		return 0, err

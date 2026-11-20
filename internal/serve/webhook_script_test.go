@@ -73,7 +73,7 @@ func notifyReleaseScript(t *testing.T, repo, secret string) (signature, payload 
 func TestReleaseNotifyScriptIsAcceptedByTheHandler(t *testing.T) {
 	signature, payload := notifyReleaseScript(t, "owner/name", testWebhookSecret)
 
-	v1Path, _, _, v2 := buildV1V2(t)
+	v1Path, _, v2 := buildV1V2(t)
 	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: releasetest.DataAssets(t, v2)})
 	srv := newWebhookServer(t, v1Path, fake)
 

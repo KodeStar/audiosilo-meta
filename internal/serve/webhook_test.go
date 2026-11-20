@@ -172,7 +172,7 @@ func TestWebhookIgnoresUnrelatedSignedEvents(t *testing.T) {
 }
 
 func TestWebhookRefreshesPublishedRelease(t *testing.T) {
-	v1Path, _, _, v2 := buildV1V2(t)
+	v1Path, _, v2 := buildV1V2(t)
 	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: releasetest.DataAssets(t, v2)})
 	srv := newWebhookServer(t, v1Path, fake)
 	body := `{"action":"published","repository":{"full_name":"owner/name"}}`
@@ -201,7 +201,7 @@ func TestWebhookRefreshesPublishedRelease(t *testing.T) {
 // rather than inside the request. The test holds the refresh lock, so a handler
 // that refreshed synchronously would never answer.
 func TestWebhookAnswersBeforeTheRefresh(t *testing.T) {
-	v1Path, _, _, v2 := buildV1V2(t)
+	v1Path, _, v2 := buildV1V2(t)
 	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: releasetest.DataAssets(t, v2)})
 	srv := newWebhookServer(t, v1Path, fake)
 	body := `{"action":"published","repository":{"full_name":"owner/name"}}`
