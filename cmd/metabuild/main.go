@@ -19,17 +19,36 @@
 // both trees are present, so the release build is the ONE place they are
 // observable once the split lands - a binary that discarded them would make them
 // unobservable anywhere.
+//
+// --previous and --revised-at (each requires the other) date the artifact's
+// pages after it is built: --previous names the previous data release's
+// artifact, and every page whose content differs from it, or is new, is stamped
+// --revised-at while every unchanged page keeps the previous release's date
+// (internal/revision). --previous-tag records that release's tag in
+// meta(revisions_base). Without them the page_revisions table is left empty and
+// the artifact is exactly what the data alone builds.
 package main
 
 import (
+	"context"
 	"flag"
 	"fmt"
 	"os"
+	"path/filepath"
+	"runtime"
 	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/build"
+	"github.com/kodestar/audiosilo-meta/internal/revision"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
+	"github.com/kodestar/audiosilo-meta/pkg/query"
 )
+
+// digestWorkers caps how many pages the revision pass digests at once. More is
+// SLOWER, not faster: the reads contend inside the pure-Go SQLite driver, and on
+// the real catalogue (500k pages, 20 cores) one artifact took 1m52s at 4 workers,
+// 2m50s at 8 and longer at 16.
+const digestWorkers = 4
 
 func main() {
 	dataDir := flag.String("data", "data", "path to the data directory")
@@ -38,7 +57,51 @@ func main() {
 			"-data is then read as the CC0 core and the two are composed into one artifact")
 	out := flag.String("o", "meta.sqlite", "output SQLite file")
 	builtAt := flag.String("built-at", "", "build timestamp (RFC3339); defaults to now (UTC)")
+	previous := flag.String("previous", "",
+		"the previous data release's artifact; dates every page by comparing with it (requires --revised-at)")
+	previousTag := flag.String("previous-tag", "", "the previous release's tag, recorded as meta(revisions_base)")
+	revisedAt := flag.String("revised-at", "",
+		"RFC3339 stamp for a page that changed since --previous (requires --previous)")
 	flag.Parse()
+
+	if (*previous == "") != (*revisedAt == "") {
+		fmt.Fprintln(os.Stderr, "metabuild: --previous and --revised-at must be given together")
+		os.Exit(2)
+	}
+	if *previousTag != "" && *previous == "" {
+		fmt.Fprintln(os.Stderr, "metabuild: --previous-tag needs --previous")
+		os.Exit(2)
+	}
+	var revised time.Time
+	if *revisedAt != "" {
+		parsed, err := time.Parse(time.RFC3339, *revisedAt)
+		if err != nil {
+			fmt.Fprintln(os.Stderr, "metabuild: invalid --revised-at:", err)
+			os.Exit(2)
+		}
+		revised = parsed
+	}
+	if *previous != "" {
+		// Build deletes -o before writing it, so a --previous naming the same file
+		// would be compared with the NEW artifact: every page "unchanged", every
+		// date silently gone. And an unreadable predecessor is refused before the
+		// build rather than after it.
+		same, err := sameFile(*previous, *out)
+		if err != nil {
+			fmt.Fprintln(os.Stderr, "metabuild:", err)
+			os.Exit(2)
+		}
+		if same {
+			fmt.Fprintln(os.Stderr, "metabuild: --previous names the output file; give the previous release's artifact its own path")
+			os.Exit(2)
+		}
+		prev, err := query.Open(*previous, "")
+		if err != nil {
+			fmt.Fprintln(os.Stderr, "metabuild: --previous:", err)
+			os.Exit(1)
+		}
+		_ = prev.Close()
+	}
 
 	res := build.Load(build.Sources{Data: *dataDir, Community: *community})
 	check.PrintAdvisories(os.Stderr, res)
@@ -66,4 +129,40 @@ func main() {
 	}
 	fmt.Fprintf(os.Stderr, "built %s: %d works, %d people, %d series\n",
 		*out, len(res.Catalog.Works), len(res.Catalog.People), len(res.Catalog.Series))
+
+	if *previous == "" {
+		return
+	}
+	start := time.Now()
+	sum, err := revision.Stamp(context.Background(), *out, revision.Options{
+		Previous: *previous, Base: *previousTag, At: revised, Workers: min(runtime.GOMAXPROCS(0), digestWorkers),
+	})
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "metabuild:", err)
+		os.Exit(1)
+	}
+	fmt.Fprintf(os.Stderr, "revisions against %s: %d pages, %d changed (stamped %s), %d carried, %d unknown, in %s\n",
+		*previous, sum.Pages(), sum.Changed, sum.At, sum.Carried, sum.Unknown, time.Since(start).Round(time.Second))
+}
+
+// sameFile reports whether a and b name one file: the same absolute path, or,
+// when both exist, the same file reached through a link.
+func sameFile(a, b string) (bool, error) {
+	absA, err := filepath.Abs(a)
+	if err != nil {
+		return false, err
+	}
+	absB, err := filepath.Abs(b)
+	if err != nil {
+		return false, err
+	}
+	if absA == absB {
+		return true, nil
+	}
+	infoA, errA := os.Stat(a)
+	infoB, errB := os.Stat(b)
+	if errA != nil || errB != nil {
+		return false, nil
+	}
+	return os.SameFile(infoA, infoB), nil
 }

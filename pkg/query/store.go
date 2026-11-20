@@ -58,6 +58,10 @@ type DB struct {
 	hasDescriptions bool
 	// hasPositionScales is its twin for the position_scales table.
 	hasPositionScales bool
+	// hasRevisions is its twin for the page_revisions table
+	// (revisionsSchemaVersion), which is empty in an artifact built without a
+	// previous release and read on every entity page (DB.PageRevision).
+	hasRevisions bool
 
 	// hasTranslations and orderingPrimaries are the LANGUAGES layer's twins of
 	// the two memos above, settled once at load for both of their reasons: the
@@ -163,6 +167,14 @@ func (s *DB) Path() string { return s.path }
 // synchronized with the queries that read it.
 func (s *DB) SetLogger(l *log.Logger) { s.log = l }
 
+// SetMaxIdleConns keeps up to n idle connections open for reuse (database/sql
+// keeps two by default). A caller reading from many goroutines at once - the
+// release-time page digests (internal/revision) - sets it to its worker count:
+// otherwise all but two connections are closed after every query and reopened
+// for the next, and every reopen parses the artifact's whole schema again. Call
+// it before the database is shared, like SetLogger.
+func (s *DB) SetMaxIdleConns(n int) { s.db.SetMaxIdleConns(n) }
+
 // logf writes a degradation notice through the injected logger when there is
 // one.
 func (s *DB) logf(format string, args ...any) {
@@ -198,13 +210,13 @@ type LanguageCount struct {
 
 // MaxSchemaVersion is the newest artifact schema_version this code understands:
 // internal/build.SchemaVersion, which TestMaxSchemaVersionIsTheBuilders pins it
-// to, and the newest of the version gates below (abridgementSchemaVersion). An
+// to, and the newest of the version gates below (revisionsSchemaVersion). An
 // artifact NEWER than it still opens and serves (every optional read is gated
 // with >=); the consumer that embeds this package (a mirror-mode AudioSilo
 // server) shows that its copy is newer than it understands. Artifact schema
 // changes must therefore stay ADDITIVE - new tables and columns - because such
 // consumers lag.
-const MaxSchemaVersion = 13
+const MaxSchemaVersion = 14
 
 // Open opens the artifact at path read-only and runs the load-time integrity
 // checks (loadStats: a schema_version claim without the tables it implies is a
@@ -406,6 +418,15 @@ func (s *DB) loadStats() error {
 	if s.hasAbridgement() {
 		if _, err := s.db.Exec(abridgementShapeSQL); err != nil {
 			return fmt.Errorf("%s: artifact schema_version %d requires the abridgement column: %w",
+				s.path, s.schemaVersion, err)
+		}
+	}
+	// The REVISION layer (version 14), on the description precedent: settle the
+	// per-request memo (an artifact built without a previous release carries an
+	// empty table, and every entity page asks it) and prove the claim.
+	if s.hasRevisionLayer() {
+		if err := s.db.QueryRow(anyRevisionSQL).Scan(&s.hasRevisions); err != nil {
+			return fmt.Errorf("%s: artifact schema_version %d requires the page_revisions table: %w",
 				s.path, s.schemaVersion, err)
 		}
 	}

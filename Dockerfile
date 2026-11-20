@@ -60,7 +60,19 @@ ENV CGO_ENABLED=0
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-RUN go build -trimpath -ldflags="-s -w" -o /out/metaserve ./cmd/metaserve
+# REVISION is the commit the image is built from (image.yml passes github.sha).
+# The build context excludes .git, so the toolchain's own VCS stamp is empty
+# here; the link-time stamp is what lets a renderer-only deploy move the pages'
+# and sitemaps' validators (internal/serve's stampedRevision). The build then
+# VERIFIES it: when a revision was given, the binary must report exactly that
+# one, or the image fails to build. A local build without the argument still
+# works and carries no revision (htmlRendererVersion covers it).
+ARG REVISION=""
+RUN go build -trimpath \
+      -ldflags="-s -w -X github.com/kodestar/audiosilo-meta/internal/serve.stampedRevision=${REVISION}" \
+      -o /out/metaserve ./cmd/metaserve \
+    && got="$(/out/metaserve -version)" \
+    && if [ -n "$REVISION" ] && [ "$got" != "$REVISION" ]; then echo "metaserve reports revision '$got', built with '$REVISION'" >&2; exit 1; fi
 
 # ---- 3. runtime --------------------------------------------------------------
 # Track the current stable Alpine (3.20 went EOL in April 2026).

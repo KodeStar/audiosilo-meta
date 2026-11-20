@@ -79,5 +79,11 @@ jobs:
           # digest; these record the result.
           provenance: true
           sbom: true
+          # The commit the renderer is stamped with: the build context carries no
+          # .git, so without it every image's pages and sitemaps would share one
+          # renderer identity and a renderer-only deploy would 304-renew the old
+          # representations. The Dockerfile verifies the binary reports it.
+          build-args: |
+            REVISION=${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max

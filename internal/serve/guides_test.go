@@ -145,7 +145,7 @@ func TestGuidePageNeedsItsMember(t *testing.T) {
 	}
 }
 
-// TestRecapPageServesASummaryOnlyWork pins the other half of hasRecapGuide: a
+// TestRecapPageServesASummaryOnlyWork pins the other half of query.HasRecapGuide: a
 // work with no chaptered recaps but a whole-book summary still has a page, and
 // its title promises a story summary rather than chapter summaries it does not
 // have.
@@ -515,7 +515,7 @@ func snapshotOf(t *testing.T, dbPath string) *query.DB {
 // TestGuideProbeAgreesWithTheGuideDefinition is what makes the probe an
 // optimization rather than a second definition: for every work in the sidecar
 // partition, the cheap point query and the composed document's own
-// hasRecapGuide / hasCharacterGuide must give the same answer. A disagreement
+// query.HasRecapGuide / query.HasCharacterGuide must give the same answer. A disagreement
 // would be a page the sitemap promises and the route 404s, or the reverse.
 func TestGuideProbeAgreesWithTheGuideDefinition(t *testing.T) {
 	snap := snapshotFor(t, guideCatalog())
@@ -530,8 +530,8 @@ func TestGuideProbeAgreesWithTheGuideDefinition(t *testing.T) {
 				probe func(string) (bool, error)
 				want  bool
 			}{
-				{"recap", snap.HasRecapPage, d != nil && hasRecapGuide(d)},
-				{"characters", snap.HasCharacterPage, d != nil && hasCharacterGuide(d)},
+				{"recap", snap.HasRecapPage, d != nil && query.HasRecapGuide(d)},
+				{"characters", snap.HasCharacterPage, d != nil && query.HasCharacterGuide(d)},
 			}
 			for _, p := range probes {
 				got, err := p.probe(id)

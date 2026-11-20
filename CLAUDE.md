@@ -320,7 +320,8 @@ ASSET PRESENCE at the maximum `published_at`, so older single-sha tags stay
 valid) when data, schema, the BUILDER (`internal/build/**`, `cmd/metabuild/**`)
 or the COMPOSE code (`pkg/check/**`, `pkg/pack/**` - `resolveSidecarKeys` re-keys
 sidecars and the collision keeper decides what ships, so they shape artifact
-CONTENT) changes land on main, and on a `community-data` repository_dispatch from
+CONTENT) or the page REVISION dating (`internal/revision/**`) changes land on main,
+and on a `community-data` repository_dispatch from
 the community repo. The artifact is compiled, so a new index or a `SchemaVersion`
 bump must reach a release without waiting for an unrelated data edit. A run whose
 tag already exists as a PUBLISHED release - the same day, the same pair of SHAs,
@@ -339,7 +340,16 @@ consumer selects the data release by asset presence - the non-draft,
 non-prerelease release carrying `meta.sqlite.gz` with the **maximum
 `published_at`** (not the first-listed: GitHub's release list order is not
 publish-chronological) - because the repo also cuts code/image `v*` releases
-with no data assets, so GitHub's "latest" can be either kind. The release is cut as a DRAFT (at
+with no data assets, so GitHub's "latest" can be either kind. The release
+workflow fetches the PREVIOUS data release by that same rule BEFORE metabuild,
+which dates every page against it (`--previous`, `--revised-at` = the newer of
+the two composed commits' commit times; PACKAGES.md `internal/revision`), and
+the fetch FAILS CLOSED: a listing that cannot be read, or an asset that cannot be
+downloaded, verified or decompressed, fails the run rather than silently
+restarting every date - an EMPTY listing fails too (it reads exactly like an
+anomalous one), and a `workflow_dispatch` with `reset_revisions` is the one
+deliberate way to build without a previous release (a broken one, or a fresh
+repository's first). The release is cut as a DRAFT (at
 `--target` the composed core sha), verified, and only then published
 (`gh release edit --draft=false`, with `isDraft` read back rather than inferred
 from an exit status): publishing on creation raced the uploads two ways - a
@@ -813,7 +823,11 @@ RECORDING layer"); the `position_scales(work_id, length, unit, partial)` table i
 `recordings.link_graphicaudio`) in **schema_version 11**; a work's ALTERNATE TITLES
 (`work_alternate_titles(work_id, title, ord)`, also in the work's `search_fts`
 names) in **schema_version 12**; the recordings' `abridgement` column in
-**schema_version 13** (the current version);
+**schema_version 13**; the REVISION layer - `page_revisions(kind, id,
+revised_at)`, each page's last meaningful content change, plus
+meta(`revisions_at`, `revisions_base`), which metabuild leaves empty unless given
+`--previous` and internal/revision fills at release time (PACKAGES.md
+`internal/revision`) - in **schema_version 14** (the current version);
 character `ord`/recap
 position order preserved, deterministic), and `metaserve` returns
 them inline on `GET /works/{id}`
@@ -824,18 +838,19 @@ briefly serving an older release): characters/recaps gate on schema_version >= 2
 the recap summary on >= 3, genres on >= 4, the slug redirects on >= 5, the
 community description on >= 6, the languages layer on >= 7, the LibriVox
 layer on >= 8, the LibriVox recording layer on >= 9, the position scales on
->= 10, the store links on >= 11, the alternate titles on >= 12 and the
-recordings' abridgement on >= 13, so a
+>= 10, the store links on >= 11, the alternate titles on >= 12, the
+recordings' abridgement on >= 13 and the page revisions on >= 14, so a
 table's absence is "no data" (for redirects: a retired slug 404s as it did before
 the mechanism existed), not a 500. The redirect, description and languages gates
 are asked ONCE at load rather than per request - those tables are EMPTY in every
 release until their first record lands, and all sit on ordinary 200 paths (the
 description on every work page, both guide pages and every ABS candidate; the
 translations and the ordering family on every work and series page) - so an
-artifact that CLAIMS version 5, 6, 7, 8, 9, 10, 11, 12 or 13 without its table (for 7: the
+artifact that CLAIMS version 5, 6, 7, 8, 9, 10, 11, 12, 13 or 14 without its table (for 7: the
 translations table or the series ordering columns; for 8: `librivoxShapeSQL`;
 for 9: `librivoxRecordingShapeSQL`; for 11: `storeLinksShapeSQL`; for 12:
-`alternateTitlesShapeSQL`; for 13: the `recordings.abridgement` column) fails to open, with an
+`alternateTitlesShapeSQL`; for 13: the `recordings.abridgement` column; for 14:
+`page_revisions`) fails to open, with an
 error naming that claim; the builder writes the version and the table together,
 so the combination is a corrupt file rather than an old one. **Authoring the expressive
 layer is documented in the COMMUNITY repository's `AUTHORING.md`** (the reusable
@@ -891,6 +906,7 @@ keep this index in step (one line per topic).
   - `internal/repair`
   - `internal/migrate`
   - `internal/build`
+  - `internal/revision`
   - `pkg/query`
   - `pkg/query/querytest`
   - `pkg/release`

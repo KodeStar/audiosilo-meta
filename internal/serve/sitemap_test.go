@@ -224,8 +224,8 @@ func parseURLSet(t *testing.T, body string) urlSet {
 }
 
 // TestSitemapShardsCarryEveryEntityURL walks all three families: the locs are the
-// Phase A page URLs in id order, and a lastmod appears exactly where the record
-// states an added_at.
+// Phase A page URLs in id order. (The lastmod is the page's revision date - see
+// revisions_test.go; this unstamped fixture artifact knows none.)
 func TestSitemapShardsCarryEveryEntityURL(t *testing.T) {
 	ts := sitemapSite(t, artifacttest.Fixture())
 
@@ -686,8 +686,9 @@ func TestW3CDate(t *testing.T) {
 	}
 }
 
-// TestSitemapOmitsCreationDates: an added_at stamped by the importer is
-// a bare date, and it travels into the document as one.
+// TestSitemapOmitsCreationDates: an added_at stamped by the importer says when the
+// record entered the catalogue, not when its page changed, so it never becomes a
+// <lastmod>.
 func TestSitemapOmitsCreationDates(t *testing.T) {
 	cat := seriesLessCatalog()
 	cat.Works[0].AddedAt = "2026-08-01"

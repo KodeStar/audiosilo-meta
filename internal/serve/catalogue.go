@@ -297,6 +297,12 @@ func composeChaptersPage(ctx context.Context, siteURL string, snap *query.DB, wo
 	if !pageInRange(page, result.Total, chapterPageSize) {
 		return nil, nil
 	}
+	// A chapters page is part of its work's page and carries the WORK's revision:
+	// internal/revision digests every chapters page into the work page's digest.
+	modified, err := snap.PageRevision(query.WorkPages, workID)
+	if err != nil {
+		return nil, err
+	}
 	path := chaptersPath(workID, recordingID)
 	v := chaptersView{Title: result.Work.Title, WorkURL: model.WorksPath + url.PathEscape(workID), RecordingURL: recordingPath(workID, recordingID), RecordingID: recordingID, Narrators: joinNames(query.PersonNames(result.Recording.Narrators)), Caption: countCaption(len(result.Chapters), result.Total, "chapter", "chapters"), Pagination: newPagination(path, page, result.Total, chapterPageSize)}
 	for i, ch := range result.Chapters {
@@ -307,7 +313,7 @@ func composeChaptersPage(ctx context.Context, siteURL string, snap *query.DB, wo
 		return nil, err
 	}
 	canonical := siteURL + path + querySuffix(page)
-	return &entityPage{title: v.Title + " chapters - " + siteName, description: "Chapter titles, start times and durations for the " + recordingID + " recording of " + v.Title + ".", canonical: canonical, ogType: "article", image: ogImage(siteURL, ""), jsonLD: catalogueJSONLD(v.Title+" chapters", siteURL, canonical, siteURL+v.WorkURL), factSheet: sheet}, nil
+	return &entityPage{title: v.Title + " chapters - " + siteName, description: "Chapter titles, start times and durations for the " + recordingID + " recording of " + v.Title + ".", canonical: canonical, ogType: "article", image: ogImage(siteURL, ""), jsonLD: catalogueJSONLD(v.Title+" chapters", siteURL, canonical, siteURL+v.WorkURL), factSheet: sheet, modified: modified}, nil
 }
 
 func formatChapterTime(ms int64) string {

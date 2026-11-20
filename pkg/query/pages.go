@@ -35,25 +35,40 @@ var pageFamilies = map[PageFamily]struct {
 	shardSQL func(*DB) string
 }{
 	RecapPages: {
-		count:    func(s *DB) int { return s.recapWorks },
-		shardSQL: func(s *DB) string { _, shard := recapSitemapSQL(s.schemaVersion); return shard },
+		count: func(s *DB) int { return s.recapWorks },
+		shardSQL: func(s *DB) string {
+			_, shard := recapSitemapSQL(s.schemaVersion)
+			return s.revisedSpelling(shard, recapsRevisedSitemapSQL)
+		},
 	},
 	CharacterPages: {
 		count:    func(s *DB) int { return s.characterWorks },
-		shardSQL: func(*DB) string { return charactersSitemapSQL },
+		shardSQL: func(s *DB) string { return s.revisedSpelling(charactersSitemapSQL, charactersRevisedSitemapSQL) },
 	},
 	SeriesPages: {
 		count:    func(s *DB) int { return s.stats.Series },
-		shardSQL: func(*DB) string { return seriesSitemapSQL },
+		shardSQL: func(s *DB) string { return s.revisedSpelling(seriesSitemapSQL, seriesRevisedSitemapSQL) },
 	},
 	PersonPages: {
 		count:    func(s *DB) int { return s.stats.People },
-		shardSQL: func(*DB) string { return peopleSitemapSQL },
+		shardSQL: func(s *DB) string { return s.revisedSpelling(peopleSitemapSQL, peopleRevisedSitemapSQL) },
 	},
 	WorkPages: {
 		count:    func(s *DB) int { return s.stats.Works },
-		shardSQL: func(*DB) string { return worksSitemapSQL },
+		shardSQL: func(s *DB) string { return s.revisedSpelling(worksSitemapSQL, worksRevisedSitemapSQL) },
 	},
+}
+
+// revisedSpelling picks a shard query's spelling: the one reading page_revisions
+// when the artifact holds any revision, the plain one (a NULL literal in the
+// revision column) otherwise - before revisionsSchemaVersion, where the table
+// does not exist, and in an artifact built without a previous release, where it
+// is empty and a probe per row would find nothing.
+func (s *DB) revisedSpelling(plain, revised string) string {
+	if s.hasRevisions {
+		return revised
+	}
+	return plain
 }
 
 // PageCount is how many pages family holds. Zero for an unknown family, and for
@@ -66,11 +81,19 @@ func (s *DB) PageCount(family PageFamily) int {
 	return f.count(s)
 }
 
-// PageEntry is one page of a family: the record's id and, for works, its
-// added_at (nil where the family carries no date).
+// PageEntry is one page of a family: the record's id, for works its added_at
+// (nil where the family carries no date), and the page's revision date.
+//
+// RevisedAt is the date of the page's last meaningful content change (RFC 3339,
+// see internal/revision), or nil where the artifact does not know one: a page
+// that has not changed since the revision chain started, and every page of an
+// artifact older than revisionsSchemaVersion. It is the ONE date a page may
+// present as its modification date - AddedAt is when the record entered the
+// catalogue, which says nothing about when its page last changed.
 type PageEntry struct {
-	ID      string
-	AddedAt *string
+	ID        string
+	AddedAt   *string
+	RevisedAt *string
 }
 
 // Pages reads one window of family's pages in id order: limit rows from offset.
@@ -88,7 +111,7 @@ func (s *DB) Pages(family PageFamily, limit, offset int) ([]PageEntry, error) {
 	var out []PageEntry
 	for rows.Next() {
 		var e PageEntry
-		if err := rows.Scan(&e.ID, &e.AddedAt); err != nil {
+		if err := rows.Scan(&e.ID, &e.AddedAt, &e.RevisedAt); err != nil {
 			return nil, err
 		}
 		out = append(out, e)
@@ -101,28 +124,32 @@ func (s *DB) Pages(family PageFamily, limit, offset int) ([]PageEntry, error) {
 // scan (TestServeLookupsAreIndexed runs these very constants through EXPLAIN
 // QUERY PLAN).
 //
-// Only works carries an added_at column, so every other query selects a literal
-// NULL for it: one row shape, one scan loop, and no per-family branch that could
-// disagree with the query it belongs to. A family with no date simply emits no
-// <lastmod>, which is the protocol's own "unknown" - nothing is fabricated, and
-// nothing about the artifact changes to serve any of these.
+// Every query selects three columns - id, added_at, revised_at - and a family or
+// version with no such value selects a literal NULL for it: one row shape, one
+// scan loop, and no per-family branch that could disagree with the query it
+// belongs to. Only works carries an added_at column. revised_at is read from
+// page_revisions (revisionsSchemaVersion) by the *Revised* spellings (revisions.go)
+// and is NULL in the plain ones, which are what an artifact holding no revision
+// is read with (revisedSpelling). A page
+// with no revision date emits no <lastmod>, which is the protocol's own "unknown"
+// - nothing is fabricated.
 const (
-	worksSitemapSQL  = `SELECT id, added_at FROM works ORDER BY id LIMIT ? OFFSET ?`
-	peopleSitemapSQL = `SELECT id, NULL FROM people ORDER BY id LIMIT ? OFFSET ?`
-	seriesSitemapSQL = `SELECT id, NULL FROM series ORDER BY id LIMIT ? OFFSET ?`
+	worksSitemapSQL  = `SELECT id, added_at, NULL FROM works ORDER BY id LIMIT ? OFFSET ?`
+	peopleSitemapSQL = `SELECT id, NULL, NULL FROM people ORDER BY id LIMIT ? OFFSET ?`
+	seriesSitemapSQL = `SELECT id, NULL, NULL FROM series ORDER BY id LIMIT ? OFFSET ?`
 
 	// The guide families list one URL per work that CARRIES the sidecar the page
 	// renders, which is the same condition the compose func applies (see
-	// hasRecapGuide / hasCharacterGuide) - a sitemap must never promise a URL
+	// HasRecapGuide / HasCharacterGuide) - a sitemap must never promise a URL
 	// that 404s.
-	charactersSitemapSQL = `SELECT DISTINCT work_id, NULL FROM characters ORDER BY work_id LIMIT ? OFFSET ?`
+	charactersSitemapSQL = `SELECT DISTINCT work_id, NULL, NULL FROM characters ORDER BY work_id LIMIT ? OFFSET ?`
 	// The recap family's two spellings (see recapSitemapSQL for why there are
 	// two). The union is written as a COMPOUND select rather than as a subquery
 	// deliberately: wrapping it in a FROM makes the outer step an unindexed scan
 	// of a co-routine, while each arm of a compound still walks its own index.
-	recapsSitemapSQL = `SELECT work_id, NULL FROM recaps UNION SELECT work_id, NULL FROM recap_summaries ` +
+	recapsSitemapSQL = `SELECT work_id, NULL, NULL FROM recaps UNION SELECT work_id, NULL, NULL FROM recap_summaries ` +
 		`ORDER BY work_id LIMIT ? OFFSET ?`
-	recapsOnlySitemapSQL = `SELECT DISTINCT work_id, NULL FROM recaps ORDER BY work_id LIMIT ? OFFSET ?`
+	recapsOnlySitemapSQL = `SELECT DISTINCT work_id, NULL, NULL FROM recaps ORDER BY work_id LIMIT ? OFFSET ?`
 
 	// The guide families' counts, each counting exactly the rows its shard query
 	// pages, so "how many shards" and "what is in them" cannot disagree.
@@ -153,6 +180,66 @@ func recapSitemapSQL(schemaVersion int) (countSQL, shardSQL string) {
 		return recapWorksCountSQL, recapsSitemapSQL
 	}
 	return recapWorksOnlyCountSQL, recapsOnlySitemapSQL
+}
+
+// ---- what makes a guide page --------------------------------------------------
+
+// HasRecapGuide and HasCharacterGuide are the ONE definition of "this work has
+// a guide page". Several places ask: metaserve's compose funcs (which return no
+// page without it), its work fact sheet (which links a guide only when it
+// exists), the sibling cross-link, and internal/revision (which dates only the
+// pages that exist). A second spelling would produce a link to a 404.
+//
+// A recap page is worth serving for a whole-book summary alone: a work with no
+// chaptered recaps but an "in short" and an "ending" still answers "<title>
+// recap" and "<title> summary". The summary counts only when it STATES one of
+// its two fields - the same rule the site's hasGuide reads off storyRows, so the
+// two spellings of presence cannot diverge on a summary row carrying neither
+// (internal/build writes no such row today, but nothing here should rest on
+// that: an all-empty summary would otherwise compose a zero-row 200 page).
+func HasRecapGuide(d *WorkDetail) bool {
+	return len(d.Recaps) > 0 ||
+		(d.RecapSummary != nil && (d.RecapSummary.InShort != "" || d.RecapSummary.Ending != ""))
+}
+
+// HasCharacterGuide is its sibling for the character guide.
+func HasCharacterGuide(d *WorkDetail) bool { return len(d.Characters) > 0 }
+
+// HasChapteredRecaps is whether the sidecar carries a recap for a real chapter -
+// the thing "chapter summaries" in a title, or "chapter-by-chapter" in an
+// anchor, is a claim about. A chapter-0 recap ("previously, in earlier books" /
+// front matter) is a recap the page serves, but it summarizes no chapter, so a
+// sidecar carrying only those must not be promised as chaptered.
+func HasChapteredRecaps(d *WorkDetail) bool {
+	for _, r := range d.Recaps {
+		if r.Through.Chapter > 0 {
+			return true
+		}
+	}
+	return false
+}
+
+// PositionUnit is what a position counts on this work's pages: the unit its
+// position_scale states, else the chapter a position is by default. Never empty,
+// because metaserve capitalizes it and an artifact is only as sound as its build.
+// The guide titles, row labels and the work page's recap link all read it, and
+// internal/revision digests it as theirs.
+func PositionUnit(d *WorkDetail) string {
+	if d.PositionScale != nil && d.PositionScale.Unit != "" {
+		return d.PositionScale.Unit
+	}
+	return "chapter"
+}
+
+// FirstCover is the cover a work's pages show: the first recording that states
+// one, or "" when none does.
+func FirstCover(d *WorkDetail) string {
+	for _, rec := range d.Recordings {
+		if rec.CoverURL != "" {
+			return rec.CoverURL
+		}
+	}
+	return ""
 }
 
 // ---- the guide pages' presence probes ---------------------------------------

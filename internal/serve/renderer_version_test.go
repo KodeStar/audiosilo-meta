@@ -44,8 +44,8 @@ func TestSitemapGolden(t *testing.T) {
 var rendererPins = []struct {
 	constant, version, glob, pinnedVersion, pinnedDigest string
 }{
-	{"htmlRendererVersion", htmlRendererVersion, "*.html", "2", "c685d84831551f6d"},
-	{"sitemapRendererVersion", sitemapRendererVersion, "sitemap-*.xml", "1", "79f080493971c75e"},
+	{"htmlRendererVersion", htmlRendererVersion, "*.html", "3", "8a132446676d600e"},
+	{"sitemapRendererVersion", sitemapRendererVersion, "sitemap-*.xml", "2", "58e9497474f1fd4d"},
 }
 
 func TestRendererVersionsTrackTheGoldens(t *testing.T) {

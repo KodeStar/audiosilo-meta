@@ -39,7 +39,13 @@ func main() {
 	trustedProxies := flag.String("trusted-proxy", os.Getenv("METASERVE_TRUSTED_PROXIES"),
 		"comma-separated proxy addresses or CIDR prefixes whose X-Forwarded-For names the client; "+
 			"behind a reverse proxy, name it, or every request counts as one client (env METASERVE_TRUSTED_PROXIES)")
+	version := flag.Bool("version", false, "print the commit this binary was built from (empty when it carries none) and exit")
 	flag.Parse()
+
+	if *version {
+		fmt.Println(serve.Revision())
+		return
+	}
 
 	proxies, err := serve.ParseTrustedProxies(*trustedProxies)
 	if err != nil {

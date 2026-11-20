@@ -33,6 +33,8 @@ on:
       - "cmd/metabuild/**"
       - "pkg/check/**"
       - "pkg/pack/**"
+      # The page revision dates (page_revisions) are part of the artifact too.
+      - "internal/revision/**"
   # Sent by audiosilo-meta-community's notify-core.yml when community data lands
   # on its main. The payload is only a trigger: this job always composes from
   # both repositories at their current main, exactly as a core-side push does.
@@ -53,6 +55,14 @@ on:
   repository_dispatch:
     types: [community-data]
   workflow_dispatch:
+    inputs:
+      reset_revisions:
+        description: >-
+          Build WITHOUT the previous release, so every page's revision date
+          restarts as unknown. Only for a previous release that cannot be read
+          and has to be stepped past - a normal run refuses to release then.
+        type: boolean
+        default: false
 
 # This workflow publishes a release, so it needs write access to contents.
 # Scoped here only - the check workflow stays read-only.
@@ -74,10 +84,16 @@ jobs:
   release:
     runs-on: ubuntu-latest
     # Observed up to ~13 minutes (2026-11): two checkouts, metacheck, the
-    # compose of a ~2.1 GB artifact and ~570 MB of uploads. About twice that. A
-    # run cut off here leaves at most a draft, which the next run's identify
-    # step deletes before composing again.
-    timeout-minutes: 30
+    # compose of a ~2.1 GB artifact and ~570 MB of uploads. The page revision
+    # pass adds the previous release's download (~570 MB) and two
+    # whole-catalogue digests, the new artifact's and the previous one's: 1m52s
+    # each at metabuild's 4 workers over 500k pages on a 20-core Mac. The
+    # runner's 4 vCPUs are slower per core and also carry the GC the Mac had
+    # spare cores for, so budget up to ~7 minutes each - ~30 minutes in all, an
+    # ESTIMATE until the first stamped release is measured (re-size this from
+    # that run's log). About twice that. A run cut off here leaves at most a
+    # draft, which the next run's identify step deletes before composing again.
+    timeout-minutes: 60
     steps:
       - name: Checkout
         # A shallow checkout is enough: git history is no longer load-bearing.
@@ -221,17 +237,100 @@ jobs:
         # authoritative gate, and a red one stops the release.
         run: go run ./cmd/metacheck --profile core
 
+      - name: Download the previous data release
+        id: prev
+        if: steps.build.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESET: ${{ inputs.reset_revisions == true }}
+        # The previous data release is what this one's page REVISION DATES are
+        # carried from (metabuild --previous, internal/revision), so it is
+        # fetched before the build.
+        #
+        # The repo publishes BOTH data releases (data-v*, carrying meta.sqlite.gz)
+        # and code/image releases (v*, no data assets), so GitHub's "latest"
+        # release can be either. The previous release is therefore the non-draft,
+        # non-prerelease release carrying a meta.sqlite.gz asset with the MAXIMUM
+        # published_at - by publish time, NOT list position, mirroring
+        # LatestData in pkg/release/release.go (its doc comment has the full
+        # rationale: the list order is not publish-chronological). A leftover
+        # draft is never one. Every page of the listing is read, so a run of code
+        # releases cannot hide the last data release.
+        #
+        # FAIL CLOSED. Building without the previous release would restart every
+        # page's date as unknown - silently, for the whole catalogue - so a
+        # listing that cannot be read, and an asset that cannot be downloaded,
+        # verified against its own published checksum or decompressed, fail the
+        # run. An EMPTY answer fails too: data releases exist, and an anomalous
+        # listing (an empty page, an asset list the API left out) reads exactly
+        # like "none", so building on it would reset every date. The first data
+        # release of a fresh repository, and a previous release that is genuinely
+        # broken, are both stepped past by a manual run with reset_revisions,
+        # which builds without it on purpose.
+        run: |
+          set -euo pipefail
+          if [ "$RESET" = "true" ]; then
+            echo "::warning::reset_revisions: building without the previous release; every page's revision date restarts as unknown"
+            exit 0
+          fi
+          prev_tag="$(gh api --paginate "repos/${GITHUB_REPOSITORY}/releases?per_page=100" \
+            --jq '.[] | select((.draft or .prerelease) | not) | select(any(.assets[]?; .name == "meta.sqlite.gz")) | "\(.published_at) \(.tag_name)"' \
+            | sort | tail -n 1 | cut -d' ' -f2)"
+          if [ -z "$prev_tag" ]; then
+            echo "::error::no previous data release found; refusing to build without one, which would reset every page's revision date. For the first data release of a repository, run this workflow manually with reset_revisions."
+            exit 1
+          fi
+          mkdir prev
+          gh release download "$prev_tag" --repo "$GITHUB_REPOSITORY" --dir prev \
+            --pattern meta.sqlite.gz --pattern meta.sqlite.gz.sha256
+          # The guard against a truncated or corrupt predecessor (no size or
+          # page-count threshold): a mismatch fails the run before metabuild.
+          (cd prev && sha256sum --strict -c meta.sqlite.gz.sha256)
+          gunzip prev/meta.sqlite.gz
+          echo "tag=$prev_tag" >> "$GITHUB_OUTPUT"
+
       - name: Build SQLite artifact (metabuild)
         if: steps.build.outputs.skip != 'true'
+        env:
+          PREV_TAG: ${{ steps.prev.outputs.tag }}
         # The two-root compose (check.LoadComposed): -data is the CC0 core and
-        # --community is the CC BY-SA layer's own data/. Nothing about the
-        # artifact changes - same tables, same SchemaVersion, same deterministic
-        # sorted-id inserts - and metabuild refuses a --community root holding no
-        # sidecars, so a wrong path is a failed release rather than a silently
-        # empty community layer.
+        # --community is the CC BY-SA layer's own data/. metabuild refuses a
+        # --community root holding no sidecars, so a wrong path is a failed
+        # release rather than a silently empty community layer.
         # added_at comes from the records themselves; metabuild falls back to
         # sources[].imported_at for anything that carries neither.
-        run: go run ./cmd/metabuild -data data --community community/data -o meta.sqlite
+        #
+        # With a previous release, every page is then dated against it
+        # (internal/revision): a page whose content is unchanged keeps its date
+        # and a changed or new one is stamped REVISED_AT - the newer of the two
+        # composed commits' commit times, so a re-run over the same pair stamps
+        # the same instant and the revision rows stay a pure function of their
+        # inputs (the artifact as a whole is not: meta(built_at) is the wall clock)
+        # (metabuild moves a stamp that is not after the previous release's own
+        # to one second past it, so a changed page's date always advances). %ct
+        # is a Unix time, which compares without parsing. A commit time in the
+        # FUTURE (a skewed clock, a rewritten date) is capped at the wall clock:
+        # left alone it would become revisions_at, and the clamp would then hold
+        # every later release to one second past it.
+        run: |
+          set -euo pipefail
+          args=(-data data --community community/data -o meta.sqlite)
+          if [ -n "$PREV_TAG" ]; then
+            core_ct="$(git log -1 --format=%ct)"
+            community_ct="$(git -C community log -1 --format=%ct)"
+            stamp=$(( core_ct > community_ct ? core_ct : community_ct ))
+            now="$(date -u +%s)"
+            if [ "$stamp" -gt "$now" ]; then
+              echo "::warning::the newest commit time is in the future; stamping the wall clock instead"
+              stamp="$now"
+            fi
+            revised_at="$(date -u -d "@${stamp}" +%Y-%m-%dT%H:%M:%SZ)"
+            args+=(--previous prev/meta.sqlite --previous-tag "$PREV_TAG" --revised-at "$revised_at")
+          fi
+          go run ./cmd/metabuild "${args[@]}"
+          # The previous artifact (~2.1 GB) has done its job; free the disk before
+          # the compress step writes the new gz beside the new artifact.
+          rm -rf prev
 
       - name: Compress and checksum
         if: steps.build.outputs.skip != 'true'
