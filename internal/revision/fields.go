@@ -37,6 +37,11 @@ import (
 //     window the read was asked for, echoed back. The digest reads every window
 //     of a page with its own window size, so these describe the read, not the
 //     page.
+//   - ChapterOut.AudioURL: no page renders it. A chapters page shows each
+//     chapter's title, start and duration, the work page's payload carries no
+//     chapter list and the site never reads the field, so a re-hosted LibriVox
+//     file would otherwise move a work's date with not one byte of any page
+//     changed.
 type decision struct {
 	hashed   []string
 	excluded []string
@@ -68,7 +73,7 @@ var decisions = map[reflect.Type]decision{
 	reflect.TypeFor[query.RecapSummaryOut]():  {hashed: []string{"InShort", "Ending"}},
 	reflect.TypeFor[query.WorkCard]():         {hashed: []string{"ID", "Title", "Authors", "Language", "Series", "ReleaseDate", "CoverURL"}, excluded: []string{"AddedAt"}},
 	reflect.TypeFor[query.RecordingSummary](): {hashed: []string{"ID", "Narrators", "Language", "Abridgement", "RuntimeMin", "ReleaseDate", "Publisher", "ChapterCount"}},
-	reflect.TypeFor[query.ChapterOut]():       {hashed: []string{"Title", "StartMS", "LengthMS", "AudioURL"}},
+	reflect.TypeFor[query.ChapterOut]():       {hashed: []string{"Title", "StartMS", "LengthMS"}, excluded: []string{"AudioURL"}},
 
 	// The person page.
 	reflect.TypeFor[query.PersonDetail](): {hashed: []string{"ID", "Name", "SortName", "Authored", "Narrated",

@@ -325,6 +325,10 @@ func TestDigestsMoveWithTheRenderedPage(t *testing.T) {
 			c.Works = append(c.Works, &model.Work{ID: "the-martian", Title: "The Martian", Language: "en",
 				Authors: []string{"andy-weir"}, License: "CC0-1.0"})
 		},
+		// No page renders a chapter's audio file, so it moves nothing.
+		"chapter audio url": func(c *model.Catalog) {
+			hailMary(c).Recordings[0].Chapters[2].AudioURL = "https://archive.org/download/x/02.mp3"
+		},
 	}
 	open := func(cat *model.Catalog) (*query.DB, map[revision.Key]revision.Digest) {
 		snap := snapshotFor(t, cat)
@@ -365,7 +369,7 @@ func TestDigestsMoveWithTheRenderedPage(t *testing.T) {
 					t.Errorf("%v: the visible page changed, but the digest did not", k)
 				}
 			}
-			if moved == 0 && name != "added_at" && name != "position scale size" {
+			if moved == 0 && name != "added_at" && name != "position scale size" && name != "chapter audio url" {
 				t.Errorf("no page moved")
 			}
 		})
