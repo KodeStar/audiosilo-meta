@@ -36,8 +36,9 @@ services:
       #
       # Sizing: steady state is one artifact (superseded ones are pruned once
       # the swap grace elapses). Peak, during a refresh, is the old artifact
-      # plus the new one. Allow room for two artifacts. The download itself is streamed
-      # straight into the new artifact, so no compressed copy is ever staged.
+      # plus the new one. Allow room for two artifacts. The download itself is
+      # streamed straight into the new artifact, so no compressed copy is ever
+      # staged.
       - meta-cache:/data
     # The image entrypoint already runs:
     #   metaserve --site /app/site --poll --cache /data/cache
