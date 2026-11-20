@@ -45,6 +45,10 @@ type watchFeedItem struct {
 	// (seriesPositionStartSQL), so the feed's position keys are
 	// seriesMemberOrderSQL's own: the start, then the position string.
 	start float64
+	// seriesID is the slug of the series the item is reported under. It is
+	// never rendered: it is the sort key that keeps two watched series sharing
+	// one NAME apart, so each one's members stay together in series order.
+	seriesID string
 	// release is the stated release date, as the FIRST instant it names, or the
 	// zero value when the catalogue states none this feed can use. Only the
 	// calendar reads it: an all-day event needs a date of its own, where Atom
@@ -340,7 +344,7 @@ func (s *DB) watchFeed(
 		// The decision is the selection's - made once, over the same two dated
 		// facts this card carries.
 		item := buildWatchItem(c.seriesName, c.position, card, c.news, siteURL)
-		item.start = c.start
+		item.seriesID, item.start = c.seriesID, c.start
 		items = append(items, item)
 	}
 
@@ -350,6 +354,12 @@ func (s *DB) watchFeed(
 		}
 		if items[i].series != items[j].series {
 			return items[i].series < items[j].series
+		}
+		// Two watched series can share a name; without the id their members
+		// interleave by position. site/src/lib/watch-flat.ts's comparator takes
+		// the same key in the same place.
+		if items[i].seriesID != items[j].seriesID {
+			return items[i].seriesID < items[j].seriesID
 		}
 		if items[i].start != items[j].start {
 			return items[i].start < items[j].start

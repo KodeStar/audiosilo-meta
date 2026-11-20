@@ -158,6 +158,22 @@ describe('comparePreorder', () => {
     ].sort(comparePreorder)
     expect(list.map((f) => f.entry.work.id)).toEqual(['a1', 'a2', 'b1'])
   })
+
+  it('keeps two series sharing a name apart, each in series order', () => {
+    const named = (slug: string, id: string, position: string): FlatEntry => ({
+      slug,
+      series: 'Saga',
+      entry: entry(id, position, '2026-10-05'),
+      isNew: false,
+    })
+    const list = [
+      named('saga-b', 'b2', '2'),
+      named('saga-a', 'a3', '3'),
+      named('saga-b', 'b4', '4'),
+      named('saga-a', 'a1', '1'),
+    ].sort(comparePreorder)
+    expect(list.map((f) => f.entry.work.id)).toEqual(['a1', 'a3', 'b2', 'b4'])
+  })
 })
 
 describe('compareAvailable', () => {

@@ -85,11 +85,16 @@ export function flattenAcrossSeries(panels: readonly Panel[]): FlatLists {
   return { preorder, available }
 }
 
-/** The series name then the position, the tie-break both comparators share: two
-    books out on one day read best grouped by series, in series order. */
+/** The series name, the series slug, then the position: the tie-break both
+    comparators share. Two books out on one day read best grouped by series, in
+    series order. The slug is there because two watched series can share a NAME,
+    and without it their members interleave by position; it is compared as plain
+    code units, the order the server's feed takes the same key in, at the same
+    place (`watchFeed`'s sort in pkg/query/watchfeed.go). */
 function byNameThenPosition(a: FlatEntry, b: FlatEntry): number {
   const name = a.series.localeCompare(b.series)
   if (name !== 0) return name
+  if (a.slug !== b.slug) return a.slug < b.slug ? -1 : 1
   // Compared rather than subtracted: two unparseable positions are both
   // +Infinity and the difference of those is NaN, which is not an ordering.
   const pa = positionStart(a.entry.position)

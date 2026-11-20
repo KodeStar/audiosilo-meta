@@ -1404,7 +1404,10 @@ reader already on it. The FLAT ORDERING is
 there is no second ordering seam a component can get wrong: preorders soonest
 first, released NEWEST first, an entry with no date LAST in either direction
 (treating an absent date as infinitely old would be a guess, floating it to the
-top would bury the releases), series name then position as the tie-break. Dates
+top would bury the releases), series name, then series slug (two watched
+series can share a name, and the slug keeps each one's members together - the
+server's feed sort takes the same key in the same place), then position as the
+tie-break. Dates
 compare as PLAIN STRINGS at the precision the catalogue states them - the rule
 `workCard` picks a card's date by - because parsing would drag the reader's
 timezone into a fact that has none, and `positionStart` is a hand-mirrored TWIN

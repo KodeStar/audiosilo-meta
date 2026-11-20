@@ -1401,10 +1401,14 @@ func (s *DB) seriesName(id string) (name string, ok bool, err error) {
 
 // watchMember is one series membership the watch feed may report: the series it
 // is reported under, the work, its position and the two facts the feed's rule
-// turns on, with no card built. seriesName is filled by the caller - the query
-// reads one series at a time and already knows which - and is what the emitted
-// item is titled under when a work belongs to several watched series.
+// turns on, with no card built. seriesID and seriesName are filled by the
+// caller - the query reads one series at a time and already knows which - and
+// the name is what the emitted item is titled under when a work belongs to
+// several watched series.
 type watchMember struct {
+	// seriesID keeps two watched series that share a NAME apart in the feed's
+	// cross-series sort (see DB.watchFeed).
+	seriesID   string
 	seriesName string
 	workID     string
 	position   string
@@ -1428,8 +1432,8 @@ const watchMembersSQL = `SELECT sw.work_id, sw.position, ` + seriesPositionStart
 	`FROM series_works sw JOIN works w ON w.id = sw.work_id WHERE sw.series_id = ?`
 
 // watchMembers returns one series' membership with the cards unresolved, each
-// member stamped with the series name it is reported under (the caller resolved
-// it to reach this id, so nothing re-reads it).
+// member stamped with the series id and the name it is reported under (the
+// caller resolved the name to reach this id, so nothing re-reads it).
 func (s *DB) watchMembers(seriesID, seriesName string) ([]watchMember, error) {
 	rows, err := s.db.Query(watchMembersSQL, seriesID)
 	if err != nil {
@@ -1438,7 +1442,7 @@ func (s *DB) watchMembers(seriesID, seriesName string) ([]watchMember, error) {
 	defer func() { _ = rows.Close() }()
 	var out []watchMember
 	for rows.Next() {
-		m := watchMember{seriesName: seriesName}
+		m := watchMember{seriesID: seriesID, seriesName: seriesName}
 		if err := rows.Scan(&m.workID, &m.position, &m.start, &m.addedAt); err != nil {
 			return nil, err
 		}
