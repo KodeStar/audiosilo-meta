@@ -74,18 +74,21 @@ function creditNote(
 }
 
 /** The roles whose lists a LATER page of a person's recording credits points
-    back to, as prose ("written and narrated"), or undefined on the first page
+    back to, as prose ("written and translated"), or undefined on the first page
     and for a person with no such list. Those lists do not move with the credit
     window, so the first page alone carries them and a later page links there
-    instead of repeating them (metaserve's fact sheet does the same). */
+    instead of repeating them. Narrated titles are not among them here: in the
+    page's island they ARE the paged recording credits (the separate Narrated
+    list is only a fallback when those cannot load), so there is nothing on the
+    first page to point back to. metaserve's fact sheet, which does render an
+    "Audiobooks narrated" list on page 1, names narration in its own note. */
 export function firstPageRoles(
   page: number,
-  totals: { authored_total?: number; narrated_total?: number; translated_total?: number }
+  totals: { authored_total?: number; translated_total?: number }
 ): string | undefined {
   if (page <= 1) return undefined
   const roles = [
     (totals.authored_total ?? 0) > 0 ? 'written' : '',
-    (totals.narrated_total ?? 0) > 0 ? 'narrated' : '',
     (totals.translated_total ?? 0) > 0 ? 'translated' : '',
   ].filter(Boolean)
   return roles.length > 0 ? joinNames(roles) : undefined
