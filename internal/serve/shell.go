@@ -170,7 +170,8 @@ func pageIdentity(shellName, shellHTML, siteURL, revision string) string {
 }
 
 // Bump when Go-rendered HTML changes, so builds without a VCS revision also
-// invalidate cached entity pages.
+// invalidate cached entity pages. TestRendererVersionsTrackTheGoldens pins it to
+// a digest of the HTML goldens, so a golden change without a bump fails there.
 const htmlRendererVersion = "1"
 
 // buildRevision is the commit this binary was built from, or "" when the

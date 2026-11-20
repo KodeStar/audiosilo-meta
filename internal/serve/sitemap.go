@@ -53,6 +53,8 @@ const (
 	// crawler can miss a new representation before revalidating.
 	sitemapMaxAge = "public, max-age=3600"
 	// Bump when rendered XML changes, including builds without VCS metadata.
+	// TestRendererVersionsTrackTheGoldens pins it to a digest of the sitemap
+	// goldens, so a golden change without a bump fails there.
 	sitemapRendererVersion = "1"
 )
 
