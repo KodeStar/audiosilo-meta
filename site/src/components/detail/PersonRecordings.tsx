@@ -1,14 +1,13 @@
-import { useCallback, useState } from 'react'
+import { useCallback } from 'react'
 import { formatLanguage, formatRuntime, getPersonRecordings, href, personNames, type Person } from '../../lib/api'
-import { abridgementLabel, cataloguePage, groupRecordings } from '../../lib/catalogue'
+import { abridgementLabel, groupRecordings } from '../../lib/catalogue'
 import { TEXT_LINK } from '../ui'
 import CataloguePager from './CataloguePager'
 import { useEntity, useInitialFragmentScroll } from './detail-common'
 
 /** A recording is the unit of a narration credit. Two versions of one work
     remain two rows, each leading to its own recording card. */
-export default function PersonRecordings({ person, fallback }: { person: Person; fallback: React.ReactNode }) {
-  const [page] = useState(() => cataloguePage(window.location.search))
+export default function PersonRecordings({ person, page, fallback }: { person: Person; page: number; fallback: React.ReactNode }) {
   const fetchRecordings = useCallback((id: string, signal: AbortSignal) => getPersonRecordings(id, { limit: 50, offset: (page - 1) * 50 }, signal), [page])
   const state = useEntity(person.id, fetchRecordings, person.recording_credits)
   const section = useInitialFragmentScroll('recording-credits', state.status === 'ready')

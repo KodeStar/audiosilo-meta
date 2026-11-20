@@ -501,8 +501,14 @@ func composePersonPageAt(ctx context.Context, siteURL string, snap *query.DB, id
 	// smaller page would hand the island fewer credits than it asked for - and
 	// there is no pagination UI on the page to reach the rest with. The window
 	// still bounds a corporate credit that narrates thousands of works, and
-	// windowCaption says so on the fact sheet.
-	d, err := snap.Person(id, query.PersonPageMax, 0)
+	// windowCaption says so on the fact sheet. A later page of the recording
+	// credits carries none of those lists (onLaterPage), so it asks for the
+	// totals alone rather than composing and embedding lists nothing shows.
+	limit := query.PersonPageMax
+	if page > 1 {
+		limit = 0
+	}
+	d, err := snap.Person(id, limit, 0)
 	if err != nil || d == nil {
 		return nil, err
 	}
@@ -985,10 +991,11 @@ type personView struct {
 	FirstPageURL   string
 }
 
-// onLaterPage drops the written, narrated and translated lists from a later
-// page of the recording credits. Those lists do not move with the credit
-// window, so repeating them on every page buried the one thing a later page
-// adds; the first page keeps them, and a later page links back to it.
+// onLaterPage points a later page of the recording credits back to the first
+// page for the written, narrated and translated lists. Those lists do not move
+// with the credit window, so repeating them on every page buried the one thing
+// a later page adds; the first page keeps them, and a later page reads only
+// their totals (composePersonPageAt).
 func (v *personView) onLaterPage(d *query.PersonDetail) {
 	var roles []string
 	if d.AuthoredTotal > 0 {
@@ -1002,7 +1009,6 @@ func (v *personView) onLaterPage(d *query.PersonDetail) {
 	}
 	v.FirstPageRoles = joinRoles(roles)
 	v.FirstPageURL = model.PeoplePath + url.PathEscape(d.ID)
-	v.Authored, v.Narrated, v.Translated = nil, nil, nil
 }
 
 // joinRoles writes a short list as prose: "written", "written and narrated",

@@ -68,19 +68,24 @@ function Section({
 function Loaded({ person, hydrated }: { person: Person; hydrated: boolean }) {
   usePageTitle(person.name, hydrated)
 
-  // A later page of the recording credits (?page=N, the same window
-  // PersonRecordings reads) carries the credits alone: the written, narrated
-  // and translated lists stay on the first page, one link away.
+  // The recording-credit page (?page=N), read once and handed to
+  // PersonRecordings. A later page carries the credits alone: the written,
+  // narrated and translated lists stay on the first page, one link away.
   const [page] = useState(() => cataloguePage(window.location.search))
   const laterPage = page > 1
   const backRoles = firstPageRoles(page, person)
   const narrated: WorkCardData[] = creditedWorks(person.narrated)
   const translated: WorkCardData[] = creditedWorks(person.translated)
 
+  // Roles and the empty state read the TOTALS: a later page's embedded payload
+  // carries the totals without the lists it does not show.
+  const authoredTotal = person.authored_total ?? person.authored?.length ?? 0
+  const narratedTotal = person.narrated_total ?? narrated.length
+  const translatedTotal = person.translated_total ?? translated.length
   const roles: string[] = []
-  if ((person.authored?.length ?? 0) > 0) roles.push('Author')
-  if (narrated.length > 0) roles.push('Narrator')
-  if (translated.length > 0) roles.push('Translator')
+  if (authoredTotal > 0) roles.push('Author')
+  if (narratedTotal > 0) roles.push('Narrator')
+  if (translatedTotal > 0) roles.push('Translator')
 
   return (
     <div className="container py-10">
@@ -120,9 +125,10 @@ function Loaded({ person, hydrated }: { person: Person; hydrated: boolean }) {
         </Section>
       ) : null}
 
-      {(person.narrated_total ?? narrated.length) > 0 ? (
+      {narratedTotal > 0 ? (
         <PersonRecordings
           person={person}
+          page={page}
           fallback={!laterPage && narrated.length > 0 ? (
             <Section
               title="Narrated"
@@ -156,7 +162,7 @@ function Loaded({ person, hydrated }: { person: Person; hydrated: boolean }) {
         </p>
       ) : null}
 
-      {(person.authored?.length ?? 0) === 0 && narrated.length === 0 && translated.length === 0 ? (
+      {authoredTotal === 0 && narratedTotal === 0 && translatedTotal === 0 ? (
         <p className="rounded-xl border border-edge bg-surface px-6 py-12 text-center text-sm text-dim">
           No works are linked to this person yet.
         </p>

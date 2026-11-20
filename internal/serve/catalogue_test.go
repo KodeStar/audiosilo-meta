@@ -333,12 +333,7 @@ func TestPersonLaterPagesLinkBackToTheBibliography(t *testing.T) {
 	_, first := getPage(t, ts.URL, "/people/ray-porter")
 	_, second := getPage(t, ts.URL, "/people/ray-porter?page=2")
 	sheet := func(page string) string {
-		start := strings.Index(page, `<div id="ssr-entity">`)
-		end := strings.Index(page, `<script type="application/json" id="entity-data">`)
-		if start < 0 || end < start {
-			t.Fatalf("no fact sheet in\n%s", page)
-		}
-		return page[start:end]
+		return between(t, page, `<div id="ssr-entity">`, `</div><script type="application/json"`)
 	}
 	one, two := sheet(first), sheet(second)
 	if !strings.Contains(one, "<h2>Audiobooks narrated</h2>") || strings.Contains(one, "the first page</a>") {
@@ -360,6 +355,14 @@ func TestPersonLaterPagesLinkBackToTheBibliography(t *testing.T) {
 	}
 	if !strings.Contains(second, `<link rel="canonical" href="https://meta.test/people/ray-porter?page=2">`) {
 		t.Error("page 2 lost its own canonical URL")
+	}
+	// Page 2 embeds the totals the island needs for its roles and its link back,
+	// not the lists it does not show.
+	payload := between(t, second, `<script type="application/json" id="entity-data">`, `</script>`)
+	for _, want := range []string{`"authored":[]`, `"narrated":[]`, `"narrated_total":`} {
+		if !strings.Contains(payload, want) {
+			t.Errorf("page 2 payload lacks %s:\n%s", want, payload)
+		}
 	}
 	// The two windows are distinct: no recording credit appears on both pages.
 	credit := regexp.MustCompile(`<h4><a href="(/works/[^"]+)">`)
