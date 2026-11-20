@@ -284,7 +284,9 @@ jobs:
           mkdir prev
           gh release download "$prev_tag" --repo "$GITHUB_REPOSITORY" --dir prev \
             --pattern meta.sqlite.gz --pattern meta.sqlite.gz.sha256
-          (cd prev && sha256sum -c meta.sqlite.gz.sha256)
+          # The guard against a truncated or corrupt predecessor (no size or
+          # page-count threshold): a mismatch fails the run before metabuild.
+          (cd prev && sha256sum --strict -c meta.sqlite.gz.sha256)
           gunzip prev/meta.sqlite.gz
           echo "tag=$prev_tag" >> "$GITHUB_OUTPUT"
 
@@ -304,8 +306,9 @@ jobs:
         # and a changed or new one is stamped REVISED_AT - the newer of the two
         # composed commits' commit times, so a re-run over the same pair stamps
         # the same instant and the artifact stays a pure function of its inputs
-        # (metabuild clamps it to the previous release's own stamp, so dates never
-        # go backwards). %ct is a Unix time, which compares without parsing.
+        # (metabuild moves a stamp that is not after the previous release's own
+        # to one second past it, so a changed page's date always advances). %ct
+        # is a Unix time, which compares without parsing.
         run: |
           set -euo pipefail
           args=(-data data --community community/data -o meta.sqlite)
