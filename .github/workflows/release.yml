@@ -87,11 +87,13 @@ jobs:
     # compose of a ~2.1 GB artifact and ~570 MB of uploads. The page revision
     # pass adds the previous release's download (~570 MB) and two
     # whole-catalogue digests, the new artifact's and the previous one's: 1m52s
-    # each at metabuild's 4 workers over 500k pages on a 20-core Mac, so budget
-    # ~4 minutes each on the runner - ~23 minutes in all. About twice that. A
-    # run cut off here leaves at most a draft, which the next run's identify
-    # step deletes before composing again.
-    timeout-minutes: 45
+    # each at metabuild's 4 workers over 500k pages on a 20-core Mac. The
+    # runner's 4 vCPUs are slower per core and also carry the GC the Mac had
+    # spare cores for, so budget up to ~7 minutes each - ~30 minutes in all, an
+    # ESTIMATE until the first stamped release is measured (re-size this from
+    # that run's log). About twice that. A run cut off here leaves at most a
+    # draft, which the next run's identify step deletes before composing again.
+    timeout-minutes: 60
     steps:
       - name: Checkout
         # A shallow checkout is enough: git history is no longer load-bearing.
@@ -273,7 +275,10 @@ jobs:
             --jq '.[] | select((.draft or .prerelease) | not) | select(any(.assets[]?; .name == "meta.sqlite.gz")) | "\(.published_at) \(.tag_name)"' \
             | sort | tail -n 1 | cut -d' ' -f2)"
           if [ -z "$prev_tag" ]; then
-            echo "no previous data release; building without one"
+            # Annotated, not just logged: an anomalous listing (an empty page, an
+            # asset list the API left out) reads exactly like this, and building
+            # on it restarts every date.
+            echo "::warning::no previous data release found; building without one, so no page carries a revision date"
             exit 0
           fi
           mkdir prev
@@ -311,6 +316,9 @@ jobs:
             args+=(--previous prev/meta.sqlite --previous-tag "$PREV_TAG" --revised-at "$revised_at")
           fi
           go run ./cmd/metabuild "${args[@]}"
+          # The previous artifact (~2.1 GB) has done its job; free the disk before
+          # the compress step writes the new gz beside the new artifact.
+          rm -rf prev
 
       - name: Compress and checksum
         if: steps.build.outputs.skip != 'true'
