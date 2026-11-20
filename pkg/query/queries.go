@@ -1406,9 +1406,7 @@ func (s *DB) seriesName(id string) (name string, ok bool, err error) {
 // the name is what the emitted item is titled under when a work belongs to
 // several watched series.
 type watchMember struct {
-	// seriesID keeps two watched series that share a NAME apart in the feed's
-	// cross-series sort (see DB.watchFeed).
-	seriesID   string
+	seriesID   string // a sort key; see DB.watchFeed
 	seriesName string
 	workID     string
 	position   string

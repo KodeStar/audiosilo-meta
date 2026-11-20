@@ -45,9 +45,8 @@ type watchFeedItem struct {
 	// (seriesPositionStartSQL), so the feed's position keys are
 	// seriesMemberOrderSQL's own: the start, then the position string.
 	start float64
-	// seriesID is the slug of the series the item is reported under. It is
-	// never rendered: it is the sort key that keeps two watched series sharing
-	// one NAME apart, so each one's members stay together in series order.
+	// seriesID is the slug of the series the item is reported under: a sort
+	// key (see DB.watchFeed), never rendered.
 	seriesID string
 	// release is the stated release date, as the FIRST instant it names, or the
 	// zero value when the catalogue states none this feed can use. Only the
