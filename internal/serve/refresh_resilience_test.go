@@ -258,6 +258,40 @@ func TestRefreshRedownloadsAnUnverifiableCachedArtifact(t *testing.T) {
 	}
 }
 
+// TestRefreshSurvivesABrokenRawChecksum: meta.sqlite.sha256 gates only the
+// cache path, so a release whose raw checksum is missing or wrong must still be
+// adopted - through the full download, verified against the gz anchor - even
+// when a cached file for the tag sits on the volume.
+func TestRefreshSurvivesABrokenRawChecksum(t *testing.T) {
+	v1Path, _, v2 := buildV1V2(t)
+	for _, tc := range []struct {
+		name  string
+		spoil func(map[string][]byte)
+	}{
+		{"missing", func(a map[string][]byte) { delete(a, release.RawDigestAsset) }},
+		{"wrong", func(a map[string][]byte) { a[release.RawDigestAsset] = []byte("deadbeef  meta.sqlite\n") }},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			assets := releasetest.DataAssets(t, v2)
+			tc.spoil(assets)
+			f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: assets})
+			srv := newPollServerIn(t, v1Path, t.TempDir(), f, time.Minute)
+			if err := os.WriteFile(srv.dbCachePath(tagR2), v2, 0o600); err != nil {
+				t.Fatal(err)
+			}
+			if err := srv.refresh(context.Background()); err != nil {
+				t.Fatalf("refresh: %v", err)
+			}
+			if srv.loaded != tagR2 || srv.current().Stats().Works != 5 {
+				t.Errorf("loaded = %q with %d works, want %q / 5", srv.loaded, srv.current().Stats().Works, tagR2)
+			}
+			if got := f.Hits(release.DataAsset); got != 1 {
+				t.Errorf("artifact downloaded %d times, want 1 (the full download is the fallback)", got)
+			}
+		})
+	}
+}
+
 // TestDegradedBootServesStaleCachedArtifact: GitHub is unreachable at boot and
 // the image bakes no data, but the cache volume still holds what the previous
 // container served. Answering 503 with that on disk is the finding; serving it
