@@ -305,7 +305,8 @@ jobs:
         # (internal/revision): a page whose content is unchanged keeps its date
         # and a changed or new one is stamped REVISED_AT - the newer of the two
         # composed commits' commit times, so a re-run over the same pair stamps
-        # the same instant and the artifact stays a pure function of its inputs
+        # the same instant and the revision rows stay a pure function of their
+        # inputs (the artifact as a whole is not: meta(built_at) is the wall clock)
         # (metabuild moves a stamp that is not after the previous release's own
         # to one second past it, so a changed page's date always advances). %ct
         # is a Unix time, which compares without parsing.
