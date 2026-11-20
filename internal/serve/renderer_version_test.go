@@ -44,8 +44,8 @@ func TestSitemapGolden(t *testing.T) {
 var rendererPins = []struct {
 	constant, version, glob, pinnedVersion, pinnedDigest string
 }{
-	{"htmlRendererVersion", htmlRendererVersion, "*.html", "2", "b2903a2d878baaf7"},
-	{"sitemapRendererVersion", sitemapRendererVersion, "*.xml", "1", "79f080493971c75e"},
+	{"htmlRendererVersion", htmlRendererVersion, "*.html", "2", "c685d84831551f6d"},
+	{"sitemapRendererVersion", sitemapRendererVersion, "sitemap-*.xml", "1", "79f080493971c75e"},
 }
 
 func TestRendererVersionsTrackTheGoldens(t *testing.T) {
@@ -53,8 +53,10 @@ func TestRendererVersionsTrackTheGoldens(t *testing.T) {
 		digest := goldenDigest(t, pin.glob)
 		switch {
 		case pin.version == pin.pinnedVersion && digest != pin.pinnedDigest:
-			t.Errorf("the %s goldens changed but %s is still %q: bump %s and set its pin to the new version and digest %s",
-				pin.glob, pin.constant, pin.version, pin.constant, digest)
+			t.Errorf("the %s goldens changed but %s is still %q: if the rendered representation changed, bump %s and set its pin "+
+				"in rendererPins to the new version and digest %s; if only the test fixture or a new golden case changed, "+
+				"set the pin's digest to %s and keep the version",
+				pin.glob, pin.constant, pin.version, pin.constant, digest, digest)
 		case pin.version != pin.pinnedVersion:
 			t.Errorf("%s is %q but its pin says %q: set the pin to version %q and digest %s",
 				pin.constant, pin.version, pin.pinnedVersion, pin.version, digest)

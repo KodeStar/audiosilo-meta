@@ -356,6 +356,9 @@ func TestPersonLaterPagesLinkBackToTheBibliography(t *testing.T) {
 	if !strings.Contains(second, `<link rel="canonical" href="https://meta.test/people/ray-porter?page=2">`) {
 		t.Error("page 2 lost its own canonical URL")
 	}
+	// The whole later page is a golden, so the renderer version guard
+	// (TestRendererVersionsTrackTheGoldens) sees a change to its representation.
+	assertGolden(t, "person-page-2.html", []byte(second))
 	// Page 2 embeds the totals the island needs for its roles and its link back,
 	// not the lists it does not show.
 	payload := between(t, second, `<script type="application/json" id="entity-data">`, `</script>`)
