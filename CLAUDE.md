@@ -905,6 +905,7 @@ keep this index in step (one line per topic).
   - `internal/repair`
   - `internal/migrate`
   - `internal/build`
+  - `internal/revision`
   - `pkg/query`
   - `pkg/query/querytest`
   - `pkg/release`
