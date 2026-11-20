@@ -11,7 +11,6 @@ import {
   emptyRecapsDraft,
   moveItem,
   seedCharactersFromSibling,
-  seedSibling,
   serializeCanonical,
   slugify,
   validateCharacters,
@@ -21,6 +20,7 @@ import {
   type RecapsDraft,
   type RecapsValidation,
 } from '../../lib/builder'
+import { seriesNeighbors } from '../../lib/worknav'
 import {
   useEntity,
   useQueryParam,
@@ -89,7 +89,9 @@ function Builder({ work, kind }: { work: Work; kind: Kind }) {
   const [copied, setCopied] = useState(false)
 
   // Offer to seed the cast from the previous book in the series (the
-  // re-describe-per-book model). Best-effort: any failure just means no offer.
+  // re-describe-per-book model): the work page's own "previous" link, the member
+  // before this one in the order the API returns. Best-effort: any failure just
+  // means no offer.
   useEffect(() => {
     if (kind !== 'characters') {
       setSeed(null)
@@ -101,7 +103,7 @@ function Builder({ work, kind }: { work: Work; kind: Kind }) {
     void (async () => {
       try {
         const series = await getSeries(seriesRef.id, ctrl.signal)
-        const sibling = seedSibling(series.works, work.id)
+        const sibling = seriesNeighbors(series.works, work.id).prev
         if (!sibling) return
         const siblingWork = await getWork(sibling.work.id, ctrl.signal)
         if (siblingWork.characters && siblingWork.characters.length > 0) {

@@ -35,6 +35,16 @@ describe('seriesNeighbors', () => {
     expect(prev?.work.id).toBe('c')
     expect(next?.work.id).toBe('b')
   })
+  it('keeps the server order of two positions sharing a start ("2" before "2-3")', () => {
+    const asReceived = [
+      entry('one', '1'),
+      entry('two', '2'),
+      entry('two-three', '2-3'),
+      entry('three', '3'),
+    ]
+    expect(seriesNeighbors(asReceived, 'three').prev?.work.id).toBe('two-three')
+    expect(seriesNeighbors(asReceived, 'two-three').prev?.work.id).toBe('two')
+  })
 })
 
 describe('hashForTab', () => {

@@ -2,8 +2,7 @@
 // React and the DOM so it is unit-testable in the node vitest environment: the
 // editor-state types, name -> slug derivation, per-card/per-entry validation, the
 // canonical JSON serialization (sorted keys, 2-space, trailing LF - matching what
-// metafmt --write produces), the sibling-seeding transform, and the choice of
-// the previous book in the series to seed from.
+// metafmt --write produces) and the sibling-seeding transform.
 //
 // The two output shapes mirror schema/characters.schema.json and
 // schema/recaps.schema.json exactly (both the CC BY-SA layer). Optional fields
@@ -12,7 +11,6 @@
 import type { Character, Position } from './api'
 import { CC_BY_SA_SPDX } from './expressive'
 import { MAX_SLUG_LEN, isValidSlug } from './slug'
-import { seriesNeighbors, type SeriesWork } from './worknav'
 
 // The output shapes reuse the wire Position (both mirror the schema's
 // edition-independent chapter position); re-exported so builder consumers
@@ -346,20 +344,6 @@ export function seedCharactersFromSibling(chars: Character[]): CharacterDraft[] 
     wikidata: c.xref?.wikidata ?? '',
     seeded: true,
   }))
-}
-
-// --- Series sibling --------------------------------------------------------
-
-/** The earlier book whose cast seeds this one: the work just before it in the
-    series' member list AS THE API RETURNS IT, which is the work page's own
-    "previous" link (worknav's `seriesNeighbors`). The server orders members by
-    seriesMemberOrderSQL (pkg/query/queries.go: the numeric start of the
-    position, then the position string, then the work id), so there is no
-    position rule to repeat here - a third reading of positions could pick a
-    different "previous book" than the page beside it (around "2" and "2-3",
-    which share a start). Null for the first book or a work not in the list. */
-export function seedSibling(works: SeriesWork[], currentId: string): SeriesWork | null {
-  return seriesNeighbors(works, currentId).prev
 }
 
 /** Move the item at `index` one slot in `dir` (-1 up, +1 down), returning a new

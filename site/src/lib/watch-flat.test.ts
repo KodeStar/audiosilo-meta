@@ -25,9 +25,10 @@ function flat(
   series: string,
   id: string,
   position: string,
-  release_date?: string
+  release_date?: string,
+  slug = series
 ): FlatEntry {
-  return { slug: series, series, entry: entry(id, position, release_date), isNew: false }
+  return { slug, series, entry: entry(id, position, release_date), isNew: false }
 }
 
 describe('flattenAcrossSeries', () => {
@@ -160,12 +161,8 @@ describe('comparePreorder', () => {
   })
 
   it('keeps two series sharing a name apart, each in series order', () => {
-    const named = (slug: string, id: string, position: string): FlatEntry => ({
-      slug,
-      series: 'Saga',
-      entry: entry(id, position, '2026-10-05'),
-      isNew: false,
-    })
+    const named = (slug: string, id: string, position: string) =>
+      flat('Saga', id, position, '2026-10-05', slug)
     const list = [
       named('saga-b', 'b2', '2'),
       named('saga-a', 'a3', '3'),

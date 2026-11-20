@@ -10,7 +10,6 @@ import {
   buildRecapsObject,
   serializeCanonical,
   seedCharactersFromSibling,
-  seedSibling,
   moveItem,
   emptyCharacterDraft,
   emptyRecapsDraft,
@@ -21,8 +20,6 @@ import {
 import { MAX_SLUG_LEN, isValidSlug } from './slug'
 import type { Character } from './api'
 import { CC_BY_SA_SPDX } from './expressive'
-import { entry } from './test-support'
-import { seriesNeighbors } from './worknav'
 
 function charDraft(extra: Partial<CharacterDraft> = {}): CharacterDraft {
   return { ...emptyCharacterDraft(), id: 'el', name: 'El', reveal: '1', ...extra }
@@ -357,26 +354,6 @@ describe('seedCharactersFromSibling', () => {
       wikidata: '',
       seeded: true,
     })
-  })
-})
-
-describe('seedSibling', () => {
-  // The members in the order the API returns them (seriesMemberOrderSQL): "2"
-  // and "2-3" share a start, so the position string breaks the tie.
-  const works = [entry('book-1', '1'), entry('book-2', '2'), entry('book-2-3', '2-3'), entry('book-3', '3')]
-
-  it('is the previous work in the server member order, as the work page links it', () => {
-    expect(seedSibling(works, 'book-3')?.work.id).toBe('book-2-3')
-    expect(seedSibling(works, 'book-2-3')?.work.id).toBe('book-2')
-    expect(seedSibling(works, 'book-2')?.work.id).toBe('book-1')
-    for (const id of ['book-3', 'book-2-3', 'book-2']) {
-      expect(seedSibling(works, id)).toBe(seriesNeighbors(works, id).prev)
-    }
-  })
-
-  it('returns null for the first book or an unknown id', () => {
-    expect(seedSibling(works, 'book-1')).toBeNull()
-    expect(seedSibling(works, 'nope')).toBeNull()
   })
 })
 

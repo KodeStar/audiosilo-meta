@@ -22,8 +22,9 @@ export interface SeriesNeighbors {
     member list, taken in the order received. The API's ordering guarantee is the
     contract: the server returns series works in seriesMemberOrderSQL's order
     (pkg/query DB.Series), and every consumer (the series page, the rail, this
-    nav, the builder's cast seeding) takes that order as-is - re-sorting here would be a second ordering seam
-    that could disagree with the rail on the same page. Returns nulls when the
+    nav, the builder's cast seeding) takes that order as-is - re-sorting here
+    would be a second ordering seam that could disagree with the rail on the
+    same page. Returns nulls when the
     current work is not in the list, and a one-sided result at the first/last
     volume. */
 export function seriesNeighbors(works: SeriesWork[], currentWorkId: string): SeriesNeighbors {
