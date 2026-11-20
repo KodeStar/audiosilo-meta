@@ -10,8 +10,8 @@ import {
   emptyRecapEntry,
   emptyRecapsDraft,
   moveItem,
-  nearestLowerSibling,
   seedCharactersFromSibling,
+  seedSibling,
   serializeCanonical,
   slugify,
   validateCharacters,
@@ -88,7 +88,7 @@ function Builder({ work, kind }: { work: Work; kind: Kind }) {
   const [seed, setSeed] = useState<{ title: string; cast: Character[] } | null>(null)
   const [copied, setCopied] = useState(false)
 
-  // Offer to seed the cast from the nearest earlier book in the series (the
+  // Offer to seed the cast from the previous book in the series (the
   // re-describe-per-book model). Best-effort: any failure just means no offer.
   useEffect(() => {
     if (kind !== 'characters') {
@@ -101,7 +101,7 @@ function Builder({ work, kind }: { work: Work; kind: Kind }) {
     void (async () => {
       try {
         const series = await getSeries(seriesRef.id, ctrl.signal)
-        const sibling = nearestLowerSibling(series.works, work.id)
+        const sibling = seedSibling(series.works, work.id)
         if (!sibling) return
         const siblingWork = await getWork(sibling.work.id, ctrl.signal)
         if (siblingWork.characters && siblingWork.characters.length > 0) {

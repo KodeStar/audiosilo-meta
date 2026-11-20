@@ -2,8 +2,8 @@
 // React and the DOM so it is unit-testable in the node vitest environment: the
 // editor-state types, name -> slug derivation, per-card/per-entry validation, the
 // canonical JSON serialization (sorted keys, 2-space, trailing LF - matching what
-// metafmt --write produces), the sibling-seeding transform, and the series
-// position ordering used to find the nearest lower-position book to seed from.
+// metafmt --write produces), the sibling-seeding transform, and the choice of
+// the previous book in the series to seed from.
 //
 // The two output shapes mirror schema/characters.schema.json and
 // schema/recaps.schema.json exactly (both the CC BY-SA layer). Optional fields
@@ -12,6 +12,7 @@
 import type { Character, Position } from './api'
 import { CC_BY_SA_SPDX } from './expressive'
 import { MAX_SLUG_LEN, isValidSlug } from './slug'
+import { seriesNeighbors, type SeriesWork } from './worknav'
 
 // The output shapes reuse the wire Position (both mirror the schema's
 // edition-independent chapter position); re-exported so builder consumers
@@ -347,41 +348,18 @@ export function seedCharactersFromSibling(chars: Character[]): CharacterDraft[] 
   }))
 }
 
-// --- Series position ordering ---------------------------------------------
+// --- Series sibling --------------------------------------------------------
 
-/** Numeric sort value of a series position string. Positions are strings that
-    may be decimals ("2.5") or omnibus ranges ("1-3.5"); the first number is used
-    for ordering (a range sorts by its start). Returns null when unparseable. */
-export function parsePositionValue(pos: string): number | null {
-  const m = /\d+(\.\d+)?/.exec(pos)
-  return m ? Number.parseFloat(m[0]) : null
-}
-
-/** Find the series entry with the highest position strictly below the current
-    work's position - the nearest earlier book, whose cast we can seed from.
-    Returns null when the current work is not in the list, has no parseable
-    position, or is the first book. */
-export function nearestLowerSibling<T extends { position: string; work: { id: string } }>(
-  works: T[],
-  currentId: string
-): T | null {
-  const current = works.find((w) => w.work.id === currentId)
-  if (!current) return null
-  const cur = parsePositionValue(current.position)
-  if (cur === null) return null
-
-  let best: T | null = null
-  let bestVal = Number.NEGATIVE_INFINITY
-  for (const w of works) {
-    if (w.work.id === currentId) continue
-    const v = parsePositionValue(w.position)
-    if (v === null) continue
-    if (v < cur && v > bestVal) {
-      best = w
-      bestVal = v
-    }
-  }
-  return best
+/** The earlier book whose cast seeds this one: the work just before it in the
+    series' member list AS THE API RETURNS IT, which is the work page's own
+    "previous" link (worknav's `seriesNeighbors`). The server orders members by
+    seriesMemberOrderSQL (pkg/query/queries.go: the numeric start of the
+    position, then the position string, then the work id), so there is no
+    position rule to repeat here - a third reading of positions could pick a
+    different "previous book" than the page beside it (around "2" and "2-3",
+    which share a start). Null for the first book or a work not in the list. */
+export function seedSibling(works: SeriesWork[], currentId: string): SeriesWork | null {
+  return seriesNeighbors(works, currentId).prev
 }
 
 /** Move the item at `index` one slot in `dir` (-1 up, +1 down), returning a new
