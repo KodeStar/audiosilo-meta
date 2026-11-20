@@ -138,6 +138,26 @@ func TestRevisionDatesAgreeAcrossSurfaces(t *testing.T) {
 	}
 }
 
+// TestRevisionGolden renders a dated work page and the dated works sitemap shard
+// against committed goldens, so the representation the revision layer adds (the
+// JSON-LD dateModified, the per-URL <lastmod>) is a reviewable diff and moves the
+// renderer version guard (TestRendererVersionsTrackTheGoldens) like any other
+// rendering change. The other goldens render an unstamped fixture, which states
+// no date at all.
+func TestRevisionGolden(t *testing.T) {
+	base := revisionServer(t, stampedArtifact(t))
+	code, page := getPage(t, base, "/works/"+artifacttest.HailMary)
+	if code != http.StatusOK {
+		t.Fatalf("work page: status %d", code)
+	}
+	assertGolden(t, "work-dated.html", []byte(page))
+	code, body, _ := getSitemap(t, base, sitemapShardPrefix+"works-0.xml")
+	if code != http.StatusOK {
+		t.Fatalf("works shard: status %d", code)
+	}
+	assertGolden(t, "sitemap-works-0-dated.xml", []byte(body))
+}
+
 // TestUnknownRevisionsStateNothing: an artifact older than the revision layer,
 // and one built without a previous release, state no date anywhere.
 func TestUnknownRevisionsStateNothing(t *testing.T) {
@@ -272,17 +292,19 @@ func renderedPages(t *testing.T, snap *query.DB) (whole, visible map[revision.Ke
 	return whole, visible
 }
 
-// TestDigestsMoveWithTheRenderedPage bounds the digests by what metaserve
+// TestDigestsMoveWithTheRenderedPage holds the digests to what metaserve
 // actually renders, over a spread of fixture mutations, in both directions:
 //
 //   - a page whose digest moved must render differently (no date is ever moved
 //     for a page whose bytes are unchanged), and
-//   - a page whose visible part - the head and the fact sheet - renders
-//     differently must have moved.
-//
-// Between the two bounds sits the embedded payload: it is the API document the
-// island hydrates from, so a work page's payload carries the recap text the
-// recap page owns, and a change to it alone moves only the recap page.
+//   - a WORK page that renders differently anywhere - head, fact sheet or the
+//     embedded payload the island hydrates from - must have moved. Its payload
+//     is its whole WorkDetail, sidecars included, so a recap edit moves the work
+//     page as well as the recap page.
+//   - any other page whose visible part - the head and the fact sheet - renders
+//     differently must have moved. Their payloads reach past what they show: a
+//     guide page embeds the work's whole detail (guidePage), which the work page
+//     owns, and a person page's work cards carry added_at, which is provenance.
 func TestDigestsMoveWithTheRenderedPage(t *testing.T) {
 	rename := func(id, name string) func(*model.Catalog) {
 		return func(c *model.Catalog) {
@@ -365,11 +387,14 @@ func TestDigestsMoveWithTheRenderedPage(t *testing.T) {
 				if digestMoved && existed && whole[k] == baseWhole[k] {
 					t.Errorf("%v: digest moved, but the page renders the same bytes", k)
 				}
+				if !digestMoved && k.Family == query.WorkPages && whole[k] != baseWhole[k] {
+					t.Errorf("%v: the work page changed, but the digest did not", k)
+				}
 				if !digestMoved && visible[k] != baseVisible[k] {
 					t.Errorf("%v: the visible page changed, but the digest did not", k)
 				}
 			}
-			if moved == 0 && name != "added_at" && name != "position scale size" && name != "chapter audio url" {
+			if moved == 0 && name != "added_at" && name != "chapter audio url" {
 				t.Errorf("no page moved")
 			}
 		})

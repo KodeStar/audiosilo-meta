@@ -27,9 +27,12 @@ type Options struct {
 	// chain can be audited. Optional.
 	Base string
 	// At is when a changed or new page changed: the release's own stamp, which
-	// release.yml takes as the newer of the two composed commits. It is clamped to
-	// the previous release's meta(revisions_at), so dates never go backwards along
-	// the chain, and truncated to the second.
+	// release.yml takes as the newer of the two composed commits. It is truncated
+	// to the second and must come after the previous release's
+	// meta(revisions_at); one that does not (a commit time behind the previous
+	// release's, or a rebuild of the same two commits) is moved to one second after
+	// it, so a changed page always moves forward along the chain and never lands
+	// on a date the previous release already gave out.
 	At time.Time
 	// Workers is how many pages are digested at once (at least one).
 	Workers int
@@ -37,7 +40,8 @@ type Options struct {
 
 // Summary is what one Stamp did.
 type Summary struct {
-	// At is the stamp changed pages were given, after the clamp.
+	// At is the stamp changed pages were given, after the clamp past the
+	// previous release's.
 	At string
 	// Changed is how many of the new artifact's pages were stamped At (changed or
 	// new), Carried how many kept a date from the previous release and Unknown
@@ -83,8 +87,8 @@ func Stamp(ctx context.Context, out string, opts Options) (Summary, error) {
 	}
 
 	at := opts.At.UTC().Truncate(time.Second)
-	if prev.revisionsAt.After(at) {
-		at = prev.revisionsAt
+	if !prev.revisionsAt.IsZero() && !at.After(prev.revisionsAt) {
+		at = prev.revisionsAt.Add(time.Second)
 	}
 	stamp := at.Format(time.RFC3339)
 

@@ -178,18 +178,31 @@ func TestUnchangedRebuildKeepsEveryDate(t *testing.T) {
 	}
 }
 
-func TestCommunityOnlyChangeMovesOnlyItsGuide(t *testing.T) {
-	got := moved(t, artifacttest.Fixture, func(c *model.Catalog) {
-		c.Recaps[0].Recaps[0].Text = "First contact is made, and goes badly."
-	})
-	if want := []string{"recaps/project-hail-mary"}; !slices.Equal(got, want) {
-		t.Errorf("moved %v, want %v", got, want)
+// TestCommunityChangeMovesItsGuideAndTheWorkPage: a sidecar edit moves the guide
+// page it belongs to and the work page, whose embedded payload carries every
+// sidecar - and nothing else, not the sibling guide. A position scale's length
+// reaches only the work page's payload (the guides read only its unit).
+func TestCommunityChangeMovesItsGuideAndTheWorkPage(t *testing.T) {
+	cases := []struct {
+		name   string
+		mutate func(*model.Catalog)
+		want   []string
+	}{
+		{"recap", func(c *model.Catalog) { c.Recaps[0].Recaps[0].Text = "First contact is made, and goes badly." },
+			[]string{"recaps/project-hail-mary", "works/project-hail-mary"}},
+		{"recap summary", func(c *model.Catalog) { c.Recaps[0].Ending = "Grace stays on Erid, teaching." },
+			[]string{"recaps/project-hail-mary", "works/project-hail-mary"}},
+		{"character", func(c *model.Catalog) { c.Characters[0].Characters[1].Description = "An engineer from another star." },
+			[]string{"characters/project-hail-mary", "works/project-hail-mary"}},
+		{"position scale length", func(c *model.Catalog) { c.PositionScales[0].Length = 13 },
+			[]string{"works/project-hail-mary"}},
 	}
-	got = moved(t, artifacttest.Fixture, func(c *model.Catalog) {
-		c.Characters[0].Characters[1].Description = "An engineer from another star."
-	})
-	if want := []string{"characters/project-hail-mary"}; !slices.Equal(got, want) {
-		t.Errorf("moved %v, want %v", got, want)
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := moved(t, artifacttest.Fixture, tc.mutate); !slices.Equal(got, tc.want) {
+				t.Errorf("moved %v, want %v", got, tc.want)
+			}
+		})
 	}
 }
 
@@ -297,7 +310,7 @@ func TestColdStartLeavesUnchangedPagesUnknown(t *testing.T) {
 	next := artifacttest.Fixture()
 	next.Recaps[0].Ending = "Grace stays on Erid, teaching."
 	got := rows(t, stamp(t, next, old, t2))
-	if want := map[string]string{"recaps/project-hail-mary": t2.Format(time.RFC3339)}; !maps.Equal(got, want) {
+	if want := map[string]string{"recaps/project-hail-mary": t2.Format(time.RFC3339), "works/project-hail-mary": t2.Format(time.RFC3339)}; !maps.Equal(got, want) {
 		t.Errorf("cold start dated %v, want %v", got, want)
 	}
 }
@@ -311,23 +324,38 @@ func TestRevertAdvancesTheDate(t *testing.T) {
 	if got := back["recaps/project-hail-mary"]; got != t3.Format(time.RFC3339) {
 		t.Errorf("a reverted recap page is dated %s, want %s: going back is a change too", got, t3.Format(time.RFC3339))
 	}
-	if got := back["works/project-hail-mary"]; got != t1.Format(time.RFC3339) {
-		t.Errorf("the untouched work page is dated %s, want %s", got, t1.Format(time.RFC3339))
+	if got := back["characters/project-hail-mary"]; got != t1.Format(time.RFC3339) {
+		t.Errorf("the untouched characters page is dated %s, want %s", got, t1.Format(time.RFC3339))
 	}
 }
 
-// TestStampIsClampedToThePreviousRelease: a stamp older than the previous
-// release's never dates a change before it.
+// TestStampIsClampedToThePreviousRelease: a stamp that is not after the
+// previous release's (older, or the same instant) dates a change one second
+// past it, so a changed page's date still advances, and an unchanged page keeps
+// its date.
 func TestStampIsClampedToThePreviousRelease(t *testing.T) {
 	base := baseline(t, artifacttest.Fixture(), t2)
 	next := artifacttest.Fixture()
 	next.Descriptions[0].Text += " More."
-	out := stamp(t, next, base, t1)
-	if got := rows(t, out)["works/project-hail-mary"]; got != t2.Format(time.RFC3339) {
-		t.Errorf("changed page dated %s, want the clamped %s", got, t2.Format(time.RFC3339))
+	want := t2.Add(time.Second).Format(time.RFC3339)
+	for name, at := range map[string]time.Time{"older": t1, "same instant": t2} {
+		t.Run(name, func(t *testing.T) {
+			out := stamp(t, next, base, at)
+			got := rows(t, out)
+			if got["works/project-hail-mary"] != want {
+				t.Errorf("changed page dated %s, want %s, one second past the previous release", got["works/project-hail-mary"], want)
+			}
+			if got["people/andy-weir"] != t2.Format(time.RFC3339) {
+				t.Errorf("unchanged page dated %s, want its carried %s", got["people/andy-weir"], t2.Format(time.RFC3339))
+			}
+			if v := metaValue(t, out, "revisions_at"); v != want {
+				t.Errorf("meta(revisions_at) = %q, want %s", v, want)
+			}
+		})
 	}
-	if v := metaValue(t, out, "revisions_at"); v != t2.Format(time.RFC3339) {
-		t.Errorf("meta(revisions_at) = %q, want %s", v, t2.Format(time.RFC3339))
+	// A stamp after the previous release's is used as it is.
+	if got := rows(t, stamp(t, next, base, t3))["works/project-hail-mary"]; got != t3.Format(time.RFC3339) {
+		t.Errorf("changed page dated %s, want the unclamped %s", got, t3.Format(time.RFC3339))
 	}
 }
 

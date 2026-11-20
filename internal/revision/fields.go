@@ -22,17 +22,17 @@ import (
 // SeriesListeningGuide or anything they hold fails the suite until somebody
 // decides which it is.
 //
+// The work page hashes its sidecars too (Characters, Recaps, RecapSummary,
+// CommunityDescription, PositionScale): its embedded payload (#entity-data, the
+// island's hydration document) is the whole WorkDetail, and its JSON-LD
+// description is the community description, so a sidecar edit changes the work
+// page's bytes as well as its guide page's, and moves both dates.
+//
 // The exclusions, and why each is not page content:
 //
 //   - WorkCard.AddedAt: provenance - when a record entered the catalogue, which a
 //     page does not present as content and which an import re-stamp would
 //     otherwise turn into a "change" on every page listing the work.
-//   - WorkDetail.Characters, .Recaps, .RecapSummary and .PositionScale: the
-//     GUIDE pages own the sidecars (see guideFacts). The work page shows only
-//     that a guide exists and how its link reads (workFacts), so an edited recap
-//     moves the recap page and leaves the work page alone. Of the position scale
-//     a page reads only the unit (query.PositionUnit); its length and partial flag
-//     reach no page.
 //   - Limit and Offset everywhere, and ListeningGuideEntry.RecordingsLimit: the
 //     window the read was asked for, echoed back. The digest reads every window
 //     of a page with its own window size, so these describe the read, not the
@@ -52,8 +52,7 @@ var decisions = map[reflect.Type]decision{
 	reflect.TypeFor[query.WorkDetail](): {
 		hashed: []string{"ID", "Title", "Subtitle", "AlternateTitles", "Authors", "Language", "FirstPublished",
 			"Description", "Genres", "Series", "TranslationOf", "Translations", "Xref", "Recordings",
-			"CommunityDescription"},
-		excluded: []string{"Characters", "Recaps", "RecapSummary", "PositionScale"},
+			"CommunityDescription", "Characters", "Recaps", "RecapSummary", "PositionScale"},
 	},
 	reflect.TypeFor[query.RecordingDetail](): {hashed: []string{"ID", "Narrators", "Abridged", "Abridgement",
 		"Language", "RuntimeMin", "ReleaseDate", "Publisher", "ASIN", "ISBN", "PurchaseLinks", "CoverURL",
@@ -71,6 +70,7 @@ var decisions = map[reflect.Type]decision{
 	reflect.TypeFor[query.PositionOut]():      {hashed: []string{"Chapter"}},
 	reflect.TypeFor[query.RecapOut]():         {hashed: []string{"Through", "Scope", "Text"}},
 	reflect.TypeFor[query.RecapSummaryOut]():  {hashed: []string{"InShort", "Ending"}},
+	reflect.TypeFor[model.PositionScale]():    {hashed: []string{"Length", "Unit", "Partial"}},
 	reflect.TypeFor[query.WorkCard]():         {hashed: []string{"ID", "Title", "Authors", "Language", "Series", "ReleaseDate", "CoverURL"}, excluded: []string{"AddedAt"}},
 	reflect.TypeFor[query.RecordingSummary](): {hashed: []string{"ID", "Narrators", "Language", "Abridgement", "RuntimeMin", "ReleaseDate", "Publisher", "ChapterCount"}},
 	reflect.TypeFor[query.ChapterOut]():       {hashed: []string{"Title", "StartMS", "LengthMS"}, excluded: []string{"AudioURL"}},
@@ -93,8 +93,8 @@ var decisions = map[reflect.Type]decision{
 	reflect.TypeFor[guideFacts]():        {hashed: []string{"Title", "Authors", "SeriesID", "SeriesName", "Cover", "PositionUnit", "Sibling", "Recaps", "RecapSummary", "Characters"}},
 }
 
-// workFacts is what a work page renders from: its detail document, minus the
-// sidecars (see decisions), plus the facts the page's Guides section reads off
+// workFacts is what a work page renders from: its detail document, sidecars
+// included (see decisions), plus the facts the page's Guides section reads off
 // them - which guides exist, whether the recap link may promise a
 // chapter-by-chapter recap, and the unit it counts in.
 type workFacts struct {
