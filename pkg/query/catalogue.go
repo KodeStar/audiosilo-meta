@@ -112,14 +112,12 @@ func (s *DB) SeriesListeningGuide(ctx context.Context, id string, limit, offset 
 	if d.Authors, err = scanPersonRefs(arows); err != nil {
 		return nil, err
 	}
-	if err = s.db.QueryRowContext(ctx, seriesMembersTotalSQL, id).Scan(&d.WorksTotal); err != nil {
-		return nil, err
-	}
 	// The members window is DB.Series' own read (seriesMemberOrderSQL's order).
-	members, err := s.seriesMemberPage(ctx, id, limit, offset)
+	members, total, err := s.seriesMemberPage(ctx, id, limit, offset)
 	if err != nil {
 		return nil, err
 	}
+	d.WorksTotal = total
 	ids := make([]string, len(members))
 	for i, m := range members {
 		ids[i] = m.workID

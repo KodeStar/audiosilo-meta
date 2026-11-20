@@ -1328,10 +1328,10 @@ type SeriesOrdering struct {
 }
 
 // The series detail queries. seriesMembersPageSQL and seriesMembersTotalSQL join
-// works so WorksTotal counts
-// exactly the members that can be rendered: a membership row pointing at a work
-// the artifact does not carry is dropped from the list, so counting it in the
-// total would report a page shorter than it claims.
+// works so WorksTotal counts exactly the members that can be rendered: a
+// membership row pointing at a work the artifact does not carry is dropped from
+// the list, so counting it in the total would report a page shorter than it
+// claims.
 const (
 	// seriesNameSQL is the header without the id, for the caller that already
 	// holds it (see seriesName). Reading a column back to discard it is a scan
@@ -1349,10 +1349,11 @@ const (
 	// listening guide (both through seriesMembersPageSQL) and the coverage
 	// browser's gap list read: the series, then the numeric start of the position,
 	// then the position string, then the work id, so ties are stable. The series
-	// key is a no-op under a single-series WHERE and is what lets the whole-table
-	// read (positionsBySeries) group by series in the same order. It walks
-	// idx_series_works_position, whose key is exactly these columns; an artifact
-	// without that index sorts the same rows in a temp b-tree, with the same answer.
+	// key is a no-op under a single-series WHERE; it is there so the whole-table
+	// read (positionsBySeries) has the index's own key order and walks it with no
+	// sort. Every reader walks idx_series_works_position, whose key is exactly
+	// these columns; an artifact without that index sorts the same rows in a temp
+	// b-tree, with the same answer.
 	seriesMemberOrderSQL = ` ORDER BY sw.series_id, ` + seriesPositionStartSQL + `, sw.position, sw.work_id`
 	// seriesMembersPageSQL is one window of the membership in that order
 	// (DB.seriesMemberPage); a negative LIMIT reads to the end.
@@ -1486,18 +1487,11 @@ func (s *DB) Series(id string, limit, offset int) (*SeriesDetail, error) {
 		return nil, err
 	}
 
-	members, err := s.seriesMemberPage(context.Background(), id, limit, offset)
+	members, total, err := s.seriesMemberPage(context.Background(), id, limit, offset)
 	if err != nil {
 		return nil, err
 	}
-	if offset <= 0 && (limit <= 0 || len(members) < limit) {
-		// The window started at the first member and ended before its limit, so
-		// it IS the whole membership: the count would read the same rows again.
-		// That is the default request (the player's rail asks for every member).
-		d.WorksTotal = len(members)
-	} else if err := s.db.QueryRow(seriesMembersTotalSQL, id).Scan(&d.WorksTotal); err != nil {
-		return nil, err
-	}
+	d.WorksTotal = total
 
 	ids := make([]string, len(members))
 	for i, m := range members {
@@ -1517,19 +1511,35 @@ func (s *DB) Series(id string, limit, offset int) (*SeriesDetail, error) {
 }
 
 // seriesMemberPage reads one window of a series' members in seriesMemberOrderSQL's
-// order: the read DB.Series and the listening guide share. A limit of 0 or less
-// reads to the end (DB.Series' "all") and a negative offset reads from the start.
-func (s *DB) seriesMemberPage(ctx context.Context, id string, limit, offset int) ([]seriesMember, error) {
-	if limit <= 0 {
-		limit = -1 // SQLite reads a negative LIMIT as no limit
+// order, and the member total: the read DB.Series and the listening guide share.
+// A limit of 0 or less reads to the end (DB.Series' "all") and a negative offset
+// reads from the start.
+func (s *DB) seriesMemberPage(ctx context.Context, id string, limit, offset int) ([]seriesMember, int, error) {
+	sqlLimit := limit
+	if sqlLimit <= 0 {
+		sqlLimit = -1 // SQLite reads a negative LIMIT as no limit
 	}
-	rows, err := s.db.QueryContext(ctx, seriesMembersPageSQL, id, limit, max(offset, 0))
+	rows, err := s.db.QueryContext(ctx, seriesMembersPageSQL, id, sqlLimit, max(offset, 0))
 	if err != nil {
-		return nil, err
+		return nil, 0, err
 	}
-	return scanPairs(rows, func(workID, pos string) seriesMember {
+	members, err := scanPairs(rows, func(workID, pos string) seriesMember {
 		return seriesMember{workID: workID, position: pos}
 	})
+	if err != nil {
+		return nil, 0, err
+	}
+	if offset <= 0 && (limit <= 0 || len(members) < limit) {
+		// The window started at the first member and ended before its limit, so
+		// it IS the whole membership: the count would read the same rows again.
+		// That is the default request (the player's rail asks for every member).
+		return members, len(members), nil
+	}
+	var total int
+	if err := s.db.QueryRowContext(ctx, seriesMembersTotalSQL, id).Scan(&total); err != nil {
+		return nil, 0, err
+	}
+	return members, total, nil
 }
 
 // orderingFamily returns the ordering family d belongs to (see SeriesDetail), or

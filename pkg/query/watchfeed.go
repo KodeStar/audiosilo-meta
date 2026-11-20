@@ -41,6 +41,10 @@ type watchFeedItem struct {
 	updated  time.Time
 	series   string
 	position string
+	// start is the numeric start of position as SQL read it
+	// (seriesPositionStartSQL), so the feed's position keys are
+	// seriesMemberOrderSQL's own: the start, then the position string.
+	start float64
 	// release is the stated release date, as the FIRST instant it names, or the
 	// zero value when the catalogue states none this feed can use. Only the
 	// calendar reads it: an all-day event needs a date of its own, where Atom
@@ -248,7 +252,6 @@ func (s *DB) watchFeed(
 	selfURL string,
 	feedID string,
 ) (watchFeed, error) {
-	var items []watchFeedItem
 	var names, unknown []string
 	seenRequest := map[string]bool{}
 	seenSeries := map[string]bool{}
@@ -328,14 +331,7 @@ func (s *DB) watchFeed(
 	if err != nil {
 		return watchFeed{}, err
 	}
-	// Each item keeps the numeric start of its position as SQL read it
-	// (seriesPositionStartSQL), so the position keys below are
-	// seriesMemberOrderSQL's own: the start, then the position string.
-	type ordered struct {
-		item  watchFeedItem
-		start float64
-	}
-	var built []ordered
+	items := make([]watchFeedItem, 0, len(kept))
 	for _, c := range kept {
 		card := byID[c.workID]
 		if card == nil {
@@ -343,28 +339,26 @@ func (s *DB) watchFeed(
 		}
 		// The decision is the selection's - made once, over the same two dated
 		// facts this card carries.
-		built = append(built, ordered{buildWatchItem(c.seriesName, c.position, card, c.news, siteURL), c.start})
+		item := buildWatchItem(c.seriesName, c.position, card, c.news, siteURL)
+		item.start = c.start
+		items = append(items, item)
 	}
 
-	sort.SliceStable(built, func(i, j int) bool {
-		a, b := built[i], built[j]
-		if !a.item.updated.Equal(b.item.updated) {
-			return a.item.updated.After(b.item.updated)
+	sort.SliceStable(items, func(i, j int) bool {
+		if !items[i].updated.Equal(items[j].updated) {
+			return items[i].updated.After(items[j].updated)
 		}
-		if a.item.series != b.item.series {
-			return a.item.series < b.item.series
+		if items[i].series != items[j].series {
+			return items[i].series < items[j].series
 		}
-		if a.start != b.start {
-			return a.start < b.start
+		if items[i].start != items[j].start {
+			return items[i].start < items[j].start
 		}
-		if a.item.position != b.item.position {
-			return a.item.position < b.item.position
+		if items[i].position != items[j].position {
+			return items[i].position < items[j].position
 		}
-		return a.item.id < b.item.id
+		return items[i].id < items[j].id
 	})
-	for _, b := range built {
-		items = append(items, b.item)
-	}
 
 	// An empty feed has no item to date itself by, so it uses the DAY rather
 	// than the instant: the ETag is day-granular, and a body that moved with
