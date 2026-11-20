@@ -217,9 +217,18 @@ func (s *Server) refresh(ctx context.Context) error {
 	if err := s.cachedRefresh(ctx, rel); err == nil {
 		return nil
 	} else if !errors.Is(err, errNoCachedArtifact) && ctx.Err() == nil {
-		s.log.Printf("serve: cached artifact for %s unusable (%v); downloading", rel.Tag, err)
+		s.log.Printf("serve: cached artifact for %s unusable (%v)", rel.Tag, err)
 	}
 
+	// A dead context means shutdown: don't start a doomed download. The ETag
+	// is forgotten as on any other failure after the 200 above.
+	if err := ctx.Err(); err != nil {
+		s.forgetETag()
+		return err
+	}
+	// Logged at the START: the full download is hundreds of MB, and without
+	// this line a slow one is invisible until it finishes or fails.
+	s.log.Printf("serve: downloading %s in full", rel.Tag)
 	if err := s.fullRefresh(ctx, rel); err != nil {
 		// The 200 above already stored the new ETag; forget it so the next
 		// poll retries this release instead of 304-ing until the one after.
