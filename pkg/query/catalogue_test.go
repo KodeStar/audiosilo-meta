@@ -249,6 +249,40 @@ func TestPersonRecordingsPreservesVersionsAndFilters(t *testing.T) {
 	}
 }
 
+// TestPersonRecordingsOrderTitlesWithoutCase pins the credit order to the
+// browse directories' NOCASE collation: binary order would put "Banana" and
+// "Zebra" before "apple", and the work id breaks a tie between titles that
+// differ only in case.
+func TestPersonRecordingsOrderTitlesWithoutCase(t *testing.T) {
+	cat := &model.Catalog{People: []*model.Person{{ID: "reader", Name: "Reader", License: "CC0-1.0"}}}
+	for _, w := range []struct{ id, title string }{
+		{"w-zebra", "Zebra"}, {"w-apple", "apple"}, {"w-banana", "Banana"},
+		{"w-cherry-b", "cherry"}, {"w-cherry-a", "Cherry"},
+	} {
+		cat.Works = append(cat.Works, &model.Work{ID: w.id, Title: w.title, License: "CC0-1.0", Recordings: []*model.Recording{
+			{ID: "r-2", Work: w.id, Narrators: []string{"reader"}, License: "CC0-1.0"},
+			{ID: "r-1", Work: w.id, Narrators: []string{"reader"}, License: "CC0-1.0"},
+		}})
+	}
+	snap := openTestDB(t, artifacttest.Build(t, cat))
+	page, err := snap.PersonRecordings(t.Context(), "reader", 50, 0, "", "")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var got []string
+	for _, entry := range page.Recordings {
+		got = append(got, entry.Work.ID+"/"+entry.Recording.ID)
+	}
+	want := []string{
+		"w-apple/r-1", "w-apple/r-2", "w-banana/r-1", "w-banana/r-2",
+		"w-cherry-a/r-1", "w-cherry-a/r-2", "w-cherry-b/r-1", "w-cherry-b/r-2",
+		"w-zebra/r-1", "w-zebra/r-2",
+	}
+	if !slices.Equal(got, want) {
+		t.Fatalf("credit order = %v\nwant           %v", got, want)
+	}
+}
+
 func TestBrowseAndRecordingChapterWindows(t *testing.T) {
 	snap := openTestDB(t, artifacttest.Build(t, catalogueFixture()))
 	page, err := snap.Browse(t.Context(), WorkPages, 1000, 100)
@@ -397,7 +431,7 @@ func TestCatalogueReadsAreIndexed(t *testing.T) {
 		{listeningCandidatesSQL("?,?"), []any{"book-000", "book-001", 5}},
 		{recordingSummariesSQL(selected, true), args},
 		{recordingSummaryNarratorsSQL(selected), args},
-		{`SELECT DISTINCT rn.work_id, rn.recording_id` + base + ` ORDER BY w.title, rn.work_id, rn.recording_id LIMIT ? OFFSET ?`, append(append([]any{"reader"}, filterArgs...), 100, 100)},
+		{`SELECT DISTINCT rn.work_id, rn.recording_id` + base + personRecordingOrderSQL + ` LIMIT ? OFFSET ?`, append(append([]any{"reader"}, filterArgs...), 100, 100)},
 		{pagedChaptersSQL(true), []any{"book-000", "reading-00", 100, 100}},
 		{browseEntriesSQL(WorkPages, "?,?"), []any{"book-000", "book-001"}},
 		{browseEntriesSQL(PersonPages, "?"), []any{"reader"}},

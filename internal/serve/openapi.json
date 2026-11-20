@@ -788,7 +788,7 @@
         ],
         "operationId": "personRecordings",
         "summary": "One page of narration recording credits",
-        "description": "Recording-level narration credits, retaining separate recordings of one work. `series` memberships are provided for grouping the visible page; filtering is optional. Authorship and translation credits remain on the existing person detail route.",
+        "description": "Recording-level narration credits, retaining separate recordings of one work, ordered by work title without regard to case, then work id and recording id. `series` memberships are provided for grouping the visible page; filtering is optional. Authorship and translation credits remain on the existing person detail route.",
         "parameters": [
           {
             "name": "id",

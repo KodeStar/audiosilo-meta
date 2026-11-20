@@ -293,6 +293,12 @@ func personRecordingCandidatesSQL(seriesID string, lang langFilter) (string, []a
 	return query, args
 }
 
+// personRecordingOrderSQL orders a person's recording credits by work title
+// under the NOCASE collation the browse directories use (DB.BrowseFiltered), so
+// "apple" and "Banana" read alphabetically rather than capitals first, then by
+// work id and recording id, which make the order total and stable.
+const personRecordingOrderSQL = ` ORDER BY w.title COLLATE NOCASE, rn.work_id, rn.recording_id`
+
 // PersonRecordings lists narration credits, retaining separate recordings of
 // one work and deduplicating repeated credits on the same recording.
 func (s *DB) PersonRecordings(ctx context.Context, id string, limit, offset int, seriesID, language string) (*PersonRecordingsPage, error) {
@@ -318,7 +324,7 @@ func (s *DB) PersonRecordings(ctx context.Context, id string, limit, offset int,
 	if err := s.db.QueryRowContext(ctx, `SELECT COUNT(*) FROM (SELECT DISTINCT rn.work_id, rn.recording_id`+base+`)`, args...).Scan(&d.Total); err != nil {
 		return nil, err
 	}
-	rows, err := s.db.QueryContext(ctx, `SELECT DISTINCT rn.work_id, rn.recording_id`+base+` ORDER BY w.title, rn.work_id, rn.recording_id LIMIT ? OFFSET ?`, append(args, limit, offset)...)
+	rows, err := s.db.QueryContext(ctx, `SELECT DISTINCT rn.work_id, rn.recording_id`+base+personRecordingOrderSQL+` LIMIT ? OFFSET ?`, append(args, limit, offset)...)
 	if err != nil {
 		return nil, err
 	}
