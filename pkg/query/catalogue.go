@@ -84,9 +84,9 @@ func catalogueWindow(limit, offset int) (int, int) {
 	return limit, offset
 }
 
-// SQL casts the start of both decimal and range positions ("2.5", "1-3.5")
-// numerically. The remaining columns give ties a stable, deterministic order.
-const seriesListeningMembersSQL = seriesWorksSQL + ` ORDER BY CAST(sw.position AS REAL), sw.position, sw.work_id LIMIT ? OFFSET ?`
+// seriesListeningMembersSQL pages the members in seriesMemberOrderSQL's order,
+// the same one DB.Series lists them in.
+const seriesListeningMembersSQL = seriesOrderedWorksSQL + ` LIMIT ? OFFSET ?`
 const seriesListeningTotalSQL = `SELECT COUNT(*) FROM series_works sw JOIN works w ON w.id=sw.work_id WHERE sw.series_id=?`
 
 // SeriesListeningGuide resolves only a bounded member page, then batches its

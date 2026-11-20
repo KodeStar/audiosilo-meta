@@ -4,7 +4,6 @@ import (
 	"context"
 	"database/sql"
 	"slices"
-	"sort"
 	"strconv"
 	"strings"
 
@@ -1338,6 +1337,16 @@ const (
 		`WHERE sa.series_id=? ORDER BY sa.ord`
 	seriesWorksSQL = `SELECT sw.work_id, sw.position FROM series_works sw JOIN works w ON w.id = sw.work_id ` +
 		`WHERE sw.series_id=?`
+	// seriesMemberOrderSQL is THE series member order, the one both DB.Series
+	// and the listening guide (seriesListeningMembersSQL) read: the numeric start
+	// of the position (SQLite's CAST reads the longest numeric prefix, so "2.5"
+	// is 2.5 and the range "1-3.5" starts at 1), then the position string, then
+	// the work id, so ties are stable. It walks idx_series_works_position, whose
+	// key is exactly these columns; an artifact without that index sorts the
+	// same rows in a temp b-tree, with the same answer.
+	seriesMemberOrderSQL = ` ORDER BY CAST(sw.position AS REAL), sw.position, sw.work_id`
+	// seriesOrderedWorksSQL is the whole membership in that order (DB.Series).
+	seriesOrderedWorksSQL = seriesWorksSQL + seriesMemberOrderSQL
 	// seriesOrderingFamilySQL reads a whole ordering family from its PRIMARY's id
 	// (?1): the primary by its primary key and every variant naming it through
 	// idx_series_ordering_of, the primary first (its ordering_of is NULL -
@@ -1430,8 +1439,8 @@ func (s *DB) watchMembers(seriesID, seriesName string) ([]watchMember, error) {
 // available for a client that wants it, and the member cards are resolved in a
 // fixed number of queries either way.
 //
-// Position ordering is computed in Go (positionStart parses "2.5" and "1-3.5"),
-// so a window is applied AFTER sorting, not by SQL.
+// The members arrive in seriesMemberOrderSQL's order, the one the listening
+// guide pages with, and the window is cut from that ordered list.
 func (s *DB) Series(id string, limit, offset int) (*SeriesDetail, error) {
 	var d SeriesDetail
 	var lang, ordering, orderingOf sql.NullString
@@ -1460,7 +1469,7 @@ func (s *DB) Series(id string, limit, offset int) (*SeriesDetail, error) {
 		return nil, err
 	}
 
-	wrows, err := s.db.Query(seriesWorksSQL, id)
+	wrows, err := s.db.Query(seriesOrderedWorksSQL, id)
 	if err != nil {
 		return nil, err
 	}
@@ -1471,17 +1480,6 @@ func (s *DB) Series(id string, limit, offset int) (*SeriesDetail, error) {
 		return nil, err
 	}
 	d.WorksTotal = len(members)
-	// Match seriesListeningMembersSQL even when an older artifact lacks its index.
-	sort.SliceStable(members, func(i, j int) bool {
-		a, b := members[i], members[j]
-		if x, y := positionStart(a.position), positionStart(b.position); x != y {
-			return x < y
-		}
-		if a.position != b.position {
-			return a.position < b.position
-		}
-		return a.workID < b.workID
-	})
 	if offset > len(members) {
 		offset = len(members)
 	}

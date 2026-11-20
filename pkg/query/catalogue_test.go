@@ -110,16 +110,16 @@ func TestSeriesListeningGuideBoundsAndFacts(t *testing.T) {
 	}
 }
 
-// TestSeriesOrderSQLMatchesGoOverThePositionGrammar pins the two series orders to
-// each other over every shape series.schema.json's position pattern admits: the
-// SQL one the listening guide pages with (seriesListeningMembersSQL:
-// CAST(position AS REAL), position, work_id), and the Go one in Series(), which sorts
-// by positionStart, then the position string, then the work id. SQLite's CAST
-// reads the longest numeric prefix ("1-15" -> 1, "2.10-3" -> 2.1) and
-// parsePositionRange the range's start, so the two agree only while the grammar
-// stays numeric; ranges, a decimal whose digits sort differently as text ("2.10"
-// vs "2.9"), a leading zero, 0 and a fraction below 1 are all here.
-func TestSeriesOrderSQLMatchesGoOverThePositionGrammar(t *testing.T) {
+// TestSeriesOrderOverThePositionGrammar pins THE series member order
+// (seriesMemberOrderSQL: CAST(position AS REAL), position, work_id) over every
+// shape series.schema.json's position pattern admits, through both readers of
+// it: the listening guide and DB.Series. SQLite's CAST reads the longest numeric
+// prefix ("1-15" -> 1, "2.10-3" -> 2.1), which is the range's start only while
+// the grammar stays numeric; ranges, a decimal whose digits sort differently as
+// text ("2.10" vs "2.9"), a leading zero, 0 and a fraction below 1 are all here.
+// The expected order is the one the Go sort DB.Series used before the order
+// moved into SQL, so the move changed nothing over schema-valid positions.
+func TestSeriesOrderOverThePositionGrammar(t *testing.T) {
 	grammar := regexp.MustCompile(testpack.SeriesPositionPattern(t))
 	// Listed out of order, with work ids that disagree with the position order.
 	members := []struct{ work, position string }{
@@ -162,15 +162,15 @@ func TestSeriesOrderSQLMatchesGoOverThePositionGrammar(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	var fromGo []string
+	var fromSeries []string
 	for _, w := range series.Works {
-		fromGo = append(fromGo, w.Work.ID)
+		fromSeries = append(fromSeries, w.Work.ID)
 	}
 	if !slices.Equal(fromSQL, want) {
-		t.Errorf("SQL order = %v\nwant        %v", fromSQL, want)
+		t.Errorf("guide order = %v\nwant          %v", fromSQL, want)
 	}
-	if !slices.Equal(fromGo, fromSQL) {
-		t.Errorf("Go order (Series) = %v\nSQL order         %v", fromGo, fromSQL)
+	if !slices.Equal(fromSeries, want) {
+		t.Errorf("Series order = %v\nwant           %v", fromSeries, want)
 	}
 }
 
