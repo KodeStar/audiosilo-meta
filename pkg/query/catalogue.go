@@ -84,11 +84,6 @@ func catalogueWindow(limit, offset int) (int, int) {
 	return limit, offset
 }
 
-// seriesListeningMembersSQL pages the members in seriesMemberOrderSQL's order,
-// the same one DB.Series lists them in.
-const seriesListeningMembersSQL = seriesOrderedWorksSQL + ` LIMIT ? OFFSET ?`
-const seriesListeningTotalSQL = `SELECT COUNT(*) FROM series_works sw JOIN works w ON w.id=sw.work_id WHERE sw.series_id=?`
-
 // SeriesListeningGuide resolves only a bounded member page, then batches its
 // recording alternatives and narrator credits. It never builds WorkDetail.
 func (s *DB) SeriesListeningGuide(ctx context.Context, id string, limit, offset int) (*SeriesListeningGuide, error) {
@@ -117,14 +112,11 @@ func (s *DB) SeriesListeningGuide(ctx context.Context, id string, limit, offset 
 	if d.Authors, err = scanPersonRefs(arows); err != nil {
 		return nil, err
 	}
-	if err = s.db.QueryRowContext(ctx, seriesListeningTotalSQL, id).Scan(&d.WorksTotal); err != nil {
+	if err = s.db.QueryRowContext(ctx, seriesMembersTotalSQL, id).Scan(&d.WorksTotal); err != nil {
 		return nil, err
 	}
-	rows, err := s.db.QueryContext(ctx, seriesListeningMembersSQL, id, limit, offset)
-	if err != nil {
-		return nil, err
-	}
-	members, err := scanPairs(rows, func(id, pos string) seriesMember { return seriesMember{id, pos} })
+	// The members window is DB.Series' own read (seriesMemberOrderSQL's order).
+	members, err := s.seriesMemberPage(ctx, id, limit, offset)
 	if err != nil {
 		return nil, err
 	}

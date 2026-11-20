@@ -328,6 +328,14 @@ func (s *DB) watchFeed(
 	if err != nil {
 		return watchFeed{}, err
 	}
+	// Each item keeps the numeric start of its position as SQL read it
+	// (seriesPositionStartSQL), so the position keys below are
+	// seriesMemberOrderSQL's own: the start, then the position string.
+	type ordered struct {
+		item  watchFeedItem
+		start float64
+	}
+	var built []ordered
 	for _, c := range kept {
 		card := byID[c.workID]
 		if card == nil {
@@ -335,25 +343,28 @@ func (s *DB) watchFeed(
 		}
 		// The decision is the selection's - made once, over the same two dated
 		// facts this card carries.
-		items = append(items, buildWatchItem(c.seriesName, c.position, card, c.news, siteURL))
+		built = append(built, ordered{buildWatchItem(c.seriesName, c.position, card, c.news, siteURL), c.start})
 	}
 
-	sort.SliceStable(items, func(i, j int) bool {
-		if !items[i].updated.Equal(items[j].updated) {
-			return items[i].updated.After(items[j].updated)
+	sort.SliceStable(built, func(i, j int) bool {
+		a, b := built[i], built[j]
+		if !a.item.updated.Equal(b.item.updated) {
+			return a.item.updated.After(b.item.updated)
 		}
-		if items[i].series != items[j].series {
-			return items[i].series < items[j].series
+		if a.item.series != b.item.series {
+			return a.item.series < b.item.series
 		}
-		pi, pj := positionStart(items[i].position), positionStart(items[j].position)
-		if pi != pj {
-			return pi < pj
+		if a.start != b.start {
+			return a.start < b.start
 		}
-		if items[i].position != items[j].position {
-			return items[i].position < items[j].position
+		if a.item.position != b.item.position {
+			return a.item.position < b.item.position
 		}
-		return items[i].id < items[j].id
+		return a.item.id < b.item.id
 	})
+	for _, b := range built {
+		items = append(items, b.item)
+	}
 
 	// An empty feed has no item to date itself by, so it uses the DAY rather
 	// than the instant: the ETag is day-granular, and a body that moved with

@@ -115,7 +115,7 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 		{"series header", seriesHeaderSQL(false), []any{series}},
 		{"series header, v7", seriesHeaderSQL(true), []any{series}},
 		{"series name", seriesNameSQL, []any{series}},
-		{"works of a series", seriesOrderedWorksSQL, []any{series}},
+		{"works of a series", seriesMembersPageSQL, []any{series, -1, 0}},
 		{"authors of a series", seriesAuthorsSQL, []any{series}},
 		// The watch feed's membership read, issued once per watched series - up to
 		// 200 of them on one request, which is what makes an unindexed step here

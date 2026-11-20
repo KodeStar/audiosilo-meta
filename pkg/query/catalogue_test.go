@@ -7,6 +7,7 @@ import (
 	"slices"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
@@ -187,8 +188,10 @@ func TestSeriesListeningGuideRecordingOrder(t *testing.T) {
 
 // TestSeriesOrderOverThePositionGrammar pins THE series member order
 // (seriesMemberOrderSQL: CAST(position AS REAL), position, work_id) over every
-// shape series.schema.json's position pattern admits, through both readers of
-// it: the listening guide and DB.Series. SQLite's CAST reads the longest numeric
+// shape series.schema.json's position pattern admits, through every reader of
+// it: the listening guide, DB.Series, the coverage browser's gap list and the
+// watch feed (whose cross-series sort keys on seriesPositionStartSQL), so a
+// reader that sorted by a rule of its own would disagree here. SQLite's CAST reads the longest numeric
 // prefix ("1-15" -> 1, "2.10-3" -> 2.1), which is the range's start only while
 // the grammar stays numeric; ranges, a decimal whose digits sort differently as
 // text ("2.10" vs "2.9"), a leading zero, 0 and a fraction below 1 are all here.
@@ -202,6 +205,8 @@ func TestSeriesOrderOverThePositionGrammar(t *testing.T) {
 		{"w-05", "2.10-3"}, {"w-06", "1"}, {"w-07", "9"}, {"w-08", "02"},
 		{"w-09", "1-15"}, {"w-10", "0"}, {"w-11", "2.10"}, {"w-12", "10"},
 		{"w-14", "1.5"}, {"w-13", "1.5"}, {"w-15", "2"},
+		// After the range 1-15, so the gap list has holes (16-19) to report.
+		{"w-16", "20"},
 	}
 	want := []string{
 		"w-10",                 // 0
@@ -213,13 +218,22 @@ func TestSeriesOrderOverThePositionGrammar(t *testing.T) {
 		"w-02",         // 2.9
 		"w-07",         // 9
 		"w-12", "w-01", // 10, 10.0
+		"w-16", // 20
+	}
+	positionOf := map[string]string{}
+	for _, m := range members {
+		positionOf[m.work] = m.position
 	}
 	cat := &model.Catalog{Series: []*model.Series{{ID: "grammar", Name: "Grammar", License: "CC0-1.0"}}}
 	for _, m := range members {
 		if !grammar.MatchString(m.position) {
 			t.Fatalf("fixture position %q is outside the schema grammar", m.position)
 		}
-		cat.Works = append(cat.Works, &model.Work{ID: m.work, Title: m.work, License: "CC0-1.0"})
+		// One release date for every member, so the watch feed's earlier keys
+		// (the date, the series name) tie and the position keys decide.
+		cat.Works = append(cat.Works, &model.Work{ID: m.work, Title: m.work, License: "CC0-1.0", Recordings: []*model.Recording{{
+			ID: "recording", Work: m.work, ReleaseDate: "2030-01-01", License: "CC0-1.0",
+		}}})
 		cat.Series[0].Works = append(cat.Series[0].Works, model.SeriesWork{Work: m.work, Position: m.position})
 	}
 	snap := openTestDB(t, artifacttest.Build(t, cat))
@@ -246,6 +260,95 @@ func TestSeriesOrderOverThePositionGrammar(t *testing.T) {
 	}
 	if !slices.Equal(fromSeries, want) {
 		t.Errorf("Series order = %v\nwant           %v", fromSeries, want)
+	}
+
+	gaps, err := snap.seriesGaps()
+	if err != nil {
+		t.Fatal(err)
+	}
+	var wantPresent []string
+	for _, w := range want {
+		wantPresent = append(wantPresent, positionOf[w])
+	}
+	if len(gaps) != 1 || !slices.Equal(gaps[0].Present, wantPresent) {
+		t.Errorf("gap list = %+v\nwant present %v", gaps, wantPresent)
+	}
+
+	feed, err := snap.watchFeed([]string{"grammar"}, defaultWatchWindow, time.Date(2029, 1, 1, 0, 0, 0, 0, time.UTC), testSiteURL, "self", "id")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var fromFeed, wantFeed []string
+	for _, item := range feed.items {
+		fromFeed = append(fromFeed, item.id)
+	}
+	for _, w := range want {
+		wantFeed = append(wantFeed, watchTagPrefix+"work/"+w+"/preorder")
+	}
+	if !slices.Equal(fromFeed, wantFeed) {
+		t.Errorf("watch feed order = %v\nwant               %v", fromFeed, wantFeed)
+	}
+}
+
+// TestSeriesPositionStartKey pins the numeric start seriesMemberOrderSQL sorts
+// by (seriesPositionStartSQL, SQLite's CAST) over the schema-valid cases its
+// hand-mirrored twin, `positionStart` in site/src/lib/watch-flat.ts, pins in
+// watch-flat.test.ts. The twins agree over the position grammar only: outside
+// it CAST reads "bonus" as 0 where the site sorts it last, and no schema-valid
+// record can carry such a value.
+func TestSeriesPositionStartKey(t *testing.T) {
+	grammar := regexp.MustCompile(testpack.SeriesPositionPattern(t))
+	snap := openTestDB(t, artifacttest.Build(t, artifacttest.Fixture()))
+	cases := map[string]float64{
+		"0": 0, "1": 1, "2.5": 2.5, "10": 10, "03": 3,
+		// A range starts at its lower bound, whatever its upper one spells.
+		"1-3": 1, "1-3.5": 1, "1-15": 1, "2.10-3": 2.1,
+	}
+	for in, want := range cases {
+		if !grammar.MatchString(in) {
+			t.Fatalf("case %q is outside the schema grammar", in)
+		}
+		var got float64
+		if err := snap.db.QueryRow(`SELECT `+seriesPositionStartSQL+` FROM (SELECT ? AS position) sw`, in).Scan(&got); err != nil {
+			t.Fatal(err)
+		}
+		if got != want {
+			t.Errorf("start of %q = %v, want %v", in, got, want)
+		}
+	}
+}
+
+// TestSeriesOrderReadsWithoutPositionIndex: idx_series_works_position arrived
+// in schema 13. On a schema 11 or 12 artifact every reader of the series member
+// order still reaches series_works through idx_series_works_series (a per-series
+// SEARCH, or the whole-table walk positionsBySeries makes once per snapshot) and
+// sorts the remaining keys in a temp b-tree - never a bare table scan.
+func TestSeriesOrderReadsWithoutPositionIndex(t *testing.T) {
+	const series = "the-stormlight-archive"
+	for _, version := range []int{11, 12} {
+		t.Run(fmt.Sprint(version), func(t *testing.T) {
+			stmts := []string{"ALTER TABLE recordings DROP COLUMN abridgement", "DROP INDEX idx_series_works_position", "DROP INDEX idx_recording_narrators_person_recording",
+				"DROP INDEX idx_works_title_nocase", "DROP INDEX idx_people_name_nocase", "DROP INDEX idx_series_name_nocase"}
+			if version < 12 {
+				stmts = append(stmts, "DROP TABLE work_alternate_titles")
+			}
+			snap := openTestDB(t, artifacttest.Altered(t, artifacttest.Fixture(), version, stmts...))
+			for _, tt := range []struct {
+				query string
+				args  []any
+			}{
+				{seriesMembersPageSQL, []any{series, -1, 0}},
+				{seriesMembersTotalSQL, []any{series}},
+				{watchMembersSQL, []any{series}},
+				{positionsBySeriesSQL, nil},
+			} {
+				plan := queryPlan(t, snap, tt.query, tt.args...)
+				assertNoFullScan(t, plan)
+				if !strings.Contains(strings.Join(plan, " "), "idx_series_works_series") {
+					t.Errorf("v%d: series_works not reached through idx_series_works_series: %v", version, plan)
+				}
+			}
+		})
 	}
 }
 
@@ -274,13 +377,31 @@ func TestSeriesListeningGuideMatchesAPITiesWithoutPositionIndex(t *testing.T) {
 				if err != nil {
 					t.Fatal(err)
 				}
-				if len(api.Works) != 2 || len(guide.Entries) != 2 {
-					t.Fatalf("offset %d: API %d, guide %d entries", offset, len(api.Works), len(guide.Entries))
+				if len(api.Works) != 2 || len(guide.Entries) != 2 || api.WorksTotal != len(want) || guide.WorksTotal != len(want) {
+					t.Fatalf("offset %d: API %d of %d, guide %d of %d entries", offset, len(api.Works), api.WorksTotal, len(guide.Entries), guide.WorksTotal)
 				}
 				for i, entry := range guide.Entries {
 					if entry.Work.ID != want[offset+i] || api.Works[i].Work.ID != entry.Work.ID || api.Works[i].Position != entry.Position {
 						t.Errorf("offset %d entry %d: API %+v, guide %+v, want %s", offset, i, api.Works[i], entry, want[offset+i])
 					}
+				}
+			}
+			// DB.Series' other windows: the whole list (counted from the page
+			// itself), a page wider than the list, a tail, past the end and the
+			// out-of-range values the handler never passes but a caller may.
+			for _, w := range []struct{ limit, offset, works int }{
+				{0, 0, 6}, {10, 0, 6}, {0, 3, 3}, {2, 5, 1}, {2, 10, 0}, {-1, -1, 6},
+			} {
+				api, err := snap.Series("ties", w.limit, w.offset)
+				if err != nil {
+					t.Fatal(err)
+				}
+				if len(api.Works) != w.works || api.WorksTotal != len(want) || api.Limit != w.limit || api.Offset != w.offset {
+					t.Errorf("Series(limit %d, offset %d) = %d works of %d (limit %d, offset %d), want %d of %d",
+						w.limit, w.offset, len(api.Works), api.WorksTotal, api.Limit, api.Offset, w.works, len(want))
+				}
+				if w.works > 0 && api.Works[0].Work.ID != want[max(w.offset, 0)] {
+					t.Errorf("Series(limit %d, offset %d) starts at %s, want %s", w.limit, w.offset, api.Works[0].Work.ID, want[max(w.offset, 0)])
 				}
 			}
 		})
@@ -524,8 +645,10 @@ func TestCatalogueReadsAreIndexed(t *testing.T) {
 		query string
 		args  []any
 	}{
-		{seriesListeningMembersSQL, []any{"long-series", 100, 100}},
-		{seriesListeningTotalSQL, []any{"long-series"}},
+		{seriesMembersPageSQL, []any{"long-series", 100, 100}},
+		{seriesMembersTotalSQL, []any{"long-series"}},
+		{watchMembersSQL, []any{"long-series"}},
+		{positionsBySeriesSQL, nil},
 		{listeningCandidatesSQL("?,?"), []any{"long-series", "book-000", "book-001", "book-000", "book-001", 5}},
 		{recordingSummariesSQL(selected, true), args},
 		{recordingSummaryNarratorsSQL(selected), args},
@@ -537,9 +660,10 @@ func TestCatalogueReadsAreIndexed(t *testing.T) {
 	}
 	for _, tt := range queries {
 		plan := queryPlan(t, snap, tt.query, tt.args...)
-		if tt.query == seriesListeningMembersSQL {
+		// Every reader of seriesMemberOrderSQL takes it from the index.
+		if tt.query == seriesMembersPageSQL || tt.query == positionsBySeriesSQL {
 			if !strings.Contains(strings.Join(plan, " "), "idx_series_works_position") || strings.Contains(strings.Join(plan, " "), "TEMP B-TREE") {
-				t.Errorf("series window must walk the numeric position index: %v", plan)
+				t.Errorf("series member order must walk the numeric position index: %v", plan)
 			}
 		}
 		for _, step := range plan {

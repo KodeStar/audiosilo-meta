@@ -187,20 +187,25 @@ describe('compareAvailable', () => {
 })
 
 describe('positionStart', () => {
-  // The twin of Go positionStart in pkg/query/queries.go.
+  // The twin of seriesPositionStartSQL in pkg/query/queries.go.
   it('reads a decimal, a range and a padded number', () => {
+    // The schema-valid cases, the same list Go's TestSeriesPositionStartKey
+    // pins against SQLite's CAST, so the two sides are judged on one list.
+    expect(positionStart('0')).toBe(0)
+    expect(positionStart('1')).toBe(1)
     expect(positionStart('2.5')).toBe(2.5)
+    expect(positionStart('10')).toBe(10)
+    expect(positionStart('03')).toBe(3)
     expect(positionStart('1-3')).toBe(1)
     expect(positionStart('1-3.5')).toBe(1)
-    expect(positionStart('03')).toBe(3)
+    expect(positionStart('1-15')).toBe(1)
+    expect(positionStart('2.10-3')).toBe(2.1)
+    // Outside the grammar, so this side's reading only: no stored position
+    // can carry one, and CAST would read some of them differently.
     expect(positionStart(' 4 ')).toBe(4)
     expect(positionStart('1-garbage')).toBe(1)
-    // The remaining cases Go's TestPositionStart pins, so the two sides are
-    // judged on one list. Go is the rule of record here.
     expect(positionStart('1-')).toBe(1)
     expect(positionStart('1-2-3')).toBe(1)
-    expect(positionStart('1')).toBe(1)
-    expect(positionStart('10')).toBe(10)
   })
   it('sorts an unparseable position last', () => {
     expect(positionStart('bonus')).toBe(Number.POSITIVE_INFINITY)

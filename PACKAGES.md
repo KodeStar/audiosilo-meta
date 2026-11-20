@@ -903,7 +903,9 @@ capping each work at five, chosen and listed by a stated order
 series any one of the recording's narrators also narrates, counted over the
 whole series), then release date (earliest first, undated last), then recording
 id. It uses numeric/decimal/range series order (`seriesMemberOrderSQL`, the ONE
-member order `DB.Series` reads too), and batch reads only candidates on the
+member order: `DB.Series` pages through the same `seriesMemberPage` read, the
+coverage gap list's `present` comes from it, and the watch feed's cross-series
+sort keys on its `seriesPositionStartSQL`), and batch reads only candidates on the
 visible page. Person recording credits, and the person detail's authored,
 narrated and translated lists, are ordered by work title under the browse
 directories' NOCASE collation, then work id (and recording id). Neither new route calls WorkDetail
@@ -1406,8 +1408,10 @@ top would bury the releases), series name then position as the tie-break. Dates
 compare as PLAIN STRINGS at the precision the catalogue states them - the rule
 `workCard` picks a card's date by - because parsing would drag the reader's
 timezone into a fact that has none, and `positionStart` is a hand-mirrored TWIN
-of Go's in `pkg/query/queries.go` (which is the RULE OF RECORD; both sides
-pin the same cases). A work in SEVERAL watched series is ONE row here, under the
+of `seriesPositionStartSQL` in `pkg/query/queries.go` (SQLite's
+`CAST(position AS REAL)`, the first key of the series member order and the RULE
+OF RECORD; Go's `TestSeriesPositionStartKey` pins the schema-valid cases the
+site's test pins, and only outside the grammar do the two differ). A work in SEVERAL watched series is ONE row here, under the
 first of them - the server's feed applies the same rule - so the two marks on
 that row are applied at PAGE level to every ready series that lists the book
 (`markEverywhere` over the memo's work-to-series index), or ticking off an

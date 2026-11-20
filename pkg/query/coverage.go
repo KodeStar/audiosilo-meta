@@ -408,8 +408,8 @@ func (s *DB) cachedSeriesGaps() ([]seriesGap, error) {
 // its lowest and highest present integer position. A range position ("1-3.5")
 // covers every integer within it (ceil(lo)..floor(hi)); a bare decimal ("2.5")
 // fills no integer slot. Series with fewer than two covered integers, or with no
-// interior gap, are omitted. Output is sorted by series id. All positions come
-// from one bulk query, grouped in memory.
+// interior gap, are omitted. Output is sorted by series id, and each Present list
+// in series member order, as the bulk query read it.
 func (s *DB) seriesGaps() ([]seriesGap, error) {
 	positions, err := s.positionsBySeries()
 	if err != nil {
@@ -455,22 +455,19 @@ func (s *DB) seriesGaps() ([]seriesGap, error) {
 		if len(gaps) == 0 {
 			continue
 		}
-		sort.SliceStable(present, func(i, j int) bool {
-			pi, pj := positionStart(present[i]), positionStart(present[j])
-			if pi != pj {
-				return pi < pj
-			}
-			return present[i] < present[j]
-		})
 		out = append(out, seriesGap{ID: id, Name: name, Present: present, MissingPositions: gaps})
 	}
 	return out, rows.Err()
 }
 
+// positionsBySeriesSQL reads every membership in seriesMemberOrderSQL's order,
+// so each series' positions arrive in the order its series page lists them.
+const positionsBySeriesSQL = `SELECT sw.series_id, sw.position FROM series_works sw` + seriesMemberOrderSQL
+
 // positionsBySeries returns every series' raw position strings, keyed by series
-// id, in one query.
+// id and in series member order (seriesMemberOrderSQL), in one query.
 func (s *DB) positionsBySeries() (map[string][]string, error) {
-	rows, err := s.db.Query(`SELECT series_id, position FROM series_works ORDER BY series_id`)
+	rows, err := s.db.Query(positionsBySeriesSQL)
 	if err != nil {
 		return nil, err
 	}
