@@ -34,12 +34,14 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"path/filepath"
 	"runtime"
 	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/build"
 	"github.com/kodestar/audiosilo-meta/internal/revision"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
+	"github.com/kodestar/audiosilo-meta/pkg/query"
 )
 
 // digestWorkers caps how many pages the revision pass digests at once. More is
@@ -78,6 +80,27 @@ func main() {
 			os.Exit(2)
 		}
 		revised = parsed
+	}
+	if *previous != "" {
+		// Build deletes -o before writing it, so a --previous naming the same file
+		// would be compared with the NEW artifact: every page "unchanged", every
+		// date silently gone. And an unreadable predecessor is refused before the
+		// build rather than after it.
+		same, err := sameFile(*previous, *out)
+		if err != nil {
+			fmt.Fprintln(os.Stderr, "metabuild:", err)
+			os.Exit(2)
+		}
+		if same {
+			fmt.Fprintln(os.Stderr, "metabuild: --previous names the output file; give the previous release's artifact its own path")
+			os.Exit(2)
+		}
+		prev, err := query.Open(*previous, "")
+		if err != nil {
+			fmt.Fprintln(os.Stderr, "metabuild: --previous:", err)
+			os.Exit(1)
+		}
+		_ = prev.Close()
 	}
 
 	res := build.Load(build.Sources{Data: *dataDir, Community: *community})
@@ -120,4 +143,26 @@ func main() {
 	}
 	fmt.Fprintf(os.Stderr, "revisions against %s: %d pages, %d changed (stamped %s), %d carried, %d unknown, in %s\n",
 		*previous, sum.Pages(), sum.Changed, sum.At, sum.Carried, sum.Unknown, time.Since(start).Round(time.Second))
+}
+
+// sameFile reports whether a and b name one file: the same absolute path, or,
+// when both exist, the same file reached through a link.
+func sameFile(a, b string) (bool, error) {
+	absA, err := filepath.Abs(a)
+	if err != nil {
+		return false, err
+	}
+	absB, err := filepath.Abs(b)
+	if err != nil {
+		return false, err
+	}
+	if absA == absB {
+		return true, nil
+	}
+	infoA, errA := os.Stat(a)
+	infoB, errB := os.Stat(b)
+	if errA != nil || errB != nil {
+		return false, nil
+	}
+	return os.SameFile(infoA, infoB), nil
 }
