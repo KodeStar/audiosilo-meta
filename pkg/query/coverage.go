@@ -461,7 +461,9 @@ func (s *DB) seriesGaps() ([]seriesGap, error) {
 }
 
 // positionsBySeriesSQL reads every membership in seriesMemberOrderSQL's order,
-// so each series' positions arrive in the order its series page lists them.
+// so each series' positions arrive in the order its series page lists them. It
+// does not join works, so a membership naming a work the artifact lacks is still
+// read here, where the series page drops it.
 const positionsBySeriesSQL = `SELECT sw.series_id, sw.position FROM series_works sw` + seriesMemberOrderSQL
 
 // positionsBySeries returns every series' raw position strings, keyed by series

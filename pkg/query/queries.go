@@ -1519,7 +1519,8 @@ func (s *DB) seriesMemberPage(ctx context.Context, id string, limit, offset int)
 	if sqlLimit <= 0 {
 		sqlLimit = -1 // SQLite reads a negative LIMIT as no limit
 	}
-	rows, err := s.db.QueryContext(ctx, seriesMembersPageSQL, id, sqlLimit, max(offset, 0))
+	offset = max(offset, 0)
+	rows, err := s.db.QueryContext(ctx, seriesMembersPageSQL, id, sqlLimit, offset)
 	if err != nil {
 		return nil, 0, err
 	}
@@ -1529,11 +1530,13 @@ func (s *DB) seriesMemberPage(ctx context.Context, id string, limit, offset int)
 	if err != nil {
 		return nil, 0, err
 	}
-	if offset <= 0 && (limit <= 0 || len(members) < limit) {
-		// The window started at the first member and ended before its limit, so
-		// it IS the whole membership: the count would read the same rows again.
-		// That is the default request (the player's rail asks for every member).
-		return members, len(members), nil
+	if (limit <= 0 || len(members) < limit) && (offset == 0 || len(members) > 0) {
+		// The window ended before its limit, so it reached the last member: the
+		// total is the offset plus what it read, and the count would read the
+		// same rows again. That covers the default request (the player's rail
+		// asks for every member) and any tail page. Only an empty window past
+		// offset 0 cannot tell where the membership ended, so that one counts.
+		return members, offset + len(members), nil
 	}
 	var total int
 	if err := s.db.QueryRowContext(ctx, seriesMembersTotalSQL, id).Scan(&total); err != nil {

@@ -187,8 +187,8 @@ func TestSeriesListeningGuideRecordingOrder(t *testing.T) {
 }
 
 // TestSeriesOrderOverThePositionGrammar pins THE series member order
-// (seriesMemberOrderSQL: CAST(position AS REAL), position, work_id) over every
-// shape series.schema.json's position pattern admits, through every reader of
+// (seriesMemberOrderSQL: series_id, CAST(position AS REAL), position, work_id)
+// over every shape series.schema.json's position pattern admits, through every reader of
 // it: the listening guide, DB.Series, the coverage browser's gap list and the
 // watch feed (whose cross-series sort keys on seriesPositionStartSQL), so a
 // reader that sorted by a rule of its own would disagree here. SQLite's CAST reads the longest numeric
@@ -400,9 +400,9 @@ func TestSeriesListeningGuideMatchesAPITiesWithoutPositionIndex(t *testing.T) {
 					}
 				}
 			}
-			// DB.Series' other windows: the whole list (counted from the page
-			// itself), a page wider than the list, a tail, past the end and the
-			// out-of-range values the handler never passes but a caller may.
+			// DB.Series' other windows: the whole list and a tail (each totalled
+			// from the page itself), a page wider than the list, past the end
+			// and the out-of-range values the handler never passes but a caller may.
 			for _, w := range []struct{ limit, offset, works int }{
 				{0, 0, 6}, {10, 0, 6}, {0, 3, 3}, {2, 5, 1}, {2, 10, 0}, {-1, -1, 6},
 			} {
