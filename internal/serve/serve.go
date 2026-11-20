@@ -82,11 +82,6 @@ type Config struct {
 	// Superseded cache files are pruned once it elapses.
 	swapGrace time.Duration
 
-	// maxPatchBase caps the artifact size for which a binary-delta refresh is
-	// attempted (see applyPatchFile). Overridable for tests; New defaults it to
-	// defaultMaxPatchBase.
-	maxPatchBase int64
-
 	// bootRetry is the FIRST wait between poll attempts while no artifact has
 	// loaded at all (it then backs off - see pollLoop). Overridable for tests;
 	// New defaults it to defaultBootRetry.
@@ -200,9 +195,6 @@ func New(cfg Config) (*Server, error) {
 	}
 	if cfg.bootRetry <= 0 {
 		cfg.bootRetry = defaultBootRetry
-	}
-	if cfg.maxPatchBase <= 0 {
-		cfg.maxPatchBase = defaultMaxPatchBase
 	}
 	if cfg.SiteURL == "" {
 		cfg.SiteURL = defaultSiteURL

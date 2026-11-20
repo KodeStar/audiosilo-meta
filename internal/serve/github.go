@@ -3,43 +3,26 @@ package serve
 // metaserve's refresh orchestration over pkg/release: which data release to
 // adopt (release.Client.LatestData, conditional on the ETag this server keeps),
 // the CACHE VOLUME (adopting an artifact a previous container left, verified;
-// pruning superseded ones), the zstd --patch-from DELTA against the loaded
-// artifact, and the full verified download (release.Client.DownloadData) every
-// other path falls back to. The asset contract, the host allowlist, the stall
-// watchdog and the verified install are pkg/release's, shared with mirror-mode
-// AudioSilo servers.
+// pruning superseded ones), and the full verified download
+// (release.Client.DownloadData) whenever the volume does not already hold the
+// release. The asset contract, the host allowlist, the stall watchdog and the
+// verified install are pkg/release's, shared with mirror-mode AudioSilo servers.
 
 import (
-	"bufio"
 	"context"
 	"errors"
-	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
 	"time"
 
-	"github.com/klauspost/compress/zstd"
-
 	"github.com/kodestar/audiosilo-meta/pkg/query"
 	"github.com/kodestar/audiosilo-meta/pkg/release"
 )
 
-// patchWindowLog is the log2 of the zstd window the release patches are
-// compressed with (--long=31 in .github/workflows/release.yml - a bump is a
-// deliberate two-file edit, there and here). The decoder options below must
-// admit a window this large or the frame is rejected.
-const patchWindowLog = 31
-
-// patchAssetName is the release-asset naming convention for the binary delta
-// based on fromTag's artifact.
-func patchAssetName(fromTag string) string {
-	return "meta.sqlite.patch.from-" + fromTag + ".zst"
-}
-
 // currentArtifactBytes is the on-disk size of the artifact this server is
 // serving, or 0 when there is none or it cannot be stat'd (a boot that has
-// loaded nothing yet, the shape tryPatch reads the same way).
+// loaded nothing yet).
 func (s *Server) currentArtifactBytes() int64 {
 	cur := s.current()
 	if cur == nil || cur.Path() == "" {
@@ -52,72 +35,17 @@ func (s *Server) currentArtifactBytes() int64 {
 	return info.Size()
 }
 
-// applyPatchFile reconstructs the new artifact by applying the zstd
-// --patch-from delta at patchPath to the previously-loaded artifact, verifies
-// the result's sha256 against wantHexDigest (the published raw-sqlite digest),
-// and only then atomically installs it at dstPath. Any failure removes the temp
-// and never creates dstPath. Returns the reconstructed artifact's size in bytes.
-//
-// Two decoder details are load-bearing:
-//   - The zstd CLI stamps NO dictionary id on a --patch-from frame, so the
-//     previous artifact must be registered as a RAW content dictionary under id
-//     0 (WithDecoderDictRaw(0, prev)) - that is the CLI's --patch-from
-//     convention, matched here.
-//   - The release step compresses with --long=31 (patchWindowLog), whose 2 GiB
-//     window exceeds the decoder's defaults, so both the max window and max
-//     memory are raised to match or the decode rejects the frame.
-//
-// maxBytes is the COMPUTED bound on the reconstructed artifact, the shape the full
-// download takes (release.DecompressBound): the patch declares no output size,
-// and a frame that expanded without limit would fill the cache volume long before
-// the sha256 gate could reject it. The caller measures it against the BASE
-// artifact's size (the bound's current-artifact arm), the one size this path
-// knows exactly.
-//
-// The patch itself and the reconstructed output both stream (file in, file out),
-// but the PREVIOUS artifact is unavoidably held in memory: a raw zstd dictionary
-// must be one contiguous byte slice, and the decoder's history window over it
-// costs about as much again, so peak transient is roughly twice the base
-// artifact. That is what defaultMaxPatchBase caps - past that size tryPatch
-// refuses to start and the full download (which streams end to end) runs instead.
-func applyPatchFile(patchPath, prevPath, dstPath, wantHexDigest string, maxBytes int64) (int64, error) {
-	prev, err := os.ReadFile(prevPath) //nolint:gosec // prevPath is our own cache file, not user input
-	if err != nil {
-		return 0, err
-	}
-	patch, err := os.Open(patchPath) //nolint:gosec // patchPath is our own cache file, not user input
-	if err != nil {
-		return 0, err
-	}
-	defer func() { _ = patch.Close() }()
-	reader, err := zstd.NewReader(bufio.NewReaderSize(patch, patchBufferBytes),
-		zstd.WithDecoderDictRaw(0, prev),
-		zstd.WithDecoderMaxWindow(1<<patchWindowLog),
-		zstd.WithDecoderMaxMemory(1<<patchWindowLog),
-		zstd.WithDecoderConcurrency(1), // single sequential decode; lowest memory
-	)
-	if err != nil {
-		return 0, err
-	}
-	defer reader.Close()
-	return release.InstallVerified(reader, dstPath, wantHexDigest, maxBytes)
-}
-
-// patchBufferBytes is the patch's read buffer - large enough that a
-// hundreds-of-MB delta is not read in 4KB syscalls.
-const patchBufferBytes = 1 << 20
-
 // cachePrefix names every file this server writes into the cache directory
-// itself: the artifacts (meta-<tag>.sqlite) and their transient siblings (.gz,
-// .patch.zst). The verified installs' temp files are pkg/release's
-// (release.TempFile). pruneCacheLocked only ever removes files that are one or
-// the other, so a cache directory shared with anything else is left alone.
+// itself: the artifacts (meta-<tag>.sqlite), plus the transient siblings an
+// older metaserve wrote there (.gz, .patch.zst). The verified installs' temp
+// files are pkg/release's (release.TempFile). pruneCacheLocked only ever
+// removes files that are one or the other, so a cache directory shared with
+// anything else is left alone.
 const cachePrefix = "meta-"
 
 // artifactSuffix completes a cached artifact's file name (cachePrefix + tag +
-// artifactSuffix). Only the finished artifacts carry it: the transient siblings
-// end in .gz / .patch.zst and the temp files in .tmp, so it is what tells an
-// adoptable file from work in progress.
+// artifactSuffix). Only the finished artifacts carry it (the temp files end in
+// .tmp), so it is what tells an adoptable file from work in progress.
 const artifactSuffix = ".sqlite"
 
 // cacheDir is where downloaded artifacts are materialized.
@@ -129,7 +57,7 @@ func (s *Server) cacheDir() string {
 }
 
 // dbCachePath is where the artifact for a release tag is materialized on disk.
-// Shared by the full and patch paths so their target filenames can never drift.
+// Shared by the cached and full paths so their target filenames can never drift.
 func (s *Server) dbCachePath(tag string) string {
 	return filepath.Join(s.cacheDir(), cachePrefix+cacheTagName(tag)+artifactSuffix)
 }
@@ -141,7 +69,7 @@ var cacheTagName = strings.NewReplacer("/", "-", " ", "-").Replace
 // when the name is not a finished artifact of ours. It is the inverse of
 // dbCachePath for every tag this repo cuts (`data-vYYYY.MM.DD-<sha>` contains
 // neither a slash nor a space); a tag that did contain one would come back
-// substituted, which costs nothing but a missed patch base - the next refresh
+// substituted, which costs nothing but a missed cache hit - the next refresh
 // then takes the full path.
 func tagFromCacheName(name string) string {
 	if !strings.HasPrefix(name, cachePrefix) || !strings.HasSuffix(name, artifactSuffix) {
@@ -180,32 +108,12 @@ func (s *Server) newestCachedArtifact() (path, tag string, ok bool) {
 	return path, tag, path != ""
 }
 
-// defaultMaxPatchBase caps the artifact size at which the patch path is still
-// worth taking (see applyPatchFile: the base artifact must be one contiguous
-// slice in memory). Peak transient is roughly TWICE the base, not once: the
-// contiguous dictionary copy plus the decoder's history window over it. So this
-// 1 GiB cap bounds the patch path at about 2 GiB of transient, refusing the
-// multi-GB shapes where that transient would dominate the serving process.
-//
-// The catalogue's artifact passed it in 2026-11 (about 2 GB), so in production
-// every release now takes the streamed full download (about 530 MB) and the patch
-// path serves only a smaller deployment. That is the chosen trade (meta#2885):
-// raising the cap would cost the serving host 4-5 GB of transient memory per
-// release to save that download. refresh logs the skip as a routine full
-// download, not as a fault.
-const defaultMaxPatchBase = 1 << 30
-
-// errPatchNotTaken marks tryPatch's expected bail-outs - no loaded release to
-// patch from, a base over the cap, no delta from the loaded tag - which cost
-// nothing and are not a patch failing.
-var errPatchNotTaken = errors.New("patch path not taken")
-
 // pruneCacheLocked deletes every cache file this server owns except the live
 // artifact, s.cfg.DBPath, and every RETIRED artifact - one superseded by a swap
 // whose grace has not elapsed, so requests are still reading it. What it
 // collects is superseded releases (one full artifact per adopted release, which
-// otherwise accumulate forever on the cache volume) and any .patch.zst/tmp
-// leftovers from a refresh that died mid-flight.
+// otherwise accumulate forever on the cache volume) and any tmp leftovers from a
+// refresh that died mid-flight, including an older metaserve's .gz/.patch.zst.
 //
 // It runs at two moments, which together cover the whole lifecycle: from adopt,
 // which is the pass that also cleans up after a cold boot (whose first adopt
@@ -261,7 +169,7 @@ func (s *Server) pruneCacheLocked() {
 }
 
 // adopt opens the artifact at dbPath as the snapshot for tag and hot-swaps it
-// in, then prunes the cache. Shared tail of the full and patch refresh paths.
+// in, then prunes the cache. Shared tail of the cached and full refresh paths.
 // Always called with s.mu held (refresh owns it), hence pruneCacheLocked.
 func (s *Server) adopt(dbPath, tag string) (*query.DB, error) {
 	snap, err := s.open(dbPath, tag)
@@ -280,10 +188,10 @@ func (s *Server) adopt(dbPath, tag string) (*query.DB, error) {
 }
 
 // refresh fetches the newest data release; if it is newer than the loaded one,
-// it adopts it, preferring a small binary delta against the currently-loaded
-// artifact and falling back to a full download. It is a no-op on 304 or when the
-// loaded tag already matches. Serialized by s.mu (also the only writer of
-// s.loaded / the snapshot path, so tryPatch may read s.current().Path() safely).
+// it adopts it - off the cache volume when the volume already holds it, through
+// a full download otherwise. It is a no-op on 304 or when the loaded tag already
+// matches. Serialized by s.mu (also the only writer of s.loaded / the snapshot
+// path).
 func (s *Server) refresh(ctx context.Context) error {
 	s.mu.Lock()
 	defer s.mu.Unlock()
@@ -312,24 +220,11 @@ func (s *Server) refresh(ctx context.Context) error {
 		s.log.Printf("serve: cached artifact for %s unusable (%v); downloading", rel.Tag, err)
 	}
 
-	if err := s.tryPatch(ctx, rel); err != nil {
-		// A dead context means shutdown, not a patch problem - don't log a
-		// misleading fallback or attempt a doomed full download.
-		if ctx.Err() != nil {
-			s.forgetETag()
-			return err
-		}
-		if errors.Is(err, errPatchNotTaken) {
-			s.log.Printf("serve: downloading %s in full (%v)", rel.Tag, err)
-		} else {
-			s.log.Printf("serve: patch refresh failed (%v); falling back to full download", err)
-		}
-		if err := s.fullRefresh(ctx, rel); err != nil {
-			// The 200 above already stored the new ETag; forget it so the next
-			// poll retries this release instead of 304-ing until the one after.
-			s.forgetETag()
-			return err
-		}
+	if err := s.fullRefresh(ctx, rel); err != nil {
+		// The 200 above already stored the new ETag; forget it so the next
+		// poll retries this release instead of 304-ing until the one after.
+		s.forgetETag()
+		return err
 	}
 	return nil
 }
@@ -351,10 +246,9 @@ var errNoCachedArtifact = errors.New("no cached artifact for this release")
 // a hundreds-of-MB artifact it already has and it being ready in a second.
 //
 // Trust is not placed in the file's presence or its name: it is hashed and
-// compared against the release's published raw-artifact digest, the same value
-// the patch path verifies a reconstruction against. Anything else - absent,
-// unreadable, wrong bytes - is an error, and refresh falls through to the patch
-// and full paths, which overwrite the file atomically anyway.
+// compared against the release's published raw-artifact digest. Anything else -
+// absent, unreadable, wrong bytes - is an error, and refresh falls through to
+// the full download, which overwrites the file atomically anyway.
 func (s *Server) cachedRefresh(ctx context.Context, rel *release.Release) error {
 	dbPath := s.dbCachePath(rel.Tag)
 	if _, err := os.Stat(dbPath); err != nil {
@@ -387,7 +281,7 @@ func (s *Server) cachedRefresh(ctx context.Context, rel *release.Release) error 
 // makes the first reachable poll re-check this artifact instead of treating it
 // as current; because the file is already on disk, that check costs one checksum
 // request and no download (see cachedRefresh). The snapshot still carries the
-// tag its file name encodes, so a patch can be based on it in the meantime.
+// tag its file name encodes.
 func (s *Server) adoptStaleCache() bool {
 	path, tag, ok := s.newestCachedArtifact()
 	if !ok {
@@ -409,9 +303,9 @@ func (s *Server) adoptStaleCache() bool {
 // meta.sqlite.gz streamed through gunzip into the cache in ONE pass, verified
 // against meta.sqlite.gz.sha256 before it is installed, so no .gz ever lands on
 // the cache volume and neither form is held in memory), then hot-swaps the
-// snapshot. This is the universal path: it works for the first refresh and
-// whenever a patch is unavailable - including when meta.sqlite.sha256, which
-// gates only the cache and patch paths, is the broken asset.
+// snapshot. This is the universal path: it works for the first refresh and for
+// every one the cache volume cannot answer - including when meta.sqlite.sha256,
+// which gates only the cache path, is the broken asset.
 func (s *Server) fullRefresh(ctx context.Context, rel *release.Release) error {
 	dbPath := s.dbCachePath(rel.Tag)
 	if _, err := s.gh.DownloadData(ctx, rel, dbPath, nil); err != nil {
@@ -423,81 +317,6 @@ func (s *Server) fullRefresh(ctx context.Context, rel *release.Release) error {
 	}
 	st := snap.Stats()
 	s.log.Printf("serve: loaded release %s (%d works, built %s)", rel.Tag, st.Works, st.BuiltAt)
-	return nil
-}
-
-// tryPatch attempts an incremental refresh: apply the release's zstd
-// --patch-from delta (based on the currently-loaded artifact) to reconstruct the
-// new sqlite, verified byte-for-byte against meta.sqlite.sha256. It returns a
-// descriptive error on every bail-out so refresh() can log the reason and fall
-// back to a full download; it never swaps a snapshot unless the patched artifact
-// verifies. metabuild is deterministic, so the patched file is bit-identical to
-// what a full download would produce.
-func (s *Server) tryPatch(ctx context.Context, rel *release.Release) error {
-	// The loaded snapshot is the single source of truth for the patch base: its
-	// tag names the asset to request and its path is the dictionary, so the two
-	// can never diverge. cur is nil on a poll-only boot's first refresh; an
-	// empty tag is a local --db artifact - both always take the full path.
-	cur := s.current()
-	var curTag string
-	if cur != nil {
-		curTag = cur.Info().Tag
-	}
-	if curTag == "" {
-		return fmt.Errorf("%w: no loaded release tag (first refresh is always full)", errPatchNotTaken)
-	}
-	info, err := os.Stat(cur.Path())
-	if err != nil {
-		return fmt.Errorf("loaded artifact unavailable: %w", err)
-	}
-	// A raw zstd dictionary has to be one contiguous slice, so the patch base is
-	// the one thing on this path that cannot stream. Past the cap the transient
-	// costs more than it saves and the full download (which streams end to end)
-	// is the better trade - the fallback is unconditional, so refusing here is
-	// safe, not a failure.
-	if maxBase := s.cfg.maxPatchBase; info.Size() > maxBase {
-		return fmt.Errorf("%w: loaded artifact is %d bytes, over the %d-byte patch-base cap", errPatchNotTaken, info.Size(), maxBase)
-	}
-	// The most common bail-out - the server is 2+ releases behind, so no delta
-	// is based on our tag - must cost zero HTTP requests.
-	patchName := patchAssetName(curTag)
-	if _, ok := rel.Asset(patchName); !ok {
-		return fmt.Errorf("%w: release %s has no %s asset", errPatchNotTaken, rel.Tag, patchName)
-	}
-
-	// Fetch and parse the tiny raw-file checksum first, so a release that can't
-	// verify a patch fails fast without spending the patch download.
-	want, err := s.gh.ReadDigest(ctx, rel, release.RawDigestAsset)
-	if err != nil {
-		return err
-	}
-
-	dstPath := s.dbCachePath(rel.Tag)
-	patchPath := dstPath + ".patch.zst"
-	defer func() { _ = os.Remove(patchPath) }()
-	// Bounded by the patch asset's DECLARED size: nothing is decompressed on the
-	// way to disk, so a body past its own declaration is refused.
-	patchBytes, err := s.gh.DownloadAsset(ctx, rel, patchName, patchPath)
-	if err != nil {
-		return err
-	}
-
-	// The base artifact's size, stat'd above, is what the reconstruction is
-	// measured against - the one size this path knows exactly. The patch asset's
-	// own declared size says nothing about the OUTPUT, so it is not the declared
-	// arm here; the base goes in as the current-artifact arm instead.
-	artifactBytes, err := applyPatchFile(patchPath, cur.Path(), dstPath, want,
-		release.DecompressBound(0, info.Size()))
-	if err != nil {
-		return err
-	}
-	snap, err := s.adopt(dstPath, rel.Tag)
-	if err != nil {
-		return err
-	}
-	st := snap.Stats()
-	s.log.Printf("serve: patched %s -> %s (patch %d bytes, artifact %d bytes; %d works, built %s)",
-		curTag, rel.Tag, patchBytes, artifactBytes, st.Works, st.BuiltAt)
 	return nil
 }
 

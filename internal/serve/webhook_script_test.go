@@ -74,7 +74,7 @@ func TestReleaseNotifyScriptIsAcceptedByTheHandler(t *testing.T) {
 	signature, payload := notifyReleaseScript(t, "owner/name", testWebhookSecret)
 
 	v1Path, _, _, v2 := buildV1V2(t)
-	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: makeAssets(t, v2, "", nil)})
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: releasetest.DataAssets(t, v2)})
 	srv := newWebhookServer(t, v1Path, fake)
 
 	rec := httptest.NewRecorder()
@@ -109,7 +109,7 @@ func TestReleaseNotifyScriptSignatureCoversThePayload(t *testing.T) {
 	}
 
 	seed := artifacttest.Build(t, artifacttest.Fixture())
-	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, readDB(t, seed), "", nil)})
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: releasetest.DataAssets(t, readDB(t, seed))})
 	srv := newWebhookServer(t, seed, fake)
 
 	rec := httptest.NewRecorder()

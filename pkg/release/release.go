@@ -3,18 +3,20 @@
 // contract - the asset names and digests, "the newest non-draft,
 // non-prerelease release carrying meta.sqlite.gz", the allowlisted download
 // hosts, the stall watchdog and the gunzip + sha256 + temp-then-rename install -
-// shared by metaserve's poller (internal/serve, which adds the binary-delta and
-// cache-volume paths on top) and by mirror-mode AudioSilo servers, which
-// download the same artifact once a day.
+// shared by metaserve's poller (internal/serve, which adds the cache-volume path
+// on top) and by mirror-mode AudioSilo servers, which download the same artifact
+// once a day.
 //
 // The asset contract itself is release.yml's: meta.sqlite.gz plus
 // meta.sqlite.gz.sha256 (the universal anchor every download is verified
 // against) and meta.sqlite.sha256 (the digest of the decompressed file, which
-// verifies a file that was NOT just downloaded through the anchor - one
-// reconstructed from a delta, or already on disk), every one verified by the
-// workflow before the release is published. The repository also cuts code/image releases (v*) with no data
-// assets, so GitHub's "latest" release is not the data release: selection is by
-// asset presence at the maximum published_at.
+// verifies a file that was NOT just downloaded through the anchor - one already
+// on disk), every one verified by the workflow before the release is published.
+// Releases up to 2026-11-19 may also carry a zstd delta asset
+// (meta.sqlite.patch.from-<tag>.zst); nothing reads it any more. The repository
+// also cuts code/image releases (v*) with no data assets, so GitHub's "latest"
+// release is not the data release: selection is by asset presence at the
+// maximum published_at.
 package release
 
 import (
@@ -50,8 +52,8 @@ const (
 	// download is verified against while it streams.
 	DataDigestAsset = DataAsset + ".sha256"
 	// RawDigestAsset is the checksum of the DECOMPRESSED artifact. No raw
-	// artifact is published - only its digest, which verifies a decompressed,
-	// reconstructed or already-present file.
+	// artifact is published - only its digest, which verifies a decompressed or
+	// already-present file.
 	RawDigestAsset = "meta.sqlite.sha256"
 )
 
@@ -406,10 +408,9 @@ func (c *Client) LatestData(ctx context.Context, etag string) (rel *Release, new
 			continue
 		}
 		// Greater-or-equal keeps the LATER-in-list entry on equal timestamps,
-		// matching release.yml's jq (max_by is a stable sort, so it returns the
-		// last of a tied pair) - the two selectors must agree even on a
-		// same-second tie, or the workflow could base its patch on a release no
-		// running server has loaded.
+		// matching jq's max_by (a stable sort, so it returns the last of a tied
+		// pair) - the selector a shell consumer of the release list writes, so
+		// the two agree even on a same-second tie.
 		if best == nil || !r.PublishedAt.Before(best.PublishedAt) {
 			best = r
 		}
@@ -566,8 +567,7 @@ func (c *Client) checkAssetTarget(u *url.URL) error {
 
 // maxSmallAssetBytes bounds the assets that are read into memory. Only the
 // `sha256sum`-format checksum files take that path (about 80 bytes each); the
-// artifact and a patch are streamed to disk, so nothing unbounded is ever
-// buffered.
+// artifact is streamed to disk, so nothing unbounded is ever buffered.
 const maxSmallAssetBytes = 4 << 10
 
 // readAsset reads the named asset of rel into memory - checksum files only: it
@@ -594,42 +594,13 @@ func (c *Client) readAsset(ctx context.Context, rel *Release, name string) ([]by
 
 // ReadDigest reads one of rel's `sha256sum`-format checksum assets (name is
 // DataDigestAsset or RawDigestAsset) and returns the lowercase hex digest it
-// states. metaserve verifies a cached or patch-reconstructed artifact against
-// RawDigestAsset's.
+// states. metaserve verifies a cached artifact against RawDigestAsset's.
 func (c *Client) ReadDigest(ctx context.Context, rel *Release, name string) (string, error) {
 	sum, err := c.readAsset(ctx, rel, name)
 	if err != nil {
 		return "", err
 	}
 	return ExpectedDigest(sum)
-}
-
-// DownloadAsset streams the named asset of rel straight into dstPath (a temp
-// file in dstPath's folder, then a rename - never through memory) and returns
-// the bytes written. Nothing is verified here: the one caller (metaserve's patch
-// path) verifies what the asset RECONSTRUCTS, against RawDigestAsset, which is
-// the guarantee that matters.
-//
-// The bound on what lands on disk is the asset's DECLARED size: nothing is
-// decompressed here, so the release states exactly how many bytes this is, and a
-// body that runs past its own declaration is either a corrupt transfer or a host
-// answering with something else. A release that declares no size falls back to
-// the expansion bound (a ceiling rather than a size, but still a bound).
-func (c *Client) DownloadAsset(ctx context.Context, rel *Release, name, dstPath string) (int64, error) {
-	asset, err := rel.need(name)
-	if err != nil {
-		return 0, err
-	}
-	bound := asset.Size
-	if bound <= 0 {
-		bound = c.expansionBound(name, 0)
-	}
-	resp, err := c.get(ctx, asset.URL)
-	if err != nil {
-		return 0, err
-	}
-	defer func() { _ = resp.Body.Close() }()
-	return installStream(resp.Body, dstPath, bound, nil)
 }
 
 // Result describes an installed artifact.
@@ -655,7 +626,7 @@ type Result struct {
 // RawDigestAsset check here would add a failure mode (a broken checksum file
 // failing a download that is provably right) without adding a guarantee - and
 // metaserve's full download is the fallback that must still work when the raw
-// checksum, which gates its patch path, is the broken asset. The decompressed
+// checksum, which gates its cache path, is the broken asset. The decompressed
 // file's digest comes back in Result for a caller that records or compares it.
 //
 // The decompressed size is bounded (see DecompressBound: the declared size, a
@@ -802,21 +773,6 @@ func checkDigest(h hash.Hash, wantHexDigest string) error {
 	return nil
 }
 
-// InstallVerified streams src into dstPath atomically (a temp file in dstPath's
-// folder, fsynced, then renamed), requiring the streamed bytes to hash to
-// wantHexDigest (empty = no digest check) before anything is installed. maxBytes
-// bounds what is written (0 = unbounded); crossing it fails exactly as a digest
-// mismatch does. It returns the bytes written.
-func InstallVerified(src io.Reader, dstPath, wantHexDigest string, maxBytes int64) (int64, error) {
-	if wantHexDigest == "" {
-		return installStream(src, dstPath, maxBytes, nil)
-	}
-	h := sha256.New()
-	return installStream(io.TeeReader(src, h), dstPath, maxBytes, func() error {
-		return checkDigest(h, wantHexDigest)
-	})
-}
-
 // downloadBufferBytes is the read buffer for the on-disk paths - large enough
 // that a multi-hundred-MB artifact is not read in 4KB syscalls, small enough to
 // be irrelevant to the process's footprint.
@@ -910,12 +866,11 @@ func VerifyFile(path, wantHexDigest string) error {
 
 // ---- the expansion bound -----------------------------------------------------
 
-// The EXPANSION BOUND. A decompressed download - and metaserve's binary-delta
-// reconstruction - writes a file whose size is decided by the asset's CONTENT
-// rather than by anything either end declared: a gzip stream states no output
-// size, and a zstd --patch-from frame's window is the whole base artifact. The
-// sha256 gate rejects a wrong result, but only once the bytes are on disk, so
-// the bound is what keeps a runaway expansion from filling the volume first.
+// The EXPANSION BOUND. A decompressed download writes a file whose size is
+// decided by the asset's CONTENT rather than by anything either end declared: a
+// gzip stream states no output size. The sha256 gate rejects a wrong result,
+// but only once the bytes are on disk, so the bound is what keeps a runaway
+// expansion from filling the volume first.
 //
 // IT IS A CEILING, NOT AN EXPECTATION, and the failure mode it must not have is
 // being too LOW. A bound the real artifact exceeds is not a caught attack, it is

@@ -53,7 +53,7 @@ func TestPruneSparesEveryArtifactStillInGrace(t *testing.T) {
 	v3 := readDB(t, artifacttest.Build(t, v3Catalog()))
 	cache := t.TempDir()
 
-	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, v1, "", nil)})
+	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: releasetest.DataAssets(t, v1)})
 	// A grace long enough that nothing is collected by a timer during the test:
 	// every file that disappears here disappeared because a prune chose to.
 	srv := newPollServerIn(t, v1Path, cache, f, 10*time.Minute)
@@ -63,13 +63,13 @@ func TestPruneSparesEveryArtifactStillInGrace(t *testing.T) {
 	}
 	first := srv.current() // the handle an in-flight request would be holding
 
-	f.Publish(tagR2, makeAssets(t, v2, "", nil))
+	f.Publish(tagR2, releasetest.DataAssets(t, v2))
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatal(err)
 	}
 	second := srv.current()
 
-	f.Publish(tagR3, makeAssets(t, v3, "", nil))
+	f.Publish(tagR3, releasetest.DataAssets(t, v3))
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatal(err)
 	}
@@ -108,14 +108,14 @@ func TestPruneSparesEveryArtifactStillInGrace(t *testing.T) {
 func TestPruneCollectsArtifactsOnceGraceElapses(t *testing.T) {
 	v1Path, v1, _, v2 := buildV1V2(t)
 	cache := t.TempDir()
-	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, v1, "", nil)})
+	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: releasetest.DataAssets(t, v1)})
 	srv := newPollServerIn(t, v1Path, cache, f, 20*time.Millisecond)
 
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatal(err)
 	}
 	superseded := srv.current().Path()
-	f.Publish(tagR2, makeAssets(t, v2, "", nil))
+	f.Publish(tagR2, releasetest.DataAssets(t, v2))
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatal(err)
 	}
@@ -146,7 +146,7 @@ func TestPruneCollectsArtifactsOnceGraceElapses(t *testing.T) {
 func TestSlowButHealthyDownloadIsNotAborted(t *testing.T) {
 	v1Path, _, _, v2 := buildV1V2(t)
 	cache := t.TempDir()
-	assets := makeAssets(t, v2, "", nil)
+	assets := releasetest.DataAssets(t, v2)
 	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: assets})
 	srv := newPollServerIn(t, v1Path, cache, f, time.Minute)
 	const stall = 300 * time.Millisecond
@@ -177,7 +177,7 @@ func TestSlowButHealthyDownloadIsNotAborted(t *testing.T) {
 func TestStalledDownloadIsAbandoned(t *testing.T) {
 	v1Path, _, _, v2 := buildV1V2(t)
 	cache := t.TempDir()
-	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: makeAssets(t, v2, "", nil)})
+	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: releasetest.DataAssets(t, v2)})
 	f.HangOn(release.DataAsset)
 	srv := newPollServerIn(t, v1Path, cache, f, time.Minute)
 	srv.gh = srv.newGHClient("owner/name", f.URL,
@@ -213,7 +213,7 @@ func TestStalledDownloadIsAbandoned(t *testing.T) {
 func TestRefreshAdoptsVerifiedCachedArtifact(t *testing.T) {
 	v1Path, _, _, v2 := buildV1V2(t)
 	cache := t.TempDir()
-	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: makeAssets(t, v2, "", nil)})
+	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: releasetest.DataAssets(t, v2)})
 	srv := newPollServerIn(t, v1Path, cache, f, time.Minute)
 	// What the previous container left behind.
 	if err := os.WriteFile(srv.dbCachePath(tagR2), v2, 0o600); err != nil {
@@ -240,7 +240,7 @@ func TestRefreshAdoptsVerifiedCachedArtifact(t *testing.T) {
 func TestRefreshRedownloadsAnUnverifiableCachedArtifact(t *testing.T) {
 	v1Path, v1, _, v2 := buildV1V2(t)
 	cache := t.TempDir()
-	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: makeAssets(t, v2, "", nil)})
+	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: releasetest.DataAssets(t, v2)})
 	srv := newPollServerIn(t, v1Path, cache, f, time.Minute)
 	// A perfectly loadable artifact - just not this release's.
 	if err := os.WriteFile(srv.dbCachePath(tagR2), v1, 0o600); err != nil {
@@ -266,7 +266,7 @@ func TestRefreshRedownloadsAnUnverifiableCachedArtifact(t *testing.T) {
 func TestDegradedBootServesStaleCachedArtifact(t *testing.T) {
 	_, v1, _, _ := buildV1V2(t)
 	cache := t.TempDir()
-	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, v1, "", nil)})
+	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: releasetest.DataAssets(t, v1)})
 	f.SetDown(true)
 
 	// Seed the volume the way a previous container would have.
@@ -288,7 +288,7 @@ func TestDegradedBootServesStaleCachedArtifact(t *testing.T) {
 		t.Errorf("works = %d, want 4", snap.Stats().Works)
 	}
 	if snap.Info().Tag != tagR1 {
-		t.Errorf("snapshot tag = %q, want %q (read back from the file name, so a patch can still be based on it)", snap.Info().Tag, tagR1)
+		t.Errorf("snapshot tag = %q, want %q (read back from the file name)", snap.Info().Tag, tagR1)
 	}
 	if srv.loaded != "" {
 		t.Errorf("loaded = %q, want empty: nothing has confirmed this artifact against a release yet", srv.loaded)

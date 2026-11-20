@@ -6,7 +6,6 @@ import (
 	"log"
 	"os"
 	"path/filepath"
-	"strconv"
 	"strings"
 	"testing"
 	"time"
@@ -58,8 +57,8 @@ func TestLatestDataPicksTheNewestDataRelease(t *testing.T) {
 }
 
 // TestLatestDataTieBreaksLikeJq: on equal published_at the LATER-listed release
-// wins, as release.yml's max_by does - the two selectors must agree even on a
-// same-second tie.
+// wins, as jq's max_by does - so a shell consumer selecting the newest data
+// release agrees with LatestData even on a same-second tie.
 func TestLatestDataTieBreaksLikeJq(t *testing.T) {
 	at := time.Date(2026, 10, 9, 12, 0, 0, 0, time.UTC)
 	data := map[string][]byte{DataAsset: []byte("gz")}
@@ -300,7 +299,8 @@ func TestExpansionBoundReadsTheBaseSize(t *testing.T) {
 func TestTempFile(t *testing.T) {
 	dir := t.TempDir()
 	// Leave one behind the way a killed process would: a failed install.
-	if _, err := InstallVerified(bytes.NewReader([]byte("x")), filepath.Join(dir, "meta.sqlite"), "00", 0); err == nil {
+	gz := releasetest.Gzip(t, []byte("x"))
+	if _, err := gunzipStreamTo(bytes.NewReader(gz), filepath.Join(dir, "meta.sqlite"), "00", decompressFloor); err == nil {
 		t.Fatal("a wrong digest installed")
 	}
 	f, err := os.CreateTemp(dir, tempPattern)
@@ -318,33 +318,16 @@ func TestTempFile(t *testing.T) {
 	}
 }
 
-// TestWorkflowMatchesTheSelection: release.yml's prev-release selection (what a
-// patch is based on) must pick the release LatestData picks - by data-asset
-// presence, drafts and prereleases excluded, by max published_at, over the same
-// window - or the workflow bases its delta on a release no running server has
-// loaded. Expected substrings are derived from the Go constants where one exists;
-// the draft/prerelease jq predicate is pinned verbatim (an equivalent
-// reformatting requires updating this test). metaserve's own half (the zstd
-// window and the patch asset name) is internal/serve's TestWorkflowMatchesGoConstants.
-func TestWorkflowMatchesTheSelection(t *testing.T) {
+// TestWorkflowPublishesTheAssetContract: release.yml uploads every asset this
+// package's consumers read - the data asset and both checksums - so a renamed
+// constant or a dropped upload fails here rather than in every deployment.
+func TestWorkflowPublishesTheAssetContract(t *testing.T) {
 	wf, err := os.ReadFile(filepath.Join("..", "..", ".github", "workflows", "release.yml"))
 	if err != nil {
 		t.Fatal(err)
 	}
 	s := string(wf)
-	if want := `.name == "` + DataAsset + `"`; !strings.Contains(s, want) {
-		t.Errorf("release.yml prev selection does not filter releases by %q - it must pick the newest release carrying the data asset, not GitHub's latest", want)
-	}
-	if want := `select((.draft or .prerelease) | not)`; !strings.Contains(s, want) {
-		t.Errorf("release.yml prev selection does not contain %q - drafts/prereleases must be excluded like LatestData does", want)
-	}
-	if want := `max_by(.published_at)`; !strings.Contains(s, want) {
-		t.Errorf("release.yml prev selection does not contain %q - it must pick by publish time, not list position, like LatestData does", want)
-	}
-	if want := "per_page=" + strconv.Itoa(releaseListPageSize); !strings.Contains(s, want) {
-		t.Errorf("release.yml prev selection does not contain %q - keep the scan window in sync with releaseListPageSize", want)
-	}
-	for _, name := range []string{DataDigestAsset, RawDigestAsset} {
+	for _, name := range []string{DataAsset, DataDigestAsset, RawDigestAsset} {
 		if !strings.Contains(s, name) {
 			t.Errorf("release.yml does not publish %s", name)
 		}

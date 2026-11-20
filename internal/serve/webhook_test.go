@@ -115,7 +115,7 @@ func TestWebhookRouteAbsentWithoutSecret(t *testing.T) {
 
 func TestWebhookRejectsUnauthenticatedAndOversizedRequests(t *testing.T) {
 	seed := artifacttest.Build(t, artifacttest.Fixture())
-	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, readDB(t, seed), "", nil)})
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: releasetest.DataAssets(t, readDB(t, seed))})
 	srv := newWebhookServer(t, seed, fake)
 	body := `{"action":"published","repository":{"full_name":"owner/name"}}`
 
@@ -145,7 +145,7 @@ func TestWebhookRejectsUnauthenticatedAndOversizedRequests(t *testing.T) {
 
 func TestWebhookIgnoresUnrelatedSignedEvents(t *testing.T) {
 	seed := artifacttest.Build(t, artifacttest.Fixture())
-	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, readDB(t, seed), "", nil)})
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: releasetest.DataAssets(t, readDB(t, seed))})
 	srv := newWebhookServer(t, seed, fake)
 
 	tests := []struct {
@@ -173,7 +173,7 @@ func TestWebhookIgnoresUnrelatedSignedEvents(t *testing.T) {
 
 func TestWebhookRefreshesPublishedRelease(t *testing.T) {
 	v1Path, _, _, v2 := buildV1V2(t)
-	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: makeAssets(t, v2, "", nil)})
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: releasetest.DataAssets(t, v2)})
 	srv := newWebhookServer(t, v1Path, fake)
 	body := `{"action":"published","repository":{"full_name":"owner/name"}}`
 
@@ -202,7 +202,7 @@ func TestWebhookRefreshesPublishedRelease(t *testing.T) {
 // that refreshed synchronously would never answer.
 func TestWebhookAnswersBeforeTheRefresh(t *testing.T) {
 	v1Path, _, _, v2 := buildV1V2(t)
-	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: makeAssets(t, v2, "", nil)})
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: releasetest.DataAssets(t, v2)})
 	srv := newWebhookServer(t, v1Path, fake)
 	body := `{"action":"published","repository":{"full_name":"owner/name"}}`
 
@@ -239,7 +239,7 @@ func TestWebhookAnswersBeforeTheRefresh(t *testing.T) {
 
 func TestWebhookRejectsMalformedSignedJSON(t *testing.T) {
 	seed := artifacttest.Build(t, artifacttest.Fixture())
-	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, readDB(t, seed), "", nil)})
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: releasetest.DataAssets(t, readDB(t, seed))})
 	srv := newWebhookServer(t, seed, fake)
 	body := `{"action":`
 

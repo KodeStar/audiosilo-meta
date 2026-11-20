@@ -75,10 +75,11 @@ COPY --from=site /site/dist /app/site
 USER app
 EXPOSE 8080
 # /data holds the downloaded/hot-swapped release artifacts. It is a disposable
-# cache: a boot always fetches the newest release (the first refresh is always
-# full - there is no loaded artifact to patch against), so persisting it does
-# NOT shorten startup. What it buys is the patch base for the refreshes that
-# follow, so later updates transfer a delta instead of the whole artifact.
+# cache: a boot always asks GitHub for the newest release. What persisting it
+# buys is a restart without a download - when the volume already holds that
+# release's artifact it is adopted once it hashes to the published digest - and,
+# when GitHub cannot be reached at boot, the newest cached artifact served
+# (stale) instead of a 503.
 VOLUME ["/data"]
 
 # DELIBERATELY NO HEALTHCHECK. /healthz is a READINESS probe - it answers 503
