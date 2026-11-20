@@ -26,8 +26,8 @@ it('stacks the series page marks under the title on a phone', () => {
   }))
   expect(rowClass(markup)).toContain(ENTRY_ROW)
   expect(ENTRY_ROW.split(' ')).toEqual(expect.arrayContaining(['flex-col', 'sm:flex-row']))
-  // The title wraps to two lines on a phone and truncates only from `sm` up.
-  expect(markup).toMatch(/<h2 class="line-clamp-2 [^"]*sm:truncate"/)
+  // The title wraps to two lines on a phone and keeps to one from `sm` up.
+  expect(markup).toMatch(/<h2 class="line-clamp-2 [^"]*sm:line-clamp-1"/)
   // Both marks stay operable and named after the work.
   expect(markup).toContain('aria-label="I have A Very Long Work Title That Needs Room"')
   expect(markup).toContain('aria-label="Not interested in A Very Long Work Title That Needs Room"')

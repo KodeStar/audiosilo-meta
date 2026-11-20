@@ -129,7 +129,7 @@ export function EntryRow({
           <CoverImage src={work.cover_url} alt={`Cover of ${work.title}`} />
         </div>
         <div className="min-w-0 flex-1">
-          <h2 className="line-clamp-2 text-base font-medium text-hi group-hover:text-pink-300 sm:truncate">
+          <h2 className="line-clamp-2 text-base font-medium text-hi group-hover:text-pink-300 sm:line-clamp-1">
             {work.title}
           </h2>
           {work.authors && work.authors.length > 0 ? (
