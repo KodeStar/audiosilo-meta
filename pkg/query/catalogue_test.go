@@ -318,6 +318,25 @@ func TestSeriesPositionStartKey(t *testing.T) {
 	}
 }
 
+// legacyArtifactStmts are the statements that turn a freshly built artifact into
+// one of the given older schema version: what that version's builder did not yet
+// write (columns, tables and indexes) is dropped, so a legacy-artifact test sees
+// exactly the shape a server still serving that release reads.
+func legacyArtifactStmts(version int) []string {
+	var stmts []string
+	if version < 13 {
+		stmts = append(stmts, "ALTER TABLE recordings DROP COLUMN abridgement", "DROP INDEX idx_series_works_position", "DROP INDEX idx_recording_narrators_person_recording",
+			"DROP INDEX idx_works_title_nocase", "DROP INDEX idx_people_name_nocase", "DROP INDEX idx_series_name_nocase")
+	}
+	if version < 12 {
+		stmts = append(stmts, "DROP TABLE work_alternate_titles")
+	}
+	if version < 8 {
+		stmts = append(stmts, "ALTER TABLE chapters DROP COLUMN audio_url")
+	}
+	return stmts
+}
+
 // TestSeriesOrderReadsWithoutPositionIndex: idx_series_works_position arrived
 // in schema 13. On a schema 11 or 12 artifact every reader of the series member
 // order still reaches series_works through idx_series_works_series (a per-series
@@ -327,12 +346,7 @@ func TestSeriesOrderReadsWithoutPositionIndex(t *testing.T) {
 	const series = "the-stormlight-archive"
 	for _, version := range []int{11, 12} {
 		t.Run(fmt.Sprint(version), func(t *testing.T) {
-			stmts := []string{"ALTER TABLE recordings DROP COLUMN abridgement", "DROP INDEX idx_series_works_position", "DROP INDEX idx_recording_narrators_person_recording",
-				"DROP INDEX idx_works_title_nocase", "DROP INDEX idx_people_name_nocase", "DROP INDEX idx_series_name_nocase"}
-			if version < 12 {
-				stmts = append(stmts, "DROP TABLE work_alternate_titles")
-			}
-			snap := openTestDB(t, artifacttest.Altered(t, artifacttest.Fixture(), version, stmts...))
+			snap := openTestDB(t, artifacttest.Altered(t, artifacttest.Fixture(), version, legacyArtifactStmts(version)...))
 			for _, tt := range []struct {
 				query string
 				args  []any
@@ -550,18 +564,7 @@ func TestAbridgementLegacyArtifacts(t *testing.T) {
 			t.Parallel() // each subtest builds the 1,000-recording fixture
 			cat := catalogueFixture()
 			cat.Works[0].AlternateTitles = []string{"Book Zero"} // book-000
-			var stmts []string
-			if version < 13 {
-				stmts = append(stmts, "ALTER TABLE recordings DROP COLUMN abridgement", "DROP INDEX idx_series_works_position", "DROP INDEX idx_recording_narrators_person_recording",
-					"DROP INDEX idx_works_title_nocase", "DROP INDEX idx_people_name_nocase", "DROP INDEX idx_series_name_nocase")
-			}
-			if version < 12 {
-				stmts = append(stmts, "DROP TABLE work_alternate_titles")
-			}
-			if version < 8 {
-				stmts = append(stmts, "ALTER TABLE chapters DROP COLUMN audio_url")
-			}
-			snap := openTestDB(t, artifacttest.Altered(t, cat, version, stmts...))
+			snap := openTestDB(t, artifacttest.Altered(t, cat, version, legacyArtifactStmts(version)...))
 			page, err := snap.SeriesListeningGuide(t.Context(), "long-series", 1, 0)
 			if err != nil {
 				t.Fatal(err)
