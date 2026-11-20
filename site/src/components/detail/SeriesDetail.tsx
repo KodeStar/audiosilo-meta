@@ -15,7 +15,7 @@ import {
   watchedSeries,
 } from '../../lib/watchlist'
 import { useWatchlist, type WatchlistHandle } from '../watching/use-watchlist'
-import { OwnCheckbox, ReleaseLine, SkipButton } from '../watching/entry-ui'
+import { ENTRY_ROW, EntryMarks, ReleaseLine } from '../watching/entry-ui'
 import CoverImage from '../cards/CoverImage'
 import PersonLinks from '../cards/PersonLinks'
 import { TEXT_LINK } from '../ui'
@@ -98,7 +98,7 @@ function WatchToggle({
     A SKIPPED entry is still listed here in its own place: this is the series'
     own listing, so hiding a volume from it would misreport the series. The
     skip only takes anything out of the watching page. */
-function EntryRow({
+export function EntryRow({
   entry,
   now,
   owned,
@@ -118,8 +118,8 @@ function EntryRow({
   // BOTH what sits at the row's right edge and whether there is a checkbox.
   const marking = owned !== null
   return (
-    <li className="group flex items-center gap-4 rounded-2xl border border-edge bg-surface p-4 transition-colors hover:border-pink-500/40 sm:gap-5">
-      <a href={href.work(work.id)} className="flex min-w-0 flex-1 items-center gap-4 sm:gap-5">
+    <li className={`group ${ENTRY_ROW} rounded-2xl border border-edge bg-surface p-4 transition-colors hover:border-pink-500/40 sm:gap-5`}>
+      <a href={href.work(work.id)} className="flex min-w-0 items-center gap-4 sm:flex-1 sm:gap-5">
         <span className="w-10 shrink-0 text-center text-2xl font-black tabular-nums text-edge transition-colors group-hover:text-pink-500 sm:w-12 sm:text-3xl">
           {entry.position}
         </span>
@@ -129,7 +129,7 @@ function EntryRow({
           <CoverImage src={work.cover_url} alt={`Cover of ${work.title}`} />
         </div>
         <div className="min-w-0 flex-1">
-          <h2 className="truncate text-base font-medium text-hi group-hover:text-pink-300">
+          <h2 className="line-clamp-2 text-base font-medium text-hi group-hover:text-pink-300 sm:truncate">
             {work.title}
           </h2>
           {work.authors && work.authors.length > 0 ? (
@@ -154,10 +154,7 @@ function EntryRow({
         )}
       </a>
       {marking ? (
-        <span className="flex shrink-0 items-center gap-2">
-          <OwnCheckbox title={work.title} checked={owned} onChange={onOwned} />
-          <SkipButton title={work.title} skipped={skipped} onChange={onSkipped} />
-        </span>
+        <EntryMarks title={work.title} owned={owned} skipped={skipped} onOwned={onOwned} onSkipped={onSkipped} />
       ) : null}
     </li>
   )
