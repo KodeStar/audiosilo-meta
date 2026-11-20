@@ -78,7 +78,7 @@ terms (the asset names and the selection rule are the contract). The exported
 reads beyond `Open`/`Info`/`NewHandler` (`WorkDetail`, `Person`, `Series`, the page
 families and guide probes, `HasRecapGuide`/`HasCharacterGuide`/`HasChapteredRecaps` (the
 ONE definition of which guide pages exist), bounded `Browse`, `RecordingChapters`, `Chapters`,
-`SeriesListeningGuide`, `PersonRecordings`, `PageRevision`, `RedirectRetired`, `DisplayDescription`) exist for
+`SeriesListeningGuide`, `PersonRecordings`, `PageRevision`, `PageRevisions`, `RevisionsAt`, `PositionUnit`, `FirstCover`, `RedirectRetired`, `DisplayDescription`) exist for
 metaserve's pages and internal/revision's digests.
 
 **The API server (`pkg/query`, served by `internal/serve`)** opens the SQLite artifact read-only and
@@ -917,9 +917,10 @@ order (a `sitemapFamily` carries an optional SUFFIX, so the guide families list
 is its page's REVISION date - the last meaningful content change, which
 internal/revision dates at release time across the composed core/community
 releases (schema_version 14, `page_revisions`) - read by the shard query itself
-(`PageEntry.RevisedAt`: from that version each family's *Revised* spelling adds a
-correlated primary-key probe of page_revisions as its third column, so the walk is
-unchanged). It is omitted where the artifact knows none: every URL of an older
+(`PageEntry.RevisedAt`: when the artifact holds any revision, each family's
+*Revised* spelling adds a correlated primary-key probe of page_revisions as its
+third column, so the walk is unchanged; an artifact holding none is read with
+the plain spelling). It is omitted where the artifact knows none: every URL of an older
 artifact, every page unchanged since the chain started. added_at is never used:
 it records creation/import, not content revision. The SAME date is the page's
 JSON-LD `dateModified` (Book, Article, BookSeries; never a Person) and its

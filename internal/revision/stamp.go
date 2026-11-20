@@ -16,12 +16,6 @@ import (
 	"github.com/kodestar/audiosilo-meta/pkg/query"
 )
 
-// Families is every page family a revision is recorded for, in the order the
-// rows are written.
-var Families = []query.PageFamily{
-	query.CharacterPages, query.PersonPages, query.RecapPages, query.SeriesPages, query.WorkPages,
-}
-
 // Options is what Stamp needs besides the artifact it stamps.
 type Options struct {
 	// Previous is the previous data release's artifact, which the new one's dates
@@ -45,11 +39,14 @@ type Options struct {
 type Summary struct {
 	// At is the stamp changed pages were given, after the clamp.
 	At string
-	// Pages is how many pages the new artifact holds; Changed how many of them
-	// were stamped At (changed or new), Carried how many kept a date from the
-	// previous release and Unknown how many kept none.
-	Pages, Changed, Carried, Unknown int
+	// Changed is how many of the new artifact's pages were stamped At (changed or
+	// new), Carried how many kept a date from the previous release and Unknown
+	// how many kept none.
+	Changed, Carried, Unknown int
 }
+
+// Pages is how many pages the new artifact holds.
+func (s Summary) Pages() int { return s.Changed + s.Carried + s.Unknown }
 
 // Stamp fills the page_revisions table of the freshly built artifact at out
 // (which internal/build left empty) by comparing it with opts.Previous - see the
@@ -91,7 +88,7 @@ func Stamp(ctx context.Context, out string, opts Options) (Summary, error) {
 	}
 	stamp := at.Format(time.RFC3339)
 
-	sum := Summary{At: stamp, Pages: len(current)}
+	sum := Summary{At: stamp}
 	rows := make(map[Key]string, len(current))
 	for k, d := range current {
 		if pd, ok := prev.digests[k]; ok && pd == d {
@@ -130,56 +127,15 @@ func readPrevious(ctx context.Context, path string, workers int) (*previous, err
 		return nil, err
 	}
 	p := &previous{digests: digests, dates: map[Key]string{}}
-	for _, family := range Families {
-		for offset := 0; ; offset += enumWindow {
-			entries, err := db.Pages(family, enumWindow, offset)
-			if err != nil {
-				return nil, err
-			}
-			for _, e := range entries {
-				if e.RevisedAt != nil {
-					p.dates[Key{family, e.ID}] = *e.RevisedAt
-				}
-			}
-			if len(entries) < enumWindow {
-				break
-			}
-		}
-	}
-	at, err := revisionsAt(path)
-	if err != nil {
+	if err := db.PageRevisions(func(family query.PageFamily, id, at string) {
+		p.dates[Key{family, id}] = at
+	}); err != nil {
 		return nil, err
 	}
-	p.revisionsAt = at
+	if p.revisionsAt, err = db.RevisionsAt(); err != nil {
+		return nil, err
+	}
 	return p, nil
-}
-
-// revisionsAt reads meta(revisions_at), the zero time when the artifact states
-// none (one older than the revision layer, or one built without a previous
-// release). The meta table is in every artifact, so this is asked of any version.
-func revisionsAt(path string) (time.Time, error) {
-	dsn, err := sqlitedsn.ReadOnly(path)
-	if err != nil {
-		return time.Time{}, err
-	}
-	db, err := sql.Open("sqlite", dsn)
-	if err != nil {
-		return time.Time{}, err
-	}
-	defer func() { _ = db.Close() }()
-	var v string
-	err = db.QueryRow(`SELECT value FROM meta WHERE key = 'revisions_at'`).Scan(&v)
-	if errors.Is(err, sql.ErrNoRows) {
-		return time.Time{}, nil
-	}
-	if err != nil {
-		return time.Time{}, err
-	}
-	t, err := time.Parse(time.RFC3339, v)
-	if err != nil {
-		return time.Time{}, fmt.Errorf("meta(revisions_at) %q: %w", v, err)
-	}
-	return t.UTC(), nil
 }
 
 // write inserts rows into out's page_revisions in (kind, id) order and records

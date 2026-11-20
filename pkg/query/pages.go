@@ -35,8 +35,11 @@ var pageFamilies = map[PageFamily]struct {
 	shardSQL func(*DB) string
 }{
 	RecapPages: {
-		count:    func(s *DB) int { return s.recapWorks },
-		shardSQL: func(s *DB) string { _, shard := recapSitemapSQL(s.schemaVersion); return shard },
+		count: func(s *DB) int { return s.recapWorks },
+		shardSQL: func(s *DB) string {
+			_, shard := recapSitemapSQL(s.schemaVersion)
+			return s.revisedSpelling(shard, recapsRevisedSitemapSQL)
+		},
 	},
 	CharacterPages: {
 		count:    func(s *DB) int { return s.characterWorks },
@@ -56,11 +59,13 @@ var pageFamilies = map[PageFamily]struct {
 	},
 }
 
-// revisedSpelling picks a shard query's spelling by the artifact's version: the
-// one reading page_revisions from revisionsSchemaVersion, the plain one (a NULL
-// literal in the revision column) before it, where the table does not exist.
+// revisedSpelling picks a shard query's spelling: the one reading page_revisions
+// when the artifact holds any revision, the plain one (a NULL literal in the
+// revision column) otherwise - before revisionsSchemaVersion, where the table
+// does not exist, and in an artifact built without a previous release, where it
+// is empty and a probe per row would find nothing.
 func (s *DB) revisedSpelling(plain, revised string) string {
-	if s.hasRevisionLayer() {
+	if s.hasRevisions {
 		return revised
 	}
 	return plain
@@ -123,8 +128,9 @@ func (s *DB) Pages(family PageFamily, limit, offset int) ([]PageEntry, error) {
 // version with no such value selects a literal NULL for it: one row shape, one
 // scan loop, and no per-family branch that could disagree with the query it
 // belongs to. Only works carries an added_at column. revised_at is read from
-// page_revisions (revisionsSchemaVersion) by the *Revised* spellings below and is
-// NULL in the plain ones, which are what an older artifact is read with. A page
+// page_revisions (revisionsSchemaVersion) by the *Revised* spellings (revisions.go)
+// and is NULL in the plain ones, which are what an artifact holding no revision
+// is read with (revisedSpelling). A page
 // with no revision date emits no <lastmod>, which is the protocol's own "unknown"
 // - nothing is fabricated.
 const (
@@ -164,18 +170,12 @@ const (
 // alone. Every other recap query here (the count, the guide probe) follows this
 // same pair of spellings.
 //
-// From revisionsSchemaVersion the listing also reads each page's revision date;
-// the count is unchanged, since it is the same set of pages.
-//
 // It is one PURE function of the version rather than a value threaded through
 // the snapshot, so the pairing is structural: the count and the listing are
 // derived from the same input, at every call, and a snapshot's schemaVersion is
 // immutable - so "how many shards a family advertises" and "what is in them"
 // cannot be computed against different tables however the two are reached.
 func recapSitemapSQL(schemaVersion int) (countSQL, shardSQL string) {
-	if schemaVersion >= revisionsSchemaVersion {
-		return recapWorksCountSQL, recapsRevisedSitemapSQL
-	}
 	if schemaVersion >= summarySchemaVersion {
 		return recapWorksCountSQL, recapsSitemapSQL
 	}
@@ -217,6 +217,29 @@ func HasChapteredRecaps(d *WorkDetail) bool {
 		}
 	}
 	return false
+}
+
+// PositionUnit is what a position counts on this work's pages: the unit its
+// position_scale states, else the chapter a position is by default. Never empty,
+// because metaserve capitalizes it and an artifact is only as sound as its build.
+// The guide titles, row labels and the work page's recap link all read it, and
+// internal/revision digests it as theirs.
+func PositionUnit(d *WorkDetail) string {
+	if d.PositionScale != nil && d.PositionScale.Unit != "" {
+		return d.PositionScale.Unit
+	}
+	return "chapter"
+}
+
+// FirstCover is the cover a work's pages show: the first recording that states
+// one, or "" when none does.
+func FirstCover(d *WorkDetail) string {
+	for _, rec := range d.Recordings {
+		if rec.CoverURL != "" {
+			return rec.CoverURL
+		}
+	}
+	return ""
 }
 
 // ---- the guide pages' presence probes ---------------------------------------

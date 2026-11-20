@@ -119,5 +119,5 @@ func main() {
 		os.Exit(1)
 	}
 	fmt.Fprintf(os.Stderr, "revisions against %s: %d pages, %d changed (stamped %s), %d carried, %d unknown, in %s\n",
-		*previous, sum.Pages, sum.Changed, sum.At, sum.Carried, sum.Unknown, time.Since(start).Round(time.Second))
+		*previous, sum.Pages(), sum.Changed, sum.At, sum.Carried, sum.Unknown, time.Since(start).Round(time.Second))
 }

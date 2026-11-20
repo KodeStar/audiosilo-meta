@@ -1,6 +1,11 @@
 package query
 
-import "database/sql"
+import (
+	"database/sql"
+	"errors"
+	"fmt"
+	"time"
+)
 
 // The REVISION layer (revisionsSchemaVersion): the page_revisions table, one row
 // per page whose last meaningful content change is known, keyed by the page's
@@ -53,7 +58,57 @@ const (
 	// anyRevisionSQL settles DB.hasRevisions at load (and proves the table a
 	// version 14 artifact claims).
 	anyRevisionSQL = `SELECT EXISTS(SELECT 1 FROM page_revisions)`
+	// allRevisionsSQL is the whole table, for the release-time revision pass
+	// (internal/revision) - a deliberate scan, never a serve read.
+	allRevisionsSQL = `SELECT kind, id, revised_at FROM page_revisions`
+	// revisionsAtSQL is the stamp the artifact's revisions were made at. The meta
+	// table is in every artifact, so it is asked of any version.
+	revisionsAtSQL = `SELECT value FROM meta WHERE key = 'revisions_at'`
 )
+
+// PageRevisions calls fn for every page whose revision date the artifact knows,
+// in no particular order: the release-time revision pass reads the previous
+// release's dates through it. An artifact older than revisionsSchemaVersion, or
+// one built without a previous release, knows none.
+func (s *DB) PageRevisions(fn func(family PageFamily, id, revisedAt string)) error {
+	if !s.hasRevisions {
+		return nil
+	}
+	rows, err := s.db.Query(allRevisionsSQL)
+	if err != nil {
+		return err
+	}
+	defer func() { _ = rows.Close() }()
+	for rows.Next() {
+		var family, id, at string
+		if err := rows.Scan(&family, &id, &at); err != nil {
+			return err
+		}
+		fn(PageFamily(family), id, at)
+	}
+	return rows.Err()
+}
+
+// RevisionsAt is the artifact's meta(revisions_at), the stamp its changed pages
+// were dated at: the zero time when it states none (an artifact older than the
+// revision layer, or one built without a previous release), and an error when
+// it states one that does not parse - unlike Info's BuiltAt, because the revision
+// pass clamps the next stamp to it and must not lose that floor silently.
+func (s *DB) RevisionsAt() (time.Time, error) {
+	var v string
+	err := s.db.QueryRow(revisionsAtSQL).Scan(&v)
+	if errors.Is(err, sql.ErrNoRows) {
+		return time.Time{}, nil
+	}
+	if err != nil {
+		return time.Time{}, err
+	}
+	t, err := time.Parse(time.RFC3339, v)
+	if err != nil {
+		return time.Time{}, fmt.Errorf("meta(revisions_at) %q: %w", v, err)
+	}
+	return t.UTC(), nil
+}
 
 // PageRevision is the date of the last meaningful content change of family's
 // page id (RFC 3339), or "" when the artifact does not know one: the page has

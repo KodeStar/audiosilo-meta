@@ -376,7 +376,7 @@ func TestRowsStayWithinTheirFamily(t *testing.T) {
 		family, _, _ := strings.Cut(k, "/")
 		perFamily[family]++
 	}
-	for _, family := range Families {
+	for _, family := range []query.PageFamily{query.CharacterPages, query.PersonPages, query.RecapPages, query.SeriesPages, query.WorkPages} {
 		listed := map[string]bool{}
 		entries, err := db.Pages(family, 1000, 0)
 		if err != nil {

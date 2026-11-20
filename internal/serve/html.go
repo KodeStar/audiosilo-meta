@@ -517,15 +517,6 @@ func firstRuntime(d *query.WorkDetail) string {
 	return ""
 }
 
-func firstCover(d *query.WorkDetail) string {
-	for _, rec := range d.Recordings {
-		if rec.CoverURL != "" {
-			return rec.CoverURL
-		}
-	}
-	return ""
-}
-
 // ---- person -----------------------------------------------------------------
 
 func composePersonPage(siteURL string, snap *query.DB, id string) (*entityPage, error) {
@@ -979,7 +970,7 @@ func newWorkView(d *query.WorkDetail) workView {
 	// answer (query.DisplayDescription), so they cannot disagree.
 	description, isCommunity := query.DisplayDescription(d)
 	v := workView{
-		Title: d.Title, Subtitle: d.Subtitle, CoverURL: firstCover(d),
+		Title: d.Title, Subtitle: d.Subtitle, CoverURL: query.FirstCover(d),
 		Description:            description,
 		DescriptionIsCommunity: isCommunity,
 		LicenseURL:             ccBySAURL,

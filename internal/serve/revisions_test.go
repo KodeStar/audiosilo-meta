@@ -3,6 +3,8 @@ package serve
 import (
 	"context"
 	"encoding/json"
+	"io"
+	"maps"
 	"net/http"
 	"runtime/debug"
 	"slices"
@@ -60,16 +62,11 @@ func getPageWithHeaders(t *testing.T, url string, hdr map[string]string) (int, s
 	t.Helper()
 	resp := artifacttest.GetNoFollowWith(t, url, hdr)
 	defer func() { _ = resp.Body.Close() }()
-	var b strings.Builder
-	buf := make([]byte, 32<<10)
-	for {
-		n, err := resp.Body.Read(buf)
-		b.Write(buf[:n])
-		if err != nil {
-			break
-		}
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		t.Fatal(err)
 	}
-	return resp.StatusCode, b.String(), resp.Header
+	return resp.StatusCode, string(body), resp.Header
 }
 
 // dateModified reads the page's JSON-LD dateModified: on the document itself, or
@@ -244,7 +241,7 @@ func renderedPages(t *testing.T, snap *query.DB) (whole, visible map[revision.Ke
 		query.WorkPages: composeWorkPage, query.RecapPages: composeRecapPage, query.CharacterPages: composeCharactersPage,
 		query.PersonPages: composePersonPage, query.SeriesPages: composeSeriesPage,
 	}
-	for _, family := range revision.Families {
+	for _, family := range slices.Sorted(maps.Keys(compose)) {
 		entries, err := snap.Pages(family, 1000, 0)
 		if err != nil {
 			t.Fatal(err)

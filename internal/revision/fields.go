@@ -31,7 +31,7 @@ import (
 //     GUIDE pages own the sidecars (see guideFacts). The work page shows only
 //     that a guide exists and how its link reads (workFacts), so an edited recap
 //     moves the recap page and leaves the work page alone. Of the position scale
-//     a page reads only the unit (positionUnit); its length and partial flag
+//     a page reads only the unit (query.PositionUnit); its length and partial flag
 //     reach no page.
 //   - Limit and Offset everywhere, and ListeningGuideEntry.RecordingsLimit: the
 //     window the read was asked for, echoed back. The digest reads every window
@@ -194,6 +194,9 @@ func setOf(names []string) map[string]bool {
 type encoder struct {
 	h   hash.Hash
 	buf [binary.MaxVarintLen64]byte
+	// scratch carries a string into h without a fresh []byte(s) allocation per
+	// field (h is an interface, so the conversion escapes).
+	scratch []byte
 }
 
 func (e *encoder) uint(n uint64) {
@@ -203,7 +206,8 @@ func (e *encoder) uint(n uint64) {
 
 func (e *encoder) str(s string) {
 	e.uint(uint64(len(s)))
-	_, _ = e.h.Write([]byte(s))
+	e.scratch = append(e.scratch[:0], s...)
+	_, _ = e.h.Write(e.scratch)
 }
 
 func (e *encoder) value(v reflect.Value) error {

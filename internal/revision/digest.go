@@ -30,6 +30,7 @@ package revision
 import (
 	"context"
 	"crypto/sha256"
+	"fmt"
 	"reflect"
 	"sync"
 
@@ -149,8 +150,10 @@ func (p pageDigester) digest(k Key) ([]pageDigest, error) {
 		return p.work(k.ID)
 	case query.PersonPages:
 		return p.person(k.ID)
-	default:
+	case query.SeriesPages:
 		return p.series(k.ID)
+	default:
+		return nil, fmt.Errorf("revision: no digest for the %s family", k.Family)
 	}
 }
 
@@ -183,12 +186,13 @@ func (p pageDigester) work(id string) ([]pageDigest, error) {
 	if err != nil || d == nil {
 		return nil, err
 	}
+	recapGuide, characterGuide := query.HasRecapGuide(d), query.HasCharacterGuide(d)
 	docs := []any{workFacts{
 		Detail:          d,
-		RecapGuide:      query.HasRecapGuide(d),
-		CharacterGuide:  query.HasCharacterGuide(d),
+		RecapGuide:      recapGuide,
+		CharacterGuide:  characterGuide,
 		ChapteredRecaps: query.HasChapteredRecaps(d),
-		PositionUnit:    positionUnit(d),
+		PositionUnit:    query.PositionUnit(d),
 	}}
 	for _, rec := range d.Recordings {
 		if rec.ChapterCount == 0 {
@@ -206,29 +210,29 @@ func (p pageDigester) work(id string) ([]pageDigest, error) {
 	}
 	out := []pageDigest{{Key{query.WorkPages, id}, workDigest}}
 
-	common := guideFacts{Title: d.Title, Authors: d.Authors, Cover: firstCover(d), PositionUnit: positionUnit(d)}
-	if len(d.Series) > 0 {
-		common.SeriesID, common.SeriesName = d.Series[0].ID, d.Series[0].Name
-	}
-	if query.HasRecapGuide(d) {
-		g := common
-		g.Sibling = query.HasCharacterGuide(d)
-		g.Recaps, g.RecapSummary = d.Recaps, d.RecapSummary
-		dg, err := digestOf(query.RecapPages, g)
+	// A guide page is digested from guideFacts: the facts both guides show, the
+	// sibling guide's presence and the page's own sidecar half.
+	guide := func(family query.PageFamily, g guideFacts) error {
+		g.Title, g.Authors, g.Cover, g.PositionUnit = d.Title, d.Authors, query.FirstCover(d), query.PositionUnit(d)
+		if len(d.Series) > 0 {
+			g.SeriesID, g.SeriesName = d.Series[0].ID, d.Series[0].Name
+		}
+		dg, err := digestOf(family, g)
 		if err != nil {
+			return err
+		}
+		out = append(out, pageDigest{Key{family, id}, dg})
+		return nil
+	}
+	if recapGuide {
+		if err := guide(query.RecapPages, guideFacts{Sibling: characterGuide, Recaps: d.Recaps, RecapSummary: d.RecapSummary}); err != nil {
 			return nil, err
 		}
-		out = append(out, pageDigest{Key{query.RecapPages, id}, dg})
 	}
-	if query.HasCharacterGuide(d) {
-		g := common
-		g.Sibling = query.HasRecapGuide(d)
-		g.Characters = d.Characters
-		dg, err := digestOf(query.CharacterPages, g)
-		if err != nil {
+	if characterGuide {
+		if err := guide(query.CharacterPages, guideFacts{Sibling: recapGuide, Characters: d.Characters}); err != nil {
 			return nil, err
 		}
-		out = append(out, pageDigest{Key{query.CharacterPages, id}, dg})
 	}
 	return out, nil
 }
@@ -287,26 +291,4 @@ func (p pageDigester) series(id string) ([]pageDigest, error) {
 		return nil, err
 	}
 	return []pageDigest{{Key{query.SeriesPages, id}, dg}}, nil
-}
-
-// positionUnit is the unit a position counts on this work's pages, as metaserve
-// words it: the unit the work's position_scale states, else "" for the default
-// (chapters). The guide titles, row labels and the work page's recap link all
-// read it; the scale's length and partial flag reach no page.
-func positionUnit(d *query.WorkDetail) string {
-	if d.PositionScale == nil {
-		return ""
-	}
-	return d.PositionScale.Unit
-}
-
-// firstCover is the cover a guide page shows (its og:image): the first recording
-// that states one.
-func firstCover(d *query.WorkDetail) string {
-	for _, rec := range d.Recordings {
-		if rec.CoverURL != "" {
-			return rec.CoverURL
-		}
-	}
-	return ""
 }

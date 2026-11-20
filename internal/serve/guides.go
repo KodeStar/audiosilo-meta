@@ -145,7 +145,7 @@ func guidePage(siteURL string, d *query.WorkDetail, suffix, title, description s
 		// A guide page is a document ABOUT a book, not the book's own page: the
 		// work page keeps og:type "book" and these are articles.
 		ogType:    "article",
-		image:     ogImage(siteURL, firstCover(d)),
+		image:     ogImage(siteURL, query.FirstCover(d)),
 		jsonLD:    guideJSONLD(view.Heading, siteURL, canonical, siteURL+model.WorksPath+d.ID, modified),
 		factSheet: sheet,
 		payload:   payload,
@@ -160,11 +160,11 @@ func guidePage(siteURL string, d *query.WorkDetail, suffix, title, description s
 // middle clause is chosen by the FACTS: a work whose sidecar carries only a
 // whole-book summary has no chapter summaries to promise, and a title promising
 // them would be the fabricated claim this project does not make - as would promising
-// chapters of a work whose position_scale counts acts (positionUnit).
+// chapters of a work whose position_scale counts acts (query.PositionUnit).
 func recapTitle(d *query.WorkDetail) string {
 	clause := " - story summary"
 	if query.HasChapteredRecaps(d) {
-		clause = " - story so far and " + positionUnit(d) + " summaries"
+		clause = " - story so far and " + query.PositionUnit(d) + " summaries"
 	}
 	return d.Title + " recap" + clause + " - " + siteName
 }
@@ -191,7 +191,7 @@ func recapDescription(d *query.WorkDetail, authors string) string {
 		// The recaps arrive ordered by through_chapter (snapshot.recapsOf), so the
 		// last one names the furthest chapter the sidecar covers.
 		if through := d.Recaps[n-1].Through.Chapter; through > 0 {
-			p += " through " + positionUnit(d) + " " + strconv.Itoa(through)
+			p += " through " + query.PositionUnit(d) + " " + strconv.Itoa(through)
 		}
 		parts = append(parts, p)
 	}
@@ -218,7 +218,7 @@ func charactersDescription(d *query.WorkDetail, authors string) string {
 		parts = append(parts, "by "+authors)
 	}
 	parts = append(parts, plural(len(d.Characters), "character", "characters"))
-	parts = append(parts, "each hidden behind the "+positionUnit(d)+" they first appear in")
+	parts = append(parts, "each hidden behind the "+query.PositionUnit(d)+" they first appear in")
 	return truncateDescription(strings.Join(parts, ", ") + ".")
 }
 
@@ -269,7 +269,7 @@ func newRecapView(d *query.WorkDetail) guideView {
 		Heading: d.Title + " recap",
 		Authors: d.Authors,
 		Notice: "Every recap below is hidden until you open it. Each one is safe to read " +
-			"once you have finished the " + positionUnit(d) + " it names.",
+			"once you have finished the " + query.PositionUnit(d) + " it names.",
 		LicenseURL:     ccBySAURL,
 		LicenseLabel:   ccBySALabel,
 		ContributeURL:  contributeURL(d.ID, "recaps"),
@@ -283,7 +283,7 @@ func newRecapView(d *query.WorkDetail) guideView {
 		v.Rows = append(v.Rows, guideRow{Label: "In short", Badge: "whole book", Text: s.InShort})
 	}
 	for _, r := range d.Recaps {
-		v.Rows = append(v.Rows, guideRow{Label: recapRowLabel(r, positionUnit(d)), Badge: recapScopeLabel(r.Scope), Text: r.Text})
+		v.Rows = append(v.Rows, guideRow{Label: recapRowLabel(r, query.PositionUnit(d)), Badge: recapScopeLabel(r.Scope), Text: r.Text})
 	}
 	if s := d.RecapSummary; s != nil && s.Ending != "" {
 		v.Rows = append(v.Rows, guideRow{Label: "How does it end?", Badge: "ending", Text: s.Ending})
@@ -296,7 +296,7 @@ func newCharactersView(d *query.WorkDetail) guideView {
 	v := guideView{
 		Heading: d.Title + " characters",
 		Authors: d.Authors,
-		Notice: "Every entry below is hidden until you open it, and each names the " + positionUnit(d) + " " +
+		Notice: "Every entry below is hidden until you open it, and each names the " + query.PositionUnit(d) + " " +
 			"the character first appears in.",
 		LicenseURL:     ccBySAURL,
 		LicenseLabel:   ccBySALabel,
@@ -310,7 +310,7 @@ func newCharactersView(d *query.WorkDetail) guideView {
 		if len(c.Aliases) > 0 {
 			row.Facts = append(row.Facts, "Also known as "+joinNames(c.Aliases))
 		}
-		row.Facts = append(row.Facts, revealLabel(c.Reveal.Chapter, positionUnit(d)))
+		row.Facts = append(row.Facts, revealLabel(c.Reveal.Chapter, query.PositionUnit(d)))
 		v.Rows = append(v.Rows, row)
 	}
 	v.Links = guideLinks(d, charactersSuffix)
@@ -356,7 +356,7 @@ func workGuideLinks(d *query.WorkDetail) []guideLink {
 	if query.HasRecapGuide(d) {
 		text := "Story summary of " + d.Title
 		if query.HasChapteredRecaps(d) {
-			unit := positionUnit(d)
+			unit := query.PositionUnit(d)
 			text = strings.ToUpper(unit[:1]) + unit[1:] + "-by-" + unit + " recap of " + d.Title
 		}
 		out = append(out, guideLink{URL: workGuidePath(d.ID, recapSuffix), Text: text})
@@ -372,16 +372,6 @@ func workGuideLinks(d *query.WorkDetail) []guideLink {
 // this work and this sidecar kind rather than on a blank one.
 func contributeURL(workID, kind string) string {
 	return "/build?work=" + url.QueryEscape(workID) + "&kind=" + kind
-}
-
-// positionUnit is what a position counts on this work's pages: the unit its
-// position_scale states, else the chapter a position is by default. Never empty,
-// because workGuideLinks capitalizes it and an artifact is only as sound as its build.
-func positionUnit(d *query.WorkDetail) string {
-	if d.PositionScale != nil && d.PositionScale.Unit != "" {
-		return d.PositionScale.Unit
-	}
-	return "chapter"
 }
 
 // recapRowLabel is a recap's spoiler-SAFE summary line: it names the position
