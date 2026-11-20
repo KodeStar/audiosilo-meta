@@ -36,6 +36,31 @@ export function seriesNeighbors(works: SeriesWork[], currentWorkId: string): Ser
   }
 }
 
+/** The member the builder may seed a work's cast from: the nearest earlier member
+    in the server's order whose span ENDS before this work's position starts. That
+    is the "previous" link, except that an omnibus reaching this work or past it
+    ("1-3" before "2") is skipped: its cast describes later books, which would
+    leak their characters into this book's draft. Null when no member qualifies.
+    A position that does not parse (the schema allows none) falls back to the
+    plain previous member. */
+export function castSeedSource(works: SeriesWork[], currentWorkId: string): SeriesWork | null {
+  const idx = works.findIndex((entry) => entry.work.id === currentWorkId)
+  if (idx <= 0) return null
+  const [start] = positionSpan(works[idx].position)
+  for (let i = idx - 1; i >= 0; i--) {
+    const [, end] = positionSpan(works[i].position)
+    if (Number.isNaN(start) || Number.isNaN(end) || end < start) return works[i]
+  }
+  return null
+}
+
+/** A schema position's [first, last] volume ("2" -> [2, 2], "1-3.5" -> [1, 3.5]);
+    NaN where a side does not parse. */
+function positionSpan(position: string): [number, number] {
+  const [lo, hi] = position.split('-', 2).map((s) => (s.trim() === '' ? NaN : Number(s)))
+  return [lo, hi ?? lo]
+}
+
 /** The URL hash fragment for a tab: "" for General (so the fragment is cleared),
     "#characters" and "#story-so-far" for the sidecar tabs. */
 export function hashForTab(tab: WorkTab): string {

@@ -20,7 +20,7 @@ import {
   type RecapsDraft,
   type RecapsValidation,
 } from '../../lib/builder'
-import { seriesNeighbors } from '../../lib/worknav'
+import { castSeedSource } from '../../lib/worknav'
 import {
   useEntity,
   useQueryParam,
@@ -89,9 +89,9 @@ function Builder({ work, kind }: { work: Work; kind: Kind }) {
   const [copied, setCopied] = useState(false)
 
   // Offer to seed the cast from the previous book in the series (the
-  // re-describe-per-book model): the work page's own "previous" link, the member
-  // before this one in the order the API returns. Best-effort: any failure just
-  // means no offer.
+  // re-describe-per-book model): the nearest earlier member in the order the API
+  // returns, skipping an omnibus that reaches this book (castSeedSource), whose
+  // cast would describe later books. Best-effort: any failure just means no offer.
   useEffect(() => {
     // A new work (or kind) starts with no offer: the last work's must not
     // survive a lookup that finds no previous book, or none with a cast.
@@ -103,7 +103,7 @@ function Builder({ work, kind }: { work: Work; kind: Kind }) {
     void (async () => {
       try {
         const series = await getSeries(seriesRef.id, ctrl.signal)
-        const sibling = seriesNeighbors(series.works, work.id).prev
+        const sibling = castSeedSource(series.works, work.id)
         if (!sibling) return
         const siblingWork = await getWork(sibling.work.id, ctrl.signal)
         if (siblingWork.characters && siblingWork.characters.length > 0) {
