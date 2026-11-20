@@ -895,8 +895,14 @@ series and stated recording language, retaining distinct versions of one work.
 The additive JSON endpoints are `GET /api/v1/series/{id}/listening-guide` and
 `GET /api/v1/people/{id}/recordings`, default 50/max 100 plus offset. The latter
 accepts optional series and lang filters. The guide counts alternatives before
-capping each work at five, uses numeric/decimal/range series order, and batch
-reads only candidates on the visible page. Neither new route calls WorkDetail
+capping each work at five, chosen and listed by a stated order
+(`listeningCandidatesSQL`): narrator continuity (the most OTHER volumes of the
+series any one of the recording's narrators also narrates, counted over the
+whole series), then release date (earliest first, undated last), then recording
+id. It uses numeric/decimal/range series order (`seriesMemberOrderSQL`, the ONE
+member order `DB.Series` reads too), and batch reads only candidates on the
+visible page. Person recording credits are ordered by work title under the
+browse directories' NOCASE collation, then work id and recording id. Neither new route calls WorkDetail
 per member. Recording summaries carry only stated language, abridgement,
 runtime, release date, publisher, chapter count and narrator references.
 

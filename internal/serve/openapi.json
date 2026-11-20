@@ -723,7 +723,7 @@
         ],
         "operationId": "seriesListeningGuide",
         "summary": "One page of a series listening guide",
-        "description": "Works in numeric series order with at most five recording alternatives per work, selected deterministically by recording id. Decimal and range positions remain strings. `recordings_total` includes alternatives beyond the cap; zero means no recording catalogued. Only the visible page is composed. Runtimes describe separate alternatives and must not be summed without an explicit choice per work. Retailer availability is not inferred.",
+        "description": "Works in numeric series order with at most five recording alternatives per work, chosen and listed in a stated, deterministic order: narrator continuity first (the most other volumes of the series that any one of the recording's narrators also narrates), then release date, earliest first with undated recordings last, then recording id. Decimal and range positions remain strings. `recordings_total` includes alternatives beyond the cap; zero means no recording catalogued. Only the visible page is composed. Runtimes describe separate alternatives and must not be summed without an explicit choice per work. Retailer availability is not inferred.",
         "parameters": [
           {
             "name": "id",

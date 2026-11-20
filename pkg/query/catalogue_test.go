@@ -110,6 +110,81 @@ func TestSeriesListeningGuideBoundsAndFacts(t *testing.T) {
 	}
 }
 
+// TestSeriesListeningGuideRecordingOrder pins the guide's stated recording
+// order (listeningCandidatesSQL): narrator continuity with the series' OTHER
+// volumes first, then the earliest release date with undated recordings last,
+// then the recording id. The narrators' other credits outside the series and a
+// second recording of the same work must not count as continuity.
+func TestSeriesListeningGuideRecordingOrder(t *testing.T) {
+	cat := &model.Catalog{Series: []*model.Series{{ID: "saga", Name: "Saga", License: "CC0-1.0"}}}
+	for _, id := range []string{"voice", "other", "other4", "solo", "solo2", "solo3", "twice", "solo-c"} {
+		cat.People = append(cat.People, &model.Person{ID: id, Name: id, License: "CC0-1.0"})
+	}
+	type rec struct {
+		id, date  string
+		narrators []string
+	}
+	add := func(work, position string, recs ...rec) {
+		w := &model.Work{ID: work, Title: work, License: "CC0-1.0"}
+		for _, r := range recs {
+			w.Recordings = append(w.Recordings, &model.Recording{ID: r.id, Work: work, ReleaseDate: r.date, Narrators: r.narrators, License: "CC0-1.0"})
+		}
+		cat.Works = append(cat.Works, w)
+		if position != "" {
+			cat.Series[0].Works = append(cat.Series[0].Works, model.SeriesWork{Work: work, Position: position})
+		}
+	}
+	add("vol-a", "1",
+		rec{"a-1", "2001", []string{"solo"}},        // no continuity
+		rec{"a-2", "2020-01-01", []string{"voice"}}, // narrates b and c too: 2
+		rec{"a-3", "2005-06", []string{"other"}},    // narrates b: 1
+		rec{"a-4", "1999-02-03", []string{"other"}}, // 1, earlier
+		rec{"a-5", "", []string{"other"}},           // 1, undated
+		rec{"a-6", "1990", []string{"solo2"}},       // none, earliest
+		rec{"a-7", "", []string{"solo3"}},           // none, undated
+		rec{"a-0", "2005-06", []string{"other4"}},   // narrates c: 1, ties a-3 on date
+	)
+	add("vol-b", "2",
+		rec{"b-1", "", []string{"voice"}},
+		rec{"b-2", "", []string{"other"}},
+		rec{"b-3", "1950", []string{"twice"}}, // two recordings of ONE work are no continuity
+		rec{"b-4", "1950", []string{"twice"}},
+	)
+	add("vol-c", "3",
+		rec{"c-1", "", []string{"solo-c", "voice"}}, // the best of its narrators counts
+		rec{"c-2", "", []string{"other4"}},
+	)
+	// A volume of ANOTHER series: its narrators are no continuity in this one.
+	add("elsewhere", "", rec{"x-1", "", []string{"solo", "solo2", "solo3", "twice"}})
+	cat.Series = append(cat.Series, &model.Series{ID: "other-saga", Name: "Other Saga", License: "CC0-1.0",
+		Works: []model.SeriesWork{{Work: "elsewhere", Position: "1"}}})
+	snap := openTestDB(t, artifacttest.Build(t, cat))
+	guide, err := snap.SeriesListeningGuide(t.Context(), "saga", 50, 0)
+	if err != nil {
+		t.Fatal(err)
+	}
+	want := map[string][]string{
+		"vol-a": {"a-2", "a-4", "a-0", "a-3", "a-5"},
+		"vol-b": {"b-1", "b-2", "b-3", "b-4"},
+		"vol-c": {"c-1", "c-2"},
+	}
+	if len(guide.Entries) != 3 {
+		t.Fatalf("entries = %+v", guide.Entries)
+	}
+	for _, entry := range guide.Entries {
+		var got []string
+		for _, r := range entry.Recordings {
+			got = append(got, r.ID)
+		}
+		if !slices.Equal(got, want[entry.Work.ID]) {
+			t.Errorf("%s recordings = %v, want %v", entry.Work.ID, got, want[entry.Work.ID])
+		}
+	}
+	if total := guide.Entries[0].RecordingsTotal; total != 8 {
+		t.Errorf("vol-a recordings_total = %d, want 8", total)
+	}
+}
+
 // TestSeriesOrderOverThePositionGrammar pins THE series member order
 // (seriesMemberOrderSQL: CAST(position AS REAL), position, work_id) over every
 // shape series.schema.json's position pattern admits, through both readers of
@@ -428,7 +503,7 @@ func TestCatalogueReadsAreIndexed(t *testing.T) {
 	}{
 		{seriesListeningMembersSQL, []any{"long-series", 100, 100}},
 		{seriesListeningTotalSQL, []any{"long-series"}},
-		{listeningCandidatesSQL("?,?"), []any{"book-000", "book-001", 5}},
+		{listeningCandidatesSQL("?,?"), []any{"long-series", "book-000", "book-001", "book-000", "book-001", 5}},
 		{recordingSummariesSQL(selected, true), args},
 		{recordingSummaryNarratorsSQL(selected), args},
 		{`SELECT DISTINCT rn.work_id, rn.recording_id` + base + personRecordingOrderSQL + ` LIMIT ? OFFSET ?`, append(append([]any{"reader"}, filterArgs...), 100, 100)},
