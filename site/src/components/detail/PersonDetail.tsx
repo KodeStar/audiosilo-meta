@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { getPerson, href, type Person, type WorkCard as WorkCardData } from '../../lib/api'
+import { useCallback, useState } from 'react'
+import { getPerson, getPersonPage, href, type Person, type WorkCard as WorkCardData } from '../../lib/api'
 import { cataloguePage } from '../../lib/catalogue'
 import {
   authoredNote,
@@ -65,13 +65,11 @@ function Section({
   )
 }
 
-function Loaded({ person, hydrated }: { person: Person; hydrated: boolean }) {
+function Loaded({ person, hydrated, page }: { person: Person; hydrated: boolean; page: number }) {
   usePageTitle(person.name, hydrated)
 
-  // The recording-credit page (?page=N), read once and handed to
-  // PersonRecordings. A later page carries the credits alone: the written,
-  // narrated and translated lists stay on the first page, one link away.
-  const [page] = useState(() => cataloguePage(window.location.search))
+  // A later recording-credit page (?page=N) carries the credits alone: the
+  // written, narrated and translated lists stay on the first page, one link away.
   const laterPage = page > 1
   const backRoles = firstPageRoles(page, person)
   const narrated: WorkCardData[] = creditedWorks(person.narrated)
@@ -176,8 +174,16 @@ function Loaded({ person, hydrated }: { person: Person; hydrated: boolean }) {
 export default function PersonDetail() {
   const id = useEntitySlug('person')
   const embedded = useEmbeddedEntity<Person>(id)
-  const state = useEntity<Person>(id, getPerson, embedded)
+  // The recording-credit page (?page=N), read once. A later page shows none of
+  // the credit lists, only their totals, so without an embedded payload it asks
+  // for the smallest window rather than PERSON_PAGE_MAX of each list.
+  const [page] = useState(() => cataloguePage(window.location.search))
+  const fetchPerson = useCallback(
+    (slug: string, signal: AbortSignal) => (page > 1 ? getPersonPage(slug, { limit: 1 }, signal) : getPerson(slug, signal)),
+    [page]
+  )
+  const state = useEntity<Person>(id, fetchPerson, embedded)
   if (state.status === 'loading') return <DetailSpinner />
   if (state.status === 'error') return <DetailError notFound={state.notFound} kind="person" />
-  return <Loaded person={state.data} hydrated={embedded !== null} />
+  return <Loaded person={state.data} hydrated={embedded !== null} page={page} />
 }

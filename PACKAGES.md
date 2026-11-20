@@ -894,7 +894,7 @@ partial. Person pages group a page of narration recordings by the first listed
 series and stated recording language, retaining distinct versions of one work.
 A later page (`?page=N`) carries those credits alone: the written, narrated and
 translated lists stay on the first page, which it links back to, in both the
-fact sheet and the island.
+fact sheet and the island; a later page reads only their totals.
 The additive JSON endpoints are `GET /api/v1/series/{id}/listening-guide` and
 `GET /api/v1/people/{id}/recordings`, default 50/max 100 plus offset. The latter
 accepts optional series and lang filters. The guide counts alternatives before
