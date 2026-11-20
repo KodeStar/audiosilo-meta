@@ -904,8 +904,9 @@ series any one of the recording's narrators also narrates, counted over the
 whole series), then release date (earliest first, undated last), then recording
 id. It uses numeric/decimal/range series order (`seriesMemberOrderSQL`, the ONE
 member order `DB.Series` reads too), and batch reads only candidates on the
-visible page. Person recording credits are ordered by work title under the
-browse directories' NOCASE collation, then work id and recording id. Neither new route calls WorkDetail
+visible page. Person recording credits, and the person detail's authored,
+narrated and translated lists, are ordered by work title under the browse
+directories' NOCASE collation, then work id (and recording id). Neither new route calls WorkDetail
 per member. Recording summaries carry only stated language, abridgement,
 runtime, release date, publisher, chapter count and narrator references.
 

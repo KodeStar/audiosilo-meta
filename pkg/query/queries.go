@@ -1147,22 +1147,26 @@ type PersonDetail struct {
 
 // The person page's queries, a total and a page per list. Each total counts over exactly the join its
 // page query pages, so the total and the list can never disagree; they are named
-// constants so the index guard EXPLAINs what actually runs.
+// constants so the index guard EXPLAINs what actually runs. Every list is
+// ordered by work title under the browse directories' NOCASE collation, then
+// its ids, as the recording credits are (personRecordingOrderSQL), so all of a
+// person's lists agree; each is reached through the person index and sorted in
+// a temp b-tree either way, so the collation costs no index.
 const (
 	authoredTotalSQL = `SELECT COUNT(*) FROM work_authors wa JOIN works w ON w.id = wa.work_id WHERE wa.person_id=?`
 	narratedTotalSQL = `SELECT COUNT(*) FROM recording_narrators rn JOIN works w ON w.id = rn.work_id WHERE rn.person_id=?`
 
 	authoredPageSQL = `SELECT wa.work_id FROM work_authors wa JOIN works w ON w.id = wa.work_id WHERE wa.person_id=? ` +
-		`ORDER BY w.title, wa.work_id LIMIT ? OFFSET ?`
+		`ORDER BY w.title COLLATE NOCASE, wa.work_id LIMIT ? OFFSET ?`
 	narratedPageSQL = `SELECT rn.work_id, rn.recording_id FROM recording_narrators rn JOIN works w ON w.id = rn.work_id ` +
-		`WHERE rn.person_id=? ORDER BY w.title, rn.work_id, rn.recording_id LIMIT ? OFFSET ?`
+		`WHERE rn.person_id=?` + personRecordingOrderSQL + ` LIMIT ? OFFSET ?`
 
 	// The translated list (librivoxRecordingSchemaVersion): a recording's own
 	// translator credits, through idx_recording_credits_person.
 	translatedTotalSQL = `SELECT COUNT(*) FROM recording_credits rc JOIN works w ON w.id = rc.work_id ` +
 		`WHERE rc.person_id=? AND rc.role = '` + model.RoleTranslator + `'`
 	translatedPageSQL = `SELECT rc.work_id, rc.recording_id FROM recording_credits rc JOIN works w ON w.id = rc.work_id ` +
-		`WHERE rc.person_id=? AND rc.role = '` + model.RoleTranslator + `' ORDER BY w.title, rc.work_id, rc.recording_id LIMIT ? OFFSET ?`
+		`WHERE rc.person_id=? AND rc.role = '` + model.RoleTranslator + `' ORDER BY w.title COLLATE NOCASE, rc.work_id, rc.recording_id LIMIT ? OFFSET ?`
 )
 
 // Person returns one page of a Person's authored, narrated and (version 9)

@@ -641,7 +641,7 @@
         "tags": ["People & Series"],
         "operationId": "person",
         "summary": "One person and a page of their credits",
-        "description": "A person with one page of each credit list - works authored and recordings narrated. Both lists take the same window.\n\nThe lists are paged by default because a person's credits are unbounded: a corporate credit of record (\"Full Cast\", \"Audible Studios\") narrates thousands of works. `authored_total` and `narrated_total` are the UNPAGED counts, so a client can always tell it is seeing a slice.",
+        "description": "A person with one page of each credit list - works authored and recordings narrated. Both lists take the same window and are ordered by work title without regard to case, then by id.\n\nThe lists are paged by default because a person's credits are unbounded: a corporate credit of record (\"Full Cast\", \"Audible Studios\") narrates thousands of works. `authored_total` and `narrated_total` are the UNPAGED counts, so a client can always tell it is seeing a slice.",
         "parameters": [
           {
             "name": "id",

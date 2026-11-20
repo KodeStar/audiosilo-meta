@@ -324,19 +324,21 @@ func TestPersonRecordingsPreservesVersionsAndFilters(t *testing.T) {
 	}
 }
 
-// TestPersonRecordingsOrderTitlesWithoutCase pins the credit order to the
-// browse directories' NOCASE collation: binary order would put "Banana" and
-// "Zebra" before "apple", and the work id breaks a tie between titles that
-// differ only in case.
+// TestPersonRecordingsOrderTitlesWithoutCase pins every person list - the
+// recording credits and the person detail's authored, narrated and translated
+// lists - to the browse directories' NOCASE collation: binary order would put
+// "Banana" and "Zebra" before "apple", and the work id breaks a tie between
+// titles that differ only in case.
 func TestPersonRecordingsOrderTitlesWithoutCase(t *testing.T) {
 	cat := &model.Catalog{People: []*model.Person{{ID: "reader", Name: "Reader", License: "CC0-1.0"}}}
 	for _, w := range []struct{ id, title string }{
 		{"w-zebra", "Zebra"}, {"w-apple", "apple"}, {"w-banana", "Banana"},
 		{"w-cherry-b", "cherry"}, {"w-cherry-a", "Cherry"},
 	} {
-		cat.Works = append(cat.Works, &model.Work{ID: w.id, Title: w.title, License: "CC0-1.0", Recordings: []*model.Recording{
-			{ID: "r-2", Work: w.id, Narrators: []string{"reader"}, License: "CC0-1.0"},
-			{ID: "r-1", Work: w.id, Narrators: []string{"reader"}, License: "CC0-1.0"},
+		translator := []model.Credit{{Person: "reader", Role: model.RoleTranslator}}
+		cat.Works = append(cat.Works, &model.Work{ID: w.id, Title: w.title, Authors: []string{"reader"}, License: "CC0-1.0", Recordings: []*model.Recording{
+			{ID: "r-2", Work: w.id, Narrators: []string{"reader"}, Credits: translator, License: "CC0-1.0"},
+			{ID: "r-1", Work: w.id, Narrators: []string{"reader"}, Credits: translator, License: "CC0-1.0"},
 		}})
 	}
 	snap := openTestDB(t, artifacttest.Build(t, cat))
@@ -355,6 +357,27 @@ func TestPersonRecordingsOrderTitlesWithoutCase(t *testing.T) {
 	}
 	if !slices.Equal(got, want) {
 		t.Fatalf("credit order = %v\nwant           %v", got, want)
+	}
+
+	person, err := snap.Person("reader", 50, 0)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var authored []string
+	for _, card := range person.Authored {
+		authored = append(authored, card.ID)
+	}
+	if wantWorks := []string{"w-apple", "w-banana", "w-cherry-a", "w-cherry-b", "w-zebra"}; !slices.Equal(authored, wantWorks) {
+		t.Errorf("authored order = %v\nwant           %v", authored, wantWorks)
+	}
+	for name, list := range map[string][]NarratedEntry{"narrated": person.Narrated, "translated": person.Translated} {
+		var got []string
+		for _, entry := range list {
+			got = append(got, entry.Work.ID+"/"+entry.RecordingID)
+		}
+		if !slices.Equal(got, want) {
+			t.Errorf("%s order = %v\nwant %v", name, got, want)
+		}
 	}
 }
 
