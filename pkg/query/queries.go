@@ -1328,7 +1328,7 @@ type SeriesOrdering struct {
 	Ordering string `json:"ordering,omitempty"`
 }
 
-// The series detail queries. seriesWorksSQL joins works so WorksTotal counts
+// The series detail queries. seriesOrderedWorksSQL joins works so WorksTotal counts
 // exactly the members that can be rendered: a membership row pointing at a work
 // the artifact does not carry is dropped from the list, so counting it in the
 // total would report a page shorter than it claims.
@@ -1339,8 +1339,6 @@ const (
 	seriesNameSQL    = `SELECT name FROM series WHERE id=?`
 	seriesAuthorsSQL = `SELECT p.id, p.name FROM series_authors sa JOIN people p ON p.id = sa.person_id ` +
 		`WHERE sa.series_id=? ORDER BY sa.ord`
-	seriesWorksSQL = `SELECT sw.work_id, sw.position FROM series_works sw JOIN works w ON w.id = sw.work_id ` +
-		`WHERE sw.series_id=?`
 	// seriesMemberOrderSQL is THE series member order, the one both DB.Series
 	// and the listening guide (seriesListeningMembersSQL) read: the numeric start
 	// of the position (SQLite's CAST reads the longest numeric prefix, so "2.5"
@@ -1350,7 +1348,8 @@ const (
 	// same rows in a temp b-tree, with the same answer.
 	seriesMemberOrderSQL = ` ORDER BY CAST(sw.position AS REAL), sw.position, sw.work_id`
 	// seriesOrderedWorksSQL is the whole membership in that order (DB.Series).
-	seriesOrderedWorksSQL = seriesWorksSQL + seriesMemberOrderSQL
+	seriesOrderedWorksSQL = `SELECT sw.work_id, sw.position FROM series_works sw JOIN works w ON w.id = sw.work_id ` +
+		`WHERE sw.series_id=?` + seriesMemberOrderSQL
 	// seriesOrderingFamilySQL reads a whole ordering family from its PRIMARY's id
 	// (?1): the primary by its primary key and every variant naming it through
 	// idx_series_ordering_of, the primary first (its ordering_of is NULL -
@@ -1566,8 +1565,11 @@ var parsePositionRange = model.ParsePositionRange
 //
 // HAND-MIRRORED TWIN of `positionStart` in site/src/lib/watch-flat.ts, which
 // orders the watching page's cross-series list. This side is the rule of
-// record - it orders the series rail every consumer reads - and the sentinel is
-// the only deliberate difference (1e18 here, +Infinity there). The same cases
+// record for the orders computed in Go (the coverage view, the watch feed); the
+// series rail itself is ordered in SQL by seriesMemberOrderSQL, which agrees
+// with it over every schema-valid position (TestSeriesOrderOverThePositionGrammar).
+// The sentinel is the only deliberate difference between the twins (1e18 here,
+// +Infinity there). The same cases
 // are pinned on both sides: TestPositionStart in serve_test.go and the
 // `positionStart` describe block in watch-flat.test.ts.
 func positionStart(pos string) float64 {

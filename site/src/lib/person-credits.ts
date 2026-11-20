@@ -9,6 +9,7 @@
 // carries its own unit in the text.
 
 import type { RecordingCredit, WorkCard } from './api'
+import { joinNames } from './languages'
 
 /** "1 work" / "412 works" - so a heading count never states a bare number whose
     unit the reader has to infer. */
@@ -87,6 +88,5 @@ export function firstPageRoles(
     (totals.narrated_total ?? 0) > 0 ? 'narrated' : '',
     (totals.translated_total ?? 0) > 0 ? 'translated' : '',
   ].filter(Boolean)
-  if (roles.length === 0) return undefined
-  return roles.length === 1 ? roles[0] : `${roles.slice(0, -1).join(', ')} and ${roles[roles.length - 1]}`
+  return roles.length > 0 ? joinNames(roles) : undefined
 }
