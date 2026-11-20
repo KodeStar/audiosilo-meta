@@ -93,10 +93,10 @@ function Builder({ work, kind }: { work: Work; kind: Kind }) {
   // before this one in the order the API returns. Best-effort: any failure just
   // means no offer.
   useEffect(() => {
-    if (kind !== 'characters') {
-      setSeed(null)
-      return
-    }
+    // A new work (or kind) starts with no offer: the last work's must not
+    // survive a lookup that finds no previous book, or none with a cast.
+    setSeed(null)
+    if (kind !== 'characters') return
     const seriesRef = work.series?.[0]
     if (!seriesRef) return
     const ctrl = new AbortController()
