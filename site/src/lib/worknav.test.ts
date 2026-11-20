@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { seriesNeighbors, hashForTab, tabFromHash, type SeriesWork } from './worknav'
+import { castSeedSource, seriesNeighbors, hashForTab, tabFromHash, type SeriesWork } from './worknav'
 
 function entry(id: string, position: string): SeriesWork {
   return { position, work: { id, title: id, authors: [] } }
@@ -35,6 +35,16 @@ describe('seriesNeighbors', () => {
     expect(prev?.work.id).toBe('c')
     expect(next?.work.id).toBe('b')
   })
+  it('keeps the server order of two positions sharing a start ("2" before "2-3")', () => {
+    const asReceived = [
+      entry('one', '1'),
+      entry('two', '2'),
+      entry('two-three', '2-3'),
+      entry('three', '3'),
+    ]
+    expect(seriesNeighbors(asReceived, 'three').prev?.work.id).toBe('two-three')
+    expect(seriesNeighbors(asReceived, 'two-three').prev?.work.id).toBe('two')
+  })
 })
 
 describe('hashForTab', () => {
@@ -64,5 +74,28 @@ describe('tabFromHash', () => {
   })
   it('falls back to general for an unknown hash', () => {
     expect(tabFromHash('#nope', both)).toBe('general')
+  })
+})
+
+describe('castSeedSource', () => {
+  it('takes the previous single volume', () => {
+    const works = [entry('one', '1'), entry('two', '2'), entry('three', '3')]
+    expect(castSeedSource(works, 'three')?.work.id).toBe('two')
+  })
+  it('skips an omnibus that reaches this book, whose cast describes later books', () => {
+    const works = [entry('one', '1'), entry('omnibus', '1-3'), entry('two', '2')]
+    expect(castSeedSource(works, 'two')?.work.id).toBe('one')
+    const tail = [entry('one', '1'), entry('two', '2'), entry('two-three', '2-3'), entry('three', '3')]
+    expect(castSeedSource(tail, 'three')?.work.id).toBe('two')
+  })
+  it('seeds from an omnibus that ends before this book', () => {
+    const works = [entry('omnibus', '1-2'), entry('three', '3')]
+    expect(castSeedSource(works, 'three')?.work.id).toBe('omnibus')
+  })
+  it('returns null at the first member, for an unknown work, or when only later-reaching members precede', () => {
+    const works = [entry('omnibus', '1-3'), entry('two', '2')]
+    expect(castSeedSource(works, 'omnibus')).toBeNull()
+    expect(castSeedSource(works, 'zz')).toBeNull()
+    expect(castSeedSource(works, 'two')).toBeNull()
   })
 })

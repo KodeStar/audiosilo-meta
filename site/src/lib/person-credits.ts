@@ -9,6 +9,7 @@
 // carries its own unit in the text.
 
 import type { RecordingCredit, WorkCard } from './api'
+import { joinNames } from './languages'
 
 /** "1 work" / "412 works" - so a heading count never states a bare number whose
     unit the reader has to infer. */
@@ -70,4 +71,25 @@ function creditNote(
 ): string | undefined {
   if (typeof total !== 'number' || shownCredits >= total) return undefined
   return `Showing the first ${shownCredits.toLocaleString()} of ${total.toLocaleString()} ${kind} credits, which cover the ${workCount(works)} below.`
+}
+
+/** The roles whose lists a LATER page of a person's recording credits points
+    back to, as prose ("written and translated"), or undefined on the first page
+    and for a person with no such list. Those lists do not move with the credit
+    window, so the first page alone carries them and a later page links there
+    instead of repeating them. Narrated titles are not among them here: in the
+    page's island they ARE the paged recording credits (the separate Narrated
+    list is only a fallback when those cannot load), so there is nothing on the
+    first page to point back to. metaserve's fact sheet, which does render an
+    "Audiobooks narrated" list on page 1, names narration in its own note. */
+export function firstPageRoles(
+  page: number,
+  totals: { authored_total?: number; translated_total?: number }
+): string | undefined {
+  if (page <= 1) return undefined
+  const roles = [
+    (totals.authored_total ?? 0) > 0 ? 'written' : '',
+    (totals.translated_total ?? 0) > 0 ? 'translated' : '',
+  ].filter(Boolean)
+  return roles.length > 0 ? joinNames(roles) : undefined
 }

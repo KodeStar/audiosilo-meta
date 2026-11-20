@@ -61,7 +61,7 @@ import {
 } from '../../lib/watchlist'
 import { useHashTab } from '../use-hash-tab'
 import { Badge, BTN_PRIMARY, BTN_SECONDARY, Icon, TabButton, TEXT_LINK } from '../ui'
-import { NewPill, OwnCheckbox, ReleaseLine, SkipButton } from './entry-ui'
+import { ENTRY_ROW, EntryMarks, NewPill, ReleaseLine } from './entry-ui'
 import LibraryImport from './LibraryImport'
 import { useWatchlist, type WatchlistHandle } from './use-watchlist'
 
@@ -959,7 +959,7 @@ interface EntryRowProps {
   onSkipped?: (skipped: boolean) => void
 }
 
-function EntryRow({
+export function EntryRow({
   entry,
   now,
   isNew = false,
@@ -971,8 +971,8 @@ function EntryRow({
 }: EntryRowProps) {
   const work = entry.work
   return (
-    <li className="flex items-center gap-3 rounded-xl border border-edge bg-raised p-3">
-      <div className="min-w-0 flex-1">
+    <li className={`${ENTRY_ROW} rounded-xl border border-edge bg-raised p-3`}>
+      <div className="min-w-0 sm:flex-1">
         {series ? (
           <a
             href={href.series(series.slug)}
@@ -990,10 +990,7 @@ function EntryRow({
           <ReleaseLine date={work.release_date} today={now} />
         </a>
       </div>
-      <OwnCheckbox title={work.title} checked={owned} onChange={onOwned} />
-      {onSkipped ? (
-        <SkipButton title={work.title} skipped={skipped} onChange={onSkipped} />
-      ) : null}
+      <EntryMarks title={work.title} owned={owned} skipped={skipped} onOwned={onOwned} onSkipped={onSkipped} />
     </li>
   )
 }

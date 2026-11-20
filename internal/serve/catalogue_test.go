@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"regexp"
 	"strings"
 	"testing"
 
@@ -319,5 +320,77 @@ func TestSeriesHTMLPageTwoKeepsFractionalAndRangePositions(t *testing.T) {
 	}
 	if !strings.Contains(page, "Showing 4 of 54 titles") || !strings.Contains(page, "No recording catalogued") || strings.Contains(page, "Ordered 50") {
 		t.Error("page does not describe its visible bounded membership")
+	}
+}
+
+// TestPersonLaterPagesLinkBackToTheBibliography pins #2932: a later page of a
+// person's recording credits moves the credit window and carries none of the
+// written, narrated or translated lists, which stay on the first page and are
+// one ordinary link away. Pagination still works without JavaScript and every
+// page keeps its own canonical URL.
+func TestPersonLaterPagesLinkBackToTheBibliography(t *testing.T) {
+	ts := newPageServer(t, catalogueFixture(), markedShells)
+	_, first := getPage(t, ts.URL, "/people/ray-porter")
+	_, second := getPage(t, ts.URL, "/people/ray-porter?page=2")
+	sheet := func(page string) string {
+		return between(t, page, `<div id="ssr-entity">`, `</div><script type="application/json"`)
+	}
+	one, two := sheet(first), sheet(second)
+	if !strings.Contains(one, "<h2>Audiobooks narrated</h2>") || strings.Contains(one, "the first page</a>") {
+		t.Errorf("page 1 must keep the bibliography and need no link back:\n%s", one)
+	}
+	for _, heading := range []string{"Audiobooks written", "Audiobooks narrated", "Recordings translated"} {
+		if strings.Contains(two, "<h2>"+heading+"</h2>") {
+			t.Errorf("page 2 repeats %q:\n%s", heading, two)
+		}
+	}
+	for _, want := range []string{
+		`Titles narrated by Ray Porter are listed on <a href="/people/ray-porter">the first page</a>.`,
+		`<a rel="prev" href="/people/ray-porter">`, `<a rel="next" href="/people/ray-porter?page=3">`,
+		"Page 2 of 3", `href="/works/volume-`,
+	} {
+		if !strings.Contains(two, want) {
+			t.Errorf("page 2 lacks %q:\n%s", want, two)
+		}
+	}
+	if !strings.Contains(second, `<link rel="canonical" href="https://meta.test/people/ray-porter?page=2">`) {
+		t.Error("page 2 lost its own canonical URL")
+	}
+	// The whole later page is a golden, so the renderer version guard
+	// (TestRendererVersionsTrackTheGoldens) sees a change to its representation.
+	assertGolden(t, "person-page-2.html", []byte(second))
+	// Page 2 embeds the totals the island needs for its roles and its link back,
+	// not the lists it does not show.
+	payload := between(t, second, `<script type="application/json" id="entity-data">`, `</script>`)
+	for _, want := range []string{`"authored":[]`, `"narrated":[]`, `"narrated_total":`} {
+		if !strings.Contains(payload, want) {
+			t.Errorf("page 2 payload lacks %s:\n%s", want, payload)
+		}
+	}
+	// The two windows are distinct: no recording credit appears on both pages.
+	credit := regexp.MustCompile(`<h4><a href="(/works/[^"]+)">`)
+	onFirst := map[string]bool{}
+	for _, m := range credit.FindAllStringSubmatch(one, -1) {
+		onFirst[m[1]] = true
+	}
+	for _, m := range credit.FindAllStringSubmatch(two, -1) {
+		if onFirst[m[1]] {
+			t.Errorf("%s is credited on both pages", m[1])
+		}
+	}
+}
+
+func TestJoinRoles(t *testing.T) {
+	for _, tt := range []struct {
+		roles []string
+		want  string
+	}{
+		{nil, ""}, {[]string{"written"}, "written"},
+		{[]string{"written", "narrated"}, "written and narrated"},
+		{[]string{"written", "narrated", "translated"}, "written, narrated and translated"},
+	} {
+		if got := joinRoles(tt.roles); got != tt.want {
+			t.Errorf("joinRoles(%v) = %q, want %q", tt.roles, got, tt.want)
+		}
 	}
 }

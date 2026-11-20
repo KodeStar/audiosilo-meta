@@ -85,11 +85,16 @@ export function flattenAcrossSeries(panels: readonly Panel[]): FlatLists {
   return { preorder, available }
 }
 
-/** The series name then the position, the tie-break both comparators share: two
-    books out on one day read best grouped by series, in series order. */
+/** The series name, the series slug, then the position: the tie-break both
+    comparators share. Two books out on one day read best grouped by series, in
+    series order. The slug is there because two watched series can share a NAME,
+    and without it their members interleave by position; it is compared as plain
+    code units, the order the server's feed takes the same key in, at the same
+    place (`watchFeed`'s sort in pkg/query/watchfeed.go). */
 function byNameThenPosition(a: FlatEntry, b: FlatEntry): number {
   const name = a.series.localeCompare(b.series)
   if (name !== 0) return name
+  if (a.slug !== b.slug) return a.slug < b.slug ? -1 : 1
   // Compared rather than subtracted: two unparseable positions are both
   // +Infinity and the difference of those is NaN, which is not an ordering.
   const pa = positionStart(a.entry.position)
@@ -139,13 +144,14 @@ export function compareAvailable(a: FlatEntry, b: FlatEntry): number {
  * An unparseable value yields +Infinity so it sorts last rather than silently
  * leading the list as a zero.
  *
- * HAND-MIRRORED TWIN of Go `positionStart` in pkg/query/queries.go, which
- * sorts the same position strings server-side and is the RULE OF RECORD (it
- * orders the series rail every consumer reads). The sentinel differs in
- * spelling only (Go has no +Inf literal in that expression and uses 1e18). Both
- * sides pin the SAME cases - Go's TestPositionStart and the `positionStart`
- * block in watch-flat.test.ts - because a series rail and this list ordering
- * one series two ways is exactly the disagreement a single rule avoids.
+ * HAND-MIRRORED TWIN of `seriesPositionStartSQL` in pkg/query/queries.go
+ * (SQLite's `CAST(position AS REAL)`), the first key of the series member order
+ * and the RULE OF RECORD: it orders the series rail every consumer reads. The
+ * two agree over the schema's position grammar, and both sides pin its cases -
+ * Go's TestSeriesPositionStartKey and the `positionStart` block in
+ * watch-flat.test.ts - because a series rail and this list ordering one series
+ * two ways is exactly the disagreement a single rule avoids. Outside the grammar
+ * they differ (CAST reads "bonus" as 0), which no stored position can reach.
  */
 export function positionStart(position: string): number {
   let head = position.trim()

@@ -1,13 +1,17 @@
-import { getPerson, type Person, type WorkCard as WorkCardData } from '../../lib/api'
+import { useCallback, useState } from 'react'
+import { getPerson, getPersonPage, href, type Person, type WorkCard as WorkCardData } from '../../lib/api'
+import { cataloguePage } from '../../lib/catalogue'
 import {
   authoredNote,
   creditedWorks,
+  firstPageRoles,
   narrationNote,
   translationNote,
   workCount,
 } from '../../lib/person-credits'
 import PersonRecordings from './PersonRecordings'
 import WorkCard from '../cards/WorkCard'
+import { TEXT_LINK } from '../ui'
 import { useLanguages } from '../languages/use-languages'
 import {
   useEntitySlug,
@@ -61,16 +65,25 @@ function Section({
   )
 }
 
-function Loaded({ person, hydrated }: { person: Person; hydrated: boolean }) {
+function Loaded({ person, hydrated, page }: { person: Person; hydrated: boolean; page: number }) {
   usePageTitle(person.name, hydrated)
 
+  // A later recording-credit page (?page=N) carries the credits alone: the
+  // written, narrated and translated lists stay on the first page, one link away.
+  const laterPage = page > 1
+  const backRoles = firstPageRoles(page, person)
   const narrated: WorkCardData[] = creditedWorks(person.narrated)
   const translated: WorkCardData[] = creditedWorks(person.translated)
 
+  // Roles and the empty state read the TOTALS: a later page's embedded payload
+  // carries the totals without the lists it does not show.
+  const authoredTotal = person.authored_total ?? person.authored?.length ?? 0
+  const narratedTotal = person.narrated_total ?? narrated.length
+  const translatedTotal = person.translated_total ?? translated.length
   const roles: string[] = []
-  if ((person.authored?.length ?? 0) > 0) roles.push('Author')
-  if (narrated.length > 0) roles.push('Narrator')
-  if (translated.length > 0) roles.push('Translator')
+  if (authoredTotal > 0) roles.push('Author')
+  if (narratedTotal > 0) roles.push('Narrator')
+  if (translatedTotal > 0) roles.push('Translator')
 
   return (
     <div className="container py-10">
@@ -100,7 +113,7 @@ function Loaded({ person, hydrated }: { person: Person; hydrated: boolean }) {
           The two units genuinely differ for a narrator (several recordings of
           one work are several credits, one card), so leaving either number bare
           made a truncated narrator page look self-contradictory. */}
-      {person.authored && person.authored.length > 0 ? (
+      {!laterPage && person.authored && person.authored.length > 0 ? (
         <Section
           title="Wrote"
           count={workCount(person.authored.length)}
@@ -110,10 +123,11 @@ function Loaded({ person, hydrated }: { person: Person; hydrated: boolean }) {
         </Section>
       ) : null}
 
-      {(person.narrated_total ?? narrated.length) > 0 ? (
+      {narratedTotal > 0 ? (
         <PersonRecordings
           person={person}
-          fallback={narrated.length > 0 ? (
+          page={page}
+          fallback={!laterPage && narrated.length > 0 ? (
             <Section
               title="Narrated"
               count={workCount(narrated.length)}
@@ -125,7 +139,7 @@ function Loaded({ person, hydrated }: { person: Person; hydrated: boolean }) {
         />
       ) : null}
 
-      {translated.length > 0 ? (
+      {!laterPage && translated.length > 0 ? (
         <Section
           title="Recordings translated"
           count={workCount(translated.length)}
@@ -139,7 +153,14 @@ function Loaded({ person, hydrated }: { person: Person; hydrated: boolean }) {
         </Section>
       ) : null}
 
-      {(person.authored?.length ?? 0) === 0 && narrated.length === 0 && translated.length === 0 ? (
+      {backRoles ? (
+        <p className="mt-12 text-sm text-dim">
+          Titles {backRoles} by {person.name} are listed on{' '}
+          <a className={TEXT_LINK} href={href.person(person.id)}>the first page</a>.
+        </p>
+      ) : null}
+
+      {authoredTotal === 0 && narratedTotal === 0 && translatedTotal === 0 ? (
         <p className="rounded-xl border border-edge bg-surface px-6 py-12 text-center text-sm text-dim">
           No works are linked to this person yet.
         </p>
@@ -153,8 +174,16 @@ function Loaded({ person, hydrated }: { person: Person; hydrated: boolean }) {
 export default function PersonDetail() {
   const id = useEntitySlug('person')
   const embedded = useEmbeddedEntity<Person>(id)
-  const state = useEntity<Person>(id, getPerson, embedded)
+  // The recording-credit page (?page=N), read once. A later page shows none of
+  // the credit lists, only their totals, so without an embedded payload it asks
+  // for the smallest window rather than PERSON_PAGE_MAX of each list.
+  const [page] = useState(() => cataloguePage(window.location.search))
+  const fetchPerson = useCallback(
+    (slug: string, signal: AbortSignal) => (page > 1 ? getPersonPage(slug, { limit: 1 }, signal) : getPerson(slug, signal)),
+    [page]
+  )
+  const state = useEntity<Person>(id, fetchPerson, embedded)
   if (state.status === 'loading') return <DetailSpinner />
   if (state.status === 'error') return <DetailError notFound={state.notFound} kind="person" />
-  return <Loaded person={state.data} hydrated={embedded !== null} />
+  return <Loaded person={state.data} hydrated={embedded !== null} page={page} />
 }

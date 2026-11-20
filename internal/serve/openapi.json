@@ -641,7 +641,7 @@
         "tags": ["People & Series"],
         "operationId": "person",
         "summary": "One person and a page of their credits",
-        "description": "A person with one page of each credit list - works authored and recordings narrated. Both lists take the same window.\n\nThe lists are paged by default because a person's credits are unbounded: a corporate credit of record (\"Full Cast\", \"Audible Studios\") narrates thousands of works. `authored_total` and `narrated_total` are the UNPAGED counts, so a client can always tell it is seeing a slice.",
+        "description": "A person with one page of each credit list - works authored and recordings narrated. Both lists take the same window and are ordered by work title without regard to case, then by id.\n\nThe lists are paged by default because a person's credits are unbounded: a corporate credit of record (\"Full Cast\", \"Audible Studios\") narrates thousands of works. `authored_total` and `narrated_total` are the UNPAGED counts, so a client can always tell it is seeing a slice.",
         "parameters": [
           {
             "name": "id",
@@ -723,7 +723,7 @@
         ],
         "operationId": "seriesListeningGuide",
         "summary": "One page of a series listening guide",
-        "description": "Works in numeric series order with at most five recording alternatives per work, selected deterministically by recording id. Decimal and range positions remain strings. `recordings_total` includes alternatives beyond the cap; zero means no recording catalogued. Only the visible page is composed. Runtimes describe separate alternatives and must not be summed without an explicit choice per work. Retailer availability is not inferred.",
+        "description": "Works in numeric series order with at most five recording alternatives per work, chosen and listed in a stated, deterministic order: narrator continuity first (the most other volumes of the series that any one of the recording's narrators also narrates), then release date, earliest first with undated recordings last, then recording id. Decimal and range positions remain strings. `recordings_total` includes alternatives beyond the cap; zero means no recording catalogued. Only the visible page is composed. Runtimes describe separate alternatives and must not be summed without an explicit choice per work. Retailer availability is not inferred.",
         "parameters": [
           {
             "name": "id",
@@ -788,7 +788,7 @@
         ],
         "operationId": "personRecordings",
         "summary": "One page of narration recording credits",
-        "description": "Recording-level narration credits, retaining separate recordings of one work. `series` memberships are provided for grouping the visible page; filtering is optional. Authorship and translation credits remain on the existing person detail route.",
+        "description": "Recording-level narration credits, retaining separate recordings of one work, ordered by work title without regard to case, then work id and recording id. `series` memberships are provided for grouping the visible page; filtering is optional. Authorship and translation credits remain on the existing person detail route.",
         "parameters": [
           {
             "name": "id",

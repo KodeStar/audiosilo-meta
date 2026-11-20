@@ -882,11 +882,23 @@ The interactive planner requires explicit recording choices; missing runtimes,
 unselected entries, other pages and overlapping positions keep its total
 partial. Person pages group a page of narration recordings by the first listed
 series and stated recording language, retaining distinct versions of one work.
+A later page (`?page=N`) carries those credits alone: the written, narrated and
+translated lists stay on the first page, which it links back to, in both the
+fact sheet and the island; a later page reads only their totals.
 The additive JSON endpoints are `GET /api/v1/series/{id}/listening-guide` and
 `GET /api/v1/people/{id}/recordings`, default 50/max 100 plus offset. The latter
 accepts optional series and lang filters. The guide counts alternatives before
-capping each work at five, uses numeric/decimal/range series order, and batch
-reads only candidates on the visible page. Neither new route calls WorkDetail
+capping each work at five, chosen and listed by a stated order
+(`listeningCandidatesSQL`): narrator continuity (the most OTHER volumes of the
+series any one of the recording's narrators also narrates, counted over the
+whole series), then release date (earliest first, undated last), then recording
+id. It uses numeric/decimal/range series order (`seriesMemberOrderSQL`, the ONE
+member order: `DB.Series` pages through the same `seriesMemberPage` read, the
+coverage gap list's `present` comes from it, and the watch feed's cross-series
+sort keys on its `seriesPositionStartSQL`), and batch reads only candidates on the
+visible page. Person recording credits, and the person detail's authored,
+narrated and translated lists, are ordered by work title under the browse
+directories' NOCASE collation, then work id (and recording id). Neither new route calls WorkDetail
 per member. Recording summaries carry only stated language, abridgement,
 runtime, release date, publisher, chapter count and narrator references.
 
@@ -1382,12 +1394,17 @@ reader already on it. The FLAT ORDERING is
 there is no second ordering seam a component can get wrong: preorders soonest
 first, released NEWEST first, an entry with no date LAST in either direction
 (treating an absent date as infinitely old would be a guess, floating it to the
-top would bury the releases), series name then position as the tie-break. Dates
+top would bury the releases), series name, then series slug (two watched
+series can share a name, and the slug keeps each one's members together - the
+server's feed sort takes the same key in the same place), then position as the
+tie-break. Dates
 compare as PLAIN STRINGS at the precision the catalogue states them - the rule
 `workCard` picks a card's date by - because parsing would drag the reader's
 timezone into a fact that has none, and `positionStart` is a hand-mirrored TWIN
-of Go's in `pkg/query/queries.go` (which is the RULE OF RECORD; both sides
-pin the same cases). A work in SEVERAL watched series is ONE row here, under the
+of `seriesPositionStartSQL` in `pkg/query/queries.go` (SQLite's
+`CAST(position AS REAL)`, the first key of the series member order and the RULE
+OF RECORD; Go's `TestSeriesPositionStartKey` pins the schema-valid cases the
+site's test pins, and only outside the grammar do the two differ). A work in SEVERAL watched series is ONE row here, under the
 first of them - the server's feed applies the same rule - so the two marks on
 that row are applied at PAGE level to every ready series that lists the book
 (`markEverywhere` over the memo's work-to-series index), or ticking off an

@@ -7,6 +7,7 @@ import (
 	"slices"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
@@ -110,16 +111,93 @@ func TestSeriesListeningGuideBoundsAndFacts(t *testing.T) {
 	}
 }
 
-// TestSeriesOrderSQLMatchesGoOverThePositionGrammar pins the two series orders to
-// each other over every shape series.schema.json's position pattern admits: the
-// SQL one the listening guide pages with (seriesListeningMembersSQL:
-// CAST(position AS REAL), position, work_id), and the Go one in Series(), which sorts
-// by positionStart, then the position string, then the work id. SQLite's CAST
-// reads the longest numeric prefix ("1-15" -> 1, "2.10-3" -> 2.1) and
-// parsePositionRange the range's start, so the two agree only while the grammar
-// stays numeric; ranges, a decimal whose digits sort differently as text ("2.10"
-// vs "2.9"), a leading zero, 0 and a fraction below 1 are all here.
-func TestSeriesOrderSQLMatchesGoOverThePositionGrammar(t *testing.T) {
+// TestSeriesListeningGuideRecordingOrder pins the guide's stated recording
+// order (listeningCandidatesSQL): narrator continuity with the series' OTHER
+// volumes first, then the earliest release date with undated recordings last,
+// then the recording id. The narrators' other credits outside the series and a
+// second recording of the same work must not count as continuity.
+func TestSeriesListeningGuideRecordingOrder(t *testing.T) {
+	cat := &model.Catalog{Series: []*model.Series{{ID: "saga", Name: "Saga", License: "CC0-1.0"}}}
+	for _, id := range []string{"voice", "other", "other4", "solo", "solo2", "solo3", "twice", "solo-c"} {
+		cat.People = append(cat.People, &model.Person{ID: id, Name: id, License: "CC0-1.0"})
+	}
+	type rec struct {
+		id, date  string
+		narrators []string
+	}
+	add := func(work, position string, recs ...rec) {
+		w := &model.Work{ID: work, Title: work, License: "CC0-1.0"}
+		for _, r := range recs {
+			w.Recordings = append(w.Recordings, &model.Recording{ID: r.id, Work: work, ReleaseDate: r.date, Narrators: r.narrators, License: "CC0-1.0"})
+		}
+		cat.Works = append(cat.Works, w)
+		if position != "" {
+			cat.Series[0].Works = append(cat.Series[0].Works, model.SeriesWork{Work: work, Position: position})
+		}
+	}
+	add("vol-a", "1",
+		rec{"a-1", "2001", []string{"solo"}},        // no continuity
+		rec{"a-2", "2020-01-01", []string{"voice"}}, // narrates b and c too: 2
+		rec{"a-3", "2005-06", []string{"other"}},    // narrates b: 1
+		rec{"a-4", "1999-02-03", []string{"other"}}, // 1, earlier
+		rec{"a-5", "", []string{"other"}},           // 1, undated
+		rec{"a-6", "1990", []string{"solo2"}},       // none, earliest
+		rec{"a-7", "", []string{"solo3"}},           // none, undated
+		rec{"a-0", "2005-06", []string{"other4"}},   // narrates c: 1, ties a-3 on date
+	)
+	add("vol-b", "2",
+		rec{"b-1", "", []string{"voice"}},
+		rec{"b-2", "", []string{"other"}},
+		rec{"b-3", "1950", []string{"twice"}}, // two recordings of ONE work are no continuity
+		rec{"b-4", "1950", []string{"twice"}},
+	)
+	add("vol-c", "3",
+		rec{"c-1", "", []string{"solo-c", "voice"}}, // the best of its narrators counts
+		rec{"c-2", "", []string{"other4"}},
+	)
+	// A volume of ANOTHER series: its narrators are no continuity in this one.
+	add("elsewhere", "", rec{"x-1", "", []string{"solo", "solo2", "solo3", "twice"}})
+	cat.Series = append(cat.Series, &model.Series{ID: "other-saga", Name: "Other Saga", License: "CC0-1.0",
+		Works: []model.SeriesWork{{Work: "elsewhere", Position: "1"}}})
+	snap := openTestDB(t, artifacttest.Build(t, cat))
+	guide, err := snap.SeriesListeningGuide(t.Context(), "saga", 50, 0)
+	if err != nil {
+		t.Fatal(err)
+	}
+	want := map[string][]string{
+		"vol-a": {"a-2", "a-4", "a-0", "a-3", "a-5"},
+		"vol-b": {"b-1", "b-2", "b-3", "b-4"},
+		"vol-c": {"c-1", "c-2"},
+	}
+	if len(guide.Entries) != 3 {
+		t.Fatalf("entries = %+v", guide.Entries)
+	}
+	for _, entry := range guide.Entries {
+		var got []string
+		for _, r := range entry.Recordings {
+			got = append(got, r.ID)
+		}
+		if !slices.Equal(got, want[entry.Work.ID]) {
+			t.Errorf("%s recordings = %v, want %v", entry.Work.ID, got, want[entry.Work.ID])
+		}
+	}
+	if total := guide.Entries[0].RecordingsTotal; total != 8 {
+		t.Errorf("vol-a recordings_total = %d, want 8", total)
+	}
+}
+
+// TestSeriesOrderOverThePositionGrammar pins THE series member order
+// (seriesMemberOrderSQL: series_id, CAST(position AS REAL), position, work_id)
+// over every shape series.schema.json's position pattern admits, through every reader of
+// it: the listening guide, DB.Series, the coverage browser's gap list and the
+// watch feed (whose cross-series sort keys on seriesPositionStartSQL), so a
+// reader that sorted by a rule of its own would disagree here. SQLite's CAST reads the longest numeric
+// prefix ("1-15" -> 1, "2.10-3" -> 2.1), which is the range's start only while
+// the grammar stays numeric; ranges, a decimal whose digits sort differently as
+// text ("2.10" vs "2.9"), a leading zero, 0 and a fraction below 1 are all here.
+// The expected order is the one the Go sort DB.Series used before the order
+// moved into SQL, so the move changed nothing over schema-valid positions.
+func TestSeriesOrderOverThePositionGrammar(t *testing.T) {
 	grammar := regexp.MustCompile(testpack.SeriesPositionPattern(t))
 	// Listed out of order, with work ids that disagree with the position order.
 	members := []struct{ work, position string }{
@@ -127,6 +205,8 @@ func TestSeriesOrderSQLMatchesGoOverThePositionGrammar(t *testing.T) {
 		{"w-05", "2.10-3"}, {"w-06", "1"}, {"w-07", "9"}, {"w-08", "02"},
 		{"w-09", "1-15"}, {"w-10", "0"}, {"w-11", "2.10"}, {"w-12", "10"},
 		{"w-14", "1.5"}, {"w-13", "1.5"}, {"w-15", "2"},
+		// After the range 1-15, so the gap list has holes (16-19) to report.
+		{"w-16", "20"},
 	}
 	want := []string{
 		"w-10",                 // 0
@@ -138,13 +218,22 @@ func TestSeriesOrderSQLMatchesGoOverThePositionGrammar(t *testing.T) {
 		"w-02",         // 2.9
 		"w-07",         // 9
 		"w-12", "w-01", // 10, 10.0
+		"w-16", // 20
+	}
+	positionOf := map[string]string{}
+	for _, m := range members {
+		positionOf[m.work] = m.position
 	}
 	cat := &model.Catalog{Series: []*model.Series{{ID: "grammar", Name: "Grammar", License: "CC0-1.0"}}}
 	for _, m := range members {
 		if !grammar.MatchString(m.position) {
 			t.Fatalf("fixture position %q is outside the schema grammar", m.position)
 		}
-		cat.Works = append(cat.Works, &model.Work{ID: m.work, Title: m.work, License: "CC0-1.0"})
+		// One release date for every member, so the watch feed's earlier keys
+		// (the date, the series name) tie and the position keys decide.
+		cat.Works = append(cat.Works, &model.Work{ID: m.work, Title: m.work, License: "CC0-1.0", Recordings: []*model.Recording{{
+			ID: "recording", Work: m.work, ReleaseDate: "2030-01-01", License: "CC0-1.0",
+		}}})
 		cat.Series[0].Works = append(cat.Series[0].Works, model.SeriesWork{Work: m.work, Position: m.position})
 	}
 	snap := openTestDB(t, artifacttest.Build(t, cat))
@@ -162,15 +251,118 @@ func TestSeriesOrderSQLMatchesGoOverThePositionGrammar(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	var fromGo []string
+	var fromSeries []string
 	for _, w := range series.Works {
-		fromGo = append(fromGo, w.Work.ID)
+		fromSeries = append(fromSeries, w.Work.ID)
 	}
 	if !slices.Equal(fromSQL, want) {
-		t.Errorf("SQL order = %v\nwant        %v", fromSQL, want)
+		t.Errorf("guide order = %v\nwant          %v", fromSQL, want)
 	}
-	if !slices.Equal(fromGo, fromSQL) {
-		t.Errorf("Go order (Series) = %v\nSQL order         %v", fromGo, fromSQL)
+	if !slices.Equal(fromSeries, want) {
+		t.Errorf("Series order = %v\nwant           %v", fromSeries, want)
+	}
+
+	gaps, err := snap.seriesGaps()
+	if err != nil {
+		t.Fatal(err)
+	}
+	var wantPresent []string
+	for _, w := range want {
+		wantPresent = append(wantPresent, positionOf[w])
+	}
+	if len(gaps) != 1 || !slices.Equal(gaps[0].Present, wantPresent) {
+		t.Errorf("gap list = %+v\nwant present %v", gaps, wantPresent)
+	}
+
+	feed, err := snap.watchFeed([]string{"grammar"}, defaultWatchWindow, time.Date(2029, 1, 1, 0, 0, 0, 0, time.UTC), testSiteURL, "self", "id")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var fromFeed, wantFeed []string
+	for _, item := range feed.items {
+		fromFeed = append(fromFeed, item.id)
+	}
+	for _, w := range want {
+		wantFeed = append(wantFeed, watchTagPrefix+"work/"+w+"/preorder")
+	}
+	if !slices.Equal(fromFeed, wantFeed) {
+		t.Errorf("watch feed order = %v\nwant               %v", fromFeed, wantFeed)
+	}
+}
+
+// TestSeriesPositionStartKey pins the numeric start seriesMemberOrderSQL sorts
+// by (seriesPositionStartSQL, SQLite's CAST) over the schema-valid cases its
+// hand-mirrored twin, `positionStart` in site/src/lib/watch-flat.ts, pins in
+// watch-flat.test.ts. The twins agree over the position grammar only: outside
+// it CAST reads "bonus" as 0 where the site sorts it last, and no schema-valid
+// record can carry such a value.
+func TestSeriesPositionStartKey(t *testing.T) {
+	grammar := regexp.MustCompile(testpack.SeriesPositionPattern(t))
+	snap := openTestDB(t, artifacttest.Build(t, artifacttest.Fixture()))
+	cases := map[string]float64{
+		"0": 0, "1": 1, "2.5": 2.5, "10": 10, "03": 3,
+		// A range starts at its lower bound, whatever its upper one spells.
+		"1-3": 1, "1-3.5": 1, "1-15": 1, "2.10-3": 2.1,
+	}
+	for in, want := range cases {
+		if !grammar.MatchString(in) {
+			t.Fatalf("case %q is outside the schema grammar", in)
+		}
+		var got float64
+		if err := snap.db.QueryRow(`SELECT `+seriesPositionStartSQL+` FROM (SELECT ? AS position) sw`, in).Scan(&got); err != nil {
+			t.Fatal(err)
+		}
+		if got != want {
+			t.Errorf("start of %q = %v, want %v", in, got, want)
+		}
+	}
+}
+
+// legacyArtifactStmts are the statements that turn a freshly built artifact into
+// one of the given older schema version: what that version's builder did not yet
+// write (columns, tables and indexes) is dropped, so a legacy-artifact test sees
+// exactly the shape a server still serving that release reads.
+func legacyArtifactStmts(version int) []string {
+	var stmts []string
+	if version < 13 {
+		stmts = append(stmts, "ALTER TABLE recordings DROP COLUMN abridgement", "DROP INDEX idx_series_works_position", "DROP INDEX idx_recording_narrators_person_recording",
+			"DROP INDEX idx_works_title_nocase", "DROP INDEX idx_people_name_nocase", "DROP INDEX idx_series_name_nocase")
+	}
+	if version < 12 {
+		stmts = append(stmts, "DROP TABLE work_alternate_titles")
+	}
+	if version < 8 {
+		stmts = append(stmts, "ALTER TABLE chapters DROP COLUMN audio_url")
+	}
+	return stmts
+}
+
+// TestSeriesOrderReadsWithoutPositionIndex: idx_series_works_position arrived
+// in schema 13. On a schema 11 or 12 artifact every reader of the series member
+// order still reaches series_works through idx_series_works_series (a per-series
+// SEARCH, or the whole-table walk positionsBySeries makes once per snapshot) and
+// sorts the remaining keys in a temp b-tree - never a bare table scan.
+func TestSeriesOrderReadsWithoutPositionIndex(t *testing.T) {
+	const series = "the-stormlight-archive"
+	for _, version := range []int{11, 12} {
+		t.Run(fmt.Sprint(version), func(t *testing.T) {
+			snap := openTestDB(t, artifacttest.Altered(t, artifacttest.Fixture(), version, legacyArtifactStmts(version)...))
+			for _, tt := range []struct {
+				query string
+				args  []any
+			}{
+				{seriesMembersPageSQL, []any{series, -1, 0}},
+				{seriesMembersTotalSQL, []any{series}},
+				{watchMembersSQL, []any{series}},
+				{positionsBySeriesSQL, nil},
+			} {
+				plan := queryPlan(t, snap, tt.query, tt.args...)
+				assertNoFullScan(t, plan)
+				if !strings.Contains(strings.Join(plan, " "), "idx_series_works_series") {
+					t.Errorf("v%d: series_works not reached through idx_series_works_series: %v", version, plan)
+				}
+			}
+		})
 	}
 }
 
@@ -199,13 +391,31 @@ func TestSeriesListeningGuideMatchesAPITiesWithoutPositionIndex(t *testing.T) {
 				if err != nil {
 					t.Fatal(err)
 				}
-				if len(api.Works) != 2 || len(guide.Entries) != 2 {
-					t.Fatalf("offset %d: API %d, guide %d entries", offset, len(api.Works), len(guide.Entries))
+				if len(api.Works) != 2 || len(guide.Entries) != 2 || api.WorksTotal != len(want) || guide.WorksTotal != len(want) {
+					t.Fatalf("offset %d: API %d of %d, guide %d of %d entries", offset, len(api.Works), api.WorksTotal, len(guide.Entries), guide.WorksTotal)
 				}
 				for i, entry := range guide.Entries {
 					if entry.Work.ID != want[offset+i] || api.Works[i].Work.ID != entry.Work.ID || api.Works[i].Position != entry.Position {
 						t.Errorf("offset %d entry %d: API %+v, guide %+v, want %s", offset, i, api.Works[i], entry, want[offset+i])
 					}
+				}
+			}
+			// DB.Series' other windows: the whole list and a tail (each totalled
+			// from the page itself), a page wider than the list, past the end
+			// and the out-of-range values the handler never passes but a caller may.
+			for _, w := range []struct{ limit, offset, works int }{
+				{0, 0, 6}, {10, 0, 6}, {0, 3, 3}, {2, 5, 1}, {2, 10, 0}, {-1, -1, 6},
+			} {
+				api, err := snap.Series("ties", w.limit, w.offset)
+				if err != nil {
+					t.Fatal(err)
+				}
+				if len(api.Works) != w.works || api.WorksTotal != len(want) || api.Limit != w.limit || api.Offset != w.offset {
+					t.Errorf("Series(limit %d, offset %d) = %d works of %d (limit %d, offset %d), want %d of %d",
+						w.limit, w.offset, len(api.Works), api.WorksTotal, api.Limit, api.Offset, w.works, len(want))
+				}
+				if w.works > 0 && api.Works[0].Work.ID != want[max(w.offset, 0)] {
+					t.Errorf("Series(limit %d, offset %d) starts at %s, want %s", w.limit, w.offset, api.Works[0].Work.ID, want[max(w.offset, 0)])
 				}
 			}
 		})
@@ -246,6 +456,63 @@ func TestPersonRecordingsPreservesVersionsAndFilters(t *testing.T) {
 	}
 	if page, err := snap.PersonRecordings(t.Context(), "missing", 50, 0, "", ""); err != nil || page != nil {
 		t.Fatalf("missing = %+v, %v", page, err)
+	}
+}
+
+// TestPersonRecordingsOrderTitlesWithoutCase pins every person list - the
+// recording credits and the person detail's authored, narrated and translated
+// lists - to the browse directories' NOCASE collation: binary order would put
+// "Banana" and "Zebra" before "apple", and the work id breaks a tie between
+// titles that differ only in case.
+func TestPersonRecordingsOrderTitlesWithoutCase(t *testing.T) {
+	cat := &model.Catalog{People: []*model.Person{{ID: "reader", Name: "Reader", License: "CC0-1.0"}}}
+	for _, w := range []struct{ id, title string }{
+		{"w-zebra", "Zebra"}, {"w-apple", "apple"}, {"w-banana", "Banana"},
+		{"w-cherry-b", "cherry"}, {"w-cherry-a", "Cherry"},
+	} {
+		translator := []model.Credit{{Person: "reader", Role: model.RoleTranslator}}
+		cat.Works = append(cat.Works, &model.Work{ID: w.id, Title: w.title, Authors: []string{"reader"}, License: "CC0-1.0", Recordings: []*model.Recording{
+			{ID: "r-2", Work: w.id, Narrators: []string{"reader"}, Credits: translator, License: "CC0-1.0"},
+			{ID: "r-1", Work: w.id, Narrators: []string{"reader"}, Credits: translator, License: "CC0-1.0"},
+		}})
+	}
+	snap := openTestDB(t, artifacttest.Build(t, cat))
+	page, err := snap.PersonRecordings(t.Context(), "reader", 50, 0, "", "")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var got []string
+	for _, entry := range page.Recordings {
+		got = append(got, entry.Work.ID+"/"+entry.Recording.ID)
+	}
+	want := []string{
+		"w-apple/r-1", "w-apple/r-2", "w-banana/r-1", "w-banana/r-2",
+		"w-cherry-a/r-1", "w-cherry-a/r-2", "w-cherry-b/r-1", "w-cherry-b/r-2",
+		"w-zebra/r-1", "w-zebra/r-2",
+	}
+	if !slices.Equal(got, want) {
+		t.Fatalf("credit order = %v\nwant           %v", got, want)
+	}
+
+	person, err := snap.Person("reader", 50, 0)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var authored []string
+	for _, card := range person.Authored {
+		authored = append(authored, card.ID)
+	}
+	if wantWorks := []string{"w-apple", "w-banana", "w-cherry-a", "w-cherry-b", "w-zebra"}; !slices.Equal(authored, wantWorks) {
+		t.Errorf("authored order = %v\nwant           %v", authored, wantWorks)
+	}
+	for name, list := range map[string][]NarratedEntry{"narrated": person.Narrated, "translated": person.Translated} {
+		var got []string
+		for _, entry := range list {
+			got = append(got, entry.Work.ID+"/"+entry.RecordingID)
+		}
+		if !slices.Equal(got, want) {
+			t.Errorf("%s order = %v\nwant %v", name, got, want)
+		}
 	}
 }
 
@@ -297,18 +564,7 @@ func TestAbridgementLegacyArtifacts(t *testing.T) {
 			t.Parallel() // each subtest builds the 1,000-recording fixture
 			cat := catalogueFixture()
 			cat.Works[0].AlternateTitles = []string{"Book Zero"} // book-000
-			var stmts []string
-			if version < 13 {
-				stmts = append(stmts, "ALTER TABLE recordings DROP COLUMN abridgement", "DROP INDEX idx_series_works_position", "DROP INDEX idx_recording_narrators_person_recording",
-					"DROP INDEX idx_works_title_nocase", "DROP INDEX idx_people_name_nocase", "DROP INDEX idx_series_name_nocase")
-			}
-			if version < 12 {
-				stmts = append(stmts, "DROP TABLE work_alternate_titles")
-			}
-			if version < 8 {
-				stmts = append(stmts, "ALTER TABLE chapters DROP COLUMN audio_url")
-			}
-			snap := openTestDB(t, artifacttest.Altered(t, cat, version, stmts...))
+			snap := openTestDB(t, artifacttest.Altered(t, cat, version, legacyArtifactStmts(version)...))
 			page, err := snap.SeriesListeningGuide(t.Context(), "long-series", 1, 0)
 			if err != nil {
 				t.Fatal(err)
@@ -392,12 +648,14 @@ func TestCatalogueReadsAreIndexed(t *testing.T) {
 		query string
 		args  []any
 	}{
-		{seriesListeningMembersSQL, []any{"long-series", 100, 100}},
-		{seriesListeningTotalSQL, []any{"long-series"}},
-		{listeningCandidatesSQL("?,?"), []any{"book-000", "book-001", 5}},
+		{seriesMembersPageSQL, []any{"long-series", 100, 100}},
+		{seriesMembersTotalSQL, []any{"long-series"}},
+		{watchMembersSQL, []any{"long-series"}},
+		{positionsBySeriesSQL, nil},
+		{listeningCandidatesSQL("?,?"), []any{"long-series", "book-000", "book-001", "book-000", "book-001", 5}},
 		{recordingSummariesSQL(selected, true), args},
 		{recordingSummaryNarratorsSQL(selected), args},
-		{`SELECT DISTINCT rn.work_id, rn.recording_id` + base + ` ORDER BY w.title, rn.work_id, rn.recording_id LIMIT ? OFFSET ?`, append(append([]any{"reader"}, filterArgs...), 100, 100)},
+		{`SELECT DISTINCT rn.work_id, rn.recording_id` + base + personRecordingOrderSQL + ` LIMIT ? OFFSET ?`, append(append([]any{"reader"}, filterArgs...), 100, 100)},
 		{pagedChaptersSQL(true), []any{"book-000", "reading-00", 100, 100}},
 		{browseEntriesSQL(WorkPages, "?,?"), []any{"book-000", "book-001"}},
 		{browseEntriesSQL(PersonPages, "?"), []any{"reader"}},
@@ -405,9 +663,10 @@ func TestCatalogueReadsAreIndexed(t *testing.T) {
 	}
 	for _, tt := range queries {
 		plan := queryPlan(t, snap, tt.query, tt.args...)
-		if tt.query == seriesListeningMembersSQL {
+		// Every reader of seriesMemberOrderSQL takes it from the index.
+		if tt.query == seriesMembersPageSQL || tt.query == positionsBySeriesSQL {
 			if !strings.Contains(strings.Join(plan, " "), "idx_series_works_position") || strings.Contains(strings.Join(plan, " "), "TEMP B-TREE") {
-				t.Errorf("series window must walk the numeric position index: %v", plan)
+				t.Errorf("series member order must walk the numeric position index: %v", plan)
 			}
 		}
 		for _, step := range plan {
