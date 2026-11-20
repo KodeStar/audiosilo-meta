@@ -346,9 +346,10 @@ which dates every page against it (`--previous`, `--revised-at` = the newer of
 the two composed commits' commit times; PACKAGES.md `internal/revision`), and
 the fetch FAILS CLOSED: a listing that cannot be read, or an asset that cannot be
 downloaded, verified or decompressed, fails the run rather than silently
-restarting every date - only "no data release exists at all" builds without one,
-and a `workflow_dispatch` with `reset_revisions` is the one deliberate way past a
-broken previous release. The release is cut as a DRAFT (at
+restarting every date - an EMPTY listing fails too (it reads exactly like an
+anomalous one), and a `workflow_dispatch` with `reset_revisions` is the one
+deliberate way to build without a previous release (a broken one, or a fresh
+repository's first). The release is cut as a DRAFT (at
 `--target` the composed core sha), verified, and only then published
 (`gh release edit --draft=false`, with `isDraft` read back rather than inferred
 from an exit status): publishing on creation raced the uploads two ways - a

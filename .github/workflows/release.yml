@@ -261,10 +261,12 @@ jobs:
         # page's date as unknown - silently, for the whole catalogue - so a
         # listing that cannot be read, and an asset that cannot be downloaded,
         # verified against its own published checksum or decompressed, fail the
-        # run. The ONE acceptable empty answer is that no data release exists at
-        # all (the first one). A previous release that is genuinely broken is
-        # stepped past by a manual run with reset_revisions, which builds without
-        # it on purpose.
+        # run. An EMPTY answer fails too: data releases exist, and an anomalous
+        # listing (an empty page, an asset list the API left out) reads exactly
+        # like "none", so building on it would reset every date. The first data
+        # release of a fresh repository, and a previous release that is genuinely
+        # broken, are both stepped past by a manual run with reset_revisions,
+        # which builds without it on purpose.
         run: |
           set -euo pipefail
           if [ "$RESET" = "true" ]; then
@@ -275,11 +277,8 @@ jobs:
             --jq '.[] | select((.draft or .prerelease) | not) | select(any(.assets[]?; .name == "meta.sqlite.gz")) | "\(.published_at) \(.tag_name)"' \
             | sort | tail -n 1 | cut -d' ' -f2)"
           if [ -z "$prev_tag" ]; then
-            # Annotated, not just logged: an anomalous listing (an empty page, an
-            # asset list the API left out) reads exactly like this, and building
-            # on it restarts every date.
-            echo "::warning::no previous data release found; building without one, so no page carries a revision date"
-            exit 0
+            echo "::error::no previous data release found; refusing to build without one, which would reset every page's revision date. For the first data release of a repository, run this workflow manually with reset_revisions."
+            exit 1
           fi
           mkdir prev
           gh release download "$prev_tag" --repo "$GITHUB_REPOSITORY" --dir prev \
