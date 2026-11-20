@@ -1083,7 +1083,12 @@ func chaptersOfSQL(librivox bool) string {
 	return `SELECT ` + cols + ` FROM chapters WHERE work_id=? AND recording_id=? ORDER BY idx`
 }
 
-func (s *DB) chapters(workID, rid string) ([]ChapterOut, error) {
+// Chapters is one recording's whole chapter list in order - the
+// GET /works/{id}/recordings/{rid}/chapters document - and an empty list for a
+// pair the catalogue does not hold (a recording may legitimately have none).
+// RecordingChapters is the bounded page of it that metaserve's chapters page
+// renders, beside the work card and recording summary.
+func (s *DB) Chapters(workID, rid string) ([]ChapterOut, error) {
 	librivox := s.hasLibrivoxLayer()
 	rows, err := s.db.Query(chaptersOfSQL(librivox), workID, rid)
 	if err != nil {

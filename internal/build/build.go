@@ -43,13 +43,15 @@ import (
 // identifier-derived purchase links do not reach); bumped to 12 when a work's
 // ALTERNATE TITLES arrived in the work_alternate_titles table; bumped to 13
 // when recordings.abridgement retained the presence of the source's abridged
-// flag.
+// flag; bumped to 14 when the REVISION layer arrived - the page_revisions table
+// (each page's last meaningful content change) and meta(revisions_at,
+// revisions_base), which Build leaves empty and internal/revision fills.
 //
 // It versions what a reader may SELECT, so it is bumped only when a table or
 // column appears. Adding an index is invisible to every reader (the same rows
 // come back, faster), so the index additions below did not bump it - an older
 // artifact without them still serves correctly, just more slowly.
-const SchemaVersion = 13
+const SchemaVersion = 14
 
 const ddl = `
 CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
@@ -342,6 +344,21 @@ CREATE TABLE translations (
   PRIMARY KEY (kind, id, target)
 );
 CREATE INDEX idx_translations_target ON translations(kind, target, id);
+
+-- schema_version 14: the REVISION layer. One row per PAGE whose last
+-- meaningful content change is known: kind is the page family as the sitemaps
+-- spell it (query.PageFamily: works, people, series, recaps, characters) and
+-- revised_at an RFC 3339 UTC timestamp. Build creates it EMPTY - an artifact
+-- built from data alone knows no page's history - and internal/revision fills it
+-- at release time by comparing every page's content digest with the previous
+-- release's, writing meta(revisions_at) and meta(revisions_base) beside it. The
+-- primary key is the lookup index: every read is the point query (kind, id).
+CREATE TABLE page_revisions (
+  kind       TEXT NOT NULL,
+  id         TEXT NOT NULL,
+  revised_at TEXT NOT NULL,
+  PRIMARY KEY (kind, id)
+) WITHOUT ROWID;
 
 -- language is the LAST column so no existing column index moves: a work row
 -- carries its language, a series row its derived language (or ''), a person ''.

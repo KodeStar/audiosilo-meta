@@ -87,6 +87,10 @@ type ldBook struct {
 	TranslationOfWork []ldTranslationRef `json:"translationOfWork,omitempty"`
 	WorkTranslation   []ldTranslationRef `json:"workTranslation,omitempty"`
 	WorkExample       []ldRef            `json:"workExample,omitempty"`
+	// DateModified is the page's last meaningful content change (entityPage's
+	// modified), omitted where the artifact knows none. The same value is the
+	// page's sitemap <lastmod> and its Last-Modified header.
+	DateModified string `json:"dateModified,omitempty"`
 }
 
 // ldAudiobook is one recording: a specific narration/production of the book.
@@ -147,6 +151,8 @@ type ldBookSeries struct {
 	TranslationOfWork []ldTranslationRef `json:"translationOfWork,omitempty"`
 	WorkTranslation   []ldTranslationRef `json:"workTranslation,omitempty"`
 	ItemListElement   []ldListItem       `json:"itemListElement,omitempty"`
+	// DateModified is ldBook's, for the series page.
+	DateModified string `json:"dateModified,omitempty"`
 }
 
 // ldWebSite is the site a page belongs to. It carries no facts of its own - it
@@ -163,9 +169,10 @@ type ldWebSite struct {
 // and `license` states the share-alike terms the text travels under.
 //
 // Deliberately minimal and DERIVED: no author (the sidecars are community-
-// authored with no single named author in the artifact), no dates (the artifact
-// carries none for a sidecar), no ratings. Every one of those would be a fact
-// nobody gave us.
+// authored with no single named author in the artifact), no datePublished (the
+// artifact carries none for a sidecar), no ratings. Every one of those would be
+// a fact nobody gave us. dateModified is the one date it states, and only where
+// the artifact knows the page's last content change (ldBook's DateModified).
 type ldArticle struct {
 	Context          string     `json:"@context"`
 	Type             string     `json:"@type"`
@@ -175,6 +182,7 @@ type ldArticle struct {
 	About            *ldRef     `json:"about,omitempty"`
 	License          string     `json:"license,omitempty"`
 	IsPartOf         *ldWebSite `json:"isPartOf,omitempty"`
+	DateModified     string     `json:"dateModified,omitempty"`
 }
 
 // workNodeID is the @id of a work page's Book node. It is ONE derivation because
@@ -190,24 +198,26 @@ func seriesNodeID(seriesCanonical string) string { return seriesCanonical + "#se
 
 // guideJSONLD is the document both guide pages carry. workCanonical is the WORK
 // page's canonical URL, which is where the referenced Book node is defined.
-func guideJSONLD(headline, siteURL, canonical, workCanonical string) []byte {
+func guideJSONLD(headline, siteURL, canonical, workCanonical, modified string) []byte {
 	return mustMarshalLD(ldArticle{
 		Context: ldContext, Type: "Article", Headline: headline,
 		URL: canonical, MainEntityOfPage: canonical,
-		About:    &ldRef{ID: workNodeID(workCanonical)},
-		License:  ccBySAURL,
-		IsPartOf: &ldWebSite{Type: "WebSite", Name: siteName, URL: siteURL},
+		About:        &ldRef{ID: workNodeID(workCanonical)},
+		License:      ccBySAURL,
+		IsPartOf:     &ldWebSite{Type: "WebSite", Name: siteName, URL: siteURL},
+		DateModified: modified,
 	})
 }
 
 // workJSONLD builds the @graph for a work page: the Book, then one Audiobook per
 // recording, in the order the detail carries them (recording id order), so two
 // renders of one snapshot produce identical bytes.
-func workJSONLD(d *query.WorkDetail, siteURL, canonical string) []byte {
+func workJSONLD(d *query.WorkDetail, siteURL, canonical, modified string) []byte {
 	bookID := workNodeID(canonical)
 	book := ldBook{
 		Type: "Book", ID: bookID, Name: d.Title, URL: canonical, InLanguage: d.Language,
-		Description: query.CommunityDescriptionText(d),
+		Description:  query.CommunityDescriptionText(d),
+		DateModified: modified,
 	}
 	for _, a := range d.Authors {
 		book.Author = append(book.Author, ldPerson{Type: "Person", Name: a.Name, URL: siteURL + model.PeoplePath + a.ID})
@@ -275,10 +285,10 @@ func seriesTranslationRef(siteURL string, t query.SeriesTranslation) ldTranslati
 	return ldTranslationRef{Type: "BookSeries", ID: seriesNodeID(url), Name: t.Name, URL: url, InLanguage: t.Language}
 }
 
-func seriesJSONLD(d *query.SeriesDetail, siteURL, canonical string) []byte {
+func seriesJSONLD(d *query.SeriesDetail, siteURL, canonical, modified string) []byte {
 	doc := ldBookSeries{
 		Context: ldContext, Type: "BookSeries", ID: seriesNodeID(canonical), Name: d.Name, URL: canonical,
-		InLanguage: d.Language,
+		InLanguage: d.Language, DateModified: modified,
 	}
 	for _, t := range d.TranslationOf {
 		doc.TranslationOfWork = append(doc.TranslationOfWork, seriesTranslationRef(siteURL, t))

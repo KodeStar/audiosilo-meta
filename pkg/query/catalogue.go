@@ -415,9 +415,11 @@ func (s *DB) Browse(ctx context.Context, family PageFamily, limit, offset int) (
 	}
 	var ids []string
 	for rows.Next() {
+		// The shard query's row shape (pages.go): the id, then added_at and the
+		// revision date, which a browse page does not show.
 		var id string
-		var added sql.NullString
-		if err := rows.Scan(&id, &added); err != nil {
+		var added, revised sql.NullString
+		if err := rows.Scan(&id, &added, &revised); err != nil {
 			_ = rows.Close()
 			return nil, err
 		}

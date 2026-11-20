@@ -68,38 +68,6 @@ const (
 // it three ways.
 func workGuidePath(id, suffix string) string { return model.WorksPath + id + suffix }
 
-// hasRecapGuide and hasCharacterGuide are the ONE definition of "this work has
-// a guide page". Three places ask: the compose func (which returns no page
-// without it), the work fact sheet (which links a guide only when it exists) and
-// the sibling cross-link. A second spelling would produce a link to a 404.
-//
-// A recap page is worth serving for a whole-book summary alone: a work with no
-// chaptered recaps but an "in short" and an "ending" still answers "<title>
-// recap" and "<title> summary". The summary counts only when it STATES one of
-// its two fields - the same rule the site's hasGuide reads off storyRows, so the
-// two spellings of presence cannot diverge on a summary row carrying neither
-// (internal/build writes no such row today, but nothing here should rest on
-// that: an all-empty summary would otherwise compose a zero-row 200 page).
-func hasRecapGuide(d *query.WorkDetail) bool {
-	return len(d.Recaps) > 0 ||
-		(d.RecapSummary != nil && (d.RecapSummary.InShort != "" || d.RecapSummary.Ending != ""))
-}
-func hasCharacterGuide(d *query.WorkDetail) bool { return len(d.Characters) > 0 }
-
-// hasChapteredRecaps is whether the sidecar carries a recap for a real chapter -
-// the thing "chapter summaries" in a title, or "chapter-by-chapter" in an
-// anchor, is a claim about. A chapter-0 recap ("previously, in earlier books" /
-// front matter) is a recap the page serves, but it summarizes no chapter, so a
-// sidecar carrying only those must not be promised as chaptered.
-func hasChapteredRecaps(d *query.WorkDetail) bool {
-	for _, r := range d.Recaps {
-		if r.Through.Chapter > 0 {
-			return true
-		}
-	}
-	return false
-}
-
 // ---- composition ------------------------------------------------------------
 
 // composeRecapPage renders /works/{id}/recap, or (nil, nil) when there is no
@@ -110,7 +78,7 @@ func hasChapteredRecaps(d *query.WorkDetail) bool {
 // indexes an empty page for the query this whole feature targets.
 //
 // The probe settles that question first, so the expensive read only ever runs
-// for a page that will be served. hasRecapGuide is then asked of the composed
+// for a page that will be served. query.HasRecapGuide is then asked of the composed
 // document anyway: it is the definition the LINKS and the sitemap are built
 // from, and having the page's own existence rest on it means the two can never
 // disagree about which works have a page - the probe is an optimization of that
@@ -121,11 +89,15 @@ func composeRecapPage(siteURL string, snap *query.DB, id string) (*entityPage, e
 		return nil, err
 	}
 	d, err := snap.WorkDetail(id)
-	if err != nil || d == nil || !hasRecapGuide(d) {
+	if err != nil || d == nil || !query.HasRecapGuide(d) {
+		return nil, err
+	}
+	modified, err := snap.PageRevision(query.RecapPages, d.ID)
+	if err != nil {
 		return nil, err
 	}
 	authors := joinNames(query.PersonNames(d.Authors))
-	return guidePage(siteURL, d, recapSuffix, recapTitle(d), recapDescription(d, authors), newRecapView(d))
+	return guidePage(siteURL, d, recapSuffix, recapTitle(d), recapDescription(d, authors), newRecapView(d), modified)
 }
 
 // composeCharactersPage renders /works/{id}/characters, on the same terms.
@@ -135,23 +107,28 @@ func composeCharactersPage(siteURL string, snap *query.DB, id string) (*entityPa
 		return nil, err
 	}
 	d, err := snap.WorkDetail(id)
-	if err != nil || d == nil || !hasCharacterGuide(d) {
+	if err != nil || d == nil || !query.HasCharacterGuide(d) {
+		return nil, err
+	}
+	modified, err := snap.PageRevision(query.CharacterPages, d.ID)
+	if err != nil {
 		return nil, err
 	}
 	authors := joinNames(query.PersonNames(d.Authors))
-	return guidePage(siteURL, d, charactersSuffix, charactersTitle(d), charactersDescription(d, authors), newCharactersView(d))
+	return guidePage(siteURL, d, charactersSuffix, charactersTitle(d), charactersDescription(d, authors), newCharactersView(d), modified)
 }
 
 // guidePage assembles everything the two pages share: the payload, the
 // canonical, the og image and the JSON-LD. Only the head text and the rows
-// differ between them, so only those are parameters.
+// differ between them, so only those (and the page's own revision date) are
+// parameters.
 //
 // The payload is the WORK's detail document, byte-identical to what
 // GET /api/v1/works/{id} returns - not a subset. The island that hydrates these
 // pages renders the sidecar out of a work document and checks the id in it, so
 // handing it anything else would make the embedded payload unusable and cost the
 // page a second fetch.
-func guidePage(siteURL string, d *query.WorkDetail, suffix, title, description string, view guideView) (*entityPage, error) {
+func guidePage(siteURL string, d *query.WorkDetail, suffix, title, description string, view guideView, modified string) (*entityPage, error) {
 	payload, err := json.Marshal(d)
 	if err != nil {
 		return nil, err
@@ -169,9 +146,10 @@ func guidePage(siteURL string, d *query.WorkDetail, suffix, title, description s
 		// work page keeps og:type "book" and these are articles.
 		ogType:    "article",
 		image:     ogImage(siteURL, firstCover(d)),
-		jsonLD:    guideJSONLD(view.Heading, siteURL, canonical, siteURL+model.WorksPath+d.ID),
+		jsonLD:    guideJSONLD(view.Heading, siteURL, canonical, siteURL+model.WorksPath+d.ID, modified),
 		factSheet: sheet,
 		payload:   payload,
+		modified:  modified,
 	}, nil
 }
 
@@ -185,7 +163,7 @@ func guidePage(siteURL string, d *query.WorkDetail, suffix, title, description s
 // chapters of a work whose position_scale counts acts (positionUnit).
 func recapTitle(d *query.WorkDetail) string {
 	clause := " - story summary"
-	if hasChapteredRecaps(d) {
+	if query.HasChapteredRecaps(d) {
 		clause = " - story so far and " + positionUnit(d) + " summaries"
 	}
 	return d.Title + " recap" + clause + " - " + siteName
@@ -348,10 +326,10 @@ func newCharactersView(d *query.WorkDetail) guideView {
 // and presenting a different one here would say two things about the same book.
 func guideLinks(d *query.WorkDetail, self string) []guideLink {
 	links := []guideLink{{URL: model.WorksPath + d.ID, Text: "Full details for " + d.Title}}
-	if self != recapSuffix && hasRecapGuide(d) {
+	if self != recapSuffix && query.HasRecapGuide(d) {
 		links = append(links, guideLink{URL: workGuidePath(d.ID, recapSuffix), Text: d.Title + " recap"})
 	}
-	if self != charactersSuffix && hasCharacterGuide(d) {
+	if self != charactersSuffix && query.HasCharacterGuide(d) {
 		links = append(links, guideLink{URL: workGuidePath(d.ID, charactersSuffix), Text: d.Title + " character guide"})
 	}
 	if len(d.Series) > 0 {
@@ -375,15 +353,15 @@ func guideLinks(d *query.WorkDetail, self string) []guideLink {
 // whole-book summary would be a claim the data does not support.
 func workGuideLinks(d *query.WorkDetail) []guideLink {
 	var out []guideLink
-	if hasRecapGuide(d) {
+	if query.HasRecapGuide(d) {
 		text := "Story summary of " + d.Title
-		if hasChapteredRecaps(d) {
+		if query.HasChapteredRecaps(d) {
 			unit := positionUnit(d)
 			text = strings.ToUpper(unit[:1]) + unit[1:] + "-by-" + unit + " recap of " + d.Title
 		}
 		out = append(out, guideLink{URL: workGuidePath(d.ID, recapSuffix), Text: text})
 	}
-	if hasCharacterGuide(d) {
+	if query.HasCharacterGuide(d) {
 		out = append(out, guideLink{URL: workGuidePath(d.ID, charactersSuffix), Text: d.Title + " character guide"})
 	}
 	return out
