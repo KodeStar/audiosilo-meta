@@ -522,6 +522,9 @@ func composePersonPageAt(ctx context.Context, siteURL string, snap *query.DB, id
 	}
 	canonical := siteURL + model.PeoplePath + d.ID + querySuffix(page)
 	view := newPersonView(d)
+	if page > 1 {
+		view.onLaterPage(d)
+	}
 	view.RecordingGroups = personRecordingGroups(credits)
 	view.RecordingsCaption = countCaption(len(credits.Recordings), credits.Total, "recording", "recordings")
 	view.Pagination = newPagination(model.PeoplePath+d.ID, page, credits.Total, cataloguePageSize)
@@ -768,6 +771,9 @@ const factSheetTemplates = `
 {{define "person"}}<section class="container">
 <h1 class="text-hi">{{.Name}}</h1>
 {{template "recording-credits" .}}
+{{- if .FirstPageRoles}}
+<p class="text-dim">Titles {{.FirstPageRoles}} by {{.Name}} are listed on <a href="{{.FirstPageURL}}">the first page</a>.</p>
+{{- end}}
 {{- if .Authored}}
 <h2>Audiobooks written</h2>
 <p class="text-dim">{{.AuthoredCaption}}</p>
@@ -972,6 +978,40 @@ type personView struct {
 	// TranslatedCaption names the window over the recordings the person is
 	// the recording-level translator of (query.PersonDetail.Translated).
 	TranslatedCaption string
+	// FirstPageRoles and FirstPageURL are set on a later page of the recording
+	// credits only (onLaterPage): the roles whose lists live on the first page,
+	// and that page's address.
+	FirstPageRoles string
+	FirstPageURL   string
+}
+
+// onLaterPage drops the written, narrated and translated lists from a later
+// page of the recording credits. Those lists do not move with the credit
+// window, so repeating them on every page buried the one thing a later page
+// adds; the first page keeps them, and a later page links back to it.
+func (v *personView) onLaterPage(d *query.PersonDetail) {
+	var roles []string
+	if d.AuthoredTotal > 0 {
+		roles = append(roles, "written")
+	}
+	if d.NarratedTotal > 0 {
+		roles = append(roles, "narrated")
+	}
+	if d.TranslatedTotal > 0 {
+		roles = append(roles, "translated")
+	}
+	v.FirstPageRoles = joinRoles(roles)
+	v.FirstPageURL = model.PeoplePath + url.PathEscape(d.ID)
+	v.Authored, v.Narrated, v.Translated = nil, nil, nil
+}
+
+// joinRoles writes a short list as prose: "written", "written and narrated",
+// "written, narrated and translated".
+func joinRoles(roles []string) string {
+	if len(roles) < 2 {
+		return strings.Join(roles, "")
+	}
+	return strings.Join(roles[:len(roles)-1], ", ") + " and " + roles[len(roles)-1]
 }
 
 func newPersonView(d *query.PersonDetail) personView {

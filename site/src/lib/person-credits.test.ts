@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest'
 import {
   authoredNote,
   creditedWorks,
+  firstPageRoles,
   narrationNote,
   translationNote,
   workCount,
@@ -78,5 +79,19 @@ describe('narrationNote', () => {
     )
     expect(note).toContain('narration credits')
     expect(note).toContain('412 works')
+  })
+})
+
+describe('firstPageRoles', () => {
+  it('says nothing on the first page, where the lists render', () => {
+    expect(firstPageRoles(1, { authored_total: 3, narrated_total: 80 })).toBeUndefined()
+  })
+  it('names every role a later page points back to', () => {
+    expect(firstPageRoles(2, { authored_total: 0, narrated_total: 80 })).toBe('narrated')
+    expect(firstPageRoles(2, { authored_total: 3, narrated_total: 80 })).toBe('written and narrated')
+    expect(firstPageRoles(3, { authored_total: 3, narrated_total: 80, translated_total: 1 })).toBe('written, narrated and translated')
+  })
+  it('says nothing for a person with no list to point to', () => {
+    expect(firstPageRoles(2, { authored_total: 0, narrated_total: 0 })).toBeUndefined()
   })
 })

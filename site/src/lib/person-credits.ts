@@ -71,3 +71,22 @@ function creditNote(
   if (typeof total !== 'number' || shownCredits >= total) return undefined
   return `Showing the first ${shownCredits.toLocaleString()} of ${total.toLocaleString()} ${kind} credits, which cover the ${workCount(works)} below.`
 }
+
+/** The roles whose lists a LATER page of a person's recording credits points
+    back to, as prose ("written and narrated"), or undefined on the first page
+    and for a person with no such list. Those lists do not move with the credit
+    window, so the first page alone carries them and a later page links there
+    instead of repeating them (metaserve's fact sheet does the same). */
+export function firstPageRoles(
+  page: number,
+  totals: { authored_total?: number; narrated_total?: number; translated_total?: number }
+): string | undefined {
+  if (page <= 1) return undefined
+  const roles = [
+    (totals.authored_total ?? 0) > 0 ? 'written' : '',
+    (totals.narrated_total ?? 0) > 0 ? 'narrated' : '',
+    (totals.translated_total ?? 0) > 0 ? 'translated' : '',
+  ].filter(Boolean)
+  if (roles.length === 0) return undefined
+  return roles.length === 1 ? roles[0] : `${roles.slice(0, -1).join(', ')} and ${roles[roles.length - 1]}`
+}

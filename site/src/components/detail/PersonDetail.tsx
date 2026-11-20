@@ -1,13 +1,17 @@
-import { getPerson, type Person, type WorkCard as WorkCardData } from '../../lib/api'
+import { useState } from 'react'
+import { getPerson, href, type Person, type WorkCard as WorkCardData } from '../../lib/api'
+import { cataloguePage } from '../../lib/catalogue'
 import {
   authoredNote,
   creditedWorks,
+  firstPageRoles,
   narrationNote,
   translationNote,
   workCount,
 } from '../../lib/person-credits'
 import PersonRecordings from './PersonRecordings'
 import WorkCard from '../cards/WorkCard'
+import { TEXT_LINK } from '../ui'
 import { useLanguages } from '../languages/use-languages'
 import {
   useEntitySlug,
@@ -64,6 +68,12 @@ function Section({
 function Loaded({ person, hydrated }: { person: Person; hydrated: boolean }) {
   usePageTitle(person.name, hydrated)
 
+  // A later page of the recording credits (?page=N, the same window
+  // PersonRecordings reads) carries the credits alone: the written, narrated
+  // and translated lists stay on the first page, one link away.
+  const [page] = useState(() => cataloguePage(window.location.search))
+  const laterPage = page > 1
+  const backRoles = firstPageRoles(page, person)
   const narrated: WorkCardData[] = creditedWorks(person.narrated)
   const translated: WorkCardData[] = creditedWorks(person.translated)
 
@@ -100,7 +110,7 @@ function Loaded({ person, hydrated }: { person: Person; hydrated: boolean }) {
           The two units genuinely differ for a narrator (several recordings of
           one work are several credits, one card), so leaving either number bare
           made a truncated narrator page look self-contradictory. */}
-      {person.authored && person.authored.length > 0 ? (
+      {!laterPage && person.authored && person.authored.length > 0 ? (
         <Section
           title="Wrote"
           count={workCount(person.authored.length)}
@@ -113,7 +123,7 @@ function Loaded({ person, hydrated }: { person: Person; hydrated: boolean }) {
       {(person.narrated_total ?? narrated.length) > 0 ? (
         <PersonRecordings
           person={person}
-          fallback={narrated.length > 0 ? (
+          fallback={!laterPage && narrated.length > 0 ? (
             <Section
               title="Narrated"
               count={workCount(narrated.length)}
@@ -125,7 +135,7 @@ function Loaded({ person, hydrated }: { person: Person; hydrated: boolean }) {
         />
       ) : null}
 
-      {translated.length > 0 ? (
+      {!laterPage && translated.length > 0 ? (
         <Section
           title="Recordings translated"
           count={workCount(translated.length)}
@@ -137,6 +147,13 @@ function Loaded({ person, hydrated }: { person: Person; hydrated: boolean }) {
         >
           <WorkGrid works={translated} />
         </Section>
+      ) : null}
+
+      {backRoles ? (
+        <p className="mt-12 text-sm text-dim">
+          Titles {backRoles} by {person.name} are listed on{' '}
+          <a className={TEXT_LINK} href={href.person(person.id)}>the first page</a>.
+        </p>
       ) : null}
 
       {(person.authored?.length ?? 0) === 0 && narrated.length === 0 && translated.length === 0 ? (
