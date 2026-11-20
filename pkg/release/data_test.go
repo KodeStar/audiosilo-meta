@@ -321,15 +321,19 @@ func TestTempFile(t *testing.T) {
 // TestWorkflowPublishesTheAssetContract: release.yml uploads every asset this
 // package's consumers read - the data asset and both checksums - so a renamed
 // constant or a dropped upload fails here rather than in every deployment.
+//
+// It pins the `assets=(...)` LIST itself, in both the upload step and the
+// verify step: every name also appears elsewhere in the workflow (the
+// sha256sum redirects, the cmp lines, comments - and DataAsset is a prefix of
+// DataDigestAsset), so a bare substring test would still pass with an asset
+// dropped from the upload.
 func TestWorkflowPublishesTheAssetContract(t *testing.T) {
 	wf, err := os.ReadFile(filepath.Join("..", "..", ".github", "workflows", "release.yml"))
 	if err != nil {
 		t.Fatal(err)
 	}
-	s := string(wf)
-	for _, name := range []string{DataAsset, DataDigestAsset, RawDigestAsset} {
-		if !strings.Contains(s, name) {
-			t.Errorf("release.yml does not publish %s", name)
-		}
+	want := "assets=(" + strings.Join([]string{DataAsset, DataDigestAsset, RawDigestAsset}, " ") + ")"
+	if got := strings.Count(string(wf), want); got != 2 {
+		t.Errorf("release.yml spells %q %d times, want 2 (the upload step and the verify step)", want, got)
 	}
 }
