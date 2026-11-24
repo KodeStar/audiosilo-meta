@@ -131,3 +131,19 @@ func TestPersonKindsCoverSchemaEnum(t *testing.T) {
 		}
 	}
 }
+
+// TestIsGenericCredit spot-checks the comparison; internal/importer's
+// TestGenericCreditAgreesWithTheImporter holds it to every table entry as a
+// source spells it.
+func TestIsGenericCredit(t *testing.T) {
+	for name, want := range map[string]bool{
+		"Full-Cast": true, "UNKNOWN artist": true, "Divers auteurs": true,
+		"Distribution complète": true, "N/A": true, "Various Readers": true, "TBD": true,
+		"GraphicAudio [Dramatized Adaptation]": true, "": true,
+		"the Full Cast Family": false, "P.C. Cast": false, "Various Jones": false,
+	} {
+		if got := IsGenericCredit(name); got != want {
+			t.Errorf("IsGenericCredit(%q) = %v, want %v", name, got, want)
+		}
+	}
+}
