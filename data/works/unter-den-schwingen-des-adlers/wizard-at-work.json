@@ -10839,6 +10839,42 @@
             {
               "asin": "B0GWKGSHR3",
               "region": "uk"
+            },
+            {
+              "asin": "B0GWKDNC3W",
+              "region": "ca"
+            },
+            {
+              "asin": "B0GWK39L41",
+              "region": "de"
+            },
+            {
+              "asin": "B0GWK99H6J",
+              "region": "au"
+            },
+            {
+              "asin": "B0GWKBT6XC",
+              "region": "fr"
+            },
+            {
+              "asin": "B0GWJYPCZ4",
+              "region": "es"
+            },
+            {
+              "asin": "B0GWK88P7D",
+              "region": "it"
+            },
+            {
+              "asin": "B0GWK5N512",
+              "region": "jp"
+            },
+            {
+              "asin": "B0GWK5YKYC",
+              "region": "in"
+            },
+            {
+              "asin": "B0GWK85QRP",
+              "region": "br"
             }
           ],
           "chapters": [
@@ -11408,6 +11444,51 @@
               "imported_at": "2026-10-09",
               "ref": "B0GWKGSHR3",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-20",
+              "ref": "B0GWKDNC3W",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-20",
+              "ref": "B0GWK39L41",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-20",
+              "ref": "B0GWK99H6J",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-20",
+              "ref": "B0GWKBT6XC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-20",
+              "ref": "B0GWJYPCZ4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-20",
+              "ref": "B0GWK88P7D",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-20",
+              "ref": "B0GWK5N512",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-20",
+              "ref": "B0GWK5YKYC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-20",
+              "ref": "B0GWK85QRP",
+              "type": "libex-import"
             }
           ],
           "work": "wizard-with-a-greatsword"
@@ -11421,6 +11502,121 @@
         }
       ],
       "title": "Wizard with a Greatsword"
+    },
+    "wizard-with-a-greatsword-2": {
+      "added_at": "2026-11-20",
+      "authors": [
+        "amelia-crawford"
+      ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy"
+      ],
+      "id": "wizard-with-a-greatsword-2",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "tegan-ashton-cohan-2026": {
+          "abridged": false,
+          "added_at": "2026-11-20",
+          "asin": [
+            {
+              "asin": "B0HRF8HFQN",
+              "region": "ca"
+            },
+            {
+              "asin": "B0HRF584PR",
+              "region": "au"
+            },
+            {
+              "asin": "B0HRDYLXRK",
+              "region": "fr"
+            },
+            {
+              "asin": "B0HRF7T8SQ",
+              "region": "jp"
+            },
+            {
+              "asin": "B0HRDS3Z2T",
+              "region": "us"
+            },
+            {
+              "asin": "B0HRFC8R2D",
+              "region": "uk"
+            },
+            {
+              "asin": "B0HRFG23T4",
+              "region": "de"
+            },
+            {
+              "asin": "B0HRF5D786",
+              "region": "br"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/8199lvG9E8L.jpg",
+          "id": "tegan-ashton-cohan-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tegan-ashton-cohan"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2026-12-22",
+          "runtime_min": 818,
+          "sources": [
+            {
+              "imported_at": "2026-11-20",
+              "ref": "B0HRF8HFQN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-20",
+              "ref": "B0HRF584PR",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-20",
+              "ref": "B0HRDYLXRK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-20",
+              "ref": "B0HRF7T8SQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-20",
+              "ref": "B0HRDS3Z2T",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-20",
+              "ref": "B0HRFC8R2D",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-20",
+              "ref": "B0HRFG23T4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-20",
+              "ref": "B0HRF5D786",
+              "type": "libex-import"
+            }
+          ],
+          "work": "wizard-with-a-greatsword-2"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-11-20",
+          "ref": "B0HRF8HFQN",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Wizard with a Greatsword 2"
     },
     "wizard-zero-mission-2": {
       "added_at": "2026-08-01",

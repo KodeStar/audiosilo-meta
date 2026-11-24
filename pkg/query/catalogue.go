@@ -84,11 +84,6 @@ func catalogueWindow(limit, offset int) (int, int) {
 	return limit, offset
 }
 
-// SQL casts the start of both decimal and range positions ("2.5", "1-3.5")
-// numerically. The remaining columns give ties a stable, deterministic order.
-const seriesListeningMembersSQL = seriesWorksSQL + ` ORDER BY CAST(sw.position AS REAL), sw.position, sw.work_id LIMIT ? OFFSET ?`
-const seriesListeningTotalSQL = `SELECT COUNT(*) FROM series_works sw JOIN works w ON w.id=sw.work_id WHERE sw.series_id=?`
-
 // SeriesListeningGuide resolves only a bounded member page, then batches its
 // recording alternatives and narrator credits. It never builds WorkDetail.
 func (s *DB) SeriesListeningGuide(ctx context.Context, id string, limit, offset int) (*SeriesListeningGuide, error) {
@@ -117,17 +112,12 @@ func (s *DB) SeriesListeningGuide(ctx context.Context, id string, limit, offset 
 	if d.Authors, err = scanPersonRefs(arows); err != nil {
 		return nil, err
 	}
-	if err = s.db.QueryRowContext(ctx, seriesListeningTotalSQL, id).Scan(&d.WorksTotal); err != nil {
-		return nil, err
-	}
-	rows, err := s.db.QueryContext(ctx, seriesListeningMembersSQL, id, limit, offset)
+	// The members window is DB.Series' own read (seriesMemberOrderSQL's order).
+	members, total, err := s.seriesMemberPage(ctx, id, limit, offset)
 	if err != nil {
 		return nil, err
 	}
-	members, err := scanPairs(rows, func(id, pos string) seriesMember { return seriesMember{id, pos} })
-	if err != nil {
-		return nil, err
-	}
+	d.WorksTotal = total
 	ids := make([]string, len(members))
 	for i, m := range members {
 		ids[i] = m.workID
@@ -136,7 +126,7 @@ func (s *DB) SeriesListeningGuide(ctx context.Context, id string, limit, offset 
 	if err != nil {
 		return nil, err
 	}
-	credits, totals, err := s.listeningCandidates(ctx, ids)
+	credits, totals, err := s.listeningCandidates(ctx, id, ids)
 	if err != nil {
 		return nil, err
 	}
@@ -158,17 +148,42 @@ func (s *DB) SeriesListeningGuide(ctx context.Context, id string, limit, offset 
 	return &d, nil
 }
 
+// listeningCandidatesSQL picks, per work on the visible page, the
+// listeningRecordingsLimit recordings the guide shows, in THE guide's
+// recording order (also stated in openapi.json and PACKAGES.md):
+//
+//  1. narrator continuity, most first: the most OTHER volumes of this series
+//     that any one of the recording's narrators also narrates, so the
+//     production whose voice carries on through the series leads;
+//  2. release date, earliest first, a recording stating none after every
+//     dated one (the dates are ISO strings, partial or whole, so text order is
+//     date order);
+//  3. recording id, which makes the order total and deterministic.
+//
+// series_narrators counts each narrator's distinct works over the WHOLE series
+// (bounded by its membership, never a narrator's whole credit list), and every
+// page work is a member, so a candidate's own work is in its narrator's count
+// and is taken off. The rows come back in that order per work, which is the
+// order the guide lists them in. Arguments: the series id, the page's work ids
+// twice (once per ph), then the limit.
 func listeningCandidatesSQL(ph string) string {
-	return `SELECT work_id, id, total FROM (SELECT work_id, id, COUNT(*) OVER (PARTITION BY work_id) AS total, ` +
-		`ROW_NUMBER() OVER (PARTITION BY work_id ORDER BY id) AS alternative FROM recordings WHERE work_id IN (` + ph +
-		`)) WHERE alternative <= ? ORDER BY work_id, id`
+	return `WITH series_narrators AS (SELECT rn.person_id, COUNT(DISTINCT rn.work_id) AS works ` +
+		`FROM series_works sw JOIN recording_narrators rn ON rn.work_id=sw.work_id WHERE sw.series_id=? GROUP BY rn.person_id), ` +
+		`continuity AS (SELECT rn.work_id, rn.recording_id, MAX(sn.works)-1 AS other_works FROM recording_narrators rn ` +
+		`JOIN series_narrators sn ON sn.person_id=rn.person_id WHERE rn.work_id IN (` + ph + `) GROUP BY rn.work_id, rn.recording_id) ` +
+		`SELECT work_id, id, total FROM (SELECT r.work_id, r.id, COUNT(*) OVER (PARTITION BY r.work_id) AS total, ` +
+		`ROW_NUMBER() OVER (PARTITION BY r.work_id ORDER BY COALESCE(c.other_works,0) DESC, ` +
+		`COALESCE(r.release_date,'')='', r.release_date, r.id) AS alternative ` +
+		`FROM recordings r LEFT JOIN continuity c ON c.work_id=r.work_id AND c.recording_id=r.id WHERE r.work_id IN (` + ph +
+		`)) WHERE alternative <= ? ORDER BY work_id, alternative`
 }
 
-func (s *DB) listeningCandidates(ctx context.Context, ids []string) ([]narratedCredit, map[string]int, error) {
+func (s *DB) listeningCandidates(ctx context.Context, seriesID string, ids []string) ([]narratedCredit, map[string]int, error) {
 	var out []narratedCredit
 	totals := map[string]int{}
 	err := eachChunk(ids, func(ph string, args []any) error {
-		rows, err := s.db.QueryContext(ctx, listeningCandidatesSQL(ph), append(args, listeningRecordingsLimit)...)
+		qargs := append(append(append([]any{seriesID}, args...), args...), listeningRecordingsLimit)
+		rows, err := s.db.QueryContext(ctx, listeningCandidatesSQL(ph), qargs...)
 		if err != nil {
 			return err
 		}
@@ -293,6 +308,12 @@ func personRecordingCandidatesSQL(seriesID string, lang langFilter) (string, []a
 	return query, args
 }
 
+// personRecordingOrderSQL orders a person's recording credits by work title
+// under the NOCASE collation the browse directories use (DB.BrowseFiltered), so
+// "apple" and "Banana" read alphabetically rather than capitals first, then by
+// work id and recording id, which make the order total and stable.
+const personRecordingOrderSQL = ` ORDER BY w.title COLLATE NOCASE, rn.work_id, rn.recording_id`
+
 // PersonRecordings lists narration credits, retaining separate recordings of
 // one work and deduplicating repeated credits on the same recording.
 func (s *DB) PersonRecordings(ctx context.Context, id string, limit, offset int, seriesID, language string) (*PersonRecordingsPage, error) {
@@ -318,7 +339,7 @@ func (s *DB) PersonRecordings(ctx context.Context, id string, limit, offset int,
 	if err := s.db.QueryRowContext(ctx, `SELECT COUNT(*) FROM (SELECT DISTINCT rn.work_id, rn.recording_id`+base+`)`, args...).Scan(&d.Total); err != nil {
 		return nil, err
 	}
-	rows, err := s.db.QueryContext(ctx, `SELECT DISTINCT rn.work_id, rn.recording_id`+base+` ORDER BY w.title, rn.work_id, rn.recording_id LIMIT ? OFFSET ?`, append(args, limit, offset)...)
+	rows, err := s.db.QueryContext(ctx, `SELECT DISTINCT rn.work_id, rn.recording_id`+base+personRecordingOrderSQL+` LIMIT ? OFFSET ?`, append(args, limit, offset)...)
 	if err != nil {
 		return nil, err
 	}
@@ -394,9 +415,11 @@ func (s *DB) Browse(ctx context.Context, family PageFamily, limit, offset int) (
 	}
 	var ids []string
 	for rows.Next() {
+		// The shard query's row shape (pages.go): the id, then added_at and the
+		// revision date, which a browse page does not show.
 		var id string
-		var added sql.NullString
-		if err := rows.Scan(&id, &added); err != nil {
+		var added, revised sql.NullString
+		if err := rows.Scan(&id, &added, &revised); err != nil {
 			_ = rows.Close()
 			return nil, err
 		}

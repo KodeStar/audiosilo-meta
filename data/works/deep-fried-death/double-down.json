@@ -5437,6 +5437,10 @@
             {
               "asin": "B0FZYDZLCV",
               "region": "jp"
+            },
+            {
+              "asin": "B0FZY9PWPW",
+              "region": "in"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71ydFwoYrPL.jpg",
@@ -5448,7 +5452,7 @@
           ],
           "publisher": "Tantor Media",
           "release_date": "2026-11-24",
-          "runtime_min": 390,
+          "runtime_min": 428,
           "sources": [
             {
               "imported_at": "2026-08-02",
@@ -5488,6 +5492,11 @@
             {
               "imported_at": "2026-10-27",
               "ref": "B0FZYDZLCV",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-24",
+              "ref": "B0FZY9PWPW",
               "type": "libex-import"
             }
           ],
@@ -9248,6 +9257,34 @@
             {
               "asin": "B09MKXKGL1",
               "region": "uk"
+            },
+            {
+              "asin": "B09MKY631F",
+              "region": "au"
+            },
+            {
+              "asin": "B0BZJXV31S",
+              "region": "br"
+            },
+            {
+              "asin": "B09MKZF4VR",
+              "region": "es"
+            },
+            {
+              "asin": "B09MKY1PN7",
+              "region": "fr"
+            },
+            {
+              "asin": "B09MKXVR9J",
+              "region": "in"
+            },
+            {
+              "asin": "B09MKWVSBB",
+              "region": "it"
+            },
+            {
+              "asin": "B09ML145LJ",
+              "region": "jp"
             }
           ],
           "chapters": [
@@ -9542,6 +9579,41 @@
               "imported_at": "2026-11-12",
               "ref": "B09MKXKGL1",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-21",
+              "ref": "B09MKY631F",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-21",
+              "ref": "B0BZJXV31S",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-21",
+              "ref": "B09MKZF4VR",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-21",
+              "ref": "B09MKY1PN7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-21",
+              "ref": "B09MKXVR9J",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-21",
+              "ref": "B09MKWVSBB",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-21",
+              "ref": "B09ML145LJ",
+              "type": "libex-import"
             }
           ],
           "work": "double-or-nothing-kim-sherwood"
@@ -9555,6 +9627,111 @@
         }
       ],
       "title": "Double or Nothing"
+    },
+    "double-or-nothing-terror-series-book-2": {
+      "added_at": "2026-11-20",
+      "authors": [
+        "art-river"
+      ],
+      "genres": [
+        "erotica"
+      ],
+      "id": "double-or-nothing-terror-series-book-2",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "art-river-2026": {
+          "abridged": false,
+          "added_at": "2026-11-20",
+          "asin": [
+            {
+              "asin": "B0HQZ9N1MW",
+              "region": "ca"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 10959,
+              "start_ms": 0,
+              "title": "Opening credit"
+            },
+            {
+              "length_ms": 16253,
+              "start_ms": 10959,
+              "title": "Author Warning"
+            },
+            {
+              "length_ms": 561226,
+              "start_ms": 27212,
+              "title": "1. The Hunter"
+            },
+            {
+              "length_ms": 568563,
+              "start_ms": 588438,
+              "title": "2. Backseat Hunger"
+            },
+            {
+              "length_ms": 658657,
+              "start_ms": 1157001,
+              "title": "3. Undertow"
+            },
+            {
+              "length_ms": 381480,
+              "start_ms": 1815658,
+              "title": "4. Reclamation"
+            },
+            {
+              "length_ms": 557186,
+              "start_ms": 2197138,
+              "title": "5. Still Water"
+            },
+            {
+              "length_ms": 830856,
+              "start_ms": 2754324,
+              "title": "6. The Cost"
+            },
+            {
+              "length_ms": 236750,
+              "start_ms": 3585180,
+              "title": "Epilogue"
+            },
+            {
+              "length_ms": 78344,
+              "start_ms": 3821930,
+              "title": "Book 3 Teaser"
+            },
+            {
+              "length_ms": 20223,
+              "start_ms": 3900274,
+              "title": "End credit"
+            }
+          ],
+          "id": "art-river-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "art-river"
+          ],
+          "publisher": "Art River",
+          "release_date": "2026-11-09",
+          "sources": [
+            {
+              "imported_at": "2026-11-20",
+              "ref": "B0HQZ9N1MW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "double-or-nothing-terror-series-book-2"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-11-20",
+          "ref": "B0HQZ9N1MW",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Double or Nothing (Terror Series Book 2)"
     },
     "double-play": {
       "added_at": "2026-07-29",

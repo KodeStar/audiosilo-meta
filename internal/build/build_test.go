@@ -167,7 +167,7 @@ func triples(t *testing.T, db *sql.DB, query string) [][3]string {
 func TestBuildMeta(t *testing.T) {
 	db := buildFixture(t)
 	want := map[string]string{
-		"schema_version":        "13",
+		"schema_version":        "14",
 		"built_at":              "2026-07-11T00:00:00Z",
 		"count_works":           "2",
 		"count_recordings":      "2",
@@ -644,7 +644,7 @@ func TestBuildWorkCredits(t *testing.T) {
 // TestBuildRedirects pins the slug tombstone table's row shape and its ORDER:
 // namespace order first (model.RedirectKinds is sorted), then retired slug, so an
 // unchanged table produces byte-identical rows however the map was walked. That
-// determinism is what makes the binary delta between two releases small.
+// determinism is what keeps the raw-artifact digest stable for an unchanged tree.
 func TestBuildRedirects(t *testing.T) {
 	got := triples(t, buildFixture(t), `SELECT kind, old_slug, new_slug FROM redirects`)
 	want := [][3]string{

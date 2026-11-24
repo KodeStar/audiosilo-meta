@@ -265,10 +265,8 @@ is verified against that release's published checksum and adopted as is. With
 `--db` as well, the local artifact serves immediately
 and the poller still runs a refresh at startup (not just once per `--interval`).
 Superseded artifacts are pruned from the cache after each hot-swap. A new
-release is applied as a binary delta against the loaded artifact only while that
-artifact is under 1 GiB (the delta needs about twice the artifact in memory); the
-public catalogue is past that, so each release there is a full download of about
-530 MB, logged as `downloading <tag> in full`. Set
+release the cache does not already hold is a full download of `meta.sqlite.gz`
+(about 570 MB for the public catalogue), streamed and verified as it lands. Set
 `GITHUB_TOKEN` to raise the API rate limit.
 
 Rate limit and caching: every API route (`/api/v1/*` and `/abs/search`, not

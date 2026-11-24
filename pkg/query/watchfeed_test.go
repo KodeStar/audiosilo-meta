@@ -603,6 +603,48 @@ func TestWatchFeedEmitsEachWorkOnce(t *testing.T) {
 	}
 }
 
+// Two watched series sharing a NAME keep their members apart: the series id is a
+// sort key after the name, so each series is listed whole, in its own position
+// order, rather than the two interleaving by position. The members are all news
+// at one instant, so nothing earlier in the sort separates them.
+// site/src/lib/watch-flat.test.ts pins the same case for the watching page.
+func TestWatchFeedKeepsSameNamedSeriesApart(t *testing.T) {
+	cat := watchFeedCatalog()
+	work := func(id string) *model.Work {
+		return &model.Work{
+			ID: id, Title: id, Language: "en", Authors: []string{"brandon-sanderson"},
+			License: "CC0-1.0", AddedAt: "2026-10-19T12:00:00Z",
+		}
+	}
+	for _, id := range []string{"saga-a-one", "saga-a-three", "saga-b-two", "saga-b-four"} {
+		cat.Works = append(cat.Works, work(id))
+	}
+	cat.Series = append(cat.Series,
+		&model.Series{
+			ID: "saga-b", Name: "Saga", License: "CC0-1.0",
+			Works: []model.SeriesWork{{Work: "saga-b-two", Position: "2"}, {Work: "saga-b-four", Position: "4"}},
+		},
+		&model.Series{
+			ID: "saga-a", Name: "Saga", License: "CC0-1.0",
+			Works: []model.SeriesWork{{Work: "saga-a-one", Position: "1"}, {Work: "saga-a-three", Position: "3"}},
+		},
+	)
+	_, ts := newWatchFeedServer(t, cat)
+	_, body := watchFeedResponse(t, ts, "/api/v1/watch/feed.json?s=saga-b,saga-a")
+	var feed jsonFeed
+	if err := json.Unmarshal(body, &feed); err != nil {
+		t.Fatal(err)
+	}
+	var got []string
+	for _, item := range feed.Items {
+		got = append(got, strings.TrimPrefix(item.URL, testSiteURL+"/works/"))
+	}
+	want := []string{"saga-a-one", "saga-a-three", "saga-b-two", "saga-b-four"}
+	if !slices.Equal(got, want) {
+		t.Errorf("items = %v, want %v:\n%s", got, want, body)
+	}
+}
+
 // Invalid UTF-8 backs the rune-boundary break off all the way to the start of
 // the segment, and a zero-width segment never advances: the fold used to loop
 // forever on one. It cuts at the limit instead.

@@ -32,7 +32,7 @@
 # moving pointer, so an unpinned build is not reproducible and a compromised or
 # simply retagged upstream lands silently. .github/dependabot.yml owns keeping
 # these current - do not hand-edit a digest without the tag it belongs to.
-FROM node:24-alpine@sha256:ebfe2f90462722a7a4de65e91990e97fe0d401c70e0e762c5b53302f905ec1c1 AS site
+FROM node:24-alpine@sha256:116b800c3754b440ee0aa3ed2f20f5bf3d99a554bfd9adeea09ea8017f6e85f5 AS site
 WORKDIR /site
 # Enable Corepack so the repo's pinned yarn is used.
 RUN corepack enable
@@ -53,18 +53,30 @@ RUN yarn build
 # Astro emits the static site to dist/.
 
 # ---- 2. build ----------------------------------------------------------------
-FROM golang:1.26-alpine@sha256:3082400e369fa24d5fc60bca20edab3f6d604e0c5a690ec66b295eff4dd87ade AS build
+FROM golang:1.26-alpine@sha256:ecb67f987aa1a57794c91d19ade7ae0209f2f0f5496aaef9e6ae85ddf92d02ab AS build
 WORKDIR /src
 ENV CGO_ENABLED=0
 # Pure-Go deps (modernc sqlite) so no C toolchain is needed.
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-RUN go build -trimpath -ldflags="-s -w" -o /out/metaserve ./cmd/metaserve
+# REVISION is the commit the image is built from (image.yml passes github.sha).
+# The build context excludes .git, so the toolchain's own VCS stamp is empty
+# here; the link-time stamp is what lets a renderer-only deploy move the pages'
+# and sitemaps' validators (internal/serve's stampedRevision). The build then
+# VERIFIES it: when a revision was given, the binary must report exactly that
+# one, or the image fails to build. A local build without the argument still
+# works and carries no revision (htmlRendererVersion covers it).
+ARG REVISION=""
+RUN go build -trimpath \
+      -ldflags="-s -w -X github.com/kodestar/audiosilo-meta/internal/serve.stampedRevision=${REVISION}" \
+      -o /out/metaserve ./cmd/metaserve \
+    && got="$(/out/metaserve -version)" \
+    && if [ -n "$REVISION" ] && [ "$got" != "$REVISION" ]; then echo "metaserve reports revision '$got', built with '$REVISION'" >&2; exit 1; fi
 
 # ---- 3. runtime --------------------------------------------------------------
 # Track the current stable Alpine (3.20 went EOL in April 2026).
-FROM alpine:3.24@sha256:be2656061b536c1883c4034790e21d0a09c5aaaf51968b89368a3c0371ea2c9a AS runtime
+FROM alpine:3.24@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5a48c71bf AS runtime
 RUN apk add --no-cache ca-certificates \
     && addgroup -S app && adduser -S -G app app \
     && mkdir -p /app /data/cache && chown -R app:app /data
@@ -75,10 +87,11 @@ COPY --from=site /site/dist /app/site
 USER app
 EXPOSE 8080
 # /data holds the downloaded/hot-swapped release artifacts. It is a disposable
-# cache: a boot always fetches the newest release (the first refresh is always
-# full - there is no loaded artifact to patch against), so persisting it does
-# NOT shorten startup. What it buys is the patch base for the refreshes that
-# follow, so later updates transfer a delta instead of the whole artifact.
+# cache: a boot always asks GitHub for the newest release. What persisting it
+# buys is a restart without a download - when the volume already holds that
+# release's artifact it is adopted once it hashes to the published digest - and,
+# when GitHub cannot be reached at boot, the newest cached artifact served
+# (stale) instead of a 503.
 VOLUME ["/data"]
 
 # DELIBERATELY NO HEALTHCHECK. /healthz is a READINESS probe - it answers 503

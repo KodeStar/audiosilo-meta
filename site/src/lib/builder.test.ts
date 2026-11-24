@@ -10,8 +10,6 @@ import {
   buildRecapsObject,
   serializeCanonical,
   seedCharactersFromSibling,
-  parsePositionValue,
-  nearestLowerSibling,
   moveItem,
   emptyCharacterDraft,
   emptyRecapsDraft,
@@ -356,39 +354,6 @@ describe('seedCharactersFromSibling', () => {
       wikidata: '',
       seeded: true,
     })
-  })
-})
-
-describe('parsePositionValue', () => {
-  it('parses integers, decimals and range starts', () => {
-    expect(parsePositionValue('1')).toBe(1)
-    expect(parsePositionValue('2.5')).toBe(2.5)
-    expect(parsePositionValue('1-3.5')).toBe(1)
-  })
-  it('returns null for non-numeric positions', () => {
-    expect(parsePositionValue('')).toBeNull()
-    expect(parsePositionValue('prequel')).toBeNull()
-  })
-})
-
-describe('nearestLowerSibling', () => {
-  const works = [
-    { position: '1', work: { id: 'book-1' } },
-    { position: '2', work: { id: 'book-2' } },
-    { position: '2.5', work: { id: 'book-2-5' } },
-    { position: '3', work: { id: 'book-3' } },
-  ]
-
-  it('returns the highest sibling strictly below the current position', () => {
-    expect(nearestLowerSibling(works, 'book-3')?.work.id).toBe('book-2-5')
-    expect(nearestLowerSibling(works, 'book-2-5')?.work.id).toBe('book-2')
-    expect(nearestLowerSibling(works, 'book-2')?.work.id).toBe('book-1')
-  })
-
-  it('returns null for the first book, an unknown id, or an unparseable position', () => {
-    expect(nearestLowerSibling(works, 'book-1')).toBeNull()
-    expect(nearestLowerSibling(works, 'nope')).toBeNull()
-    expect(nearestLowerSibling([{ position: 'x', work: { id: 'a' } }], 'a')).toBeNull()
   })
 })
 

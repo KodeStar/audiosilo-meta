@@ -31,3 +31,7 @@
 # and, unconfigured, git's own line merge applies here as before. This line comes
 # after the pack pattern on purpose: the last matching line wins.
 /data/redirects.json merge=redirectsjson
+
+# The renderer version guard (internal/serve/renderer_version_test.go) digests the
+# golden files byte for byte, so a CRLF checkout must not rewrite them.
+internal/serve/testdata/golden/** text eol=lf

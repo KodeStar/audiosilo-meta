@@ -802,7 +802,6 @@ func TestIntakeExpiryBoundary(t *testing.T) {
 // installed filters the queue, and each subtest proves it took the path it names.
 func TestIntakePurgeOnEveryAdoptPath(t *testing.T) {
 	v1Path := artifacttest.Build(t, artifacttest.Fixture())
-	v1 := readDB(t, v1Path)
 	latePath := artifacttest.Build(t, intakeLateCatalog())
 	late := readDB(t, latePath)
 
@@ -817,7 +816,7 @@ func TestIntakePurgeOnEveryAdoptPath(t *testing.T) {
 	}
 
 	t.Run("full download", func(t *testing.T) {
-		f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, late, "", nil)})
+		f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: releasetest.DataAssets(t, late)})
 		srv := seeded(t, f)
 		if err := srv.refresh(context.Background()); err != nil {
 			t.Fatal(err)
@@ -828,25 +827,8 @@ func TestIntakePurgeOnEveryAdoptPath(t *testing.T) {
 		wantQueue(t, srv, unknownA)
 	})
 
-	t.Run("patched", func(t *testing.T) {
-		f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, v1, "", nil)})
-		srv := seeded(t, f)
-		if err := srv.refresh(context.Background()); err != nil {
-			t.Fatal(err)
-		}
-		wantQueue(t, srv, lateASIN, unknownA) // R1 does not know it
-		f.Publish(tagR2, makeAssets(t, late, tagR1, v1))
-		if err := srv.refresh(context.Background()); err != nil {
-			t.Fatal(err)
-		}
-		if f.Hits(patchAssetName(tagR1)) != 1 {
-			t.Fatalf("patch fetched %d times: not the patch path", f.Hits(patchAssetName(tagR1)))
-		}
-		wantQueue(t, srv, unknownA)
-	})
-
 	t.Run("cached artifact", func(t *testing.T) {
-		f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: makeAssets(t, late, "", nil)})
+		f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: releasetest.DataAssets(t, late)})
 		srv := seeded(t, f)
 		if err := os.WriteFile(srv.dbCachePath(tagR2), late, 0o600); err != nil {
 			t.Fatal(err)
@@ -862,7 +844,7 @@ func TestIntakePurgeOnEveryAdoptPath(t *testing.T) {
 
 	t.Run("stale cache at a degraded boot", func(t *testing.T) {
 		cache := t.TempDir()
-		f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, late, "", nil)})
+		f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: releasetest.DataAssets(t, late)})
 		f.SetDown(true)
 		if err := os.WriteFile((&Server{cfg: Config{CacheDir: cache}}).dbCachePath(tagR1), late, 0o600); err != nil {
 			t.Fatal(err)
@@ -878,7 +860,7 @@ func TestIntakePurgeOnEveryAdoptPath(t *testing.T) {
 	})
 
 	t.Run("first adopt at a boot that fetched", func(t *testing.T) {
-		f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, late, "", nil)})
+		f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: releasetest.DataAssets(t, late)})
 		queue := filepath.Join(t.TempDir(), "queue.sqlite")
 		seedFile(t, queue, lateASIN, unknownA)
 		srv := intakeServer(t, Config{Poll: true, Repo: "owner/name", CacheDir: t.TempDir(), apiBase: f.URL,
@@ -890,7 +872,7 @@ func TestIntakePurgeOnEveryAdoptPath(t *testing.T) {
 	})
 
 	t.Run("first adopt after a boot with no snapshot", func(t *testing.T) {
-		f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, late, "", nil)})
+		f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: releasetest.DataAssets(t, late)})
 		f.SetDown(true)
 		srv := intakeServer(t, Config{Poll: true, Repo: "owner/name", CacheDir: t.TempDir(), apiBase: f.URL, bootRetry: time.Hour})
 		if srv.current() != nil {
@@ -921,7 +903,7 @@ func TestIntakePurgeOnEveryAdoptPath(t *testing.T) {
 func TestIntakePurgeNeverHoldsUpASwap(t *testing.T) {
 	v1Path := artifacttest.Build(t, artifacttest.Fixture())
 	late := readDB(t, artifacttest.Build(t, intakeLateCatalog()))
-	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, late, "", nil)})
+	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: releasetest.DataAssets(t, late)})
 	srv := intakeServer(t, Config{DBPath: v1Path, Repo: releasetest.Repo, CacheDir: t.TempDir()})
 	srv.gh = srv.newGHClient(releasetest.Repo, f.URL)
 	seedQueue(t, srv.intake.queue, intakeRow{ASIN: lateASIN, Count: 1, FirstDay: "2026-11-01", LastDay: "2026-11-01"})
@@ -957,7 +939,7 @@ func TestIntakePurgeNeverHoldsUpASwap(t *testing.T) {
 func TestIntakePurgeFailureIsOnlyLogged(t *testing.T) {
 	v1Path := artifacttest.Build(t, artifacttest.Fixture())
 	late := readDB(t, artifacttest.Build(t, intakeLateCatalog()))
-	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, late, "", nil)})
+	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: releasetest.DataAssets(t, late)})
 	logger, logged := newLoggerCapture()
 	srv := intakeServer(t, Config{DBPath: v1Path, Repo: releasetest.Repo, CacheDir: t.TempDir(), Logger: logger})
 	srv.gh = srv.newGHClient(releasetest.Repo, f.URL)
@@ -981,7 +963,7 @@ func TestIntakePurgeFailureIsOnlyLogged(t *testing.T) {
 func TestIntakeSwapKeepsTheQueue(t *testing.T) {
 	v1Path := artifacttest.Build(t, artifacttest.Fixture())
 	late := readDB(t, artifacttest.Build(t, intakeLateCatalog()))
-	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, late, "", nil)})
+	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: releasetest.DataAssets(t, late)})
 	cache := t.TempDir()
 	queue := filepath.Join(cache, "queue.sqlite")
 	srv := intakeServer(t, Config{DBPath: v1Path, Repo: releasetest.Repo, CacheDir: cache, IntakeDB: queue})

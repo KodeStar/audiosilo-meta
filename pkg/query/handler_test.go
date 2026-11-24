@@ -937,23 +937,6 @@ func TestTypedSearchLimitClamp(t *testing.T) {
 	}
 }
 
-func TestPositionStart(t *testing.T) {
-	// The cases site/src/lib/watch-flat.test.ts pins its twin against - see the
-	// note on positionStart in queries.go.
-	cases := map[string]float64{
-		"1": 1, "2.5": 2.5, "1-3.5": 1, "10": 10, "": 1e18, "abc": 1e18,
-		// A padded or padded-out value reads as the number it spells.
-		"03": 3, " 4 ": 4,
-		// A malformed range still sorts by its parseable prefix.
-		"1-": 1, "1-garbage": 1, "1-2-3": 1,
-	}
-	for in, want := range cases {
-		if got := positionStart(in); got != want {
-			t.Errorf("positionStart(%q) = %v, want %v", in, got, want)
-		}
-	}
-}
-
 // TestGateHandsTheHandlerTheDatabaseItChecked pins that a request loads the
 // database pointer ONCE: an in-process consumer's current can go back to nil
 // (its copy unloaded) at any moment, and a handler that loaded it a second time

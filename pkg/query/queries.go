@@ -4,8 +4,6 @@ import (
 	"context"
 	"database/sql"
 	"slices"
-	"sort"
-	"strconv"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -1085,7 +1083,12 @@ func chaptersOfSQL(librivox bool) string {
 	return `SELECT ` + cols + ` FROM chapters WHERE work_id=? AND recording_id=? ORDER BY idx`
 }
 
-func (s *DB) chapters(workID, rid string) ([]ChapterOut, error) {
+// Chapters is one recording's whole chapter list in order - the
+// GET /works/{id}/recordings/{rid}/chapters document - and an empty list for a
+// pair the catalogue does not hold (a recording may legitimately have none).
+// RecordingChapters is the bounded page of it that metaserve's chapters page
+// renders, beside the work card and recording summary.
+func (s *DB) Chapters(workID, rid string) ([]ChapterOut, error) {
 	librivox := s.hasLibrivoxLayer()
 	rows, err := s.db.Query(chaptersOfSQL(librivox), workID, rid)
 	if err != nil {
@@ -1148,22 +1151,26 @@ type PersonDetail struct {
 
 // The person page's queries, a total and a page per list. Each total counts over exactly the join its
 // page query pages, so the total and the list can never disagree; they are named
-// constants so the index guard EXPLAINs what actually runs.
+// constants so the index guard EXPLAINs what actually runs. Every list is
+// ordered by work title under the browse directories' NOCASE collation, then
+// its ids, as the recording credits are (personRecordingOrderSQL), so all of a
+// person's lists agree; each is reached through the person index and sorted in
+// a temp b-tree either way, so the collation costs no index.
 const (
 	authoredTotalSQL = `SELECT COUNT(*) FROM work_authors wa JOIN works w ON w.id = wa.work_id WHERE wa.person_id=?`
 	narratedTotalSQL = `SELECT COUNT(*) FROM recording_narrators rn JOIN works w ON w.id = rn.work_id WHERE rn.person_id=?`
 
 	authoredPageSQL = `SELECT wa.work_id FROM work_authors wa JOIN works w ON w.id = wa.work_id WHERE wa.person_id=? ` +
-		`ORDER BY w.title, wa.work_id LIMIT ? OFFSET ?`
+		`ORDER BY w.title COLLATE NOCASE, wa.work_id LIMIT ? OFFSET ?`
 	narratedPageSQL = `SELECT rn.work_id, rn.recording_id FROM recording_narrators rn JOIN works w ON w.id = rn.work_id ` +
-		`WHERE rn.person_id=? ORDER BY w.title, rn.work_id, rn.recording_id LIMIT ? OFFSET ?`
+		`WHERE rn.person_id=?` + personRecordingOrderSQL + ` LIMIT ? OFFSET ?`
 
 	// The translated list (librivoxRecordingSchemaVersion): a recording's own
 	// translator credits, through idx_recording_credits_person.
 	translatedTotalSQL = `SELECT COUNT(*) FROM recording_credits rc JOIN works w ON w.id = rc.work_id ` +
 		`WHERE rc.person_id=? AND rc.role = '` + model.RoleTranslator + `'`
 	translatedPageSQL = `SELECT rc.work_id, rc.recording_id FROM recording_credits rc JOIN works w ON w.id = rc.work_id ` +
-		`WHERE rc.person_id=? AND rc.role = '` + model.RoleTranslator + `' ORDER BY w.title, rc.work_id, rc.recording_id LIMIT ? OFFSET ?`
+		`WHERE rc.person_id=? AND rc.role = '` + model.RoleTranslator + `' ORDER BY w.title COLLATE NOCASE, rc.work_id, rc.recording_id LIMIT ? OFFSET ?`
 )
 
 // Person returns one page of a Person's authored, narrated and (version 9)
@@ -1325,10 +1332,11 @@ type SeriesOrdering struct {
 	Ordering string `json:"ordering,omitempty"`
 }
 
-// The series detail queries. seriesWorksSQL joins works so WorksTotal counts
-// exactly the members that can be rendered: a membership row pointing at a work
-// the artifact does not carry is dropped from the list, so counting it in the
-// total would report a page shorter than it claims.
+// The series detail queries. seriesMembersPageSQL and seriesMembersTotalSQL join
+// works so WorksTotal counts exactly the members that can be rendered: a
+// membership row pointing at a work the artifact does not carry is dropped from
+// the list, so counting it in the total would report a page shorter than it
+// claims.
 const (
 	// seriesNameSQL is the header without the id, for the caller that already
 	// holds it (see seriesName). Reading a column back to discard it is a scan
@@ -1336,8 +1344,28 @@ const (
 	seriesNameSQL    = `SELECT name FROM series WHERE id=?`
 	seriesAuthorsSQL = `SELECT p.id, p.name FROM series_authors sa JOIN people p ON p.id = sa.person_id ` +
 		`WHERE sa.series_id=? ORDER BY sa.ord`
-	seriesWorksSQL = `SELECT sw.work_id, sw.position FROM series_works sw JOIN works w ON w.id = sw.work_id ` +
-		`WHERE sw.series_id=?`
+	// seriesPositionStartSQL is the numeric start of a member's position, the
+	// first key of seriesMemberOrderSQL: SQLite's CAST reads the longest numeric
+	// prefix, so "2.5" is 2.5 and the range "1-3.5" starts at 1. The watch feed
+	// selects it rather than parsing the position in Go, so the one cross-series
+	// order computed outside SQL still keys on this expression.
+	seriesPositionStartSQL = `CAST(sw.position AS REAL)`
+	// seriesMemberOrderSQL is THE series member order, the one DB.Series, the
+	// listening guide (both through seriesMembersPageSQL) and the coverage
+	// browser's gap list read: the series, then the numeric start of the position,
+	// then the position string, then the work id, so ties are stable. The series
+	// key is a no-op under a single-series WHERE; it is there so the whole-table
+	// read (positionsBySeries) has the index's own key order and walks it with no
+	// sort. Every reader walks idx_series_works_position, whose key is exactly
+	// these columns; an artifact without that index sorts the same rows in a temp
+	// b-tree, with the same answer.
+	seriesMemberOrderSQL = ` ORDER BY sw.series_id, ` + seriesPositionStartSQL + `, sw.position, sw.work_id`
+	// seriesMembersPageSQL is one window of the membership in that order
+	// (DB.seriesMemberPage); a negative LIMIT reads to the end.
+	seriesMembersPageSQL = `SELECT sw.work_id, sw.position FROM series_works sw JOIN works w ON w.id = sw.work_id ` +
+		`WHERE sw.series_id=?` + seriesMemberOrderSQL + ` LIMIT ? OFFSET ?`
+	// seriesMembersTotalSQL counts the members seriesMembersPageSQL can return.
+	seriesMembersTotalSQL = `SELECT COUNT(*) FROM series_works sw JOIN works w ON w.id=sw.work_id WHERE sw.series_id=?`
 	// seriesOrderingFamilySQL reads a whole ordering family from its PRIMARY's id
 	// (?1): the primary by its primary key and every variant naming it through
 	// idx_series_ordering_of, the primary first (its ordering_of is NULL -
@@ -1347,13 +1375,24 @@ const (
 )
 
 // seriesHeaderSQL is the series page's header row. A languages-era artifact
-// carries three more columns on the same primary-key row; an older one has none of
-// them, so its text selects NULL in their place and both scan into one shape.
+// carries three more columns on the same primary-key row (seriesLayerCols).
 func seriesHeaderSQL(languages bool) string {
-	if !languages {
-		return `SELECT id, name, NULL, NULL, NULL FROM series WHERE id=?`
+	return `SELECT id, name, ` + seriesLayerCols(languages, "", "language", "ordering", "ordering_of") + ` FROM series WHERE id=?`
+}
+
+// seriesLayerCols spells the series columns that arrived with the languages layer
+// (language, ordering, ordering_of), each behind alias, for a text that reads them.
+// An artifact older than languagesSchemaVersion has none of them, so there each
+// is NULL instead and the text scans into the same shape either way.
+func seriesLayerCols(languages bool, alias string, cols ...string) string {
+	out := make([]string, len(cols))
+	for i, c := range cols {
+		out[i] = "NULL"
+		if languages {
+			out[i] = alias + c
+		}
 	}
-	return `SELECT id, name, language, ordering, ordering_of FROM series WHERE id=?`
+	return strings.Join(out, ", ")
 }
 
 // seriesName reads a series' name and nothing else, reporting whether the series
@@ -1378,18 +1417,23 @@ func (s *DB) seriesName(id string) (name string, ok bool, err error) {
 
 // watchMember is one series membership the watch feed may report: the series it
 // is reported under, the work, its position and the two facts the feed's rule
-// turns on, with no card built. seriesName is filled by the caller - the query
-// reads one series at a time and already knows which - and is what the emitted
-// item is titled under when a work belongs to several watched series.
+// turns on, with no card built. seriesID and seriesName are filled by the
+// caller - the query reads one series at a time and already knows which - and
+// the name is what the emitted item is titled under when a work belongs to
+// several watched series.
 type watchMember struct {
+	seriesID   string // a sort key; see DB.watchFeed
 	seriesName string
 	workID     string
 	position   string
-	addedAt    sql.NullString
+	// start is seriesPositionStartSQL's reading of position, which the feed's
+	// cross-series sort keys on (see DB.watchFeed).
+	start   float64
+	addedAt sql.NullString
 }
 
 // watchMembersSQL reads a series' membership WITHOUT resolving a card per
-// member: the work id, the position and works.added_at, which is one of the two
+// member: the work id, the position, its numeric start and works.added_at, which is one of the two
 // facts watchItem judges a member by (the other, the release date, is read for
 // every watched series at once - see DB.selectWatchCandidates).
 //
@@ -1398,12 +1442,12 @@ type watchMember struct {
 // its authors, its first series membership and its recordings' facts for every
 // member, which for a 200-slug request materialized a large part of the
 // catalogue and then threw nearly all of it away.
-const watchMembersSQL = `SELECT sw.work_id, sw.position, w.added_at ` +
+const watchMembersSQL = `SELECT sw.work_id, sw.position, ` + seriesPositionStartSQL + `, w.added_at ` +
 	`FROM series_works sw JOIN works w ON w.id = sw.work_id WHERE sw.series_id = ?`
 
 // watchMembers returns one series' membership with the cards unresolved, each
-// member stamped with the series name it is reported under (the caller resolved
-// it to reach this id, so nothing re-reads it).
+// member stamped with the series id and the name it is reported under (the
+// caller resolved the name to reach this id, so nothing re-reads it).
 func (s *DB) watchMembers(seriesID, seriesName string) ([]watchMember, error) {
 	rows, err := s.db.Query(watchMembersSQL, seriesID)
 	if err != nil {
@@ -1412,8 +1456,8 @@ func (s *DB) watchMembers(seriesID, seriesName string) ([]watchMember, error) {
 	defer func() { _ = rows.Close() }()
 	var out []watchMember
 	for rows.Next() {
-		m := watchMember{seriesName: seriesName}
-		if err := rows.Scan(&m.workID, &m.position, &m.addedAt); err != nil {
+		m := watchMember{seriesID: seriesID, seriesName: seriesName}
+		if err := rows.Scan(&m.workID, &m.position, &m.start, &m.addedAt); err != nil {
 			return nil, err
 		}
 		out = append(out, m)
@@ -1430,8 +1474,9 @@ func (s *DB) watchMembers(seriesID, seriesName string) ([]watchMember, error) {
 // available for a client that wants it, and the member cards are resolved in a
 // fixed number of queries either way.
 //
-// Position ordering is computed in Go (positionStart parses "2.5" and "1-3.5"),
-// so a window is applied AFTER sorting, not by SQL.
+// The window is read in SQL, in seriesMemberOrderSQL's order, through the same
+// seriesMemberPage the listening guide pages with, so the two lists cannot
+// disagree on a member's place.
 func (s *DB) Series(id string, limit, offset int) (*SeriesDetail, error) {
 	var d SeriesDetail
 	var lang, ordering, orderingOf sql.NullString
@@ -1460,35 +1505,11 @@ func (s *DB) Series(id string, limit, offset int) (*SeriesDetail, error) {
 		return nil, err
 	}
 
-	wrows, err := s.db.Query(seriesWorksSQL, id)
+	members, total, err := s.seriesMemberPage(context.Background(), id, limit, offset)
 	if err != nil {
 		return nil, err
 	}
-	members, err := scanPairs(wrows, func(workID, pos string) seriesMember {
-		return seriesMember{workID: workID, position: pos}
-	})
-	if err != nil {
-		return nil, err
-	}
-	d.WorksTotal = len(members)
-	// Match seriesListeningMembersSQL even when an older artifact lacks its index.
-	sort.SliceStable(members, func(i, j int) bool {
-		a, b := members[i], members[j]
-		if x, y := positionStart(a.position), positionStart(b.position); x != y {
-			return x < y
-		}
-		if a.position != b.position {
-			return a.position < b.position
-		}
-		return a.workID < b.workID
-	})
-	if offset > len(members) {
-		offset = len(members)
-	}
-	members = members[offset:]
-	if limit > 0 && limit < len(members) {
-		members = members[:limit]
-	}
+	d.WorksTotal = total
 
 	ids := make([]string, len(members))
 	for i, m := range members {
@@ -1505,6 +1526,41 @@ func (s *DB) Series(id string, limit, offset int) (*SeriesDetail, error) {
 		}
 	}
 	return &d, nil
+}
+
+// seriesMemberPage reads one window of a series' members in seriesMemberOrderSQL's
+// order, and the member total: the read DB.Series and the listening guide share.
+// A limit of 0 or less reads to the end (DB.Series' "all") and a negative offset
+// reads from the start.
+func (s *DB) seriesMemberPage(ctx context.Context, id string, limit, offset int) ([]seriesMember, int, error) {
+	sqlLimit := limit
+	if sqlLimit <= 0 {
+		sqlLimit = -1 // SQLite reads a negative LIMIT as no limit
+	}
+	offset = max(offset, 0)
+	rows, err := s.db.QueryContext(ctx, seriesMembersPageSQL, id, sqlLimit, offset)
+	if err != nil {
+		return nil, 0, err
+	}
+	members, err := scanPairs(rows, func(workID, pos string) seriesMember {
+		return seriesMember{workID: workID, position: pos}
+	})
+	if err != nil {
+		return nil, 0, err
+	}
+	if (limit <= 0 || len(members) < limit) && (offset == 0 || len(members) > 0) {
+		// The window ended before its limit, so it reached the last member: the
+		// total is the offset plus what it read, and the count would read the
+		// same rows again. That covers the default request (the player's rail
+		// asks for every member) and any tail page. Only an empty window past
+		// offset 0 cannot tell where the membership ended, so that one counts.
+		return members, offset + len(members), nil
+	}
+	var total int
+	if err := s.db.QueryRowContext(ctx, seriesMembersTotalSQL, id).Scan(&total); err != nil {
+		return nil, 0, err
+	}
+	return members, total, nil
 }
 
 // orderingFamily returns the ordering family d belongs to (see SeriesDetail), or
@@ -1547,8 +1603,7 @@ func (s *DB) orderingFamily(d *SeriesDetail) ([]SeriesOrdering, error) {
 
 // parsePositionRange reads a series position's numeric span. It is
 // model.ParsePositionRange, aliased here under the name this package's callers
-// (positionStart's sort key, the coverage browser's gap set, seriespos.go's
-// positionsEqual) already read.
+// (the coverage browser's gap set, seriespos.go's positionsEqual) already read.
 //
 // The implementation MOVED to pkg/model, beside the schema's position rules, when
 // the consumer this comment used to anticipate turned up: internal/audit judges
@@ -1556,32 +1611,6 @@ func (s *DB) orderingFamily(d *SeriesDetail) ([]SeriesOrdering, error) {
 // both packages can reach. The alias stays so there is one call shape in here and
 // still exactly one definition anywhere.
 var parsePositionRange = model.ParsePositionRange
-
-// positionStart returns the numeric start of a series position string: "2.5"
-// -> 2.5, "1-3.5" -> 1, unparseable -> +Inf-ish large so it sorts last. A
-// malformed range still sorts by its parseable prefix ("1-garbage" -> 1); only
-// a value with no parseable start gets the sort-last sentinel.
-//
-// HAND-MIRRORED TWIN of `positionStart` in site/src/lib/watch-flat.ts, which
-// orders the watching page's cross-series list. This side is the rule of
-// record - it orders the series rail every consumer reads - and the sentinel is
-// the only deliberate difference (1e18 here, +Infinity there). The same cases
-// are pinned on both sides: TestPositionStart in serve_test.go and the
-// `positionStart` describe block in watch-flat.test.ts.
-func positionStart(pos string) float64 {
-	if lo, _, ok := parsePositionRange(pos); ok {
-		return lo
-	}
-	p := strings.TrimSpace(pos)
-	if i := strings.IndexByte(p, '-'); i > 0 {
-		p = strings.TrimSpace(p[:i])
-	}
-	f, err := strconv.ParseFloat(p, 64)
-	if err != nil {
-		return 1e18
-	}
-	return f
-}
 
 // ---- lookup -----------------------------------------------------------------
 

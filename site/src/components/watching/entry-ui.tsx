@@ -69,9 +69,7 @@ export function OwnCheckbox({
         aria-label={`I have ${title}`}
         onChange={(e) => onChange(e.target.checked)}
       />
-      <span aria-hidden="true" className="hidden sm:inline">
-        I have this
-      </span>
+      <span aria-hidden="true">I have this</span>
     </label>
   )
 }
@@ -112,5 +110,35 @@ export function SkipButton({
     >
       {skipped ? 'Show again' : 'Not interested'}
     </button>
+  )
+}
+
+/** The layout every series-entry row shares: the reading half and the marks
+    stacked on a phone, side by side from `sm` up. Side by side at 375 px, the
+    two marks left a work title 5-8 px (#2932), so below `sm` they take a line
+    of their own under it. */
+export const ENTRY_ROW = 'flex flex-col gap-3 sm:flex-row sm:items-center'
+
+/** A row's two marks together, right-aligned: on their own line on a phone,
+    at the row's right edge from `sm` up. `onSkipped` absent drops the skip
+    button (an owned row on the watching page has nothing to skip). */
+export function EntryMarks({
+  title,
+  owned,
+  skipped = false,
+  onOwned,
+  onSkipped,
+}: {
+  title: string
+  owned: boolean
+  skipped?: boolean
+  onOwned: (owned: boolean) => void
+  onSkipped?: (skipped: boolean) => void
+}) {
+  return (
+    <span className="flex shrink-0 flex-wrap items-center justify-end gap-2">
+      <OwnCheckbox title={title} checked={owned} onChange={onOwned} />
+      {onSkipped ? <SkipButton title={title} skipped={skipped} onChange={onSkipped} /> : null}
+    </span>
   )
 }

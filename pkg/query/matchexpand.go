@@ -194,12 +194,8 @@ func (s *DB) seriesFactsOf(ctx context.Context, refs []SeriesRef) (map[string]se
 	return out, nil
 }
 
-// seriesLanguagesByIDSQL reads each held series' derived language by primary key;
-// an artifact older than languagesSchemaVersion has no such column and selects NULL.
+// seriesLanguagesByIDSQL reads each held series' derived language by primary key
+// (NULL on an artifact older than languagesSchemaVersion: seriesLayerCols).
 func seriesLanguagesByIDSQL(ph string, languages bool) string {
-	col := "NULL"
-	if languages {
-		col = "language"
-	}
-	return `SELECT id, ` + col + ` FROM series WHERE id IN (` + ph + `)`
+	return `SELECT id, ` + seriesLayerCols(languages, "", "language") + ` FROM series WHERE id IN (` + ph + `)`
 }

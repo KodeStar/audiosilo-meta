@@ -396,7 +396,7 @@ func (s *handler) handleWork(w http.ResponseWriter, r *http.Request, snap *DB) {
 // (pkg/check's checkRedirects), so a real recording with no chapters still gets
 // its empty list.
 func (s *handler) handleChapters(w http.ResponseWriter, r *http.Request, snap *DB) {
-	chs, err := snap.chapters(r.PathValue(idWildcard), r.PathValue("rid"))
+	chs, err := snap.Chapters(r.PathValue(idWildcard), r.PathValue("rid"))
 	if err != nil {
 		s.fail(w, r, err)
 		return

@@ -34,8 +34,8 @@ series and `redirects.json` - and holds no share-alike content; its tree profile
 and the community repo consumes it, so there is one implementation of pack math,
 canonical JSON and validation. The release stream is unchanged: `release.yml`
 checks out both repositories and `metabuild -data data --community <dir>`
-composes ONE artifact from the pair, so metaserve, the poller, the patch chain
-and the webhook see exactly what they saw before. A community-side merge cannot
+composes ONE artifact from the pair, so metaserve, the poller and the webhook
+see exactly what they saw before. A community-side merge cannot
 push here, so that repo's `notify-core.yml` sends a `community-data`
 `repository_dispatch` and this repo's `release.yml` accepts it as a third
 trigger. The migration plan is the maintainer's, in the untracked
@@ -320,7 +320,8 @@ ASSET PRESENCE at the maximum `published_at`, so older single-sha tags stay
 valid) when data, schema, the BUILDER (`internal/build/**`, `cmd/metabuild/**`)
 or the COMPOSE code (`pkg/check/**`, `pkg/pack/**` - `resolveSidecarKeys` re-keys
 sidecars and the collision keeper decides what ships, so they shape artifact
-CONTENT) changes land on main, and on a `community-data` repository_dispatch from
+CONTENT) or the page REVISION dating (`internal/revision/**`) changes land on main,
+and on a `community-data` repository_dispatch from
 the community repo. The artifact is compiled, so a new index or a `SchemaVersion`
 bump must reach a release without waiting for an unrelated data edit. A run whose
 tag already exists as a PUBLISHED release - the same day, the same pair of SHAs,
@@ -329,16 +330,26 @@ DRAFT is a previous run that died before publishing, so it is deleted and this
 one composes again (the probe reads the release LISTING, which shows drafts to a
 token with contents:write, because a draft carries no git tag to be found by).
 Asset
-contract: `meta.sqlite.gz` + `meta.sqlite.gz.sha256` (the universal anchor),
-`meta.sqlite.sha256` (raw-file digest, for verifying a patched artifact), and a
-best-effort `meta.sqlite.patch.from-<PREV_TAG>.zst` (a zstd `--patch-from` binary
-delta against the previous data release, `--long=31`; a stock zstd CLI consumer
-must pass `--long=31` at decompression time for these large artifacts). The prev
-release is selected by asset presence - the non-draft, non-prerelease release
-carrying `meta.sqlite.gz` with the **maximum `published_at`** (not the
-first-listed: GitHub's release list order is not publish-chronological) -
-because the repo also cuts code/image `v*` releases with no data assets, so
-GitHub's "latest" can be either kind. The release is cut as a DRAFT (at
+contract: `meta.sqlite.gz` + `meta.sqlite.gz.sha256` (the universal anchor) and
+`meta.sqlite.sha256` (raw-file digest, for verifying an artifact already on
+disk - metaserve's cache volume). Releases up to 2026-11-19 also carried a zstd
+`--patch-from` delta, `meta.sqlite.patch.from-<prev tag>.zst`; it was dropped
+once the artifact passed 2 GB (the zstd CLI refuses a patch base that large, and
+metaserve declined any base over 1 GiB anyway), and nothing reads it now. A
+consumer selects the data release by asset presence - the non-draft,
+non-prerelease release carrying `meta.sqlite.gz` with the **maximum
+`published_at`** (not the first-listed: GitHub's release list order is not
+publish-chronological) - because the repo also cuts code/image `v*` releases
+with no data assets, so GitHub's "latest" can be either kind. The release
+workflow fetches the PREVIOUS data release by that same rule BEFORE metabuild,
+which dates every page against it (`--previous`, `--revised-at` = the newer of
+the two composed commits' commit times; PACKAGES.md `internal/revision`), and
+the fetch FAILS CLOSED: a listing that cannot be read, or an asset that cannot be
+downloaded, verified or decompressed, fails the run rather than silently
+restarting every date - an EMPTY listing fails too (it reads exactly like an
+anomalous one), and a `workflow_dispatch` with `reset_revisions` is the one
+deliberate way to build without a previous release (a broken one, or a fresh
+repository's first). The release is cut as a DRAFT (at
 `--target` the composed core sha), verified, and only then published
 (`gh release edit --draft=false`, with `isDraft` read back rather than inferred
 from an exit status): publishing on creation raced the uploads two ways - a
@@ -347,7 +358,7 @@ pick one whose checksum files were still going up, and a verification that then
 failed left a broken release visible. Every asset is VERIFIED
 before that publish: the two checksum files are downloaded and compared
 byte-for-byte with the ones just computed, and every asset the run uploaded - the
-410MB gz and the delta included - is checked against the release API's own `size`
+~570MB gz included - is checked against the release API's own `size`
 and `digest` (GitHub's SHA-256 of the bytes it stored, so nothing is re-downloaded
 to hash locally; a null digest FAILS rather than passing quietly). The assets ARE
 the consumer contract, so a truncated upload is a broken catalogue for everyone
@@ -358,7 +369,8 @@ ref is an ancestor of `origin/main` (the push and dispatch triggers are already
 main-only; dispatch is the one door that takes any ref, and a release cut from a
 branch becomes THE catalogue the moment it lands). The
 workflow serializes on a `data-release` concurrency group so two quick merges
-can't both base a patch on the same prev tag. Go 1.26; golangci-lint v2 at a
+publish in the order they started (consumers take the maximum `published_at`,
+so an older composition published last would become the catalogue). Go 1.26; golangci-lint v2 at a
 green baseline over the linter set `.golangci.yml` pins.
 
 ## The data model (the contract)
@@ -811,7 +823,11 @@ RECORDING layer"); the `position_scales(work_id, length, unit, partial)` table i
 `recordings.link_graphicaudio`) in **schema_version 11**; a work's ALTERNATE TITLES
 (`work_alternate_titles(work_id, title, ord)`, also in the work's `search_fts`
 names) in **schema_version 12**; the recordings' `abridgement` column in
-**schema_version 13** (the current version);
+**schema_version 13**; the REVISION layer - `page_revisions(kind, id,
+revised_at)`, each page's last meaningful content change, plus
+meta(`revisions_at`, `revisions_base`), which metabuild leaves empty unless given
+`--previous` and internal/revision fills at release time (PACKAGES.md
+`internal/revision`) - in **schema_version 14** (the current version);
 character `ord`/recap
 position order preserved, deterministic), and `metaserve` returns
 them inline on `GET /works/{id}`
@@ -822,18 +838,19 @@ briefly serving an older release): characters/recaps gate on schema_version >= 2
 the recap summary on >= 3, genres on >= 4, the slug redirects on >= 5, the
 community description on >= 6, the languages layer on >= 7, the LibriVox
 layer on >= 8, the LibriVox recording layer on >= 9, the position scales on
->= 10, the store links on >= 11, the alternate titles on >= 12 and the
-recordings' abridgement on >= 13, so a
+>= 10, the store links on >= 11, the alternate titles on >= 12, the
+recordings' abridgement on >= 13 and the page revisions on >= 14, so a
 table's absence is "no data" (for redirects: a retired slug 404s as it did before
 the mechanism existed), not a 500. The redirect, description and languages gates
 are asked ONCE at load rather than per request - those tables are EMPTY in every
 release until their first record lands, and all sit on ordinary 200 paths (the
 description on every work page, both guide pages and every ABS candidate; the
 translations and the ordering family on every work and series page) - so an
-artifact that CLAIMS version 5, 6, 7, 8, 9, 10, 11, 12 or 13 without its table (for 7: the
+artifact that CLAIMS version 5, 6, 7, 8, 9, 10, 11, 12, 13 or 14 without its table (for 7: the
 translations table or the series ordering columns; for 8: `librivoxShapeSQL`;
 for 9: `librivoxRecordingShapeSQL`; for 11: `storeLinksShapeSQL`; for 12:
-`alternateTitlesShapeSQL`; for 13: the `recordings.abridgement` column) fails to open, with an
+`alternateTitlesShapeSQL`; for 13: the `recordings.abridgement` column; for 14:
+`page_revisions`) fails to open, with an
 error naming that claim; the builder writes the version and the table together,
 so the combination is a corrupt file rather than an old one. **Authoring the expressive
 layer is documented in the COMMUNITY repository's `AUTHORING.md`** (the reusable
@@ -889,6 +906,7 @@ keep this index in step (one line per topic).
   - `internal/repair`
   - `internal/migrate`
   - `internal/build`
+  - `internal/revision`
   - `pkg/query`
   - `pkg/query/querytest`
   - `pkg/release`
@@ -958,7 +976,8 @@ keep this index in step (one line per topic).
   `labeled` event - admitting both composed and posted every verdict twice
   (#2406, #2408) - and one opened without it is skipped by `opened` anyway.
   intake.yml's `-noop` concurrency group carries a verbatim copy of the intake
-  job's `if` (see the comments in intake.yml for both). Its third door is
+  job's `if` (see the comments in intake.yml for both), and
+  scripts/intakeconcurrency_test.go fails when the two drift. Its third door is
   `workflow_call` from `route.yml`, which labels an issue filed through the
   AudioSilo GitHub App (no labels survive an API create by a non-collaborator)
   with GITHUB_TOKEN - which fires no `labeled` run - and calls intake in the same

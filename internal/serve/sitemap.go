@@ -53,7 +53,10 @@ const (
 	// crawler can miss a new representation before revalidating.
 	sitemapMaxAge = "public, max-age=3600"
 	// Bump when rendered XML changes, including builds without VCS metadata.
-	sitemapRendererVersion = "1"
+	// TestRendererVersionsTrackTheGoldens pins it to a digest of the sitemap
+	// goldens, so a golden change without a bump fails there.
+	// 2: per-URL <lastmod> from the artifact's page revisions.
+	sitemapRendererVersion = "2"
 )
 
 // sitemapShardURLs is the protocol's per-file URL cap (50,000). It is a var
@@ -322,9 +325,13 @@ func (s *Server) sitemapIndex(snap *query.DB, static bool) *sitemapIndexDoc {
 	return doc
 }
 
-// sitemapShard composes one shard in id order. The artifact does not track
-// content revisions; creation/import dates cannot establish page modification,
-// so per-URL lastmod is omitted.
+// sitemapShard composes one shard in id order. A URL's <lastmod> is its page's
+// revision date (query.PageEntry.RevisedAt: the page's last meaningful content
+// change, which the page's own JSON-LD dateModified and Last-Modified header
+// state too) and is omitted where the artifact knows none - every URL of an
+// artifact older than the revision layer, and every page unchanged since the
+// revision chain started. The record's added_at is never used: when a record
+// entered the catalogue says nothing about when its page last changed.
 func (s *Server) sitemapShard(snap *query.DB, fam sitemapFamily, shard int) (*urlSetDoc, error) {
 	pages, err := snap.Pages(fam.pages, sitemapShardURLs, shard*sitemapShardURLs)
 	if err != nil {
@@ -333,13 +340,16 @@ func (s *Server) sitemapShard(snap *query.DB, fam sitemapFamily, shard int) (*ur
 	doc := &urlSetDoc{NS: sitemapNS}
 	for _, p := range pages {
 		entry := urlEntryDoc{Loc: s.cfg.SiteURL + fam.prefix + p.ID + fam.suffix}
+		if p.RevisedAt != nil {
+			entry.LastMod = w3cDate(*p.RevisedAt)
+		}
 		doc.URLs = append(doc.URLs, entry)
 	}
 	return doc, nil
 }
 
-// w3cDate normalizes the shard document's build timestamp for the index.
-// It is not used as a content revision date for individual pages.
+// w3cDate normalizes a timestamp for a sitemap <lastmod>: the index's build
+// time and a page's revision date alike.
 func w3cDate(v string) string {
 	v = strings.TrimSpace(v)
 	if v == "" {

@@ -41,6 +41,13 @@ type watchFeedItem struct {
 	updated  time.Time
 	series   string
 	position string
+	// start is the numeric start of position as SQL read it
+	// (seriesPositionStartSQL), so the feed's position keys are
+	// seriesMemberOrderSQL's own: the start, then the position string.
+	start float64
+	// seriesID is the slug of the series the item is reported under: a sort
+	// key (see DB.watchFeed), never rendered.
+	seriesID string
 	// release is the stated release date, as the FIRST instant it names, or the
 	// zero value when the catalogue states none this feed can use. Only the
 	// calendar reads it: an all-day event needs a date of its own, where Atom
@@ -248,7 +255,6 @@ func (s *DB) watchFeed(
 	selfURL string,
 	feedID string,
 ) (watchFeed, error) {
-	var items []watchFeedItem
 	var names, unknown []string
 	seenRequest := map[string]bool{}
 	seenSeries := map[string]bool{}
@@ -328,6 +334,7 @@ func (s *DB) watchFeed(
 	if err != nil {
 		return watchFeed{}, err
 	}
+	items := make([]watchFeedItem, 0, len(kept))
 	for _, c := range kept {
 		card := byID[c.workID]
 		if card == nil {
@@ -335,7 +342,9 @@ func (s *DB) watchFeed(
 		}
 		// The decision is the selection's - made once, over the same two dated
 		// facts this card carries.
-		items = append(items, buildWatchItem(c.seriesName, c.position, card, c.news, siteURL))
+		item := buildWatchItem(c.seriesName, c.position, card, c.news, siteURL)
+		item.seriesID, item.start = c.seriesID, c.start
+		items = append(items, item)
 	}
 
 	sort.SliceStable(items, func(i, j int) bool {
@@ -345,9 +354,14 @@ func (s *DB) watchFeed(
 		if items[i].series != items[j].series {
 			return items[i].series < items[j].series
 		}
-		pi, pj := positionStart(items[i].position), positionStart(items[j].position)
-		if pi != pj {
-			return pi < pj
+		// Two watched series can share a name; without the id their members
+		// interleave by position. site/src/lib/watch-flat.ts's comparator takes
+		// the same key in the same place.
+		if items[i].seriesID != items[j].seriesID {
+			return items[i].seriesID < items[j].seriesID
+		}
+		if items[i].start != items[j].start {
+			return items[i].start < items[j].start
 		}
 		if items[i].position != items[j].position {
 			return items[i].position < items[j].position

@@ -7493,8 +7493,9 @@
       ],
       "genres": [
         "action-adventure",
-        "science-fiction",
-        "short-stories"
+        "comedy-humor",
+        "romance",
+        "science-fiction"
       ],
       "id": "a-most-unlikely-hero-omnibus-books-1-9",
       "language": "en",
@@ -8099,6 +8100,10 @@
           "imported_at": "2026-09-27",
           "ref": "B0HK56NZTR",
           "type": "libex-import"
+        },
+        {
+          "ref": "https://www.varnell-brandon.com/a-most-unlikely-hero",
+          "type": "user"
         }
       ],
       "title": "A Most Unlikely Hero Omnibus: Books 1-9"
@@ -8110,6 +8115,7 @@
       ],
       "genres": [
         "action-adventure",
+        "comedy-humor",
         "romance",
         "science-fiction"
       ],
@@ -8132,93 +8138,7 @@
             {
               "asin": "B07WM2YCZY",
               "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 15998,
-              "start_ms": 0,
-              "title": "Opening Credits"
             },
-            {
-              "length_ms": 889579,
-              "start_ms": 15998,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3601856,
-              "start_ms": 905577,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4670926,
-              "start_ms": 4507433,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2350114,
-              "start_ms": 9178359,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 528857,
-              "start_ms": 11528473,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 2686409,
-              "start_ms": 12057330,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 5507215,
-              "start_ms": 14743739,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 711993,
-              "start_ms": 20250954,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 19364,
-              "start_ms": 20962947,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81ye2XTyt2L.jpg",
-          "id": "amber-lee-connors-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "amber-lee-connors"
-          ],
-          "publisher": "Kitsune Incorporated",
-          "release_date": "2019-08-14",
-          "runtime_min": 349,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B07WD5XHKR",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B07WCQT9JR",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B07WM2YCZY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-most-unlikely-hero-vol-1"
-        },
-        "amber-lee-connors-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
             {
               "asin": "B0DQVP9F7S",
               "region": "us"
@@ -8230,6 +8150,26 @@
             {
               "asin": "B0DQVSG2XP",
               "region": "uk"
+            },
+            {
+              "asin": "B0DQVQ65L4",
+              "region": "au"
+            },
+            {
+              "asin": "B0DQVPP212",
+              "region": "fr"
+            },
+            {
+              "asin": "B0DQVRGNPK",
+              "region": "es"
+            },
+            {
+              "asin": "B0DQVMG538",
+              "region": "jp"
+            },
+            {
+              "asin": "B0DQVR22NZ",
+              "region": "in"
             }
           ],
           "chapters": [
@@ -8285,16 +8225,31 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81n0ldZvirL.jpg",
-          "id": "amber-lee-connors-2024",
+          "id": "amber-lee-connors-2019",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
             "amber-lee-connors"
           ],
           "publisher": "Royal Guard Publishing LLC",
-          "release_date": "2024-12-19",
+          "release_date": "2019-08-14",
           "runtime_min": 349,
           "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B07WD5XHKR",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07WCQT9JR",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07WM2YCZY",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-08-02",
               "ref": "B0DQVP9F7S",
@@ -8309,6 +8264,26 @@
               "imported_at": "2026-10-09",
               "ref": "B0DQVSG2XP",
               "type": "libex-import"
+            },
+            {
+              "ref": "https://www.audible.com.au/pd/B0DQVQ65L4",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.fr/pd/B0DQVPP212",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.es/pd/B0DQVRGNPK",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.co.jp/pd/B0DQVMG538",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.in/pd/B0DQVR22NZ",
+              "type": "user"
             }
           ],
           "work": "a-most-unlikely-hero-vol-1"
@@ -8324,129 +8299,13 @@
           "imported_at": "2026-08-02",
           "ref": "B0DQVP9F7S",
           "type": "libex-import"
+        },
+        {
+          "ref": "https://www.varnell-brandon.com/a-most-unlikely-hero",
+          "type": "user"
         }
       ],
       "title": "A Most Unlikely Hero, Vol. 1"
-    },
-    "a-most-unlikely-hero-vol-2-a-sci-fi-light-novel": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "brandon-varnell"
-      ],
-      "genres": [
-        "erotica"
-      ],
-      "id": "a-most-unlikely-hero-vol-2-a-sci-fi-light-novel",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "amber-lee-connors-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0DR9J6V2M",
-              "region": "us"
-            },
-            {
-              "asin": "B0DR9FJ9DZ",
-              "region": "de"
-            },
-            {
-              "asin": "B0DR9HLJKP",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 16787,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 845786,
-              "start_ms": 16787,
-              "title": "Prologue: King Lucifer"
-            },
-            {
-              "length_ms": 2310571,
-              "start_ms": 862573,
-              "title": "Chapter 1. Striking a New Friendship"
-            },
-            {
-              "length_ms": 4076727,
-              "start_ms": 3173144,
-              "title": "Chapter 2. Kidnapped"
-            },
-            {
-              "length_ms": 7031095,
-              "start_ms": 7249871,
-              "title": "Chapter 3. Hazing for the Sleep Deprived"
-            },
-            {
-              "length_ms": 3949551,
-              "start_ms": 14280966,
-              "title": "Chapter 4. The Puppeteer"
-            },
-            {
-              "length_ms": 2391701,
-              "start_ms": 18230517,
-              "title": "Chapter 5. The Puppet Master"
-            },
-            {
-              "length_ms": 1550675,
-              "start_ms": 20622218,
-              "title": "Chapter 6. The Prince"
-            },
-            {
-              "length_ms": 245736,
-              "start_ms": 22172893,
-              "title": "Epilogue: King of the Galaxy"
-            },
-            {
-              "length_ms": 18459,
-              "start_ms": 22418629,
-              "title": "Closing Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81w2C62ESpL.jpg",
-          "id": "amber-lee-connors-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "amber-lee-connors"
-          ],
-          "publisher": "Royal Guard Publishing LLC",
-          "release_date": "2024-12-23",
-          "runtime_min": 373,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0DR9J6V2M",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0DR9FJ9DZ",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0DR9HLJKP",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-most-unlikely-hero-vol-2-a-sci-fi-light-novel"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0DR9J6V2M",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Most Unlikely Hero, Vol. 2: A Sci-Fi Light Novel."
     },
     "a-most-unlikely-hero-vol-4": {
       "added_at": "2026-08-01",
@@ -8454,6 +8313,8 @@
         "brandon-varnell"
       ],
       "genres": [
+        "action-adventure",
+        "comedy-humor",
         "romance",
         "science-fiction"
       ],
@@ -8470,78 +8331,102 @@
               "region": "us"
             },
             {
-              "asin": "B0DRDYG7B2",
-              "region": "us"
-            },
-            {
               "asin": "B0C9SCQXN4",
               "region": "de"
             },
             {
+              "asin": "B0DRDYG7B2",
+              "region": "us"
+            },
+            {
               "asin": "B0DRDT18LB",
               "region": "de"
+            },
+            {
+              "asin": "B0DRDTF3G4",
+              "region": "uk"
+            },
+            {
+              "asin": "B0DRDVRGTW",
+              "region": "au"
+            },
+            {
+              "asin": "B0DRDRBD8Q",
+              "region": "fr"
+            },
+            {
+              "asin": "B0DRDXBD6N",
+              "region": "es"
+            },
+            {
+              "asin": "B0DRDV6BY2",
+              "region": "jp"
+            },
+            {
+              "asin": "B0DRDV4H5B",
+              "region": "in"
             }
           ],
           "chapters": [
             {
-              "length_ms": 18064,
+              "length_ms": 16253,
               "start_ms": 0,
               "title": "Opening Credits"
             },
             {
-              "length_ms": 821939,
-              "start_ms": 18064,
-              "title": "Prologue: Nyx"
+              "length_ms": 822032,
+              "start_ms": 16253,
+              "title": "Prologue"
             },
             {
-              "length_ms": 6365193,
-              "start_ms": 840003,
-              "title": "Chapter 1: The Girl with Red Eyes"
+              "length_ms": 6363567,
+              "start_ms": 838285,
+              "title": "Chapter 1. The Girl with Red Eyes"
             },
             {
-              "length_ms": 6204325,
-              "start_ms": 7205196,
-              "title": "Chapter 2: A Day Just Like Any Other"
+              "length_ms": 6204418,
+              "start_ms": 7201852,
+              "title": "Chapter 2. A Day Just Like Any Other"
             },
             {
-              "length_ms": 3790913,
-              "start_ms": 13409521,
-              "title": "Chapter 3: The Beautiful Assassin"
+              "length_ms": 3790982,
+              "start_ms": 13406270,
+              "title": "Chapter 3. The Beautiful Assassin"
             },
             {
-              "length_ms": 5235147,
-              "start_ms": 17200434,
-              "title": "Chapter 4: Operation Rescue Nyx"
+              "length_ms": 5224443,
+              "start_ms": 17197252,
+              "title": "Chapter 4. Operation Rescue Nyx"
             },
             {
-              "length_ms": 810422,
-              "start_ms": 22435581,
+              "length_ms": 810515,
+              "start_ms": 22421695,
               "title": "Interlude: Sisters"
             },
             {
-              "length_ms": 3009120,
-              "start_ms": 23246003,
-              "title": "Chapter 5: The Pain of a Guilty Heart"
+              "length_ms": 3009213,
+              "start_ms": 23232210,
+              "title": "Chapter 5. Pain of a Guilty Heart"
             },
             {
-              "length_ms": 455575,
-              "start_ms": 26255123,
-              "title": "Epilogue: Gabrielle Angelise"
+              "length_ms": 455668,
+              "start_ms": 26241423,
+              "title": "Epilogue"
             },
             {
-              "length_ms": 23846,
-              "start_ms": 26710698,
-              "title": "End Credits"
+              "length_ms": 21175,
+              "start_ms": 26697091,
+              "title": "Closing Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/91G+d6jRiIL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/5187BcW1gqL._SL500_.jpg",
           "id": "amber-lee-connors-2023",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
             "amber-lee-connors"
           ],
-          "publisher": "Kitsune Incorporated",
+          "publisher": "Royal Guard Publishing LLC",
           "release_date": "2023-06-30",
           "runtime_min": 445,
           "sources": [
@@ -8552,18 +8437,42 @@
             },
             {
               "imported_at": "2026-08-02",
-              "ref": "B0DRDYG7B2",
+              "ref": "B0C9SCQXN4",
               "type": "libex-import"
             },
             {
               "imported_at": "2026-08-02",
-              "ref": "B0C9SCQXN4",
+              "ref": "B0DRDYG7B2",
               "type": "libex-import"
             },
             {
               "imported_at": "2026-08-02",
               "ref": "B0DRDT18LB",
               "type": "libex-import"
+            },
+            {
+              "ref": "https://www.audible.co.uk/pd/B0DRDTF3G4",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.com.au/pd/B0DRDVRGTW",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.fr/pd/B0DRDRBD8Q",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.es/pd/B0DRDXBD6N",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.co.jp/pd/B0DRDV6BY2",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.in/pd/B0DRDV4H5B",
+              "type": "user"
             }
           ],
           "work": "a-most-unlikely-hero-vol-4"
@@ -8574,6 +8483,10 @@
           "imported_at": "2026-08-01",
           "ref": "B0C9RWGYKW",
           "type": "libex-import"
+        },
+        {
+          "ref": "https://www.varnell-brandon.com/a-most-unlikely-hero",
+          "type": "user"
         }
       ],
       "title": "A Most Unlikely Hero, Vol. 4"
@@ -8586,6 +8499,7 @@
       "genres": [
         "action-adventure",
         "comedy-humor",
+        "romance",
         "science-fiction"
       ],
       "id": "a-most-unlikely-hero-vol-5",
@@ -8607,6 +8521,26 @@
             {
               "asin": "B0DYGC11NY",
               "region": "uk"
+            },
+            {
+              "asin": "B0DYG49MQP",
+              "region": "au"
+            },
+            {
+              "asin": "B0DYG988XL",
+              "region": "fr"
+            },
+            {
+              "asin": "B0DYGBQ12M",
+              "region": "es"
+            },
+            {
+              "asin": "B0DYG4CMGZ",
+              "region": "jp"
+            },
+            {
+              "asin": "B0DYGBY3QY",
+              "region": "in"
             }
           ],
           "chapters": [
@@ -8691,6 +8625,26 @@
               "imported_at": "2026-10-09",
               "ref": "B0DYGC11NY",
               "type": "libex-import"
+            },
+            {
+              "ref": "https://www.audible.com.au/pd/B0DYG49MQP",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.fr/pd/B0DYG988XL",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.es/pd/B0DYGBQ12M",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.co.jp/pd/B0DYG4CMGZ",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.in/pd/B0DYGBY3QY",
+              "type": "user"
             }
           ],
           "work": "a-most-unlikely-hero-vol-5"
@@ -8701,6 +8655,10 @@
           "imported_at": "2026-08-02",
           "ref": "B0DYGKMGXV",
           "type": "libex-import"
+        },
+        {
+          "ref": "https://www.varnell-brandon.com/a-most-unlikely-hero",
+          "type": "user"
         }
       ],
       "title": "A Most Unlikely Hero, Vol. 5"
@@ -8711,7 +8669,10 @@
         "brandon-varnell"
       ],
       "genres": [
-        "fantasy"
+        "action-adventure",
+        "comedy-humor",
+        "romance",
+        "science-fiction"
       ],
       "id": "a-most-unlikely-hero-vol-6",
       "language": "en",
@@ -8732,6 +8693,26 @@
             {
               "asin": "B0F9ZDRR5H",
               "region": "uk"
+            },
+            {
+              "asin": "B0F9ZS1D9L",
+              "region": "au"
+            },
+            {
+              "asin": "B0FB127DT4",
+              "region": "fr"
+            },
+            {
+              "asin": "B0FB14HNGD",
+              "region": "es"
+            },
+            {
+              "asin": "B0F9ZM6SF7",
+              "region": "jp"
+            },
+            {
+              "asin": "B0F9ZP2MPG",
+              "region": "in"
             }
           ],
           "chapters": [
@@ -8811,6 +8792,26 @@
               "imported_at": "2026-10-09",
               "ref": "B0F9ZDRR5H",
               "type": "libex-import"
+            },
+            {
+              "ref": "https://www.audible.com.au/pd/B0F9ZS1D9L",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.fr/pd/B0FB127DT4",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.es/pd/B0FB14HNGD",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.co.jp/pd/B0F9ZM6SF7",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.in/pd/B0F9ZP2MPG",
+              "type": "user"
             }
           ],
           "work": "a-most-unlikely-hero-vol-6"
@@ -8821,6 +8822,10 @@
           "imported_at": "2026-08-02",
           "ref": "B0FB12K4CK",
           "type": "libex-import"
+        },
+        {
+          "ref": "https://www.varnell-brandon.com/a-most-unlikely-hero",
+          "type": "user"
         }
       ],
       "title": "A Most Unlikely Hero, Vol. 6"
@@ -8832,6 +8837,8 @@
       ],
       "genres": [
         "action-adventure",
+        "comedy-humor",
+        "romance",
         "science-fiction"
       ],
       "id": "a-most-unlikely-hero-vol-7",
@@ -8853,6 +8860,26 @@
             {
               "asin": "B0FT4NWH1M",
               "region": "uk"
+            },
+            {
+              "asin": "B0FT4XLVJ2",
+              "region": "au"
+            },
+            {
+              "asin": "B0FT4G2JTX",
+              "region": "fr"
+            },
+            {
+              "asin": "B0FT4P58VH",
+              "region": "es"
+            },
+            {
+              "asin": "B0FT4FLDVY",
+              "region": "jp"
+            },
+            {
+              "asin": "B0FT46KWYB",
+              "region": "in"
             }
           ],
           "chapters": [
@@ -8942,6 +8969,26 @@
               "imported_at": "2026-10-09",
               "ref": "B0FT4NWH1M",
               "type": "libex-import"
+            },
+            {
+              "ref": "https://www.audible.com.au/pd/B0FT4XLVJ2",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.fr/pd/B0FT4G2JTX",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.es/pd/B0FT4P58VH",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.co.jp/pd/B0FT4FLDVY",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.in/pd/B0FT46KWYB",
+              "type": "user"
             }
           ],
           "work": "a-most-unlikely-hero-vol-7"
@@ -8952,6 +8999,10 @@
           "imported_at": "2026-08-02",
           "ref": "B0FT4PHYYL",
           "type": "libex-import"
+        },
+        {
+          "ref": "https://www.varnell-brandon.com/a-most-unlikely-hero",
+          "type": "user"
         }
       ],
       "title": "A Most Unlikely Hero, Vol. 7"
@@ -8962,6 +9013,9 @@
         "brandon-varnell"
       ],
       "genres": [
+        "action-adventure",
+        "comedy-humor",
+        "erotica",
         "romance",
         "science-fiction"
       ],
@@ -8984,68 +9038,96 @@
             {
               "asin": "B086V984DY",
               "region": "uk"
+            },
+            {
+              "asin": "B0DR9J6V2M",
+              "region": "us"
+            },
+            {
+              "asin": "B0DR9FJ9DZ",
+              "region": "de"
+            },
+            {
+              "asin": "B0DR9HLJKP",
+              "region": "uk"
+            },
+            {
+              "asin": "B0DR9DLHK6",
+              "region": "au"
+            },
+            {
+              "asin": "B0DR9DY21J",
+              "region": "fr"
+            },
+            {
+              "asin": "B0DR9HN3SL",
+              "region": "es"
+            },
+            {
+              "asin": "B0DR9K8WKM",
+              "region": "jp"
             }
           ],
           "chapters": [
             {
-              "length_ms": 14814,
+              "length_ms": 16787,
               "start_ms": 0,
               "title": "Opening Credits"
             },
             {
-              "length_ms": 845810,
-              "start_ms": 14814,
+              "length_ms": 845786,
+              "start_ms": 16787,
               "title": "Prologue: King Lucifer"
             },
             {
               "length_ms": 2310571,
-              "start_ms": 860624,
-              "title": "Chapter 1: Striking a New Friendship"
+              "start_ms": 862573,
+              "title": "Chapter 1. Striking a New Friendship"
             },
             {
-              "length_ms": 4076773,
-              "start_ms": 3171195,
-              "title": "Chapter 2: Kidnapped"
+              "length_ms": 4076727,
+              "start_ms": 3173144,
+              "title": "Chapter 2. Kidnapped"
             },
             {
-              "length_ms": 7031141,
-              "start_ms": 7247968,
-              "title": "Chapter 3: Hazing for the Sleep Deprived"
+              "length_ms": 7031095,
+              "start_ms": 7249871,
+              "title": "Chapter 3. Hazing for the Sleep Deprived"
             },
             {
-              "length_ms": 3949574,
-              "start_ms": 14279109,
-              "title": "Chapter 4: The Pupeteer"
+              "length_ms": 3949551,
+              "start_ms": 14280966,
+              "title": "Chapter 4. The Puppeteer"
             },
             {
-              "length_ms": 2391748,
-              "start_ms": 18228683,
-              "title": "Chapter 5: The Puppet Master"
+              "length_ms": 2391701,
+              "start_ms": 18230517,
+              "title": "Chapter 5. The Puppet Master"
             },
             {
-              "length_ms": 1550721,
-              "start_ms": 20620431,
-              "title": "Chapter 6: The Prince"
+              "length_ms": 1550675,
+              "start_ms": 20622218,
+              "title": "Chapter 6. The Prince"
             },
             {
-              "length_ms": 245760,
-              "start_ms": 22171152,
+              "length_ms": 245736,
+              "start_ms": 22172893,
               "title": "Epilogue: King of the Galaxy"
             },
             {
-              "length_ms": 18529,
-              "start_ms": 22416912,
-              "title": "End Credits"
+              "length_ms": 18459,
+              "start_ms": 22418629,
+              "title": "Closing Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/81bpB0sM5pL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/81w2C62ESpL.jpg",
           "id": "amber-lee-connors-2020",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
             "amber-lee-connors"
           ],
-          "publisher": "Kitsune Incorporated",
+          "publisher": "Royal Guard Publishing LLC",
           "release_date": "2020-04-09",
           "runtime_min": 373,
           "sources": [
@@ -9063,6 +9145,37 @@
               "imported_at": "2026-10-09",
               "ref": "B086V984DY",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DR9J6V2M",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DR9FJ9DZ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0DR9HLJKP",
+              "type": "libex-import"
+            },
+            {
+              "ref": "https://www.audible.com.au/pd/B0DR9DLHK6",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.fr/pd/B0DR9DY21J",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.es/pd/B0DR9HN3SL",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.co.jp/pd/B0DR9K8WKM",
+              "type": "user"
             }
           ],
           "work": "a-most-unlikely-hero-volume-2"
@@ -9073,9 +9186,18 @@
           "imported_at": "2026-08-01",
           "ref": "B086V2TKM1",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DR9J6V2M",
+          "type": "libex-import"
+        },
+        {
+          "ref": "https://www.varnell-brandon.com/a-most-unlikely-hero",
+          "type": "user"
         }
       ],
-      "title": "A Most Unlikely Hero: Volume 2"
+      "title": "A Most Unlikely Hero, Vol. 2"
     },
     "a-most-unlikely-hero-volume-3": {
       "added_at": "2026-08-01",
@@ -9084,6 +9206,8 @@
       ],
       "genres": [
         "action-adventure",
+        "comedy-humor",
+        "romance",
         "science-fiction"
       ],
       "id": "a-most-unlikely-hero-volume-3",
@@ -9203,6 +9327,26 @@
             {
               "asin": "B0DS2S385B",
               "region": "uk"
+            },
+            {
+              "asin": "B0DS2PXLFM",
+              "region": "au"
+            },
+            {
+              "asin": "B0DS2TD4W5",
+              "region": "fr"
+            },
+            {
+              "asin": "B0DS2SG26S",
+              "region": "es"
+            },
+            {
+              "asin": "B0DS2STJGH",
+              "region": "jp"
+            },
+            {
+              "asin": "B0DS2RTRFD",
+              "region": "in"
             }
           ],
           "chapters": [
@@ -9287,6 +9431,26 @@
               "imported_at": "2026-10-09",
               "ref": "B0DS2S385B",
               "type": "libex-import"
+            },
+            {
+              "ref": "https://www.audible.com.au/pd/B0DS2PXLFM",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.fr/pd/B0DS2TD4W5",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.es/pd/B0DS2SG26S",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.co.jp/pd/B0DS2STJGH",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.in/pd/B0DS2RTRFD",
+              "type": "user"
             }
           ],
           "work": "a-most-unlikely-hero-volume-3"
@@ -9302,9 +9466,13 @@
           "imported_at": "2026-08-02",
           "ref": "B0DS2T2BKY",
           "type": "libex-import"
+        },
+        {
+          "ref": "https://www.varnell-brandon.com/a-most-unlikely-hero",
+          "type": "user"
         }
       ],
-      "title": "A Most Unlikely Hero, Volume 3"
+      "title": "A Most Unlikely Hero, Vol. 3"
     },
     "a-most-unlikely-hero-volume-8": {
       "added_at": "2026-08-02",
@@ -9313,6 +9481,7 @@
       ],
       "genres": [
         "action-adventure",
+        "comedy-humor",
         "romance",
         "science-fiction"
       ],
@@ -9335,6 +9504,26 @@
             {
               "asin": "B0FZLR7FTP",
               "region": "uk"
+            },
+            {
+              "asin": "B0FZLRZPJH",
+              "region": "au"
+            },
+            {
+              "asin": "B0FZLQXX2H",
+              "region": "fr"
+            },
+            {
+              "asin": "B0FZLQ9LQD",
+              "region": "es"
+            },
+            {
+              "asin": "B0FZLRNVX8",
+              "region": "jp"
+            },
+            {
+              "asin": "B0FZLNY7HR",
+              "region": "in"
             }
           ],
           "chapters": [
@@ -9414,6 +9603,26 @@
               "imported_at": "2026-10-09",
               "ref": "B0FZLR7FTP",
               "type": "libex-import"
+            },
+            {
+              "ref": "https://www.audible.com.au/pd/B0FZLRZPJH",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.fr/pd/B0FZLQXX2H",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.es/pd/B0FZLQ9LQD",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.co.jp/pd/B0FZLRNVX8",
+              "type": "user"
+            },
+            {
+              "ref": "https://www.audible.in/pd/B0FZLNY7HR",
+              "type": "user"
             }
           ],
           "work": "a-most-unlikely-hero-volume-8"
@@ -9424,9 +9633,13 @@
           "imported_at": "2026-08-02",
           "ref": "B0FZLPPGG5",
           "type": "libex-import"
+        },
+        {
+          "ref": "https://www.varnell-brandon.com/a-most-unlikely-hero",
+          "type": "user"
         }
       ],
-      "title": "A Most Unlikely Hero, Volume 8"
+      "title": "A Most Unlikely Hero, Vol. 8"
     },
     "a-most-unlikely-hero-volume-9": {
       "added_at": "2026-09-27",
@@ -9435,6 +9648,7 @@
       ],
       "genres": [
         "action-adventure",
+        "comedy-humor",
         "romance",
         "science-fiction"
       ],
@@ -9619,9 +9833,13 @@
           "imported_at": "2026-09-27",
           "ref": "B0HFPST3FJ",
           "type": "libex-import"
+        },
+        {
+          "ref": "https://www.varnell-brandon.com/a-most-unlikely-hero",
+          "type": "user"
         }
       ],
-      "title": "A Most Unlikely Hero, Volume 9"
+      "title": "A Most Unlikely Hero, Vol. 9"
     },
     "a-most-unusual-princess": {
       "added_at": "2026-08-02",

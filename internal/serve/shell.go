@@ -157,8 +157,8 @@ func loadShells(dir, siteURL string, logger *log.Logger) shells {
 //     UI-only deploy moves;
 //   - the configured site URL: every canonical link, og:url and JSON-LD url is
 //     built from it, so one artifact renders two different pages at two origins;
-//   - the binary's VCS revision: the COMPOSER's own code, which a fact-sheet or
-//     JSON-LD change moves without touching any of the above;
+//   - the binary's revision (buildRevision): the COMPOSER's own code, which a
+//     fact-sheet or JSON-LD change moves without touching any of the above;
 //   - the HTML renderer version: also invalidates unstamped builds when the
 //     representation changes, including Docker builds that omit .git.
 //
@@ -169,17 +169,40 @@ func pageIdentity(shellName, shellHTML, siteURL, revision string) string {
 	return httpx.Identity(shellName, shellHTML, siteURL, revision, htmlRendererVersion)
 }
 
-// Bump when Go-rendered HTML changes, so builds without a VCS revision also
-// invalidate cached entity pages.
-const htmlRendererVersion = "1"
+// Bump when Go-rendered HTML changes, so builds without a revision also
+// invalidate cached entity pages. It stays explicit even now that released
+// images are stamped (stampedRevision): a `go run`, a test binary or a Docker
+// build without the REVISION argument carries no revision at all.
+// TestRendererVersionsTrackTheGoldens pins it to a digest of the HTML goldens,
+// so a golden change without a bump fails there.
+// 3: dateModified in the JSON-LD and Last-Modified on the page.
+const htmlRendererVersion = "3"
 
-// buildRevision is the commit this binary was built from, or "" when the
-// toolchain stamped none - a `go run`, a test binary, a -buildvcs=false build.
-// Docker builds also omit .git and therefore use the empty fallback; the
-// explicit htmlRendererVersion covers renderer changes in those builds.
+// stampedRevision is the commit a released binary was built from, set at link
+// time: the Dockerfile passes its REVISION build argument (image.yml: the tagged
+// commit) as -X .../internal/serve.stampedRevision=<sha>. It exists because the
+// Docker build context excludes .git, so the toolchain's own VCS stamp - which
+// buildRevision falls back to - is empty in exactly the binaries that are
+// deployed, and a renderer-only deploy would otherwise not move a single
+// validator. Empty in every other build.
+var stampedRevision string
+
+// buildRevision is the commit this binary was built from: the link-time stamp
+// when there is one, else the toolchain's VCS revision, else "" - a `go run`, a
+// test binary, a -buildvcs=false build. htmlRendererVersion covers renderer
+// changes in those builds.
 var buildRevision = sync.OnceValue(func() string {
-	info, ok := debug.ReadBuildInfo()
-	if !ok {
+	info, _ := debug.ReadBuildInfo()
+	return resolveRevision(stampedRevision, info)
+})
+
+// resolveRevision is buildRevision's rule, apart from the process's own build
+// info so it can be tested: the link-time stamp wins over the VCS setting.
+func resolveRevision(stamped string, info *debug.BuildInfo) string {
+	if stamped != "" {
+		return stamped
+	}
+	if info == nil {
 		return ""
 	}
 	for _, s := range info.Settings {
@@ -188,4 +211,9 @@ var buildRevision = sync.OnceValue(func() string {
 		}
 	}
 	return ""
-})
+}
+
+// Revision is the commit this binary was built from, as buildRevision settles
+// it ("" when it carries none). metaserve -version prints it, which is how the
+// image build verifies the stamp reached the binary.
+func Revision() string { return buildRevision() }

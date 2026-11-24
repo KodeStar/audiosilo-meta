@@ -10,7 +10,6 @@ import {
   emptyRecapEntry,
   emptyRecapsDraft,
   moveItem,
-  nearestLowerSibling,
   seedCharactersFromSibling,
   serializeCanonical,
   slugify,
@@ -21,6 +20,7 @@ import {
   type RecapsDraft,
   type RecapsValidation,
 } from '../../lib/builder'
+import { castSeedSource } from '../../lib/worknav'
 import {
   useEntity,
   useQueryParam,
@@ -88,20 +88,22 @@ function Builder({ work, kind }: { work: Work; kind: Kind }) {
   const [seed, setSeed] = useState<{ title: string; cast: Character[] } | null>(null)
   const [copied, setCopied] = useState(false)
 
-  // Offer to seed the cast from the nearest earlier book in the series (the
-  // re-describe-per-book model). Best-effort: any failure just means no offer.
+  // Offer to seed the cast from the previous book in the series (the
+  // re-describe-per-book model): the nearest earlier member in the order the API
+  // returns, skipping an omnibus that reaches this book (castSeedSource), whose
+  // cast would describe later books. Best-effort: any failure just means no offer.
   useEffect(() => {
-    if (kind !== 'characters') {
-      setSeed(null)
-      return
-    }
+    // A new work (or kind) starts with no offer: the last work's must not
+    // survive a lookup that finds no previous book, or none with a cast.
+    setSeed(null)
+    if (kind !== 'characters') return
     const seriesRef = work.series?.[0]
     if (!seriesRef) return
     const ctrl = new AbortController()
     void (async () => {
       try {
         const series = await getSeries(seriesRef.id, ctrl.signal)
-        const sibling = nearestLowerSibling(series.works, work.id)
+        const sibling = castSeedSource(series.works, work.id)
         if (!sibling) return
         const siblingWork = await getWork(sibling.work.id, ctrl.signal)
         if (siblingWork.characters && siblingWork.characters.length > 0) {

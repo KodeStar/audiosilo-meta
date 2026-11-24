@@ -11,6 +11,7 @@ import (
 	"strconv"
 	"strings"
 	"sync"
+	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/httpx"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -225,6 +226,14 @@ func (s *Server) pageUnavailable(w http.ResponseWriter) {
 	s.pageError(w, http.StatusServiceUnavailable, "This page is temporarily unavailable. Please try again shortly.")
 }
 
+// writePage writes a composed page (or, with page nil, the 304 its ETag earned).
+//
+// A page with a known revision carries it as Last-Modified, for information
+// only: If-Modified-Since is deliberately NOT honoured. The date is a statement
+// about the page's CONTENT, while the representation also changes with the
+// dist, the origin and the renderer (pageIdentity) under an unchanged date - so
+// a 304 granted on the date would renew a stale shell. The ETag, which covers
+// all of them, is the one validator a conditional request is answered by.
 func (s *Server) writePage(w http.ResponseWriter, r *http.Request, sh *shell, page *entityPage, etag string) {
 	w.Header().Set("ETag", etag)
 	w.Header().Set("Cache-Control", entityMaxAge)
@@ -232,8 +241,25 @@ func (s *Server) writePage(w http.ResponseWriter, r *http.Request, sh *shell, pa
 		w.WriteHeader(http.StatusNotModified)
 		return
 	}
+	if lm := httpDate(page.modified); lm != "" {
+		w.Header().Set("Last-Modified", lm)
+	}
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	_, _ = io.WriteString(w, sh.render(page.renderHead(), page.renderBody()))
+}
+
+// httpDate renders an RFC 3339 revision date as an HTTP-date (RFC 9110 5.6.7),
+// or "" for no date or one that does not parse - which would be a corrupt
+// artifact, and is better left unstated than guessed.
+func httpDate(rfc3339 string) string {
+	if rfc3339 == "" {
+		return ""
+	}
+	t, err := time.Parse(time.RFC3339, rfc3339)
+	if err != nil {
+		return ""
+	}
+	return t.UTC().Format(http.TimeFormat)
 }
 
 // legacyHandler answers the old query-param URL: /work?id=X becomes a 301 to
@@ -295,6 +321,13 @@ type entityPage struct {
 	jsonLD      []byte
 	factSheet   string // already-escaped HTML, rendered through html/template
 	payload     []byte // entity JSON plus optional initial data for bounded sections
+	// modified is the page's last meaningful content change (RFC 3339, from the
+	// artifact's page_revisions - see pkg/query.DB.PageRevision), or "" when the
+	// artifact knows none. It is the ONE date a page states as its modification
+	// date: the JSON-LD dateModified of the pages that carry one, the
+	// Last-Modified header, and the sitemap's <lastmod> (read from the same table)
+	// all come from it, so the three cannot disagree.
+	modified string
 }
 
 // renderHead composes the block that replaces the shell's marked head section.
@@ -362,6 +395,10 @@ func composeWorkPage(siteURL string, snap *query.DB, id string) (*entityPage, er
 	if err != nil || d == nil {
 		return nil, err
 	}
+	modified, err := snap.PageRevision(query.WorkPages, d.ID)
+	if err != nil {
+		return nil, err
+	}
 	payload, err := json.Marshal(d)
 	if err != nil {
 		return nil, err
@@ -381,9 +418,10 @@ func composeWorkPage(siteURL string, snap *query.DB, id string) (*entityPage, er
 		canonical:   canonical,
 		ogType:      "book",
 		image:       ogImage(siteURL, view.CoverURL),
-		jsonLD:      workJSONLD(d, siteURL, canonical),
+		jsonLD:      workJSONLD(d, siteURL, canonical, modified),
 		factSheet:   sheet,
 		payload:     payload,
+		modified:    modified,
 	}, nil
 }
 
@@ -479,15 +517,6 @@ func firstRuntime(d *query.WorkDetail) string {
 	return ""
 }
 
-func firstCover(d *query.WorkDetail) string {
-	for _, rec := range d.Recordings {
-		if rec.CoverURL != "" {
-			return rec.CoverURL
-		}
-	}
-	return ""
-}
-
 // ---- person -----------------------------------------------------------------
 
 func composePersonPage(siteURL string, snap *query.DB, id string) (*entityPage, error) {
@@ -501,8 +530,14 @@ func composePersonPageAt(ctx context.Context, siteURL string, snap *query.DB, id
 	// smaller page would hand the island fewer credits than it asked for - and
 	// there is no pagination UI on the page to reach the rest with. The window
 	// still bounds a corporate credit that narrates thousands of works, and
-	// windowCaption says so on the fact sheet.
-	d, err := snap.Person(id, query.PersonPageMax, 0)
+	// windowCaption says so on the fact sheet. A later page of the recording
+	// credits carries none of those lists (onLaterPage), so it asks for the
+	// totals alone rather than composing and embedding lists nothing shows.
+	limit := query.PersonPageMax
+	if page > 1 {
+		limit = 0
+	}
+	d, err := snap.Person(id, limit, 0)
 	if err != nil || d == nil {
 		return nil, err
 	}
@@ -513,6 +548,10 @@ func composePersonPageAt(ctx context.Context, siteURL string, snap *query.DB, id
 	if credits == nil || !pageInRange(page, credits.Total, cataloguePageSize) {
 		return nil, nil
 	}
+	modified, err := snap.PageRevision(query.PersonPages, d.ID)
+	if err != nil {
+		return nil, err
+	}
 	payload, err := json.Marshal(struct {
 		*query.PersonDetail
 		RecordingCredits *query.PersonRecordingsPage `json:"recording_credits"`
@@ -522,6 +561,9 @@ func composePersonPageAt(ctx context.Context, siteURL string, snap *query.DB, id
 	}
 	canonical := siteURL + model.PeoplePath + d.ID + querySuffix(page)
 	view := newPersonView(d)
+	if page > 1 {
+		view.onLaterPage(d)
+	}
 	view.RecordingGroups = personRecordingGroups(credits)
 	view.RecordingsCaption = countCaption(len(credits.Recordings), credits.Total, "recording", "recordings")
 	view.Pagination = newPagination(model.PeoplePath+d.ID, page, credits.Total, cataloguePageSize)
@@ -538,6 +580,7 @@ func composePersonPageAt(ctx context.Context, siteURL string, snap *query.DB, id
 		jsonLD:      personJSONLD(d, canonical),
 		factSheet:   sheet,
 		payload:     payload,
+		modified:    modified,
 	}, nil
 }
 
@@ -574,6 +617,10 @@ func composeSeriesPageAt(ctx context.Context, siteURL string, snap *query.DB, id
 	if !pageInRange(page, guide.WorksTotal, cataloguePageSize) {
 		return nil, nil
 	}
+	modified, err := snap.PageRevision(query.SeriesPages, guide.ID)
+	if err != nil {
+		return nil, err
+	}
 	d := &query.SeriesDetail{ID: guide.ID, Name: guide.Name, Language: guide.Language, Ordering: guide.Ordering, OrderingOf: guide.OrderingOf, Authors: guide.Authors, WorksTotal: guide.WorksTotal, Limit: guide.Limit, Offset: guide.Offset, TranslationOf: guide.TranslationOf, Translations: guide.Translations, Orderings: guide.Orderings}
 	for _, entry := range guide.Entries {
 		d.Works = append(d.Works, query.SeriesEntry{Position: entry.Position, Work: entry.Work})
@@ -600,9 +647,10 @@ func composeSeriesPageAt(ctx context.Context, siteURL string, snap *query.DB, id
 		canonical:   canonical,
 		ogType:      "website",
 		image:       ogImage(siteURL, ""),
-		jsonLD:      seriesJSONLD(d, siteURL, canonical),
+		jsonLD:      seriesJSONLD(d, siteURL, canonical, modified),
 		factSheet:   sheet,
 		payload:     payload,
+		modified:    modified,
 	}, nil
 }
 
@@ -768,6 +816,9 @@ const factSheetTemplates = `
 {{define "person"}}<section class="container">
 <h1 class="text-hi">{{.Name}}</h1>
 {{template "recording-credits" .}}
+{{- if .FirstPageRoles}}
+<p class="text-dim">Titles {{.FirstPageRoles}} by {{.Name}} are listed on <a href="{{.FirstPageURL}}">the first page</a>.</p>
+{{- end}}
 {{- if .Authored}}
 <h2>Audiobooks written</h2>
 <p class="text-dim">{{.AuthoredCaption}}</p>
@@ -919,7 +970,7 @@ func newWorkView(d *query.WorkDetail) workView {
 	// answer (query.DisplayDescription), so they cannot disagree.
 	description, isCommunity := query.DisplayDescription(d)
 	v := workView{
-		Title: d.Title, Subtitle: d.Subtitle, CoverURL: firstCover(d),
+		Title: d.Title, Subtitle: d.Subtitle, CoverURL: query.FirstCover(d),
 		Description:            description,
 		DescriptionIsCommunity: isCommunity,
 		LicenseURL:             ccBySAURL,
@@ -972,6 +1023,40 @@ type personView struct {
 	// TranslatedCaption names the window over the recordings the person is
 	// the recording-level translator of (query.PersonDetail.Translated).
 	TranslatedCaption string
+	// FirstPageRoles and FirstPageURL are set on a later page of the recording
+	// credits only (onLaterPage): the roles whose lists live on the first page,
+	// and that page's address.
+	FirstPageRoles string
+	FirstPageURL   string
+}
+
+// onLaterPage points a later page of the recording credits back to the first
+// page for the written, narrated and translated lists. Those lists do not move
+// with the credit window, so repeating them on every page buried the one thing
+// a later page adds; the first page keeps them, and a later page reads only
+// their totals (composePersonPageAt).
+func (v *personView) onLaterPage(d *query.PersonDetail) {
+	var roles []string
+	if d.AuthoredTotal > 0 {
+		roles = append(roles, "written")
+	}
+	if d.NarratedTotal > 0 {
+		roles = append(roles, "narrated")
+	}
+	if d.TranslatedTotal > 0 {
+		roles = append(roles, "translated")
+	}
+	v.FirstPageRoles = joinRoles(roles)
+	v.FirstPageURL = model.PeoplePath + url.PathEscape(d.ID)
+}
+
+// joinRoles writes a short list as prose: "written", "written and narrated",
+// "written, narrated and translated".
+func joinRoles(roles []string) string {
+	if len(roles) < 2 {
+		return strings.Join(roles, "")
+	}
+	return strings.Join(roles[:len(roles)-1], ", ") + " and " + roles[len(roles)-1]
 }
 
 func newPersonView(d *query.PersonDetail) personView {
