@@ -976,7 +976,8 @@ keep this index in step (one line per topic).
   `labeled` event - admitting both composed and posted every verdict twice
   (#2406, #2408) - and one opened without it is skipped by `opened` anyway.
   intake.yml's `-noop` concurrency group carries a verbatim copy of the intake
-  job's `if` (see the comments in intake.yml for both). Its third door is
+  job's `if` (see the comments in intake.yml for both), and
+  scripts/intakeconcurrency_test.go fails when the two drift. Its third door is
   `workflow_call` from `route.yml`, which labels an issue filed through the
   AudioSilo GitHub App (no labels survive an API create by a non-collaborator)
   with GITHUB_TOKEN - which fires no `labeled` run - and calls intake in the same
