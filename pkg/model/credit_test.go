@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"os"
 	"testing"
+
+	"github.com/kodestar/audiosilo-meta/internal/creditvocab"
 )
 
 // creditRoleConstants is every Role* constant this package declares, in enum
@@ -132,9 +134,24 @@ func TestPersonKindsCoverSchemaEnum(t *testing.T) {
 	}
 }
 
+// TestIsGenericCreditCoversTheImporterTables pins that every entry the importer
+// folds or refuses as naming nobody is generic to a matcher too.
+func TestIsGenericCreditCoversTheImporterTables(t *testing.T) {
+	for name := range creditvocab.Collective {
+		if !IsGenericCredit(name) {
+			t.Errorf("collective %q is not generic", name)
+		}
+	}
+	for name := range creditvocab.Placeholders {
+		if !IsGenericCredit(name) {
+			t.Errorf("placeholder %q is not generic", name)
+		}
+	}
+}
+
 func TestIsGenericCredit(t *testing.T) {
 	for name, want := range map[string]bool{
-		"Full-Cast": true, "fullcast": true, "UNKNOWN artist": true, "Divers auteurs": true,
+		"Full-Cast": true, "UNKNOWN artist": true, "Divers auteurs": true,
 		"Distribution complète": true, "N/A": true, "Various Readers": true, "TBD": true,
 		"GraphicAudio [Dramatized Adaptation]": true, "": true,
 		"the Full Cast Family": false, "P.C. Cast": false, "Various Jones": false,

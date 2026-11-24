@@ -13,6 +13,7 @@ import (
 	"unicode"
 	"unicode/utf8"
 
+	"github.com/kodestar/audiosilo-meta/internal/creditvocab"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"golang.org/x/text/unicode/norm"
 )
@@ -1225,8 +1226,9 @@ func firstListCredit(authors, narrators []string) (name string, isList bool) {
 //     "Test" rows are fixture BOOKS, so the book is what is fake, not the
 //     credit - a different rule's job if one is ever wanted.)
 //
-// Counts are books over the full dump.
-var placeholderCreditNames = model.BookingPlaceholderNames()
+// The entries and their counts (books over the full dump) live in
+// internal/creditvocab, which pkg/model's IsGenericCredit reads too.
+var placeholderCreditNames = creditvocab.Placeholders
 
 // placeholderCreditPhrases are the two MULTI-WORD placeholder statements,
 // matched as a whole word-bounded phrase anywhere in the folded credit rather

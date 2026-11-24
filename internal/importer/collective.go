@@ -1,6 +1,6 @@
 package importer
 
-import "github.com/kodestar/audiosilo-meta/pkg/model"
+import "github.com/kodestar/audiosilo-meta/internal/creditvocab"
 
 // ---------------------------------------------------------------------------
 // Collective and placeholder credits
@@ -133,7 +133,10 @@ import "github.com/kodestar/audiosilo-meta/pkg/model"
 // model.PersonSlug, which is what makes this a fold onto an existing address
 // rather than a rename (pinned by TestCollectiveCanonicalsSlugToTheirIDs).
 
-var collectiveCredits = model.CollectiveCreditSpellings()
+// collectiveCredits is the fold table this header describes. Its entries and
+// their counts live in internal/creditvocab, which pkg/model's IsGenericCredit
+// reads too; "this table" and "every entry below" above mean that file.
+var collectiveCredits = creditvocab.Collective
 
 // canonicalCreditName folds a CLEANED credit name onto the canonical record for
 // the statement it makes, and returns every other name exactly as it was given.
