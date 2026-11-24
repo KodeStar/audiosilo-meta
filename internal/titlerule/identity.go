@@ -247,6 +247,8 @@ func SeriesNameFor(title string, names []string) string {
 //     subseries part in front of the retailer's own "(Series, Book 13)". An arm's match
 //     it cannot read (a composite word number, "Book One Hundred") is passed over for
 //     the arm's next match, so it never hides a readable marker after it.
+//     With no marker, a numbered series name can introduce a subtitle:
+//     "The OP MC 2: The God of Winning" states volume 2 of The OP MC.
 //   - the DIVISIONS, every division marker the title states in order (divisionSequence,
 //     digits and words alike), for a title that NESTS them: "Level 1 Lessons 1-5" and
 //     "Level 1 Lessons 6-10" share their first number and are two products.
@@ -283,11 +285,13 @@ var (
 // Volume is the volume a title states against a series name under this policy, and
 // whether it states one at all.
 func (p VolumePolicy) Volume(title, series string) (float64, bool) {
-	return p.volumeOf(stripSeries(title, series))
+	return p.volumeOf(stripSeries(title, series), title, series)
 }
 
 // volumeOf is the tier walk over a residual the series name is already stripped from.
-func (p VolumePolicy) volumeOf(residual string) (float64, bool) {
+// The last tier reads the unstripped title; residual is passed in beside it so a
+// caller that also needs the residual (StatementOf, SameStatedVolume) strips once.
+func (p VolumePolicy) volumeOf(residual, title, series string) (float64, bool) {
 	// The residual is already stripped, and a series name of "" strips nothing, so this
 	// is BareSeq's reading of the title without a second strip.
 	if v, ok := BareSeq(residual, ""); ok {
@@ -296,7 +300,72 @@ func (p VolumePolicy) volumeOf(residual string) (float64, bool) {
 	if v, ok := earliestVolume(residual, volumeRomanOrWord); ok {
 		return v, true
 	}
-	return earliestVolume(residual, p.division)
+	if v, ok := earliestVolume(residual, p.division); ok {
+		return v, true
+	}
+	return numberedSeriesHead(title, series)
+}
+
+// numberedSeriesHead reads the volume of a title whose main title (MainTitle) is a
+// spelling of series followed by a number of one to three digits: "The OP MC 2: The
+// God of Winning" is volume 2 of The OP MC. Clean drops that whole prefix from the
+// identity key, so no marker tier sees the number. Forms are compared through
+// lowerFold, as SeriesRefIn compares them, and a number long enough to be a year
+// (numbersAreIdentity) is not a volume.
+//
+// The rest of the title can say the number is not one volume, and then nothing is
+// read: a rest opening with a digit continues a range ("Sternkreuzer Proxima 13 -
+// 15"), one numbering its own divisions names what a set collects ("Multiple Love 2:
+// Books 4-6"), and one numbering the series again names a second volume ("Z-Risen 1:
+// Outbreak and Z-Risen 2: Outcasts").
+func numberedSeriesHead(title, series string) (float64, bool) {
+	if series == "" {
+		return 0, false
+	}
+	cut := firstOf(title, subtitleSeps[:2]) // MainTitle's cut, kept for the rest
+	if cut < 0 {
+		return 0, false
+	}
+	head, rest := strings.TrimSpace(title[:cut]), strings.TrimLeft(title[cut:], " :-")
+	i := strings.LastIndexByte(head, ' ')
+	number := head[i+1:]
+	if i < 1 || !isAllDigits(number) || numbersAreIdentity(number) {
+		return 0, false
+	}
+	if !slices.Contains(seriesFormsOf(series).lowered, lowerFold(strings.TrimSpace(head[:i]))) {
+		return 0, false
+	}
+	if (rest != "" && rest[0] >= '0' && rest[0] <= '9') || len(divisionSequenceOf(rest)) > 0 {
+		return 0, false
+	}
+	v, _ := strconv.Atoi(number) // at most three ASCII digits
+	if numbersAnotherVolume(rest, series, v) {
+		return 0, false
+	}
+	return float64(v), true
+}
+
+// numbersAnotherVolume reports whether s spells series, at word boundaries, followed
+// by a number other than v. The series again with the same number, or with none, is a translated
+// edition's subtitle ("Outsphere 4: Ordres et Chaos [Outsphere 4: Order and Chaos]",
+// "The Witch Queen 1: The Witch Queen. Entfesselte Magie"), not a second volume.
+func numbersAnotherVolume(s, series string, v int) bool {
+	ls := lowerFold(s)
+	for _, form := range seriesFormsOf(series).lowered {
+		for rest := ls; ; {
+			i := strings.Index(rest, form+" ")
+			if i < 0 {
+				break
+			}
+			bounded := boundedAt(rest, i, i+len(form))
+			rest = rest[i+len(form)+1:]
+			digits := rest[:len(rest)-len(strings.TrimLeft(rest, "0123456789"))]
+			if n, err := strconv.Atoi(digits); bounded && err == nil && n != v {
+				return true
+			}
+		}
+	}
+	return false
 }
 
 // VolumeStatement is everything a title says about which volume it is, against one
@@ -311,7 +380,7 @@ type VolumeStatement struct {
 // StatementOf is a title's VolumeStatement against a series name under a policy.
 func StatementOf(title, series string, p VolumePolicy) VolumeStatement {
 	residual := stripSeries(title, series)
-	v, ok := p.volumeOf(residual)
+	v, ok := p.volumeOf(residual, title, series)
 	return VolumeStatement{Volume: v, States: ok, Divisions: divisionSequenceOf(residual)}
 }
 
@@ -657,8 +726,8 @@ func groupAt(s string, m []int, g int) string {
 // derives each statement once and calls Agrees instead.
 func SameStatedVolume(titleA, seriesA, titleB, seriesB string, p VolumePolicy) bool {
 	ra, rb := stripSeries(titleA, seriesA), stripSeries(titleB, seriesB)
-	if a, ok := p.volumeOf(ra); ok {
-		if b, ok := p.volumeOf(rb); ok && a != b {
+	if a, ok := p.volumeOf(ra, titleA, seriesA); ok {
+		if b, ok := p.volumeOf(rb, titleB, seriesB); ok && a != b {
 			return false
 		}
 	}
