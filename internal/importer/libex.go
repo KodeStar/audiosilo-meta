@@ -1226,18 +1226,7 @@ func firstListCredit(authors, narrators []string) (name string, isList bool) {
 //     credit - a different rule's job if one is ever wanted.)
 //
 // Counts are books over the full dump.
-var placeholderCreditNames = map[string]bool{
-	// The TBD family: an administrative state, not a credit.
-	"to be announced": true, // 251
-	"to be confirmed": true, // 55
-	"tbd":             true, // 20
-	"tba":             true, // 10
-	"tbc":             true, // 4
-	"n/a":             true, // 1
-	// A retail export's empty field printed into the credit: three Caedmon
-	// Shakespeare recordings, each with its named lead beside it.
-	"(null) cast": true, // 3, in the catalogue rather than the dump
-}
+var placeholderCreditNames = model.BookingPlaceholderNames()
 
 // placeholderCreditPhrases are the two MULTI-WORD placeholder statements,
 // matched as a whole word-bounded phrase anywhere in the folded credit rather

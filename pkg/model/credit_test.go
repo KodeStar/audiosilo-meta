@@ -131,3 +131,16 @@ func TestPersonKindsCoverSchemaEnum(t *testing.T) {
 		}
 	}
 }
+
+func TestIsGenericCredit(t *testing.T) {
+	for name, want := range map[string]bool{
+		"Full-Cast": true, "fullcast": true, "UNKNOWN artist": true, "Divers auteurs": true,
+		"Distribution complète": true, "N/A": true, "Various Readers": true, "TBD": true,
+		"GraphicAudio [Dramatized Adaptation]": true, "": true,
+		"the Full Cast Family": false, "P.C. Cast": false, "Various Jones": false,
+	} {
+		if got := IsGenericCredit(name); got != want {
+			t.Errorf("IsGenericCredit(%q) = %v, want %v", name, got, want)
+		}
+	}
+}
