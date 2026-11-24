@@ -712,8 +712,10 @@ container stops it. Fork pull requests are mirrored only with
 `SYNC_STEWARD_FORKS=on` (off by default). **Widening** it further - a
 larger bound, merging code beyond those Dependabot updates, loosening the
 checks in "Pull requests from forks",
-writing community prose, or pointing it at any further repository - is a
-change to this document first.
+writing community prose, or pointing its catalogue work at any further
+repository - is a change to this document first. Which repositories' Dependabot
+updates it handles is the maintainer's configuration
+(`SYNC_STEWARD_DEPENDABOT_REPOS`), not a widening.
 
 ## Disputes
 
