@@ -203,7 +203,9 @@ Two automations sit in front of the human review step. Neither bypasses it.
   branches only (fork runs have no secret and a read-only token by design - the
   repo never adopts `pull_request_target`). A fork pull request is verified on
   its steward mirror (see "Pull requests from forks" below), or, when it cannot
-  be mirrored, after a maintainer pushes the branch to the repository.
+  be mirrored, after a maintainer pushes the branch to the repository or runs
+  the workflow by hand for it (a manual run starts from the default branch,
+  with the secret).
 
 **Merge policy is unchanged by these automations.** A `bot-intake` pull request
 is treated exactly like one "opened by anyone else": it must pass CI, and it
@@ -561,14 +563,17 @@ is bounded as follows.
 branch of this repository (a fork's arrives on a mirror branch, see "Pull
 requests from forks" below), into `main`, no larger than its review bound
 (about a hundred catalogue entries - the size a verifier can read whole). A
-larger change is carried to `main` in parts within the bound. It merges
-only on exactly the gate the series-completion bot uses: every required check
-concluded well on the exact head, `ai-verify` has applied `ai-verified` for that
-head, the branch is not behind `main`, and the merge is pinned to the head it
-judged. Apart from the Dependabot updates below, it never merges anything
-touching `schema/`, `cmd/`, `internal/`, `.github/` or any other path - a code
-pull request gets a written review from it as a comment, and a maintainer
-decides. It never touches the series-completion bot's own pull request.
+larger change is carried to `main` in parts within the bound; the bound is
+lifted for one pull request only where nothing smaller exists (a group of
+entries that must land together merges whole, and a part may carry the
+steward's fix on top of its own entries). It merges only on exactly the gate
+the series-completion bot uses: every required check concluded well on the
+exact head, `ai-verify` has applied `ai-verified` for that head, the branch is
+not behind `main`, and the merge is pinned to the head it judged. Apart from
+the Dependabot updates below, it never merges anything touching `schema/`,
+`cmd/`, `internal/`, `.github/` or any other path - a code pull request gets a
+written review from it as a comment, and a maintainer decides. It never touches
+the series-completion bot's own pull request.
 
 **Dependabot updates.** By the maintainer's decision of 2026-10-04 the steward
 also merges Dependabot's pull requests in each repository its configuration
@@ -608,30 +613,44 @@ eligible only when:
 
 An eligible head is pushed unchanged to
 `steward/fork-<n>` in this repository, and a pull request "(mirrored from
-#<n>)" is opened that credits the contributor. From then on the mirror is an
-ordinary steward pull request: everything else in this section applies to it
-unchanged, the gate, the review bound and the fixes included. It merges squashed, with the
-steward's own commit message, which credits the contributor in plain prose
-("Contributed by @login in #n."). A closing keyword in the fork's title or
-commits closes no issue: the title is neutralized ("Fixes #12" reads
-"ref #12") and the fork's commit messages never reach `main`. Once every entry
-the fork changed is verified on `main`, the fork's pull request is closed as
-superseded with a link to the mirror and its merge commit (unless GitHub
-already marked it merged). A new push to the fork is checked again and
-replaces the mirror's content. A fork that is not eligible gets no push and
-one comment saying why, and stays open for a person; a fork closed by its
-author withdraws its mirror. With `SYNC_STEWARD_FORKS` off (see "Kill switch"
-below) a fork pull request not yet mirrored waits for a person, and a mirror
-already open carries on.
+#<n>)" is opened that credits the contributor. From then on the mirror goes
+through the same gate, review bound and fixes as any other steward pull
+request, with two differences: it merges squashed, and it is withdrawn (closed
+unmerged, its branch deleted) when its fork is closed or moves to a head that
+may not be mirrored. The squash carries the steward's own commit message,
+which credits the contributor in plain prose ("Contributed by @login in #n.").
+A closing keyword in the fork's title or commits closes no issue: the title is
+neutralized ("Fixes #12" reads "ref #12") and the fork's commit messages never
+reach `main`. After that:
+
+- once the mirror has merged whole and every entry the fork changed is verified
+  on `main`, the fork's pull request is closed as superseded with a link to the
+  mirror and its merge commit (unless GitHub already marked it merged);
+- a new push to the fork is checked again: an eligible head replaces the
+  mirror's content (a steward fix on the old head is dropped and made again if
+  still needed); a head that is not eligible gets no push and one comment
+  saying why, the fork stays open for a person, and a mirror of an earlier head
+  is withdrawn, since it no longer carries the contributor's change;
+- a fork closed unmerged, by anyone, withdraws its mirror the same way, and
+  reopening it mirrors it again;
+- a mirror that leaves unmerged any other way (a maintainer closed it, or it
+  was carried to `main` in parts and closed once every part landed) is not
+  opened again for the head it carried, and the fork stays open for a person
+  until a new push is judged afresh;
+- with `SYNC_STEWARD_FORKS` off (see "Kill switch" below) a fork pull request
+  not yet mirrored waits for a person, and a mirror already open carries on
+  with the head it holds: a later push to the fork is not mirrored until the
+  switch is on again.
 
 **What it fixes.** A data pull request that is flagged or red is not left
-waiting and is never closed unmerged. A failed check is re-run once; after
-that the steward amends the data (on `intake/issue-*` and its own `steward/*`
-branches, or on a superseding `steward/pr-*` pull request for anyone else's
-branch) with an agent, and the amended head goes back through `ai-verify` and
-the same gate. Attempts back off (hours, then a day) and never end in a
-closure; one that keeps failing is listed on the steward's report for the
-maintainer. A superseded pull request is closed only once its content is
+waiting, and being flagged or red never gets it closed unmerged (a fork's
+mirror is withdrawn only with its fork, as above). A failed check is re-run
+once; after that the steward amends the data (on `intake/issue-*` and its own
+`steward/*` branches, or on a superseding `steward/pr-*` pull request for
+anyone else's branch) with an agent, and the amended head goes back through
+`ai-verify` and the same gate. Attempts back off (hours, then a day) and never
+end in a closure; one that keeps failing is listed on the steward's report for
+the maintainer. A superseded pull request is closed only once its content is
 verified to be on `main`.
 
 **Issues.** A data issue the intake bot could not finish (`data:needs-human`,
