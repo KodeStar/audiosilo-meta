@@ -68,13 +68,14 @@
 # EXIT STATUS answers "did a verdict happen", not "is the data good". A pass and
 # a flag both exit 0 - a flag is advisory, a human still reviews - while every
 # operational skip (missing credential, missing CLI, transport error, timeout,
-# unparseable model output) writes its skip verdict and comment and then exits
-# NON-ZERO. A skip is a verification that did not happen, and reporting it as a
-# green check made this workflow vacuous: the CLI's npm install silently stopped
-# landing a runnable binary, every run posted "AI verification skipped", and
-# every one of them still reported PASS (diagnosed on PR #2251, 2026-08-20). The
-# check is advisory BY CONVENTION - it is not branch-protected - so a red skip
-# blocks no merge; it just stops the tick from lying.
+# refusal, unparseable model output) writes its skip verdict and comment and
+# then exits NON-ZERO. A skip is a verification that did not happen, and
+# reporting it as a green check made this workflow vacuous: the CLI's npm
+# install silently stopped landing a runnable binary, every run posted "AI
+# verification skipped", and every one of them still reported PASS (diagnosed
+# on PR #2251, 2026-08-20). The check is advisory BY CONVENTION - it is not
+# branch-protected - so a red skip blocks no merge; it just stops the tick from
+# lying.
 set -uo pipefail
 
 CONTEXT_FILE="${1:?context file required}"
@@ -111,6 +112,22 @@ skip() {
   } > "$COMMENT_OUT"
   echo "ai-verify: skipped - $reason" >&2
   exit 1
+}
+
+# skip_if_refused skips when a reply is a refusal: the API's response and the
+# CLI's result object both carry the final stop_reason. A refusal holds no
+# verdict (any partial text it carries is not one), so the skip says so, and
+# which classifier declined where the reply names it (stop_details.category, the
+# fact that tells a false positive; the CLI's result object does not carry it),
+# rather than the generic "no text output" or "could not be parsed" below.
+skip_if_refused() {
+  local refusal
+  refusal="$(printf '%s' "$1" | jq -r 'select(.stop_reason? == "refusal")
+    | ((.stop_details | objects | .category | strings) // "") as $c
+    | "stop_reason refusal" + (if $c == "" then "" else ", category " + $c end)' 2>/dev/null)"
+  if [ -n "$refusal" ]; then
+    skip "The model declined to review this change (${refusal})."
+  fi
 }
 
 # WORK_DIR holds this script's temp files (the API request, the CLI's stderr):
@@ -325,16 +342,8 @@ if [ -n "${ANTHROPIC_API_KEY:-}" ]; then
     skip "The Anthropic API returned an error: ${API_ERROR}"
   fi
 
-  # A refusal is an HTTP 200 with no verdict in it (any partial text it carries is
-  # not one): say so, and which classifier declined (stop_details.category, the
-  # fact that tells a false positive), rather than the generic "no text output"
-  # below.
-  REFUSAL="$(printf '%s' "$RESPONSE" | jq -r 'select(.stop_reason? == "refusal")
-    | ((.stop_details | objects | .category | strings) // "") as $c
-    | "stop_reason refusal" + (if $c == "" then "" else ", category " + $c end)' 2>/dev/null)"
-  if [ -n "$REFUSAL" ]; then
-    skip "The model declined to review this change (${REFUSAL})."
-  fi
+  # A refusal is an HTTP 200 with no verdict in it.
+  skip_if_refused "$RESPONSE"
 
   TEXT="$(printf '%s' "$RESPONSE" | jq -r '[.content[]? | select(.type=="text") | .text] | join("")' 2>/dev/null)"
 else
@@ -372,6 +381,9 @@ else
   if [ "$CLI_STATUS" -eq 124 ]; then
     skip "The Claude Code CLI timed out (no answer within ${CLI_MAX_TIME} seconds)."
   fi
+  # Before the exit status and is_error: a refused run can end as an error, and
+  # what names it is the refusal, not the error's text.
+  skip_if_refused "$CLI_OUT"
 
   if [ "$CLI_STATUS" -ne 0 ]; then
     CLI_DETAIL="$(printf '%s' "$CLI_OUT" | jq -r '.result // empty' 2>/dev/null)"

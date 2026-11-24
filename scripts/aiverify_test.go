@@ -417,8 +417,9 @@ func TestAIVerifyAPIRequestIsNeverAnArgument(t *testing.T) {
 // directory there cannot pass on an empty TMPDIR. The rows also pin the skip
 // reasons of their own, on both transports: a timeout (curl's exit 28, timeout's
 // 124 around the CLI) apart from other transport errors, and a refusal, whose
-// partial text is never read as a verdict even when it holds a pass. A curl row
-// runs the API transport, any other the CLI.
+// partial text is never read as a verdict even when it holds a pass, and which
+// is named as one even when the CLI ends it as an error. A curl row runs the API
+// transport, any other the CLI.
 func TestAIVerifyLeavesNoTempFiles(t *testing.T) {
 	t.Parallel()
 	requireTools(t, "bash", "jq", "iconv", "perl")
@@ -440,6 +441,13 @@ func TestAIVerifyLeavesNoTempFiles(t *testing.T) {
 		{name: "the CLI passes", stub: "claude", body: stubClaude, wantComment: "AI verification: passed"},
 		{name: "the CLI times out", stub: "timeout", body: shebang + "cat > /dev/null\nexit 124\n", wantSkip: true,
 			wantComment: "The Claude Code CLI timed out (no answer within 900 seconds)."},
+		{name: "the CLI refuses", stub: "claude", wantSkip: true, wantComment: "declined to review this change (stop_reason refusal).",
+			body: shebang + "cat > /dev/null\nprintf '%s' " +
+				`'{"type":"result","subtype":"success","is_error":false,"stop_reason":"refusal","result":` + pass + `}'` + "\n"},
+		{name: "the CLI ends a refusal as an error", stub: "claude", wantSkip: true,
+			wantComment: "declined to review this change (stop_reason refusal).",
+			body: shebang + "cat > /dev/null\nprintf '%s' " +
+				`'{"type":"result","subtype":"success","is_error":true,"stop_reason":"refusal","result":"API Error: declined"}'` + "\nexit 1\n"},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			t.Parallel()
