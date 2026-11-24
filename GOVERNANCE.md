@@ -53,7 +53,7 @@ On top of a green pull request:
 | `data/` only, opened by a **Trusted Contributor** | Auto-merges via GitHub-native auto-merge once required checks pass. No human step. |
 | `data/` only, opened by **anyone else** | One maintainer approval, then merge. For a pull request into `main` that approval is given by the maintainer's **steward** once required checks pass **and** `ai-verify` has applied `ai-verified` to its exact head - see "The steward" below. That covers a branch of this repository (intake, steward and contributor branches alike) and a fork pull request the steward mirrors to a branch here. A fork pull request it cannot mirror still waits for a person. |
 | `data/` only, opened by the **series-completion bot** (`bot-sync`) | Merges itself once required checks pass **and** `ai-verify` has applied `ai-verified`. The one automated exception, bounded by "Series-completion bot" and "The LibriVox lane" below; a pull request that cannot reach that gate is closed by the bot (`sync:auto-excluded`), never merged. |
-| `schema/`, `cmd/`, `internal/`, or `.github/` | **Always** one maintainer approval - never auto-merge. Enforced by `CODEOWNERS`. |
+| `schema/`, `cmd/`, `internal/`, or `.github/` | **Always** one maintainer approval - never auto-merge. Enforced by `CODEOWNERS`. The one exception is a Dependabot update the steward merges on its own gate (see "The steward" below). |
 
 Auto-merge is GitHub's native feature (green required checks → merge), not a bot
 that bypasses review. Mechanical correctness is proven by CI; the maintainer step
@@ -565,10 +565,30 @@ larger change is carried to `main` in parts within the bound. It merges
 only on exactly the gate the series-completion bot uses: every required check
 concluded well on the exact head, `ai-verify` has applied `ai-verified` for that
 head, the branch is not behind `main`, and the merge is pinned to the head it
-judged. It never merges anything touching `schema/`, `cmd/`, `internal/`,
-`.github/` or any other path - a code pull request gets a written review from
-it as a comment, and a maintainer decides. It never touches the
-series-completion bot's own pull request.
+judged. Apart from the Dependabot updates below, it never merges anything
+touching `schema/`, `cmd/`, `internal/`, `.github/` or any other path - a code
+pull request gets a written review from it as a comment, and a maintainer
+decides. It never touches the series-completion bot's own pull request.
+
+**Dependabot updates.** By the maintainer's decision of 2026-10-04 the steward
+also merges Dependabot's pull requests in each repository its configuration
+names (`SYNC_STEWARD_DEPENDABOT_REPOS`, none by default), on a gate of their
+own. One is eligible only when it comes from the repository itself into its
+default branch, every commit is authored by `dependabot[bot]` and committed and
+signed by GitHub, and every file is a dependency manifest, lockfile,
+Dockerfile, compose file or workflow; it then merges only when every check on
+its exact head passed, GitHub reports it `clean`, a major update has had a safe
+verdict from the contained agent's read-only review, and it is up to date with
+its base, at most one per repository per tick, pinned to the head it judged.
+Here an ineligible one is reviewed as code like any other. The steward never
+pushes to a Dependabot branch: one that is behind or conflicting gets
+`@dependabot rebase`, a conflict that outlives it `@dependabot recreate`, and
+one Dependabot does not move is listed for the maintainer. One exception, by
+the maintainer's decision of 2026-11-24, in this repository and the community
+layer only: a pull request that is only behind merges as it is when it changes
+nothing under `data/` and everything `main` changed since the merge base is
+under `data/`, so the tree outside `data/` that lands is the one its CI passed
+on.
 
 **Pull requests from forks.** By the maintainer's decision of 2026-11-24 the
 steward also carries a fork's data pull request to `main`, through a mirror. A
@@ -666,7 +686,8 @@ repository it looks after is named in its configuration (the community layer
 only when listed there); turning it off, revoking the token, or stopping the
 container stops it. Fork pull requests are mirrored only with
 `SYNC_STEWARD_FORKS=on` (off by default). **Widening** it further - a
-larger bound, merging code, loosening the checks in "Pull requests from forks",
+larger bound, merging code beyond those Dependabot updates, loosening the
+checks in "Pull requests from forks",
 writing community prose, or pointing it at any further repository - is a
 change to this document first.
 
