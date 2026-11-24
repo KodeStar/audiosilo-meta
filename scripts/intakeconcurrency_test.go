@@ -71,8 +71,10 @@ func TestIntakeConcurrencyCopiesTheJobIf(t *testing.T) {
 	if strings.Count(yml, label) != 2 {
 		t.Fatalf("intake.yml names %q %d times, want 2 (the group and the job)", label, strings.Count(yml, label))
 	}
-	first := strings.Replace(yml, label, `github.event.label.name != 'data:other'`, 1)
-	second := yml[:strings.LastIndex(yml, label)] + `github.event.label.name != 'data:other'` + yml[strings.LastIndex(yml, label)+len(label):]
+	const other = `github.event.label.name != 'data:other'`
+	last := strings.LastIndex(yml, label)
+	first := strings.Replace(yml, label, other, 1)
+	second := yml[:last] + other + yml[last+len(label):]
 	for name, mutated := range map[string]string{
 		"the group alone changed": first,
 		"the if alone changed":    second,
