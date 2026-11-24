@@ -377,3 +377,72 @@ func TestAIVerifyAPIRequestIsNeverAnArgument(t *testing.T) {
 		t.Errorf("the message (%d bytes) does not carry the whole %d-byte summary and the advisories", len(msg), len(summary))
 	}
 }
+
+// TestAIVerifyLeavesNoTempFiles: the request file and the CLI's stderr live in one
+// temp directory the script removes on every exit, so neither a transport that
+// fails part way (a skip, which exits non-zero) nor a pass leaves a file behind.
+// The API answers also pin the refusal's own skip reason.
+func TestAIVerifyLeavesNoTempFiles(t *testing.T) {
+	t.Parallel()
+	requireTools(t, "bash", "jq", "iconv", "perl")
+	for _, tc := range []struct {
+		name, curl, wantComment string
+		apiKey, wantSkip        bool
+	}{
+		{name: "curl fails", curl: "#!/usr/bin/env bash\ncat > /dev/null\nexit 7\n", apiKey: true, wantSkip: true,
+			wantComment: "transport error"},
+		{name: "a refusal", apiKey: true, wantSkip: true, wantComment: "stop_reason refusal",
+			curl: "#!/usr/bin/env bash\ncat > /dev/null\nprintf '%s' '{\"stop_reason\":\"refusal\",\"content\":[]}'\n"},
+		{name: "the API passes", curl: stubCurl, apiKey: true, wantComment: "AI verification: passed"},
+		{name: "the CLI passes", wantComment: "AI verification: passed"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+			dir, bin, context := aiVerifyFixture(t, "2026-01-01")
+			if tc.curl != "" {
+				if err := os.WriteFile(filepath.Join(bin, "curl"), []byte(tc.curl), 0o755); err != nil {
+					t.Fatal(err)
+				}
+			}
+			// A stub mktemp makes every temp path under tmp: macOS's ignores TMPDIR
+			// when it is given no template, which would hide a leak there.
+			tmp := filepath.Join(dir, "tmp")
+			if err := os.Mkdir(tmp, 0o755); err != nil {
+				t.Fatal(err)
+			}
+			if err := os.WriteFile(filepath.Join(bin, "mktemp"), []byte(stubMktemp), 0o755); err != nil {
+				t.Fatal(err)
+			}
+			out := t.TempDir()
+			cmd := exec.Command("bash", abs(t, filepath.Join("..", ".github", "scripts", "ai-verify.sh")),
+				context, filepath.Join(out, "verdict.json"), filepath.Join(out, "comment.md"))
+			cmd.Env = []string{"PATH=" + bin + string(os.PathListSeparator) + os.Getenv("PATH"), "HOME=" + out,
+				"CLAUDE_CODE_OAUTH_TOKEN=test", "OUTDIR=" + out, "TMPDIR=" + tmp}
+			if tc.apiKey {
+				cmd.Env = append(cmd.Env, "ANTHROPIC_API_KEY=key")
+			}
+			b, err := cmd.CombinedOutput()
+			if skipped := err != nil; skipped != tc.wantSkip {
+				t.Fatalf("exit error %v, want a skip %v\n%s", err, tc.wantSkip, b)
+			}
+			if c := readFile(t, filepath.Join(out, "comment.md")); !strings.Contains(c, tc.wantComment) {
+				t.Errorf("comment %q, want it to contain %q", c, tc.wantComment)
+			}
+			left, err := os.ReadDir(tmp)
+			if err != nil {
+				t.Fatal(err)
+			}
+			if len(left) != 0 {
+				t.Errorf("TMPDIR holds %d entries after the run (%s), want none", len(left), left[0].Name())
+			}
+		})
+	}
+}
+
+// stubMktemp is a mktemp that makes its file, or with -d its directory, under
+// $TMPDIR whatever the platform's own does.
+const stubMktemp = `#!/usr/bin/env bash
+p="$TMPDIR/tmp.$$.$RANDOM"
+if [ "${1:-}" = "-d" ]; then mkdir "$p"; else : > "$p"; fi
+echo "$p"
+`

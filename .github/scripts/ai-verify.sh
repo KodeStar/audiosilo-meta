@@ -94,7 +94,9 @@ PR_ORIGIN="${PR_ORIGIN:-contributor}"
 # are measured from this, not from its training cutoff.
 TODAY="$(date -u +%F)"
 
-MODEL="claude-sonnet-5"
+# A full model id, never a family alias, so the reviewer only changes in a
+# commit (both transports send it as written).
+MODEL="claude-sonnet-5-5"
 API_URL="https://api.anthropic.com/v1/messages"
 MAX_INPUT_BYTES=200000 # cap the context sent to the model
 MAX_ADVISORY_BYTES=40000 # outer cap on the advisory list (advisory-delta.sh bounds it first)
@@ -110,6 +112,12 @@ skip() {
   echo "ai-verify: skipped - $reason" >&2
   exit 1
 }
+
+# WORK_DIR holds this script's temp files (the API request, the CLI's stderr):
+# one directory, removed on every exit, skip()'s included, so a transport that
+# fails part way leaves nothing behind on the runner.
+WORK_DIR="$(mktemp -d)" || skip "No temporary directory could be made."
+trap 'rm -rf "$WORK_DIR"' EXIT
 
 if [ -z "${CLAUDE_CODE_OAUTH_TOKEN:-}" ] && [ -z "${ANTHROPIC_API_KEY:-}" ]; then
   skip "No \`CLAUDE_CODE_OAUTH_TOKEN\` or \`ANTHROPIC_API_KEY\` secret is configured for this repository. The workflow runs only on same-repo branches, so a missing secret here is a repository configuration problem rather than anything about this pull request."
@@ -284,7 +292,7 @@ if [ -n "${ANTHROPIC_API_KEY:-}" ]; then
   # API this model thinks unless told not to, so the ceiling leaves room for both:
   # a reply-sized one can run out mid-thought and leave no verdict. --max-time
   # allows for that longer answer.
-  REQUEST_FILE="$(mktemp)"
+  REQUEST_FILE="$WORK_DIR/request.json"
   jq -n \
     --arg model "$MODEL" \
     --rawfile system <(printf '%s' "$SYSTEM") \
@@ -297,7 +305,6 @@ if [ -n "${ANTHROPIC_API_KEY:-}" ]; then
     -H "anthropic-version: 2023-06-01" \
     -H "content-type: application/json" \
     --data-binary @- < "$REQUEST_FILE" 2>/dev/null)" || skip "The Anthropic API request failed (transport error)."
-  rm -f "$REQUEST_FILE"
 
   if [ -z "$RESPONSE" ]; then
     skip "The Anthropic API returned an empty response."
@@ -306,6 +313,12 @@ if [ -n "${ANTHROPIC_API_KEY:-}" ]; then
   API_ERROR="$(printf '%s' "$RESPONSE" | jq -r '.error.message // empty' 2>/dev/null)"
   if [ -n "$API_ERROR" ]; then
     skip "The Anthropic API returned an error: ${API_ERROR}"
+  fi
+
+  # A refusal is an HTTP 200 with no verdict in it: say so, rather than the
+  # generic "no text output" below.
+  if [ "$(printf '%s' "$RESPONSE" | jq -r '.stop_reason // empty' 2>/dev/null)" = "refusal" ]; then
+    skip "The model declined to review this change (stop_reason refusal)."
   fi
 
   TEXT="$(printf '%s' "$RESPONSE" | jq -r '[.content[]? | select(.type=="text") | .text] | join("")' 2>/dev/null)"
@@ -323,7 +336,7 @@ else
   fi
 
   CLI_STATUS=0
-  CLI_ERR_FILE="$(mktemp)"
+  CLI_ERR_FILE="$WORK_DIR/cli.err"
   CLI_OUT="$(printf '%s' "$USER_MSG" | claude -p \
     --system-prompt "$SYSTEM" \
     --model "$MODEL" \
