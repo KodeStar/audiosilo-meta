@@ -323,7 +323,12 @@ to the queue:
   lane alone is a query over `sources[].ref` (meta#2890). Records a lane run wrote
   before the bot passed `--intake` carry the bare ASIN like the feeds'; for those,
   retraction still goes through the lane's pull requests, each labelled
-  `sync:intake` and listing the ASINs it was given.
+  `sync:intake` and listing the ASINs it was given. A lane record that a later
+  series-completion run changes (an enrichment, a post-release refresh) gains the
+  feed's bare-ASIN stamp beside `intake:<ASIN>`, and keeps both on purpose: the
+  bare one is the feed's own record of what it stated (meta-sync#91). The query
+  still finds such a record by its lane stamp; the second stamp says a feed has
+  vouched for part of it since, which is for whoever retracts it to weigh.
 
 A flag on a lane pull request goes through the ladder below like any other, with
 three differences, so a poisoned queue costs the lane its turns and cannot stall
