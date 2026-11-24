@@ -888,6 +888,7 @@ keep this index in step (one line per topic).
   - `pkg/extract`
   - `pkg/scan`
   - `internal/importer`
+  - `internal/creditvocab`
   - `internal/issueform`
   - `internal/format`
   - `internal/testpack`

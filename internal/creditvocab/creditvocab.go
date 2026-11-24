@@ -43,7 +43,7 @@ var Collective = map[string]string{
 	// Bucket 1: collective statements -> Various.
 	// Several contributors, none of them named. The anthology convention.
 	"various":             "Various", // 2,064 - the canonical
-	"div.":                "Various", // 2,096 - German/Scandinavian "diverse", abbreviated; see the header
+	"div.":                "Various", // 2,096 - German/Scandinavian "diverse", abbreviated; see collective.go's header
 	"div":                 "Various", // 5 - the same abbreviation missing its final period
 	"various authors":     "Various", // 228
 	"autori vari":         "Various", // 196 - Italian
@@ -66,7 +66,7 @@ var Collective = map[string]string{
 	// Unknown below, which is a statement about knowledge rather than intent.
 	"anonymous":   "Anonymous", // 2,279 - the canonical
 	"anonimo":     "Anonymous", // 79 - Spanish "anónimo" (53) + Italian "anonimo" (26), one folded key
-	"anonymus":    "Anonymous", // 16 - the Latin/German spelling; see the header
+	"anonymus":    "Anonymous", // 16 - the Latin/German spelling; see collective.go's header
 	"anonyme":     "Anonymous", // 14 - French
 	"i anonymous": "Anonymous", // 2
 
