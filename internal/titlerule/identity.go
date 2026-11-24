@@ -289,6 +289,8 @@ func (p VolumePolicy) Volume(title, series string) (float64, bool) {
 }
 
 // volumeOf is the tier walk over a residual the series name is already stripped from.
+// The last tier reads the unstripped title; residual is passed in beside it so a
+// caller that also needs the residual (StatementOf, SameStatedVolume) strips once.
 func (p VolumePolicy) volumeOf(residual, title, series string) (float64, bool) {
 	// The residual is already stripped, and a series name of "" strips nothing, so this
 	// is BareSeq's reading of the title without a second strip.
@@ -304,8 +306,12 @@ func (p VolumePolicy) volumeOf(residual, title, series string) (float64, bool) {
 	return numberedSeriesHead(title, series)
 }
 
-// Clean drops a series-only prefix from the identity key. Recover its number
-// only when the whole main title is a known series name followed by a number.
+// numberedSeriesHead reads the volume of a title whose main title (MainTitle) is a
+// spelling of series followed by a number of one to three digits: "The OP MC 2: The
+// God of Winning" is volume 2 of The OP MC. Clean drops that whole prefix from the
+// identity key, so no marker tier sees the number. Forms are compared through
+// lowerFold, as SeriesRefIn compares them, and a number long enough to be a year
+// (numbersAreIdentity) is not a volume.
 func numberedSeriesHead(title, series string) (float64, bool) {
 	if series == "" {
 		return 0, false
@@ -316,16 +322,14 @@ func numberedSeriesHead(title, series string) (float64, bool) {
 	}
 	i := strings.LastIndexByte(head, ' ')
 	number := head[i+1:]
-	if i < 1 || len(number) > 3 || !isAllDigits(number) {
-		return 0, false // four-digit numbers can be title years
+	if i < 1 || !isAllDigits(number) || numbersAreIdentity(number) {
+		return 0, false
 	}
-	for _, form := range SeriesForms(series) {
-		if strings.EqualFold(strings.TrimSpace(head[:i]), form) {
-			v, err := strconv.Atoi(number)
-			return float64(v), err == nil
-		}
+	if !slices.Contains(seriesFormsOf(series).lowered, lowerFold(strings.TrimSpace(head[:i]))) {
+		return 0, false
 	}
-	return 0, false
+	v, _ := strconv.Atoi(number) // at most three ASCII digits
+	return float64(v), true
 }
 
 // VolumeStatement is everything a title says about which volume it is, against one
