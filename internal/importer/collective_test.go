@@ -165,7 +165,20 @@ func TestCollectiveCanonicalsSlugToTheirIDs(t *testing.T) {
 // name merely contains the words a pattern rule would fire on. The fold matches
 // WHOLE names, exactly, which is what keeps all of them intact.
 func TestBrandedEnsemblesAreNotFolded(t *testing.T) {
-	intact := []string{
+	for _, name := range intactCredits() {
+		t.Run(name, func(t *testing.T) {
+			if got := canonicalCreditName(name); got != name {
+				t.Errorf("canonicalCreditName(%q) = %q, want it untouched", name, got)
+			}
+		})
+	}
+}
+
+// intactCredits are the real credits the fold must leave alone (see
+// TestBrandedEnsemblesAreNotFolded); TestGenericCreditAgreesWithTheImporter
+// holds the matcher's IsGenericCredit to them too.
+func intactCredits() []string {
+	return []string{
 		// Branded ensembles: a real group with a real name (kind: group, in the
 		// census's terms), never a bare description.
 		"The Colonial Radio Players",
@@ -205,12 +218,28 @@ func TestBrandedEnsemblesAreNotFolded(t *testing.T) {
 		"Desconocido",
 		"Divers",
 	}
-	for _, name := range intact {
-		t.Run(name, func(t *testing.T) {
-			if got := canonicalCreditName(name); got != name {
-				t.Errorf("canonicalCreditName(%q) = %q, want it untouched", name, got)
-			}
-		})
+}
+
+// TestGenericCreditAgreesWithTheImporter pins pkg/model's IsGenericCredit, the
+// question a matcher asks of a file credit, to this package's tables as a
+// source spells them: every collective variant the fold takes and every booking
+// placeholder the libex import refuses is generic, and every credit the fold
+// leaves intact is not.
+func TestGenericCreditAgreesWithTheImporter(t *testing.T) {
+	for _, c := range collectiveCases() {
+		if !model.IsGenericCredit(c.variant) {
+			t.Errorf("collective %q is not generic", c.variant)
+		}
+	}
+	for key := range placeholderCreditNames {
+		if !model.IsGenericCredit(strings.ToUpper(key)) {
+			t.Errorf("placeholder %q is not generic", strings.ToUpper(key))
+		}
+	}
+	for _, name := range intactCredits() {
+		if model.IsGenericCredit(name) {
+			t.Errorf("intact credit %q is generic", name)
+		}
 	}
 }
 
