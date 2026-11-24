@@ -312,14 +312,21 @@ func (p VolumePolicy) volumeOf(residual, title, series string) (float64, bool) {
 // identity key, so no marker tier sees the number. Forms are compared through
 // lowerFold, as SeriesRefIn compares them, and a number long enough to be a year
 // (numbersAreIdentity) is not a volume.
+//
+// The rest of the title can say the number is not one volume, and then nothing is
+// read: a rest opening with a digit continues a range ("Sternkreuzer Proxima 13 -
+// 15"), one numbering its own divisions names what a set collects ("Multiple Love 2:
+// Books 4-6"), and one numbering the series again names a second volume ("Z-Risen 1:
+// Outbreak and Z-Risen 2: Outcasts").
 func numberedSeriesHead(title, series string) (float64, bool) {
 	if series == "" {
 		return 0, false
 	}
-	head, ok := MainTitle(title)
-	if !ok {
+	cut := firstOf(title, subtitleSeps[:2]) // MainTitle's cut, kept for the rest
+	if cut < 0 {
 		return 0, false
 	}
+	head, rest := strings.TrimSpace(title[:cut]), strings.TrimLeft(title[cut:], " :-")
 	i := strings.LastIndexByte(head, ' ')
 	number := head[i+1:]
 	if i < 1 || !isAllDigits(number) || numbersAreIdentity(number) {
@@ -328,8 +335,37 @@ func numberedSeriesHead(title, series string) (float64, bool) {
 	if !slices.Contains(seriesFormsOf(series).lowered, lowerFold(strings.TrimSpace(head[:i]))) {
 		return 0, false
 	}
+	if (rest != "" && rest[0] >= '0' && rest[0] <= '9') || len(divisionSequenceOf(rest)) > 0 {
+		return 0, false
+	}
 	v, _ := strconv.Atoi(number) // at most three ASCII digits
+	if numbersAnotherVolume(rest, series, v) {
+		return 0, false
+	}
 	return float64(v), true
+}
+
+// numbersAnotherVolume reports whether s spells series, at word boundaries, followed
+// by a number other than v. The series again with the same number, or with none, is a translated
+// edition's subtitle ("Outsphere 4: Ordres et Chaos [Outsphere 4: Order and Chaos]",
+// "The Witch Queen 1: The Witch Queen. Entfesselte Magie"), not a second volume.
+func numbersAnotherVolume(s, series string, v int) bool {
+	ls := lowerFold(s)
+	for _, form := range seriesFormsOf(series).lowered {
+		for rest := ls; ; {
+			i := strings.Index(rest, form+" ")
+			if i < 0 {
+				break
+			}
+			bounded := boundedAt(rest, i, i+len(form))
+			rest = rest[i+len(form)+1:]
+			digits := rest[:len(rest)-len(strings.TrimLeft(rest, "0123456789"))]
+			if n, err := strconv.Atoi(digits); bounded && err == nil && n != v {
+				return true
+			}
+		}
+	}
+	return false
 }
 
 // VolumeStatement is everything a title says about which volume it is, against one

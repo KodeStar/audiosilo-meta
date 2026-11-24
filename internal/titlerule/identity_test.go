@@ -454,6 +454,13 @@ func TestWriterPolicyLeavesOutOnlyTheWordNumberedDivision(t *testing.T) {
 		{"The OP MC 1984: A History", "The OP MC", 0},
 		{"The OP MC 2: Side Stories, Book 3", "The OP MC", 3},
 		{"Hell’s Gate 2: The Fall", "Hell's Gate", 2},
+		{"Sternkreuzer Proxima 13 - 15", "Sternkreuzer Proxima", 0},
+		{"The OP MC 1 - 3: Omnibus", "The OP MC", 0},
+		{"Multiple Love 2: Books 4-6", "Multiple Love", 0},
+		{"Z-Risen 1: Outbreak and Z-Risen 2: Outcasts", "Z-Risen", 0},
+		{"The Witch Queen 1: The Witch Queen. Entfesselte Magie", "The Witch Queen", 1},
+		{"Outsphere 4: Ordres et Chaos [Outsphere 4: Order and Chaos]", "Outsphere", 4},
+		{"Ark 2: The Dark 5", "Ark", 2},
 	} {
 		got, ok := WriterPolicy.Volume(c.title, c.series)
 		switch {
