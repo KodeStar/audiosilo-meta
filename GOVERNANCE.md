@@ -619,13 +619,14 @@ An eligible head is pushed unchanged to
 `steward/fork-<n>` in this repository, and a pull request "(mirrored from
 #<n>)" is opened that credits the contributor. From then on the mirror goes
 through the same gate, review bound and fixes as any other steward pull
-request, with two differences: it merges squashed, and it is withdrawn (closed
-unmerged, its branch deleted) when its fork is closed or moves to a head that
-may not be mirrored. The squash carries the steward's own commit message,
-which credits the contributor in plain prose ("Contributed by @login in #n.").
-A closing keyword in the fork's title or commits closes no issue: the title is
-neutralized ("Fixes #12" reads "ref #12") and the fork's commit messages never
-reach `main`. After that:
+request, with two differences: the steward merges it whole only squashed, and
+it is withdrawn (closed unmerged, its branch deleted) when its fork is closed
+or moves to a head that may not be mirrored. The squash carries the steward's
+own commit message, which credits the contributor in plain prose ("Contributed
+by @login in #n."). A closing keyword in the fork's title or commits closes no
+issue through the steward's merge: the title is neutralized ("Fixes #12" reads
+"ref #12") and the squash carries none of the fork's commit messages. After
+that:
 
 - once the mirror has merged whole and every entry the fork changed is verified
   on `main`, the fork's pull request is closed as superseded with a link to the
