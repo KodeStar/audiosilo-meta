@@ -578,22 +578,26 @@ the series-completion bot's own pull request.
 **Dependabot updates.** By the maintainer's decision of 2026-10-04 the steward
 also merges Dependabot's pull requests in each repository its configuration
 names (`SYNC_STEWARD_DEPENDABOT_REPOS`, none by default), on a gate of their
-own. One is eligible only when it comes from the repository itself into its
-default branch, every commit is authored by `dependabot[bot]` and committed and
-signed by GitHub, and every file is a dependency manifest, lockfile,
-Dockerfile, compose file or workflow; it then merges only when every check on
-its exact head passed, GitHub reports it `clean`, a major update has had a safe
-verdict from the contained agent's read-only review, and it is up to date with
-its base, at most one per repository per tick, pinned to the head it judged.
-Here an ineligible one is reviewed as code like any other. The steward never
-pushes to a Dependabot branch: one that is behind or conflicting gets
-`@dependabot rebase`, a conflict that outlives it `@dependabot recreate`, and
-one Dependabot does not move is listed for the maintainer. One exception, by
-the maintainer's decision of 2026-11-24, in this repository and the community
-layer only: a pull request that is only behind merges as it is when it changes
-nothing under `data/` and everything `main` changed since the merge base is
-under `data/`, so the tree outside `data/` that lands is the one its CI passed
-on.
+own. One is eligible only when `dependabot[bot]` opened it from the repository
+itself into its default branch, it is not a draft, every commit is authored by
+`dependabot[bot]` and committed and signed by GitHub, and every file is a
+dependency manifest, lockfile, Dockerfile, compose file, workflow or action
+definition (`action.yml`); it then merges only when its head has sat still, at
+least one check ran on that exact head and every check and status on it passed
+(a head no check tested is never merged), GitHub reports it `clean`, a major
+update has had a safe verdict from the contained agent's read-only review, and
+it is up to date with its base, at most one per repository per tick, pinned to
+the head it judged. Here an ineligible one is reviewed as code like any other.
+The steward never pushes to a Dependabot branch: one that is behind or
+conflicting gets `@dependabot rebase`, a conflict that outlives it `@dependabot
+recreate`, and one Dependabot does not move is listed for the maintainer. One
+exception, by the maintainer's decision of 2026-11-24, in this repository and
+the community layer only: a pull request that is only behind (GitHub still
+reporting it `clean`) merges as it is when it changes nothing under `data/` and
+everything `main` changed since the merge base is under `data/`, as GitHub's
+comparison lists it in full (at most 250 commits and fewer than 300 files;
+anything larger takes the rebase route), so the tree outside `data/` that lands
+is the one its CI passed on.
 
 **Pull requests from forks.** By the maintainer's decision of 2026-11-24 the
 steward also carries a fork's data pull request to `main`, through a mirror. A
