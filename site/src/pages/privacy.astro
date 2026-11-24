@@ -15,7 +15,7 @@ const code =
   <div class="container py-14 sm:py-16">
     <div class="reveal mx-auto max-w-3xl text-body">
       <h1 class="mb-1 text-4xl font-black tracking-tight text-hi">Privacy Policy</h1>
-      <p class="mb-8 text-dim">Last updated: 17 November 2026</p>
+      <p class="mb-8 text-dim">Last updated: 24 November 2026</p>
 
       <p class="mb-6 text-lg leading-relaxed">
         AudioSilo Meta is a <strong class="text-hi">public, open source audiobook metadata
@@ -73,9 +73,10 @@ const code =
         It does keep an error log, which can record the IP address and the requested URL of a
         request that goes wrong, such as one that cannot reach the service while it is restarting.
         To apply a per-client rate limit, the service also holds a client's address in memory, not
-        on disk, while it is making requests and normally for a few minutes after. All of this is used
-        <strong class="text-hi">only</strong> to operate the service and to deal with abuse such as
-        scraping floods or attacks. It is not used to profile anyone and it is not shared.
+        on disk, while it is making requests and normally for a few minutes after (reports of
+        unknown books, below, have a stricter limit of their own, which holds it for about a day).
+        All of this is used <strong class="text-hi">only</strong> to operate the service and to deal
+        with abuse such as scraping floods or attacks. It is not used to profile anyone and it is not shared.
       </p>
 
       <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">Search</h2>
@@ -170,11 +171,10 @@ const code =
         database does not hold yet. A report carries ASINs and nothing else we keep: the service
         stores each ASIN with a count and the first and last date it was reported, and stores no IP
         address with them. An address is held in memory for about a day after its last request to
-        enforce a rate limit. These reports are never written to an access log when they arrive over
-        HTTPS, which is how AudioSilo servers send them: the web server skips logging them on their
-        own, whatever it does for the rest of the site. Its error log can still record the address of
-        a request that goes wrong, such as a report that cannot reach the service while it is
-        restarting.
+        enforce a rate limit. Like every other request over HTTPS, which is how AudioSilo servers send
+        them, these reports are not written to an access log (see Server logs above). The error log
+        can still record the address of a request that goes wrong, such as a report that cannot reach
+        the service while it is restarting.
       </p>
 
       <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">Contributing</h2>
