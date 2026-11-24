@@ -4,6 +4,7 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"os"
 	"os/exec"
@@ -104,10 +105,16 @@ func runAIVerifyExit(t *testing.T, bin, context string, env ...string) (aiVerify
 	stdin, _ := os.ReadFile(filepath.Join(out, "stdin.txt"))
 	_, curlErr := os.Stat(filepath.Join(out, "curl-called"))
 	request, _ := os.ReadFile(filepath.Join(out, "request.json"))
+	// A run that wrote no verdict died before skip() could, and its output is
+	// what says why.
+	verdict, verdictErr := os.ReadFile(filepath.Join(out, "verdict.json"))
+	comment, commentErr := os.ReadFile(filepath.Join(out, "comment.md"))
+	if err := errors.Join(verdictErr, commentErr); err != nil {
+		t.Fatalf("%v\nthe run: %v", err, runErr)
+	}
 	return aiVerifyRun{
 		system: string(system), stdin: string(stdin), request: string(request),
-		verdict: readFile(t, filepath.Join(out, "verdict.json")), comment: readFile(t, filepath.Join(out, "comment.md")),
-		curl: curlErr == nil,
+		verdict: string(verdict), comment: string(comment), curl: curlErr == nil,
 	}, runErr
 }
 
@@ -395,19 +402,27 @@ func TestAIVerifyAPIRequestIsNeverAnArgument(t *testing.T) {
 // TestAIVerifyLeavesNoTempFiles: the request file and the CLI's stderr live in one
 // temp directory the script removes on every exit, so neither a transport that
 // fails part way (a skip, which exits non-zero) nor a pass leaves a file behind.
-// The API answers also pin the refusal's own skip reason. A row with a curl runs
-// the API transport, one without the CLI.
+// The transport stub lists TMPDIR while it runs, so a script that stopped making
+// its directory there cannot pass on an empty TMPDIR. The API answers also pin
+// the skip reasons of their own: a timeout apart from other transport errors, and
+// a refusal, whose partial text is never read as a verdict even when it holds a
+// pass. A row with a curl runs the API transport, one without the CLI.
 func TestAIVerifyLeavesNoTempFiles(t *testing.T) {
 	t.Parallel()
 	requireTools(t, "bash", "jq", "iconv", "perl")
+	const shebang = "#!/usr/bin/env bash\n"
 	for _, tc := range []struct {
 		name, curl, wantComment string
 		wantSkip                bool
 	}{
-		{name: "curl fails", curl: "#!/usr/bin/env bash\ncat > /dev/null\nexit 7\n", wantSkip: true,
-			wantComment: "transport error"},
-		{name: "a refusal", wantSkip: true, wantComment: "stop_reason refusal",
-			curl: "#!/usr/bin/env bash\ncat > /dev/null\nprintf '%s' '{\"stop_reason\":\"refusal\",\"content\":[]}'\n"},
+		{name: "curl fails", curl: shebang + "cat > /dev/null\nexit 7\n", wantSkip: true,
+			wantComment: "transport error, curl exit 7"},
+		{name: "curl times out", curl: shebang + "cat > /dev/null\nexit 28\n", wantSkip: true,
+			wantComment: "timed out (no answer within 300 seconds)"},
+		{name: "a refusal", wantSkip: true, wantComment: "(stop_reason refusal, category cyber)",
+			curl: shebang + "cat > /dev/null\nprintf '%s' " +
+				`'{"stop_reason":"refusal","stop_details":{"type":"refusal","category":"cyber"},` +
+				`"content":[{"type":"text","text":"{\"verdict\":\"pass\",\"findings\":[]}"}]}'` + "\n"},
 		{name: "the API passes", curl: stubCurl, wantComment: "AI verification: passed"},
 		{name: "the CLI passes", wantComment: "AI verification: passed"},
 	} {
@@ -418,12 +433,18 @@ func TestAIVerifyLeavesNoTempFiles(t *testing.T) {
 			if err := os.Mkdir(tmp, 0o755); err != nil {
 				t.Fatal(err)
 			}
-			env := []string{"TMPDIR=" + tmp}
+			during := filepath.Join(dir, "tmp-during.txt")
+			env := []string{"TMPDIR=" + tmp, "DURING=" + during}
+			// The transport's stub, with a listing of TMPDIR after its shebang.
+			name, stub := "claude", stubClaude
 			if tc.curl != "" {
-				if err := os.WriteFile(filepath.Join(bin, "curl"), []byte(tc.curl), 0o755); err != nil {
-					t.Fatal(err)
-				}
+				name, stub = "curl", tc.curl
 				env = append(env, "ANTHROPIC_API_KEY=key")
+			}
+			head, rest, _ := strings.Cut(stub, "\n")
+			stub = head + "\n" + `ls -A "$TMPDIR" > "$DURING"` + "\n" + rest
+			if err := os.WriteFile(filepath.Join(bin, name), []byte(stub), 0o755); err != nil {
+				t.Fatal(err)
 			}
 			r, err := runAIVerifyExit(t, bin, context, env...)
 			if skipped := err != nil; skipped != tc.wantSkip {
@@ -431,6 +452,9 @@ func TestAIVerifyLeavesNoTempFiles(t *testing.T) {
 			}
 			if !strings.Contains(r.comment, tc.wantComment) {
 				t.Errorf("comment %q, want it to contain %q", r.comment, tc.wantComment)
+			}
+			if listed := readFile(t, during); !strings.HasPrefix(listed, "ai-verify.") {
+				t.Errorf("TMPDIR held %q while the transport ran, want the script's ai-verify.* directory", listed)
 			}
 			left, err := os.ReadDir(tmp)
 			if err != nil {

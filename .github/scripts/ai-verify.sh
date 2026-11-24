@@ -94,8 +94,8 @@ PR_ORIGIN="${PR_ORIGIN:-contributor}"
 # are measured from this, not from its training cutoff.
 TODAY="$(date -u +%F)"
 
-# A full model id, never a family alias, so the reviewer only changes in a
-# commit (both transports send it as written).
+# The current Sonnet (an upgrade from claude-sonnet-5), named by its full id so
+# the reviewer only changes in a commit (both transports send it as written).
 MODEL="claude-sonnet-5-5"
 API_URL="https://api.anthropic.com/v1/messages"
 MAX_INPUT_BYTES=200000 # cap the context sent to the model
@@ -301,11 +301,20 @@ if [ -n "${ANTHROPIC_API_KEY:-}" ]; then
     '{model: $model, max_tokens: 16000, system: $system, messages: [{role: "user", content: $user}]}' \
     > "$REQUEST_FILE" 2>/dev/null || skip "The Anthropic API request could not be built."
 
-  RESPONSE="$(curl -sS --max-time 300 "$API_URL" \
+  # A timeout (curl's exit 28) is named apart from the other transport errors:
+  # it is the one a longer answer, not a broken network, can cause.
+  API_MAX_TIME=300
+  CURL_STATUS=0
+  RESPONSE="$(curl -sS --max-time "$API_MAX_TIME" "$API_URL" \
     -H "x-api-key: ${ANTHROPIC_API_KEY}" \
     -H "anthropic-version: 2023-06-01" \
     -H "content-type: application/json" \
-    --data-binary @- < "$REQUEST_FILE" 2>/dev/null)" || skip "The Anthropic API request failed (transport error)."
+    --data-binary @- < "$REQUEST_FILE" 2>/dev/null)" || CURL_STATUS=$?
+  case "$CURL_STATUS" in
+  0) ;;
+  28) skip "The Anthropic API request timed out (no answer within ${API_MAX_TIME} seconds)." ;;
+  *) skip "The Anthropic API request failed (transport error, curl exit ${CURL_STATUS})." ;;
+  esac
 
   if [ -z "$RESPONSE" ]; then
     skip "The Anthropic API returned an empty response."
@@ -316,10 +325,15 @@ if [ -n "${ANTHROPIC_API_KEY:-}" ]; then
     skip "The Anthropic API returned an error: ${API_ERROR}"
   fi
 
-  # A refusal is an HTTP 200 with no verdict in it: say so, rather than the
-  # generic "no text output" below.
-  if [ "$(printf '%s' "$RESPONSE" | jq -r '.stop_reason // empty' 2>/dev/null)" = "refusal" ]; then
-    skip "The model declined to review this change (stop_reason refusal)."
+  # A refusal is an HTTP 200 with no verdict in it (any partial text it carries is
+  # not one): say so, and which classifier declined (stop_details.category, the
+  # fact that tells a false positive), rather than the generic "no text output"
+  # below.
+  REFUSAL="$(printf '%s' "$RESPONSE" | jq -r 'select(.stop_reason? == "refusal")
+    | ((.stop_details | objects | .category | strings) // "") as $c
+    | "stop_reason refusal" + (if $c == "" then "" else ", category " + $c end)' 2>/dev/null)"
+  if [ -n "$REFUSAL" ]; then
+    skip "The model declined to review this change (${REFUSAL})."
   fi
 
   TEXT="$(printf '%s' "$RESPONSE" | jq -r '[.content[]? | select(.type=="text") | .text] | join("")' 2>/dev/null)"
