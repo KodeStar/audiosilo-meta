@@ -97,6 +97,36 @@ func TestCreateAcceptsAnotherVolumeOfTheSameSeries(t *testing.T) {
 	}
 }
 
+// The first OP MC listing has no series membership. Its sequels name their
+// volume before the colon, where title normalization removes the whole prefix.
+func TestCreateNumberedSeriesPrefix(t *testing.T) {
+	const author = `{"name":"Logan Jacobs"}`
+	dataDir := t.TempDir()
+	first := libexRow{asin: "B08M6C815Q", title: "God of Winning", authors: author}
+	if sum := runLibexInto(t, dataDir, rows(first)); sum.NewWorks != 1 {
+		t.Fatalf("seed: %+v", sum)
+	}
+	second := libexRow{asin: "B0VOLUME02", title: "The OP MC 2: The God of Winning", authors: author,
+		series: `{"name":"The OP MC","position":"2"}`}
+	if sum := runLibexInto(t, dataDir, rows(second)); sum.NewWorks != 1 || sum.NewRecordings != 1 || sum.SkippedDuplicateIdentity != 0 {
+		t.Errorf("volume 2 should create its own work and recording: %+v", sum)
+	}
+
+	// A different spelling for a volume positively placed in the series
+	// still hits the guard.
+	dataDir = t.TempDir()
+	first.series = `{"name":"The OP MC","position":"1"}`
+	runLibexInto(t, dataDir, rows(first))
+	duplicate := libexRow{asin: "B0VOLUME01", title: "The OP MC 1: The God of Winning", authors: author, series: first.series}
+	if sum := runLibexInto(t, dataDir, rows(duplicate)); sum.NewWorks != 0 || sum.NewRecordings != 0 || sum.SkippedDuplicateIdentity != 1 {
+		t.Errorf("volume 1 should be refused as a duplicate: %+v", sum)
+	}
+	attached := runLibexWith(t, dataDir, Options{AttachEditions: true}, duplicate.render())
+	if attached.Attached != 1 || attached.MergedASINs != 1 || attached.NewWorks != 0 || attached.NewRecordings != 0 {
+		t.Errorf("attach-editions should add the duplicate ASIN to the first recording: %+v", attached)
+	}
+}
+
 // Nor may it refuse a different AUTHOR's book of the same name: the author-nesting
 // rule is what separates two books that share a title.
 func TestCreateAcceptsTheSameTitleByAnotherAuthor(t *testing.T) {
