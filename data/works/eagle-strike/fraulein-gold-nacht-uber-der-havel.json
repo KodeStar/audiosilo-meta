@@ -3947,6 +3947,10 @@
             {
               "asin": "B0HCZDXM43",
               "region": "us"
+            },
+            {
+              "asin": "B0HCZMK9YV",
+              "region": "es"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81Jo112f71L.jpg",
@@ -3958,7 +3962,7 @@
           ],
           "publisher": "Argon Verlag",
           "release_date": "2026-11-13",
-          "runtime_min": 600,
+          "runtime_min": 512,
           "sources": [
             {
               "imported_at": "2026-09-27",
@@ -3998,6 +4002,11 @@
             {
               "imported_at": "2026-10-07",
               "ref": "B0HCZDXM43",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-24",
+              "ref": "B0HCZMK9YV",
               "type": "libex-import"
             }
           ],
