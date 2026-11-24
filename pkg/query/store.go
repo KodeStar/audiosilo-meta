@@ -699,12 +699,12 @@ func namesByPersonIDSQL(ph string) string {
 // orderings implies languages: hasOrderings is only ever settled on a
 // languages-era artifact.
 func seriesSummariesByIDSQL(ph string, languages, orderings bool) string {
-	cols, join := seriesLayerCols(languages, "s.", "language", "ordering")+", NULL, NULL", ""
+	variant, join := "NULL, NULL", ""
 	if orderings {
-		cols = seriesLayerCols(true, "s.", "language", "ordering", "ordering_of") + ", p.name"
-		join = " LEFT JOIN series p ON p.id = s.ordering_of"
+		variant, join = "s.ordering_of, p.name", " LEFT JOIN series p ON p.id = s.ordering_of"
 	}
-	return `SELECT s.id, s.name, ` + cols + `, COUNT(sw.series_id) FROM series s` + join +
+	return `SELECT s.id, s.name, ` + seriesLayerCols(languages, "s.", "language", "ordering") + `, ` + variant +
+		`, COUNT(sw.series_id) FROM series s` + join +
 		` LEFT JOIN series_works sw ON sw.series_id = s.id WHERE s.id IN (` + ph + `) GROUP BY s.id, s.name`
 }
 

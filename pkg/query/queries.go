@@ -1383,9 +1383,7 @@ func seriesHeaderSQL(languages bool) string {
 // seriesLayerCols spells the series columns that arrived with the languages layer
 // (language, ordering, ordering_of), each behind alias, for a text that reads them.
 // An artifact older than languagesSchemaVersion has none of them, so there each
-// is NULL instead and the text scans into the same shape either way. The series
-// texts that read the layer (the header, a search page's summaries, works/match's
-// languages) all spell their columns through it.
+// is NULL instead and the text scans into the same shape either way.
 func seriesLayerCols(languages bool, alias string, cols ...string) string {
 	out := make([]string, len(cols))
 	for i, c := range cols {
