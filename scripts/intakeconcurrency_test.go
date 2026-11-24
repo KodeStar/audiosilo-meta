@@ -66,7 +66,7 @@ func TestIntakeConcurrencyCopiesTheJobIf(t *testing.T) {
 		t.Fatal(err)
 	}
 	// The check itself: a label changed in only one of the two copies is caught
-	// either way round, and so is a missing block.
+	// either way round, and so is either block gone missing.
 	const label = `github.event.label.name != 'data:duplicate'`
 	if strings.Count(yml, label) != 2 {
 		t.Fatalf("intake.yml names %q %d times, want 2 (the group and the job)", label, strings.Count(yml, label))
@@ -78,7 +78,8 @@ func TestIntakeConcurrencyCopiesTheJobIf(t *testing.T) {
 	for name, mutated := range map[string]string{
 		"the group alone changed": first,
 		"the if alone changed":    second,
-		"no group":                strings.Replace(yml, "  group: >-", "  group: x", 1),
+		"no group":                strings.Replace(yml, "\n  group: >-\n", "\n  group: x\n", 1),
+		"no if":                   strings.Replace(yml, "\n    if: >-\n", "\n    if: x\n", 1),
 	} {
 		if intakeConcurrencyCopiesIf(mutated) == nil {
 			t.Errorf("%s: the check passed", name)
