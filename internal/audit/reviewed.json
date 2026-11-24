@@ -15851,6 +15851,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "journey-to-the-center-of-the-earth-a-signature-performance-by-tim-curry"
+    ],
+    "reason": "Tim Curry's 500-minute Audible Studios performance is another recording of Jules Verne's novel.",
+    "target": "journey-to-the-center-of-the-earth"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "jude-the-obscure-amazonclassics-edition"
     ],
     "reason": "the same novel: AmazonClassics Edition only names the publisher's edition of an unabridged reading",
@@ -27614,6 +27623,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "dark-tower-iii"
+    ],
+    "reason": "Stephen King's third Dark Tower book. The Simon & Schuster edition is Frank Muller's 1094-minute reading of The Waste Lands.",
+    "target": "the-waste-lands"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-dark-tower-iii-the-waste-lands"
     ],
     "reason": "one book: The Dark Tower III is The Waste Lands, Frank Muller's reading released by Penguin (1121 min) and Hodder (1091); the third record, dark-tower-iii (Simon & Schuster, 1094), is the same book but waits for its characters and recaps to be reconciled in the community repository; found by the LibraForge benchmark",
@@ -29756,6 +29774,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "dark-tower-iv"
+    ],
+    "reason": "Stephen King's fourth Dark Tower book. The Simon & Schuster edition is Frank Muller's 1655-minute reading of Wizard and Glass.",
+    "target": "wizard-and-glass"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-dark-tower-iv-wizard-and-glass"
     ],
     "reason": "one book: The Dark Tower IV is Wizard and Glass, Frank Muller's reading released by Penguin (1687 min) and Hodder (1656); the third record, dark-tower-iv (Simon & Schuster, 1655), is the same book but waits for its characters and recaps to be reconciled in the community repository; found by the LibraForge benchmark",
@@ -31581,6 +31608,14 @@
     "reason": "the Audible listing (B0765C5FRM) subtitles it Book Two; book 3 is The McClane Apocalypse: Book Three",
     "target": "the-mcclane-apocalypse",
     "to": "The McClane Apocalypse: Book Two"
+  },
+  {
+    "decision": "assert",
+    "from": "The New World: Prequel to the Chaos Walking Trilogy",
+    "op": "retitle-work",
+    "reason": "Patrick Ness's short story is The New World. The rest of the held title describes its place before the Chaos Walking trilogy. The Humphrey Bower listing joined in #2908 uses the short title.",
+    "target": "the-new-world-prequel-to-the-chaos-walking-trilogy",
+    "to": "The New World"
   },
   {
     "decision": "assert",
