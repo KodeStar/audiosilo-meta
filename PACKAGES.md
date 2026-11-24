@@ -1087,7 +1087,9 @@ over the primary's id, `model.Series.OrderingPrimary`'s answer: the primary firs
 then its variants by id, a MULTI-INDEX OR over the primary key and
 `idx_series_ordering_of`), served identically on the primary and every variant and
 omitted when there is no variant. `seriesHeaderSQL(languages)` is the header in
-two texts of ONE shape (the pre-v7 one selects NULL for the three new columns).
+two texts of ONE shape (the pre-v7 one selects NULL for the three new columns);
+it, `seriesSummariesByIDSQL` and works/match's `seriesLanguagesByIDSQL` spell
+those columns through `seriesLayerCols`.
 `seriesRef` gains `ordering_of`, and the ONE series choice every surface makes -
 the card (`firstSeriesByWorkSQL`), works/latest's per-series cap, the coverage
 browser, the work detail's `series[0]` and the JSON-LD `isPartOf` (`seriesOfSQL`)

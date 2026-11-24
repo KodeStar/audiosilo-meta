@@ -1375,13 +1375,26 @@ const (
 )
 
 // seriesHeaderSQL is the series page's header row. A languages-era artifact
-// carries three more columns on the same primary-key row; an older one has none of
-// them, so its text selects NULL in their place and both scan into one shape.
+// carries three more columns on the same primary-key row (seriesLayerCols).
 func seriesHeaderSQL(languages bool) string {
-	if !languages {
-		return `SELECT id, name, NULL, NULL, NULL FROM series WHERE id=?`
+	return `SELECT id, name, ` + seriesLayerCols(languages, "", "language", "ordering", "ordering_of") + ` FROM series WHERE id=?`
+}
+
+// seriesLayerCols spells the series columns that arrived with the languages layer
+// (language, ordering, ordering_of), each behind alias, for a text that reads them.
+// An artifact older than languagesSchemaVersion has none of them, so there each
+// is NULL instead and the text scans into the same shape either way. The series
+// texts that read the layer (the header, a search page's summaries, works/match's
+// languages) all spell their columns through it.
+func seriesLayerCols(languages bool, alias string, cols ...string) string {
+	out := make([]string, len(cols))
+	for i, c := range cols {
+		out[i] = "NULL"
+		if languages {
+			out[i] = alias + c
+		}
 	}
-	return `SELECT id, name, language, ordering, ordering_of FROM series WHERE id=?`
+	return strings.Join(out, ", ")
 }
 
 // seriesName reads a series' name and nothing else, reporting whether the series
