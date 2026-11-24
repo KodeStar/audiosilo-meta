@@ -4,6 +4,7 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
+	"fmt"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -76,13 +77,26 @@ type aiVerifyRun struct {
 // in the caller's environment cannot reach the prompt.
 func runAIVerify(t *testing.T, bin, context string, env ...string) aiVerifyRun {
 	t.Helper()
+	r, err := runAIVerifyExit(t, bin, context, env...)
+	if err != nil {
+		t.Fatal(err)
+	}
+	return r
+}
+
+// runAIVerifyExit is runAIVerify for a run that may skip: a skip exits non-zero
+// after writing its verdict and comment, so the run is read either way and the
+// exit comes back as the error.
+func runAIVerifyExit(t *testing.T, bin, context string, env ...string) (aiVerifyRun, error) {
+	t.Helper()
 	out := t.TempDir()
 	cmd := exec.Command("bash", abs(t, filepath.Join("..", ".github", "scripts", "ai-verify.sh")),
 		context, filepath.Join(out, "verdict.json"), filepath.Join(out, "comment.md"))
 	cmd.Env = append([]string{"PATH=" + bin + string(os.PathListSeparator) + os.Getenv("PATH"), "HOME=" + out,
 		"CLAUDE_CODE_OAUTH_TOKEN=test", "OUTDIR=" + out}, env...)
+	var runErr error
 	if b, err := cmd.CombinedOutput(); err != nil {
-		t.Fatalf("ai-verify.sh %v: %v\n%s", env, err, b)
+		runErr = fmt.Errorf("ai-verify.sh %v: %w\n%s", env, err, b)
 	}
 	// The stub claude writes system.txt and stdin.txt only when the CLI is the
 	// transport; a missing one reads as "".
@@ -94,7 +108,7 @@ func runAIVerify(t *testing.T, bin, context string, env ...string) aiVerifyRun {
 		system: string(system), stdin: string(stdin), request: string(request),
 		verdict: readFile(t, filepath.Join(out, "verdict.json")), comment: readFile(t, filepath.Join(out, "comment.md")),
 		curl: curlErr == nil,
-	}
+	}, runErr
 }
 
 // originCaution splits a system prompt around its origin caution: the sentences
@@ -381,52 +395,42 @@ func TestAIVerifyAPIRequestIsNeverAnArgument(t *testing.T) {
 // TestAIVerifyLeavesNoTempFiles: the request file and the CLI's stderr live in one
 // temp directory the script removes on every exit, so neither a transport that
 // fails part way (a skip, which exits non-zero) nor a pass leaves a file behind.
-// The API answers also pin the refusal's own skip reason.
+// The API answers also pin the refusal's own skip reason. A row with a curl runs
+// the API transport, one without the CLI.
 func TestAIVerifyLeavesNoTempFiles(t *testing.T) {
 	t.Parallel()
 	requireTools(t, "bash", "jq", "iconv", "perl")
 	for _, tc := range []struct {
 		name, curl, wantComment string
-		apiKey, wantSkip        bool
+		wantSkip                bool
 	}{
-		{name: "curl fails", curl: "#!/usr/bin/env bash\ncat > /dev/null\nexit 7\n", apiKey: true, wantSkip: true,
+		{name: "curl fails", curl: "#!/usr/bin/env bash\ncat > /dev/null\nexit 7\n", wantSkip: true,
 			wantComment: "transport error"},
-		{name: "a refusal", apiKey: true, wantSkip: true, wantComment: "stop_reason refusal",
+		{name: "a refusal", wantSkip: true, wantComment: "stop_reason refusal",
 			curl: "#!/usr/bin/env bash\ncat > /dev/null\nprintf '%s' '{\"stop_reason\":\"refusal\",\"content\":[]}'\n"},
-		{name: "the API passes", curl: stubCurl, apiKey: true, wantComment: "AI verification: passed"},
+		{name: "the API passes", curl: stubCurl, wantComment: "AI verification: passed"},
 		{name: "the CLI passes", wantComment: "AI verification: passed"},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			t.Parallel()
 			dir, bin, context := aiVerifyFixture(t, "2026-01-01")
-			if tc.curl != "" {
-				if err := os.WriteFile(filepath.Join(bin, "curl"), []byte(tc.curl), 0o755); err != nil {
-					t.Fatal(err)
-				}
-			}
-			// A stub mktemp makes every temp path under tmp: macOS's ignores TMPDIR
-			// when it is given no template, which would hide a leak there.
 			tmp := filepath.Join(dir, "tmp")
 			if err := os.Mkdir(tmp, 0o755); err != nil {
 				t.Fatal(err)
 			}
-			if err := os.WriteFile(filepath.Join(bin, "mktemp"), []byte(stubMktemp), 0o755); err != nil {
-				t.Fatal(err)
+			env := []string{"TMPDIR=" + tmp}
+			if tc.curl != "" {
+				if err := os.WriteFile(filepath.Join(bin, "curl"), []byte(tc.curl), 0o755); err != nil {
+					t.Fatal(err)
+				}
+				env = append(env, "ANTHROPIC_API_KEY=key")
 			}
-			out := t.TempDir()
-			cmd := exec.Command("bash", abs(t, filepath.Join("..", ".github", "scripts", "ai-verify.sh")),
-				context, filepath.Join(out, "verdict.json"), filepath.Join(out, "comment.md"))
-			cmd.Env = []string{"PATH=" + bin + string(os.PathListSeparator) + os.Getenv("PATH"), "HOME=" + out,
-				"CLAUDE_CODE_OAUTH_TOKEN=test", "OUTDIR=" + out, "TMPDIR=" + tmp}
-			if tc.apiKey {
-				cmd.Env = append(cmd.Env, "ANTHROPIC_API_KEY=key")
-			}
-			b, err := cmd.CombinedOutput()
+			r, err := runAIVerifyExit(t, bin, context, env...)
 			if skipped := err != nil; skipped != tc.wantSkip {
-				t.Fatalf("exit error %v, want a skip %v\n%s", err, tc.wantSkip, b)
+				t.Fatalf("got a skip %v, want %v: %v", skipped, tc.wantSkip, err)
 			}
-			if c := readFile(t, filepath.Join(out, "comment.md")); !strings.Contains(c, tc.wantComment) {
-				t.Errorf("comment %q, want it to contain %q", c, tc.wantComment)
+			if !strings.Contains(r.comment, tc.wantComment) {
+				t.Errorf("comment %q, want it to contain %q", r.comment, tc.wantComment)
 			}
 			left, err := os.ReadDir(tmp)
 			if err != nil {
@@ -438,11 +442,3 @@ func TestAIVerifyLeavesNoTempFiles(t *testing.T) {
 		})
 	}
 }
-
-// stubMktemp is a mktemp that makes its file, or with -d its directory, under
-// $TMPDIR whatever the platform's own does.
-const stubMktemp = `#!/usr/bin/env bash
-p="$TMPDIR/tmp.$$.$RANDOM"
-if [ "${1:-}" = "-d" ]; then mkdir "$p"; else : > "$p"; fi
-echo "$p"
-`

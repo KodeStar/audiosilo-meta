@@ -115,8 +115,9 @@ skip() {
 
 # WORK_DIR holds this script's temp files (the API request, the CLI's stderr):
 # one directory, removed on every exit, skip()'s included, so a transport that
-# fails part way leaves nothing behind on the runner.
-WORK_DIR="$(mktemp -d)" || skip "No temporary directory could be made."
+# fails part way leaves nothing behind on the runner. The template keeps it
+# under $TMPDIR on every platform (macOS's mktemp ignores TMPDIR without one).
+WORK_DIR="$(mktemp -d "${TMPDIR:-/tmp}/ai-verify.XXXXXX")" || skip "No temporary directory could be made."
 trap 'rm -rf "$WORK_DIR"' EXIT
 
 if [ -z "${CLAUDE_CODE_OAUTH_TOKEN:-}" ] && [ -z "${ANTHROPIC_API_KEY:-}" ]; then
