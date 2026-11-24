@@ -33,16 +33,27 @@ if [ -n "${REPLY_FILE:-}" ]; then cat "$REPLY_FILE"; exit 0; fi
 printf '%s' '{"result":"{\"verdict\":\"pass\",\"findings\":[]}"}'
 `
 
-// stubBin writes the stub claude (and, with a non-empty today, a date answering
-// it, so the prompt's "Today's date" line is fixed) into dir/bin.
+// stubTimeout stands in for GNU timeout, which macOS does not ship: it drops the
+// options and the duration and runs the command, as timeout does when the
+// command answers in time.
+const stubTimeout = `#!/usr/bin/env bash
+while [ "${1#-}" != "$1" ]; do shift; done
+shift
+exec "$@"
+`
+
+// stubBin writes the stub claude and timeout (and, with a non-empty today, a
+// date answering it, so the prompt's "Today's date" line is fixed) into dir/bin.
 func stubBin(t *testing.T, dir, today string) string {
 	t.Helper()
 	bin := filepath.Join(dir, "bin")
 	if err := os.MkdirAll(bin, 0o755); err != nil {
 		t.Fatal(err)
 	}
-	if err := os.WriteFile(filepath.Join(bin, "claude"), []byte(stubClaude), 0o755); err != nil {
-		t.Fatal(err)
+	for name, body := range map[string]string{"claude": stubClaude, "timeout": stubTimeout} {
+		if err := os.WriteFile(filepath.Join(bin, name), []byte(body), 0o755); err != nil {
+			t.Fatal(err)
+		}
 	}
 	if today != "" {
 		if err := os.WriteFile(filepath.Join(bin, "date"), []byte("#!/usr/bin/env bash\necho "+today+"\n"), 0o755); err != nil {
@@ -402,29 +413,33 @@ func TestAIVerifyAPIRequestIsNeverAnArgument(t *testing.T) {
 // TestAIVerifyLeavesNoTempFiles: the request file and the CLI's stderr live in one
 // temp directory the script removes on every exit, so neither a transport that
 // fails part way (a skip, which exits non-zero) nor a pass leaves a file behind.
-// The transport stub lists TMPDIR while it runs, so a script that stopped making
-// its directory there cannot pass on an empty TMPDIR. The API answers also pin
-// the skip reasons of their own: a timeout apart from other transport errors, and
-// a refusal, whose partial text is never read as a verdict even when it holds a
-// pass. A row with a curl runs the API transport, one without the CLI.
+// The row's stub lists TMPDIR while it runs, so a script that stopped making its
+// directory there cannot pass on an empty TMPDIR. The rows also pin the skip
+// reasons of their own, on both transports: a timeout (curl's exit 28, timeout's
+// 124 around the CLI) apart from other transport errors, and a refusal, whose
+// partial text is never read as a verdict even when it holds a pass. A curl row
+// runs the API transport, any other the CLI.
 func TestAIVerifyLeavesNoTempFiles(t *testing.T) {
 	t.Parallel()
 	requireTools(t, "bash", "jq", "iconv", "perl")
 	const shebang = "#!/usr/bin/env bash\n"
+	const pass = `"{\"verdict\":\"pass\",\"findings\":[]}"`
 	for _, tc := range []struct {
-		name, curl, wantComment string
-		wantSkip                bool
+		name, stub, body, wantComment string
+		wantSkip                      bool
 	}{
-		{name: "curl fails", curl: shebang + "cat > /dev/null\nexit 7\n", wantSkip: true,
+		{name: "curl fails", stub: "curl", body: shebang + "cat > /dev/null\nexit 7\n", wantSkip: true,
 			wantComment: "transport error, curl exit 7"},
-		{name: "curl times out", curl: shebang + "cat > /dev/null\nexit 28\n", wantSkip: true,
+		{name: "curl times out", stub: "curl", body: shebang + "cat > /dev/null\nexit 28\n", wantSkip: true,
 			wantComment: "timed out (no answer within 300 seconds)"},
-		{name: "a refusal", wantSkip: true, wantComment: "(stop_reason refusal, category cyber)",
-			curl: shebang + "cat > /dev/null\nprintf '%s' " +
+		{name: "a refusal", stub: "curl", wantSkip: true, wantComment: "(stop_reason refusal, category cyber)",
+			body: shebang + "cat > /dev/null\nprintf '%s' " +
 				`'{"stop_reason":"refusal","stop_details":{"type":"refusal","category":"cyber"},` +
-				`"content":[{"type":"text","text":"{\"verdict\":\"pass\",\"findings\":[]}"}]}'` + "\n"},
-		{name: "the API passes", curl: stubCurl, wantComment: "AI verification: passed"},
-		{name: "the CLI passes", wantComment: "AI verification: passed"},
+				`"content":[{"type":"text","text":` + pass + `}]}'` + "\n"},
+		{name: "the API passes", stub: "curl", body: stubCurl, wantComment: "AI verification: passed"},
+		{name: "the CLI passes", stub: "claude", body: stubClaude, wantComment: "AI verification: passed"},
+		{name: "the CLI times out", stub: "timeout", body: shebang + "cat > /dev/null\nexit 124\n", wantSkip: true,
+			wantComment: "The Claude Code CLI timed out (no answer within 900 seconds)."},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			t.Parallel()
@@ -435,15 +450,13 @@ func TestAIVerifyLeavesNoTempFiles(t *testing.T) {
 			}
 			during := filepath.Join(dir, "tmp-during.txt")
 			env := []string{"TMPDIR=" + tmp, "DURING=" + during}
-			// The transport's stub, with a listing of TMPDIR after its shebang.
-			name, stub := "claude", stubClaude
-			if tc.curl != "" {
-				name, stub = "curl", tc.curl
+			if tc.stub == "curl" {
 				env = append(env, "ANTHROPIC_API_KEY=key")
 			}
-			head, rest, _ := strings.Cut(stub, "\n")
-			stub = head + "\n" + `ls -A "$TMPDIR" > "$DURING"` + "\n" + rest
-			if err := os.WriteFile(filepath.Join(bin, name), []byte(stub), 0o755); err != nil {
+			// The row's stub, with a listing of TMPDIR after its shebang.
+			head, rest, _ := strings.Cut(tc.body, "\n")
+			stub := head + "\n" + `ls -A "$TMPDIR" > "$DURING"` + "\n" + rest
+			if err := os.WriteFile(filepath.Join(bin, tc.stub), []byte(stub), 0o755); err != nil {
 				t.Fatal(err)
 			}
 			r, err := runAIVerifyExit(t, bin, context, env...)
