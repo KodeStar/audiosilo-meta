@@ -67,14 +67,15 @@
 #
 # EXIT STATUS answers "did a verdict happen", not "is the data good". A pass and
 # a flag both exit 0 - a flag is advisory, a human still reviews - while every
-# operational skip (missing credential, missing CLI, transport error,
-# unparseable model output) writes its skip verdict and comment and then exits
-# NON-ZERO. A skip is a verification that did not happen, and reporting it as a
-# green check made this workflow vacuous: the CLI's npm install silently stopped
-# landing a runnable binary, every run posted "AI verification skipped", and
-# every one of them still reported PASS (diagnosed on PR #2251, 2026-08-20). The
-# check is advisory BY CONVENTION - it is not branch-protected - so a red skip
-# blocks no merge; it just stops the tick from lying.
+# operational skip (missing credential, missing CLI, transport error, timeout,
+# refusal, unparseable model output) writes its skip verdict and comment and
+# then exits NON-ZERO. A skip is a verification that did not happen, and
+# reporting it as a green check made this workflow vacuous: the CLI's npm
+# install silently stopped landing a runnable binary, every run posted "AI
+# verification skipped", and every one of them still reported PASS (diagnosed
+# on PR #2251, 2026-08-20). The check is advisory BY CONVENTION - it is not
+# branch-protected - so a red skip blocks no merge; it just stops the tick from
+# lying.
 set -uo pipefail
 
 CONTEXT_FILE="${1:?context file required}"
@@ -94,7 +95,9 @@ PR_ORIGIN="${PR_ORIGIN:-contributor}"
 # are measured from this, not from its training cutoff.
 TODAY="$(date -u +%F)"
 
-MODEL="claude-sonnet-5"
+# The current Sonnet (an upgrade from claude-sonnet-5), named by its full id so
+# the reviewer only changes in a commit (both transports send it as written).
+MODEL="claude-sonnet-5-5"
 API_URL="https://api.anthropic.com/v1/messages"
 MAX_INPUT_BYTES=200000 # cap the context sent to the model
 MAX_ADVISORY_BYTES=40000 # outer cap on the advisory list (advisory-delta.sh bounds it first)
@@ -110,6 +113,29 @@ skip() {
   echo "ai-verify: skipped - $reason" >&2
   exit 1
 }
+
+# skip_if_refused skips when a reply is a refusal: the API's response and the
+# CLI's result object both carry the final stop_reason. A refusal holds no
+# verdict (any partial text it carries is not one), so the skip says so, and
+# which classifier declined where the reply names it (stop_details.category, the
+# fact that tells a false positive; the CLI's result object does not carry it),
+# rather than the generic "no text output" or "could not be parsed" below.
+skip_if_refused() {
+  local refusal
+  refusal="$(printf '%s' "$1" | jq -r 'select(.stop_reason? == "refusal")
+    | ((.stop_details | objects | .category | strings) // "") as $c
+    | "stop_reason refusal" + (if $c == "" then "" else ", category " + $c end)' 2>/dev/null)"
+  if [ -n "$refusal" ]; then
+    skip "The model declined to review this change (${refusal})."
+  fi
+}
+
+# WORK_DIR holds this script's temp files (the API request, the CLI's stderr):
+# one directory, removed on every exit, skip()'s included, so a transport that
+# fails part way leaves nothing behind on the runner. The template keeps it
+# under $TMPDIR on every platform (macOS's mktemp ignores TMPDIR without one).
+WORK_DIR="$(mktemp -d "${TMPDIR:-/tmp}/ai-verify.XXXXXX")" || skip "No temporary directory could be made."
+trap 'rm -rf "$WORK_DIR"' EXIT
 
 if [ -z "${CLAUDE_CODE_OAUTH_TOKEN:-}" ] && [ -z "${ANTHROPIC_API_KEY:-}" ]; then
   skip "No \`CLAUDE_CODE_OAUTH_TOKEN\` or \`ANTHROPIC_API_KEY\` secret is configured for this repository. The workflow runs only on same-repo branches, so a missing secret here is a repository configuration problem rather than anything about this pull request."
@@ -284,7 +310,7 @@ if [ -n "${ANTHROPIC_API_KEY:-}" ]; then
   # API this model thinks unless told not to, so the ceiling leaves room for both:
   # a reply-sized one can run out mid-thought and leave no verdict. --max-time
   # allows for that longer answer.
-  REQUEST_FILE="$(mktemp)"
+  REQUEST_FILE="$WORK_DIR/request.json"
   jq -n \
     --arg model "$MODEL" \
     --rawfile system <(printf '%s' "$SYSTEM") \
@@ -292,12 +318,20 @@ if [ -n "${ANTHROPIC_API_KEY:-}" ]; then
     '{model: $model, max_tokens: 16000, system: $system, messages: [{role: "user", content: $user}]}' \
     > "$REQUEST_FILE" 2>/dev/null || skip "The Anthropic API request could not be built."
 
-  RESPONSE="$(curl -sS --max-time 300 "$API_URL" \
+  # A timeout (curl's exit 28) is named apart from the other transport errors:
+  # it is the one a longer answer, not a broken network, can cause.
+  API_MAX_TIME=300
+  CURL_STATUS=0
+  RESPONSE="$(curl -sS --max-time "$API_MAX_TIME" "$API_URL" \
     -H "x-api-key: ${ANTHROPIC_API_KEY}" \
     -H "anthropic-version: 2023-06-01" \
     -H "content-type: application/json" \
-    --data-binary @- < "$REQUEST_FILE" 2>/dev/null)" || skip "The Anthropic API request failed (transport error)."
-  rm -f "$REQUEST_FILE"
+    --data-binary @- < "$REQUEST_FILE" 2>/dev/null)" || CURL_STATUS=$?
+  case "$CURL_STATUS" in
+  0) ;;
+  28) skip "The Anthropic API request timed out (no answer within ${API_MAX_TIME} seconds)." ;;
+  *) skip "The Anthropic API request failed (transport error, curl exit ${CURL_STATUS})." ;;
+  esac
 
   if [ -z "$RESPONSE" ]; then
     skip "The Anthropic API returned an empty response."
@@ -307,6 +341,9 @@ if [ -n "${ANTHROPIC_API_KEY:-}" ]; then
   if [ -n "$API_ERROR" ]; then
     skip "The Anthropic API returned an error: ${API_ERROR}"
   fi
+
+  # A refusal is an HTTP 200 with no verdict in it.
+  skip_if_refused "$RESPONSE"
 
   TEXT="$(printf '%s' "$RESPONSE" | jq -r '[.content[]? | select(.type=="text") | .text] | join("")' 2>/dev/null)"
 else
@@ -322,13 +359,31 @@ else
     skip "The Claude Code CLI (\`claude\`) is not installed on the runner."
   fi
 
+  # A hung CLI is bounded HERE, not by the job's timeout-minutes: a job cut off
+  # there is cancelled, so the step that posts the comment (`!cancelled()`) never
+  # runs, and the pull request gets no comment and keeps the last push's outcome
+  # label. CLI_MAX_TIME leaves the rest of the job's 30 minutes to the steps
+  # either side of this one. GNU timeout (on every Linux runner) signals the
+  # CLI's whole process group, KILLs it 30 seconds later if it is still there
+  # (an exit of 137, a plain failure below), and exits 124 when it fired.
+  if ! command -v timeout >/dev/null 2>&1; then
+    skip "\`timeout\` (GNU coreutils) is not installed on the runner, so the Claude Code CLI cannot be given a time limit."
+  fi
+  CLI_MAX_TIME=900
   CLI_STATUS=0
-  CLI_ERR_FILE="$(mktemp)"
-  CLI_OUT="$(printf '%s' "$USER_MSG" | claude -p \
+  CLI_ERR_FILE="$WORK_DIR/cli.err"
+  CLI_OUT="$(printf '%s' "$USER_MSG" | timeout --kill-after=30 "$CLI_MAX_TIME" claude -p \
     --system-prompt "$SYSTEM" \
     --model "$MODEL" \
     --output-format json \
     --allowedTools "" 2>"$CLI_ERR_FILE")" || CLI_STATUS=$?
+
+  if [ "$CLI_STATUS" -eq 124 ]; then
+    skip "The Claude Code CLI timed out (no answer within ${CLI_MAX_TIME} seconds)."
+  fi
+  # Before the exit status and is_error: a refused run can end as an error, and
+  # what names it is the refusal, not the error's text.
+  skip_if_refused "$CLI_OUT"
 
   if [ "$CLI_STATUS" -ne 0 ]; then
     CLI_DETAIL="$(printf '%s' "$CLI_OUT" | jq -r '.result // empty' 2>/dev/null)"

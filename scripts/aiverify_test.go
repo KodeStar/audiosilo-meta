@@ -4,6 +4,8 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
+	"errors"
+	"fmt"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -31,16 +33,27 @@ if [ -n "${REPLY_FILE:-}" ]; then cat "$REPLY_FILE"; exit 0; fi
 printf '%s' '{"result":"{\"verdict\":\"pass\",\"findings\":[]}"}'
 `
 
-// stubBin writes the stub claude (and, with a non-empty today, a date answering
-// it, so the prompt's "Today's date" line is fixed) into dir/bin.
+// stubTimeout stands in for GNU timeout, which macOS does not ship: it drops the
+// options and the duration and runs the command, as timeout does when the
+// command answers in time.
+const stubTimeout = `#!/usr/bin/env bash
+while [ "${1#-}" != "$1" ]; do shift; done
+shift
+exec "$@"
+`
+
+// stubBin writes the stub claude and timeout (and, with a non-empty today, a
+// date answering it, so the prompt's "Today's date" line is fixed) into dir/bin.
 func stubBin(t *testing.T, dir, today string) string {
 	t.Helper()
 	bin := filepath.Join(dir, "bin")
 	if err := os.MkdirAll(bin, 0o755); err != nil {
 		t.Fatal(err)
 	}
-	if err := os.WriteFile(filepath.Join(bin, "claude"), []byte(stubClaude), 0o755); err != nil {
-		t.Fatal(err)
+	for name, body := range map[string]string{"claude": stubClaude, "timeout": stubTimeout} {
+		if err := os.WriteFile(filepath.Join(bin, name), []byte(body), 0o755); err != nil {
+			t.Fatal(err)
+		}
 	}
 	if today != "" {
 		if err := os.WriteFile(filepath.Join(bin, "date"), []byte("#!/usr/bin/env bash\necho "+today+"\n"), 0o755); err != nil {
@@ -76,13 +89,26 @@ type aiVerifyRun struct {
 // in the caller's environment cannot reach the prompt.
 func runAIVerify(t *testing.T, bin, context string, env ...string) aiVerifyRun {
 	t.Helper()
+	r, err := runAIVerifyExit(t, bin, context, env...)
+	if err != nil {
+		t.Fatal(err)
+	}
+	return r
+}
+
+// runAIVerifyExit is runAIVerify for a run that may skip: a skip exits non-zero
+// after writing its verdict and comment, so the run is read either way and the
+// exit comes back as the error.
+func runAIVerifyExit(t *testing.T, bin, context string, env ...string) (aiVerifyRun, error) {
+	t.Helper()
 	out := t.TempDir()
 	cmd := exec.Command("bash", abs(t, filepath.Join("..", ".github", "scripts", "ai-verify.sh")),
 		context, filepath.Join(out, "verdict.json"), filepath.Join(out, "comment.md"))
 	cmd.Env = append([]string{"PATH=" + bin + string(os.PathListSeparator) + os.Getenv("PATH"), "HOME=" + out,
 		"CLAUDE_CODE_OAUTH_TOKEN=test", "OUTDIR=" + out}, env...)
+	var runErr error
 	if b, err := cmd.CombinedOutput(); err != nil {
-		t.Fatalf("ai-verify.sh %v: %v\n%s", env, err, b)
+		runErr = fmt.Errorf("ai-verify.sh %v: %w\n%s", env, err, b)
 	}
 	// The stub claude writes system.txt and stdin.txt only when the CLI is the
 	// transport; a missing one reads as "".
@@ -90,11 +116,17 @@ func runAIVerify(t *testing.T, bin, context string, env ...string) aiVerifyRun {
 	stdin, _ := os.ReadFile(filepath.Join(out, "stdin.txt"))
 	_, curlErr := os.Stat(filepath.Join(out, "curl-called"))
 	request, _ := os.ReadFile(filepath.Join(out, "request.json"))
+	// A run that wrote no verdict died before skip() could, and its output is
+	// what says why.
+	verdict, verdictErr := os.ReadFile(filepath.Join(out, "verdict.json"))
+	comment, commentErr := os.ReadFile(filepath.Join(out, "comment.md"))
+	if err := errors.Join(verdictErr, commentErr); err != nil {
+		t.Fatalf("%v\nthe run: %v", err, runErr)
+	}
 	return aiVerifyRun{
 		system: string(system), stdin: string(stdin), request: string(request),
-		verdict: readFile(t, filepath.Join(out, "verdict.json")), comment: readFile(t, filepath.Join(out, "comment.md")),
-		curl: curlErr == nil,
-	}
+		verdict: string(verdict), comment: string(comment), curl: curlErr == nil,
+	}, runErr
 }
 
 // originCaution splits a system prompt around its origin caution: the sentences
@@ -375,5 +407,83 @@ func TestAIVerifyAPIRequestIsNeverAnArgument(t *testing.T) {
 	}
 	if msg := req.Messages[0].Content; !strings.Contains(msg, strings.TrimSuffix(summary, "\n")) || !strings.Contains(msg, "[orphan-person] people: entry p") {
 		t.Errorf("the message (%d bytes) does not carry the whole %d-byte summary and the advisories", len(msg), len(summary))
+	}
+}
+
+// TestAIVerifyLeavesNoTempFiles: the request file and the CLI's stderr live in one
+// temp directory the script removes on every exit, so neither a transport that
+// fails part way (a skip, which exits non-zero) nor a pass leaves a file behind.
+// The row's stub lists TMPDIR while it runs, so a script that stopped making its
+// directory there cannot pass on an empty TMPDIR. The rows also pin the skip
+// reasons of their own, on both transports: a timeout (curl's exit 28, timeout's
+// 124 around the CLI) apart from other transport errors, and a refusal, whose
+// partial text is never read as a verdict even when it holds a pass, and which
+// is named as one even when the CLI ends it as an error. A curl row runs the API
+// transport, any other the CLI.
+func TestAIVerifyLeavesNoTempFiles(t *testing.T) {
+	t.Parallel()
+	requireTools(t, "bash", "jq", "iconv", "perl")
+	const shebang = "#!/usr/bin/env bash\n"
+	const pass = `"{\"verdict\":\"pass\",\"findings\":[]}"`
+	for _, tc := range []struct {
+		name, stub, body, wantComment string
+		wantSkip                      bool
+	}{
+		{name: "curl fails", stub: "curl", body: shebang + "cat > /dev/null\nexit 7\n", wantSkip: true,
+			wantComment: "transport error, curl exit 7"},
+		{name: "curl times out", stub: "curl", body: shebang + "cat > /dev/null\nexit 28\n", wantSkip: true,
+			wantComment: "timed out (no answer within 300 seconds)"},
+		{name: "a refusal", stub: "curl", wantSkip: true, wantComment: "(stop_reason refusal, category cyber)",
+			body: shebang + "cat > /dev/null\nprintf '%s' " +
+				`'{"stop_reason":"refusal","stop_details":{"type":"refusal","category":"cyber"},` +
+				`"content":[{"type":"text","text":` + pass + `}]}'` + "\n"},
+		{name: "the API passes", stub: "curl", body: stubCurl, wantComment: "AI verification: passed"},
+		{name: "the CLI passes", stub: "claude", body: stubClaude, wantComment: "AI verification: passed"},
+		{name: "the CLI times out", stub: "timeout", body: shebang + "cat > /dev/null\nexit 124\n", wantSkip: true,
+			wantComment: "The Claude Code CLI timed out (no answer within 900 seconds)."},
+		{name: "the CLI refuses", stub: "claude", wantSkip: true, wantComment: "declined to review this change (stop_reason refusal).",
+			body: shebang + "cat > /dev/null\nprintf '%s' " +
+				`'{"type":"result","subtype":"success","is_error":false,"stop_reason":"refusal","result":` + pass + `}'` + "\n"},
+		{name: "the CLI ends a refusal as an error", stub: "claude", wantSkip: true,
+			wantComment: "declined to review this change (stop_reason refusal).",
+			body: shebang + "cat > /dev/null\nprintf '%s' " +
+				`'{"type":"result","subtype":"success","is_error":true,"stop_reason":"refusal","result":"API Error: declined"}'` + "\nexit 1\n"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+			dir, bin, context := aiVerifyFixture(t, "2026-01-01")
+			tmp := filepath.Join(dir, "tmp")
+			if err := os.Mkdir(tmp, 0o755); err != nil {
+				t.Fatal(err)
+			}
+			during := filepath.Join(dir, "tmp-during.txt")
+			env := []string{"TMPDIR=" + tmp, "DURING=" + during}
+			if tc.stub == "curl" {
+				env = append(env, "ANTHROPIC_API_KEY=key")
+			}
+			// The row's stub, with a listing of TMPDIR after its shebang.
+			head, rest, _ := strings.Cut(tc.body, "\n")
+			stub := head + "\n" + `ls -A "$TMPDIR" > "$DURING"` + "\n" + rest
+			if err := os.WriteFile(filepath.Join(bin, tc.stub), []byte(stub), 0o755); err != nil {
+				t.Fatal(err)
+			}
+			r, err := runAIVerifyExit(t, bin, context, env...)
+			if skipped := err != nil; skipped != tc.wantSkip {
+				t.Fatalf("got a skip %v, want %v: %v", skipped, tc.wantSkip, err)
+			}
+			if !strings.Contains(r.comment, tc.wantComment) {
+				t.Errorf("comment %q, want it to contain %q", r.comment, tc.wantComment)
+			}
+			if listed := readFile(t, during); !strings.HasPrefix(listed, "ai-verify.") {
+				t.Errorf("TMPDIR held %q while the transport ran, want the script's ai-verify.* directory", listed)
+			}
+			left, err := os.ReadDir(tmp)
+			if err != nil {
+				t.Fatal(err)
+			}
+			if len(left) != 0 {
+				t.Errorf("TMPDIR holds %d entries after the run (%s), want none", len(left), left[0].Name())
+			}
+		})
 	}
 }

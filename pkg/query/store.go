@@ -690,7 +690,7 @@ func namesByPersonIDSQL(ph string) string {
 // A languages-era artifact also hands back the series' derived language and the
 // ordering it states from the same primary-key row; an older one has no such
 // columns, so its text selects NULL in their place and every text scans into one
-// shape (seriesHeaderSQL's two-text pattern). Where the artifact carries any
+// shape (seriesLayerCols). Where the artifact carries any
 // ordering at all (DB.hasOrderings) the text also reads a VARIANT's ordering_of
 // and its primary's NAME through one more primary-key join, so a hit can say "the
 // chronological order of Harry Potter" without a second read; where it carries
@@ -699,14 +699,12 @@ func namesByPersonIDSQL(ph string) string {
 // orderings implies languages: hasOrderings is only ever settled on a
 // languages-era artifact.
 func seriesSummariesByIDSQL(ph string, languages, orderings bool) string {
-	cols, join := "NULL, NULL, NULL, NULL", ""
-	switch {
-	case orderings:
-		cols, join = "s.language, s.ordering, s.ordering_of, p.name", " LEFT JOIN series p ON p.id = s.ordering_of"
-	case languages:
-		cols = "s.language, s.ordering, NULL, NULL"
+	variant, join := "NULL, NULL", ""
+	if orderings {
+		variant, join = "s.ordering_of, p.name", " LEFT JOIN series p ON p.id = s.ordering_of"
 	}
-	return `SELECT s.id, s.name, ` + cols + `, COUNT(sw.series_id) FROM series s` + join +
+	return `SELECT s.id, s.name, ` + seriesLayerCols(languages, "s.", "language", "ordering") + `, ` + variant +
+		`, COUNT(sw.series_id) FROM series s` + join +
 		` LEFT JOIN series_works sw ON sw.series_id = s.id WHERE s.id IN (` + ph + `) GROUP BY s.id, s.name`
 }
 
