@@ -12460,13 +12460,64 @@
         "action-adventure",
         "dark-fantasy",
         "epic-fantasy",
-        "fantasy",
-        "historical-fiction"
+        "fantasy"
       ],
       "id": "time-of-contempt",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2027": {
+          "abridged": false,
+          "asin": [
+            {
+              "asin": "B0HHDNWJ17",
+              "region": "us"
+            },
+            {
+              "asin": "B0HHDP568N",
+              "region": "ca"
+            },
+            {
+              "asin": "B0HHDLDXJB",
+              "region": "jp"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/41JlYXReo-L.jpg",
+          "id": "full-cast-2027",
+          "isbn": [
+            "9781668664902"
+          ],
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Orbit",
+          "release_date": "2027-07-27",
+          "sources": [
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HHDNWJ17",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.hachettebookgroup.com/titles/andrzej-sapkowski/the-time-of-contempt-full-cast-edition/9781668664902/",
+              "type": "store-listing"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HHDP568N",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HHDLDXJB",
+              "type": "audible-lookup"
+            }
+          ],
+          "work": "time-of-contempt"
+        },
         "peter-kenny-2014": {
           "abridged": false,
           "added_at": "2026-07-17T09:08:56+00:00",
@@ -12480,10 +12531,6 @@
               "region": "uk"
             },
             {
-              "asin": "B00IT62RGM",
-              "region": "us"
-            },
-            {
               "asin": "B0BWLWWXYF",
               "region": "br"
             },
@@ -12494,61 +12541,59 @@
           ],
           "chapters": [
             {
-              "length_ms": 103085,
+              "length_ms": 116040,
               "start_ms": 0,
               "title": "Opening Credits"
             },
             {
-              "length_ms": 6191844,
-              "start_ms": 103085,
+              "length_ms": 6188734,
+              "start_ms": 116040,
               "title": "Chapter One"
             },
             {
-              "length_ms": 7334625,
-              "start_ms": 6294929,
+              "length_ms": 7334578,
+              "start_ms": 6304774,
               "title": "Chapter Two"
             },
             {
               "length_ms": 5994835,
-              "start_ms": 13629554,
+              "start_ms": 13639352,
               "title": "Chapter Three"
             },
             {
-              "length_ms": 5927473,
-              "start_ms": 19624389,
+              "length_ms": 5927497,
+              "start_ms": 19634187,
               "title": "Chapter Four"
             },
             {
               "length_ms": 7205105,
-              "start_ms": 25551862,
+              "start_ms": 25561684,
               "title": "Chapter Five"
             },
             {
-              "length_ms": 4514911,
-              "start_ms": 32756967,
+              "length_ms": 4514887,
+              "start_ms": 32766789,
               "title": "Chapter Six"
             },
             {
-              "length_ms": 5556906,
-              "start_ms": 37271878,
+              "length_ms": 5632556,
+              "start_ms": 37281676,
               "title": "Chapter Seven"
-            },
-            {
-              "length_ms": 1175533,
-              "start_ms": 42828784,
-              "title": "Bonus Track - Baptism of Fire"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/4156tuBRBML._SL500_.jpg",
           "id": "peter-kenny-2014",
+          "isbn": [
+            "9781478904731"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
             "peter-kenny"
           ],
-          "publisher": "Hachette Audio",
-          "release_date": "2014",
-          "runtime_min": 714,
+          "publisher": "Orbit",
+          "release_date": "2015-07-07",
+          "runtime_min": 715,
           "sources": [
             {
               "imported_at": "2026-07-17",
@@ -12571,11 +12616,6 @@
               "type": "libex-import"
             },
             {
-              "imported_at": "2026-08-02",
-              "ref": "B00IT62RGM",
-              "type": "libex-import"
-            },
-            {
               "imported_at": "2026-11-12",
               "ref": "B0BWLWWXYF",
               "type": "libex-import"
@@ -12584,6 +12624,11 @@
               "imported_at": "2026-11-12",
               "ref": "B07DNTVD9T",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.hachettebookgroup.com/titles/andrzej-sapkowski/the-time-of-contempt/9781478904731/",
+              "type": "store-listing"
             }
           ],
           "work": "time-of-contempt"
@@ -12603,10 +12648,64 @@
             {
               "asin": "B00IT5V89A",
               "region": "de"
+            },
+            {
+              "asin": "B00IT62RGM",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 103178,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 6191890,
+              "start_ms": 103178,
+              "title": "Chapter One"
+            },
+            {
+              "length_ms": 7334718,
+              "start_ms": 6295068,
+              "title": "Chapter Two"
+            },
+            {
+              "length_ms": 5994881,
+              "start_ms": 13629786,
+              "title": "Chapter Three"
+            },
+            {
+              "length_ms": 5927543,
+              "start_ms": 19624667,
+              "title": "Chapter Four"
+            },
+            {
+              "length_ms": 7205197,
+              "start_ms": 25552210,
+              "title": "Chapter Five"
+            },
+            {
+              "length_ms": 4514980,
+              "start_ms": 32757407,
+              "title": "Chapter Six"
+            },
+            {
+              "length_ms": 5556953,
+              "start_ms": 37272387,
+              "title": "Chapter Seven"
+            },
+            {
+              "length_ms": 1175672,
+              "start_ms": 42829340,
+              "title": "Bonus Track - Baptism of Fire"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71h3bcNybdL.jpg",
           "id": "peter-kenny-2014-2",
+          "isbn": [
+            "9781409153290"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -12630,6 +12729,16 @@
               "imported_at": "2026-11-12",
               "ref": "B00IT5V89A",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00IT62RGM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.ark.no/produkt/time-of-contempt-9781409153290",
+              "type": "store-listing"
             }
           ],
           "work": "time-of-contempt"
@@ -12717,6 +12826,9 @@
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81-dumR01NL.jpg",
           "id": "peter-kenny-2019",
+          "isbn": [
+            "9781549102585"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -12750,6 +12862,11 @@
               "imported_at": "2026-11-12",
               "ref": "1549102583",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.hachettebookgroup.com/titles/andrzej-sapkowski/the-time-of-contempt-booktrack-edition/9781549102585/",
+              "type": "store-listing"
             }
           ],
           "work": "time-of-contempt"
