@@ -623,7 +623,9 @@ request, with two differences: the steward merges it whole only squashed, and
 it is withdrawn (closed unmerged, its branch deleted) when its fork is closed
 or moves to a head that may not be mirrored. The squash carries the steward's
 own commit message, which credits the contributor in plain prose ("Contributed
-by @login in #n."). A closing keyword in the fork's title or commits closes no
+by @login in #n.") and, for a person rather than a bot account, ends in GitHub's
+co-author trailer at their noreply address, so GitHub attributes the merged
+commit to them (the maintainer's decision of 2026-11-25). A closing keyword in the fork's title or commits closes no
 issue through the steward's merge: the title is neutralized ("Fixes #12" reads
 "ref #12") and the squash carries none of the fork's commit messages. After
 that:
