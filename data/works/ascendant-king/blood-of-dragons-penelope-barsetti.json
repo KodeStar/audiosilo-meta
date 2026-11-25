@@ -731,20 +731,74 @@
         {
           "person": "danusia-stok",
           "role": "translator"
+        },
+        {
+          "person": "david-french",
+          "role": "translator"
         }
       ],
       "genres": [
         "action-adventure",
-        "classics",
         "dark-fantasy",
         "epic-fantasy",
-        "fantasy",
-        "historical-fiction"
+        "fantasy"
       ],
       "id": "blood-of-elves",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2027": {
+          "abridged": false,
+          "asin": [
+            {
+              "asin": "B0HHD9X8NS",
+              "region": "us"
+            },
+            {
+              "asin": "B0HHDL8MY8",
+              "region": "ca"
+            },
+            {
+              "asin": "B0HHF172X7",
+              "region": "jp"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/41TlbV+kEgL.jpg",
+          "id": "full-cast-2027",
+          "isbn": [
+            "9781668663059"
+          ],
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Orbit",
+          "release_date": "2027-04-20",
+          "sources": [
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HHD9X8NS",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.hachettebookgroup.com/titles/andrzej-sapkowski/blood-of-elves-full-cast-edition/9781668663059/",
+              "type": "store-listing"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HHDL8MY8",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HHF172X7",
+              "type": "audible-lookup"
+            }
+          ],
+          "work": "blood-of-elves"
+        },
         "peter-kenny-2014": {
           "abridged": false,
           "added_at": "2026-07-17T09:08:56+00:00",
@@ -756,85 +810,68 @@
             {
               "asin": "B079CDSG35",
               "region": "uk"
-            },
-            {
-              "asin": "B00IDO44T8",
-              "region": "us"
             }
           ],
           "chapters": [
             {
-              "length_ms": 11564,
+              "length_ms": 91879,
               "start_ms": 0,
               "title": "Opening Credits"
             },
             {
-              "length_ms": 60886,
-              "start_ms": 11564,
-              "title": "Epigraph"
-            },
-            {
-              "length_ms": 5155545,
-              "start_ms": 72450,
+              "length_ms": 5152811,
+              "start_ms": 91879,
               "title": "Chapter One"
             },
             {
-              "length_ms": 4359430,
-              "start_ms": 5227995,
+              "length_ms": 4359453,
+              "start_ms": 5244690,
               "title": "Chapter Two"
             },
             {
               "length_ms": 4259143,
-              "start_ms": 9587425,
+              "start_ms": 9604143,
               "title": "Chapter Three"
             },
             {
-              "length_ms": 6407848,
-              "start_ms": 13846568,
+              "length_ms": 6407871,
+              "start_ms": 13863286,
               "title": "Chapter Four"
             },
             {
-              "length_ms": 5505381,
-              "start_ms": 20254416,
+              "length_ms": 5505404,
+              "start_ms": 20271157,
               "title": "Chapter Five"
             },
             {
-              "length_ms": 6412353,
-              "start_ms": 25759797,
+              "length_ms": 6412376,
+              "start_ms": 25776561,
               "title": "Chapter Six"
             },
             {
-              "length_ms": 7025687,
-              "start_ms": 32172150,
+              "length_ms": 7028598,
+              "start_ms": 32188937,
               "title": "Chapter Seven"
             },
             {
-              "length_ms": 50454,
-              "start_ms": 39197837,
+              "length_ms": 117667,
+              "start_ms": 39217535,
               "title": "End Credits"
-            },
-            {
-              "length_ms": 1020029,
-              "start_ms": 39248291,
-              "title": "Bonus -  The Tower of the Swallows"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/51mde09DauL._SL500_.jpg",
           "id": "peter-kenny-2014",
+          "isbn": [
+            "9781478904724"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
             "peter-kenny"
           ],
-          "publisher": "Hachette Audio",
-          "publishers": [
-            {
-              "publisher": "Orbit",
-              "region": "uk"
-            }
-          ],
+          "publisher": "Orbit",
           "release_date": "2015-06-02",
-          "runtime_min": 654,
+          "runtime_min": 655,
           "sources": [
             {
               "imported_at": "2026-07-17",
@@ -857,9 +894,9 @@
               "type": "libex-import"
             },
             {
-              "imported_at": "2026-08-02",
-              "ref": "B00IDO44T8",
-              "type": "libex-import"
+              "imported_at": "2026-11-25",
+              "ref": "https://www.hachettebookgroup.com/titles/andrzej-sapkowski/blood-of-elves/9781478904724/",
+              "type": "store-listing"
             }
           ],
           "work": "blood-of-elves"
@@ -887,10 +924,74 @@
             {
               "asin": "B07DW38XLV",
               "region": "jp"
+            },
+            {
+              "asin": "B00IDO44T8",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 11657,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 60886,
+              "start_ms": 11657,
+              "title": "Epigraph"
+            },
+            {
+              "length_ms": 5155615,
+              "start_ms": 72543,
+              "title": "Chapter One"
+            },
+            {
+              "length_ms": 4359500,
+              "start_ms": 5228158,
+              "title": "Chapter Two"
+            },
+            {
+              "length_ms": 4259189,
+              "start_ms": 9587658,
+              "title": "Chapter Three"
+            },
+            {
+              "length_ms": 6407918,
+              "start_ms": 13846847,
+              "title": "Chapter Four"
+            },
+            {
+              "length_ms": 5505451,
+              "start_ms": 20254765,
+              "title": "Chapter Five"
+            },
+            {
+              "length_ms": 6412422,
+              "start_ms": 25760216,
+              "title": "Chapter Six"
+            },
+            {
+              "length_ms": 7025687,
+              "start_ms": 32172638,
+              "title": "Chapter Seven"
+            },
+            {
+              "length_ms": 50501,
+              "start_ms": 39198325,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 1020191,
+              "start_ms": 39248826,
+              "title": "Bonus -  The Tower of the Swallows"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81rfXQlvd2L.jpg",
           "id": "peter-kenny-2014-2",
+          "isbn": [
+            "9781409153283"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -924,6 +1025,16 @@
               "imported_at": "2026-11-12",
               "ref": "B07DW38XLV",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00IDO44T8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.everand.com/audiobook/955186615/Blood-of-Elves-The-bestselling-novel-which-inspired-season-2-of-Netflix-s-The-Witcher",
+              "type": "store-listing"
             }
           ],
           "work": "blood-of-elves"
@@ -1006,6 +1117,9 @@
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81ykT8RCGFL.jpg",
           "id": "peter-kenny-2018",
+          "isbn": [
+            "9781549146572"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -1039,6 +1153,11 @@
               "imported_at": "2026-11-12",
               "ref": "1549146572",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.hachettebookgroup.com/titles/andrzej-sapkowski/blood-of-elves-booktrack-edition/9781549146572/",
+              "type": "store-listing"
             }
           ],
           "work": "blood-of-elves"
@@ -1064,6 +1183,11 @@
           "imported_at": "2026-08-02",
           "ref": "B00IDO44T8",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-11-25",
+          "ref": "https://www.hachettebookgroup.com/titles/andrzej-sapkowski/blood-of-elves-full-cast-edition/9781668663059/",
+          "type": "store-listing"
         }
       ],
       "title": "Blood of Elves"

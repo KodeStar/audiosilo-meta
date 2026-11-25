@@ -928,13 +928,19 @@
     },
     "the-last-wish": {
       "added_at": "2026-07-17T09:08:56+00:00",
+      "alternate_titles": [
+        "The Last Wish: Introducing the Witcher"
+      ],
       "authors": [
-        "andrzej-sapkowski",
-        "danusia-stok"
+        "andrzej-sapkowski"
       ],
       "credits": [
         {
           "person": "danusia-stok",
+          "role": "translator"
+        },
+        {
+          "person": "david-french",
           "role": "translator"
         }
       ],
@@ -976,6 +982,34 @@
             {
               "asin": "B0HHDMW6WW",
               "region": "jp"
+            },
+            {
+              "asin": "B0HGMKGVG1",
+              "region": "uk"
+            },
+            {
+              "asin": "B0HGN9L84W",
+              "region": "au"
+            },
+            {
+              "asin": "B0HGMRFCY2",
+              "region": "de"
+            },
+            {
+              "asin": "B0HGMSBTQW",
+              "region": "fr"
+            },
+            {
+              "asin": "B0HGMMCJ6B",
+              "region": "es"
+            },
+            {
+              "asin": "B0HGMV4TLD",
+              "region": "it"
+            },
+            {
+              "asin": "B0HGMWYY53",
+              "region": "in"
             }
           ],
           "chapters": [
@@ -1077,6 +1111,9 @@
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81LXLmnwtqL.jpg",
           "id": "ben-dilloway-2026",
+          "isbn": [
+            "9781668663042"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -1084,7 +1121,6 @@
             "ben-onwukwe",
             "david-rintoul",
             "david-thorpe",
-            "georgina-beedle",
             "jot-davies",
             "lydia-wilson",
             "peter-kenny",
@@ -1129,6 +1165,46 @@
               "imported_at": "2026-11-19",
               "ref": "B0HHDVQ441",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.hachettebookgroup.com/titles/andrzej-sapkowski/the-last-wish-full-cast-edition/9781668663042/",
+              "type": "store-listing"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HGMKGVG1",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HGN9L84W",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HGMRFCY2",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HGMSBTQW",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HGMMCJ6B",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HGMV4TLD",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HGMWYY53",
+              "type": "audible-lookup"
             }
           ],
           "work": "the-last-wish"
@@ -1142,184 +1218,9 @@
               "region": "us"
             },
             {
-              "asin": "B00HWBTIFI",
-              "region": "us"
-            },
-            {
               "asin": "B079B5XWL8",
               "region": "uk"
             },
-            {
-              "asin": "B00HWCA2VG",
-              "region": "uk"
-            },
-            {
-              "asin": "B00HWCDAKQ",
-              "region": "de"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4278159,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 735701,
-              "start_ms": 4278159,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4356156,
-              "start_ms": 5013860,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 573602,
-              "start_ms": 9370016,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 5102352,
-              "start_ms": 9943618,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 618718,
-              "start_ms": 15045970,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 5283305,
-              "start_ms": 15664688,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 836522,
-              "start_ms": 20947993,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 5847388,
-              "start_ms": 21784515,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 865570,
-              "start_ms": 27631903,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 3774333,
-              "start_ms": 28497473,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 3547823,
-              "start_ms": 32271806,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1232537,
-              "start_ms": 35819629,
-              "title": "Chapter 13"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51EncOjsNgL._SL500_.jpg",
-          "id": "peter-kenny-2014",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "peter-kenny"
-          ],
-          "publisher": "Hachette Audio",
-          "release_date": "2014",
-          "runtime_min": 616,
-          "sources": [
-            {
-              "imported_at": "2026-07-17",
-              "ref": "B00WX7Y0W2",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-17",
-              "ref": "B00WX7Y0W2",
-              "type": "audible-lookup"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B00WX7Y0W2",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00HWBTIFI",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B079B5XWL8",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00HWCA2VG",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B00HWCDAKQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-last-wish"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-17",
-          "ref": "B00WX7Y0W2",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00HWBTIFI",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-10-05",
-          "ref": "B0HHDVQ441",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Last Wish"
-    },
-    "the-last-wish-introducing-the-witcher": {
-      "added_at": "2026-11-06",
-      "authors": [
-        "andrzej-sapkowski",
-        "danusia-stok"
-      ],
-      "credits": [
-        {
-          "person": "danusia-stok",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "short-stories"
-      ],
-      "id": "the-last-wish-introducing-the-witcher",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "peter-kenny-2015": {
-          "abridged": false,
-          "added_at": "2026-11-06",
-          "asin": [
             {
               "asin": "B0727TX846",
               "region": "ca"
@@ -1400,8 +1301,11 @@
               "title": "Chapter 13"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/81K88IJPnqL.jpg",
-          "id": "peter-kenny-2015",
+          "cover_url": "https://m.media-amazon.com/images/I/51EncOjsNgL._SL500_.jpg",
+          "id": "peter-kenny-2014",
+          "isbn": [
+            "9781478904717"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -1411,6 +1315,26 @@
           "release_date": "2015-05-05",
           "runtime_min": 617,
           "sources": [
+            {
+              "imported_at": "2026-07-17",
+              "ref": "B00WX7Y0W2",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-17",
+              "ref": "B00WX7Y0W2",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B00WX7Y0W2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B079B5XWL8",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-11-06",
               "ref": "B0727TX846",
@@ -1425,19 +1349,399 @@
               "imported_at": "2026-11-12",
               "ref": "B079BB3HTV",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.hachettebookgroup.com/titles/andrzej-sapkowski/the-last-wish/9781478904717/",
+              "type": "store-listing"
             }
           ],
-          "work": "the-last-wish-introducing-the-witcher"
+          "work": "the-last-wish"
+        },
+        "peter-kenny-2014-2": {
+          "abridged": false,
+          "asin": [
+            {
+              "asin": "B00HWBTIFI",
+              "region": "us"
+            },
+            {
+              "asin": "B00HWCA2VG",
+              "region": "uk"
+            },
+            {
+              "asin": "B00HWCDAKQ",
+              "region": "de"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 12166,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 129806,
+              "start_ms": 12166,
+              "title": "The Voice of Reason 1"
+            },
+            {
+              "length_ms": 2634,
+              "start_ms": 141972,
+              "title": "The Witcher"
+            },
+            {
+              "length_ms": 399596,
+              "start_ms": 144606,
+              "title": "Part I"
+            },
+            {
+              "length_ms": 1129015,
+              "start_ms": 544202,
+              "title": "Part II"
+            },
+            {
+              "length_ms": 435755,
+              "start_ms": 1673217,
+              "title": "Part III"
+            },
+            {
+              "length_ms": 2149381,
+              "start_ms": 2108972,
+              "title": "Part IV"
+            },
+            {
+              "length_ms": 3000,
+              "start_ms": 4258353,
+              "title": "The Voice of Reason 2"
+            },
+            {
+              "length_ms": 330000,
+              "start_ms": 4261353,
+              "title": "Part I"
+            },
+            {
+              "length_ms": 402793,
+              "start_ms": 4591353,
+              "title": "Part II"
+            },
+            {
+              "length_ms": 2176,
+              "start_ms": 4994146,
+              "title": "A Grain of Truth"
+            },
+            {
+              "length_ms": 421406,
+              "start_ms": 4996322,
+              "title": "Part I"
+            },
+            {
+              "length_ms": 2760904,
+              "start_ms": 5417728,
+              "title": "Part II"
+            },
+            {
+              "length_ms": 60242,
+              "start_ms": 8178632,
+              "title": "Part III"
+            },
+            {
+              "length_ms": 53706,
+              "start_ms": 8238874,
+              "title": "Part IV"
+            },
+            {
+              "length_ms": 1057815,
+              "start_ms": 8292580,
+              "title": "Part V"
+            },
+            {
+              "length_ms": 573718,
+              "start_ms": 9350395,
+              "title": "The Voice of Reason 3"
+            },
+            {
+              "length_ms": 3125,
+              "start_ms": 9924113,
+              "title": "The Lesser Evil"
+            },
+            {
+              "length_ms": 498457,
+              "start_ms": 9927238,
+              "title": "Part I"
+            },
+            {
+              "length_ms": 1584731,
+              "start_ms": 10425695,
+              "title": "Part II"
+            },
+            {
+              "length_ms": 805579,
+              "start_ms": 12010426,
+              "title": "Part III"
+            },
+            {
+              "length_ms": 1164421,
+              "start_ms": 12816005,
+              "title": "Part IV"
+            },
+            {
+              "length_ms": 259268,
+              "start_ms": 13980426,
+              "title": "Part V"
+            },
+            {
+              "length_ms": 786864,
+              "start_ms": 14239694,
+              "title": "Part VI"
+            },
+            {
+              "length_ms": 618811,
+              "start_ms": 15026558,
+              "title": "The Voice of Reason 4"
+            },
+            {
+              "length_ms": 3885,
+              "start_ms": 15645369,
+              "title": "A Question of Price"
+            },
+            {
+              "length_ms": 353279,
+              "start_ms": 15649254,
+              "title": "Part I"
+            },
+            {
+              "length_ms": 4321219,
+              "start_ms": 16002533,
+              "title": "Part II"
+            },
+            {
+              "length_ms": 605039,
+              "start_ms": 20323752,
+              "title": "Part III"
+            },
+            {
+              "length_ms": 836614,
+              "start_ms": 20928791,
+              "title": "The Voice of Reason 5"
+            },
+            {
+              "length_ms": 3709,
+              "start_ms": 21765405,
+              "title": "The Edge of The World"
+            },
+            {
+              "length_ms": 799097,
+              "start_ms": 21769114,
+              "title": "Part I"
+            },
+            {
+              "length_ms": 505462,
+              "start_ms": 22568211,
+              "title": "Part II"
+            },
+            {
+              "length_ms": 445687,
+              "start_ms": 23073673,
+              "title": "Part III"
+            },
+            {
+              "length_ms": 1233839,
+              "start_ms": 23519360,
+              "title": "Part IV"
+            },
+            {
+              "length_ms": 466000,
+              "start_ms": 24753199,
+              "title": "Part V"
+            },
+            {
+              "length_ms": 1936564,
+              "start_ms": 25219199,
+              "title": "Part VI"
+            },
+            {
+              "length_ms": 457123,
+              "start_ms": 27155763,
+              "title": "Part VII"
+            },
+            {
+              "length_ms": 865639,
+              "start_ms": 27612886,
+              "title": "The Voice of Reason 6"
+            },
+            {
+              "length_ms": 3283,
+              "start_ms": 28478525,
+              "title": "The Last Wish"
+            },
+            {
+              "length_ms": 612106,
+              "start_ms": 28481808,
+              "title": "Part I"
+            },
+            {
+              "length_ms": 543015,
+              "start_ms": 29093914,
+              "title": "Part II"
+            },
+            {
+              "length_ms": 764313,
+              "start_ms": 29636929,
+              "title": "Part III"
+            },
+            {
+              "length_ms": 671886,
+              "start_ms": 30401242,
+              "title": "Part IV"
+            },
+            {
+              "length_ms": 1179847,
+              "start_ms": 31073128,
+              "title": "Part V"
+            },
+            {
+              "length_ms": 805015,
+              "start_ms": 32252975,
+              "title": "Part VI"
+            },
+            {
+              "length_ms": 1134328,
+              "start_ms": 33057990,
+              "title": "Part VII"
+            },
+            {
+              "length_ms": 512922,
+              "start_ms": 34192318,
+              "title": "Part VIII"
+            },
+            {
+              "length_ms": 108132,
+              "start_ms": 34705240,
+              "title": "Part IX"
+            },
+            {
+              "length_ms": 73229,
+              "start_ms": 34813372,
+              "title": "Part X"
+            },
+            {
+              "length_ms": 78903,
+              "start_ms": 34886601,
+              "title": "Part XI"
+            },
+            {
+              "length_ms": 84882,
+              "start_ms": 34965504,
+              "title": "Part XII"
+            },
+            {
+              "length_ms": 86246,
+              "start_ms": 35050386,
+              "title": "Part XIII"
+            },
+            {
+              "length_ms": 149969,
+              "start_ms": 35136632,
+              "title": "Part XIV"
+            },
+            {
+              "length_ms": 88808,
+              "start_ms": 35286601,
+              "title": "Part XV"
+            },
+            {
+              "length_ms": 266301,
+              "start_ms": 35375409,
+              "title": "Part XVI"
+            },
+            {
+              "length_ms": 159181,
+              "start_ms": 35641710,
+              "title": "Part XVII"
+            },
+            {
+              "length_ms": 1108449,
+              "start_ms": 35800891,
+              "title": "The Voice of Reason 7"
+            },
+            {
+              "length_ms": 68270,
+              "start_ms": 36909340,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 667315,
+              "start_ms": 36977610,
+              "title": "Bonus - Blood of Elves"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51GSkEi0uaL.jpg",
+          "id": "peter-kenny-2014-2",
+          "isbn": [
+            "9781409153276"
+          ],
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-kenny"
+          ],
+          "publisher": "Gollancz",
+          "release_date": "2014-02-27",
+          "runtime_min": 627,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00HWBTIFI",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00HWCA2VG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B00HWCDAKQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.orionbooks.co.uk/titles/andrzej-sapkowski/the-last-wish/9781409153276/",
+              "type": "store-listing"
+            }
+          ],
+          "work": "the-last-wish"
         }
       },
       "sources": [
         {
+          "imported_at": "2026-07-17",
+          "ref": "B00WX7Y0W2",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00HWBTIFI",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-05",
+          "ref": "B0HHDVQ441",
+          "type": "libex-import"
+        },
+        {
           "imported_at": "2026-11-06",
           "ref": "B0727TX846",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-11-25",
+          "ref": "https://www.hachettebookgroup.com/titles/andrzej-sapkowski/the-last-wish-full-cast-edition/9781668663042/",
+          "type": "store-listing"
         }
       ],
-      "title": "The Last Wish: Introducing the Witcher"
+      "title": "The Last Wish"
     },
     "the-last-wish-of-bristol-keats": {
       "added_at": "2026-08-02",

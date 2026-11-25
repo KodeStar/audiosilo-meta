@@ -830,15 +830,66 @@
       ],
       "genres": [
         "action-adventure",
-        "classics",
+        "dark-fantasy",
         "epic-fantasy",
-        "fantasy",
-        "historical-fiction"
+        "fantasy"
       ],
       "id": "the-tower-of-the-swallow",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2027": {
+          "abridged": false,
+          "asin": [
+            {
+              "asin": "B0HHD9XN17",
+              "region": "us"
+            },
+            {
+              "asin": "B0HHDNP44R",
+              "region": "ca"
+            },
+            {
+              "asin": "B0HHDDB486",
+              "region": "jp"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/41UAfBoQjhL.jpg",
+          "id": "full-cast-2027",
+          "isbn": [
+            "9781668664926"
+          ],
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Orbit",
+          "release_date": "2027-08-24",
+          "sources": [
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HHD9XN17",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.hachettebookgroup.com/titles/andrzej-sapkowski/the-tower-of-swallows-full-cast-edition/9781668664926/",
+              "type": "store-listing"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HHDNP44R",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HHDDB486",
+              "type": "audible-lookup"
+            }
+          ],
+          "work": "the-tower-of-the-swallow"
+        },
         "peter-kenny-2016": {
           "abridged": false,
           "added_at": "2026-07-17T09:08:56+00:00",
@@ -852,10 +903,6 @@
               "region": "uk"
             },
             {
-              "asin": "B01B2316ZQ",
-              "region": "us"
-            },
-            {
               "asin": "B0BWM2PR87",
               "region": "br"
             },
@@ -866,81 +913,79 @@
           ],
           "chapters": [
             {
-              "length_ms": 102817,
+              "length_ms": 118839,
               "start_ms": 0,
-              "title": "Opening Credits"
+              "title": "Chapter 1"
             },
             {
               "length_ms": 4052532,
-              "start_ms": 102817,
-              "title": "Chapter One"
+              "start_ms": 118839,
+              "title": "Chapter 2"
             },
             {
-              "length_ms": 5850337,
-              "start_ms": 4155349,
-              "title": "Chapter Two"
+              "length_ms": 5850314,
+              "start_ms": 4171371,
+              "title": "Chapter 3"
             },
             {
               "length_ms": 5264195,
-              "start_ms": 10005686,
-              "title": "Chapter Three"
+              "start_ms": 10021685,
+              "title": "Chapter 4"
             },
             {
-              "length_ms": 6474628,
-              "start_ms": 15269881,
-              "title": "Chapter Four"
+              "length_ms": 6474605,
+              "start_ms": 15285880,
+              "title": "Chapter 5"
             },
             {
               "length_ms": 4368927,
-              "start_ms": 21744509,
-              "title": "Chapter Five"
+              "start_ms": 21760485,
+              "title": "Chapter 6"
             },
             {
-              "length_ms": 4398904,
-              "start_ms": 26113436,
-              "title": "Chapter Six"
+              "length_ms": 4398881,
+              "start_ms": 26129412,
+              "title": "Chapter 7"
             },
             {
               "length_ms": 5591968,
-              "start_ms": 30512340,
-              "title": "Chapter Seven"
+              "start_ms": 30528293,
+              "title": "Chapter 8"
             },
             {
               "length_ms": 4739564,
-              "start_ms": 36104308,
-              "title": "Chapter Eight"
+              "start_ms": 36120261,
+              "title": "Chapter 9"
             },
             {
               "length_ms": 6625256,
-              "start_ms": 40843872,
-              "title": "Chapter Nine"
+              "start_ms": 40859825,
+              "title": "Chapter 10"
             },
             {
-              "length_ms": 6204813,
-              "start_ms": 47469128,
-              "title": "Chapter Ten"
+              "length_ms": 6204836,
+              "start_ms": 47485081,
+              "title": "Chapter 11"
             },
             {
-              "length_ms": 5374513,
-              "start_ms": 53673941,
-              "title": "Chapter Eleven"
-            },
-            {
-              "length_ms": 1327298,
-              "start_ms": 59048454,
-              "title": "Bonus Track - The Lady of the Lake"
+              "length_ms": 5442106,
+              "start_ms": 53689917,
+              "title": "Chapter 12"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/513cNoLmZRL._SL500_.jpg",
           "id": "peter-kenny-2016",
+          "isbn": [
+            "9781478938743"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
             "peter-kenny"
           ],
-          "publisher": "Hachette Audio",
-          "release_date": "2016",
-          "runtime_min": 984,
+          "publisher": "Orbit",
+          "release_date": "2016-05-17",
+          "runtime_min": 985,
           "sources": [
             {
               "imported_at": "2026-07-17",
@@ -963,11 +1008,6 @@
               "type": "libex-import"
             },
             {
-              "imported_at": "2026-08-02",
-              "ref": "B01B2316ZQ",
-              "type": "libex-import"
-            },
-            {
               "imported_at": "2026-11-12",
               "ref": "B0BWM2PR87",
               "type": "libex-import"
@@ -976,6 +1016,11 @@
               "imported_at": "2026-11-12",
               "ref": "B07DNRRF8C",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.hachettebookgroup.com/titles/andrzej-sapkowski/the-tower-of-swallows/9781478938743/",
+              "type": "store-listing"
             }
           ],
           "work": "the-tower-of-the-swallow"
@@ -995,10 +1040,84 @@
             {
               "asin": "B01FSRCGT2",
               "region": "de"
+            },
+            {
+              "asin": "B01B2316ZQ",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 102956,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4052578,
+              "start_ms": 102956,
+              "title": "Chapter One"
+            },
+            {
+              "length_ms": 5850406,
+              "start_ms": 4155534,
+              "title": "Chapter Two"
+            },
+            {
+              "length_ms": 5264242,
+              "start_ms": 10005940,
+              "title": "Chapter Three"
+            },
+            {
+              "length_ms": 6474698,
+              "start_ms": 15270182,
+              "title": "Chapter Four"
+            },
+            {
+              "length_ms": 4368973,
+              "start_ms": 21744880,
+              "title": "Chapter Five"
+            },
+            {
+              "length_ms": 4398973,
+              "start_ms": 26113853,
+              "title": "Chapter Six"
+            },
+            {
+              "length_ms": 5592015,
+              "start_ms": 30512826,
+              "title": "Chapter Seven"
+            },
+            {
+              "length_ms": 4739610,
+              "start_ms": 36104841,
+              "title": "Chapter Eight"
+            },
+            {
+              "length_ms": 6625303,
+              "start_ms": 40844451,
+              "title": "Chapter Nine"
+            },
+            {
+              "length_ms": 6204882,
+              "start_ms": 47469754,
+              "title": "Chapter Ten"
+            },
+            {
+              "length_ms": 5374583,
+              "start_ms": 53674636,
+              "title": "Chapter Eleven"
+            },
+            {
+              "length_ms": 1327438,
+              "start_ms": 59049219,
+              "title": "Bonus Track - The Lady of the Lake"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81FF2r-tMmL.jpg",
           "id": "peter-kenny-2016-2",
+          "isbn": [
+            "9781409161097"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -1022,6 +1141,16 @@
               "imported_at": "2026-11-12",
               "ref": "B01FSRCGT2",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01B2316ZQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.kobo.com/gb/en/audiobook/the-tower-of-the-swallow-1",
+              "type": "store-listing"
             }
           ],
           "work": "the-tower-of-the-swallow"
@@ -1154,6 +1283,9 @@
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81LYqQrt7kL.jpg",
           "id": "peter-kenny-2021",
+          "isbn": [
+            "9781549108716"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -1192,6 +1324,11 @@
               "imported_at": "2026-11-12",
               "ref": "B09FB3HJ3N",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.hachettebookgroup.com/titles/andrzej-sapkowski/the-tower-of-swallows-booktrack-edition/9781549108716/",
+              "type": "store-listing"
             }
           ],
           "work": "the-tower-of-the-swallow"

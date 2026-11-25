@@ -919,15 +919,414 @@
       ],
       "genres": [
         "action-adventure",
+        "dark-fantasy",
         "epic-fantasy",
         "fantasy",
-        "historical-fiction",
         "short-stories"
       ],
       "id": "sword-of-destiny",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "ben-dilloway-2026": {
+          "abridged": false,
+          "added_at": "2026-11-06",
+          "asin": [
+            {
+              "asin": "B0HHDNWPF2",
+              "region": "ca"
+            },
+            {
+              "asin": "B0HHDKBRJH",
+              "region": "jp"
+            },
+            {
+              "asin": "B0HHDB9T7S",
+              "region": "de"
+            },
+            {
+              "asin": "B0HHDDHDKG",
+              "region": "uk"
+            },
+            {
+              "asin": "B0HHDRB4M3",
+              "region": "us"
+            },
+            {
+              "asin": "B0HGMSL47N",
+              "region": "uk"
+            },
+            {
+              "asin": "B0HGMQSYC1",
+              "region": "au"
+            },
+            {
+              "asin": "B0HGN916KS",
+              "region": "de"
+            },
+            {
+              "asin": "B0HGN9QGV4",
+              "region": "fr"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 82616,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 11148,
+              "start_ms": 82616,
+              "title": "The Bounds of Reason"
+            },
+            {
+              "length_ms": 595752,
+              "start_ms": 93764,
+              "title": "I"
+            },
+            {
+              "length_ms": 1025183,
+              "start_ms": 689516,
+              "title": "II"
+            },
+            {
+              "length_ms": 1359939,
+              "start_ms": 1714699,
+              "title": "III"
+            },
+            {
+              "length_ms": 1131376,
+              "start_ms": 3074638,
+              "title": "IV"
+            },
+            {
+              "length_ms": 328239,
+              "start_ms": 4206014,
+              "title": "V"
+            },
+            {
+              "length_ms": 1790441,
+              "start_ms": 4534253,
+              "title": "VI"
+            },
+            {
+              "length_ms": 1432996,
+              "start_ms": 6324694,
+              "title": "VII"
+            },
+            {
+              "length_ms": 2190895,
+              "start_ms": 7757690,
+              "title": "VIII"
+            },
+            {
+              "length_ms": 11852,
+              "start_ms": 9948585,
+              "title": "A Shard of Ice"
+            },
+            {
+              "length_ms": 252517,
+              "start_ms": 9960437,
+              "title": "I"
+            },
+            {
+              "length_ms": 768408,
+              "start_ms": 10212954,
+              "title": "II"
+            },
+            {
+              "length_ms": 1114640,
+              "start_ms": 10981362,
+              "title": "III"
+            },
+            {
+              "length_ms": 1105790,
+              "start_ms": 12096002,
+              "title": "IV"
+            },
+            {
+              "length_ms": 850900,
+              "start_ms": 13201792,
+              "title": "V"
+            },
+            {
+              "length_ms": 394478,
+              "start_ms": 14052692,
+              "title": "VI"
+            },
+            {
+              "length_ms": 295250,
+              "start_ms": 14447170,
+              "title": "VII"
+            },
+            {
+              "length_ms": 141457,
+              "start_ms": 14742420,
+              "title": "VIII"
+            },
+            {
+              "length_ms": 571642,
+              "start_ms": 14883877,
+              "title": "IX"
+            },
+            {
+              "length_ms": 10753,
+              "start_ms": 15455519,
+              "title": "Eternal Flame"
+            },
+            {
+              "length_ms": 2592015,
+              "start_ms": 15466272,
+              "title": "I"
+            },
+            {
+              "length_ms": 1340465,
+              "start_ms": 18058287,
+              "title": "II"
+            },
+            {
+              "length_ms": 1049208,
+              "start_ms": 19398752,
+              "title": "III"
+            },
+            {
+              "length_ms": 1450445,
+              "start_ms": 20447960,
+              "title": "IV"
+            },
+            {
+              "length_ms": 13192,
+              "start_ms": 21898405,
+              "title": "A Little Sacrifice"
+            },
+            {
+              "length_ms": 428417,
+              "start_ms": 21911597,
+              "title": "I"
+            },
+            {
+              "length_ms": 612622,
+              "start_ms": 22340014,
+              "title": "II"
+            },
+            {
+              "length_ms": 1513430,
+              "start_ms": 22952636,
+              "title": "III"
+            },
+            {
+              "length_ms": 519894,
+              "start_ms": 24466066,
+              "title": "IV"
+            },
+            {
+              "length_ms": 1075873,
+              "start_ms": 24985960,
+              "title": "V"
+            },
+            {
+              "length_ms": 1096817,
+              "start_ms": 26061833,
+              "title": "VI"
+            },
+            {
+              "length_ms": 966280,
+              "start_ms": 27158650,
+              "title": "VII"
+            },
+            {
+              "length_ms": 895006,
+              "start_ms": 28124930,
+              "title": "VIII"
+            },
+            {
+              "length_ms": 330136,
+              "start_ms": 29019936,
+              "title": "IX"
+            },
+            {
+              "length_ms": 285494,
+              "start_ms": 29350072,
+              "title": "X"
+            },
+            {
+              "length_ms": 10099,
+              "start_ms": 29635566,
+              "title": "The Sword of Destiny"
+            },
+            {
+              "length_ms": 997530,
+              "start_ms": 29645665,
+              "title": "I"
+            },
+            {
+              "length_ms": 1133653,
+              "start_ms": 30643195,
+              "title": "II"
+            },
+            {
+              "length_ms": 767367,
+              "start_ms": 31776848,
+              "title": "III"
+            },
+            {
+              "length_ms": 212377,
+              "start_ms": 32544215,
+              "title": "IV"
+            },
+            {
+              "length_ms": 1364128,
+              "start_ms": 32756592,
+              "title": "V"
+            },
+            {
+              "length_ms": 1770485,
+              "start_ms": 34120720,
+              "title": "VI"
+            },
+            {
+              "length_ms": 1387160,
+              "start_ms": 35891205,
+              "title": "VII"
+            },
+            {
+              "length_ms": 386287,
+              "start_ms": 37278365,
+              "title": "VIII"
+            },
+            {
+              "length_ms": 13125,
+              "start_ms": 37664652,
+              "title": "Something More"
+            },
+            {
+              "length_ms": 868035,
+              "start_ms": 37677777,
+              "title": "I"
+            },
+            {
+              "length_ms": 71368,
+              "start_ms": 38545812,
+              "title": "II"
+            },
+            {
+              "length_ms": 1266555,
+              "start_ms": 38617180,
+              "title": "III"
+            },
+            {
+              "length_ms": 1779097,
+              "start_ms": 39883735,
+              "title": "IV"
+            },
+            {
+              "length_ms": 852965,
+              "start_ms": 41662832,
+              "title": "V"
+            },
+            {
+              "length_ms": 479773,
+              "start_ms": 42515797,
+              "title": "VI"
+            },
+            {
+              "length_ms": 601790,
+              "start_ms": 42995570,
+              "title": "VII"
+            },
+            {
+              "length_ms": 1093830,
+              "start_ms": 43597360,
+              "title": "VIII"
+            },
+            {
+              "length_ms": 418797,
+              "start_ms": 44691190,
+              "title": "IX"
+            },
+            {
+              "length_ms": 117724,
+              "start_ms": 45109987,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81bmIMRPZ1L.jpg",
+          "id": "ben-dilloway-2026",
+          "isbn": [
+            "9781668664865"
+          ],
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ben-dilloway",
+            "ben-onwukwe",
+            "david-rintoul",
+            "david-thorpe",
+            "georgina-beedle",
+            "jot-davies",
+            "lydia-wilson",
+            "peter-kenny",
+            "sam-stafford",
+            "sian-thomas"
+          ],
+          "publisher": "Orbit",
+          "release_date": "2026-11-24",
+          "runtime_min": 753,
+          "sources": [
+            {
+              "imported_at": "2026-11-04",
+              "ref": "B0HHDNWPF2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-06",
+              "ref": "B0HHDKBRJH",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-12",
+              "ref": "B0HHDB9T7S",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-12",
+              "ref": "B0HHDDHDKG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-12",
+              "ref": "B0HHDRB4M3",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.hachettebookgroup.com/titles/andrzej-sapkowski/sword-of-destiny-full-cast-edition/9781668664865/",
+              "type": "store-listing"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HGMSL47N",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HGMQSYC1",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HGN916KS",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HGN9QGV4",
+              "type": "audible-lookup"
+            }
+          ],
+          "work": "sword-of-destiny"
+        },
         "peter-kenny-2015": {
           "abridged": false,
           "added_at": "2026-07-17T09:08:56+00:00",
@@ -937,40 +1336,8 @@
               "region": "us"
             },
             {
-              "asin": "B016V9A4SG",
-              "region": "us"
-            },
-            {
               "asin": "B079BGZK7P",
               "region": "uk"
-            },
-            {
-              "asin": "B016VA8JNC",
-              "region": "uk"
-            },
-            {
-              "asin": "B017TBSQVC",
-              "region": "de"
-            },
-            {
-              "asin": "B017TBUA20",
-              "region": "au"
-            },
-            {
-              "asin": "B081641FJ7",
-              "region": "es"
-            },
-            {
-              "asin": "B017TBVLKU",
-              "region": "fr"
-            },
-            {
-              "asin": "B07B5ZW4X8",
-              "region": "in"
-            },
-            {
-              "asin": "B07B5ZVW4T",
-              "region": "it"
             }
           ],
           "chapters": [
@@ -1257,14 +1624,17 @@
           ],
           "cover_url": "https://m.media-amazon.com/images/I/51DwLRWUWtL._SL500_.jpg",
           "id": "peter-kenny-2015",
+          "isbn": [
+            "9781478934912"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
             "peter-kenny"
           ],
-          "publisher": "Hachette Audio",
-          "release_date": "2015",
-          "runtime_min": 767,
+          "publisher": "Orbit",
+          "release_date": "2015-12-01",
+          "runtime_min": 768,
           "sources": [
             {
               "imported_at": "2026-07-17",
@@ -1283,12 +1653,352 @@
             },
             {
               "imported_at": "2026-08-02",
-              "ref": "B016V9A4SG",
+              "ref": "B079BGZK7P",
               "type": "libex-import"
             },
             {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.hachettebookgroup.com/titles/andrzej-sapkowski/sword-of-destiny/9781478934912/",
+              "type": "store-listing"
+            }
+          ],
+          "work": "sword-of-destiny"
+        },
+        "peter-kenny-2015-2": {
+          "abridged": false,
+          "asin": [
+            {
+              "asin": "B016V9A4SG",
+              "region": "us"
+            },
+            {
+              "asin": "B016VA8JNC",
+              "region": "uk"
+            },
+            {
+              "asin": "B017TBSQVC",
+              "region": "de"
+            },
+            {
+              "asin": "B017TBUA20",
+              "region": "au"
+            },
+            {
+              "asin": "B081641FJ7",
+              "region": "es"
+            },
+            {
+              "asin": "B017TBVLKU",
+              "region": "fr"
+            },
+            {
+              "asin": "B07B5ZW4X8",
+              "region": "in"
+            },
+            {
+              "asin": "B07B5ZVW4T",
+              "region": "it"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 13972,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 2360,
+              "start_ms": 13972,
+              "title": "The Bounds of Reason"
+            },
+            {
+              "length_ms": 595792,
+              "start_ms": 16332,
+              "title": "I"
+            },
+            {
+              "length_ms": 1017034,
+              "start_ms": 612124,
+              "title": "II"
+            },
+            {
+              "length_ms": 1394451,
+              "start_ms": 1629158,
+              "title": "III"
+            },
+            {
+              "length_ms": 1108845,
+              "start_ms": 3023609,
+              "title": "IV"
+            },
+            {
+              "length_ms": 359677,
+              "start_ms": 4132454,
+              "title": "V"
+            },
+            {
+              "length_ms": 1840274,
+              "start_ms": 4492131,
+              "title": "VI"
+            },
+            {
+              "length_ms": 1473724,
+              "start_ms": 6332405,
+              "title": "VII"
+            },
+            {
+              "length_ms": 2251453,
+              "start_ms": 7806129,
+              "title": "VIII"
+            },
+            {
+              "length_ms": 2907,
+              "start_ms": 10057582,
+              "title": "A Shard of Ice"
+            },
+            {
+              "length_ms": 255531,
+              "start_ms": 10060489,
+              "title": "I"
+            },
+            {
+              "length_ms": 801599,
+              "start_ms": 10316020,
+              "title": "II"
+            },
+            {
+              "length_ms": 1049263,
+              "start_ms": 11117619,
+              "title": "III"
+            },
+            {
+              "length_ms": 1077266,
+              "start_ms": 12166882,
+              "title": "IV"
+            },
+            {
+              "length_ms": 924618,
+              "start_ms": 13244148,
+              "title": "V"
+            },
+            {
+              "length_ms": 376163,
+              "start_ms": 14168766,
+              "title": "VI"
+            },
+            {
+              "length_ms": 283980,
+              "start_ms": 14544929,
+              "title": "VII"
+            },
+            {
+              "length_ms": 137694,
+              "start_ms": 14828909,
+              "title": "VIII"
+            },
+            {
+              "length_ms": 579477,
+              "start_ms": 14966603,
+              "title": "IX"
+            },
+            {
+              "length_ms": 2907,
+              "start_ms": 15546080,
+              "title": "Eternal Flame"
+            },
+            {
+              "length_ms": 2696412,
+              "start_ms": 15548987,
+              "title": "I"
+            },
+            {
+              "length_ms": 1301106,
+              "start_ms": 18245399,
+              "title": "II"
+            },
+            {
+              "length_ms": 1033009,
+              "start_ms": 19546505,
+              "title": "III"
+            },
+            {
+              "length_ms": 1464946,
+              "start_ms": 20579514,
+              "title": "IV"
+            },
+            {
+              "length_ms": 2907,
+              "start_ms": 22044460,
+              "title": "A Little Sacrifice"
+            },
+            {
+              "length_ms": 472126,
+              "start_ms": 22047367,
+              "title": "I"
+            },
+            {
+              "length_ms": 594477,
+              "start_ms": 22519493,
+              "title": "II"
+            },
+            {
+              "length_ms": 1568415,
+              "start_ms": 23113970,
+              "title": "III"
+            },
+            {
+              "length_ms": 505684,
+              "start_ms": 24682385,
+              "title": "IV"
+            },
+            {
+              "length_ms": 1159465,
+              "start_ms": 25188069,
+              "title": "V"
+            },
+            {
+              "length_ms": 1108520,
+              "start_ms": 26347534,
+              "title": "VI"
+            },
+            {
+              "length_ms": 1056461,
+              "start_ms": 27456054,
+              "title": "VII"
+            },
+            {
+              "length_ms": 827744,
+              "start_ms": 28512515,
+              "title": "VIII"
+            },
+            {
+              "length_ms": 316487,
+              "start_ms": 29340259,
+              "title": "IX"
+            },
+            {
+              "length_ms": 268933,
+              "start_ms": 29656746,
+              "title": "X"
+            },
+            {
+              "length_ms": 2907,
+              "start_ms": 29925679,
+              "title": "The Sword of Destiny"
+            },
+            {
+              "length_ms": 1064978,
+              "start_ms": 29928586,
+              "title": "I"
+            },
+            {
+              "length_ms": 1201214,
+              "start_ms": 30993564,
+              "title": "II"
+            },
+            {
+              "length_ms": 733239,
+              "start_ms": 32194778,
+              "title": "III"
+            },
+            {
+              "length_ms": 197973,
+              "start_ms": 32928017,
+              "title": "IV"
+            },
+            {
+              "length_ms": 1464807,
+              "start_ms": 33125990,
+              "title": "V"
+            },
+            {
+              "length_ms": 2109114,
+              "start_ms": 34590797,
+              "title": "VI"
+            },
+            {
+              "length_ms": 1434017,
+              "start_ms": 36699911,
+              "title": "VII"
+            },
+            {
+              "length_ms": 370126,
+              "start_ms": 38133928,
+              "title": "VIII"
+            },
+            {
+              "length_ms": 2907,
+              "start_ms": 38504054,
+              "title": "Something More"
+            },
+            {
+              "length_ms": 924962,
+              "start_ms": 38506961,
+              "title": "I"
+            },
+            {
+              "length_ms": 55867,
+              "start_ms": 39431923,
+              "title": "II"
+            },
+            {
+              "length_ms": 1360921,
+              "start_ms": 39487790,
+              "title": "III"
+            },
+            {
+              "length_ms": 1767735,
+              "start_ms": 40848711,
+              "title": "IV"
+            },
+            {
+              "length_ms": 855144,
+              "start_ms": 42616446,
+              "title": "V"
+            },
+            {
+              "length_ms": 415404,
+              "start_ms": 43471590,
+              "title": "VI"
+            },
+            {
+              "length_ms": 614074,
+              "start_ms": 43886994,
+              "title": "VII"
+            },
+            {
+              "length_ms": 1076105,
+              "start_ms": 44501068,
+              "title": "VIII"
+            },
+            {
+              "length_ms": 424692,
+              "start_ms": 45577173,
+              "title": "IX"
+            },
+            {
+              "length_ms": 676907,
+              "start_ms": 46001865,
+              "title": "Bonus Track - Blood of Elves"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/41g8eln5FBL.jpg",
+          "id": "peter-kenny-2015-2",
+          "isbn": [
+            "9781409162766"
+          ],
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-kenny"
+          ],
+          "publisher": "Gollancz",
+          "release_date": "2015-12-03",
+          "runtime_min": 777,
+          "sources": [
+            {
               "imported_at": "2026-08-02",
-              "ref": "B079BGZK7P",
+              "ref": "B016V9A4SG",
               "type": "libex-import"
             },
             {
@@ -1325,6 +2035,11 @@
               "imported_at": "2026-11-12",
               "ref": "B07B5ZVW4T",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.orionbooks.co.uk/titles/andrzej-sapkowski/sword-of-destiny/9781409162766/",
+              "type": "store-listing"
             }
           ],
           "work": "sword-of-destiny"
@@ -1340,106 +2055,7 @@
           "imported_at": "2026-07-30",
           "ref": "B017WP4D6C",
           "type": "libex-import"
-        }
-      ],
-      "title": "Sword of Destiny"
-    },
-    "sword-of-destiny-full-cast-edition": {
-      "added_at": "2026-11-06",
-      "authors": [
-        "andrzej-sapkowski"
-      ],
-      "credits": [
-        {
-          "person": "david-french",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "historical-fiction",
-        "short-stories"
-      ],
-      "id": "sword-of-destiny-full-cast-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ben-dilloway-2026": {
-          "abridged": false,
-          "added_at": "2026-11-06",
-          "asin": [
-            {
-              "asin": "B0HHDNWPF2",
-              "region": "ca"
-            },
-            {
-              "asin": "B0HHDKBRJH",
-              "region": "jp"
-            },
-            {
-              "asin": "B0HHDB9T7S",
-              "region": "de"
-            },
-            {
-              "asin": "B0HHDDHDKG",
-              "region": "uk"
-            },
-            {
-              "asin": "B0HHDRB4M3",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81bmIMRPZ1L.jpg",
-          "id": "ben-dilloway-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ben-dilloway",
-            "ben-onwukwe",
-            "david-rintoul",
-            "david-thorpe",
-            "georgina-beedle",
-            "jot-davies",
-            "lydia-wilson",
-            "peter-kenny",
-            "sam-stafford",
-            "sian-thomas"
-          ],
-          "publisher": "Orbit",
-          "release_date": "2026-11-24",
-          "runtime_min": 660,
-          "sources": [
-            {
-              "imported_at": "2026-11-04",
-              "ref": "B0HHDNWPF2",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-11-06",
-              "ref": "B0HHDKBRJH",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-11-12",
-              "ref": "B0HHDB9T7S",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-11-12",
-              "ref": "B0HHDDHDKG",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-11-12",
-              "ref": "B0HHDRB4M3",
-              "type": "libex-import"
-            }
-          ],
-          "work": "sword-of-destiny-full-cast-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-11-04",
           "ref": "B0HHDNWPF2",
@@ -1451,7 +2067,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Sword of Destiny (Full Cast Edition)"
+      "title": "Sword of Destiny"
     },
     "sword-of-draskara": {
       "added_at": "2026-08-01",
