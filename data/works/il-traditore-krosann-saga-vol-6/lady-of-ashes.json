@@ -11934,16 +11934,66 @@
       ],
       "genres": [
         "action-adventure",
+        "dark-fantasy",
         "epic-fantasy",
-        "fantasy",
-        "historical-fiction",
-        "short-stories",
-        "urban-fantasy"
+        "fantasy"
       ],
       "id": "lady-of-the-lake",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2027": {
+          "abridged": false,
+          "asin": [
+            {
+              "asin": "B0HNJQCD9C",
+              "region": "us"
+            },
+            {
+              "asin": "B0HNJTX2BB",
+              "region": "ca"
+            },
+            {
+              "asin": "B0HNJWS2TT",
+              "region": "jp"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/41ZprdilHTL.jpg",
+          "id": "full-cast-2027",
+          "isbn": [
+            "9781668664933"
+          ],
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Orbit",
+          "release_date": "2027-10-19",
+          "sources": [
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HNJQCD9C",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.hachettebookgroup.com/titles/andrzej-sapkowski/the-lady-of-the-lake-full-cast-edition/9781668664933/",
+              "type": "store-listing"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HNJTX2BB",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HNJWS2TT",
+              "type": "audible-lookup"
+            }
+          ],
+          "work": "lady-of-the-lake"
+        },
         "peter-kenny-2017": {
           "abridged": false,
           "added_at": "2026-07-17T09:08:56+00:00",
@@ -11953,36 +12003,8 @@
               "region": "us"
             },
             {
-              "asin": "B01N3NNVAN",
-              "region": "uk"
-            },
-            {
-              "asin": "B01MQEIAQD",
-              "region": "us"
-            },
-            {
-              "asin": "B01MXGO8MW",
-              "region": "au"
-            },
-            {
               "asin": "B0BY9KSG6C",
               "region": "br"
-            },
-            {
-              "asin": "B07YZKRGGC",
-              "region": "es"
-            },
-            {
-              "asin": "B06WWLQTHY",
-              "region": "fr"
-            },
-            {
-              "asin": "B06WWMW57M",
-              "region": "in"
-            },
-            {
-              "asin": "B07B8TTJ6N",
-              "region": "it"
             },
             {
               "asin": "B07DP99WKL",
@@ -12063,20 +12085,23 @@
           ],
           "cover_url": "https://m.media-amazon.com/images/I/51pC9YEauwL._SL500_.jpg",
           "id": "peter-kenny-2017",
+          "isbn": [
+            "9781478915713"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
             "peter-kenny"
           ],
-          "publisher": "Hachette Audio",
+          "publisher": "Orbit",
           "publishers": [
             {
               "publisher": "Gollancz",
               "region": "uk"
             }
           ],
-          "release_date": "2017-03-16",
-          "runtime_min": 1217,
+          "release_date": "2017-03-14",
+          "runtime_min": 1218,
           "sources": [
             {
               "imported_at": "2026-07-17",
@@ -12094,6 +12119,142 @@
               "type": "libex-import"
             },
             {
+              "imported_at": "2026-11-12",
+              "ref": "B0BY9KSG6C",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-12",
+              "ref": "B07DP99WKL",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.hachettebookgroup.com/titles/andrzej-sapkowski/the-lady-of-the-lake/9781478915713/",
+              "type": "store-listing"
+            }
+          ],
+          "work": "lady-of-the-lake"
+        },
+        "peter-kenny-2017-2": {
+          "abridged": false,
+          "asin": [
+            {
+              "asin": "B01N3NNVAN",
+              "region": "uk"
+            },
+            {
+              "asin": "B01MQEIAQD",
+              "region": "us"
+            },
+            {
+              "asin": "B01MXGO8MW",
+              "region": "au"
+            },
+            {
+              "asin": "B07YZKRGGC",
+              "region": "es"
+            },
+            {
+              "asin": "B06WWLQTHY",
+              "region": "fr"
+            },
+            {
+              "asin": "B06WWMW57M",
+              "region": "in"
+            },
+            {
+              "asin": "B07B8TTJ6N",
+              "region": "it"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 12572,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1349649,
+              "start_ms": 12572,
+              "title": "Chapter One"
+            },
+            {
+              "length_ms": 5930932,
+              "start_ms": 1362221,
+              "title": "Chapter Two"
+            },
+            {
+              "length_ms": 7128200,
+              "start_ms": 7293153,
+              "title": "Chapter Three"
+            },
+            {
+              "length_ms": 5979834,
+              "start_ms": 14421353,
+              "title": "Chapter Four"
+            },
+            {
+              "length_ms": 8601599,
+              "start_ms": 20401187,
+              "title": "Chapter Five"
+            },
+            {
+              "length_ms": 4603262,
+              "start_ms": 29002786,
+              "title": "Chapter Six"
+            },
+            {
+              "length_ms": 5820963,
+              "start_ms": 33606048,
+              "title": "Chapter Seven"
+            },
+            {
+              "length_ms": 7029608,
+              "start_ms": 39427011,
+              "title": "Chapter Eight"
+            },
+            {
+              "length_ms": 9259513,
+              "start_ms": 46456619,
+              "title": "Chapter Nine"
+            },
+            {
+              "length_ms": 7372241,
+              "start_ms": 55716132,
+              "title": "Chapter Ten"
+            },
+            {
+              "length_ms": 4950586,
+              "start_ms": 63088373,
+              "title": "Chapter Eleven"
+            },
+            {
+              "length_ms": 4926828,
+              "start_ms": 68038959,
+              "title": "Chapter Twelve"
+            },
+            {
+              "length_ms": 50647,
+              "start_ms": 72965787,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51qZ1pDfSrL.jpg",
+          "id": "peter-kenny-2017-2",
+          "isbn": [
+            "9781409166290"
+          ],
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-kenny"
+          ],
+          "publisher": "Gollancz",
+          "release_date": "2017-03-16",
+          "runtime_min": 1216,
+          "sources": [
+            {
               "imported_at": "2026-08-02",
               "ref": "B01N3NNVAN",
               "type": "libex-import"
@@ -12106,11 +12267,6 @@
             {
               "imported_at": "2026-11-12",
               "ref": "B01MXGO8MW",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-11-12",
-              "ref": "B0BY9KSG6C",
               "type": "libex-import"
             },
             {
@@ -12134,9 +12290,9 @@
               "type": "libex-import"
             },
             {
-              "imported_at": "2026-11-12",
-              "ref": "B07DP99WKL",
-              "type": "libex-import"
+              "imported_at": "2026-11-25",
+              "ref": "https://www.orionbooks.co.uk/titles/andrzej-sapkowski/the-lady-of-the-lake/9781409166290/",
+              "type": "store-listing"
             }
           ],
           "work": "lady-of-the-lake"
@@ -12172,83 +12328,186 @@
           ],
           "chapters": [
             {
-              "length_ms": 18622,
+              "length_ms": 18807,
               "start_ms": 0,
-              "title": "Note"
+              "title": "Chapter 1"
             },
             {
-              "length_ms": 18364,
-              "start_ms": 18622,
-              "title": "Opening Credits"
+              "length_ms": 1321819,
+              "start_ms": 18807,
+              "title": "Chapter 2"
             },
             {
-              "length_ms": 1349847,
-              "start_ms": 36986,
-              "title": "Chapter One"
+              "length_ms": 46486,
+              "start_ms": 1340626,
+              "title": "Chapter 3"
             },
             {
-              "length_ms": 5930677,
-              "start_ms": 1386833,
-              "title": "Chapter Two"
+              "length_ms": 3925844,
+              "start_ms": 1387112,
+              "title": "Chapter 4"
             },
             {
-              "length_ms": 7127944,
-              "start_ms": 7317510,
-              "title": "Chapter Three"
+              "length_ms": 1974810,
+              "start_ms": 5312956,
+              "title": "Chapter 5"
             },
             {
-              "length_ms": 5979579,
-              "start_ms": 14445454,
-              "title": "Chapter Four"
+              "length_ms": 30278,
+              "start_ms": 7287766,
+              "title": "Chapter 6"
             },
             {
-              "length_ms": 8601204,
-              "start_ms": 20425033,
-              "title": "Chapter Five"
+              "length_ms": 3765254,
+              "start_ms": 7318044,
+              "title": "Chapter 7"
             },
             {
-              "length_ms": 4603053,
-              "start_ms": 29026237,
-              "title": "Chapter Six"
+              "length_ms": 3330995,
+              "start_ms": 11083298,
+              "title": "Chapter 8"
             },
             {
-              "length_ms": 5820731,
-              "start_ms": 33629290,
-              "title": "Chapter Seven"
+              "length_ms": 31904,
+              "start_ms": 14414293,
+              "title": "Chapter 9"
             },
             {
-              "length_ms": 7029330,
-              "start_ms": 39450021,
-              "title": "Chapter Eight"
+              "length_ms": 1885135,
+              "start_ms": 14446197,
+              "title": "Chapter 10"
             },
             {
-              "length_ms": 9259188,
-              "start_ms": 46479351,
-              "title": "Chapter Nine"
+              "length_ms": 4060798,
+              "start_ms": 16331332,
+              "title": "Chapter 11"
             },
             {
-              "length_ms": 7371893,
-              "start_ms": 55738539,
-              "title": "Chapter Ten"
+              "length_ms": 33901,
+              "start_ms": 20392130,
+              "title": "Chapter 12"
             },
             {
-              "length_ms": 4950331,
-              "start_ms": 63110432,
-              "title": "Chapter Eleven"
+              "length_ms": 4542937,
+              "start_ms": 20426031,
+              "title": "Chapter 13"
             },
             {
-              "length_ms": 4934121,
-              "start_ms": 68060763,
-              "title": "Chapter Twelve"
+              "length_ms": 3927237,
+              "start_ms": 24968968,
+              "title": "Chapter 14"
             },
             {
-              "length_ms": 114848,
-              "start_ms": 72994884,
-              "title": "End Credits"
+              "length_ms": 131192,
+              "start_ms": 28896205,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 4494500,
+              "start_ms": 29027397,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 108669,
+              "start_ms": 33521897,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 2029516,
+              "start_ms": 33630566,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 3690765,
+              "start_ms": 35660082,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 100681,
+              "start_ms": 39350847,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 3399912,
+              "start_ms": 39451528,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 3590826,
+              "start_ms": 42851440,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 38823,
+              "start_ms": 46442266,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 2579504,
+              "start_ms": 46481089,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 2295060,
+              "start_ms": 49060593,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 4321651,
+              "start_ms": 51355653,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 63297,
+              "start_ms": 55677304,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 4049885,
+              "start_ms": 55740601,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 3180669,
+              "start_ms": 59790486,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 141548,
+              "start_ms": 62971155,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 2650372,
+              "start_ms": 63112703,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 2266964,
+              "start_ms": 65763075,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 33250,
+              "start_ms": 68030039,
+              "title": "Chapter 33"
+            },
+            {
+              "length_ms": 4157393,
+              "start_ms": 68063289,
+              "title": "Chapter 34"
+            },
+            {
+              "length_ms": 891877,
+              "start_ms": 72220682,
+              "title": "Chapter 35"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81a7IRtzn4L.jpg",
           "id": "peter-kenny-2022",
+          "isbn": [
+            "9781668625965"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -12287,6 +12546,11 @@
               "imported_at": "2026-11-12",
               "ref": "B0BBSJM7YD",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.hachettebookgroup.com/titles/andrzej-sapkowski/the-lady-of-the-lake-booktrack-edition/9781668625965/",
+              "type": "store-listing"
             }
           ],
           "work": "lady-of-the-lake"

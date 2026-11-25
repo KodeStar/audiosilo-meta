@@ -14076,14 +14076,64 @@
         "action-adventure",
         "dark-fantasy",
         "epic-fantasy",
-        "fairy-tales-folklore",
-        "fantasy",
-        "historical-fiction"
+        "fantasy"
       ],
       "id": "baptism-of-fire",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2027": {
+          "abridged": false,
+          "asin": [
+            {
+              "asin": "B0HHDKGJP8",
+              "region": "us"
+            },
+            {
+              "asin": "B0HHDHRKMN",
+              "region": "ca"
+            },
+            {
+              "asin": "B0HHDP7RKL",
+              "region": "jp"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/41gY425XOGL.jpg",
+          "id": "full-cast-2027",
+          "isbn": [
+            "9781668664919"
+          ],
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Orbit",
+          "release_date": "2027-05-25",
+          "sources": [
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HHDKGJP8",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.hachettebookgroup.com/titles/andrzej-sapkowski/baptism-of-fire-full-cast-edition/9781668664919/",
+              "type": "store-listing"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HHDHRKMN",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HHDP7RKL",
+              "type": "audible-lookup"
+            }
+          ],
+          "work": "baptism-of-fire"
+        },
         "peter-kenny-2014": {
           "abridged": false,
           "added_at": "2026-07-17T09:08:56+00:00",
@@ -14095,10 +14145,6 @@
             {
               "asin": "B079CMBW4H",
               "region": "uk"
-            },
-            {
-              "asin": "B00JF6ETVG",
-              "region": "us"
             },
             {
               "asin": "B0BWL2YXJH",
@@ -14163,20 +14209,17 @@
           ],
           "cover_url": "https://m.media-amazon.com/images/I/51wdRcGluKL._SL500_.jpg",
           "id": "peter-kenny-2014",
+          "isbn": [
+            "9781478904748"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
             "peter-kenny"
           ],
-          "publisher": "Hachette Audio",
-          "publishers": [
-            {
-              "publisher": "Orbit",
-              "region": "uk"
-            }
-          ],
+          "publisher": "Orbit",
           "release_date": "2015-08-04",
-          "runtime_min": 718,
+          "runtime_min": 719,
           "sources": [
             {
               "imported_at": "2026-07-17",
@@ -14199,11 +14242,6 @@
               "type": "libex-import"
             },
             {
-              "imported_at": "2026-08-02",
-              "ref": "B00JF6ETVG",
-              "type": "libex-import"
-            },
-            {
               "imported_at": "2026-11-12",
               "ref": "B0BWL2YXJH",
               "type": "libex-import"
@@ -14212,6 +14250,11 @@
               "imported_at": "2026-11-12",
               "ref": "B07DNVV92D",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.hachettebookgroup.com/titles/andrzej-sapkowski/baptism-of-fire/9781478904748/",
+              "type": "store-listing"
             }
           ],
           "work": "baptism-of-fire"
@@ -14231,10 +14274,69 @@
             {
               "asin": "B00JF6F2NK",
               "region": "de"
+            },
+            {
+              "asin": "B00JF6ETVG",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 12969,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 64063,
+              "start_ms": 12969,
+              "title": "Epigraph"
+            },
+            {
+              "length_ms": 5796965,
+              "start_ms": 77032,
+              "title": "Chapter One"
+            },
+            {
+              "length_ms": 6928370,
+              "start_ms": 5873997,
+              "title": "Chapter Two"
+            },
+            {
+              "length_ms": 4710725,
+              "start_ms": 12802367,
+              "title": "Chapter Three"
+            },
+            {
+              "length_ms": 4711978,
+              "start_ms": 17513092,
+              "title": "Chapter Four"
+            },
+            {
+              "length_ms": 6570411,
+              "start_ms": 22225070,
+              "title": "Chapter Five"
+            },
+            {
+              "length_ms": 6412097,
+              "start_ms": 28795481,
+              "title": "Chapter Six"
+            },
+            {
+              "length_ms": 7859303,
+              "start_ms": 35207578,
+              "title": "Chapter Seven"
+            },
+            {
+              "length_ms": 1084185,
+              "start_ms": 43066881,
+              "title": "Bonus Track - The Tower of the Swallow"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81CoqEAc2NL.jpg",
           "id": "peter-kenny-2014-2",
+          "isbn": [
+            "9781409153306"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -14258,6 +14360,16 @@
               "imported_at": "2026-11-12",
               "ref": "B00JF6F2NK",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00JF6ETVG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.orionbooks.co.uk/titles/andrzej-sapkowski/baptism-of-fire/9781409153306/",
+              "type": "store-listing"
             }
           ],
           "work": "baptism-of-fire"
@@ -14360,6 +14472,9 @@
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81gad+4UTEL.jpg",
           "id": "peter-kenny-2021",
+          "isbn": [
+            "9781549108709"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -14393,6 +14508,11 @@
               "imported_at": "2026-11-12",
               "ref": "1549108700",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.hachettebookgroup.com/titles/andrzej-sapkowski/baptism-of-fire-booktrack-edition/9781549108709/",
+              "type": "store-listing"
             }
           ],
           "work": "baptism-of-fire"

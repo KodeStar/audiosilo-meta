@@ -14140,8 +14140,7 @@
     "season-of-storms": {
       "added_at": "2026-07-17T09:08:56+00:00",
       "authors": [
-        "andrzej-sapkowski",
-        "david-french"
+        "andrzej-sapkowski"
       ],
       "credits": [
         {
@@ -14151,25 +14150,70 @@
       ],
       "genres": [
         "action-adventure",
-        "classics",
+        "dark-fantasy",
         "epic-fantasy",
-        "fairy-tales-folklore",
-        "fantasy",
-        "historical-fiction",
-        "short-stories"
+        "fantasy"
       ],
       "id": "season-of-storms",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2027": {
+          "abridged": false,
+          "asin": [
+            {
+              "asin": "B0HSNZ5W1Y",
+              "region": "us"
+            },
+            {
+              "asin": "B0HSN5H6DF",
+              "region": "ca"
+            },
+            {
+              "asin": "B0HSNF859L",
+              "region": "jp"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/416RZZzS0KL.jpg",
+          "id": "full-cast-2027",
+          "isbn": [
+            "9781668664940"
+          ],
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Orbit",
+          "release_date": "2027-11-23",
+          "sources": [
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HSNZ5W1Y",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.hachettebookgroup.com/titles/andrzej-sapkowski/season-of-storms-full-cast-edition/9781668664940/",
+              "type": "store-listing"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HSN5H6DF",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "B0HSNF859L",
+              "type": "audible-lookup"
+            }
+          ],
+          "work": "season-of-storms"
+        },
         "peter-kenny-2018": {
           "abridged": false,
           "added_at": "2026-07-17T09:08:56+00:00",
           "asin": [
-            {
-              "asin": "B074MGV5Q9",
-              "region": "us"
-            },
             {
               "asin": "B07CZQPDMM",
               "region": "us"
@@ -14177,6 +14221,226 @@
             {
               "asin": "B07CZQHZ1K",
               "region": "uk"
+            },
+            {
+              "asin": "B0BRD5D9PC",
+              "region": "br"
+            },
+            {
+              "asin": "B07DJJCZ83",
+              "region": "jp"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 43467,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 740160,
+              "start_ms": 43467,
+              "title": "Chapter One"
+            },
+            {
+              "length_ms": 803067,
+              "start_ms": 783627,
+              "title": "Interlude"
+            },
+            {
+              "length_ms": 1004390,
+              "start_ms": 1586694,
+              "title": "Chapter Two"
+            },
+            {
+              "length_ms": 465768,
+              "start_ms": 2591084,
+              "title": "Chapter Three"
+            },
+            {
+              "length_ms": 1555564,
+              "start_ms": 3056852,
+              "title": "Chapter Four"
+            },
+            {
+              "length_ms": 1120384,
+              "start_ms": 4612416,
+              "title": "Chapter Five"
+            },
+            {
+              "length_ms": 984083,
+              "start_ms": 5732800,
+              "title": "Chapter Six"
+            },
+            {
+              "length_ms": 1983523,
+              "start_ms": 6716883,
+              "title": "Chapter Seven"
+            },
+            {
+              "length_ms": 3095564,
+              "start_ms": 8700406,
+              "title": "Chapter Eight"
+            },
+            {
+              "length_ms": 658146,
+              "start_ms": 11795970,
+              "title": "Interlude"
+            },
+            {
+              "length_ms": 213159,
+              "start_ms": 12454116,
+              "title": "Interlude"
+            },
+            {
+              "length_ms": 220418,
+              "start_ms": 12667275,
+              "title": "Interlude"
+            },
+            {
+              "length_ms": 2474936,
+              "start_ms": 12887693,
+              "title": "Chapter Nine"
+            },
+            {
+              "length_ms": 1756747,
+              "start_ms": 15362629,
+              "title": "Chapter Ten"
+            },
+            {
+              "length_ms": 2254100,
+              "start_ms": 17119376,
+              "title": "Chapter Eleven"
+            },
+            {
+              "length_ms": 586908,
+              "start_ms": 19373476,
+              "title": "Interlude"
+            },
+            {
+              "length_ms": 1473572,
+              "start_ms": 19960384,
+              "title": "Chapter Twelve"
+            },
+            {
+              "length_ms": 1844789,
+              "start_ms": 21433956,
+              "title": "Chapter Thirteen"
+            },
+            {
+              "length_ms": 1978529,
+              "start_ms": 23278745,
+              "title": "Chapter Fourteen"
+            },
+            {
+              "length_ms": 569260,
+              "start_ms": 25257274,
+              "title": "Interlude"
+            },
+            {
+              "length_ms": 1774051,
+              "start_ms": 25826534,
+              "title": "Chapter Fifteen"
+            },
+            {
+              "length_ms": 867312,
+              "start_ms": 27600585,
+              "title": "Interlude"
+            },
+            {
+              "length_ms": 253023,
+              "start_ms": 28467897,
+              "title": "Interlude"
+            },
+            {
+              "length_ms": 1413891,
+              "start_ms": 28720920,
+              "title": "Chapter Sixteen"
+            },
+            {
+              "length_ms": 325637,
+              "start_ms": 30134811,
+              "title": "Interlude"
+            },
+            {
+              "length_ms": 2790029,
+              "start_ms": 30460448,
+              "title": "Chapter Seventeen"
+            },
+            {
+              "length_ms": 3977241,
+              "start_ms": 33250477,
+              "title": "Chapter Eighteen"
+            },
+            {
+              "length_ms": 1236973,
+              "start_ms": 37227718,
+              "title": "Chapter Nineteen"
+            },
+            {
+              "length_ms": 618022,
+              "start_ms": 38464691,
+              "title": "Interlude"
+            },
+            {
+              "length_ms": 2118403,
+              "start_ms": 39082713,
+              "title": "Chapter Twenty"
+            },
+            {
+              "length_ms": 1129558,
+              "start_ms": 41201116,
+              "title": "Epilogue"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/41p2BOVkHoL._SL500_.jpg",
+          "id": "peter-kenny-2018",
+          "isbn": [
+            "9781549168512"
+          ],
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-kenny"
+          ],
+          "publisher": "Orbit",
+          "release_date": "2018-05-22",
+          "runtime_min": 705,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07CZQPDMM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07CZQHZ1K",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-12",
+              "ref": "B0BRD5D9PC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-12",
+              "ref": "B07DJJCZ83",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.hachettebookgroup.com/titles/andrzej-sapkowski/season-of-storms/9781549168512/",
+              "type": "store-listing"
+            }
+          ],
+          "work": "season-of-storms"
+        },
+        "peter-kenny-2018-2": {
+          "abridged": false,
+          "asin": [
+            {
+              "asin": "B074MGV5Q9",
+              "region": "us"
             },
             {
               "asin": "B074MFT2Q9",
@@ -14189,10 +14453,6 @@
             {
               "asin": "B074MFTZD8",
               "region": "au"
-            },
-            {
-              "asin": "B0BRD5D9PC",
-              "region": "br"
             },
             {
               "asin": "1409167852",
@@ -14209,193 +14469,186 @@
             {
               "asin": "B07CF4KKKK",
               "region": "it"
-            },
-            {
-              "asin": "B07DJJCZ83",
-              "region": "jp"
             }
           ],
           "chapters": [
             {
-              "length_ms": 43579,
+              "length_ms": 43672,
               "start_ms": 0,
               "title": "Opening Credits"
             },
             {
-              "length_ms": 737911,
-              "start_ms": 43579,
+              "length_ms": 737957,
+              "start_ms": 43672,
               "title": "Chapter One"
             },
             {
-              "length_ms": 805082,
-              "start_ms": 781490,
+              "length_ms": 805128,
+              "start_ms": 781629,
               "title": "Interlude"
             },
             {
-              "length_ms": 1005284,
-              "start_ms": 1586572,
+              "length_ms": 1005331,
+              "start_ms": 1586757,
               "title": "Chapter Two"
             },
             {
-              "length_ms": 466953,
-              "start_ms": 2591856,
+              "length_ms": 466999,
+              "start_ms": 2592088,
               "title": "Chapter Three"
             },
             {
-              "length_ms": 1556154,
-              "start_ms": 3058809,
+              "length_ms": 1556201,
+              "start_ms": 3059087,
               "title": "Chapter Four"
             },
             {
-              "length_ms": 1120060,
-              "start_ms": 4614963,
+              "length_ms": 1120130,
+              "start_ms": 4615288,
               "title": "Chapter Five"
             },
             {
-              "length_ms": 983643,
-              "start_ms": 5735023,
+              "length_ms": 983690,
+              "start_ms": 5735418,
               "title": "Chapter Six"
             },
             {
-              "length_ms": 1986606,
-              "start_ms": 6718666,
+              "length_ms": 1986652,
+              "start_ms": 6719108,
               "title": "Chapter Seven"
             },
             {
-              "length_ms": 3092712,
-              "start_ms": 8705272,
+              "length_ms": 3092758,
+              "start_ms": 8705760,
               "title": "Chapter Eight"
             },
             {
-              "length_ms": 658123,
-              "start_ms": 11797984,
+              "length_ms": 658192,
+              "start_ms": 11798518,
               "title": "Interlude"
             },
             {
-              "length_ms": 213112,
-              "start_ms": 12456107,
+              "length_ms": 213159,
+              "start_ms": 12456710,
               "title": "Interlude"
             },
             {
-              "length_ms": 220171,
-              "start_ms": 12669219,
+              "length_ms": 220218,
+              "start_ms": 12669869,
               "title": "Interlude"
             },
             {
-              "length_ms": 2477429,
-              "start_ms": 12889390,
+              "length_ms": 2477476,
+              "start_ms": 12890087,
               "title": "Chapter Nine"
             },
             {
-              "length_ms": 1755800,
-              "start_ms": 15366819,
+              "length_ms": 1755846,
+              "start_ms": 15367563,
               "title": "Chapter Ten"
             },
             {
-              "length_ms": 2254053,
-              "start_ms": 17122619,
+              "length_ms": 2254100,
+              "start_ms": 17123409,
               "title": "Chapter Eleven"
             },
             {
-              "length_ms": 586907,
-              "start_ms": 19376672,
+              "length_ms": 586954,
+              "start_ms": 19377509,
               "title": "Interlude"
             },
             {
-              "length_ms": 1472609,
-              "start_ms": 19963579,
+              "length_ms": 1472655,
+              "start_ms": 19964463,
               "title": "Chapter Twelve"
             },
             {
-              "length_ms": 1876845,
-              "start_ms": 21436188,
+              "length_ms": 1876915,
+              "start_ms": 21437118,
               "title": "Chapter Thirteen"
             },
             {
-              "length_ms": 1947666,
-              "start_ms": 23313033,
+              "length_ms": 1947736,
+              "start_ms": 23314033,
               "title": "Chapter Fourteen"
             },
             {
-              "length_ms": 569213,
-              "start_ms": 25260699,
+              "length_ms": 569260,
+              "start_ms": 25261769,
               "title": "Interlude"
             },
             {
-              "length_ms": 1774004,
-              "start_ms": 25829912,
+              "length_ms": 1774050,
+              "start_ms": 25831029,
               "title": "Chapter Fifteen"
             },
             {
-              "length_ms": 867265,
-              "start_ms": 27603916,
+              "length_ms": 867311,
+              "start_ms": 27605079,
               "title": "Interlude"
             },
             {
-              "length_ms": 253724,
-              "start_ms": 28471181,
+              "length_ms": 253794,
+              "start_ms": 28472390,
               "title": "Interlude"
             },
             {
-              "length_ms": 1413003,
-              "start_ms": 28724905,
+              "length_ms": 1413073,
+              "start_ms": 28726184,
               "title": "Chapter Sixteen"
             },
             {
-              "length_ms": 325590,
-              "start_ms": 30137908,
+              "length_ms": 325636,
+              "start_ms": 30139257,
               "title": "Interlude"
             },
             {
-              "length_ms": 2791711,
-              "start_ms": 30463498,
+              "length_ms": 2791781,
+              "start_ms": 30464893,
               "title": "Chapter Seventeen"
             },
             {
-              "length_ms": 3975836,
-              "start_ms": 33255209,
+              "length_ms": 3975906,
+              "start_ms": 33256674,
               "title": "Chapter Eighteen"
             },
             {
-              "length_ms": 1236926,
-              "start_ms": 37231045,
+              "length_ms": 1236973,
+              "start_ms": 37232580,
               "title": "Chapter Nineteen"
             },
             {
-              "length_ms": 617975,
-              "start_ms": 38467971,
+              "length_ms": 618022,
+              "start_ms": 38469553,
               "title": "Interlude"
             },
             {
-              "length_ms": 2118379,
-              "start_ms": 39085946,
+              "length_ms": 2118449,
+              "start_ms": 39087575,
               "title": "Chapter Twenty"
             },
             {
-              "length_ms": 1082096,
-              "start_ms": 41204325,
+              "length_ms": 1082142,
+              "start_ms": 41206024,
               "title": "Epilogue"
             },
             {
-              "length_ms": 427246,
-              "start_ms": 42286421,
+              "length_ms": 427386,
+              "start_ms": 42288166,
               "title": "Bonus Track - The Last Wish"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/41p2BOVkHoL._SL500_.jpg",
-          "id": "peter-kenny-2018",
+          "cover_url": "https://m.media-amazon.com/images/I/41p2BOVkHoL.jpg",
+          "id": "peter-kenny-2018-2",
+          "isbn": [
+            "9781409167853"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
             "peter-kenny"
           ],
-          "publisher": "Orion Publishing Group Limited",
-          "publishers": [
-            {
-              "publisher": "Orbit",
-              "region": "uk"
-            }
-          ],
+          "publisher": "Gollancz",
           "release_date": "2018-05-22",
           "runtime_min": 711,
           "sources": [
@@ -14416,16 +14669,6 @@
             },
             {
               "imported_at": "2026-08-02",
-              "ref": "B07CZQPDMM",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B07CZQHZ1K",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
               "ref": "B074MFT2Q9",
               "type": "libex-import"
             },
@@ -14437,11 +14680,6 @@
             {
               "imported_at": "2026-11-12",
               "ref": "B074MFTZD8",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-11-12",
-              "ref": "B0BRD5D9PC",
               "type": "libex-import"
             },
             {
@@ -14465,9 +14703,9 @@
               "type": "libex-import"
             },
             {
-              "imported_at": "2026-11-12",
-              "ref": "B07DJJCZ83",
-              "type": "libex-import"
+              "imported_at": "2026-11-25",
+              "ref": "https://www.kobo.com/ww/en/audiobook/season-of-storms-8",
+              "type": "store-listing"
             }
           ],
           "work": "season-of-storms"
@@ -14675,6 +14913,9 @@
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81-aMjE9DlL.jpg",
           "id": "peter-kenny-2022",
+          "isbn": [
+            "9781668625989"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -14713,6 +14954,11 @@
               "imported_at": "2026-11-12",
               "ref": "B0BFC23X9C",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-25",
+              "ref": "https://www.hachettebookgroup.com/titles/andrzej-sapkowski/season-of-storms-booktrack-edition/9781668625989/",
+              "type": "store-listing"
             }
           ],
           "work": "season-of-storms"
