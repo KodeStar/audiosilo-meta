@@ -198,7 +198,9 @@ if [ "$(printf '%s' "$records" | wc -c)" -gt "$room" ]; then
   records="$records"$'\n'"$note"
 fi
 
-jq -n --arg records "$records" --arg answers "$answers" '{records: $records, answers: $answers}' > "$CONFIRM_OUT" ||
+# Each part reaches jq on stdin, never as an argument (the SECURITY note).
+{ printf '%s' "$records" | jq -Rs .; printf '%s' "$answers" | jq -Rs .; } |
+  jq -s '{records: .[0], answers: .[1]}' > "$CONFIRM_OUT" ||
   none "the evidence could not be written"
 
 echo "ai-verify-confirm: read the steward's confirmation evidence (comment $id, context ${CONTEXT_SHA:0:12})"
