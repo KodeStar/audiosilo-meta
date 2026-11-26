@@ -843,6 +843,12 @@ func TestAIVerifyConfirmStep(t *testing.T) {
 	gather, confirm, reuse := strings.Index(yml, "id: gather"), strings.Index(yml, "id: confirm"), strings.Index(yml, "id: reuse")
 	if gather < 0 || confirm < gather || reuse < confirm {
 		t.Errorf("step order gather %d, confirm %d, reuse %d; want the confirmation between them", gather, confirm, reuse)
+		return
+	}
+	// The step runs under `bash -e` alone: without pipefail the listing's `if`
+	// reads jq's status, and a gh failure part way leaves a partial list.
+	if step := yml[confirm:reuse]; !strings.Contains(step, "set -o pipefail") {
+		t.Error("ai-verify.yml: the confirmation step lists the comments without pipefail")
 	}
 }
 
