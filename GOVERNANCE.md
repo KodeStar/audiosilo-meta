@@ -223,7 +223,8 @@ Two automations sit in front of the human review step. Neither bypasses it.
   the change is judged afresh. The workflow reads such a comment only from the
   account the `STEWARD_LOGIN` repository variable names (none while it is
   unset), only while that account is the repository's owner, a member or a
-  collaborator, only from its newest such comment, and only for the content it
+  collaborator, only from its newest such comment, only when that comment was
+  never edited and ends with the steward's marker, and only for the content it
   answers, and the verdict comment says when it read one. The evidence clears
   nothing by itself: only the verdict does, and every advisory is still a
   finding.

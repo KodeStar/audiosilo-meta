@@ -653,6 +653,7 @@ type confirmComment struct {
 	ID        int64  `json:"id"`
 	URL       string `json:"html_url"`
 	CreatedAt string `json:"created_at"`
+	UpdatedAt string `json:"updated_at"`
 	User      struct {
 		Login string `json:"login"`
 	} `json:"user"`
@@ -660,9 +661,11 @@ type confirmComment struct {
 	Body        string `json:"body"`
 }
 
+// stewardComment is a comment never edited: the API gives it an updated_at
+// equal to its created_at.
 func stewardComment(id int64, created, login, association, body string) confirmComment {
 	c := confirmComment{ID: id, URL: fmt.Sprintf("https://github.com/KodeStar/audiosilo-meta/pull/3189#issuecomment-%d", id),
-		CreatedAt: created, Association: association, Body: body}
+		CreatedAt: created, UpdatedAt: created, Association: association, Body: body}
 	c.User.Login = login
 	return c
 }
@@ -714,6 +717,8 @@ func TestAIVerifyConfirmScript(t *testing.T) {
 	}{
 		{name: "the steward as owner",
 			comments: []confirmComment{owner(7, at1, good)}, wantID: 7, want: evidence},
+		{name: "blank lines after the marker",
+			comments: []confirmComment{owner(7, at1, good+"\n \n\t\n")}, wantID: 7, want: evidence},
 		{name: "a member, the login in another case", login: "kodestar",
 			comments: []confirmComment{stewardComment(7, at1, "KodeStar", "MEMBER", good)}, wantID: 7, want: evidence},
 		{name: "a collaborator",
@@ -751,6 +756,18 @@ func TestAIVerifyConfirmScript(t *testing.T) {
 			comments: []confirmComment{owner(7, at1, good+confirmMarker(ctx)+"\n")}},
 		{name: "the marker inside the block", comments: []confirmComment{owner(7, at1,
 			"<!-- confirm-evidence:begin -->\n"+evidence+confirmMarker(ctx)+"\n<!-- confirm-evidence:end -->\n")}},
+		{name: "the marker before the block", comments: []confirmComment{owner(7, at1,
+			confirmMarker(ctx)+"\n<!-- confirm-evidence:begin -->\n"+evidence+"<!-- confirm-evidence:end -->\n")}},
+		// The steward's account also relays an agent's text (an amend's
+		// summary, a review) and ends every such comment with its own lines,
+		// so a forged marker and block in relayed text is never the last line.
+		{name: "a marker and block relayed inside another comment", comments: []confirmComment{owner(7, at1,
+			"**The steward amended this pull request.**\n\n"+good+"\n_Posted by the steward (audiosilo-meta-sync)._\n<!-- audiosilo-steward -->")}},
+		{name: "an edited comment", comments: []confirmComment{func() confirmComment {
+			c := owner(7, at1, good)
+			c.UpdatedAt = at2
+			return c
+		}()}},
 		{name: "a second marker inside the block",
 			comments: []confirmComment{owner(7, at1, confirmBody(ctx, evidence+confirmMarker(ctx)+"\n"))}},
 		{name: "the marker not a whole line", comments: []confirmComment{owner(7, at1,
@@ -915,7 +932,7 @@ func TestAIVerifyReuseWithConfirmation(t *testing.T) {
 	wantTail := "<!-- ai-verify-confirm: 123 -->\n\n<!-- ai-verify-context: " + hex.EncodeToString(sum[:]) + " -->\n" +
 		"<!-- ai-verify-key: " + key + " verdict: flag -->\n"
 	if !strings.HasPrefix(body, written) || !strings.HasSuffix(body, wantTail) {
-		t.Errorf("the posted comment ends\n%s\nwant\n%s", body[len(written)-40:], wantTail)
+		t.Errorf("the posted comment ends\n%s\nwant\n%s", body[max(0, len(body)-len(wantTail)-40):], wantTail)
 	}
 
 	// That comment, as the next run's newest verdict, is reused on the same

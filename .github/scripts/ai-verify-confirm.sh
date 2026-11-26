@@ -28,11 +28,17 @@
 #     MEMBER or COLLABORATOR (a renamed or deleted account whose login is taken
 #     by a stranger is not a collaborator).
 #   - Of those comments carrying the steward's marker, the NEWEST is the one
-#     judged, and it is accepted only when its body holds exactly ONE line
-#     naming the marker, that line is the whole marker
+#     judged, and it is accepted only when it was never edited (its updated_at
+#     is its created_at: anyone with write access can edit a comment, and the
+#     API still names its author), its body holds exactly ONE line naming the
+#     marker, that line is the whole marker
 #       <!-- audiosilo-steward:confirm context=<64 hex> head=<40 hex> flag=<64 hex> -->
-#     and stands outside the evidence block, and its context is the sha256 of
-#     <context-file>, the summary this run shows the model. That binds the
+#     and is the comment's LAST line (so after the evidence block), and its
+#     context is the sha256 of <context-file>, the summary this run shows the
+#     model. The last line because the same account posts comments relaying an
+#     agent's text (an amend's summary, a review), and the steward ends every
+#     comment with lines of its own, so relayed text that forges a marker and a
+#     block is never a comment's last line. The context binds the
 #     evidence to the content it answers rather than to a head: the intake sweep
 #     rebases a mirror on every push to main, and a rebase over an unrelated
 #     merge leaves the context byte for byte the same (ai-verify-reuse.sh), while
@@ -91,13 +97,15 @@ picked="$(printf '%s\n' "$comments" | jq -cs --arg login "$STEWARD_LOGIN" '
     and (.author_association | IN("OWNER", "MEMBER", "COLLABORATOR"))
     and ((.body // "") | contains("audiosilo-steward:confirm"))))
   | sort_by(.created_at) | last // empty
-  | {id, url: .html_url, body}')" || none "the comments could not be parsed"
+  | {id, url: .html_url, body, edited: ((.updated_at // .created_at) != .created_at)}')" ||
+  none "the comments could not be parsed"
 [ -n "$picked" ] || none "no comment by the steward carries its marker"
 
 id="$(jq -r '.id' <<<"$picked")"
 url="$(jq -r '.url // ""' <<<"$picked")"
 [[ "$id" =~ ^[0-9]+$ ]] || none "the steward's comment has no numeric id"
 [[ "$url" =~ ^https://github\.com/[A-Za-z0-9._/#-]+$ ]] || none "the steward's comment has no GitHub link"
+[ "$(jq -r '.edited' <<<"$picked")" = false ] || none "the steward's comment was edited after it was posted"
 
 # Line structure only: a carriage return (a comment edited on Windows) and a NUL
 # (bash cannot hold one) are dropped before any line is judged.
@@ -105,18 +113,18 @@ body="$(jq -r '.body' <<<"$picked" | tr -d '\r\0')"
 
 # Every line NAMING the marker or a block delimiter is counted, so a near miss
 # (indented, misspelled field, a second copy inside the evidence) is refused
-# rather than passed over in favour of a well-formed one elsewhere.
-read -r markers marker_at begins begin_at ends end_at < <(awk '
+# rather than passed over in favour of a well-formed one elsewhere. The marker
+# must be the last line that is not blank, which also puts it after the block.
+read -r markers marker_at begins begin_at ends end_at last_at < <(awk '
   /audiosilo-steward:confirm/ { m++; ml = NR }
   /confirm-evidence:begin/ { b++; if ($0 == "<!-- confirm-evidence:begin -->") bl = NR }
   /confirm-evidence:end/ { e++; if ($0 == "<!-- confirm-evidence:end -->") el = NR }
-  END { printf "%d %d %d %d %d %d\n", m, ml, b, bl, e, el }' <<<"$body")
+  NF { l = NR }
+  END { printf "%d %d %d %d %d %d %d\n", m, ml, b, bl, e, el, l }' <<<"$body")
 [ "$markers" -eq 1 ] || none "the steward's comment names its marker on $markers lines, not one"
 [ "$begins" -eq 1 ] && [ "$ends" -eq 1 ] && [ "$begin_at" -gt 0 ] && [ "$end_at" -gt "$begin_at" ] ||
   none "the steward's comment has no single evidence block"
-if [ "$marker_at" -gt "$begin_at" ] && [ "$marker_at" -lt "$end_at" ]; then
-  none "the steward's marker sits inside the evidence block"
-fi
+[ "$marker_at" -eq "$last_at" ] || none "the steward's marker is not its comment's last line"
 marker="$(sed -n "${marker_at}p" <<<"$body")"
 [[ "$marker" =~ ^\<!--\ audiosilo-steward:confirm\ context=([0-9a-f]{64})\ head=[0-9a-f]{40}\ flag=[0-9a-f]{64}\ --\>$ ]] ||
   none "the steward's marker line is not the whole marker"
