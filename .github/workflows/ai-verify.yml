@@ -304,9 +304,11 @@ jobs:
       # an earlier run flagged this exact content and audiosilo-meta-sync's
       # resolver found every flagged item correct as it stands, the steward posts
       # the resolver's answers beside retailer records its service fetched, then
-      # re-runs this workflow, and the model reads that comment as a second input.
-      # What the script trusts is its header's TRUST section (STEWARD_LOGIN
-      # unset, it reads nothing). It always leaves a confirm.txt, empty when
+      # re-runs this workflow, and the model reads that comment as a second input:
+      # the records as evidence, the answers as claims. Once the steward
+      # withdraws a confirmation (a second flag parked the pull request, or it
+      # ended without a pass), no later run reads it. What the script trusts is
+      # its header's TRUST section (STEWARD_LOGIN unset, it reads nothing). It always leaves a confirm.txt, empty when
       # there is none, so the reuse key below is what it was without it. A fork
       # pull request's own events never get here (the job's `if`); a dispatch
       # for one runs main's scripts. The comments are listed once, here, for this

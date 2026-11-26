@@ -4,10 +4,11 @@
 #
 # Usage: ai-verify-confirm.sh <context-file> <pr-number> <confirm-out>
 #
-# Always writes <confirm-out>: the evidence, or an EMPTY file when there is none
-# (ai-verify-reuse.sh hashes it with the context, and an empty file adds nothing
-# to the key, so a run without evidence keys exactly as before). Writes to
-# $GITHUB_OUTPUT (stdout when unset):
+# Always writes <confirm-out>: the evidence as one JSON object
+#   {"records": "<the retailer records>", "answers": "<the resolver's answers>"}
+# or an EMPTY file when there is none (ai-verify-reuse.sh hashes it with the
+# context, and an empty file adds nothing to the key, so a run without evidence
+# keys exactly as before). Writes to $GITHUB_OUTPUT (stdout when unset):
 #   found=true|false   whether evidence was read
 #   id=<number>        the steward comment's id, when found
 #   url=<html url>     the steward comment's link, when found
@@ -24,14 +25,26 @@
 # from exactly one account, and reads nothing at all otherwise:
 #   - STEWARD_LOGIN (env, the repository variable) names the steward's account.
 #     Unset or empty, no comment is ever read: the gate fails closed.
-#   - The comment's author is that login AND its author_association is OWNER,
-#     MEMBER or COLLABORATOR (a renamed or deleted account whose login is taken
-#     by a stranger is not a collaborator).
-#   - Of those comments carrying the steward's marker, the NEWEST is the one
-#     judged, and it is accepted only when it was never edited (its updated_at
-#     is its created_at: anyone with write access can edit a comment, and the
-#     API still names its author), its body holds exactly ONE line naming the
-#     marker, that line is the whole marker
+#   - Only comments whose author is that login AND whose author_association is
+#     OWNER, MEMBER or COLLABORATOR count, for the confirmation and for its
+#     withdrawal alike (a renamed or deleted account whose login is taken by a
+#     stranger is not a collaborator).
+#   - WITHDRAWAL. When a confirmation ends without a pass (a second flag, no
+#     second read, a re-run it may not ask for), the steward withdraws it: a
+#     comment (its park comment, when it parks) whose last line that is not
+#     blank is
+#       <!-- audiosilo-steward:confirm-withdrawn context=<64 hex> -->
+#     A withdrawal of this run's context that was never edited means no
+#     evidence, whatever its time: the steward never confirms a content again
+#     once it has withdrawn it, so the two reads that disagreed are never
+#     followed by a third that reads the same evidence (the daily rebase of a
+#     mirror re-runs this workflow on the same content). A withdrawal of other
+#     content, or an edited one, is passed over.
+#   - Of the other comments naming the steward's confirm marker, the NEWEST is
+#     the one judged, and it is accepted only when it was never edited (its
+#     updated_at is its created_at: anyone with write access can edit a
+#     comment, and the API still names its author), its body holds exactly ONE
+#     line naming the marker, that line is the whole marker
 #       <!-- audiosilo-steward:confirm context=<64 hex> head=<40 hex> flag=<64 hex> -->
 #     and is the comment's LAST line (so after the evidence block), and its
 #     context is the sha256 of <context-file>, the summary this run shows the
@@ -45,8 +58,17 @@
 #     any change to an entry the pull request touches changes it.
 #   - The evidence is the text between the full lines
 #       <!-- confirm-evidence:begin -->   and   <!-- confirm-evidence:end -->
-#     (exactly one of each, in that order, and not empty), cut to
-#     MAX_CONFIRM_BYTES with a line saying so, and made valid UTF-8.
+#     holding two sub-blocks, the resolver's answers and then the retailer
+#     records the steward's service rendered:
+#       <!-- confirm-answers:begin --> ... <!-- confirm-answers:end -->
+#       <!-- confirm-records:begin --> ... <!-- confirm-records:end -->
+#     Each delimiter is named on exactly one line, which is the whole
+#     delimiter, all six in that order, and neither sub-block is empty. The two
+#     are kept apart so an answer can never pass for a record: ai-verify.sh
+#     shows them as two sections and calls only the records evidence, and the
+#     steward breaks every delimiter's name in the text it relays. The answers
+#     are kept whole and the records cut at a row, so the two together fit
+#     MAX_CONFIRM_BYTES; both are made valid UTF-8.
 # An older comment is never looked past to: a newest one that fails any rule
 # means no evidence, which is a verdict judged as if none had been posted.
 #
@@ -89,16 +111,28 @@ else
     none "the comments could not be read"
 fi
 
-# The newest comment by the steward's account, as a trusted collaborator, that
-# names the marker at all; whether it names it correctly is judged below.
-picked="$(printf '%s\n' "$comments" | jq -cs --arg login "$STEWARD_LOGIN" '
+# The steward's trusted comments naming either marker, each with its last line
+# that is not blank (a carriage return and a NUL dropped, as below). A
+# withdrawal is one whose last line is the whole withdrawal marker; it is never
+# a confirmation, edited or not. Of the rest, the newest is judged below.
+# withdrawn: an unedited withdrawal of this run's context.
+selected="$(printf '%s\n' "$comments" | jq -cs --arg login "$STEWARD_LOGIN" \
+  --arg withdrawal "<!-- audiosilo-steward:confirm-withdrawn context=$CONTEXT_SHA -->" '
   map(select(
-    ((.user.login // "") | ascii_downcase) == ($login | ascii_downcase)
-    and (.author_association | IN("OWNER", "MEMBER", "COLLABORATOR"))
-    and ((.body // "") | contains("audiosilo-steward:confirm"))))
-  | sort_by(.created_at) | last // empty
-  | {id, url: .html_url, body, edited: ((.updated_at // .created_at) != .created_at)}')" ||
+      ((.user.login // "") | ascii_downcase) == ($login | ascii_downcase)
+      and (.author_association | IN("OWNER", "MEMBER", "COLLABORATOR"))
+      and ((.body // "") | contains("audiosilo-steward:confirm")))
+    | . + {edited: ((.updated_at // .created_at) != .created_at),
+        last: ((.body // "") | explode | map(select(. != 13 and . != 0)) | implode
+          | split("\n") | map(select(test("[^ \t]"))) | last // "")})
+  | (map(select(.last | test("^<!-- audiosilo-steward:confirm-withdrawn context=[0-9a-f]{64} -->$")))) as $withdrawals
+  | {withdrawn: ($withdrawals | any(.edited == false and .last == $withdrawal)),
+     picked: (map(select(.last | test("^<!-- audiosilo-steward:confirm-withdrawn ") | not))
+       | sort_by(.created_at, .id) | last // null
+       | if . == null then null else {id, url: .html_url, body, edited} end)}')" ||
   none "the comments could not be parsed"
+[ "$(jq -r '.withdrawn' <<<"$selected")" = false ] || none "the steward withdrew its confirmation of this content"
+picked="$(jq -c '.picked // empty' <<<"$selected")"
 [ -n "$picked" ] || none "no comment by the steward carries its marker"
 
 id="$(jq -r '.id' <<<"$picked")"
@@ -111,19 +145,28 @@ url="$(jq -r '.url // ""' <<<"$picked")"
 # (bash cannot hold one) are dropped before any line is judged.
 body="$(jq -r '.body' <<<"$picked" | tr -d '\r\0')"
 
-# Every line NAMING the marker or a block delimiter is counted, so a near miss
+# Every line NAMING the marker or a delimiter is counted, so a near miss
 # (indented, misspelled field, a second copy inside the evidence) is refused
 # rather than passed over in favour of a well-formed one elsewhere. The marker
 # must be the last line that is not blank, which also puts it after the block.
-read -r markers marker_at begins begin_at ends end_at last_at < <(awk '
+# Each delimiter's line number is its exact line's, 0 when there is none.
+read -r markers marker_at last_at counts lines < <(awk '
+  BEGIN { n = split("evidence:begin answers:begin answers:end records:begin records:end evidence:end", d, " ") }
   /audiosilo-steward:confirm/ { m++; ml = NR }
-  /confirm-evidence:begin/ { b++; if ($0 == "<!-- confirm-evidence:begin -->") bl = NR }
-  /confirm-evidence:end/ { e++; if ($0 == "<!-- confirm-evidence:end -->") el = NR }
+  { for (i = 1; i <= n; i++) if (index($0, "confirm-" d[i])) { c[i]++; if ($0 == "<!-- confirm-" d[i] " -->") at[i] = NR } }
   NF { l = NR }
-  END { printf "%d %d %d %d %d %d %d\n", m, ml, b, bl, e, el, l }' <<<"$body")
+  END {
+    cs = ""; ls = ""
+    for (i = 1; i <= n; i++) { cs = cs (i > 1 ? "," : "") c[i] + 0; ls = ls (i > 1 ? "," : "") at[i] + 0 }
+    printf "%d %d %d %s %s\n", m, ml, l, cs, ls
+  }' <<<"$body")
 [ "$markers" -eq 1 ] || none "the steward's comment names its marker on $markers lines, not one"
-[ "$begins" -eq 1 ] && [ "$ends" -eq 1 ] && [ "$begin_at" -gt 0 ] && [ "$end_at" -gt "$begin_at" ] ||
-  none "the steward's comment has no single evidence block"
+[ "$counts" = "1,1,1,1,1,1" ] || none "the steward's comment does not name each evidence delimiter once ($counts)"
+IFS=, read -r evidence_begin answers_begin answers_end records_begin records_end evidence_end <<<"$lines"
+[ "$evidence_begin" -gt 0 ] && [ "$answers_begin" -gt "$evidence_begin" ] && [ "$answers_end" -gt "$answers_begin" ] &&
+  [ "$records_begin" -gt "$answers_end" ] && [ "$records_end" -gt "$records_begin" ] &&
+  [ "$evidence_end" -gt "$records_end" ] ||
+  none "the steward's evidence is not one block of its answers and then its records"
 [ "$marker_at" -eq "$last_at" ] || none "the steward's marker is not its comment's last line"
 marker="$(sed -n "${marker_at}p" <<<"$body")"
 [[ "$marker" =~ ^\<!--\ audiosilo-steward:confirm\ context=([0-9a-f]{64})\ head=[0-9a-f]{40}\ flag=[0-9a-f]{64}\ --\>$ ]] ||
@@ -131,17 +174,31 @@ marker="$(sed -n "${marker_at}p" <<<"$body")"
 [ "${BASH_REMATCH[1]}" = "$CONTEXT_SHA" ] ||
   none "the steward's evidence answers other content (context ${BASH_REMATCH[1]:0:12}, this run's ${CONTEXT_SHA:0:12})"
 
-evidence="$(awk -v from="$begin_at" -v to="$end_at" 'NR > from && NR < to' <<<"$body")"
-[ -n "${evidence//[[:space:]]/}" ] || none "the steward's evidence block is empty"
+# between <from> <to>: the body's lines strictly between the two.
+between() { awk -v from="$1" -v to="$2" 'NR > from && NR < to' <<<"$body"; }
+answers="$(between "$answers_begin" "$answers_end" | iconv -f utf-8 -t utf-8 -c)"
+records="$(between "$records_begin" "$records_end" | iconv -f utf-8 -t utf-8 -c)"
+[ -n "${answers//[[:space:]]/}" ] || none "the steward's evidence holds no answers"
+[ -n "${records//[[:space:]]/}" ] || none "the steward's evidence holds no records"
 
-# head -c can split a multi-byte character at the cut; iconv -c drops what is
-# left of it, as ai-verify.sh does for the context.
-{
-  printf '%s\n' "$evidence" | head -c "$MAX_CONFIRM_BYTES" | iconv -f utf-8 -t utf-8 -c
-  if [ "$(printf '%s\n' "$evidence" | wc -c)" -gt "$MAX_CONFIRM_BYTES" ]; then
-    printf '\n[the evidence was cut at %d bytes]\n' "$MAX_CONFIRM_BYTES"
-  fi
-} > "$CONFIRM_OUT" || none "the evidence could not be written"
+# The cap: the answers whole (the steward bounds them well below it), the
+# records cut at a row to the room that is left, saying so. A cut at a newline
+# never splits a character.
+answer_bytes="$(printf '%s' "$answers" | wc -c)"
+room=$((MAX_CONFIRM_BYTES - answer_bytes))
+if [ "$(printf '%s' "$records" | wc -c)" -gt "$room" ]; then
+  note="$(printf '[the retailer records were cut at a row to keep the evidence within %d bytes]' "$MAX_CONFIRM_BYTES")"
+  keep=$((room - ${#note} - 1))
+  [ "$keep" -gt 0 ] || none "the steward's answers leave no room for its records"
+  kept="$(printf '%s' "$records" | head -c "$keep")"
+  [[ "$kept" == *$'\n'* ]] || none "the steward's answers leave no room for its records"
+  records="${kept%$'\n'*}"
+  [ -n "${records//[[:space:]]/}" ] || none "the steward's answers leave no room for its records"
+  records="$records"$'\n'"$note"
+fi
+
+jq -n --arg records "$records" --arg answers "$answers" '{records: $records, answers: $answers}' > "$CONFIRM_OUT" ||
+  none "the evidence could not be written"
 
 echo "ai-verify-confirm: read the steward's confirmation evidence (comment $id, context ${CONTEXT_SHA:0:12})"
 {

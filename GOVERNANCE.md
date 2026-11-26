@@ -219,15 +219,18 @@ Two automations sit in front of the human review step. Neither bypasses it.
   every item of a flag correct as it stands, it posts its resolver's answers
   beside retailer records its service fetched, bound to the exact content that
   was flagged, and runs the check again. That run reads the comment as a second
-  input: the records are facts about the listings, the answers are claims, and
-  the change is judged afresh. The workflow reads such a comment only from the
+  input, the records and the answers in two sections of their own: only the
+  records are evidence, the answers are claims, and the change is judged
+  afresh. The workflow reads such a comment only from the
   account the `STEWARD_LOGIN` repository variable names (none while it is
   unset), only while that account is the repository's owner, a member or a
   collaborator, only from its newest such comment, only when that comment was
   never edited and ends with the steward's marker, and only for the content it
-  answers, and the verdict comment says when it read one. The evidence clears
-  nothing by itself: only the verdict does, and every advisory is still a
-  finding.
+  answers, and the verdict comment says when it read one. Once the steward
+  withdraws a confirmation (it does when a second flag parks the pull request,
+  and whenever a confirmation ends without a pass), no later run reads it. The
+  evidence clears nothing by itself: only the verdict does, and every advisory
+  is still a finding.
 
 **Merge policy is unchanged by these automations.** A `bot-intake` pull request
 is treated exactly like one "opened by anyone else": it must pass CI, and it
@@ -689,8 +692,9 @@ retailer records the service (never the agent) fetched from libex, and the
 steward posts those answers and records in one comment bound to the flagged
 content, then runs `ai-verify` again, which reads them as a second input (see
 "AI verification" above). A pass on that second read merges through the same
-gate as any other; a second flag parks the pull request for a person, and the
-same content is never confirmed twice. The steward never applies `ai-verified`
+gate as any other; a second flag parks the pull request for a person and
+withdraws the evidence, so a later run on the same content never reads it
+again, and the same content is never confirmed twice. The steward never applies `ai-verified`
 itself, so a flag clears only on `ai-verify`'s own verdict, never on the
 resolver's word. The community layer's flags are still amended by deletion, as
 below.
