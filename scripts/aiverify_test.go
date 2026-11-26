@@ -752,13 +752,16 @@ func withdrawalBody(context string) string {
 		"<!-- audiosilo-steward -->\n" + withdrawalMarker(context) + "\n"
 }
 
-// verdictBody is ai-verify's own verdict comment after a read of the
-// confirmation confirmID for context: the script's confirm line, then the
-// workflow's context and key lines.
+// verdictBody is ai-verify's own verdict comment of context, as ai-verify.sh
+// and the workflow's post step write it: after a read of the confirmation
+// confirmID, the script's confirm line, then the context and key lines (no
+// confirm line when confirmID is empty).
 func verdictBody(verdict, confirmID, context string) string {
-	return "### AI verification: " + strings.ToUpper(verdict) + "\n\nThe change was judged.\n\n" +
-		"_This verdict read the steward's confirmation evidence._\n<!-- ai-verify-confirm: " + confirmID + " -->\n\n" +
-		"<!-- ai-verify-context: " + context + " -->\n" +
+	body := "### AI verification: " + map[string]string{"pass": "passed", "flag": "flagged"}[verdict] + "\n\nThe change was judged.\n"
+	if confirmID != "" {
+		body += "\n_This verdict read the steward's confirmation evidence._\n\n<!-- ai-verify-confirm: " + confirmID + " -->\n"
+	}
+	return body + "\n<!-- ai-verify-context: " + context + " -->\n" +
 		"<!-- ai-verify-key: " + strings.Repeat("cd", 32) + " verdict: " + verdict + " -->\n"
 }
 
@@ -900,7 +903,7 @@ func TestAIVerifyConfirmScript(t *testing.T) {
 		{name: "ai-verify's own flag after reading it, then a pass without it", comments: []confirmComment{
 			owner(7, at1, good),
 			bot(8, at2, verdictBody("flag", "7", ctx)),
-			bot(9, at3, "### AI verification: PASS\n\n<!-- ai-verify-context: "+ctx+" -->\n<!-- ai-verify-key: "+strings.Repeat("ef", 32)+" verdict: pass -->\n"),
+			bot(9, at3, verdictBody("pass", "", ctx)),
 		}},
 		{name: "a withdrawal by a member", comments: []confirmComment{
 			owner(7, at1, good),

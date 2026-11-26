@@ -133,22 +133,23 @@ selected="$(printf '%s\n' "$comments" | jq -cs --arg login "$STEWARD_LOGIN" \
   --arg withdrawal "<!-- audiosilo-steward:confirm-withdrawn context=$CONTEXT_SHA -->" \
   --arg context "<!-- ai-verify-context: $CONTEXT_SHA -->" '
   def lines: (.body // "") | explode | map(select(. != 13 and . != 0)) | implode | split("\n");
+  def last_line: map(select(test("[^ \t]"))) | last // "";
   [.[] | select(.user.login == "github-actions[bot]" and ((.body // "") | startswith("### AI verification")))
     | lines
-    | select((map(select(test("[^ \t]"))) | last // "") | test("^<!-- ai-verify-key: [0-9a-f]{64} verdict: flag -->$"))
+    | select(last_line | test("^<!-- ai-verify-key: [0-9a-f]{64} verdict: flag -->$"))
     | select(any(.[]; . == $context))
     | .[] | capture("^<!-- ai-verify-confirm: (?<id>[0-9]+) -->$").id] as $flagged
   | map(select(
       ((.user.login // "") | ascii_downcase) == ($login | ascii_downcase)
       and (.author_association | IN("OWNER", "MEMBER", "COLLABORATOR"))
       and ((.body // "") | contains("audiosilo-steward:confirm")))
-    | . + {edited: ((.updated_at // .created_at) != .created_at),
-        last: (lines | map(select(test("[^ \t]"))) | last // "")})
+    | . + {last: (lines | last_line)})
   | {withdrawn: any(.[]; .last == $withdrawal),
      picked: (map(select(.last | startswith("<!-- audiosilo-steward:confirm-withdrawn ") | not)
-         | {id, url: .html_url, body, edited, last, created_at})
+         | {id, url: .html_url, body, last, created_at,
+            edited: ((.updated_at // .created_at) != .created_at)})
        | sort_by(.created_at, .id) | last)}
-  | .flagged = (.picked != null and ((.picked.id | tostring) | IN($flagged[])))')" ||
+  | .flagged = ((.picked.id | tostring) | IN($flagged[]))')" ||
   none "the comments could not be parsed"
 [ "$(jq -r '.withdrawn' <<<"$selected")" = false ] || none "the steward withdrew its confirmation of this content"
 picked="$(jq -c '.picked // empty' <<<"$selected")"
