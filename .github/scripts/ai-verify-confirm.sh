@@ -61,7 +61,10 @@ MAX_CONFIRM_BYTES=32768
 
 : > "$CONFIRM_OUT" || { echo "ai-verify-confirm: cannot write $CONFIRM_OUT" >&2; exit 2; }
 
+# Clears <confirm-out> again, so no evidence is always an empty file, even
+# when the write of the evidence is what failed part way.
 none() {
+  : > "$CONFIRM_OUT"
   echo "ai-verify-confirm: no confirmation evidence ($1)"
   echo "found=false" >> "$OUT"
   exit 0

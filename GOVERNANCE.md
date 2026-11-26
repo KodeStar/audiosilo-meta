@@ -222,9 +222,11 @@ Two automations sit in front of the human review step. Neither bypasses it.
   input: the records are facts about the listings, the answers are claims, and
   the change is judged afresh. The workflow reads such a comment only from the
   account the `STEWARD_LOGIN` repository variable names (none while it is
-  unset), only from a collaborator, and only for the content it answers, and
-  the verdict comment says when it read one. The evidence clears nothing by
-  itself: only the verdict does, and every advisory is still a finding.
+  unset), only while that account is the repository's owner, a member or a
+  collaborator, only from its newest such comment, and only for the content it
+  answers, and the verdict comment says when it read one. The evidence clears
+  nothing by itself: only the verdict does, and every advisory is still a
+  finding.
 
 **Merge policy is unchanged by these automations.** A `bot-intake` pull request
 is treated exactly like one "opened by anyone else": it must pass CI, and it
