@@ -188,7 +188,10 @@ if [ "$(printf '%s' "$records" | wc -c)" -gt "$room" ]; then
   note="$(printf '[the retailer records were cut at a row to keep the evidence within %d bytes]' "$MAX_CONFIRM_BYTES")"
   keep=$((room - ${#note} - 1))
   [ "$keep" -gt 0 ] || none "the steward's answers leave no room for its records"
-  kept="$(printf '%s' "$records" | head -c "$keep")"
+  # The x keeps a newline the cut ends on, which $(...) would strip (and with
+  # it the row it ends).
+  kept="$(printf '%s' "$records" | head -c "$keep"; printf x)"
+  kept="${kept%x}"
   [[ "$kept" == *$'\n'* ]] || none "the steward's answers leave no room for its records"
   records="${kept%$'\n'*}"
   [ -n "${records//[[:space:]]/}" ] || none "the steward's answers leave no room for its records"
