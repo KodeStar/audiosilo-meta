@@ -34,12 +34,24 @@
 #     comment (its park comment, when it parks) whose last line that is not
 #     blank is
 #       <!-- audiosilo-steward:confirm-withdrawn context=<64 hex> -->
-#     A withdrawal of this run's context that was never edited means no
-#     evidence, whatever its time: the steward never confirms a content again
-#     once it has withdrawn it, so the two reads that disagreed are never
-#     followed by a third that reads the same evidence (the daily rebase of a
-#     mirror re-runs this workflow on the same content). A withdrawal of other
-#     content, or an edited one, is passed over.
+#     A withdrawal of this run's context means no evidence, whatever its time,
+#     even when it was edited (a withdrawal can only keep evidence out, so
+#     honouring an edited one fails closed): the steward never confirms a
+#     content again once it has withdrawn it, so the two reads that disagreed
+#     are never followed by a third that reads the same evidence (the daily
+#     rebase of a mirror re-runs this workflow on the same content). A
+#     withdrawal of other content is passed over.
+#   - AI-VERIFY'S OWN FLAG withdraws as well. A verdict comment of this
+#     workflow's (ai-verify-reuse.sh's rule: by github-actions[bot], starting
+#     with the verdict heading) whose last line is a key line with
+#     `verdict: flag`, and which holds the whole lines
+#       <!-- ai-verify-confirm: <id> -->   and   <!-- ai-verify-context: <64 hex> -->
+#     naming the confirmation judged below and this run's context, means no
+#     evidence: once a read WITH the evidence has flagged, no later run reads
+#     it, so the window before the steward posts its withdrawal is closed too
+#     (a later pass of the same content without the evidence is a pass of its
+#     own). Its PASS, a flag naming another comment or context, and the same
+#     lines in anybody else's comment are passed over.
 #   - Of the other comments naming the steward's confirm marker, the NEWEST is
 #     the one judged, and it is accepted only when it was never edited (its
 #     updated_at is its created_at: anyone with write access can edit a
@@ -115,24 +127,34 @@ fi
 # that is not blank (a carriage return and a NUL dropped, as below). A
 # withdrawal is one whose last line is the whole withdrawal marker; it is never
 # a confirmation, edited or not. Of the rest, the newest is judged below.
-# withdrawn: an unedited withdrawal of this run's context.
+# withdrawn: a withdrawal of this run's context, edited or not.
+# flagged: ids of the confirmations ai-verify's own flags of this context read.
 selected="$(printf '%s\n' "$comments" | jq -cs --arg login "$STEWARD_LOGIN" \
-  --arg withdrawal "<!-- audiosilo-steward:confirm-withdrawn context=$CONTEXT_SHA -->" '
-  map(select(
+  --arg withdrawal "<!-- audiosilo-steward:confirm-withdrawn context=$CONTEXT_SHA -->" \
+  --arg context "<!-- ai-verify-context: $CONTEXT_SHA -->" '
+  def lines: (.body // "") | explode | map(select(. != 13 and . != 0)) | implode | split("\n");
+  [.[] | select(.user.login == "github-actions[bot]" and ((.body // "") | startswith("### AI verification")))
+    | lines
+    | select((map(select(test("[^ \t]"))) | last // "") | test("^<!-- ai-verify-key: [0-9a-f]{64} verdict: flag -->$"))
+    | select(any(.[]; . == $context))
+    | .[] | capture("^<!-- ai-verify-confirm: (?<id>[0-9]+) -->$").id] as $flagged
+  | map(select(
       ((.user.login // "") | ascii_downcase) == ($login | ascii_downcase)
       and (.author_association | IN("OWNER", "MEMBER", "COLLABORATOR"))
       and ((.body // "") | contains("audiosilo-steward:confirm")))
     | . + {edited: ((.updated_at // .created_at) != .created_at),
-        last: ((.body // "") | explode | map(select(. != 13 and . != 0)) | implode
-          | split("\n") | map(select(test("[^ \t]"))) | last // "")})
-  | {withdrawn: any(.[]; .edited == false and .last == $withdrawal),
+        last: (lines | map(select(test("[^ \t]"))) | last // "")})
+  | {withdrawn: any(.[]; .last == $withdrawal),
      picked: (map(select(.last | startswith("<!-- audiosilo-steward:confirm-withdrawn ") | not)
          | {id, url: .html_url, body, edited, last, created_at})
-       | sort_by(.created_at, .id) | last)}')" ||
+       | sort_by(.created_at, .id) | last)}
+  | .flagged = (.picked != null and ((.picked.id | tostring) | IN($flagged[])))')" ||
   none "the comments could not be parsed"
 [ "$(jq -r '.withdrawn' <<<"$selected")" = false ] || none "the steward withdrew its confirmation of this content"
 picked="$(jq -c '.picked // empty' <<<"$selected")"
 [ -n "$picked" ] || none "no comment by the steward carries its marker"
+[ "$(jq -r '.flagged' <<<"$selected")" = false ] ||
+  none "ai-verify already flagged this content after reading this confirmation"
 
 id="$(jq -r '.id' <<<"$picked")"
 url="$(jq -r '.url // ""' <<<"$picked")"

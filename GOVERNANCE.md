@@ -228,7 +228,9 @@ Two automations sit in front of the human review step. Neither bypasses it.
   never edited and ends with the steward's marker, and only for the content it
   answers, and the verdict comment says when it read one. Once the steward
   withdraws a confirmation (it does when a second flag parks the pull request,
-  and whenever a confirmation ends without a pass), no later run reads it. The
+  and whenever a confirmation ends without a pass), no later run reads it, and
+  `ai-verify`'s own flag after reading a confirmation withdraws it the same
+  way, before the steward has posted anything. The
   evidence clears nothing by itself: only the verdict does, and every advisory
   is still a finding.
 
