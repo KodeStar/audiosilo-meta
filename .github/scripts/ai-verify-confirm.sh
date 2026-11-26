@@ -125,11 +125,10 @@ selected="$(printf '%s\n' "$comments" | jq -cs --arg login "$STEWARD_LOGIN" \
     | . + {edited: ((.updated_at // .created_at) != .created_at),
         last: ((.body // "") | explode | map(select(. != 13 and . != 0)) | implode
           | split("\n") | map(select(test("[^ \t]"))) | last // "")})
-  | (map(select(.last | test("^<!-- audiosilo-steward:confirm-withdrawn context=[0-9a-f]{64} -->$")))) as $withdrawals
-  | {withdrawn: ($withdrawals | any(.edited == false and .last == $withdrawal)),
-     picked: (map(select(.last | test("^<!-- audiosilo-steward:confirm-withdrawn ") | not))
-       | sort_by(.created_at, .id) | last // null
-       | if . == null then null else {id, url: .html_url, body, edited} end)}')" ||
+  | {withdrawn: any(.[]; .edited == false and .last == $withdrawal),
+     picked: (map(select(.last | startswith("<!-- audiosilo-steward:confirm-withdrawn ") | not)
+         | {id, url: .html_url, body, edited, last, created_at})
+       | sort_by(.created_at, .id) | last)}')" ||
   none "the comments could not be parsed"
 [ "$(jq -r '.withdrawn' <<<"$selected")" = false ] || none "the steward withdrew its confirmation of this content"
 picked="$(jq -c '.picked // empty' <<<"$selected")"
@@ -148,17 +147,17 @@ body="$(jq -r '.body' <<<"$picked" | tr -d '\r\0')"
 # Every line NAMING the marker or a delimiter is counted, so a near miss
 # (indented, misspelled field, a second copy inside the evidence) is refused
 # rather than passed over in favour of a well-formed one elsewhere. The marker
-# must be the last line that is not blank, which also puts it after the block.
-# Each delimiter's line number is its exact line's, 0 when there is none.
-read -r markers marker_at last_at counts lines < <(awk '
+# must be the last line that is not blank (the selection's `last`), which also
+# puts it after the block. Each delimiter's line number is its exact line's, 0
+# when there is none.
+read -r markers counts lines < <(awk '
   BEGIN { n = split("evidence:begin answers:begin answers:end records:begin records:end evidence:end", d, " ") }
-  /audiosilo-steward:confirm/ { m++; ml = NR }
+  /audiosilo-steward:confirm/ { m++ }
   { for (i = 1; i <= n; i++) if (index($0, "confirm-" d[i])) { c[i]++; if ($0 == "<!-- confirm-" d[i] " -->") at[i] = NR } }
-  NF { l = NR }
   END {
     cs = ""; ls = ""
     for (i = 1; i <= n; i++) { cs = cs (i > 1 ? "," : "") c[i] + 0; ls = ls (i > 1 ? "," : "") at[i] + 0 }
-    printf "%d %d %d %s %s\n", m, ml, l, cs, ls
+    printf "%d %s %s\n", m, cs, ls
   }' <<<"$body")
 [ "$markers" -eq 1 ] || none "the steward's comment names its marker on $markers lines, not one"
 [ "$counts" = "1,1,1,1,1,1" ] || none "the steward's comment does not name each evidence delimiter once ($counts)"
@@ -167,10 +166,9 @@ IFS=, read -r evidence_begin answers_begin answers_end records_begin records_end
   [ "$records_begin" -gt "$answers_end" ] && [ "$records_end" -gt "$records_begin" ] &&
   [ "$evidence_end" -gt "$records_end" ] ||
   none "the steward's evidence is not one block of its answers and then its records"
-[ "$marker_at" -eq "$last_at" ] || none "the steward's marker is not its comment's last line"
-marker="$(sed -n "${marker_at}p" <<<"$body")"
+marker="$(jq -r '.last' <<<"$picked")"
 [[ "$marker" =~ ^\<!--\ audiosilo-steward:confirm\ context=([0-9a-f]{64})\ head=[0-9a-f]{40}\ flag=[0-9a-f]{64}\ --\>$ ]] ||
-  none "the steward's marker line is not the whole marker"
+  none "the steward's comment does not end with its whole marker"
 [ "${BASH_REMATCH[1]}" = "$CONTEXT_SHA" ] ||
   none "the steward's evidence answers other content (context ${BASH_REMATCH[1]:0:12}, this run's ${CONTEXT_SHA:0:12})"
 

@@ -181,22 +181,25 @@ fi
 
 # The evidence's two parts; CONFIRM is set only when both hold something, and a
 # file that is not the object ai-verify-confirm.sh writes is no evidence.
+# confirm_part <key>: that part of CONFIRM_FILE, capped and made valid UTF-8.
+confirm_part() {
+  jq -r --arg key "$1" '.[$key] | strings' "$CONFIRM_FILE" 2>/dev/null | head -c "$MAX_CONFIRM_BYTES" | iconv -f utf-8 -t utf-8 -c
+}
 CONFIRM=""
 CONFIRM_RECORDS=""
 CONFIRM_ANSWERS=""
+CONFIRM_TAG=""
 if [ -n "${CONFIRM_FILE:-}" ] && [ -s "$CONFIRM_FILE" ]; then
-  CONFIRM_RECORDS="$(jq -r '.records | strings' "$CONFIRM_FILE" 2>/dev/null | head -c "$MAX_CONFIRM_BYTES" | iconv -f utf-8 -t utf-8 -c)"
-  CONFIRM_ANSWERS="$(jq -r '.answers | strings' "$CONFIRM_FILE" 2>/dev/null | head -c "$MAX_CONFIRM_BYTES" | iconv -f utf-8 -t utf-8 -c)"
+  CONFIRM_RECORDS="$(confirm_part records)"
+  CONFIRM_ANSWERS="$(confirm_part answers)"
   if [ -n "${CONFIRM_RECORDS//[[:space:]]/}" ] && [ -n "${CONFIRM_ANSWERS//[[:space:]]/}" ]; then
     CONFIRM=yes
+    # CONFIRM_TAG marks the lines that open and close the two sections: a hash
+    # of both parts, which no text inside them can hold (it would have to
+    # contain its own hash), so an answer can forge a section's heading but
+    # never its tag.
+    CONFIRM_TAG="$(printf '%s\n%s' "$CONFIRM_RECORDS" "$CONFIRM_ANSWERS" | sha256sum | cut -c1-16)"
   fi
-fi
-# CONFIRM_TAG marks the lines that open and close the two sections: a hash of
-# both parts, which no text inside them can hold (it would have to contain its
-# own hash), so an answer can forge a section's heading but never its tag.
-CONFIRM_TAG=""
-if [ -n "$CONFIRM" ]; then
-  CONFIRM_TAG="$(printf '%s\n%s' "$CONFIRM_RECORDS" "$CONFIRM_ANSWERS" | sha256sum | cut -c1-16)"
 fi
 # The comment links the steward's comment and names its id in a marker line, so
 # both are checked for their shape: the URL is GitHub's own html_url and the id a
