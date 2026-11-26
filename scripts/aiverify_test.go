@@ -874,6 +874,11 @@ func TestAIVerifyConfirmScript(t *testing.T) {
 			owner(7, at1, good),
 			bot(8, at2, strings.TrimPrefix(verdictBody("flag", "7", ctx), "### ")),
 		}, wantID: 7, want: parts(answers, records)},
+		{name: "a skip whose reason carries the flag's lines", comments: []confirmComment{
+			owner(7, at1, good),
+			bot(8, at2, strings.Replace(verdictBody("flag", "7", ctx), "### AI verification: flagged",
+				"### AI verification skipped\n\nThe Claude Code CLI returned an error:", 1)),
+		}, wantID: 7, want: parts(answers, records)},
 		{name: "a withdrawal not on the last line is not one", comments: []confirmComment{
 			owner(7, at1, good),
 			owner(8, at2, withdrawalMarker(ctx)+"\nParked.\n"),

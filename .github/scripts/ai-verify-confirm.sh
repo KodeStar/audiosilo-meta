@@ -42,8 +42,9 @@
 #     rebase of a mirror re-runs this workflow on the same content). A
 #     withdrawal of other content is passed over.
 #   - AI-VERIFY'S OWN FLAG withdraws as well. A verdict comment of this
-#     workflow's (ai-verify-reuse.sh's rule: by github-actions[bot], starting
-#     with the verdict heading) whose last line is a key line with
+#     workflow's (by github-actions[bot], its first line the whole heading
+#     `### AI verification: flagged`, so never a skip, whose reason can carry
+#     a model's unflattened text) whose last line is a key line with
 #     `verdict: flag`, and which holds the whole lines
 #       <!-- ai-verify-confirm: <id> -->   and   <!-- ai-verify-context: <64 hex> -->
 #     naming the confirmation judged below and this run's context, means no
@@ -134,8 +135,9 @@ selected="$(printf '%s\n' "$comments" | jq -cs --arg login "$STEWARD_LOGIN" \
   --arg context "<!-- ai-verify-context: $CONTEXT_SHA -->" '
   def lines: (.body // "") | explode | map(select(. != 13 and . != 0)) | implode | split("\n");
   def last_line: map(select(test("[^ \t]"))) | last // "";
-  [.[] | select(.user.login == "github-actions[bot]" and ((.body // "") | startswith("### AI verification")))
+  [.[] | select(.user.login == "github-actions[bot]")
     | lines
+    | select(.[0] == "### AI verification: flagged")
     | select(last_line | test("^<!-- ai-verify-key: [0-9a-f]{64} verdict: flag -->$"))
     | select(any(.[]; . == $context))
     | .[] | capture("^<!-- ai-verify-confirm: (?<id>[0-9]+) -->$").id] as $flagged
