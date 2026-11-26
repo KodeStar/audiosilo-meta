@@ -311,14 +311,14 @@ jobs:
       # reads it. What the script trusts is its header's TRUST section
       # (STEWARD_LOGIN unset, it reads nothing). It always leaves a confirm.txt,
       # empty when there is none, so the reuse key below is what it was without
-      # it. A fork
-      # pull request's own events never get here (the job's `if`); a dispatch
-      # for one runs main's scripts. The comments are listed once, here, for this
-      # step and the reuse step; a listing that fails leaves no comments.json,
-      # which both scripts read as no comments to judge. The step runs under
-      # `bash -e`, where a pipeline's status is its last command's, so pipefail
-      # is what makes a gh failure (a page lost part way included) fail the `if`
-      # rather than leave a partial list missing the newest comments.
+      # it. A fork pull request's own events never get here (the job's `if`); a
+      # dispatch for one runs main's scripts. The comments are listed once,
+      # here, for this step and the reuse step; a listing that fails leaves no
+      # comments.json, which both scripts read as no comments to judge. The
+      # step runs under `bash -e`, where a pipeline's status is its last
+      # command's, so pipefail is what makes a gh failure (a page lost part way
+      # included) fail the `if` rather than leave a partial list missing the
+      # newest comments.
       - name: Read the steward's confirmation
         id: confirm
         if: steps.gather.outputs.has_changes == 'true'
