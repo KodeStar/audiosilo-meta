@@ -48,8 +48,9 @@
 # written to a file and reaches the model only through ai-verify.sh's jq
 # --rawfile or stdin, never a shell command or an argument, as the context does.
 #
-# COMMENTS_FILE (a JSON array of issue comments) replaces the API read, for
-# testing.
+# COMMENTS_FILE (a JSON array of issue comments) replaces the API read: the
+# workflow lists the comments once for this script and its neighbour, and the
+# tests hand in their own. A file that cannot be read is no comments.
 set -uo pipefail
 
 CONTEXT="${1:?context file required}"
@@ -69,7 +70,7 @@ none() {
 STEWARD_LOGIN="${STEWARD_LOGIN:-}"
 [ -n "$STEWARD_LOGIN" ] || none "no STEWARD_LOGIN repository variable is set"
 
-CONTEXT_SHA="$(sha256sum < "$CONTEXT" | cut -d' ' -f1)" || none "the context could not be hashed"
+CONTEXT_SHA="$(sha256sum < "$CONTEXT" | cut -d' ' -f1)"
 [[ "$CONTEXT_SHA" =~ ^[0-9a-f]{64}$ ]] || none "the context could not be hashed"
 
 if [ -n "${COMMENTS_FILE:-}" ]; then

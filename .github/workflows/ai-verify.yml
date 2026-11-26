@@ -305,12 +305,12 @@ jobs:
       # resolver found every flagged item correct as it stands, the steward posts
       # the resolver's answers beside retailer records its service fetched, then
       # re-runs this workflow, and the model reads that comment as a second input.
-      # The script reads only the account named by the STEWARD_LOGIN repository
-      # variable (unset, it reads nothing), only as a collaborator, only one
-      # well-formed marker outside the evidence block, and only for this run's
-      # context hash; everything else is no evidence. It always leaves a
-      # confirm.txt, empty when there is none, so the reuse key below is what it
-      # was without it. A fork pull request never gets here (the job's `if`).
+      # What the script trusts is its header's TRUST section (STEWARD_LOGIN
+      # unset, it reads nothing). It always leaves a confirm.txt, empty when
+      # there is none, so the reuse key below is what it was without it. A fork
+      # pull request never gets here (the job's `if`). The comments are listed
+      # once, here, for this step and the reuse step; a listing that fails
+      # leaves no comments.json, which both scripts read as no comments to judge.
       - name: Read the steward's confirmation
         id: confirm
         if: steps.gather.outputs.has_changes == 'true'
@@ -318,7 +318,13 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           PR: ${{ steps.gather.outputs.pr }}
           STEWARD_LOGIN: ${{ vars.STEWARD_LOGIN }}
-        run: bash .github/scripts/ai-verify-confirm.sh context.txt "$PR" confirm.txt
+          COMMENTS_FILE: comments.json
+        run: |
+          if ! gh api --paginate "repos/$GITHUB_REPOSITORY/issues/$PR/comments" --jq '.[]' | jq -s . > comments.json; then
+            echo "::warning::the comments on PR $PR could not be listed"
+            rm -f comments.json
+          fi
+          bash .github/scripts/ai-verify-confirm.sh context.txt "$PR" confirm.txt
 
       # A rebase over an unrelated merge leaves the judged context byte for byte
       # the same: its verdict stands, re-applied without a model call (see the
@@ -340,6 +346,7 @@ jobs:
           PR: ${{ steps.gather.outputs.pr }}
           CONTEXT_FORMAT: ${{ steps.gather.outputs.context_format }}
           PR_ORIGIN: ${{ steps.gather.outputs.origin }}
+          COMMENTS_FILE: comments.json
         run: |
           # The prompt states today's date (release-date plausibility is judged
           # against it), so a verdict is reused within its UTC day only.

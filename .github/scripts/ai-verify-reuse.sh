@@ -34,8 +34,9 @@
 # after a pass is the newest verdict and is never looked past), and only its
 # LAST line is read: the key is appended after everything the model wrote, so
 # text the model echoed from the pull request can never stand in for it.
-# COMMENTS_FILE (a JSON array of issue comments) replaces the API read, for
-# testing.
+# COMMENTS_FILE (a JSON array of issue comments) replaces the API read: the
+# workflow lists the comments once for this script and its neighbour, and the
+# tests hand in their own. A file that cannot be read is no comments.
 set -uo pipefail
 
 CONTEXT="${1:?context file required}"
