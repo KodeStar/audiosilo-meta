@@ -207,6 +207,25 @@ Two automations sit in front of the human review step. Neither bypasses it.
   the workflow by hand for it (a manual run starts from the default branch,
   with the secret).
 
+  **A new series is read by who opened the pull request.** The
+  series-completion bot and the LibriVox lane never found a series, so a new
+  one in their pull requests is worth a closer look. A person founding the
+  series their book belongs to (a fork and its steward mirror, an issue form, a
+  steward pull request) is ordinary, a series of one work included, and the
+  series is judged by its own record: a series name rather than a recording's
+  or an edition's, authors that match its works, sane positions.
+
+  **A second read with the steward's evidence.** When the steward (below) finds
+  every item of a flag correct as it stands, it posts its resolver's answers
+  beside retailer records its service fetched, bound to the exact content that
+  was flagged, and runs the check again. That run reads the comment as a second
+  input: the records are facts about the listings, the answers are claims, and
+  the change is judged afresh. The workflow reads such a comment only from the
+  account the `STEWARD_LOGIN` repository variable names (none while it is
+  unset), only from a collaborator, and only for the content it answers, and
+  the verdict comment says when it read one. The evidence clears nothing by
+  itself: only the verdict does, and every advisory is still a finding.
+
 **Merge policy is unchanged by these automations.** A `bot-intake` pull request
 is treated exactly like one "opened by anyone else": it must pass CI, and it
 still requires **one maintainer approval** before it merges. A green
@@ -659,6 +678,19 @@ anyone else's branch) with an agent, and the amended head goes back through
 end in a closure; one that keeps failing is listed on the steward's report for
 the maintainer. A superseded pull request is closed only once its content is
 verified to be on `main`.
+
+**When a flag is wrong.** By the maintainer's decision of 2026-11-26, a flagged
+core pull request whose every flagged item the resolver finds correct as it
+stands is not amended and not parked. The resolver answers each item, citing
+retailer records the service (never the agent) fetched from libex, and the
+steward posts those answers and records in one comment bound to the flagged
+content, then runs `ai-verify` again, which reads them as a second input (see
+"AI verification" above). A pass on that second read merges through the same
+gate as any other; a second flag parks the pull request for a person, and the
+same content is never confirmed twice. The steward never applies `ai-verified`
+itself, so a flag clears only on `ai-verify`'s own verdict, never on the
+resolver's word. The community layer's flags are still amended by deletion, as
+below.
 
 **Issues.** A data issue the intake bot could not finish (`data:needs-human`,
 invalid, or no pull request) is researched by the steward, which either opens a
