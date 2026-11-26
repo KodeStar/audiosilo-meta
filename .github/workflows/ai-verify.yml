@@ -10,7 +10,9 @@ name: ai-verify
 # WHAT THE MODEL READS is an entry-level summary produced by `cmd/metadiff`, not
 # the pull request's text diff - see the "Gather the data change" step, which
 # states why - plus the metacheck ADVISORIES the pull request introduces
-# (.github/scripts/advisory-delta.sh), each of which the model is told to flag.
+# (.github/scripts/advisory-delta.sh), each of which the model is told to flag,
+# and, on a re-run after a flag, the steward's confirmation evidence for exactly
+# this content when there is any (.github/scripts/ai-verify-confirm.sh).
 #
 # SECURITY: this uses the plain `pull_request` trigger, NOT
 # `pull_request_target`, which is FORBIDDEN in this repo (the "pwn request"
@@ -27,6 +29,8 @@ name: ai-verify
 #     reach fork secrets.
 #   - The summary is built from contributor-supplied data and is passed to the
 #     model as untrusted DATA, never executed (see .github/scripts/ai-verify.sh).
+#     So is the steward's confirmation evidence, read only from the account the
+#     STEWARD_LOGIN repository variable names (none when it is unset).
 on:
   pull_request:
     types: [opened, synchronize, reopened, labeled]
@@ -296,13 +300,50 @@ jobs:
             echo "NOTE: the advisories this pull request introduces could not be computed, so nothing is known about them." > advisories.txt
           fi
 
+      # THE STEWARD'S CONFIRMATION EVIDENCE (GOVERNANCE.md, "The steward"): when
+      # an earlier run flagged this exact content and audiosilo-meta-sync's
+      # resolver found every flagged item correct as it stands, the steward posts
+      # the resolver's answers beside retailer records its service fetched, then
+      # re-runs this workflow, and the model reads that comment as a second input:
+      # the records as evidence, the answers as claims. Once the steward
+      # withdraws a confirmation (a second flag parked the pull request, or it
+      # ended without a pass), or this workflow's own flag read it, no later run
+      # reads it. What the script trusts is its header's TRUST section
+      # (STEWARD_LOGIN unset, it reads nothing). It always leaves a confirm.txt,
+      # empty when there is none, so the reuse key below is what it was without
+      # it. A fork pull request's own events never get here (the job's `if`); a
+      # dispatch for one runs main's scripts. The comments are listed once,
+      # here, for this step and the reuse step; a listing that fails leaves no
+      # comments.json, which both scripts read as no comments to judge. The
+      # step runs under `bash -e`, where a pipeline's status is its last
+      # command's, so pipefail is what makes a gh failure (a page lost part way
+      # included) fail the `if` rather than leave a partial list missing the
+      # newest comments.
+      - name: Read the steward's confirmation
+        id: confirm
+        if: steps.gather.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ steps.gather.outputs.pr }}
+          STEWARD_LOGIN: ${{ vars.STEWARD_LOGIN }}
+          COMMENTS_FILE: comments.json
+        run: |
+          set -o pipefail
+          if ! gh api --paginate "repos/$GITHUB_REPOSITORY/issues/$PR/comments?per_page=100" --jq '.[]' | jq -s . > comments.json; then
+            echo "::warning::the comments on PR $PR could not be listed"
+            rm -f comments.json
+          fi
+          bash .github/scripts/ai-verify-confirm.sh context.txt "$PR" confirm.txt
+
       # A rebase over an unrelated merge leaves the judged context byte for byte
       # the same: its verdict stands, re-applied without a model call (see the
       # script). A dispatch, a re-run and the opt-in label always judge afresh -
       # audiosilo-meta-sync re-runs verify to have a failed run or a disputed
       # flag judged again. The context format, the pull request's origin and the
       # day also decide the verdict (they shape the prompt), so they are hashed
-      # with it, and so is the advisory list the model is shown beside it.
+      # with it, and so are the advisory list and the steward's confirmation
+      # evidence the model is shown beside it (a verdict that read the evidence is
+      # not the verdict that did not).
       - name: Reuse the verdict for unchanged content
         id: reuse
         if: steps.gather.outputs.has_changes == 'true'
@@ -314,12 +355,14 @@ jobs:
           PR: ${{ steps.gather.outputs.pr }}
           CONTEXT_FORMAT: ${{ steps.gather.outputs.context_format }}
           PR_ORIGIN: ${{ steps.gather.outputs.origin }}
+          COMMENTS_FILE: comments.json
         run: |
           # The prompt states today's date (release-date plausibility is judged
           # against it), so a verdict is reused within its UTC day only.
           printf 'format=%s origin=%s day=%s\n' "$CONTEXT_FORMAT" "$PR_ORIGIN" "$(date -u +%F)" > verify-inputs.txt
-          bash .github/scripts/ai-verify-reuse.sh context.txt "$PR" verify-inputs.txt advisories.txt \
-            .github/scripts/ai-verify.sh .github/scripts/ai-verify-reuse.sh .github/workflows/ai-verify.yml
+          bash .github/scripts/ai-verify-reuse.sh context.txt "$PR" verify-inputs.txt advisories.txt confirm.txt \
+            .github/scripts/ai-verify.sh .github/scripts/ai-verify-reuse.sh .github/scripts/ai-verify-confirm.sh \
+            .github/workflows/ai-verify.yml
 
       # Only needed for the CLAUDE_CODE_OAUTH_TOKEN transport (a subscription
       # token authenticates through the CLI, not the raw API). The script prefers
@@ -369,6 +412,11 @@ jobs:
           # The advisories this pull request introduces (the gather step); empty
           # when there are none, which leaves the prompt as it was.
           ADVISORIES_FILE: advisories.txt
+          # The steward's confirmation evidence (the step above); an empty file
+          # when there is none, which leaves the prompt as it was.
+          CONFIRM_FILE: confirm.txt
+          CONFIRM_ID: ${{ steps.confirm.outputs.id }}
+          CONFIRM_URL: ${{ steps.confirm.outputs.url }}
         run: bash .github/scripts/ai-verify.sh context.txt verdict.json comment.md
 
       # Runs even when the verification step FAILED (a skip), so the skip keeps
@@ -394,11 +442,17 @@ jobs:
               exit 0
             fi
             verdict="$(jq -r '.verdict // "skip"' verdict.json 2>/dev/null || echo skip)"
-            # The key goes on the comment's LAST line, after everything the
-            # model wrote: the next run reuses this verdict only while the
-            # content it judged is unchanged (ai-verify-reuse.sh).
-            if [ -n "$KEY" ] && { [ "$verdict" = pass ] || [ "$verdict" = flag ]; }; then
-              printf '\n<!-- ai-verify-key: %s verdict: %s -->\n' "$KEY" "$verdict" >> comment.md
+            # The context line names the summary this verdict judged
+            # (sha256 of context.txt): audiosilo-meta-sync's steward binds its
+            # confirmation evidence to it (ai-verify-confirm.sh). The key goes on
+            # the comment's LAST line, after everything the model wrote: the
+            # next run reuses this verdict only while the content it judged is
+            # unchanged (ai-verify-reuse.sh), and only the last line is read.
+            if [ "$verdict" = pass ] || [ "$verdict" = flag ]; then
+              printf '\n<!-- ai-verify-context: %s -->\n' "$(sha256sum < context.txt | cut -d' ' -f1)" >> comment.md
+              if [ -n "$KEY" ]; then
+                printf '<!-- ai-verify-key: %s verdict: %s -->\n' "$KEY" "$verdict" >> comment.md
+              fi
             fi
             gh pr comment "$PR" --body-file comment.md || echo "::warning::could not post the ai-verify comment on PR $PR"
           fi
