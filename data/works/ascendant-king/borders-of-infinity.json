@@ -12362,6 +12362,10 @@
             {
               "asin": "B0H2NKXYMB",
               "region": "in"
+            },
+            {
+              "asin": "B0H2ND7QRC",
+              "region": "es"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71bfZ+4nDjL.jpg",
@@ -12424,6 +12428,11 @@
             {
               "imported_at": "2026-11-24",
               "ref": "B0H2NKXYMB",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-27",
+              "ref": "B0H2ND7QRC",
               "type": "libex-import"
             }
           ],
@@ -14582,6 +14591,122 @@
         }
       ],
       "title": "Born into Darkness"
+    },
+    "born-into-fire": {
+      "added_at": "2026-11-27",
+      "authors": [
+        "sonja-grey"
+      ],
+      "genres": [
+        "contemporary-romance",
+        "romance",
+        "romantic-suspense"
+      ],
+      "id": "born-into-fire",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kai-kennicott-2027": {
+          "abridged": false,
+          "added_at": "2026-11-27",
+          "asin": [
+            {
+              "asin": "B0HSBTT666",
+              "region": "us"
+            },
+            {
+              "asin": "B0HSBYYN8J",
+              "region": "ca"
+            },
+            {
+              "asin": "B0HSBLTKVR",
+              "region": "uk"
+            },
+            {
+              "asin": "B0HSBLYCFG",
+              "region": "au"
+            },
+            {
+              "asin": "B0HSBJVZGY",
+              "region": "de"
+            },
+            {
+              "asin": "B0HSBTFP9W",
+              "region": "fr"
+            },
+            {
+              "asin": "B0HSBQWZ75",
+              "region": "jp"
+            },
+            {
+              "asin": "B0HSBK2WLK",
+              "region": "br"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/813nZDVVrzL.jpg",
+          "id": "kai-kennicott-2027",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kai-kennicott",
+            "wen-ross"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2027-03-02",
+          "runtime_min": 827,
+          "sources": [
+            {
+              "imported_at": "2026-11-27",
+              "ref": "B0HSBTT666",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-21",
+              "ref": "B0HSBYYN8J",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-27",
+              "ref": "B0HSBLTKVR",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-27",
+              "ref": "B0HSBLYCFG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-27",
+              "ref": "B0HSBJVZGY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-27",
+              "ref": "B0HSBTFP9W",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-27",
+              "ref": "B0HSBQWZ75",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-27",
+              "ref": "B0HSBK2WLK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "born-into-fire"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-11-27",
+          "ref": "B0HSBTT666",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Born into Fire"
     },
     "born-into-flames": {
       "added_at": "2026-08-01",
