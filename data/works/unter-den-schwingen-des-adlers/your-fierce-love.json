@@ -11755,8 +11755,7 @@
     "your-name": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "makoto-shinkai",
-        "taylor-engel"
+        "makoto-shinkai"
       ],
       "credits": [
         {
@@ -11840,6 +11839,9 @@
           ],
           "cover_url": "https://m.media-amazon.com/images/I/814V43uqMeL.jpg",
           "id": "stephanie-sheh-2024",
+          "isbn": [
+            "9781975397975"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -11864,6 +11866,11 @@
               "imported_at": "2026-10-09",
               "ref": "B0CW3PRTTS",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-28",
+              "ref": "B0CW3MWBW7",
+              "type": "audible-lookup"
             }
           ],
           "work": "your-name"
@@ -11879,6 +11886,11 @@
           "imported_at": "2026-07-30",
           "ref": "B0CW3MWBW7",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-11-28",
+          "ref": "https://yenpress.com/series/your-name",
+          "type": "store-listing"
         }
       ],
       "title": "Your Name."
