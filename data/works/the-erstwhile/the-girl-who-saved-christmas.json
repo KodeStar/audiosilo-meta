@@ -3439,8 +3439,13 @@
     "the-girl-who-wants-to-be-a-hero-and-the-girl-who-ought-to-be-a-hero-vol-1": {
       "added_at": "2026-08-02",
       "authors": [
-        "inori",
-        "akamoku"
+        "inori"
+      ],
+      "credits": [
+        {
+          "person": "akamoku",
+          "role": "illustrator"
+        }
       ],
       "genres": [
         "action-adventure",
@@ -3508,6 +3513,9 @@
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91RW9bBtGDL.jpg",
           "id": "adelaide-west-2025",
+          "isbn": [
+            "9798855418613"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -3521,6 +3529,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0FVJTC8W2",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-28",
+              "ref": "B0FVJTC8W2",
+              "type": "audible-lookup"
             }
           ],
           "work": "the-girl-who-wants-to-be-a-hero-and-the-girl-who-ought-to-be-a-hero-vol-1"
@@ -3531,6 +3544,11 @@
           "imported_at": "2026-08-02",
           "ref": "B0FVJTC8W2",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-11-28",
+          "ref": "https://yenpress.com/series/the-girl-who-wants-to-be-a-hero-and-the-girl-who-ought-to-be-a-hero",
+          "type": "store-listing"
         }
       ],
       "title": "The Girl Who Wants to Be a Hero and the Girl Who Ought to Be a Hero, Vol. 1"

@@ -4012,18 +4012,6 @@
         }
       ]
     },
-    "yu-nagi": {
-      "id": "yu-nagi",
-      "license": "CC0-1.0",
-      "name": "Yu-nagi",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0H6KPG4FH",
-          "type": "libex-import"
-        }
-      ]
-    },
     "yu-okano": {
       "id": "yu-okano",
       "license": "CC0-1.0",
@@ -4564,8 +4552,21 @@
           "imported_at": "2026-10-04",
           "ref": "B0HD6RQN6G",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0H6KPG4FH",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-11-28",
+          "ref": "Q105711595",
+          "type": "wikidata"
         }
-      ]
+      ],
+      "xref": {
+        "wikidata": "Q105711595"
+      }
     },
     "yung-i-chang": {
       "id": "yung-i-chang",
