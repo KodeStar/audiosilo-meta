@@ -3291,12 +3291,13 @@
     "blade-bastard-vol-1": {
       "added_at": "2026-08-02",
       "authors": [
-        "kumo-kagyu",
-        "so-bin",
-        "c-d-leeson",
-        "sean-mccann"
+        "kumo-kagyu"
       ],
       "credits": [
+        {
+          "person": "so-bin",
+          "role": "illustrator"
+        },
         {
           "person": "c-d-leeson",
           "role": "editor"
@@ -3308,7 +3309,8 @@
       ],
       "genres": [
         "action-adventure",
-        "science-fiction"
+        "dark-fantasy",
+        "fantasy"
       ],
       "id": "blade-bastard-vol-1",
       "language": "en",
@@ -3495,6 +3497,11 @@
           "imported_at": "2026-08-02",
           "ref": "B0H6KJBPWJ",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-11-28",
+          "ref": "https://yenpress.com/series/blade-bastard-light-novel",
+          "type": "store-listing"
         }
       ],
       "title": "Blade & Bastard, Vol. 1"
@@ -3502,12 +3509,13 @@
     "blade-bastard-vol-2-light-novel": {
       "added_at": "2026-10-09",
       "authors": [
-        "c-d-leeson",
-        "sean-mccann",
-        "kumo-kagyu",
-        "so-bin"
+        "kumo-kagyu"
       ],
       "credits": [
+        {
+          "person": "so-bin",
+          "role": "illustrator"
+        },
         {
           "person": "c-d-leeson",
           "role": "editor"
@@ -3519,7 +3527,8 @@
       ],
       "genres": [
         "action-adventure",
-        "science-fiction"
+        "dark-fantasy",
+        "fantasy"
       ],
       "id": "blade-bastard-vol-2-light-novel",
       "language": "en",
@@ -3702,19 +3711,25 @@
           "imported_at": "2026-10-08",
           "ref": "B0HM3CBHDQ",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-11-28",
+          "ref": "https://yenpress.com/series/blade-bastard-light-novel",
+          "type": "store-listing"
         }
       ],
-      "title": "Blade & Bastard, Vol. 2 (light novel)"
+      "title": "Blade & Bastard, Vol. 2"
     },
     "blade-bastard-vol-3": {
       "added_at": "2026-10-04",
       "authors": [
-        "kumo-kagyu",
-        "so-bin",
-        "c-d-leeson",
-        "sean-mccann"
+        "kumo-kagyu"
       ],
       "credits": [
+        {
+          "person": "so-bin",
+          "role": "illustrator"
+        },
         {
           "person": "c-d-leeson",
           "role": "editor"
@@ -3726,7 +3741,8 @@
       ],
       "genres": [
         "action-adventure",
-        "science-fiction"
+        "dark-fantasy",
+        "fantasy"
       ],
       "id": "blade-bastard-vol-3",
       "language": "en",
@@ -3819,9 +3835,55 @@
           "imported_at": "2026-10-04",
           "ref": "B0HD6TCWKT",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-11-28",
+          "ref": "https://yenpress.com/series/blade-bastard-light-novel",
+          "type": "store-listing"
         }
       ],
       "title": "Blade & Bastard, Vol. 3"
+    },
+    "blade-bastard-vol-4": {
+      "authors": [
+        "kumo-kagyu"
+      ],
+      "credits": [
+        {
+          "person": "so-bin",
+          "role": "illustrator"
+        },
+        {
+          "person": "c-d-leeson",
+          "role": "editor"
+        },
+        {
+          "person": "sean-mccann",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "action-adventure",
+        "dark-fantasy",
+        "fantasy"
+      ],
+      "id": "blade-bastard-vol-4",
+      "language": "en",
+      "license": "CC0-1.0",
+      "sources": [
+        {
+          "imported_at": "2026-11-28",
+          "ref": "https://yenpress.com/series/blade-bastard-light-novel",
+          "type": "store-listing"
+        },
+        {
+          "imported_at": "2026-11-28",
+          "ref": "B0HPNHLPMC",
+          "type": "audible-lookup"
+        }
+      ],
+      "subtitle": "Dungeon Chronicle",
+      "title": "Blade & Bastard, Vol. 4"
     },
     "blade-bound": {
       "added_at": "2026-07-25T19:18:21+01:00",
