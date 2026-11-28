@@ -5889,14 +5889,16 @@
     "whoever-steals-this-book-light-novel": {
       "added_at": "2026-08-02",
       "authors": [
-        "nowaki-fukamidori",
-        "naffy",
-        "michael-blaskowsky"
+        "nowaki-fukamidori"
       ],
       "credits": [
         {
           "person": "michael-blaskowsky",
           "role": "translator"
+        },
+        {
+          "person": "naffy",
+          "role": "illustrator"
         }
       ],
       "genres": [
@@ -6000,6 +6002,9 @@
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81N5Gb-jyZL.jpg",
           "id": "caitlin-kelly-2026",
+          "isbn": [
+            "9798855442090"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -6068,6 +6073,11 @@
               "imported_at": "2026-10-27",
               "ref": "B0H6KL9VTW",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-28",
+              "ref": "B0H6KNTRY8",
+              "type": "audible-lookup"
             }
           ],
           "work": "whoever-steals-this-book-light-novel"
@@ -6078,9 +6088,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0H6KNTRY8",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-11-28",
+          "ref": "https://yenpress.com/titles/9798855442090-whoever-steals-this-book-light-novel",
+          "type": "store-listing"
         }
       ],
-      "title": "Whoever Steals This Book (light novel)"
+      "title": "Whoever Steals This Book"
     },
     "whole": {
       "added_at": "2026-07-29",
